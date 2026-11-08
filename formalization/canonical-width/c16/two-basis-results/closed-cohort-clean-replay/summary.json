@@ -1,0 +1,51 @@
+{
+  "status": "PASS_SUCCESSOR_COHORT_CLEAN_COPY_REPLAY",
+  "inventory_sha256": "3f2d4a27457c46593fb51ba0d469dfb317c49e4931b85deefdfe8eb9f88f6cb5",
+  "total_files": 397,
+  "total_bytes": 79015741,
+  "counts": {
+    "EXACT_BASE_MIXTURE": 9,
+    "EXACT_RANK_VIOLATION": 13
+  },
+  "results": [
+    {
+      "name": "allocation-X",
+      "status": "PASS_EXACT_DIRECT_COUNT_AND_LISTED_RANK_ROWS",
+      "receipt_sha256": "405f32e2f838c6f87b4f730c04f3af62baef5d249beff72233bc5a7d5ebb67f9",
+      "log_sha256": "67f0ca6341d7115807fc9641d17123784a1af985238ebe16e402aed32e8c59de"
+    },
+    {
+      "name": "closed-bank-X",
+      "status": "PASS_EXACT_PHYSICAL_CONDITIONAL_CLOSED_RANK_ROWS",
+      "receipt_sha256": "9e5937f34051a86034b2b0908cdbe666815cb71affcc4b3b199d68a445f09568",
+      "log_sha256": "9e5937f34051a86034b2b0908cdbe666815cb71affcc4b3b199d68a445f09568"
+    },
+    {
+      "name": "allocation-Z",
+      "status": "PASS_EXACT_DIRECT_COUNT_AND_LISTED_RANK_ROWS",
+      "receipt_sha256": "73b72da24cff4a98598e5aa2a3a3f1ff857fda4279e2c7dc74e34a70ebf41946",
+      "log_sha256": "fabbb1c2da77840154437c7cf567af36279d94f9818ca99d8a7be30efe310362"
+    },
+    {
+      "name": "closed-bank-Z",
+      "status": "PASS_EXACT_PHYSICAL_CONDITIONAL_CLOSED_RANK_ROWS",
+      "receipt_sha256": "beb9887709e36657c74c482b36964ca566323302dd941a0b6306b0b93ea89dc9",
+      "log_sha256": "beb9887709e36657c74c482b36964ca566323302dd941a0b6306b0b93ea89dc9"
+    },
+    {
+      "name": "EXACT_BASE_MIXTURE",
+      "status": "PASS_EXACT_PHYSICAL_SINGLE_PATTERN_BASIS_MIXTURE",
+      "receipt_sha256": "d2d5c9e7121d1560f381958092975bde63b2c703becc96d649910965c78ff7f5",
+      "log_sha256": "ea622abf1cbdba5f7af0eaace3d2af7e94be2e760bace0504c6f376a815b1c0f"
+    },
+    {
+      "name": "EXACT_RANK_VIOLATION",
+      "status": "PASS_EXACT_PHYSICAL_SINGLE_PATTERN_RANK_VIOLATION",
+      "receipt_sha256": "44c9187c9632e02dcea64aa2ff4000e39a8ebe37b79088d00e5c12c322cba743",
+      "log_sha256": "d9d055fa3e012bc8670fbf2e72667506311896555b76fc856ba3646a49fe27f7"
+    }
+  ],
+  "elapsed_seconds": 7.679193292045966,
+  "source_C16_answered": false,
+  "scope": "All22 original endpoints have independent physical receipts. Clean-copy smoke repeats both allocations, both incoming closed banks, and one endpoint of each observed decision type; it is not a second full22 endpoint replay."
+}

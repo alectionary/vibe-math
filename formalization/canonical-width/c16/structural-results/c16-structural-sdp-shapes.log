@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-structural-20261027T173245/formalization/canonical-width/c16/cyclic_moment_sdp.py", line 131, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-structural-20261027T173245/formalization/canonical-width/c16/cyclic_moment_sdp.py", line 117, in main
+    problem,p,C=model(patterns,P,target,cap,args.maximize_margin,args.shape_inputs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-structural-20261027T173245/formalization/canonical-width/c16/cyclic_moment_sdp.py", line 53, in model
+    from orbit_benders import canonical
+  File "/private/tmp/c16-structural-20261027T173245/formalization/canonical-width/c16/orbit_benders.py", line 20, in <module>
+    from ortools.sat.python import cp_model
+  File "/private/tmp/c16-venv/lib/python3.12/site-packages/ortools/sat/python/cp_model.py", line 64, in <module>
+    from ortools.sat.python import cp_model_helper as cmh
+ImportError: dlopen(/private/tmp/c16-venv/lib/python3.12/site-packages/ortools/sat/python/cp_model_helper.so, 0x0002): Symbol not found: __Z19setLocalOptionValueRK15HighsLogOptionsRKNSt3__112basic_stringIcNS2_11char_traitsIcEENS2_9allocatorIcEEEERS_RNS2_6vectorIP12OptionRecordNS6_ISE_EEEES8_
+  Referenced from: <0E9CA5AE-BCD4-3A78-88E5-3864B72C8510> /private/tmp/c16-venv/lib/python3.12/site-packages/ortools/.libs/libortools.9.dylib
+  Expected in:     <E66C4BC4-AA01-3B43-A163-6D6C53CE2EA5> /private/tmp/c16-venv/lib/python3.12/site-packages/highspy/libhighs.1.dylib

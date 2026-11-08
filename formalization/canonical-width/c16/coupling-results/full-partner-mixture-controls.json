@@ -1,0 +1,109 @@
+{
+  "status": "PASS_SYNTHETIC_TARGET_CONTROLS_ONLY",
+  "archive_sha256": "eb84730ea1b683eba7aa8e15e90c18fb7753b350eaa98ff46eab26557ed4cf56",
+  "sample_column_ids": [
+    0,
+    34250,
+    68500
+  ],
+  "physical_mixture": {
+    "positive_columns_physically_checked": 3,
+    "distinct_masks_checked": 3,
+    "exact_weight_sum": "1",
+    "exact_feature_equations_checked": 775,
+    "mask_column_counts": {
+      "0": 1,
+      "2195": 1,
+      "4681": 1
+    }
+  },
+  "exact_recovery": {
+    "exact_column_rank": 3,
+    "pivot_rows": [
+      25,
+      14,
+      351
+    ],
+    "pivot_columns": [
+      0,
+      2,
+      1
+    ],
+    "rounding_denominator": 4398046511104,
+    "remaining_nonzero_equations": [],
+    "min_exact_weight": "1/6",
+    "exact_weight_sum": "1",
+    "max_exact_correction": "1/13194139533312",
+    "status": "EXACT_NONNEGATIVE_MIXTURE_RECOVERED_REQUIRES_PHYSICAL_REPLAY"
+  },
+  "outside_column_span_recovery": {
+    "exact_column_rank": 3,
+    "pivot_rows": [
+      25,
+      14,
+      351
+    ],
+    "pivot_columns": [
+      0,
+      2,
+      1
+    ],
+    "rounding_denominator": 4398046511104,
+    "remaining_nonzero_equations": [
+      [
+        0,
+        "1/7"
+      ]
+    ],
+    "min_exact_weight": "1/6",
+    "exact_weight_sum": "1",
+    "max_exact_correction": "1/13194139533312",
+    "status": "TARGET_OUTSIDE_SELECTED_COLUMN_SPAN"
+  },
+  "corruptions_rejected": [
+    "negative_weight",
+    "wrong_mass",
+    "forged_feature",
+    "duplicate_Z",
+    "forbidden_mask",
+    "wrong_target"
+  ],
+  "witness2_membership_asserted": false,
+  "source_C16_answered": false,
+  "physical_full_frame": false,
+  "consumer_sha256": "54accb8e04ff5099dba285c8a5d41179340c5d1291aa1cefdd6c3644a60d4850",
+  "source_hashes": {
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977",
+    "algebraic-results/orbit-rank-profiles.json.gz": "6e4852d5a003c7c6877f22f03a1fe4f719e8152b709ab00b988a583de58d9439",
+    "algebraic-results/hulls-16-rank.json.gz": "39c476bb85b799a7e60c20dacadab9fd63fe43d1dc0f9d2893a0a42630b3525c"
+  },
+  "dependencies": {
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+    "verify_full_partner_basis_oracle.py": "be3bf8a3f4d51287948a1316cd82b02afba2d1f54ecd94e6677190e62ecd5d5d",
+    "verify_full_partner_projection.py": "3e5133b777cd1d64d24ebaeeb6d50d5d812a1eae9642c2d993c2ab274f0b7559"
+  },
+  "physical_source_checks": {
+    "symmetry_graph_ranks": [
+      128,
+      128,
+      128
+    ],
+    "physical_pairing_symmetry_checks": 1036800,
+    "profile_obstructions_physically_checked": 2848
+  },
+  "normalization_controls": {
+    "status": "PASS",
+    "source_C16_answered": false,
+    "adversarial_coefficient_sets": 6,
+    "arbitrary_binary_selection_pairs": 6,
+    "literal_rotated_feature_equalities": 148800,
+    "individual_weight_covariance_checks": 829440,
+    "weight_decomposition_checks": 1152,
+    "constant_rhs_and_sector_averaged_row_checks": 36,
+    "physical_rotation_support_bounds_checked": 0,
+    "scope": "Exact translation, covariance, signed support and sector normalization controls; no separating cut or source frame is asserted."
+  },
+  "elapsed_seconds": 3.632441416964866
+}

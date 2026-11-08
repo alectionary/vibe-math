@@ -1,0 +1,74 @@
+SoPlex version 8.1.0 [mode: optimized] [precision: 8 byte] [rational: GMP 6.3.0] [PaPILO n/a] [GitHash: a0061053]
+Copyright (c) 1996-2026 Zuse Institute Berlin (ZIB)
+
+External libraries:
+  Boost 1.92.0         Boost C++ Libraries (boost.org)
+  GMP 6.3.0            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+  MPFR 4.2.2           GNU Multiple Precision Floating-Point Reliable Library (mpfr.org)
+  ZLIB 1.2.12          General Purpose Compression Library by J. Gailly and M. Adler (zlib.net)
+
+int:simplifier = 0
+int:syncmode = 1
+int:readmode = 1
+int:solvemode = 2
+int:checkmode = 2
+real:feastol = 0.00000000e+00
+real:opttol = 0.00000000e+00
+real:timelimit = 1.00000000e+01
+
+Reading (rational) LP file </private/tmp/c16-shared-master-20261030T2207/formalization/canonical-width/c16/shared-master-results/phase-one-v1-residual-minorant.lp> . . .
+Reading took 0.00 seconds.
+
+LP has 27 rows 16 columns and 88 nonzeros.
+
+Initial floating-point solve . . .
+Equilibrium scaling LP
+
+type |   time |   iters | facts |    shift | viol sum | viol num | obj value 
+  L  |0.0     |0        | 1     | 1.19e+06 | 1.76e+00 | 11       | 0.00000000e+00
+  E  |0.0     |11       | 2     | 0.00e+00 | 8.62e+05 | 5        | -1.02103529e+04
+  E  |0.0     |16       | 3     | 0.00e+00 | 0.00e+00 | 0        | -1.15828354e+04
+
+Store basis as old basis (from solver)
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 30872207270703/4628437118371724799962723123200, ofm = 1e-17
+Max. reduced cost violation = 308590999417569/4194304000000000000000000, ofm = 1e-10
+Max. dual violation = 0, ofm = 1e0
+Performing rational reconstruction . . .
+Reconstructed solution primal infeasible (3).
+Refined floating-point solve . . .
+
+  L  |0.0     |0        | 1     | 0.00e+00 | 0.00e+00 | 0        | -1.27812603e-09
+  L  |0.0     |0        | 1     | 0.00e+00 | 0.00e+00 | 0        | -1.27812603e-09
+
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 10710830223601/41689255363213344190134040046069568225306214400, ofm = 1e-33
+Max. reduced cost violation = 360192466727177/37778931862957161709568000000000000000000, ofm = 1e-26
+Max. dual violation = 0, ofm = 1e0
+Performing rational reconstruction . . .
+Reconstructed solution primal infeasible (4).
+Refined floating-point solve . . .
+
+  L  |0.0     |0        | 0     | 0.00e+00 | 0.00e+00 | 0        | 3.35114023e-10
+  L  |0.0     |0        | 0     | 0.00e+00 | 0.00e+00 | 0        | 3.35114023e-10
+
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 6023664823991/751006859676484275084637484002199486305794839527300320041369600, ofm = 1e-50
+Max. reduced cost violation = 2137522247654301/2722258935367507707706996859454145691648000000000000000000, ofm = 1e-42
+Max. dual violation = 0, ofm = 1e0
+Performing rational reconstruction . . .
+Reconstructed solution primal infeasible (4).
+Performing rational factorization . . .
+Tolerances reached.
+Solved to optimality.
+
+SoPlex status       : problem is solved [optimal]
+Solving time (sec)  : 0.00
+Iterations          : 16
+Objective value     : -1.15828354e+04
+
+Written basis information to file </private/tmp/c16-shared-master-20261030T2207/formalization/canonical-width/c16/shared-master-results/phase-one-v1-residual-minorant.bas>.
+

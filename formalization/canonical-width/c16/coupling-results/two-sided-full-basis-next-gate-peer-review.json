@@ -1,0 +1,67 @@
+{
+  "status": "PASS_INDEPENDENT_TWO_SIDED_FULL_BASIS_DESIGN_AND_AFFINE_SCOPE_REVIEW",
+  "source_C16_answered": false,
+  "physical_full_frame": false,
+  "implementation_or_new_search_performed": false,
+  "source_hashes": {
+    "two_sided_full_basis_next_gate.md": "3cde1584970e81d9f9bc44914f1ca7dc31a6cad7820876368d7beb8748e1301d",
+    "two_sided_anchor_count.py": "3c9e653e4fc7416fbb91eceba4cadd4b912c0670353151ff74ef871bec20dce2",
+    "verify_two_sided_anchor_count.py": "2ccd5baeb5f4b99521827679d6ad6cdeef18bc937ee3042b544df8c8c03977ac",
+    "full_partner_basis_oracle.py": "0b2093c783ba71a670a74bec27cc3d90a9409057edd40905e2c6af5cd87e8a24",
+    "full_partner_anchor_basis_oracle.py": "891bdfa89ca56d49785436232df3c66aa8f8e0a060e2d63b20fb4f2c260e6aac",
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977",
+    "moment-resumption-results/symmetry-bridge-independent.json": "59f16313089e8fde24a14f20c218b60b25fa70a2aa62208dc1faa36ef3550b94",
+    "coupling-results/two-sided-count-controls.json": "f4eba0be94ccfcd348de216ca5dc4669596a3c3348b88033a1df0fab11a60c9f",
+    "coupling-results/two-sided-count-32x27-exact-v4-independent.json": "7d19b11fb8291e3e9c27774649e6ec91a7f50c7b3124484a82c43bece9abe12d",
+    "coupling-results/two-sided-count-27x32-exact-v2-independent.json": "d747c182f7eb6ad58e3dcee4518fa87e2811b79142ba1bfda752f0e3fece456f",
+    "verify_saved_span_completion.py": "07c29a628cdf14b9d72eabc7b09fdd2ed60805fa57146c6cec07ada56524cc84",
+    "coupling-results/saved-span-affine-completion-independent.json": "cc2445b19fd13eed1f924aaa20a434c9665359aa97bb7690cba8dd7137e4c924",
+    "coupling-results/saved-span-affine-final-inventory.json": "3200a7d8bdbf05d4a5b83be66bb78f09b1a7008d2bbbe2f3e0971e7dd7ac007a"
+  },
+  "reviewed_feature_layout": "1,P[4],PP[6 lex],U[X720,Z720],P_U[4,1440].ravel(C)",
+  "features": 7211,
+  "fixed_patterns": 16,
+  "target_factor": 1,
+  "domain_proof": {
+    "hypotheses": "Physical pools span nondegenerate paired128-dimensional spaces; designated anchors are distinct within each sector. For a fixed Boolean pattern, selected and absent designated anchors are disjoint.",
+    "necessary_decomposition": "Independent selected opposite anchors W impose k independent evaluation coordinates. A compatible full basis has exactly128-k zero-signature vectors and one owner in each unit bin, with no multibit vector.",
+    "forced_constraints": "Delete every absent own-sector anchor. Force every selected own-sector anchor. Reject selected multibit vectors and two forced owners in one bin. Jointly contract the complete forced-zero set F0, rejecting dependence; the effective contracted rank is128-k-rank(F0).",
+    "sufficiency": "Evaluate a linear relation on W: all owner coefficients vanish. Remaining coefficients vanish because the chosen zero vectors form a basis of the evaluation kernel. This proves physical rank128 for each sector.",
+    "optimality": "Add forced weights once, maximize each free unit bin, and take a maximum signed contracted-matroid basis to full required rank. The contraction prefix rank is rank(F0 union prefix)-rank(F0). Negative weights cannot be skipped.",
+    "two_sector_coupling": "Given the fixed pattern, each sector domain depends only on fixed selected opposite anchors, not on the other sector's unanchored selections; therefore it is a Cartesian product."
+  },
+  "objective_proof": {
+    "constant": "c0+sum cP_i*m_i+sum cPP_ij*m_i*m_j",
+    "pool_weight": "cU_u+sum_i m_i*cPU_i,u",
+    "separability": "Every anchor bit is fixed, and no retained feature multiplies two unanchored variables. Thus the pattern support is constant plus independent X and Z supports. Repeated coordinates remain intentional identities and their coefficients are counted literally.",
+    "symmetry": "Averaging over32 common rotations/sector exchanges maps each fixed physical event or pair to the existing p/S/T coordinate with factor1; phase reversal and self-products use the checked owner-coordinate folding. All16 patterns are needed; there is no291-class reduction for these fixed anchors.",
+    "existing_literal_factor_one_controls": 57688
+  },
+  "mandatory_preimplementation_gates": [
+    "Independent exact domain coverage for all16 patterns, including both-sector exclusions.",
+    "Tiny exhaustive tests for joint forced-zero contraction, owner collisions, absent deletions, multibit rejection and negative/fractional/tied weights.",
+    "Independent physical rank and signed-prefix upper-bound replay for both optimizing bases and exact target/compiled-row equality.",
+    "Exact coefficient arithmetic and checked ranges before numeric casts; no membership or cut accepted from a floating status."
+  ],
+  "scope": "The design proves an exact support oracle for a stronger necessary auxiliary relaxation, not a new accepted cut or target membership. Product coupling of conditional X/Z basis laws omits unanchored mutual pairing. Count-only memberships at point12 do not establish this stronger membership or transfer to later points. Symmetry averaging does not justify setting fixed anchor bits to1 in the symmetric target.",
+  "affine_completion_review": {
+    "status": "SOUND_DIMENSION_ARGUMENT_PENDING_FINAL_CLEAN_REPLAY",
+    "physical_columns": 772,
+    "independent_modulus": 2147483647,
+    "linear_rank_lower_bound": 772,
+    "three_universal_homogeneous_identities": [
+      "sum n_j=128*phi0",
+      "sum d_jh=128*k",
+      "sum A[X32phase0,Z_jh]*d_jh=k"
+    ],
+    "homogeneous_identity_rank": 3,
+    "rational_linear_rank": 772,
+    "affine_dimension": 771,
+    "reason": "Integer modular rank772 gives rational rank at least772. Three independent universal homogeneous identities give rank at most772. Every column has phi0=1, so affine dimension is linear rank minus1.",
+    "limit": "Completeness applies only to the one-orbit/full-opposite-basis auxiliary hull. It does not prove target convex membership, absence of additional identities for actual full source frames, or source feasibility. Uniform weights in the new spanning seed are not a recovered target law.",
+    "saved_face_warning": "The14 additional nulls of the earlier sampled columns are coordinate-zero face artifacts disproved by physical auxiliary vertices. Point15 has positive values in those coordinates; their zeroing would prevent exact representation."
+  }
+}

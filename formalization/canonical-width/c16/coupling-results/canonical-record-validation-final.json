@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "recorded_utc": "2026-10-30T10:52:06.528081+00:00",
+  "source_C16_answered": false,
+  "checks": [
+    {
+      "script": "scripts/validate_open_problems.py",
+      "source_sha256": "dec6c8ed438f2aced51efb7d57fad42aff327efcf92f68667081519b19f5ad04",
+      "returncode": 0,
+      "output": "Validated 424 canonical entries, 160 eligible targets, 205 paper records, preserved historical audit evidence, and distinct verified/unverified/unassessed Lean statuses.\nResearch reconciliation: earlier six-target expansion preserved; source index and zero-delta (4,2) research block PASS.\nBeezer extension:187\u2192190 entries,111\u2192112 eligible,60\u219261 papers,57\u219258 full-text screens; three historical complete Lean targets retained; one existing F16 target completed.\n",
+      "seconds": 0.11047900002449751
+    },
+    {
+      "script": "scripts/validate_current_difficulty.py",
+      "source_sha256": "31c82eb96d38cd838e3838d62eb73d61f5e09fbff46be3b715c9f6ba5238f8c5",
+      "returncode": 0,
+      "output": "Validated 424 planning records, including 243 explicitly unassessed additions, 160 eligible targets and 6 completed targets.\n",
+      "seconds": 0.08079337503295392
+    },
+    {
+      "script": "scripts/validate_literature.py",
+      "source_sha256": "3ca25675332508f007d24192daeffea16874512f43a326dfc479e8ac90c674f6",
+      "returncode": 0,
+      "output": "Validated 20 author records, 34 author-paper records, 173 related-paper/talk records, and the preserved 40-question dissertation cross-reference snapshot.\n",
+      "seconds": 0.03729620797093958
+    }
+  ],
+  "input_sha256": {
+    "literature/open-problems.json": "5cd39ab6eab1057d5dc9ca7a443f4d06a6834a1f14f5ae2d345a50639351c3fe",
+    "literature/followups.json": "6c3dc6be038c44b00585fa3c993e32c159971f49c20f9f3f924f9c60ea56c652",
+    "literature/downstream-paper-coverage.json": "6e55342abd80efd3f0892ab5dd803b33a0b3d2fa899c83e41a05b4b184b04849",
+    "literature/downstream-source-manifest.json": "d9eee61cc081c0a55d39547d1f45c0def995d92bd4e035842f28255badaa56ee",
+    "literature/research-source-index.json": "ec5815ddfbc8718602dd744f296d00777d8fbc8fb8961769c0b06407ef36f702",
+    "literature/research-reconciliation.json": "9d1aa49436549a09860bc76ce3fba32226ab9203dd1bef9a602ba22856074453",
+    "planning/current-difficulty-estimates.json": "c6e3808b5f91d0abe33676a3c319bd4de3b9d55e4b064d11ca4743a09ace6330"
+  },
+  "inventory": {
+    "checked_on": "2026-10-30",
+    "canonical_inventory_entries": 424,
+    "legacy_entries": 40,
+    "additional_entries": 384,
+    "additional_eligible_targets": 121,
+    "additional_non_denominator_entries": 263,
+    "eligible_targets": 160,
+    "eligible_verified_proof_assistant_statements": 6,
+    "eligible_verified_lean_statements": 6,
+    "eligible_verified_lean_proofs": 6,
+    "eligible_targets_with_supporting_lean_proofs": 0,
+    "eligible_identified_unverified_lean_statements": 1,
+    "eligible_lean_discovery_unassessed": 52,
+    "eligible_targets_with_verified_finite_cases": 0,
+    "article_records": 205,
+    "full_text_screened": 165,
+    "current_publication_full_text_screened": 164,
+    "historical_withdrawn_full_text_screened": 1,
+    "not_fully_assessed": 40,
+    "article_records_with_recorded_targets": 116,
+    "canonical_targets_with_article_occurrences": 399,
+    "legacy_targets_with_article_occurrences": 15,
+    "new_entry_kinds": {
+      "conjecture_or_question": 53,
+      "research_direction": 208,
+      "classification_or_construction": 20,
+      "extremal_or_classification": 10,
+      "proof_method_request": 4,
+      "algorithmic_question": 1,
+      "mathematical_question": 4,
+      "conjecture": 21,
+      "specific_distance_problem": 5,
+      "specific_question": 23,
+      "method_request": 16,
+      "open_question": 6,
+      "held_formulation": 3,
+      "question": 2,
+      "question_formulation_gate": 3,
+      "borrowed_conjecture": 1,
+      "borrowed_conjecture_formulation_gate": 1,
+      "borrowed_specific_question": 1,
+      "borrowed_context_question": 1,
+      "borrowed_context_formulation_gate": 1
+    },
+    "new_written_math_statuses": {
+      "precise_math_in_source": 123,
+      "research_direction": 144,
+      "formulation_needs_clarification": 20,
+      "proof_method_request": 4,
+      "formulation_requires_scope_check": 3,
+      "method_request": 15,
+      "broad_direction": 33,
+      "held_formulation": 7,
+      "formulation_requires_clarification": 3,
+      "research_direction_or_formulation_gate": 32
+    },
+    "related_author_reported_lean_constructions": 1
+  },
+  "preserved_attempt": "canonical-record-validation-final-attempt1.json",
+  "correction": "The planning research_status denotes difficulty-assessment coverage, not workflow. Its existing unassessed cohort value is restored; workflow state is recorded in a separate field. No mathematical result or assessment is changed.",
+  "scope": "Canonical source/planning records and preserved historical audit evidence; no new theorem or Lean build."
+}

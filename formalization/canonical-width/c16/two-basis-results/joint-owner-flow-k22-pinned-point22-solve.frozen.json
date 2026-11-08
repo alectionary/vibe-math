@@ -1,0 +1,47 @@
+{
+  "status": "FROZEN_SINGLE_EXACT_OWNER_FLOW_SOPLEX_TRIAL",
+  "command": [
+    "/private/tmp/c16-soplex-8.1.0-20261030/soplex/8.1.0/bin/soplex",
+    "--readmode=1",
+    "--solvemode=2",
+    "--int:syncmode=1",
+    "--int:checkmode=2",
+    "-f0",
+    "-o0",
+    "-s0",
+    "-t120",
+    "-X=/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/joint-owner-flow-k22-pinned-point22-solve.primal",
+    "-Y=/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/joint-owner-flow-k22-pinned-point22-solve.dual",
+    "--writebas=/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/joint-owner-flow-k22-pinned-point22-solve.bas",
+    "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/joint-owner-flow-k22-pinned-point22.lp"
+  ],
+  "input_manifest": "two-basis-results/joint-owner-flow-k22-pinned-point22.json",
+  "input_manifest_sha256": "3ff71c3d4e32d0b70c8cbeb27f09bcf5f31a60076c561a1ff5f201c67462fa1e",
+  "input_lp_sha256": "d63e4f9c504436b88c593d0cbf30639d1d2468e4f1502b0f62b4db39fbd81d66",
+  "semantic_sha256": "30248763e4feeec45c26300c676a501b7bf83ef1d1942cb8aad4e6b2e1cf83f3",
+  "setup_receipt_sha256": "b80ecbb76fd0b4836197fd44b310c3f6d7e03dcce7f7f32a3191c65154a264c7",
+  "tiny_receipt_sha256": "1237217dd53c14aa23a895247e8e3474fc07b532d975fc317f7784018810c244",
+  "runner_sha256": "eb9bae856606c7914005ac1bc546c845d77a0cf843821815550dbdac5b7336a2",
+  "preparation_receipt": "two-basis-results/joint-owner-flow-k22-pinned-point22-independent.json",
+  "preparation_receipt_sha256": "ccb73760f37a20bb316d86e9830816840f00f39ebdc98ea215be69f9b7b1faf9",
+  "runtime_files": {
+    "/private/tmp/c16-soplex-8.1.0-20261030/soplex/8.1.0/bin/soplex": "fa62759749a44617b1e1f2c38fbcfe5dc0cd658045f95c4d2f851f9577813732",
+    "/opt/homebrew/opt/gmp/lib/libgmp.10.dylib": "9e9030352a38d1397fd23dccec5397c260890d2a54e9164b579c96548a9fd531",
+    "/opt/homebrew/opt/gmp/lib/libgmpxx.4.dylib": "eaaec4b35d906f1e5a715a2d5ec013b543a61dd9e811bd2c33c760cdbe4679f7",
+    "/private/tmp/c16-soplex-8.1.0-20261030/mpfr/4.2.2/lib/libmpfr.6.dylib": "45cae5b7974f864fbfa614940265232f188ca726cf4b66b06b5eca322b7e52ab"
+  },
+  "environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "DYLD_LIBRARY_PATH": "/opt/homebrew/opt/gmp/lib:/private/tmp/c16-soplex-8.1.0-20261030/mpfr/4.2.2/lib"
+  },
+  "internal_seconds": 120,
+  "external_seconds": 150,
+  "soft_rss_bytes": 2147483648,
+  "priority": 19,
+  "no_automatic_retry": true,
+  "zero_tau_pins": true,
+  "scope": "Fixed zero-high law only; exact endpoint requires independent replay; no source-frame feasibility claim"
+}

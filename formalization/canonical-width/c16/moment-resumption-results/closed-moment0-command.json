@@ -1,0 +1,232 @@
+{
+  "command": [
+    "/private/tmp/c16-venv/bin/python",
+    "-u",
+    "run_moment_variant.py",
+    "--parent",
+    "moment-resumption-results/unified-physical-frozen.json",
+    "--model",
+    "unified_warm_matroid_mapped_model.py",
+    "--name",
+    "closed-moment0",
+    "--seconds",
+    "300",
+    "--outer-seconds",
+    "420",
+    "--scope",
+    "Add independently checked span-closed rank rows to the completed loop prefix. This is a stronger necessary relaxation,not a matched runtime comparison or a source feasibility claim.",
+    "--extra",
+    "--active-cuts",
+    "moment-resumption-results/rank-loop-active-5.json",
+    "--matroid-cuts",
+    "moment-resumption-results/matroid-owner0.json",
+    "moment-resumption-results/matroid-warm1.json",
+    "moment-resumption-results/zero-face-warm3.json",
+    "moment-resumption-results/rank-loop-separation-1.json",
+    "moment-resumption-results/rank-loop-separation-2.json",
+    "moment-resumption-results/rank-loop-separation-3.json",
+    "moment-resumption-results/rank-loop-separation-4.json",
+    "moment-resumption-results/rank-loop-separation-5.json",
+    "moment-resumption-results/closed-rank-bank0.json",
+    "--matroid-replays",
+    "moment-resumption-results/matroid-owner0-independent.json",
+    "moment-resumption-results/matroid-warm1-independent.json",
+    "moment-resumption-results/zero-face-warm3-independent.json",
+    "moment-resumption-results/rank-loop-separation-1-independent.json",
+    "moment-resumption-results/rank-loop-separation-2-independent.json",
+    "moment-resumption-results/rank-loop-separation-3-independent.json",
+    "moment-resumption-results/rank-loop-separation-4-independent.json",
+    "moment-resumption-results/rank-loop-separation-5-independent.json",
+    "moment-resumption-results/closed-rank-bank0-independent.json",
+    "--warm-point",
+    "moment-resumption-results/rank-loop-model-5.npz",
+    "--eps",
+    "1e-9"
+  ],
+  "input_state": {
+    "status": "RUNNING",
+    "source_C16_answered": false,
+    "started_utc": "2026-10-30T02:39:28.408181+00:00",
+    "deadline": "2026-10-30T03:25:00Z",
+    "maximum_rounds": 8,
+    "records": [
+      {
+        "round": 0,
+        "input_candidate": "moment-resumption-results/unified-matroid-warm3.npz",
+        "started_utc": "2026-10-30T02:39:28.408776+00:00",
+        "model": "rank-loop-model-0",
+        "status": "optimal",
+        "max_constraint_violation": 4.971092981698177e-13,
+        "matroid_rows": 111,
+        "omitted_family_screen": {
+          "circuit": {
+            "max_violation": 0.0,
+            "above_1e_5": 0,
+            "above_1e_7": 0
+          },
+          "legacy": {
+            "max_violation": 0.0,
+            "above_1e_5": 0,
+            "above_1e_7": 0
+          }
+        },
+        "model_elapsed": 31.558189708041027
+      },
+      {
+        "round": 1,
+        "input_candidate": "moment-resumption-results/rank-loop-model-0.npz",
+        "started_utc": "2026-10-30T02:40:02.591226+00:00",
+        "separator": "full",
+        "new_cuts": 38,
+        "queries": 90,
+        "separator_elapsed": 133.98956529202405,
+        "model": "rank-loop-model-1",
+        "status": "optimal",
+        "max_constraint_violation": 7.531752999057062e-13,
+        "matroid_rows": 149,
+        "omitted_family_screen": {
+          "circuit": {
+            "max_violation": 0.0,
+            "above_1e_5": 0,
+            "above_1e_7": 0
+          },
+          "legacy": {
+            "max_violation": 0.0007386628567002465,
+            "above_1e_5": 1,
+            "above_1e_7": 1
+          }
+        },
+        "model_elapsed": 35.230875625042245
+      },
+      {
+        "round": 2,
+        "input_candidate": "moment-resumption-results/rank-loop-model-1.npz",
+        "started_utc": "2026-10-30T02:42:55.977170+00:00",
+        "separator": "zero",
+        "new_cuts": 24,
+        "queries": 45,
+        "separator_elapsed": 91.34013012505602,
+        "model": "rank-loop-model-2",
+        "status": "optimal",
+        "max_constraint_violation": 5.542233338928781e-13,
+        "matroid_rows": 173,
+        "omitted_family_screen": {
+          "circuit": {
+            "max_violation": 0.0,
+            "above_1e_5": 0,
+            "above_1e_7": 0
+          },
+          "legacy": {
+            "max_violation": 0.0,
+            "above_1e_5": 0,
+            "above_1e_7": 0
+          }
+        },
+        "model_elapsed": 34.99941262498032
+      },
+      {
+        "round": 3,
+        "input_candidate": "moment-resumption-results/rank-loop-model-2.npz",
+        "started_utc": "2026-10-30T02:45:05.657199+00:00",
+        "separator": "full",
+        "new_cuts": 34,
+        "queries": 90,
+        "separator_elapsed": 143.50360891700257,
+        "model": "rank-loop-model-3",
+        "status": "optimal",
+        "max_constraint_violation": 3.3453372183502013e-12,
+        "matroid_rows": 207,
+        "omitted_family_screen": {
+          "circuit": {
+            "max_violation": 0.0,
+            "above_1e_5": 0,
+            "above_1e_7": 0
+          },
+          "legacy": {
+            "max_violation": 0.0,
+            "above_1e_5": 0,
+            "above_1e_7": 0
+          }
+        },
+        "model_elapsed": 32.372911375015974
+      },
+      {
+        "round": 4,
+        "input_candidate": "moment-resumption-results/rank-loop-model-3.npz",
+        "started_utc": "2026-10-30T02:48:04.988885+00:00",
+        "separator": "zero",
+        "new_cuts": 23,
+        "queries": 45,
+        "separator_elapsed": 96.14419762499165,
+        "model": "rank-loop-model-4",
+        "status": "optimal",
+        "max_constraint_violation": 8.32021951335804e-13,
+        "matroid_rows": 230,
+        "omitted_family_screen": {
+          "circuit": {
+            "max_violation": 0.0,
+            "above_1e_5": 0,
+            "above_1e_7": 0
+          },
+          "legacy": {
+            "max_violation": 0.0,
+            "above_1e_5": 0,
+            "above_1e_7": 0
+          }
+        },
+        "model_elapsed": 32.674034958006814
+      },
+      {
+        "round": 5,
+        "input_candidate": "moment-resumption-results/rank-loop-model-4.npz",
+        "started_utc": "2026-10-30T02:50:17.251346+00:00",
+        "separator": "full",
+        "new_cuts": 32,
+        "queries": 90,
+        "separator_elapsed": 147.42608825000934,
+        "model": "rank-loop-model-5",
+        "status": "optimal",
+        "max_constraint_violation": 3.6584346663204315e-12,
+        "matroid_rows": 262,
+        "omitted_family_screen": {
+          "circuit": {
+            "max_violation": 0.0,
+            "above_1e_5": 0,
+            "above_1e_7": 0
+          },
+          "legacy": {
+            "max_violation": 0.0,
+            "above_1e_5": 0,
+            "above_1e_7": 0
+          }
+        },
+        "model_elapsed": 36.19977095804643
+      }
+    ],
+    "scope": "Adaptive exploration of a necessary relaxation. All proposed rank cuts must pass independent exact replay before use. Numeric feasible points are not source frames; numerical infeasibility requires exact dual recovery.",
+    "candidate": "moment-resumption-results/rank-loop-model-5.npz",
+    "active_rows": "moment-resumption-results/rank-loop-active-5.json",
+    "rank_banks": [
+      "moment-resumption-results/matroid-owner0.json",
+      "moment-resumption-results/matroid-warm1.json",
+      "moment-resumption-results/zero-face-warm3.json",
+      "moment-resumption-results/rank-loop-separation-1.json",
+      "moment-resumption-results/rank-loop-separation-2.json",
+      "moment-resumption-results/rank-loop-separation-3.json",
+      "moment-resumption-results/rank-loop-separation-4.json",
+      "moment-resumption-results/rank-loop-separation-5.json"
+    ],
+    "rank_replays": [
+      "moment-resumption-results/matroid-owner0-independent.json",
+      "moment-resumption-results/matroid-warm1-independent.json",
+      "moment-resumption-results/zero-face-warm3-independent.json",
+      "moment-resumption-results/rank-loop-separation-1-independent.json",
+      "moment-resumption-results/rank-loop-separation-2-independent.json",
+      "moment-resumption-results/rank-loop-separation-3-independent.json",
+      "moment-resumption-results/rank-loop-separation-4-independent.json",
+      "moment-resumption-results/rank-loop-separation-5-independent.json"
+    ],
+    "elapsed_seconds": 836.1905770830344,
+    "updated_utc": "2026-10-30T02:53:24.602746+00:00"
+  }
+}

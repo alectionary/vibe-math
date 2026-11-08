@@ -1,0 +1,59 @@
+{
+  "status": "FROZEN_BOUNDED_POINT15_ANCHOR40_EXCHANGE_GATE",
+  "source_C16_answered": false,
+  "point_sha256": "5f9a622e68a3c1e842ae13a5a5b18cf06b388515b5821d17eda2389375b290ef",
+  "anchor_orbit": 40,
+  "outcome": "BOUNDED_EXCHANGE_REPAIR_INCONCLUSIVE",
+  "stopping_reason": "TIME_LIMIT_DURING_REACHABILITY",
+  "requested_seconds": 540,
+  "repair_seconds": 540.389362292015,
+  "augmentations": 2701,
+  "initial_positive_error": "376783630973820410208566884236880639/1696754209807128569007468457568786040",
+  "final_positive_error": "586526967461424326954347153832288350294049055255645952817173679/12414958109678391209356073596040141429724720950821644359543294880",
+  "final_positive_error_approx": 0.0472435720104591,
+  "active_bases": 1445,
+  "independent_state_status": "PASS_VALID_EXACT_REPAIR_STATE_AND_RESIDUAL",
+  "resumable": true,
+  "membership_proved": false,
+  "rank_cut_proved": false,
+  "no_other_anchors_queried": true,
+  "files": [
+    {
+      "path": "singleton_basis_exchange_transfer40.py",
+      "sha256": "9061b2f291559f4b48eb884c75b76140c438b20c59c4baeefbc94b6c95ca1d90",
+      "bytes": 12001
+    },
+    {
+      "path": "singleton_exchange_witness15.md",
+      "sha256": "8f118cd172435543e47f9fd98dfe5663353eb367936777bb22bc7030f15cb4a5",
+      "bytes": 2623
+    },
+    {
+      "path": "coupling-results/singleton-exchange-point15-transfer-controls.json",
+      "sha256": "f51361b9ec458d4a3afc84de5d939aa841d42e1d008eafb7e61e90495b293045",
+      "bytes": 454
+    },
+    {
+      "path": "coupling-results/singleton-exchange-witness15-o40.frozen.json",
+      "sha256": "26fdfd21583777df16acdc84a930a619ec0041c379fa56357cc4e7485f81a0d3",
+      "bytes": 7703
+    },
+    {
+      "path": "coupling-results/singleton-exchange-witness15-o40.json",
+      "sha256": "b7c7c86353f80204693db2f91068a3d07c22d1db4899db4492cc9b55f4b6be48",
+      "bytes": 3820370
+    },
+    {
+      "path": "coupling-results/singleton-exchange-witness15-o40.log",
+      "sha256": "3791eafa12dd7d935cae714d217f65d77509c72aca9dc4328570d8e7719b0c03",
+      "bytes": 43239
+    },
+    {
+      "path": "coupling-results/singleton-exchange-witness15-o40-state-independent.json",
+      "sha256": "5b6d982723afc3fc8556e60417678fa09fdcdca439ffb49ec9f920f53431824f",
+      "bytes": 1038
+    }
+  ],
+  "replay_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 /private/tmp/c16-venv/bin/python -B verify_singleton_exchange_state.py --certificate coupling-results/singleton-exchange-witness15-o40.json --point coupling-results/integer-witness15-rational.json.gz --output NEW-RECEIPT.json",
+  "scope": "Exact partial physical-basis distribution and residual; neither target membership nor a rank separation."
+}

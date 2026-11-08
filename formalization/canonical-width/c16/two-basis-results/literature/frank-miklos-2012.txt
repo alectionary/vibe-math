@@ -1,0 +1,743 @@
+
+===== PDF PAGE 1 =====
+SIMPLE PUSH-RELABEL ALGORITHMS
+FOR MATROIDS AND SUBMODULAR FLOWS
+Andr´ as Frank and Zolt´ an Mikl´ os∗
+January 11, 2012
+Abstract
+We derive simple push-relabel algorithms for the matroid pa rtitioning, matroid membership,
+and submodular ﬂow feasibility problems. It turns out that, in order to have a strongly polynomial
+algorithm, the lexicographic rule used in all previous algo rithms for the two latter problems can
+be avoided. Its proper role is that it helps speeding up the al gorithm in the last problem.
+1 Introduction
+Push-relabel algorithms (see, for example, the ﬁrst one of G oldberg and Tarjan, [16]), unlike augmenting path
+type algorithms, use only small, local steps. In order to mak e progess, in selecting the current element where
+the next local step is to be performed, they use a control para meter Θ : S → { 0, 1, 2, . . .} called a level (or
+distance) function. Here S can be the node-set of a directed graph or the ground-set of a m atroid. In the
+present work the range of the level functions is {0, 1, 2, . . . , n} where n = |S| while the original algorithm of
+Goldberg and Tarjan for maximum ﬂows must have allowed {0, 1, 2, . . . ,2n − 1} for the range of Θ.
+The push-relabel approach was extended to submodular optim ization by S. Fujishige and X. Zhang [13],
+[14]. The goal of the present paper is to develop simpliﬁed pu sh-relabel algorithms in submodular optimization.
+We exhibit versions for matroid partition, for membership i n a matroid polytope, and for submodular ﬂow
+feasibility. All the previous algorithms relied on a select ion rule based on a consistent ordering of the elements.
+This rule can be considered as a counterpart of the lexicogra phic rule of Sch¨ onsleben [19] applied to augmenting
+path type algorithms. The new push-relabel algorithms do no t use the consistency rule and the proof of strong
+polynomiality becomes much simpler. The true role of the con sistency rule is that, though not needed for
+strong polynomiality, it improves the complexity of the alg orithm by one order of magnitude. Unlike earlier
+algorithms in the area, we avoid discussing issues of data st ructures and technical details of the implementation:
+instead, we concentrate only on the basic ideas and concepts of the algorithms.
+For a given level function Θ, the sets Li = {v : Θ( v) = i} (i = 0 , . . . , n) are called the level sets of Θ.
+For an element s with Θ( s) = j, we say that the level of s is j or that s is in Lj . For a subset X ⊆ S, let
+Θmin(X) := min {Θ(v) : v ∈ X}. One of the local steps during the algorithm is lifting an element s of S
+with Θ( s) ≤ n − 1 which means that we increase Θ( s) by 1. The set of operations performed between two
+lifting operations will be called a phase of the algorithm. Since the level of an element is never decre ased,
+the number of lifting operations, and hence the number of pha ses, is at most n2.
+We do not distinguish between a one-element set {s} and its only element s. For example, B − s consists
+of the elements of B distinct from s, while B + s is an abbreviation for B ∪ {s}. Similarly, for a set-function
+b and an element s, b({s}) is denoted by b(s). For a function m : V → R, we deﬁne its extension ~m by
+~m(X) :=
+∑
+[m(v) : v ∈ X] for X ⊆ S. Given a ground-set S, the characteristic (or indicator) vector of a
+subset B ⊆ S will be denoted by χB.
+Acknowledgements Many thanks are due to Tom McCormick for his valuable remarks on an early
+version of our manuscript. The authors received a grant (no. CK 80124) from the National Development
+Agency of Hungary, based on a source from the Research and Tec hnology Innovation Fund. Part of research
+was done while the ﬁrst author visited the Research Institut e for Mathematical Sciences, Kyoto University,
+2008, and the Institute of Discrete Mathematics, Universit y of Bonn, 2011.
+∗MTA-ELTE Egerv´ ary Research Group, Department of Operations Research, E¨ otv¨ os University, P´ azm´ any P. s. 1/c,
+Budapest, Hungary, H-1117. e-mail: frank@cs.elte.hu and miklosz@cs.elte.hu
+1
+
+===== PDF PAGE 2 =====
+2 Matroid partition
+Both matroid optimization problems we are considering need the following lemma. For a given basis B and
+element u ∈ S − B, there is a unique circuit in B + u containing u, which is denoted by C(B, u) and called
+the fundemantal circuit of u. For each element v ∈ C(B, u), the set B − v + u is also a basis of M .
+Lemma 2.1 Let B be a basis of a matroid M = (S, B), s ∈ S − B, t ∈ C(B, s) − s, and B′ := S − t + s. If
+Θ : S → {0, 1, . . . , n} is a level function for which Θ(t) = Θ min(C(B, s)), then
+Θmin(C(B′, u)) ≥ Θmin(C(B, u)) (1)
+holds for u ∈ (S − B′) − t and C(B′, u) = C(B, s) for u = t.
+Proof. The second part of the lemma is straightforward. For the ﬁrst part, if t ⁄∈ C(B, u), then C(B, u) =
+C(B′, u) and (1) holds (with equality). If t ∈ C(B, u), then Θ min(C(B, u)) ≤ Θ(t) and, by the strong circuit
+axiom, there is a circuit C ⊆ (C(B, u) ∪ C(B, s)) − t) containing u. We must have C(B′, u) = C from which
+Θmin(C(B′, u)) ≥ min{Θmin(C(B, s)), Θmin(C(B, u))} = min{Θ(t), Θmin(C(B, u))} = Θ min(C(B, u)). •
+Let M1 = ( S, B1), M2 = ( S, B2), . . . , Mk = ( S, Bk) be k matroids on an n-element ground-set S. We say
+that a subset F ⊆ S is coverable if F ⊆ B1 ∪ · · · ∪Bk for some Bi ∈ B i (i = 1, 2, . . . , k). We construct a push-
+relabel algorithm for ﬁnding a largest coverable subset. Pr eviously, Edmonds and Fulkerson [5] developed an
+augmenting path type algorithm for this purpose and proved t he following min-max formula. Our algorithm
+reproves their result.
+THEOREM 2.2 (Matroid partition theorem, Edmonds and Fulker son, [5]) Let M1, M2, , . . . , Mk be
+matroids on a common ground-set S. The largest cardinality of a coverable subset of S is equal to
+min
+{∑
+i
+ri(Z) + |S − Z| : Z ⊆ S
+}
+. (2)
+Proof. For a subset Z ⊆ S and for the union F of k bases Bi ∈ B i,
+|F | = |F ∩ Z| + |F − Z| ≤
+∑
+i
+|Bi ∩ Z| + |S − Z| ≤
+∑
+i
+ri(Z) + |S − Z| (3)
+from which max ≤ min follows. In the estimation (3), equality holds if and onl y if the following optimailty
+criteria are met.
+S − Z ⊆ ∪ iBi (4)
+Bi ∩ Bj ∩ Z = ∅ for 1 ≤ i < j ≤ k (5)
+Bi ∩ Z spans Z in Mi for i = 1, . . . , k. (6)
+We show how the push-relabel technique can be used for ﬁnding a subset Z and k basis Bi ∈ B i satisfying the
+three optimality criteria, completing in this way the proof of Theorem 2.2. At the beginning, Θ is identically
+0. At an intermediate stage of the algorithm, we are given Mi-bases Bi for i = 1 , . . . , k and a level function
+Θ : S → {0, 1, . . . , n = |S|} for which the following level properties hold.
+(L1) Θ(u) = 0 holds for every u ∈ S covered by more than one of the bases Bi.
+(L2) Θmin(Ci(Bi, u)) ≥ Θ(u) − 1 holds for every u ∈ S − Bi.
+The algorithm terminates when one of the following stopping rules occurs.
+(A) S = B1 ∪ · · · ∪ Bk.
+(B) There is an empty level set Lj so that every element under j is covered.
+Lemma 2.3 If (A) holds, then the bases {B1, . . . , Bk} and Z∗ := ∅ meet the optimality criteria. If (B) holds,
+then the bases {B1, . . . , Bk} and Z∗ := {u : Θ(u) > j } meet the optimality criteria.
+Proof. The ﬁrst case is obvious. To see the second, observe that S − Z∗ is covered by property (B), Z∗
+contains no multiply covered element by (L1), and (6) also holds since the emptiness of Lj and (L2) imply
+that Ci(Bi, s) ⊆ Z∗ for each s ∈ Z∗ − Bi. •
+There are two basic operations at an uncovered element s. Lifting s means that Θ( s) is increased by 1. A
+basis-change at s means that we take a basis Bi along with an element t ∈ Ci(Bi, s) − s and replace Bi with
+Bi − t + s.
+2
+
+===== PDF PAGE 3 =====
+The algorithm runs as follows. At a general step, assuming th at neither of the stopping rules holds, we
+select an uncovered element s for which Θ( s) ≤ n − 1. To see that such an s exists, observe ﬁrst that there
+is always an empty level set since the number of level sets is n + 1. Furthermore, the failure of (A) ensures
+that there is an uncovered element, and we cannot have each un covered element in Ln since if every element
+of L0 ∪ · · · ∪ Ln−1 is covered, then any empty level set Lj (j ≤ n − 1) would satisfy (B). For the selected
+uncovered element s, we proceed as follows. If there is a basis Bi (1 ≤ i ≤ k) and an element t ∈ Ci(Bi, s) − s
+for which Θ( t) = Θ( s) − 1, perform a basis-change by replacing Bi with Bi − t + s. By Lemma 2.1, the level
+properties remain intact. Note that t is the only element that may get uncovered and t is under s. If no such
+a Bi and t exist anymore, lift s. This operation also maintains the level properties.
+The algorithm terminates when lifting s leaves an empty level set such that all elements under s is covered.
+In this case, (B) holds. The other way of termination occurs when after the cur rent basis-change every element
+is covered in which case (A) holds.
+Lemma 2.4 The total number of lifts is at most n2. The total number of basis-changes is at most n2.
+Proof. Since one element is lifted at most n times, there are at most n2 lifts. For an Mi-basis Bi, let
+~Θ(Bi) := ∑[Θ(v) : v ∈ Bi] and let α := ∑i ~Θ(Bi). At the beginning, α = 0. A lift operation does not aﬀect
+α since only uncovered elements are lifted. At a basis-change , α is increased by exactly 1. Therefore α is equal
+to the number of basis-changes. An uncovered element has no c ontribution to α and neither does an element
+of L0. The contribution of a covered element v ⁄∈ L0 is Θ( v). Therefore α ≤
+∑
+Θ(v) ≤ n2. •
+Lemma 2.4 completes the proof of the theorem. It also shows th at the algorithm is polynomial provided
+that there is a subroutine for each Mi that determines for an uncovered element s if there is an element
+t ∈ Ci(Bi, s) − s for which Θ( t) = Θ( s) − 1. By denoting the complexity of this subroutine with γ, we can
+conclude that the overall complexity of the algorithm is O(γkn 2). • •
+Remarks Suppose we always select an uncovered element s with Θ( s) ≤ n − 1 for which Θ( s) is maximum
+(the highest level selection rule). If an uncovered element gets covered, it remains so within one phase since a
+push operation at s may create a newly uncovered element only under s. Hence the number of basis-changes
+in one phase is at most n and altogether is at most n3. That is, in this case, though we get a bound worse
+than the one obtained above, but its proof is immeadiate. The highest level rule will have a more signiﬁcant
+role in other submodular frameworks.
+Interestingly, the proof of the theorem and of the polynomia lity of the algorithm is even easier if we
+always select an uncovered element s minimizing Θ(s) (lowest level selection rule). In this case, the algorithm
+terminates either when each element gets covered or at the ve ry ﬁrst moment when an empty level set arises.
+After at most n basis-changes either the number of uncovered elements decr eases or the level of an element is
+increased. Since the ﬁrst event may occur at most n times while the second one at most n2 times, the total
+number of basis-changes is at most n2 + n3.
+3
+
+===== PDF PAGE 4 =====
+3 Testing membership in a matroid polytope
+Let M = ( S, r) be a matroid. The matroid (or independence) polytope P (r) of M is the convex hull of
+the characteristic vectors of independent sets of M . The base polytope B(r) of M is the convex hull of the
+characteristic vectors of bases of M . In what follows we will use the slightly sloppy but shorter e xpression of
+convex combination of bases. Edmonds [4] proved the followi ng polyhedral descriptions:
+P (r) = {x ∈ RS : x ≥ 0 and ~x(Z) ≤ r(Z) for every Z ⊆ S}. (7)
+B(r) = {x ∈ RS : x ≥ 0 and ~x(Z) ≤ r(Z) for every Z ⊆ S, ~x(S) = r(S)}. (8)
+P (r) and B(r) are often called the matroid (or independence) polyhedron and the base polyhedron of M ,
+respectively.
+By Theorem 2.2, S can be covered by k bases if and only if kr(X) ≥ | X| holds for every subset X. By
+(7), this latter property is equivalent to requiring that th e vector χS/k is in P (r). Cunningham [1] developeda strongly polynomial algorithm to test if a given vector g belongs to P (r). He also solved the more general
+problem when g is not in P (r) and one is interested in ﬁnding a subset most violating (7) a long with an
+element x ≤ g of P (r) for which ~x(S) is maximum. His approach uses shortest augmenting paths an d also
+the technique of lexicographic selection rule introduced b y Sch¨ onsleben [19]. The essence of this rule is that
+it speciﬁes a ﬁxed total ordering on S and in ﬁnding the shortest augmenting path in the current aux iliary
+digraph the algorithm breaks tie by chosing the earliest pos sible element of the ordering. The lexicographic
+selection rule of Sch¨ onsleben turned out to be an unavoidable device in all combinatorial algorithms concerning
+submodular frameworks. It was adapted to push-relabel algo rithms as well. (See, for example, the works of
+Fujishige and Zhang [13], [14] and of Fleischer and Iwata [7] .)
+We describe a simple push-relabel algorithm for the matroid membership problem that does not use the
+lexicographic rule. The algorithm works for the slightly mo re general problem when a speciﬁed upper bound
+g : S → R+ is given and we are interested in ﬁnding a member x ∈ P (r) for which x ≤ g and ~x(S) is maximum.
+Clearly, g belongs to P (r) if and only if this maximum is ~g(S). Since both a matroid polyhedron and a box
+{x ∈ RS : 0 ≤ x ≤ g} is a polymatroid, the following min-max result is a special c ase of the polymatroid
+intersection theorem of Edmonds [3].
+THEOREM 3.1 Let M = (S, r) be a matroid and g : S → R+ function. Then
+max{~x(S) : x ≤ g, x ∈ P (r)} = min{r(Z) + ~g(S − Z) : Z ⊆ S}. (9)
+Proof. We call an element x ∈ P (r) feasible if x ≤ g. For a subset Z ⊆ S and for a feasible x ∈ R, one has
+~x(S) = ~x(Z) + ~x(S − Z) ≤ r(Z) + ~g(S − Z) (10)
+from which max ≤ min follows. In the estimation (10), equality holds if and on ly if the following optimality
+criteria are met.
+~x(Z) = r(Z) (11)
+~x(S − Z) = ~g(S − Z). (12)
+We shall prove the theorem by developing an algorithm that co mputes a feasible x and a subset Z ⊆ S
+satisfying the optimality criteria. A convex combination o f bases of M will be described by a coeﬃcient
+function λ : B → R+ for which
+∑
+[λ(B) : B ∈ B ] = 1. The element of B(r) deﬁned by λ is xλ =
+∑
+[λ(B)χB :B ∈ B ]. Clearly, a non-negative vector x belongs to P (r) if and only if there is a convex combination xλ of
+bases such that xλ covers x in the sense that xλ ≥ x. We say that a basis B is λ-active (or simply active)
+in the convex combination xλ if λ(B) > 0. By a theorem of Charathodory, every element of B(r) can be
+expressed as a convex combination of at most n bases. An element s ∈ S is g-larger, g-smaller or neutral
+according to whether g(s) > x λ(s), g(s) < x λ(s), or g(s) = xλ(s).
+Beside a convex combination xλ of bases, the algorithm maintains a level function Θ : S → { 0, 1, . . . , n}.
+In the following level properties we use again the notation Θ min(X) := min {Θ(v) : v ∈ X} for X ⊆ S.
+(L1) Θ(u) = 0 holds for every g-smaller u ∈ S.
+(L2) Θmin(C(B, u)) ≥ Θ(u) − 1 holds for every λ-active basis B and for every u ∈ S − B.
+The algorithm terminates when one of the following stopping rules occurs.
+(A) There is no g-larger element of S.
+(B) There is an empty level set Lj so that there is no g-larger element under j.
+4
+
+===== PDF PAGE 5 =====
+Lemma 3.2 If (A) holds, then g ∈ P (r). If (B) holds, then x∗ and Z∗ := {u : Θ(u) > j } meet the optimality
+criteria where x∗ is deﬁned by x∗(u) := min {g(u), xλ(u)}.
+Proof. Suppose (A) holds, that is, g(u) ≤ xλ(u) for every u ∈ S. By xλ ∈ B(r), we conclude that g ∈ P (r).
+Suppose (B) holds. By (L1), every g-smaller element is under j and hence x∗(u) = xλ(u) for every u ∈ Z∗.
+By (L2), C(B, u) ⊆ Z∗ holds for every active basis B and every element u ∈ Z∗ − B. Hence r(Z∗) = |B ∩ Z∗|
+from which ~x∗(Z∗) = ~xλ(Z∗) = r(Z∗), that is, optimality criterion (11) holds for x∗ and Z∗. Since there is
+no g-larger element under j, x∗(u) = g(u) for every u ∈ S − Z∗ and hence ~x∗(S − Z∗) = ~g(S − Z∗), that is,
+optimality criterion (12) holds for x∗ and Z∗. •
+Basic operations: push and lift Let s be a g-larger element for which Θ( z) ≤ n − 1. Lifting s means
+again that we increase Θ( s) by 1. Push is performed at s when there is an active basis B not containing s for
+which Θ min(C(B, s)) = Θ( s) − 1. Let t ∈ C(B, s) for which Θ( t) = Θ( s) − 1, let B′ = B − t + s, and deﬁne
+∆ := min {g(s) − xλ(s), λ(B)}. A push decreases λ(B) by ∆ and increases λ(B′) by ∆. A push is called
+neutralizing if ∆ = g(s) − xλ(s). In this case s becomes neutral. A non-neutralizing push does not change
+the number of active bases while a neutralizing push either p reserves or increases this number by 1. Note that
+the only element that may become g-larger after a push operation is t and t is under s. This observation will
+be used in estimating the number of steps.
+Treating a g-larger element s with Θ( s) ≤ n − 1 means that we apply push operations at s as long as
+possible. No more push is possible at s when either the last push at s was neutralizing or else when there is
+no more active basis B not containing s for which Θ min(C(B, s)) = Θ( s) − 1. In the latter case, lift s.
+Observe that if neither of the stopping rules hold, then ther e is a g-larger element but it is not possible
+that each g-larger element is in Ln since then there would be an empty level and (B) would be satisﬁed.
+The algorithms runs as follows. As long as neither of the stop ping rules holds select a g-larger node s for
+which Θ( s) ≤ n − 1 and Θ( s) is maximum (the highest level rule), and treat s. The algorithm terminates
+either when after a push there are no more g-larger elements, that is, (A) holds, or else, when after a lift
+every g-larger element is in Ln, in which case (B) holds.
+It follows from Lemma 2.1 and from the rules of the algorithm, that the basic operations preserve the level
+properties. Due to the highest level rule, if an element gets neutral, it remains so in the same phase. Therefore
+the number of neutralizing pushes in one phase is at most n and, since the number of phases is at most n2,
+altogether there are at most n3 neutralizing pushes.
+The number of non-neutralizing pushes can be estimated as fo llows. Within one phase, there are at most
+n treatments and hence the total number of treatments is at mos t n3. Within one treatment, there is at most
+1 neutralizing push. Since only a neutralizing push can incr ease the number of active bases, and only by 1,
+it follows that the number of active bases at the beginning of the j’th treatment is at most j. Therefore the
+number of neutralizing pushes at the j’th treatment is at most j, and hence the total number of neutralizing
+pushes is at most 1 + 2 + · · · + n3 ≤ n6.
+Therefore the algorithm teminates after at most O(n6) basic operations. If the complexity of the required
+subroutine that determines for a basis B and an element s ∈ S − B if there is an element t ∈ C(B, s) − s for
+which Θ( t) = Θ( s) − 1 is γ, then the overall complexity of the algorithm is O(γn6). • •
+Remark If g is rational, then the components of the coeﬃcient vector λ can be chosen as integer multiples
+of 1 /K where K is the least common denominator of the components of g.
+Improvement By using Gauss elimination and relying on Caratheodory’s th eorem, it is possible to reduce
+the number of active basis to n in O(n3) time provided that the initial number of active bases is lin ear in n.
+A naive approach would be to apply Caratheodory every time wh en a neutralizing push results in n + 1 active
+bases. But in this case we may need Caratheodory as many times as the number of treatings, O(n3), and
+hence we would get the same complexity O(n6) as before. It is more eﬃcient to apply Caratheodory only at
+the end of each phase. If there are n active bases at the beginning of a phase, there will be at most 2n active
+bases at its end since the number of neutralizing pushes with in one phase is at most n. Therefore we need
+altogether at most n2 applications of Caratheodory, and hence the complexity of t his version of the algorithm
+is O(n5).
+5
+
+===== PDF PAGE 6 =====
+4 Polymatroid intersection and discrete separation
+The simple push-relabel algorithm for matroid partition ca n easily be transformed to one for matroid inter-
+section. Instead of working out the details of this, we consi der the polymatroid intersection problem. One
+version of the polymatroid intersection theorem of Edmonds [3] provides a necessary and suﬃcient condition
+for the intersection of two base-polyhedra to be non-empty. It was P. Sch¨ onsleben [19] who developed the
+ﬁrst polynomial algorithm for polymatroid intersection. H is work is remarkable since it introduced the lexi-
+cographic technique. This approach has been transformed to push-relabel algorithms, and the lexicographic
+technique was, in fact, used in all algorithms so far concern ing submodular frameworks more general than
+matroids (like polymatroid intersection, polymatroidal ﬂ ows by Lawler and Martel [17], [18], and submodular
+ﬂows in [8] and by Fujishige and Zhang [14]).
+Let p be a fully supermodular and b a fully submodular set-function on a ground-set S of n elements for
+which b(∅) = 0 = p(∅). A base-polyhedron B(b) conﬁned by a fully submodular function b is deﬁned by
+B(b) := {x ∈ RV : ~x(Z) ≤ b(Z) for every Z ⊂ V and ~x(V ) = b(S)}. The polyhedron B′(b) := {x ∈ RV :
+~x(Z) ≥ p(Z) for every Z ⊂ V and ~x(V ) = p(V )} is also a base-polyhedron, since B′(p) = B(b∗) where b∗ is
+deﬁned by b∗(X) = p(S) − p(S − X) for X ⊆ S and hence b∗ is submodular. Before turning to the algorithm,
+we prove a lemma that will be used for submodular ﬂows as well, and plays an analogous role as Lemma 2.1
+played at matroids.
+Let m be an element of a base-polyhedron B(b). Call a subset X ⊆ S m -tight (or just tight) if ~m(X) =
+b(X). Note that S is always tight. Due to the submodularity of b, the tight sets are closed under taking union
+and intersection. Let T (v) denote the unique smallest m-tight set containing v. Let s ∈ S and t ∈ T (s) − s,
+and let ∆ b(s, t) := min {b(X) − ~m(X) : t ∈ X ⊆ S − s}. Deﬁne m′ as follows.
+m′(v) :=
+{ m(s) + ∆b(s, t) if v = s
+m(t) − ∆b(s, t) if v = t
+m(v) otherwise
+(13)
+Then m′ also belongs to B(b). Let T ′(v) denote the smallest m′-tight set containing v. If the base-polyhedron
+B′(p) is conﬁned by a supermodular function p, then let ∆ p(s, t) := min { ~m(X) − p(X) : t ∈ X ⊆ S − s} and
+m′(v) :=
+{ m(s) − ∆p(s, t) if v = s
+m(t) + ∆p(s, t) if v = t
+m(v) otherwise
+(14)
+Recall the notation Θ min(X) := min {Θ(u) : u ∈ X}.
+Lemma 4.1 If Θ(t) = Θ min(T (s)), then
+Θmin(T ′(u)) ≥ Θmin(T (u)) (15)
+for every u ∈ S.
+Proof. If T (u) is m′-tight, then T ′(u) ⊆ T (u) from which (15) follows. If T (u) is not m′-tight, then
+t ∈ T (u) from which Θ min(T (u)) ≤ Θ(t) = Θ min(T (s)). This implies for T := T (u) ∪ T (s) that Θ min(T ) =
+min{Θmin(T (u)), Θmin(T (s))} = Θ min(T (u)). Now T is m-tight as it is the union of two m-tight sets. Since
+s, t ∈ T , it follows that T is m′-tight, too. Hence T ′(u) ⊆ T from which Θ min(T ′(u)) ≥ Θmin(T ) = Θ min(T (u)).
+•
+The polymatroid intersection theorem can be formulated in a n equivalent form which is sometimes called
+the discrete separation theorem [8]. Our main goal is to deve lop a simple push-relabel algorithm for proving
+this result. There will be however an important diﬀerence be tween this algorithm and the ones described
+in the previous sections for matroids. Namely, for computin g ∆, here we need a subroutine for minimizing
+certain submodular functions related to b while the matroid algorithms required subroutines only for ﬁnding
+fundamental circuits.
+THEOREM 4.2 For a fully supermodular p and a fully submodular b, the intersection B(b) ∩ B′(p) of their
+base-polyhedra is non-empty (that is, there exists a functi on m : S → R separating p and b in the sense that
+p ≤ ~m ≤ b) if and only if p ≤ b. For integer-valued p and b, the separating m can also be chosen integer-valued.
+Proof. As the necessity of the condition p ≤ b is straightforward, we deal with suﬃciency. Suppose that
+mb ∈ B(b) and mp ∈ B′(p). Call a subset X ⊆ S b -tight (with respect to mb) if ~mb(X) = b(X) and p-tight
+(w.r. to mp) if ~mp(X) = p(X). Note that S is always b-tight and p-tight. Due to the sub- and supermodularity
+of b and p, both the b-tight sets and the p-tight sets are closed under taking union and intersection. Let Tb(v)
+and Tp(v) denote, respectively, the intersection of b-tight and p-tight sets containing v. Then Tb(v) is b-tight
+and Tp(v) is p-tight.
+6
+
+===== PDF PAGE 7 =====
+The algorithm needs a subroutine to compute ∆ p(u, v) = min { ~mp(X) − p(X) : u ∈ X ⊆ S − v} and
+∆b(u, v) = min {b(X) − ~mb(X) : u ∈ X ⊆ S − v}. We denote the complexity of this subroutine by γ. Since
+mb ∈ B(b) and mp ∈ B′(p), these values are non-negative and ∆ p(u, v) > 0, for example, holds precisely if
+v ∈ Tp(u).
+Call an element v ∈ S m p-smaller, mp-larger, and neutral according to whether if mb(v) > m p(v), or
+mb(v) < m p(v), or mb(v) = mp(v). Let Θ : S → {0, 1, . . . , n} be a level function. Suppose that Θ satisﬁes the
+following level properties.
+(L1) Every mp-smaller element is in L0.
+(L2) min{Θmin(Tb(v)), Θmin(Tp(v))} ≥ Θ(v) − 1 for every v ∈ S.
+Let mb ∈ B(b) and mp ∈ B′(p), and let Θ be a level function. We call a triplet ( mb, mp, Θ) feasible if
+it satisﬁes the level properties. The algorithm will termin ate when one of the following two stopping rules
+occurs.
+(A) There is no more mp-larger node.
+(B) There exists an mp-larger node s and an empty level set Lℓ under s (that is, ℓ < Θ(s)).
+Lemma 4.3 Let (mb, mp, Θ) be a feasible triplet. Then (A) implies that both mp and mb separate p and b
+while (B) implies that the set Z := {v ∈ V : Θ(v) > ℓ} violates p ≤ b.
+Proof. If (A) holds, that is, if there are no mp-larger elements, then we have p ≤ ~mp ≤ ~mb ≤ b.
+Suppose now that (B) holds. By (L1) and (B), we have ~mp(Z) > ~mb(Z). Furthermore, (L2) implies that
+Tb(v) ⊆ Z and Tp(v) ⊆ Z for every v ∈ Z. Since the union of b-tight sets ( p-tight sets) is b-tight ( p-tight), we
+can conclude that p(Z) = ~mp(Z) > ~mb(Z) = b(Z). •
+At an intermediate stage of the algorithm, a feasible triple t ( mp, mb, Θ) is available for which neither of
+the two stopping rules holds. The core subroutine of the algo rithm is a treatment of a mp-larger element s
+that suitably changes mp, mb, and Θ. A treatment of s ends up either by making s neutral or by lifting s by
+1. It consists of applying three basic operations that are us ed several times.
+Three basic operations at an mp-larger element s
+1. Pushing mp along at s means that we decrease mp(s) by ∆ and increase mp(t) by ∆ where t ∈ Tp(s) is
+an element with Θ( t) = Θ( s) − 1, and ∆ = ∆ p(s, t).
+2. Pushing mb at s means that we increase mb(s) by ∆ and decrease mb(t) by ∆ where t ∈ Tb(s) is an
+element with Θ( t) = Θ( s) − 1, and ∆ = ∆ b(s, t).
+3. Lifting s.
+We say that the push operation is along (s, t). A push operation at s is neutralizing if it makes s neutral.
+Treating an mp-larger element s means that we apply mp-pushes and mb-pushes at s as long as possible.
+When this is not possible anymore, lift s.
+Description of the algorithm The algorithm starts with Θ ≡ 0, mp ∈ B′(p), and mb ∈ B(p) where mp and
+mb can be found by applying the polymatroid greedy algorithm. A t an intermediate stage, a feasible triplet
+(mp, mb, Θ) is available. Suppose that neither of the two stopping rul es holds. Then there are mp-larger
+elements of S. We cannot have an mp-larger element s in Ln for otherwise at least one level set under s would
+be empty, and hence Stopping rule (B) would hold. As long as there are mp-larger elements, the algorithm
+selects one with highest level (highest level rule) and trea ts it.
+One way of termination is that the current treatment neutral izes s and no more mp-larger node remains.
+In this case, Stopping rule (A) holds and hence the resulting mp separates p and b by Lemma 4.3. The other
+way of termination is that the current treatment lifts s and leaves its (original) level set empty. In this case,
+Stopping rule (B) holds and hence the set Z = {v : Θ(v) ≥ Θ(s)} violates p ≤ b by Lemma 4.3 showing that
+no separating m exists.
+Lemma 4.4 The basic operations preserve the level properties.
+Proof. Since a lift of s is performed only when no more pushes are available at s, the lifting operation
+preserves (L2). It clearly does not aﬀect (L1). A push operation cannot generate mp-smaller elements and
+hence it leaves Property (L1) intact.
+It follows from Lemma 4.1 that if an mb-push is performed along ( s, t), then Θ min(T ′b(u)) ≥ Θmin(Tb(u))
+where T ′b(u) denotes the smallest b-tight set containing u with respect to the revised vector m′b, and analogously,
+if an mp-push is performed along ( s, t), then Θ min(T ′p(u)) ≥ Θmin(Tp(u)) for every u ∈ S. Hence a push
+operation also preserves (L2). •
+The suﬃciency of p ≤ b in the theorem follows once we show that one of stopping rules (A) and (B) occurs
+after a ﬁnite number of basic opertaions. In fact, we shall pr ove the following polynomial bound.
+7
+
+===== PDF PAGE 8 =====
+THEOREM 4.5 The total number of basic operations is O(n4).
+Proof. We claim that a single treatment of an element s needs O(n) basic operations. Indeed, there may be
+one neutralizing push, one lift, and O(n) non-neutralizing pushes since if one is carried out along ( s, t), then
+T ′b(s) ⊆ Tb(s) − t and T ′p(s) ⊆ Tp(s) − t. A treatment of s is completed when s becomes neutral or when s is
+lifted. Due to the highest level rule, s will not be mp-larger again within the same phase. Therefore, in one
+phase there can be at most n treatments and, since the number of phases is at most n2, the total number of
+basic operations is O(n4). •
+This bound can be lowered to O(n3) if we introduce a consistency rule for chosing t. Also, if there is a
+subset X violating p ≤ b, then the algorithm can be modiﬁed so that even a subset can be found for which
+p(X) − b(X) is maximum. But the details will be worked out for the more ge neral framework of submodular
+ﬂows, the topic of the next sections.
+8
+
+===== PDF PAGE 9 =====
+5 Submodular ﬂows
+Let D = (V, A) be a directed graph with no parallel edges, and let f : A → R ∪ {−∞} and g : A → R ∪ {∞}
+be two bounding functions for which f ≤ g. For a function x : A → R, let ̺x(Z) :=
+∑
+[x(e) : e ∈ A enters Z],
+δx(Z) :=
+∑
+[x(e) : e ∈ A leaves Z], and
+Ψx(Z) := ̺x(Z) − δx(Z).
+Note that Ψ x is modular in the sense that Ψ( Z) =
+∑
+[Ψx(v) : v ∈ Z] for Z ⊆ V . Moreover, we are given
+a crossing submodular set-function b : 2 V → Z ∪ {∞} for which b(∅) = 0 and b(V ) is ﬁnite. A function (or
+vector) x : A → R is a submodular ﬂow or a subﬂow if
+Ψx(Z) ≤ b(Z) for every Z ⊆ V . (16)
+Since Ψ x(V ) = 0 for an arbitrary x, the b(V ) must be non-negative and, in fact, b(V ) can be reduced to
+zero. Therefore we assume throughout that b(V ) = 0. A subﬂow x is feasible if
+f ≤ x ≤ g. (17)
+The set Q(f, g; b) of feasible subﬂows is called a submodular ﬂow (or subﬂow) polyhedron. We will
+say that the subﬂow or the subﬂow polyhedron is conﬁned by function b. A feasibililty theorem for the
+non-emptiness of Q(f, g; b) was described in [8]. In the special case of fully submodula r functions, it is as
+follows.
+THEOREM 5.1 Let f and g be functions on the edge-set of a digraph D = ( V, A) for which f ≤ g and let
+b be a fully submodular function. There is a feasible subﬂow if and only if ̺f − δg ≤ b, that is, if
+̺f (Z) − δg(Z) ≤ b(Z) for every Z ⊆ V . (18)
+If each of f, g, b is integral, then (18) implies the existence of an integral feasible subﬂow.
+For a feasible subﬂow z, we have ̺f (Z) − δg(Z) ≤ ̺z(Z) − δz(Z) ≤ b(Z), and hence (18) is necessary.
+For proving suﬃciency, an augmenting path type algorithm wa s constructed in [8]. Fujishige and Zhang [14]
+developed a push-relabel algorithm for ﬁnding a feasible su bmodular ﬂow. Here we exhibit a largely simpliﬁed
+push-relabel algorithm that either ﬁnds a feasible subﬂow o r ﬁnds a set Z violating (18), completing this way
+the proof ot Theorem 5.1.
+Due to the modularity of Ψ x, there is a feasible subﬂow precisely if there is such an elem ent m of the
+base-polyhedron B(b) := {x ∈ RV : ~x(Z) ≤ b(Z) for every Z ⊂ V and ~x(V ) = b(V )} for which there exists a
+feasible m-ﬂow. Here an m-ﬂow x : A → R is a function for which Ψ x(v) = m(v) for every v ∈ V .
+The algorithm maintains a feasible vector x and a member m of B(b). During the course of the algorithm,
+we revise gradually both x and m so as to make Ψ x(v) ≤ m(v) at every node v. Once this goal is achieved,
+the algorithm terminates by returning the ﬁnal x∗ as a feasible subﬂow. We refer to a node v as Ψ -larger,
+Ψ-smaller, or neutral according to whether Ψ x(v) − m(v) is positive, negative, or zero, respectively.
+First we concentrate on the special case when the conﬁning fu nction b is fully submodular. Later we will
+outline how the general case of crossing submodular functio ns can be reduced to this special case. We can
+assume that b(V ) = 0 for if b(V ) < 0, then Q is empty while if b(V ) > 0, then lowering b(V ) to zero does not
+change Q and preserves submodularity.
+An edge e ∈ A is decreasable or increasable when x(e) > f (e) or x(e) < g (e), respectively. Given an
+m ∈ B(b), a subset X ⊆ V is m-tight (or just tight) if ~m(X) = b(X). The ground-set V is tight as m ∈ B(b).
+Since b is fully submodular, the set of tight sets is closed under tak ing intersection and union. Therefore there
+is a unique smallest tight set T (u) containing u for every node u ∈ V. For any two distinct elements u and v
+of V , deﬁne
+∆(u, v) := min {b(X) − ~m(X) : u ∈ X ⊆ V − v}. (19)
+Then ∆(u, v) is non-negative since m ∈ B(b), moreover, ∆( u, v) > 0 if and only if v ∈ T (u) − u. The algorithm
+below can be used when a subroutine is available for computin g ∆( u, v). The complexity of this subroutine
+is denoted by γ. Note that a general-purpose subroutine for computing ∆( u, v) is available via submodular
+function minimization, but in applications it is often the c ase that ∆( u, v) can be computed with the help of
+a Max-ﬂow Min-cut computation.
+5.1 Level properties and stopping rules
+At a general stage of the algorithm, a triplet ( x, m, Θ) is available where x is a feasible vector, m is a member
+of B(b), and Θ : V → {0, 1, . . . , n} is a level function. As before, by the level Θ min(X) of a (non-empty) subset
+X ⊆ V , we mean Θ min(X) = min {Θ(v) : v ∈ X}. Consider the following level properties.
+9
+
+===== PDF PAGE 10 =====
+(L1) Every Ψ-smaller node is on the lowest level, that is, in L0.
+(L2′) Θ(v) ≥ Θ(u) − 1 for every increasable edge uv (each increasable edge steps down at most one level).
+(L2′′) Θ(v) ≤ Θ(u) + 1 for every decreasable edge uv (each decreasable edge steps up at most one level).
+(L3) Θmin(T (v)) ≥ Θ(v) − 1 for every node v.
+A triplet ( x, m, Θ) is feasible if f ≤ x ≤ g, m ∈ B(b), and Θ fulﬁls the level properties.
+Lemma 5.2 Let (x, m, Θ) be a feasible triplet. Suppose that Lℓ is an empty level and Z := {v : Θ(v) ≥ ℓ} is
+non-empty. Then Z is m-tight and Ψx(Z) = ̺f (Z) − δg(Z).
+Proof. The emptiness of Lℓ and Property (L3) imply that T (v) ⊆ Z for every v ∈ Z. It follows that the
+union ∪(T (u) : u ∈ Z) is equal to Z. Since the union of tight sets is tight, we can conclude that ~m(Z) = b(Z).
+The emptiness of Lℓ implies that every edge e leaving Z steps down at least two levels and hence (L2′)
+implies x(e) = g(e), that is, δx(Z) = δg(Z). Similarly, every edge e entering Z steps up at least two levels and
+hence (L2′′) implies x(e) = f (e), that is, ̺x(Z) = ̺f (Z). Therefore Ψ x(Z) = ̺f (Z) − δg(Z). •
+The algorithm terminates when one of the following two stopp ing rules occurs.
+(A) There is no more Ψ-larger node.
+(B) There exists a Ψ-larger node s and an empty level set Lℓ under s (where ℓ < Θ(s)).
+Lemma 5.3 Let (x, m, Θ) be a feasible triplet. Then (A) implies that x is a feasible subﬂow while (B) implies
+that the set Z := {v ∈ V : Θ(v) > ℓ } violates (18).
+Proof. If there is no Ψ-larger node, then Ψ x(Y ) =
+∑
+[Ψx(v) : v ∈ Y ] ≤
+∑
+[m(v) : v ∈ Y ] = ~m(Y ) ≤ b(Y )
+for every Y ⊆ V , and hence x is a feasible subﬂow.
+Suppose now that (B) holds. By Lemma 5.2, we have ~m(Z) = b(Z) and Ψ x(Z) = ̺f (Z) − δg(Z). Since
+all the Ψ-smaller nodes are in L0 by (L1), Z contains no Ψ-smaller node. But Z does contain the Ψ-larger s
+and therefore Ψ x(Z) =
+∑
+[Ψx(v) : v ∈ Z] > ~m(Z) = b(Z), implying that ̺f (Z) − δg(Z) = Ψ x(Z) > b(Z), and
+hence (18) is violated. •
+5.2 The algorithm for fully submodular b
+At an intermediate stage, a feasible triplet ( x, m, Θ) is available for which neither of the two stopping rules
+holds. The core subroutine of the algorithm is a treatment of a Ψ-larger node s that suitably changes x, m,
+and Θ. A treatment of s ends up either by making s neutral or by lifting s. It consists of applying three basic
+operations that are used several times.
+5.2.1 Three basic operations at a Ψ-larger node s
+1. Edge-push at s changes x(e) on an edge e entering or leaving s, as follows.
+(Increasing) If e = su is an increasable edge stepping down from s by one level (that is, Θ( u) = Θ( s) − 1),
+then increase x(e) by α where α := min{g(e) − x(e), Ψx(s) − m(s)}.
+(Decreasing) If e = us is a decreasable edge stepping up to s by one level (that is, Θ( s) = Θ( u) + 1), then
+decrease x(e) by α where let x′ := x − αχe where α := min{x(e) − f (e), Ψx(s) − m(s)}.
+2. Node-push at s to change m applies only when Θ min(T (s)) = Θ( s) − 1. It selects an arbitrary
+element t ∈ T (s) for which Θ( t) = Θ( s) − 1, increases m(s) by α, and decreases m(t) by α where α :=
+min{Ψx(s) − m(s), ∆(s, t)}. We say that the node-push is carried out along (s, t). Also, this choice of t will
+be said to be generic, to be distinguished from a speciﬁc choice introduced and an alysed later.
+3. Lifting s.
+An edge- or node-push at s is neutralizing if it converts s neutral. Otherwise (when s remains Ψ-larger),
+the push is non-neutralizing. The core subroutine of the algorithm is as follows.
+5.2.2 T reating a Ψ-larger node s
+Step 1 (edge-pushes at s) As long as s stays Ψ-larger and there is an increasable edge stepping dow n from
+s by one level or a decreasable edge stepping up to s by one level, apply an edge-push at s.
+Step 2 (node-pushes at s) Suppose that no more edge-push is possible at s. As long as s stays Ψ-larger and
+Θmin(T (s)) = Θ( s) − 1, apply a node-push at s.
+Step 3 (lifting s) When s is still Ψ-larger but no more edge- or node-push is possible a t s, apply a node-lift
+at s.
+As mentioned above, a treatment of s terminates when either s becomes neutral or s is lifted.
+10
+
+===== PDF PAGE 11 =====
+5.2.3 Description of the algorithm
+The algorithm starts with an arbitrary feasible triplet ( x, m, Θ). This can be obtained by choosing an arbitrary
+x with f ≤ x ≤ g, by taking any arbitrary element m of B(b) (which can be determined by the greedy algorithm
+for base-polyhedra), and by taking Θ to be identically 0.
+At an intermediate stage, a feasible triplet ( x, m, Θ) is available. Suppose that neither of the two stopping
+rules holds. Then there are Ψ-larger nodes but none of them ca n be in Ln since Θ( s) = n for a Ψ-larger node
+s would imply that at least one level set under s is empty, and hence Stopping rule (B) would occur. As long
+as there are Ψ-larger nodes, the algorithm selects one with h ighest level (highest level rule) and treats it.
+One way of termination is that the current treatment neutral izes s and no more Ψ-larger node remains. In
+this case, Stopping rule (A) holds and hence the resulting x is a feasible subﬂow by Lemma 5.3. The other
+way of termination is that the current treatment lifts s and leaves its (original) level set empty. In this case,
+Stopping rule (B) holds and hence the set Z = {v : Θ( v) ≥ Θ(s)} violates (18) by Lemma 5.3 showing that
+no feasible subﬂow exists.
+5.3 Correctness and complexity
+Consider a transition from a stage to the subsequent one whic h transforms the current functions x, m, Θ, T, Ψ,
+respectively, into x′, m′, Θ′, T ′, Ψ′. It is evident from the deﬁnition of the corresponding α that the vector x′
+arising from x by an edge-push is feasible and the vector m′ arising from m by a node-push is in B(b).
+Lemma 5.4 The basic operations preserve the level properties.
+Proof. An edge-push has no eﬀect on (L3). It creates no new Ψ-smaller nodes, so Property (L1) is also
+preserved. Because it operates on an edge uv for which |Θ(u) − Θ(v)| = 1, Property (L2) cannot break down
+either.
+A node-push along ( s, t) does not aﬀect x (that is, x′ = x). Hence it has no eﬀect on (L2). The deﬁnition
+of α at a node-push implies that α ≤ Ψx(s) − m(s). Therefore s cannot become Ψ-smaller and thus Property
+(L1) is also preserved. Property (L3) for m′ in place of m follows from Lemma 4.1.
+A node-lift of s keeps (L1) intact since Θ ′(s) > Θ(s) only if s is Ψ-larger. It preserves (L2), since node-lift
+was applied only when there was no increasable edge stepping down from s and no decreasable edge stepping
+up to s. It preserves (L3), since a node-lift was applied at s only when Θ min(T (s)) = Θ( s). • •
+The non-trivial direction of Theorem 5.1 follows once we sho w that one of stopping rules (A) and (B)
+occurs after a ﬁnite number of operations. In fact, we shell p rove the following polynomial bound.
+THEOREM 5.5 The total number of basic operations is O(n4).
+Proof. We claim that a single treatment of a node s needs O(n) basic operations. Indeed, there may be just
+one neutralizing push, one node-lift, O(n) non-neutralizing edge-pushes since we excluded parallel edges in D,
+and ﬁnally O(n) non-neutralizing node-pushes since if one is carried out a long ( s, t), then T ′(s) ⊆ T (s) − t. A
+treatment of a node s is completed when s becomes neutral or when s is lifted. Due to the highest level rule, s
+will not be Ψ-larger again within the same phase. Therefore, in one phase there can be at most n treatments
+and, since the number of phases is at most n2, the total number of basic operations is O(n4). •
+5.3.1 Improving the complexity
+We describe now a tiny modiﬁcation of the algorithm above tha t gives rise to a O(n3) bound. This is the
+place where the lexicographic idea of Sch¨ onsleben does pla y a role. The proof, however, will need a little more
+care. The idea is that we make the generic choice of t during a node-push speciﬁc. To this end, we choose a
+ﬁxed linear ordering of the nodes of D in advance. This is arbitrary but ﬁxed and is speciﬁed by a one -to-one
+function ϕ : V → {1, . . . , n}. We will say that u is earlier than v if ϕ(u) < ϕ(v).
+Recall that a node-push at s is generic when only
+t ∈ T (s) and Θ( t) = Θ( s) − 1 (20)
+were required for t, meaning that when more than one such node existed it did not m atter which of them has
+been selected. A node-push operation is ϕ-consistent if t is selected to be the earliest node meeting (20). In
+addition to the highest level rule, the revised algorithm se lects t throughout ϕ-consistently.
+THEOREM 5.6 The total number of basic operations, when ϕ-consistent node-pushes are applied through-
+out, is O(n3).
+Proof. In the foregoing proof, we have already pointed out that with in one phase there are at most n
+neutralizing pushes and hence their total number is at most n3.
+11
+
+===== PDF PAGE 12 =====
+Claim 5.7 The total number of non-neutralizing edge-pushes is at most n3.
+Proof. A non-neutralizing edge-push on e either increases x(e) to g(e) making e non-increasable or decreases
+x(e) to f (e) making e non-decreasable. Therefore, after a non-neutralizing edg e-push on e, the next edge-push
+on e can occur only when the sign of Θ( s) − Θ(u) has changed. By that time the sum Θ( s) + Θ(u) must have
+been increased by at least two. Hence the number of non-neutr alizing edge-pushes on a single edge is at most
+n and thus the total number of non-neutralizing edge-pushes i s at most |A|n ≤ n3. •
+So far we have not used the ϕ-consistent selection rule. It is needed only for the next le mma which will
+complete the proof.
+Lemma 5.8 The total number of non-neutralizing node-pushes is at most n3.
+Proof. Given a feasible triplet ( x, m, Θ) at a stage of the algorithm, let
+B(v) := {u : u ∈ T (v), Θ(u) = Θ( v) − 1} and β(v) := min {ϕ(u) : u ∈ B(v)}
+where β(v) is meant to be ∞ if B(v) = ∅. We use the notational convention that the corresponding fu nctions
+after performing a basic operation will be denoted by primed letters.
+Claim 5.9 If a ϕ-consistent node-push is carried out along (s, t), then
+β′(v) ≥ β(v) (21)
+for every node v. Moreover, the inequality is strict when v = s and the node-push is non-neutralizing.
+Proof. The deﬁnition of ϕ-consistency shows that β(s) = ϕ(t). When v = s and the node-push is non-
+neutralizing, we have B′(v) ⊆ B(v) − t. This and the ϕ-consistent choice of t imply that β′(v) > ϕ (t) =
+β(s) = β(v).
+Suppose now that v ⁄= s. If B′(v) ⊆ B(v), then (21) follows immediately so we can assume that
+B′(v) ⁄⊆ B(v) (22)
+and, in paricular, B′(v) ⁄= ∅. Then T ′(v) ⁄⊆ T (v) and hence T (v) is not m′-tight implying that t ∈ T (v). The
+set T := T (v) ∪ T (s) is m-tight and it is m′-tight, too, since s, t ∈ T . Therefore T ′(v) ⊆ T . We cannot have
+Θ(t) ≥ Θ(v) since then Θ min(T (s)) = Θ( t) would imply B′(v) ⊆ B(v) contradicting (22). Hence t ∈ B(v),
+Θ(v) = Θ( s), and B′(v) ⊆ B(v) ∪ B(s) from which β′(v) ≥ min{β(v), β(s)} = min{β(v), ϕ(t)} = β(v). •
+Observe that lifting a node s results in T ′(v) = T (v) and B′(v) ⊆ B(v) for every node v ⁄= s from which
+β′(v) ≥ β(v) follows. This and Claim 5.9 imply that, as long as the level o f a node is ﬁxed, the number of
+non-neutralizing node-pushes at this node is at most n. Since one node can be lifted at most n times and
+there are n nodes, the total number of non-neutralizing node-pushes is at most n3, completing the proof of
+the lemma and the theorem. • •
+Remark The technique of ϕ-consistent changes was originally introduced by Sch¨ onsleben [19] under the name
+of lexicographic selection rule in an augmenting path type p olynomial time algorithm for ﬁnding a maximum
+element of the intersection of two polymatroids. This appro ach has later been applied to other submodular
+frameworks such as submodular ﬂow feasibility in [8], testi ng membership in a matroid polyhedron [1] by
+Cunningham, optimization over polymatroidal ﬂows [17, 18] by Lawler and Martel, or submodular function
+minimization [20] by Schrijver. It was also used in a push-ra label algorithm for submodular ﬂows by Fujishige
+and Zhang [14] and for submodular function minimization by F leischer and Iwata [7].
+The ϕ-consistent node-push operation above can be considered as a lexicographic rule for a push-relabel
+algorithm. In this environment, as we pointed out above, the ϕ-consitent selection rule is avoidable if our
+goal is only to have a polynomial time algorithm. Its main rol e was to help improving on the running
+time. Interestingly, each polynomial time augmenting path s type algorithm known so far for polymatroid
+intersection, say, did use the lexicographic selection rul e.
+12
+
+===== PDF PAGE 13 =====
+6 Extensions
+6.1 Most violating set
+In the case when no feasible subﬂow existed, the algorithm de scribed above found a subset Z violating (18).
+With a slight modiﬁcation of the procedure even a most violat ing subset can be computed, where X is most
+violating if ̺f (X) − δg(X) − b(X) is as large as possible.
+To this end, the algorithm does not terminate when a node-lif t operation leaves a level set empty. Therefore
+there can be Ψ-larger nodes in level set Ln and this motivates the other modiﬁcation: s is to be chosen a
+Ψ-larger node of highest level under n. The algorithm terminates when there are no more Ψ-larger no des
+under level n. Let x∗ denote the feasible vector x and m∗ the element of B(b) available at termination. If
+there are no Ψ-larger nodes at all, then x∗ is a feasible subﬂow. Suppose that the there are Ψ-larger nod es at
+termination. Then these are in L0 and there is an empty level set Lj .
+THEOREM 6.1 When there are Ψ-larger nodes at termination of the revised algorithm, the s et Z∗ := {v :
+Θ(v) > j } violates (18) most, and we have the following min-max relation.
+min
+{∑
+[(Ψx(v) − m(v))+ : v ∈ V ] : f ≤ x ≤ g, m ∈ B(b)} = (23)
+max {̺f (X) − δg(X) − b(X) : X ⊆ V } (24)
+If f, g, b are integral, the optimal x in the minimum is attained by an integral vector. Moreover, Z∗ (deﬁned
+above) is a maximizer in (24) while the couple (x∗, m∗) is a minimizer in (23).
+Proof. For a feasible vector x, m ∈ B(b), and subset Z ⊆ V , we have
+̺f (Z) − δg(Z) − b(Z) ≤ ̺f (Z) − δg(Z) − ~m(Z) ≤ ̺x(Z) − δx(Z) − ~m(Z) =∑
+[Ψx(v) − m(v) : v ∈ Z] ≤
+∑
+[(Ψx(v) − m(v))+ : v ∈ V ]
+from which max ≤ min follows. Here equality holds if and only if (i) ~m(Z) = b(Z), (ii) ̺f (Z) =
+̺x(Z), δ g(Z) = δx(Z), and (iii) Z contains every Ψ-larger node but no Ψ-smaller nodes.
+We are going to show that the triplet ( x∗, m∗, Θ) fulﬁls these optimality conditions. Indeed, by Lemma
+5.2, Z∗ is m∗-tight, that is, (i) holds. Since no increasable edge leaves Z∗ and no decreasable edge enters Z∗,
+we have ̺f (Z∗) = ̺x∗(Z∗), δ g(Z) = δx∗ (Z∗), that is, (ii) holds. Since every Ψ-larger node is in Ln and every
+Ψ-smaller node is in L0, we conclude that Z∗ meets (iii), as well. •
+Remark Theorem 6.1 can be used to compute a feasible submodular ﬂow x, when one exists, for which x(e0)
+is maximum for a speciﬁed edge e0 = st of the digraph.
+6.2 Crossing submodular functions
+How can one ﬁnd a member of a subﬂow polyhedron Q = Q(f, g; b) conﬁned by a crossing submodular function
+b? We can assume that b(V ) = 0 for if b(V ) < 0, then Q is empty while if b(V ) > 0, then lowering b(V ) to zero
+does not change Q and preserves crossing submodularity. For crossing submod ular functions, the feasibility
+theorem becomes more complicated. Let {Z1, . . . , Zt} be a partition of Z, and for each Zi, let {Z1i , . . . , Ztii }
+be a partition of V − Zi (ti ≥ 1). Then the set-system D = {V − Zji } is called a double-partition of Z. In
+other words, a double-partition consists of the sets occurr ing in the co-partitions of the members of a partition
+of Z. Note that a partition of Z is a special double partition. The following result appeare d in [8].
+THEOREM 6.2 Let b be crossing submodular for which b(V ) = 0 . There is a feasible subﬂow if and only if
+̺f (Z) − δg(Z) ≤
+∑
+[b(X) : X ∈ F ]. (25)
+for every subset Z ⊆ V and every double partition F of Z. When b is intersecting submodular, F can be
+restricted to partitions of Z. If each of f, g, b is integer-valued and there is a feasible subﬂow, then there is one
+which is integer-valued. •
+First we check whether B(b) is empty or not. This can be done by the bi-truncation algori thm described
+in [9]. If B(b) turns out to be empty, then the bi-truncation algorithm pro duces a partition or a co-partition
+F of V for which 0 >
+∑
+[b(X) : X ∈ F ]. In this case, the algorithm for testing Q = Q(f, g; b) for emptiness
+concludes that Q is empty and returns F as a double partition of V which violates (25) since ̺f (V )−δg(V ) = 0.
+Suppose now that B(b) is non-empty and a member m of B(b) has already been computed. In this case,
+there is a unique fully submodular function b↓, called the the full truncation of b for which B(b) = B(b↓)
+(see [15] or [11]). Obviously Q(f, g; b) = Q(f, g; b↓) and therefore the algorithm described above for fully
+13
+
+===== PDF PAGE 14 =====
+submodular border functions can, in principle, be applied t o b↓ in place of b. There are two issues here to be
+settled.
+First, the algorithm above required a subroutine for comput ing ∆ (b↓−~m)(u, v) := min {b↓(X) − ~m(X) : u ∈
+X ⊆ V − v}. The next lemma shows that it suﬃces to have a subroutine for co mputing
+∆(b−~m)(u, v) := min {b(X) − ~m(X) : u ∈ X ⊆ V − v}. (26)
+which is simpler since ∆ (b−~m)(u, v) is a function depending directly on the original b and not on its full
+truncation b↓. In applications to connectivity problems, (26) is typical ly available via a max-ﬂow min-cut
+computation.
+Lemma 6.3 Let b be a crossing submodular function for which b(V ) = 0 and m a member of B(b). Then
+∆(b↓−~m)(u, v) = ∆ (b−~m)(u, v).
+Proof. We need two observations.
+Claim 6.4 B(b − ~m) = B(b↓ − ~m) and
+(b − ~m)↓ = b↓ − ~m. (27)
+Proof. For a vector x with ~x(V ) = 0, we have the following sequence of equivalences. x ∈ B(b − ~m) ⇐ ⇒
+~x ≤ b − ~m ⇐ ⇒ ~x + ~m ≤ b ⇐ ⇒ x + m ∈ B(b) ⇐ ⇒ x + m ∈ B(b↓) ⇐ ⇒ ~x + ~m ≤ b↓ ⇐ ⇒ ~x ≤ b↓ − ~m ⇐ ⇒
+x ∈ B(b↓ − ~m). Hence B((b − ~m)↓) = B(b↓ − ~m).
+Now B(b − ~m) is non-empty since the origin belongs to it. Therefore the f ull truncation ( b − ~m)↓ of b − ~m
+esists and then B(b − ~m) = B((b − ~m)↓). This and the ﬁrs part imply that B((b − ~m)↓) = B(b↓ − ~m). Since
+both ( b − ~m)↓ and b↓ − ~m are fully submodular for which B(b − ~m) = B(b↓ − ~m), we conclude that (27)
+holds. (Here we use the consequence of the polymatroid greed y algorithm of Edmonds that a base-polyhedron
+uniquely determines its fully submodular bounding functio n. •
+Claim 6.5 Let h be a non-negative crossing submodular function on ground-s et V for which h(V ) = 0 . Then
+the full truncation h↓ of h exists and ∆h↓ = ∆ h.
+Proof. Note that B(h) is non-empty since the non-negativity of h implies that the origin is in B(h). Hence
+the full truncation of h indeed exists. Since h↓ ≤ h, we have ∆ h↓ ≤ ∆h. Let u and v be two elements of V
+and let Z be a u¯v-set for which ∆ h↓ (u, v) = h↓(Z).
+It was shown in [10] that there exists a double partition D [10] of Z such that h↓(Z) = ∑[h(X) : X ∈ D ].
+It follows from this deﬁnition that dD(u) = dD(v) + 1. Therefore there is a u¯v-member Z′ of D and the
+non-negativity of h implies that h(Z′) ≤ h↓(Z) from which ∆ h(u, v) ≤ ∆h↓ (u, v) follows implying ∆ h↓ (u, v) =
+∆h(u, v). •
+The lemma follows by applying Claim 6.5 to h := b − ~m. • •
+The second problem to be overcome arises when the subﬂow poly hedron is empty and the algorithm
+terminates by returning a subset Z for which ̺f (Z) − δg(Z) > b ↓(Z). In this situation, an algorithm described
+in [8] for computing a double partition F of Z for which b↓(Z) = ∑[b(X) : X ∈ F ] is to be used. A greatly
+simpliﬁed approach is suggested in a recent work [12].
+14
+
+===== PDF PAGE 15 =====
+References
+[1] W.H. Cunningham, Testing membership in matroid polyhedra, Journal of Combinatorial Theory, Series
+B 36 (1984) 161-188.
+[2] J. Edmonds, Minimum partition of a matroid into independent sets, J. Res. Nat. Bur. Standards, B69
+(1965) 67-72.
+[3] J. Edmonds, Submodular functions, matroids, and certain polyhedra , in: Combinatorial Structures and
+their Applications (R. Guy, H. Hanani, N. Sauer, and J. Sch¨ o nheim, eds.), Gordon and Breach, New
+York (1970) pp. 69-87.
+[4] J. Edmonds, Matroids and the greedy algorithm , Math. Programming, 1 (1971) 127-136.
+[5] J. Edmonds and D.R. Fulkerson, Transversals and matroid partition, Journal of Research of the National
+Bureau of Standards (B) 69 (1965), 147-153.
+[6] J. Edmonds and R. Giles, A min-max relation for submodular functions on graphs , Annals of Discrete
+Mathematics 1, (1977), 185-204.
+[7] L.K. Fleischer and S. Iwata, A push-relabel framework for submodular function minimiza tion and appli-
+cations to parametric optimization , Discrete Applied Mathematics, 131, 2 (September 2003) 311 -322.
+[8] A. Frank, Finding feasible vectors of Edmonds-Giles polyhedra, J. Combinatorial Theory Ser. B, Vol. 36,
+No. 4 (1984) 221-239.
+[9] A. Frank and ´E. Tardos, Generalized polymatroids and submodular ﬂows , Mathematical Programming,
+Ser. B. 42 (1988) 489-563.
+[10] A. Frank, Applications of submodular functions, in: Surveys in Combinatorics, London Mathematical
+Society Lecture Note Series 187, Cambridge Univ. Press, (Ed . K. Walker) 1993, pp. 85-136.
+[11] A. Frank, Connections in Combinatorial Optimization, Oxford University Press, 2011 (ISBN 978-0-19-
+920527-1). Oxford Lecture Series in Mathematics and its App lications, 38.
+[12] A. Frank and C. Kir´ aly, Tree-compositions and orientations, manuscript to be submitted (2012).
+[13] S. Fujishige and X. Zhang, New algorithms for the intersection problem of submodular s ystems, Japan
+Journal of Industrial and Applied Mathematics 9 (1992) 369- 382.
+[14] S. Fujishige and X. Zhang, A push/relabel framework for submodular ﬂows and its reﬁnem ent for 0 − 1
+submodular ﬂows , Opimization, Vol. 38 (1996) 113–154.
+[15] S. Fujishige, Submodular functions and optimization, (Second Edition) Annals of Discrete Mathematics,
+Vol 58, Elsevier (2005).
+[16] A.V. Goldberg and E.R. Tarjan, A new approach to the maximum-ﬂow problem , J. Association for
+Computing Machinery, 35 (1988) 921-940.
+[17] E.L. Lawler and C.U. Martel, Flow network formulations of polymatroid optimization pro blems, in:
+Bonn Workshop on Combinatorial Optimization (Bonn, 1980; A . Bachem, M. Gr¨ otschel, B. Korte, eds.)
+Annals of Discrete Mathematics, 16, North-Holland, Amster dam, (1982) pp. 189-200.
+[18] E.L. Lawler and C.U. Martel, Computing maximal ‘polymatroidal’ network ﬂows , Mathematics of Op-
+erations Research, 7 (1982) 334-347.
+[19] P. Sch¨ onsleben, Ganzzahlige Polymatroid Intersecti ons Algorithmen, Ph.D. Thesis, Eidgen¨ ossischen
+Techn. Hochschule, Z¨ urich, (1980).
+[20] A. Schrijver, A combinatorial algorithm minimizing submodular function s in strongly polynomial time ,
+Journal of Combinatorial Theory, Ser. B. Vol 80 (2000) pp. 57 5-588.
+[21] A. Schrijver, Combinatorial Optimization: Polyhedra and Eﬃciency, Springer, 2003. Vol. 24 of the series
+Algorithms and Combinatorics.
+15

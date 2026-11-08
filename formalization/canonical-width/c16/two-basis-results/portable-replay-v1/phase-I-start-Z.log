@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-two-basis-portable-replay-20261030T1650/verify_two_basis_phase_I_start_portable.py", line 64, in <module>
+    main()
+  File "/private/tmp/c16-two-basis-portable-replay-20261030T1650/verify_two_basis_phase_I_start_portable.py", line 33, in main
+    assert initial['frozen_sha256'] == sha(frozen_path)
+                                       ^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-two-basis-portable-replay-20261030T1650/verify_two_sided_full_basis_oracle.py", line 35, in sha
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/danabbott/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/danabbott/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'two-basis-results/two-basis-inner-v2-32x27-Z-point15.frozen.json'

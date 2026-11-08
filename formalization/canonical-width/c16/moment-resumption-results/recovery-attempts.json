@@ -1,0 +1,54 @@
+{
+  "status": "REJECTED_RECOVERY_ATTEMPTS_PRESERVED",
+  "utc": "2026-10-30T01:09:22.373373+00:00",
+  "source_C16_answered": false,
+  "numeric_input_sha256": "439f7b126ef0b8dcc324af10396a54d0387be54e395b7adb83eac1a377c85477",
+  "records": [
+    {
+      "name": "positive-pivot",
+      "status": "REJECTED_NOT_A_CERTIFICATE",
+      "script": "recover_forbidden_moment_point.py",
+      "script_sha256": "6a44762bb1cada17ab05b015ecdae71f2c1b8104bcab109aa1080669d0c781a1",
+      "log_sha256": "97b79c2610a1c5759d153eb1a057efa31d758c62518151be97c7dae77e7cd52c",
+      "candidate_sha256": "d401b02c18cdc945c8612646164a59e1890a014d0f311ed85ab1c465aa878930",
+      "failure": "capacity S[23,29]"
+    },
+    {
+      "name": "active-face",
+      "status": "REJECTED_NOT_A_CERTIFICATE",
+      "script": "recover_active_face_point.py",
+      "script_sha256": "a0b474c2391897f86467ab0773bac9be4bf0b07bfb33b37746d8a4ec049758e9",
+      "log_sha256": "dd8aa067382406c0eaaa33ef8819c6e68e16b29ac7bf0d108dd7b7b4a032f217",
+      "candidate_sha256": "8d821dfc635e338c5f3ab730d60411f527e6c977b3d34aaf6b1a5ce089902c0d",
+      "failure": "weighted conditional phase inequality for21,27"
+    },
+    {
+      "name": "linear-faces",
+      "status": "REJECTED_NOT_A_CERTIFICATE",
+      "script": "recover_linear_faces_point.py",
+      "script_sha256": "37e2d8a034bc7dfdb048b1f4160e18cf0247f764b1070cdafad49a1259a5c412",
+      "log_sha256": "78d20da751cce1b5212e4ea9f238c1f0698ee48d587c40c6e1c95e5af76b31d2",
+      "candidate_sha256": null,
+      "failure": "chosen numeric pivot columns did not span the recovery equalities"
+    },
+    {
+      "name": "boundary",
+      "status": "REJECTED_NOT_A_CERTIFICATE",
+      "script": "recover_boundary_point.py",
+      "script_sha256": "186ab27cb54d96a7597c6b69b5d2558023a22e10c0da2532deafd33f83eb4f9b",
+      "log_sha256": "d591a69a1d547474f220914670e75c7db80dce04229875eee7cb60da56a24cdc",
+      "candidate_sha256": "b8afe57c84a0ee155cd5e23ae872ba64db07af22694f4bac0cff1134f9f908f4",
+      "failure": "negative moment T6[22,22] after exact correction"
+    },
+    {
+      "name": "interior-pivots",
+      "status": "REJECTED_NOT_A_CERTIFICATE",
+      "script": "recover_interior_pivots_point.py",
+      "script_sha256": "be01230cc03a283e435b1f7fca18a3f9351ac895882d9fba14fb6761b92e780c",
+      "log_sha256": "4d971fd6ad501fc7990d84d180af89c226a446090db72a99331b172e328d2477",
+      "candidate_sha256": "4cf379ebe3631e99769a77789753d0a6fcff8fe0235a93909ffc924e9041699f",
+      "failure": "positive-semidefinite verification failed"
+    }
+  ],
+  "scope": "No attempted exact recovery in this list certifies moment feasibility. The last candidate passes the original exact linear checks and all31683 raw conditioned-pattern rows but has negative numerical eigenvalues and fails the independent interval PSD consumer."
+}

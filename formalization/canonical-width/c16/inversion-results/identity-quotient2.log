@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-inversion-20261027T190522/formalization/canonical-width/c16/inverse_identity_model.py", line 28, in <module>
+    ap=argparse.ArgumentParser();ap.add_argument('--period',type=int,choices=[1,2],default=2);ap.add_argument('--seconds',type=float,default=30);ap.add_argument('--output',type=Path,required=True);args=ap.parse_args();root=Path(__file__).parent;j=args.period;X=sorted({fold(int(v,16),j) for v in (root/'pools/xcoords.txt').read_text().split()});Z=sorted({fold(int(v,16),j) for v in (root/'pools/zcoords.txt').read_text().split()});assert solve([1,2,4,8],[1,2,4,8],4,2)['status']=='OPTIMAL';r=solve(X,Z,8*j,args.seconds);r.update(period=j,scope='small quotient rank-minimal identity model; no full-C16 run');args.output.write_text(json.dumps(r,indent=2)+'\n');print(json.dumps({k:v for k,v in r.items() if k!='pairs'}),flush=True)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-inversion-20261027T190522/formalization/canonical-width/c16/inverse_identity_model.py", line 20, in solve
+    engine=cp_model.CpSolver();engine.parameters.max_time_in_seconds=seconds;engine.parameters.num_search_workers=2;engine.parameters.random_seed=202610271955;status=engine.solve(model);out={'status':engine.status_name(status),'variables':len(edges),'xor_equations':n*n,'seconds':engine.wall_time,'source_question_answered':False}
+                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: (): incompatible function arguments. The following argument types are supported:
+    1. (arg0: ortools.sat.python.cp_model_helper.SatParameters, arg1: int) -> None
+
+Invoked with: <ortools.sat.python.cp_model_helper.SatParameters object at 0x10a1e21b0>, 202610271955

@@ -1,0 +1,21 @@
+{
+  "full_identity_span": {
+    "command": "clang++ -O3 -std=c++17 formalization/canonical-width/c16/full_identity_span.cpp -o /tmp/full_identity_span; /tmp/full_identity_span formalization/canonical-width/c16/pools/xcoords.txt formalization/canonical-width/c16/pools/zcoords.txt",
+    "stdout": "edges 99808 rank 16384 identity_in_span 1",
+    "meaning": "The individually allowed outer products span the full matrix space; a separating linear functional does not exist. Compatibility is absent from this relaxation."
+  },
+  "pair_coloring": {
+    "seed": 0,
+    "candidate_pairs": 99808,
+    "colors": 803,
+    "direct_color_class_check": true,
+    "meaning": "803 colors is insufficient to exclude a clique of size 128."
+  },
+  "regression": {
+    "small_full_rank_instances": 468,
+    "positive": 33,
+    "negative": 435,
+    "independent_basis_enumeration_agrees": true,
+    "synthetic_128_pairs_with_omitted_bit_partner": true
+  }
+}

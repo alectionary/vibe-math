@@ -1,0 +1,17 @@
+FORBIDDEN CONDITIONED ROWS 31408
+PHYSICAL OWNER ROWS 32355
+PHYSICAL CIRCUIT ROWS 115200
+LEGACY LINEAR ROWS 12849
+MATROID ROWS 45
+PROFILE MOMENT prepared 16 rank 43473 shape variables 571 constraint objects
+Traceback (most recent call last):
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/unified_warm_matroid_model.py", line 149, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/unified_warm_matroid_model.py", line 121, in main
+    for o,w in enumerate(weights):pack(w,initial[f'w{o}'])
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/unified_warm_matroid_model.py", line 116, in pack
+    offset=stuff.var_offsets[variable.id];values=np.asarray(values).ravel();ids=set(range(offset,offset+len(values)));assert not ids&filled;filled.update(ids);x0[offset:offset+len(values)]=values
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 2849

@@ -1,0 +1,10 @@
+{
+  "status": "CORRECTED_SUFFICIENT_WITNESS_MODEL",
+  "source_C16_answered": false,
+  "utc": "2026-10-29T20:54:28.442267+00:00",
+  "first_output": "moment-pair-faces.json",
+  "first_output_sha256": "5f7f159c42dde5006b67cfebe6ef2f7d38ab21b893be578f34c41c627f4f2627",
+  "problem": "Strict-margin masks zeroed only one matrix entry for a forced zero. At h=0 or8, S is symmetric, so its transposed entry also must be exempt from positive-margin constraints. Newly supplied h=0 pair constraints exposed this dormant strict-search limitation. Necessary-model constraints and the exact consumer are unaffected.",
+  "correction": "New version mirrors the mask at symmetric h=0 orhalf matrices and asserts symmetry. Preserve original producer and failed numerical artifact. No source or relaxation infeasibility inferred from the first pilot.",
+  "new_source": "profile_moment_pair_faces.py"
+}

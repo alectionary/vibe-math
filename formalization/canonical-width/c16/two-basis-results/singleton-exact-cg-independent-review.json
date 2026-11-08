@@ -1,0 +1,40 @@
+{
+  "anchor_orbit": 40,
+  "archive_dual_sign": "u+sum_B v=n_B>=0 on every saved physical basis; u+v.q<0 at target. Archive infeasibility alone is not a source cut.",
+  "checked_at_utc": "2026-10-30T20:23:03.303490+00:00",
+  "exact_pricing_gate": "Compute minimum signed v-weight FULL rank127 basis. If u+minimum<0, append only an independently accepted new physical basis. If u+minimum>=0, ascending prefix-rank telescoping and q(E)=127 imply some q(prefix)>rank(prefix).",
+  "initial_pricing_pass": "two-basis-results/singleton-archive-point22-o40-pricing-independent.json",
+  "known_resource_detail": "The120s pre-round reserve is not itself a strict overall bound because stage caps can sum above it; the required hard600s outer supervisor supplies that bound.",
+  "limits": {
+    "before_round_reserve_seconds": 120,
+    "internal_total_seconds": 600,
+    "maximum_archive_bases": 5000,
+    "maximum_rounds": 20,
+    "outer_supervisor_must_kill_all_descendants": true,
+    "priority": 19,
+    "promised_outer_hard_seconds": 600,
+    "solver_external_seconds": 90,
+    "solver_internal_seconds": 60,
+    "threads": 1
+  },
+  "per_round_acceptance": [
+    "Literal LP token replay and every physical archive basis before solve",
+    "Exact nonnegative mixture or exact Farkas cancellation, with immutable solver-input hash binding",
+    "Independent fullsigned pricing replay before every missing-column append",
+    "Global prefix cut independently accepted by existing weighted-rank consumer and exact compiled owner-row evaluation"
+  ],
+  "point_sha256": "4945dd10a5ec76c54311466ab0594b0c7b8fc2071eab4ae9a783a87143baad8f",
+  "scientific_sources_mutated": false,
+  "scope": "Code/theorem review and initial pricing acceptance only. No conclusion for the future CG endpoint, joint-profile compatibility, a full source frame, or the C16 answer.",
+  "source_hashes": {
+    "export_singleton_archive_cg.py": "ca8fe4f0537238c427afd1d5baaf0970b20e99de0f5727265b1e1bb288748e68",
+    "price_singleton_archive_cg.py": "5399fadbd40ec27f9acfbd2e4f0d26f5cc5f8eeb2ae70dbe0d4c128b4e5ae589",
+    "run_singleton_archive_cg_soplex.py": "7cd82ebac12b351f6a728c5de6d60c2c24a15c434762d5d541c173c71511c8df",
+    "singleton_exact_column_gate.py": "7a091274d0c8093caa0464de218e65aa28561a99dc39ee69fc6253688ad21603",
+    "two-basis-results/singleton-archive-point22-o40-pricing-independent.json": "1d0c5dd42489be3791c1dbc417a00978934d7563cfca05381f0a22d1a3af0eba",
+    "verify_singleton_archive_cg.py": "71150752f6b4f618a4a074270b22255ef612c5e3443adbe987551b489e41226c",
+    "verify_singleton_exact_pricing.py": "c390e4696fbd822e05bebc3de0d7760d33be80daf91967182f33b5719de26d44"
+  },
+  "status": "PASS_READ_ONLY_EXACT_SINGLETON_COLUMN_GATE_REVIEW",
+  "zero_pool_bridge": "Physical X anchor at phase0; all Z zero-evaluation vectors have rank127. Unit probabilities sum1 separately. A zero-pool basis and any unit vector give a full128 physical basis."
+}

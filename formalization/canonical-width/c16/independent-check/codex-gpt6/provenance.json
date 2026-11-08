@@ -1,0 +1,194 @@
+{
+  "repository": "alectionary/vibe-math",
+  "branch": "research/c16-structural-20261027T173245",
+  "source_commit": "5e9b102b4af875ad9bed2d218711a3ac8ffe0002",
+  "model_runtime_description": "Codex, an agent based on GPT-6",
+  "exact_model_version": "unavailable",
+  "scientific_read_allowlist": [
+    "independent-check/SPEC.md",
+    "pools/xcoords.txt",
+    "pools/zcoords.txt",
+    "independent-check/inputs/planted1-xcoords.txt",
+    "independent-check/inputs/planted1-zcoords.txt"
+  ],
+  "sha256": {
+    "independent-check/SPEC.md": "dfa25b71d104345aa4220fb7635f4fcf063666cb514d0006892f8957fe9f11b5",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977",
+    "independent-check/inputs/planted1-xcoords.txt": "120a03656e5928d6eea6b78d8d05b75e63b35beafd6e42b004a8f2346ac16b56",
+    "independent-check/inputs/planted1-zcoords.txt": "e6f78eb45a947a0ec00dd3ccd9e01816487066766269950f4245f0ed119567b4"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "solver": "Primary: newly written unweighted/weighted bitset clique searches. General fallback: Glucose4 via python-sat 1.9.dev17. Diagnostic CP-SAT: OR-Tools 9.15.6755.",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "git": "git version 2.52.0",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "typing_extensions": "4.16.0",
+    "python-dateutil": "4.0.0",
+    "pip": "25.0.1",
+    "pandas": "3.1.0",
+    "python-sat": "1.9.dev17",
+    "six": "1.17.0",
+    "absl-py": "2.5.1",
+    "immutabledict": "4.3.1",
+    "ortools": "9.15.6755",
+    "tzdata": "2026.6",
+    "protobuf": "6.33.6"
+  },
+  "independence": "No excluded C16 scientific material was read. Only the spec and four listed inputs informed the algorithms. Runtime/network skill and policy were read for environment setup. Generic installed solver/library software used. Prior parent research was not supplied. Procedural independence cannot establish algorithmic novelty or exclude convergence or pretrained exposure. Exact runtime model build not supplied.",
+  "review": "Separate read-only agent reviewed all mathematical reductions, rank/degree constraints, counters, coloring bounds, timeouts, and witness checking using only new source and allowed specification. It reported no excluded-content reads or experiments.",
+  "resource_policy": "All experimental search processes pinned to CPUs 0-1. Final from-scratch driver uses two single-worker child processes. Recorded portfolio shared the same affinity; redundant SAT B paused until its original wall deadline, with event log. A/B original deadline 2026-11-03T01:05:37Z; each real class has approximately two-hour budget. Construction/checking not hard-killed.",
+  "implementation_sha256": {
+    "bundle_backend.py": "ed42fc0cf3fcd94216e71b285e3469f857f96ceccd1736a2969ca3484fb4fbe5",
+    "bundle_clique": "b018f055d2d2f0ef5a13753fb26d2c37c223f2776322a9df902aa629ee28530f",
+    "bundle_clique.cpp": "f7b2c72979149e9c9fa468b6a8aa6d9867e4c90f4cbc10a0b3e63cae48059f95",
+    "collect_results.py": "259532ab7d0ea86e44cb068a2251f86b12063c4da83f6e8c903fe9f093182817",
+    "orbit_backend.py": "d37b320933f083a57f7c1d8a9ddcba5794969d3dc5753455b1929b56ee74fba6",
+    "orbit_clique": "8d6d854435ec4e6800f9980b97ea7bfdf4b992d832bd15d478d555022277717c",
+    "orbit_clique.cpp": "56625a9f019b234ca8f9638be56f6f49e7f62a5ebf0420648910c3149f7df4b2",
+    "package_deliverables.py": "fbaa9b13a45a6fd82482cfa84cb4b7f141ee497eb70fdcd65f5a3e5e6169a799",
+    "requirements-lock.txt": "2570ea3b2205dde03a8d5ad60ac4da016e9d2f628a49a1770e67522c53163bca",
+    "requirements.txt": "bdc78f184c0583c12120204bbdc89083d1ab4c3c905ec88e79b659a653bbd46c",
+    "resume_paused.py": "bc8c16f4aca20988f3182ad66cc6257ec15f121407073b5e0d4a515d6bc441db",
+    "run_all.py": "aa3002db4476c09f8200baba98fb073725b7d3a07831743e309d6727e7d3c133",
+    "run_bundle_real.py": "0e2f9ea743fadfade185e1b4225e046c0cfb04dd559ab94e937e2fe472eb9222",
+    "run_integrated_suite.py": "8ba843e5f0b9d5fdc56a967fc630a30824bac6da0dae9c59dbd90efb99064e66",
+    "run_sat_suite.py": "be40a009912e28db0a1ff5a2f3ba3fac75b430a3e104b523f312a9bcc178483a",
+    "run_suite.py": "7d426905f1d5ab6697793455d10be501c6e91bed85e273c8e071cf2d295c047f",
+    "sat_backend.py": "bf069f728da1a7107dacb812db6b47f4a9eb2c4cc4f6ad44a0ce72ea9ae2d8d8",
+    "solve.py": "da4162beb590989cf77dd5aa5bb3c2da0a9f7b4cda6e92b6f0d6ad5b15082cda",
+    "test_bundle.py": "8796f368ec70ca91a3040ba90e589b50410be491e9e7a243382ff516937c4772",
+    "test_clique.py": "fc76a319c1d32eb8f9551bec9d0f264930df6948fda72ac9af1e0af4e460b80c",
+    "verify_outputs.py": "d7d07efd17f81fc9750688fe6f4c83449794ee170565df7728c1a37c3b15b2ec"
+  },
+  "python_compiler": "Clang 22.1.3 ",
+  "solver_binary_build_compilers": "Unavailable: installed prebuilt OR-Tools and PySAT wheels do not supply verified build compiler identifiers here.",
+  "sat_solver": {
+    "package": "python-sat",
+    "package_version": "1.9.dev17",
+    "solver": "Glucose4",
+    "upstream_commit": "unavailable",
+    "installed_api_description": "Glucose 4.1 SAT solver."
+  },
+  "compile_commands": [
+    "g++ -O3 -std=c++20 -Wall -Wextra -pedantic orbit_clique.cpp -o orbit_clique",
+    "g++ -O3 -std=c++20 -Wall -Wextra -pedantic bundle_clique.cpp -o bundle_clique"
+  ],
+  "pip": "pip 25.0.1 from /workspace/c16-venv/lib/python3.12/site-packages/pip (python 3.12)",
+  "final_methods": {
+    "A": "checked orbit reduction + unweighted clique coloring",
+    "B": "checked symmetric-component reduction + weighted clique coloring; general SAT fallback",
+    "C": "checked tau8-column-mapped symmetric-component reduction + weighted clique coloring; general SAT fallback",
+    "quarter": "checked orbit reduction + unweighted clique coloring",
+    "blocks": "exact component polynomial counting"
+  },
+  "validation": {
+    "orbit_clique": {
+      "status": "PASS",
+      "matrices": 181,
+      "solver_comparisons": 346,
+      "oracle": "explicit subset enumeration",
+      "fixtures": "newly generated 2x2 exhaustive ternary matrices and deterministic random 4x4 matrices; no external inputs"
+    },
+    "weighted_clique": {
+      "status": "PASS",
+      "matrices": 1024,
+      "solver_comparisons": 2047,
+      "oracle": "explicit subset enumeration",
+      "fixtures": "all symmetric 4x4 binary matrices generated locally"
+    },
+    "known_answer_gate": "final-outputs/tests-passed.json; bundle-outputs/tests-passed.json revalidates gate and reruns planted B/C"
+  },
+  "solver_native_sha256": {
+    "pysolvers": "1d6d10d0412dc6aa0b428978d153b5183f6d68d4c811d69ff6ae8906efb0cd8f",
+    "ortools_cp_model_helper": "5e82da893145e1eecc67bc87ec4120c7af38e1a7e4ed0eadfc39c713bb8ed735"
+  },
+  "environment_and_tooling_reads": [
+    "Required cloud-environment-runtime SKILL.md and references/networking.md (generic environment instructions, no C16 research)",
+    "/etc/codex/network-policy.json",
+    "GitHub exact-file retrieval metadata and requested branch ref via git ls-remote; no commit messages/diffs or repository tree",
+    "Process metadata for local search resource control; no environment/credential dumps",
+    "Installed generic solver/library APIs, version metadata and binary hashes; standard compiler/tool version commands",
+    "Newly written source, generated validation fixtures, logs and outputs in the isolated implementation directory"
+  ],
+  "tool_versions": {
+    "git": "git version 2.52.0",
+    "g++": "g++ (Debian 14.2.0-19) 14.2.0",
+    "taskset": "taskset from util-linux 2.41.5",
+    "tar": "tar (GNU tar) 1.35",
+    "sha256sum": "sha256sum (GNU coreutils) 9.7"
+  },
+  "input_file_metadata": {
+    "independent-check/SPEC.md": {
+      "bytes": 5130,
+      "lines": 95,
+      "sha256": "dfa25b71d104345aa4220fb7635f4fcf063666cb514d0006892f8957fe9f11b5"
+    },
+    "pools/xcoords.txt": {
+      "bytes": 23759,
+      "lines": 720,
+      "sha256": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d"
+    },
+    "pools/zcoords.txt": {
+      "bytes": 23759,
+      "lines": 720,
+      "sha256": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+    },
+    "independent-check/inputs/planted1-xcoords.txt": {
+      "bytes": 27984,
+      "lines": 848,
+      "sha256": "120a03656e5928d6eea6b78d8d05b75e63b35beafd6e42b004a8f2346ac16b56"
+    },
+    "independent-check/inputs/planted1-zcoords.txt": {
+      "bytes": 27984,
+      "lines": 848,
+      "sha256": "e6f78eb45a947a0ec00dd3ccd9e01816487066766269950f4245f0ed119567b4"
+    }
+  },
+  "diagnostic_cp_sat_parameters": {
+    "num_search_workers": 2,
+    "num_full_subsolvers": 2,
+    "subsolvers": [
+      "default_lp",
+      "no_lp"
+    ],
+    "random_seed": 0,
+    "budget_seconds": 7200
+  },
+  "primary_search_parameters": {
+    "frame_size": 128,
+    "cpp_workers_per_run": 1,
+    "branch_order": "static descending compatibility degree; reverse greedy-color prefix order",
+    "weighted_bundle_weights": [
+      1,
+      2
+    ],
+    "wall_budget_per_real_class_seconds": 7200,
+    "cpu_affinity": [
+      0,
+      1
+    ]
+  },
+  "recorded_timeline": {
+    "class_C_start_unix_approx": 1793667937.975948,
+    "class_C_deadline_unix_approx": 1793675137.975948,
+    "timestamp_basis": "mtime of flushed START real C marker; within wrapper-call overhead",
+    "A_B_deadline_unix": 1793667937.8699768
+  },
+  "timeout_limitations": "Budgets are cooperative/approximate. Construction, coloring, checking and solver interrupt acknowledgement may add overhead. Redundant paused SAT B acknowledged the original deadline interrupt after about 17 additional seconds; it remains INCOMPLETE and actual elapsed time is retained.",
+  "publication": {
+    "authorized": "2026-11-03 user request",
+    "branch": "independent/c16-spec-check-20261102",
+    "scope": "formalization/canonical-width/c16/independent-check/codex-gpt6/",
+    "status": "terminal update prepared; all real classes INCOMPLETE"
+  },
+  "terminal_status": {
+    "A": "INCOMPLETE",
+    "B": "INCOMPLETE",
+    "C": "INCOMPLETE"
+  },
+  "process_cleanup": "Both experiment drivers exited zero; original workers absent after collection.",
+  "final_results_index": "results/index.json"
+}
