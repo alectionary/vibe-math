@@ -42,4 +42,6 @@ python3 ../certificates/check_cert_ref.py ../certificates/swap.inst ../certifica
 
 `check_cert_ref.py` accepts `swap.cert.gz` and `test-quarter.cert.gz`, rejects `test-bad-*`, and
 reports the frame in `test-planted.cert.gz`. It is too slow (about 170 nodes/s) for the half-turn and
-swap-half-turn certificates; those await the independent checker.
+swap-half-turn certificates. All three classes are accepted by the independent checker
+`../../independent-check/chatgpt-certcheck/` (issue #76), with node counts equal to the table above;
+the swap certificate is also checked in Lean (`../../lean/CertGPTNoSwap.lean`, issue #79).
