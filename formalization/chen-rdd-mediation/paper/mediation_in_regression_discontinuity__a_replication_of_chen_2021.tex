@@ -24,9 +24,9 @@
 \begin{abstract}
 \footnotesize\hyphenpenalty=10000\exhyphenpenalty=10000\spaceskip=0.34em plus 0.4em minus 0.02em\emergencystretch=3em\relax
 We did not replicate three of the four simulation headline findings of \citet{chen2021}, who reported that mediation analysis in a sharp regression discontinuity design gives biased natural direct effects, percentile bootstrap confidence intervals that cover the true value far less often than the nominal level, and near-zero power for the mediated interaction: in all 3,840 condition-cutoff cells, 0.00\% of our direct-effect results had \mbox{\absbar bias\absbar{} \textgreater{} .10} against 85.42\% in our average of her Table 4.8 rows; coverage fell 0.04 rather than 43.62 percentage points short of 95\%; the truth lay above the interval 0.33 rather than 47.07 points more often than below it; and mediated-interaction power at n = 500 for the largest interaction (a = .59, h = .34) was 0.836 where she reported near zero.
-We could not establish why her results differ, because the step that compared her estimates with the true values is not printed; her Head Start Impact Study comparison is not established, because its data were unavailable.
-Her abstract reports Type I error and power within the robustness criteria for all effects, which conflicts with her near-zero mediated-interaction power; 8 of our 10 checked Type I error and power statements agree with hers.
-Her tentative minimum sample size of 5,000 was partly replicated: there 86.3\% of zero-effect results have Type I error in range and 89.2\% of nonzero results reach .80 power, though not effects with both paths zero.
+We could not establish why her results differ, as her step comparing estimates with true values is unprinted; her Head Start Impact Study comparison is not established, as its data were unavailable.
+Her abstract puts Type I error and power within the robustness criteria for all effects, contrary to her near-zero mediated-interaction power; 8 of our 10 checked Type I and power statements agree with hers.
+Her tentative minimum n of 5,000 was partly replicated: 86.3\% of zero-effect results have Type I error in range and 89.2\% of nonzero results reach .80 power, except effects with both paths zero.
 \end{abstract}
 
 \begingroup
@@ -48,7 +48,7 @@ Claim / estimand & Published & Ours & Published effect & Our effect & Effect mag
 & Coverage 94.6-95.6\% by effect and cutoff; misses on both sides at similar rates
 & 43.62 & 0.04 & smaller & same direction & no match\\
 \midrule
-\textbf{H2, E3.} Mean over the 15 Table 4.9 rows of (\% of CIs lying below the population value) minus (\% lying above it)
+\textbf{H2, E3.} Mean over the 15 Table 4.9 rows of (\% of replications with the population value above the CI) minus (\% with it below the CI)
 & Coverage 24.10-83.99\% by effect and cutoff; true value usually above the CI
 & Coverage 94.6-95.6\% by effect and cutoff; misses on both sides at similar rates
 & 47.07 & 0.33 & smaller & same direction & no match\\
@@ -158,7 +158,7 @@ MINT & 3 & 87.50 & 100.00 & 75.00 & 100.00 & 0.0065 \\
 \end{table}
 
 \subsection{H2: do percentile bootstrap CIs give valid inference?}\label{sec:h2}
-Yes in our run, contrary to Chen\q s conclusion that ``the current method of bootstrapping and constructing CIs does not produce valid inferences for estimates'' (printed p.~151), which she calls the chief conclusion of her study. Table~\ref{tab:t49} sets her Table 4.9 beside ours. Our mean coverage is 94.6--95.6\% in every effect-cutoff row, against her 24.10--83.99\%; overall, mean cell coverage is 94.96\%, the lowest cell coverage is .916, and 92.9\% of the 19,200 cell coverages lie inside Bradley\q s $[.925,.975]$. Misses fall on both sides: the truth lies above the CI in 2.5--2.9\% of replications and below it in 1.8--2.7\%. The resulting imbalance (E3) is 0.33 percentage points in our run against Chen\q s 47.07, and the coverage shortfall (E2) is 0.04 against her 43.62 (both her values are our calculation from her printed table). Our small positive imbalance has her sign but is two orders of magnitude smaller than hers; we did not investigate its cause. In Table~\ref{tab:pageone}, E3\q s ``CIs lying below the population value'' are the replications in which the truth lies above the CI (``Above CI'' in Table~\ref{tab:t49}).
+Yes in our run, contrary to Chen\q s conclusion that ``the current method of bootstrapping and constructing CIs does not produce valid inferences for estimates'' (printed p.~151), which she calls the chief conclusion of her study. Table~\ref{tab:t49} sets her Table 4.9 beside ours. Our mean coverage is 94.6--95.6\% in every effect-cutoff row, against her 24.10--83.99\%; overall, mean cell coverage is 94.96\%, the lowest cell coverage is .916, and 92.9\% of the 19,200 cell coverages lie inside Bradley\q s $[.925,.975]$. Misses fall on both sides: the truth lies above the CI in 2.5--2.9\% of replications and below it in 1.8--2.7\%. The resulting imbalance (E3) is 0.33 percentage points in our run against Chen\q s 47.07, and the coverage shortfall (E2) is 0.04 against her 43.62 (both her values are our calculation from her printed table). Our small positive imbalance has her sign but is two orders of magnitude smaller than hers; we did not investigate its cause. E3 in Table~\ref{tab:pageone} is the ``Above CI'' minus ``Below CI'' columns of Table~\ref{tab:t49}, averaged over its rows.
 
 The gaps lie far outside Monte Carlo error. The smallest coverage gap between a printed row and ours is 11.14 percentage points (PNIE, cutoff 3: 83.99 against 95.13), about 16 times the binomial standard error of a single cell\q s coverage (about .007 with 1,000 replications); each row mean averages 1,280 cells and has a smaller error still. No multiplicity adjustment, such as Holm\q s over the 15 rows, could bring any row inside a two-standard-error band.
 
@@ -342,7 +342,7 @@ The evidence has six limits, each also stated where it applies.
 \item RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the printed arithmetic was checked (S5).
 \item The announced power analysis by the SD of $Y$ is not reported, so it cannot be assessed (S8).
 \item The dissertation labels the cutoffs inconsistently: the code\q s index 1 is the 25th percentile (75\% treated), as is the Chapter 4 description of the cut scores, while Chapter 3 and the Table 4.8 note call index 1 25\% treatment; we report by the code (H1, H2).
-\item Chen attributes the bias to global estimation with an incorrect functional form; in her data-generating model the assignment variable does not enter $M$ or $Y$, so the fitted linear models are correctly specified (H1).
+\item Chen suggests global estimation with an incorrect functional form as a plausible explanation of the bias; in her data-generating model the assignment variable does not enter $M$ or $Y$, so the fitted linear models are correctly specified (H1).
 \end{enumerate}
 
 \section{What remains unresolved}\label{sec:unresolved}
