@@ -45,6 +45,16 @@ Mechanism study: [same-code parity-check interventions and trajectories](formali
 
 Latest local feasibility: [degree- and girth-preserving same-code representations](formalization/cyclic-lifts/DEGREE-PRESERVING.md). Merging suitably distant redundant checks preserves every variable degree, girth eight, total edges and the exact CSS code, while changing absorbing counts **2,646→2,764** and **2,520→2,640**. Check count and check degrees change; no new performance experiment is claimed. Keeping 126 nonzero checks as well would force the original representation in these two codes.
 
+## Results index
+
+Released results with their exact scope and verification status. Entries are added
+by the [verified-release skill](.agents/skills/verified-release/SKILL.md); earlier
+results are listed under Start here.
+
+| Result | Exact scope | Verification |
+|---|---|---|
+| [No symmetric width-16 frame for C^LP_{16,9}](formalization/canonical-width/c16/RELEASE.md) ([PDF](formalization/canonical-width/c16/paper/output/pdf/symmetric-frames.pdf)) | No width-16 canonical frame of Lee's [[1088,128,16]] code is fixed by a nontrivial symmetry (group C16 × C2). Width 16 vs 18 remains open. | Certified computation: search certificates accepted by an independent C++ checker. Lean: symmetry group and swap class, using `native_decide` for concrete data (disclosed). |
+
 ## Start here
 
 - **Research lessons:** [what worked and the workflow for the next investigation](RESEARCH-LESSONS.md).
