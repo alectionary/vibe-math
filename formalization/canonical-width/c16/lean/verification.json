@@ -97,8 +97,8 @@
   "swap_certificate": {
     "model": "Grok 4.7",
     "generator": "gen_swap_cert.py",
-    "files": ["CertRun.lean", "SwapCert.lean", "CertValue.lean", "CertItems.lean", "CertCheckRun.lean", "CertSound.lean", "CertCheck.lean"],
-    "lake_build": "lake build; exit 0; Build completed successfully (3800 jobs). Warnings only, 0 errors. No sorry.",
+    "files": ["CertRun.lean", "SwapCert.lean", "CertValue.lean", "CertItems.lean", "CertCheckRun.lean", "CertSound.lean", "CertCheck.lean", "CertInvariant.lean"],
+    "lake_build": "lake build; exit 0; Build completed successfully (3804 jobs). Warnings only, 0 errors. No sorry.",
     "native_decide": {
       "swap_items_ok": "true (orbit table matches the pools)",
       "swap_check_ok": "true (swap.cert.gz accepted; CertCheckRun about 532s inside that build)"
@@ -107,7 +107,9 @@
       "par128 equals the F2 dot product, so poolG agrees with PoolBridge.G (G_bool)",
       "binary Gaussian elimination pivot count bounds Matrix.rank (matrixRank_le_geCount)",
       "IsPairFrame implies C16Frames.IsFrame (isPairFrame_isFrame)",
-      "a swap-invariant pair set has equal vertex sets, hence is fixed in the sense of fixed_swap_iff (swap_image_iff_vertex)"
+      "a swap-invariant pair set has equal vertex sets, hence is fixed in the sense of fixed_swap_iff (swap_image_iff_vertex)",
+      "covers_true_iff, idRes_bit, and addPairs_resZ: covers and residual updates are F2 sums",
+      "buildGRow_bit, buildCol_bit, xmask_testBit, zmask_testBit, packRow_testBit, setBits_mem: Gram, mask, and rank-leaf bit layout"
     ],
     "not_proved": "no_swap_frame. Certificate acceptance is a separate Bool fact. The search invariant that acceptance excludes every swap-invariant frame is not finished, so there is no #print axioms no_swap_frame output.",
     "axioms": {
