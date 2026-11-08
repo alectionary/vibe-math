@@ -1,0 +1,5 @@
+{
+  "name": "Python 3 + NumPy (OpenBLAS) re-implementation of Appendices A-B",
+  "justification": "R (Rscript) is unavailable on this host and on the linked Mac VM: neither CRAN, conda-forge nor the Ubuntu archives are reachable through the network allowlist, and apt cannot run as root on the VM. Chen (2021) fits ordinary least-squares regressions with R's lm() and percentile bootstrap CIs (Appendix B); no lavaan or OpenMx model is involved, so the preferred SEM engines are not needed for this design. R's random-number streams cannot be reproduced without R, so the replication is distributional.",
+  "independent_validation": "simulation/validate_estimator.py: point estimates agree with scikit-learn LinearRegression fits (separate code path) to 1.1e-14 over 20 random datasets; bootstrap effects from resample counts agree with explicit row resampling refitted by numpy.linalg.lstsq over 100 resamples; at n = 200,000 the estimates are within sampling error of the population values. Prints PASS_ESTIMATOR_VALIDATION."
+}
