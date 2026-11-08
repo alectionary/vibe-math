@@ -196,8 +196,8 @@ claim(id='H2', level='headline',
       contrasts=[dict(definition='95 minus mean coverage (%) over the 15 effect-cutoff rows of Table 4.9',
                       units='percentage points', positive_means='CIs cover the population value less often than 95%',
                       published=pub_short, ours=our_short),
-                 dict(definition='Mean over the 15 Table 4.9 rows of (% of CIs lying below the population value) '
-                                 'minus (% lying above it)',
+                 dict(definition='Mean over the 15 Table 4.9 rows of (% of replications with the population value '
+                                 'above the CI) minus (% with it below the CI)',
                       units='percentage points', positive_means='the population value falls above the CI more often '
                                                                  'than below it', published=pub_imb, ours=our_imb)],
       reproduction_deviation=f'coverage shortfall: ours minus printed = {r2(our_short - pub_short)}; imbalance: '
@@ -533,7 +533,7 @@ limitations = [
     'The dissertation labels the cutoffs inconsistently: the code\'s index 1 is the 25th percentile (75% treated), '
     'as is the Chapter 4 description of the cut scores, while Chapter 3 and the Table 4.8 note call index 1 25% '
     'treatment; we report by the code (H1, H2).',
-    'Chen attributes the bias to global estimation with an incorrect functional form; in her data-generating model '
+    'Chen suggests global estimation with an incorrect functional form as a plausible explanation of the bias; in her data-generating model '
     'the assignment variable does not enter M or Y, so the fitted linear models are correctly specified (H1).',
 ]
 
