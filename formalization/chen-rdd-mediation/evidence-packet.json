@@ -1,0 +1,1219 @@
+{
+ "schema_version": 1,
+ "scope": "whole_dissertation",
+ "dissertation": "Chen, D. (2021). Statistical mediation analysis in regression discontinuity design for causal inference (Doctoral dissertation). University of Nebraska-Lincoln. First adviser: James A. Bovaird; second adviser: Lorey A. Wheeler. https://digitalcommons.unl.edu/cehsdiss/403/",
+ "replicated_work": {
+  "kind": "dissertation",
+  "authors": "Donna Chen",
+  "year": "2021",
+  "title": "Statistical Mediation Analysis in Regression Discontinuity Design for Causal Inference",
+  "institution_or_venue": "University of Nebraska-Lincoln",
+  "identifier": "https://digitalcommons.unl.edu/cehsdiss/403/",
+  "verification_locator": "Title page and abstract of source/chen2021.pdf (PDF pages 1-3)",
+  "artifact_ids": [
+   "pdf"
+  ]
+ },
+ "artifacts": [
+  {
+   "id": "pdf",
+   "path": "source/chen2021.pdf",
+   "sha256": "9206b3d824077d36c86b4935ff7f19f64b3fdebde7746943b8a94500fe11e557"
+  },
+  {
+   "id": "plan",
+   "path": "REPLICATION-PLAN.yaml",
+   "sha256": "39819fe1556b3be2bbdb0ae084c2d37bfd3f8af949a36384d5e37d75cb6ab7f1"
+  },
+  {
+   "id": "sim",
+   "path": "simulation/chen_sim.py",
+   "sha256": "2d6a3e185d49c19fd78c197d1e2dc5e6c6b1f0f2dd825b77fed04070e48e8a55"
+  },
+  {
+   "id": "validate",
+   "path": "simulation/validate_estimator.py",
+   "sha256": "35872818ce9be66027eb4f28f9c025d5c76d979474d19b7e5391e8121a2c6ca6"
+  },
+  {
+   "id": "fallback",
+   "path": "simulation/fallback.json",
+   "sha256": "80cdc0cffaa23371fabfe45f2a919cd1ced01b67b9bbba9786a38ab4a76039c0"
+  },
+  {
+   "id": "aggregate",
+   "path": "simulation/aggregate.py",
+   "sha256": "51688b31f685317990b2bea0bccf8eefca30378007af87c37f2c08e1c2b6644f"
+  },
+  {
+   "id": "cells",
+   "path": "results/cells.csv",
+   "sha256": "d3dcdbc6bb6c325094b50ae1e47cc8c31160ae6f607fdc7700e35d1212f824e2"
+  },
+  {
+   "id": "t48",
+   "path": "results/table48_ours.csv",
+   "sha256": "6a5e5a661291f783dad3cc44152bab201431cb56f58e23fbbd60159a014222c0"
+  },
+  {
+   "id": "t49",
+   "path": "results/table49_ours.csv",
+   "sha256": "6be341f1dfcffa522b725b3d655ec2c09085cacc84aa00bf5a75c24311b018f6"
+  },
+  {
+   "id": "type1",
+   "path": "results/type1.csv",
+   "sha256": "ce0b8ffe90f8a742fbec23fb88d4116dc8460c42971c98a7afcdba073cf4fcd3"
+  },
+  {
+   "id": "power",
+   "path": "results/power.csv",
+   "sha256": "8b1dfc6d01db453146ac87048144549812cd140b8137ab53b961d724a6ba9d5a"
+  },
+  {
+   "id": "summary",
+   "path": "results/summary.json",
+   "sha256": "3fd003fe5872862dc785b98d9cdc81e07a2d71b1a4c6e4532ebe3efd800a2d20"
+  },
+  {
+   "id": "stmt_code",
+   "path": "simulation/statement_checks.py",
+   "sha256": "0a87e478a5fdc12c7b8c1fe9b4adcd0c74ca5197be1c92cfb85d7e608bf1f741"
+  },
+  {
+   "id": "stmt",
+   "path": "results/statement_checks.csv",
+   "sha256": "3cc1773891287870060de1704c4fc937a4feb0b5553d2b7eb60ece6811132616"
+  },
+  {
+   "id": "zero_code",
+   "path": "secondary/zero_estimate_check.py",
+   "sha256": "979499d83d1e634be89e41bb667ae0a06bbe21f64116d25ee0bfdc001d22e8e6"
+  },
+  {
+   "id": "zero",
+   "path": "secondary/zero_estimate_check.csv",
+   "sha256": "319d2516b1d1a92b08effe9ce1811719389824bc32184786569c9652df93533f"
+  },
+  {
+   "id": "arith_code",
+   "path": "secondary/table_arithmetic.py",
+   "sha256": "cddb2a8a63309b006fa45e67a5d16dfda1b7aaa26f4633f21b05d1fa565e7935"
+  },
+  {
+   "id": "arith",
+   "path": "secondary/table_arithmetic.csv",
+   "sha256": "f7ff644f3d2d30c94fc78ea38e5051aeecfc83595b90ad5a844d1de2cae706b6"
+  },
+  {
+   "id": "avail",
+   "path": "notes/availability.md",
+   "sha256": "f3155ec0024b8038ba2154235873631f5271f0f3fa338f430447d084dc96d72a"
+  },
+  {
+   "id": "runrec",
+   "path": "notes/run-record.md",
+   "sha256": "f9dfc76331d58832dd242f12b3ae9dbfaca369391419d53705858788840abb2d"
+  },
+  {
+   "id": "builder",
+   "path": "build_packet.py",
+   "sha256": "3df43b32092b39e2c38d8cdf6422ba04f28af7613737e26b52061ece31fdf4a8"
+  }
+ ],
+ "sections": [
+  {
+   "id": "front",
+   "locator": "Front matter: title page, abstract, acknowledgements, contents",
+   "claim_ids": [],
+   "exclusion_reason": "Front matter; the abstract restates the Chapter 4-5 findings inventoried below."
+  },
+  {
+   "id": "ch1",
+   "locator": "Chapter 1, Introduction, printed p. 1 (PDF page 15)-",
+   "claim_ids": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "S7"
+   ]
+  },
+  {
+   "id": "ch2",
+   "locator": "Chapter 2, Literature review",
+   "claim_ids": [],
+   "exclusion_reason": "Literature review; its effect definitions are used for the population values in the simulation."
+  },
+  {
+   "id": "ch3",
+   "locator": "Chapter 3, Methods and procedures",
+   "claim_ids": [
+    "S5",
+    "S8"
+   ]
+  },
+  {
+   "id": "ch4",
+   "locator": "Chapter 4, Results (RQ1 Table 4.1; RQ2 Tables 4.2-4.7, Figures 4.1-4.11; RQ3 Tables 4.8-4.9, Figures 4.12-4.38)",
+   "claim_ids": [
+    "H1",
+    "H2",
+    "H3",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7"
+   ]
+  },
+  {
+   "id": "ch5",
+   "locator": "Chapter 5, Discussion",
+   "claim_ids": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "S4",
+    "S6"
+   ]
+  },
+  {
+   "id": "refs",
+   "locator": "References",
+   "claim_ids": [],
+   "exclusion_reason": "Bibliography only."
+  },
+  {
+   "id": "appA",
+   "locator": "Appendix A, R syntax for data generation, printed p. 175 (PDF page 189)-printed p. 178 (PDF page 192)",
+   "claim_ids": [
+    "H1",
+    "H2"
+   ]
+  },
+  {
+   "id": "appB",
+   "locator": "Appendix B, R syntax for estimation and bootstrapping, printed p. 179 (PDF page 193)-printed p. 189 (PDF page 203)",
+   "claim_ids": [
+    "H1",
+    "H2",
+    "H3"
+   ]
+  }
+ ],
+ "inventory_audit": {
+  "reviewer": "source reading of the archived dissertation PDF (pdftotext and page renders)",
+  "source_artifact_ids": [
+   "pdf"
+  ],
+  "rationale": "Read from the title page through Appendix B. Chapter 1 states RQ1-RQ3. Chapter 2 is background. Chapter 3 and Appendices A-B define the HSIS analysis and the simulation. Chapter 4 reports RQ1 (Table 4.1), RQ2 (Tables 4.2-4.7) and RQ3 (Tables 4.8-4.9, Figures 4.12-4.38); Chapter 5 draws the conclusions. HSIS results are entered as blocked claims, and the unreported power analysis as S8, rather than omitted."
+ },
+ "claims": [
+  {
+   "id": "H1",
+   "level": "headline",
+   "statement": "Direct-effect estimates (PNDE, TNDE) are biased, mostly negatively: only 12.50-18.75% of conditions fall within [-.10, .10] (Table 4.8), against 51.88-87.50% for the indirect and MINT effects.",
+   "source_locator": "Table 4.8, printed p. 88 (PDF page 102); Chapter 4 bias text, printed p. 86 (PDF page 100)-printed p. 87 (PDF page 101); Chapter 5, printed p. 147 (PDF page 161)",
+   "artifact_ids": [
+    "pdf",
+    "t48",
+    "cells",
+    "aggregate"
+   ],
+   "published": {
+    "value": 85.42,
+    "units": "% of direct-effect condition-cutoff results with |bias| > .10"
+   },
+   "ours": {
+    "value": 0.0,
+    "units": "% of direct-effect condition-cutoff results with |bias| > .10"
+   },
+   "conditions": "Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b, c' in {0, .14, .39, .59}, h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples.",
+   "contrasts": [
+    {
+     "definition": "Percentage of PNDE and TNDE condition-cutoff results with |bias| > .10, averaged over the six effect-cutoff rows of Table 4.8",
+     "units": "percentage points",
+     "positive_means": "more direct-effect results fall outside [-.10, .10]",
+     "published": 85.42,
+     "ours": 0.0
+    }
+   ],
+   "reproduction_deviation": "ours minus printed = -85.42 percentage points",
+   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Bias is the mean of 1,000 estimates minus the population value (PNDE = c', TNDE = c' + ah).",
+   "uncertainty": "Our largest |bias| over all 19,200 condition-cutoff-effect results is 0.016, far inside .10; Monte Carlo error of a mean of 1,000 estimates is at most about .01 in these cells.",
+   "multiplicity": "Descriptive summary over the full grid; no tests.",
+   "status": "not_replicated",
+   "status_reason": "Every direct-effect result in our run lies within [-.05, .05]. Chen's printed estimation code matches ours line by line, and her data-generating model contains no term that would bias OLS.",
+   "numerical": "mismatch",
+   "reconstruction_scope": "full design, independent re-implementation, own seeds",
+   "limitations": [
+    "Chen's step that matched estimates to population values is not printed, so the cause of the printed bias cannot be identified."
+   ],
+   "stopping": {
+    "reason": "Full design completed.",
+    "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
+    "untested": "Chen's own R output and seeds.",
+    "resource_basis": "13.7 core-hours.",
+    "next_evidence": "Chen's result files or aggregation code would show where the printed bias arises."
+   },
+   "findings": {
+    "published": {
+     "text": "PNDE and TNDE within [-.10, .10] in only 12.50-18.75% of conditions, with negative bias",
+     "state": "reported",
+     "artifact_ids": [
+      "pdf"
+     ],
+     "locator": "Table 4.8 and Chapter 5 bias, printed p. 147 (PDF page 161)",
+     "source_excerpt": "When bias was present, the measure of bias was a negative value.",
+     "page_locator": "printed p. 147 (PDF page 161)",
+     "claim_type": "numerical estimate",
+     "conditions": "Global linear models m ~ t + r and y ~ t + r + m + tm; full factorial collapsed over n and effect sizes, by cutoff index",
+     "component_claim_ids": [],
+     "component_contrast_indices": [
+      0
+     ]
+    },
+    "ours": {
+     "text": "PNDE and TNDE within [-.05, .05] in 100% of conditions; largest |bias| 0.015",
+     "state": "observed",
+     "artifact_ids": [
+      "t48",
+      "cells"
+     ],
+     "locator": "results/table48_ours.csv rows PNDE and TNDE",
+     "component_claim_ids": [],
+     "component_contrast_indices": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "id": "H2",
+   "level": "headline",
+   "statement": "Percentile bootstrap CIs give coverage well below .95 (24.10-83.99% by effect and cutoff, Table 4.9), with the true value systematically above the interval, so the CI method does not give valid inference for mediation in RDD.",
+   "source_locator": "Table 4.9, printed p. 124 (PDF page 138); Chapter 4 coverage text, printed p. 123 (PDF page 137); Chapter 5, printed p. 150 (PDF page 164)",
+   "artifact_ids": [
+    "pdf",
+    "t49",
+    "cells",
+    "aggregate"
+   ],
+   "published": {
+    "value": 43.62,
+    "units": "percentage points below 95% coverage, mean over Table 4.9 rows"
+   },
+   "ours": {
+    "value": 0.04,
+    "units": "percentage points below 95% coverage, mean over Table 4.9 rows"
+   },
+   "conditions": "Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b, c' in {0, .14, .39, .59}, h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples.",
+   "contrasts": [
+    {
+     "definition": "95 minus mean coverage (%) over the 15 effect-cutoff rows of Table 4.9",
+     "units": "percentage points",
+     "positive_means": "CIs cover the population value less often than 95%",
+     "published": 43.62,
+     "ours": 0.04
+    },
+    {
+     "definition": "Mean over the 15 Table 4.9 rows of (% of CIs lying below the population value) minus (% lying above it)",
+     "units": "percentage points",
+     "positive_means": "the population value falls above the CI more often than below it",
+     "published": 47.07,
+     "ours": 0.33
+    }
+   ],
+   "reproduction_deviation": "coverage shortfall: ours minus printed = -43.58; imbalance: ours minus printed = -46.74 percentage points",
+   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Coverage is the share of 1,000 95% percentile CIs containing the population value.",
+   "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error. Our lowest cell coverage is 0.916; 92.9% of the 19,200 results lie in Bradley's [.925, .975].",
+   "multiplicity": "Descriptive; 19,200 cell coverages, no correction because nothing is tested.",
+   "status": "not_replicated",
+   "status_reason": "Coverage is close to nominal in every effect-cutoff row of our run, and misses fall on both sides of the interval at similar rates.",
+   "numerical": "mismatch",
+   "reconstruction_scope": "full design, independent re-implementation, own seeds",
+   "limitations": [
+    "The small positive imbalance in our run (truth above the CI slightly more often) is in the expected direction for percentile intervals of products of coefficients, and is two orders of magnitude smaller than Chen's."
+   ],
+   "stopping": {
+    "reason": "Full design completed.",
+    "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
+    "untested": "Chen's own R output and seeds.",
+    "resource_basis": "13.7 core-hours.",
+    "next_evidence": "Chen's per-replication CIs and population values would locate the discrepancy."
+   },
+   "findings": {
+    "published": {
+     "text": "Coverage 24.10-83.99% by effect and cutoff; true value usually above the CI",
+     "state": "reported",
+     "artifact_ids": [
+      "pdf"
+     ],
+     "locator": "Table 4.9 and Chapter 5, printed p. 150 (PDF page 164)",
+     "source_excerpt": "the imbalance measure showed that the true parameter value systematically fell above the CIs",
+     "page_locator": "printed p. 150 (PDF page 164)",
+     "claim_type": "numerical estimate",
+     "conditions": "95% percentile bootstrap CIs from 500 resamples; collapsed over n and effect sizes",
+     "component_claim_ids": [],
+     "component_contrast_indices": [
+      0,
+      1
+     ]
+    },
+    "ours": {
+     "text": "Coverage 94.6-95.6% by effect and cutoff; misses on both sides at similar rates",
+     "state": "observed",
+     "artifact_ids": [
+      "t49",
+      "cells"
+     ],
+     "locator": "results/table49_ours.csv",
+     "component_claim_ids": [],
+     "component_contrast_indices": [
+      0,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "id": "H3",
+   "level": "headline",
+   "comparison_kind": "scalar_unestablished",
+   "statement": "Power for the mediated interaction (MINT) is near zero at every sample size and never reaches .80.",
+   "source_locator": "Chapter 4, Figure 4.28 text, printed p. 121 (PDF page 135); Chapter 5 power, printed p. 148 (PDF page 162)",
+   "artifact_ids": [
+    "pdf",
+    "summary",
+    "power",
+    "cells"
+   ],
+   "published": {
+    "value": "near zero at every sample size; never reaches .80",
+    "units": "rejection rate (verbal)"
+   },
+   "ours": {
+    "value": 0.836,
+    "units": "rejection rate"
+   },
+   "conditions": "Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b, c' in {0, .14, .39, .59}, h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples. Contrast cell: n = 500, a = .59, h = .34 (ah = .2006), averaged over b, c' and the three cutoffs.",
+   "contrasts": [
+    {
+     "definition": "MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c' and cutoffs",
+     "units": "rejection rate",
+     "positive_means": "the 95% CI excludes zero more often",
+     "published": null,
+     "ours": 0.836,
+     "comparison_kind": "scalar_unestablished",
+     "unavailable_reason": "Chen gives no number for this cell; the figure is not tabulated."
+    }
+   ],
+   "contrast_unestablished_reason": "The published value is only the verbal statement \"near zero\"; no printed number or rounding precision exists to define a tolerance.",
+   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Rejection means the 95% percentile CI excludes zero; it does not use population values.",
+   "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
+   "multiplicity": "One cell chosen in advance as the largest MINT in the design, at the smallest n.",
+   "status": "not_replicated",
+   "status_reason": "In our run MINT power rises with n and ah: 0.836 at n = 500 for ah = .20, and at least 0.974 for ah >= .13 once n >= 1,000. This is a direct conflict: rejection rates do not depend on population values.",
+   "numerical": "withheld: no published number",
+   "reconstruction_scope": "full design, independent re-implementation",
+   "limitations": [
+    "Chen's MINT Type I error with a = 0 and h > 0 is also near zero, against about .05 in our run; both suggest her h estimates or their CIs differed from what the printed code produces."
+   ],
+   "stopping": {
+    "reason": "Full design completed.",
+    "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
+    "untested": "Chen's own R output and seeds.",
+    "resource_basis": "13.7 core-hours.",
+    "next_evidence": "Chen's MINT CIs for one condition would show whether her h estimates were attenuated."
+   },
+   "findings": {
+    "published": {
+     "text": "MINT power near zero at every sample size; never reaches .80",
+     "state": "reported",
+     "artifact_ids": [
+      "pdf"
+     ],
+     "locator": "Figure 4.28 discussion, printed p. 121 (PDF page 135)",
+     "source_excerpt": "All power for MINT is near zero.",
+     "page_locator": "printed p. 121 (PDF page 135)",
+     "claim_type": "numerical estimate",
+     "conditions": "Nonzero MINT cells (a and h nonzero), all n and cutoffs",
+     "component_claim_ids": [],
+     "component_contrast_indices": [
+      0
+     ]
+    },
+    "ours": {
+     "text": "MINT power 0.836 at n = 500 for ah = .20; at least .97 for ah >= .13 from n = 1,000",
+     "state": "observed",
+     "artifact_ids": [
+      "summary",
+      "power"
+     ],
+     "locator": "results/summary.json mint_power_by_n_and_ah",
+     "component_claim_ids": [],
+     "component_contrast_indices": [
+      0
+     ]
+    }
+   },
+   "reproduction_deviation": "Not computable: the published result is verbal; ours is a rejection rate of .836 in the contrast cell."
+  },
+  {
+   "id": "H4",
+   "level": "headline",
+   "comparison_kind": "nonscalar",
+   "statement": "Tentatively, a minimum sample size of 5,000 gives accurate Type I error rates and power above .80 regardless of cutoff.",
+   "source_locator": "Chapter 5, Implications, printed p. 150 (PDF page 164)",
+   "artifact_ids": [
+    "pdf",
+    "stmt",
+    "type1",
+    "power"
+   ],
+   "published": {
+    "value": "n >= 5,000 gives accurate Type I error and power above .80, regardless of cutoff (tentative)",
+    "units": "qualitative recommendation"
+   },
+   "ours": {
+    "value": "at n = 5,000: 86.3% of zero-effect results have Type I in Bradley's range and 89.2% of nonzero results have power >= .80",
+    "units": "qualitative with shares"
+   },
+   "conditions": "Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b, c' in {0, .14, .39, .59}, h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples.",
+   "contrasts": [],
+   "contrast_not_applicable": "A qualitative design recommendation over the whole grid; no single signed contrast represents it, and any pooled share would depend on the grid's mix of effect sizes.",
+   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries.",
+   "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
+   "multiplicity": "Shares over 1,176 zero-effect and 2,664 nonzero results at n = 5,000.",
+   "status": "partly_replicated",
+   "status_reason": "n = 5,000 is where most results pass in our run, but not all: product effects with both paths zero stay conservative (about .002) at every n, and small effects such as ah = .007 stay below .80.",
+   "numerical": "not applicable: qualitative",
+   "reconstruction_scope": "full design",
+   "limitations": [
+    "Chen calls the recommendation tentative; our check judges it literally over the whole grid."
+   ],
+   "stopping": {
+    "reason": "Full design completed.",
+    "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
+    "untested": "Chen's own R output and seeds.",
+    "resource_basis": "13.7 core-hours.",
+    "next_evidence": "None needed for the recommendation; it is fully characterized by results/type1.csv and power.csv."
+   },
+   "findings": {
+    "published": {
+     "text": "Tentative minimum n of 5,000 for accurate Type I error and power above .80",
+     "state": "reported",
+     "artifact_ids": [
+      "pdf"
+     ],
+     "locator": "Chapter 5, printed p. 150 (PDF page 164)",
+     "source_excerpt": "a minimum sample size of 5000 has accurate Type I error rates and power above .80, regardless of cutoff score",
+     "page_locator": "printed p. 150 (PDF page 164)",
+     "claim_type": "other",
+     "conditions": "Recommendation from the simulation, stated as tentative",
+     "component_claim_ids": [],
+     "component_contrast_indices": []
+    },
+    "ours": {
+     "text": "At n = 5,000, 89.2% of nonzero results reach .80 power; both-zero products stay conservative",
+     "state": "observed",
+     "artifact_ids": [
+      "stmt",
+      "power"
+     ],
+     "locator": "results/statement_checks.csv n = 5000 row",
+     "component_claim_ids": [],
+     "component_contrast_indices": []
+    }
+   },
+   "reproduction_deviation": "Not computable: qualitative recommendation."
+  },
+  {
+   "id": "S1",
+   "level": "supporting",
+   "statement": "Indirect (PNIE, TNIE) and MINT bias falls within [-.10, .10] in 51.88-87.50% of conditions, increasing with the control share (Table 4.8).",
+   "source_locator": "Table 4.8, printed p. 88 (PDF page 102)",
+   "artifact_ids": [
+    "pdf",
+    "t48",
+    "zero"
+   ],
+   "published": {
+    "value": 27.08,
+    "units": "% of PNIE condition-cutoff results with |bias| > .10"
+   },
+   "ours": {
+    "value": 0.0,
+    "units": "% of PNIE condition-cutoff results with |bias| > .10"
+   },
+   "conditions": "Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b, c' in {0, .14, .39, .59}, h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples.",
+   "contrasts": [
+    {
+     "definition": "% of PNIE condition-cutoff results with |bias| > .10, mean over cutoffs",
+     "units": "percentage points",
+     "positive_means": "more results outside [-.10, .10]",
+     "published": 27.08,
+     "ours": 0.0
+    },
+    {
+     "definition": "% of TNIE condition-cutoff results with |bias| > .10, mean over cutoffs",
+     "units": "percentage points",
+     "positive_means": "more results outside [-.10, .10]",
+     "published": 39.06,
+     "ours": 0.0
+    },
+    {
+     "definition": "% of MINT condition-cutoff results with |bias| > .10, mean over cutoffs",
+     "units": "percentage points",
+     "positive_means": "more results outside [-.10, .10]",
+     "published": 12.5,
+     "ours": 0.0
+    }
+   ],
+   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries.",
+   "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
+   "multiplicity": "Descriptive.",
+   "status": "not_replicated",
+   "status_reason": "All indirect and MINT results lie within [-.05, .05] in our run. Chen's PNIE, TNIE and MINT rows at the median cutoff equal what |bias| = population value would give over the grid (secondary/zero_estimate_check.csv); this is a consistency observation, not a diagnosis.",
+   "numerical": "mismatch",
+   "reconstruction_scope": "full design",
+   "limitations": [
+    "The zero-estimate pattern does not fit every printed entry (for example PNDE needs c' + h)."
+   ],
+   "stopping": {
+    "reason": "Full design completed.",
+    "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
+    "untested": "Chen's own R output and seeds.",
+    "resource_basis": "13.7 core-hours.",
+    "next_evidence": "Chen's population-value table, if one existed, would test the pattern directly."
+   },
+   "reproduction_deviation": "PNIE: ours minus printed = -27.08; TNIE: -39.06; MINT: -12.5 percentage points"
+  },
+  {
+   "id": "S2",
+   "level": "supporting",
+   "statement": "Type I error: near zero when both paths of a product effect are zero; within Bradley's [.025, .075] for PNDE and TNDE; below the range for MINT at small n when a = .14, h = 0; near zero for MINT when a = 0 at every h.",
+   "source_locator": "Chapter 4 Type I error, printed p. 99 (PDF page 113)-printed p. 108 (PDF page 122)",
+   "artifact_ids": [
+    "pdf",
+    "stmt",
+    "type1",
+    "stmt_code"
+   ],
+   "published": {
+    "value": "six cell-level Type I statements (Figures 4.17-4.21)",
+    "units": "statements"
+   },
+   "ours": {
+    "value": "5 of 6 agree",
+    "units": "statements"
+   },
+   "conditions": "Zero-effect cells named in each statement, all n and cutoffs.",
+   "contrasts": [],
+   "contrast_not_applicable": "Each statement is a threshold claim about a set of cells; results/statement_checks.csv holds the per-cell rates.",
+   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries.",
+   "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
+   "multiplicity": "Six statements, each judged at its own threshold.",
+   "status": "partly_replicated",
+   "status_reason": "All agree except MINT with a = 0 and h > 0, where our Type I is about .05, not near zero.",
+   "numerical": "not applicable",
+   "reconstruction_scope": "full design",
+   "limitations": [
+    "Statements were chosen to be checkable from the text; the figures themselves were not digitized."
+   ],
+   "stopping": {
+    "reason": "Full design completed.",
+    "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
+    "untested": "Chen's own R output and seeds.",
+    "resource_basis": "13.7 core-hours.",
+    "next_evidence": "Digitized Figures 4.17-4.21 would allow a cell-by-cell numeric comparison."
+   },
+   "reproduction_deviation": "Not computable: threshold statements; 1 of 6 disagrees (MINT, a = 0, h > 0)."
+  },
+  {
+   "id": "S3",
+   "level": "supporting",
+   "statement": "Power rises with n and effect size; PNIE with a = b = .14 stays below .80 through n = 2,500; with a = .59, b = .14 only cutoff 3 reaches .80 at n = 1,000; TNIE1 with a = b = .14 passes .80 from n = 5,000.",
+   "source_locator": "Chapter 4 power, printed p. 110 (PDF page 124)-printed p. 113 (PDF page 127)",
+   "artifact_ids": [
+    "pdf",
+    "stmt",
+    "power"
+   ],
+   "published": {
+    "value": "three cell-level PNIE/TNIE power statements",
+    "units": "statements"
+   },
+   "ours": {
+    "value": "3 of 3 agree",
+    "units": "statements"
+   },
+   "conditions": "Cells named in each statement.",
+   "contrasts": [],
+   "contrast_not_applicable": "Threshold statements; per-cell rates are in results/statement_checks.csv.",
+   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries.",
+   "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
+   "multiplicity": "Three statements.",
+   "status": "replicated",
+   "status_reason": "Each statement holds cell by cell in our run, including the cutoff ordering.",
+   "numerical": "not applicable",
+   "reconstruction_scope": "full design",
+   "limitations": [
+    "Agreement here means Chen's rejection rates for these effects were not affected by whatever produced her bias and coverage results."
+   ],
+   "stopping": {
+    "reason": "Full design completed.",
+    "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
+    "untested": "Chen's own R output and seeds.",
+    "resource_basis": "13.7 core-hours.",
+    "next_evidence": "None needed."
+   },
+   "reproduction_deviation": "Not computable: threshold statements; 0 of 3 disagree."
+  },
+  {
+   "id": "S4",
+   "level": "supporting",
+   "statement": "In the Head Start Impact Study, synthetic-RDD mediation estimates at three cutoffs are typically smaller than the RCT estimates, with standardized bias outside an acceptable range (Tables 4.6-4.7).",
+   "source_locator": "Tables 4.6-4.7 and Chapter 5 RQ2, printed p. 145 (PDF page 159)-printed p. 146 (PDF page 160)",
+   "artifact_ids": [
+    "pdf",
+    "avail"
+   ],
+   "published": {
+    "value": "RDD estimates typically smaller than RCT estimates",
+    "units": "qualitative"
+   },
+   "ours": {
+    "value": null,
+    "units": "qualitative",
+    "unavailable_reason": "HSIS restricted-use data not obtainable; notes/availability.md"
+   },
+   "conditions": "HSIS restricted-use file, 3,721 children (2,697 with a wave-1 spelling score).",
+   "contrasts": [],
+   "contrast_not_applicable": "No refit is possible without the data.",
+   "methods": "Not rerun.",
+   "uncertainty": "Not assessed.",
+   "multiplicity": "Not applicable.",
+   "status": "blocked",
+   "status_reason": "Restricted-use data require a signed ICPSR agreement this project does not hold; the public download has documentation only.",
+   "numerical": "withheld",
+   "reconstruction_scope": "none",
+   "limitations": [
+    "RQ2 cannot be assessed beyond the printed arithmetic (S5)."
+   ],
+   "stopping": {
+    "reason": "Input unavailable.",
+    "attempted": "ICPSR 29462 public download V7 (documentation only); restricted-use route reviewed.",
+    "untested": "All HSIS fits.",
+    "resource_basis": "Data access, not compute.",
+    "next_evidence": "The restricted-use HSIS file under an ICPSR agreement."
+   },
+   "reproduction_deviation": "Not computable: not rerun."
+  },
+  {
+   "id": "S5",
+   "level": "supporting",
+   "statement": "Tables 4.6-4.7 report RCT-minus-RDD differences and standardized biases for the HSIS path and mediation estimates, with SB defined in equation 3.12 as the difference over the RCT outcome SD.",
+   "source_locator": "Tables 4.6-4.7, equation 3.12",
+   "artifact_ids": [
+    "pdf",
+    "arith",
+    "arith_code"
+   ],
+   "published": {
+    "value": 24,
+    "units": "printed differences and SBs"
+   },
+   "ours": {
+    "value": 24,
+    "units": "printed entries reproduced"
+   },
+   "conditions": "Printed estimates only.",
+   "contrasts": [],
+   "contrast_not_applicable": "An internal arithmetic check, not an effect.",
+   "methods": "Recompute each difference and SB from the printed estimates.",
+   "uncertainty": "Exact at the printed precision.",
+   "multiplicity": "24 entries.",
+   "status": "replicated",
+   "status_reason": "All 24 differences match; all 24 SBs match only when the divisor is the RCT estimate's SE rather than the outcome SD stated in equation 3.12.",
+   "numerical": "match",
+   "reconstruction_scope": "printed numbers only",
+   "limitations": [
+    "The divisor discrepancy is between the text and the tables; which was intended is unknown."
+   ],
+   "stopping": {
+    "reason": "Full design completed.",
+    "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
+    "untested": "Chen's own R output and seeds.",
+    "resource_basis": "13.7 core-hours.",
+    "next_evidence": "None needed."
+   },
+   "reproduction_deviation": "0 of 24 entries differ (SB with the RCT-estimate SE divisor)."
+  },
+  {
+   "id": "S6",
+   "level": "supporting",
+   "statement": "HSIS assumption checks: density, covariate balance (Table 4.3), residual correlations (Table 4.4) and functional form (Table 4.5) show slight violations of independence and functional form.",
+   "source_locator": "Tables 4.3-4.5; Chapter 5, printed p. 146 (PDF page 160)",
+   "artifact_ids": [
+    "pdf",
+    "avail"
+   ],
+   "published": {
+    "value": "independence assumption slightly violated",
+    "units": "qualitative"
+   },
+   "ours": {
+    "value": null,
+    "units": "qualitative",
+    "unavailable_reason": "HSIS child-level data not obtainable."
+   },
+   "conditions": "HSIS restricted-use file.",
+   "contrasts": [],
+   "contrast_not_applicable": "Not rerun.",
+   "methods": "Not rerun.",
+   "uncertainty": "Not assessed.",
+   "multiplicity": "Not applicable.",
+   "status": "blocked",
+   "status_reason": "The checks need child-level records; no printed numbers allow recomputation.",
+   "numerical": "withheld",
+   "reconstruction_scope": "none",
+   "limitations": [
+    "Unassessed."
+   ],
+   "stopping": {
+    "reason": "Input unavailable.",
+    "attempted": "As for S4.",
+    "untested": "Tables 4.3-4.5.",
+    "resource_basis": "Data access.",
+    "next_evidence": "The restricted-use HSIS file."
+   },
+   "reproduction_deviation": "Not computable: not rerun."
+  },
+  {
+   "id": "S7",
+   "level": "supporting",
+   "statement": "An integrated table of mediation and RDD assumptions (Table 4.1) answers RQ1.",
+   "source_locator": "Table 4.1, printed p. 60 (PDF page 74)",
+   "artifact_ids": [
+    "pdf",
+    "sim"
+   ],
+   "published": {
+    "value": "integrated assumption framework (Table 4.1)",
+    "units": "conceptual"
+   },
+   "ours": {
+    "value": null,
+    "units": "conceptual",
+    "unavailable_reason": "A literature synthesis with no computation to rerun."
+   },
+   "conditions": "Not applicable.",
+   "contrasts": [],
+   "contrast_not_applicable": "Conceptual.",
+   "methods": "Read only; the simulation model meets the no-confounding and functional-form assumptions by construction.",
+   "uncertainty": "Not applicable.",
+   "multiplicity": "Not applicable.",
+   "status": "not_established",
+   "status_reason": "There is nothing computational to replicate.",
+   "numerical": "not applicable",
+   "reconstruction_scope": "none",
+   "limitations": [
+    "Not evaluated as scholarship."
+   ],
+   "stopping": {
+    "reason": "Out of scope.",
+    "attempted": "Reading.",
+    "untested": "The synthesis itself.",
+    "resource_basis": "Not a resource limit.",
+    "next_evidence": "None within a replication."
+   },
+   "reproduction_deviation": "Not applicable: conceptual."
+  },
+  {
+   "id": "S8",
+   "level": "supporting",
+   "statement": "An additional power analysis by the SD of Y compares expected and simulated power.",
+   "source_locator": "Chapter 3, Outcome Measures, printed p. 58 (PDF page 72)",
+   "artifact_ids": [
+    "pdf",
+    "runrec"
+   ],
+   "published": {
+    "value": null,
+    "units": "power",
+    "unavailable_reason": "Announced in Chapter 3 but no method or result appears in Chapters 4-5 or the appendices."
+   },
+   "ours": {
+    "value": null,
+    "units": "power",
+    "unavailable_reason": "Nothing to rerun without a stated method."
+   },
+   "conditions": "Not stated.",
+   "contrasts": [],
+   "contrast_not_applicable": "No result reported.",
+   "methods": "Searched the dissertation.",
+   "uncertainty": "Not applicable.",
+   "multiplicity": "Not applicable.",
+   "status": "blocked",
+   "status_reason": "The analysis is announced but not reported.",
+   "numerical": "withheld",
+   "reconstruction_scope": "none",
+   "limitations": [
+    "Unassessed."
+   ],
+   "stopping": {
+    "reason": "Not reported in the source.",
+    "attempted": "Search of Chapters 3-5 and Appendices A-B for \"expected power\", \"standard deviation\" and \"power analysis\".",
+    "untested": "The analysis.",
+    "resource_basis": "Not a resource limit.",
+    "next_evidence": "Chen's analysis notes."
+   },
+   "reproduction_deviation": "Not computable: not reported."
+  }
+ ],
+ "headline_order": [
+  "H1",
+  "H2",
+  "H3",
+  "H4"
+ ],
+ "headline_effects": [
+  {
+   "id": "E1",
+   "claim_id": "H1",
+   "contrast_index": 0,
+   "estimand": "Percentage of PNDE and TNDE condition-cutoff results with |bias| > .10, averaged over the six effect-cutoff rows of Table 4.8",
+   "units": "percentage points",
+   "positive_means": "more direct-effect results fall outside [-.10, .10]",
+   "published_effect": 85.42,
+   "ours_effect": 0.0,
+   "estimate_status": "resolved",
+   "display_decimals": 2,
+   "tolerance": {
+    "kind": "rounding",
+    "value": 0.00500001,
+    "components": [
+     {
+      "decimals": 2,
+      "weight": 0.166667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.166667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.166667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.166667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.166667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.166667
+     }
+    ],
+    "basis": "6 printed percentages, each to two decimals (half-unit bound 0.005), enter the contrast with weight 1/6 (written as 0.166667); the bound is their weighted sum, 0.00500001 percentage points."
+   },
+   "magnitude": "smaller",
+   "direction": "zero vs nonzero",
+   "interpretation": "descriptive point estimates; not equivalence",
+   "uncertainty_statement": "Our largest |bias| over all 19,200 condition-cutoff-effect results is 0.016, far inside .10; Monte Carlo error of a mean of 1,000 estimates is at most about .01 in these cells."
+  },
+  {
+   "id": "E2",
+   "claim_id": "H2",
+   "contrast_index": 0,
+   "estimand": "95 minus mean coverage (%) over the 15 effect-cutoff rows of Table 4.9",
+   "units": "percentage points",
+   "positive_means": "CIs cover the population value less often than 95%",
+   "published_effect": 43.62,
+   "ours_effect": 0.04,
+   "estimate_status": "resolved",
+   "display_decimals": 2,
+   "tolerance": {
+    "kind": "rounding",
+    "value": 0.005000025,
+    "components": [
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     }
+    ],
+    "basis": "15 printed percentages, each to two decimals (half-unit bound 0.005), enter the contrast with weight 1/15 (written as 0.066667); the bound is their weighted sum, 0.005000025 percentage points."
+   },
+   "magnitude": "smaller",
+   "direction": "same direction",
+   "interpretation": "descriptive point estimates; not equivalence",
+   "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
+  },
+  {
+   "id": "E3",
+   "claim_id": "H2",
+   "contrast_index": 1,
+   "estimand": "Mean over the 15 Table 4.9 rows of (% of CIs lying below the population value) minus (% lying above it)",
+   "units": "percentage points",
+   "positive_means": "the population value falls above the CI more often than below it",
+   "published_effect": 47.07,
+   "ours_effect": 0.33,
+   "estimate_status": "resolved",
+   "display_decimals": 2,
+   "tolerance": {
+    "kind": "rounding",
+    "value": 0.01000005,
+    "components": [
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     },
+     {
+      "decimals": 2,
+      "weight": 0.066667
+     }
+    ],
+    "basis": "30 printed percentages, each to two decimals (half-unit bound 0.005), enter the contrast with weight 1/15 (written as 0.066667); the bound is their weighted sum, 0.01000005 percentage points."
+   },
+   "magnitude": "smaller",
+   "direction": "same direction",
+   "interpretation": "descriptive point estimates; not equivalence",
+   "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
+  },
+  {
+   "id": "E4",
+   "claim_id": "H3",
+   "contrast_index": 0,
+   "comparison_kind": "scalar_unestablished",
+   "estimand": "MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c' and cutoffs",
+   "units": "rejection rate",
+   "positive_means": "the 95% CI excludes zero more often",
+   "published_effect": null,
+   "ours_effect": 0.836,
+   "estimate_status": "unresolved",
+   "unresolved_reason": "No published number for this cell.",
+   "display_decimals": 3,
+   "tolerance": {
+    "kind": "unestablished",
+    "value": null,
+    "basis": "The source gives \"near zero\" with no printed value or precision."
+   },
+   "applicability_reason": "The source states a verbal result; a scalar contrast exists but no defensible margin.",
+   "magnitude": "not established",
+   "direction": "not established",
+   "interpretation": "descriptive point estimates; not equivalence",
+   "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
+  },
+  {
+   "id": "E5",
+   "claim_id": "H4",
+   "contrast_index": null,
+   "comparison_kind": "nonscalar",
+   "estimand": "qualitative sample-size recommendation over the grid",
+   "units": "not applicable",
+   "positive_means": "not applicable",
+   "published_effect": null,
+   "ours_effect": null,
+   "estimate_status": "unresolved",
+   "unresolved_reason": "Qualitative recommendation; no scalar contrast.",
+   "display_decimals": null,
+   "tolerance": {
+    "kind": "not_applicable",
+    "value": null,
+    "basis": "No scalar contrast exists."
+   },
+   "applicability_reason": "A qualitative design recommendation over the whole grid; no single signed contrast represents it, and any pooled share would depend on the grid's mix of effect sizes.",
+   "component_claim_ids": [],
+   "component_contrast_indices": [],
+   "magnitude": "not established",
+   "direction": "not established",
+   "interpretation": "descriptive point estimates; not equivalence",
+   "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
+  }
+ ],
+ "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 where Chen reports near zero. Her Type I and PNIE/TNIE power statements largely agree (8 of 10 checked). The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access.",
+ "limitations": [
+  "R is unavailable here, so the simulation is an independent Python re-implementation with our own seeds; it agrees with Chen on summaries only (H1-H4, S1-S3).",
+  "Chen's aggregation code and population-value table are not printed, so the source of her bias, coverage and MINT results cannot be identified (H1, H2, H3, S1); our Type I and power agree with most of her statements (S2, S3).",
+  "RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the printed arithmetic was checked (S5).",
+  "The announced power analysis by the SD of Y is not reported, so it cannot be assessed (S8).",
+  "Code and prose disagree on cutoff labels: the code's index 1 is the 25th percentile (75% treated), while the Table 4.8 note calls it 25% treatment; we report by the code (H1, H2).",
+  "Chen attributes the bias to global estimation with an incorrect functional form; in her data-generating model the assignment variable does not enter M or Y, so the fitted linear models are correctly specified (H1)."
+ ]
+}
