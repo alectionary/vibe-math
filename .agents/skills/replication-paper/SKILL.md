@@ -201,6 +201,16 @@ reference for migration of historical records. Helper passes establish neither
 scientific truth nor prose quality. Do not claim delivery complete without the
 independent rendered review. Publication actions still require authorization.
 
+## Release records
+
+Alongside delivery, keep the shared release records from
+[verified release](../verified-release/SKILL.md#4-keep-release-records-beside-the-result):
+provenance bound to the scientific revision, an import map of results used but
+not reproduced, a verification record that names what was not done, and a
+one-command replay packet with pinned environments. The cold-reader review above
+is this workflow's bound review record. Where this skill's delivery checks are
+stricter, they govern.
+
 ## Portable phase boundaries
 
 These stages use files and ordinary commands on Dot, Grokbot, or another host;
