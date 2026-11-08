@@ -1,31 +1,31 @@
 # Expanded open-problem inventory
 
-Inventory updated October 30, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
+Inventory updated November 2, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **430 canonical entries**: the original 40 dissertation targets and **390 additional article entries**. Of the additions, **122 are specific mathematical questions or tasks suitable for coverage tracking**; the other 268 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **436 canonical entries**: the original 40 dissertation targets and **396 additional article entries**. Of the additions, **124 are specific mathematical questions or tasks suitable for coverage tracking**; the other 272 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [141 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/161 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [148 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/163 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 122 |
-| Additional directions/formulation/method entries outside the denominator | 268 |
-| Combined eligible targets | 161 = 39 + 122 |
-| Eligible targets with an identified, verified proof-assistant statement | 6/161 (3.73%) |
-| Eligible targets with an identified, verified Lean statement | 6/161 (3.73%) |
-| Eligible targets with a complete checked Lean proof | 6/161 (3.73%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/161 |
-| Eligible targets with only finite-case proofs (no general supporting proof) | 0/161 |
-| Additional identified Lean statements without a build audit | 1/161 |
-| Eligible targets with Lean discovery still unassessed in this extension | 53/161 |
-| Articles/preprints in scope | 213 |
-| Full-text sources screened, including withdrawn history | 170/213 |
-| Current-publication full texts screened | 169 |
+| Additional article targets in the coverage denominator | 124 |
+| Additional directions/formulation/method entries outside the denominator | 272 |
+| Combined eligible targets | 163 = 39 + 124 |
+| Eligible targets with an identified, verified proof-assistant statement | 6/163 (3.68%) |
+| Eligible targets with an identified, verified Lean statement | 6/163 (3.68%) |
+| Eligible targets with a complete checked Lean proof | 6/163 (3.68%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/163 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/163 |
+| Additional identified Lean statements without a build audit | 1/163 |
+| Eligible targets with Lean discovery still unassessed in this extension | 55/163 |
+| Articles/preprints in scope | 220 |
+| Full-text sources screened, including withdrawn history | 179/220 |
+| Current-publication full texts screened | 178 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 43/213 |
+| Not fully assessed | 41/220 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -235,7 +235,7 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F146](https://doi.org/10.1214/12-AOS1012) | full text screened | 2 | methodological_directions_recorded |
 | [F147](https://arxiv.org/abs/1504.02992) | full text screened | 1 | methodological_directions_recorded |
 | [F148](https://doi.org/10.1371/journal.pgen.0020114) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
-| [F150](https://doi.org/10.2135/cropsci2003.1493) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F150](https://doi.org/10.2135/cropsci2003.1493) | full text screened | 0 | Complete UNL faculty PDF screened, including the conclusions. No additional explicit mathematical target recorded. |
 | [F151](https://doi.org/10.1534/genetics.109.112979) | full text access gap | Not assessed | unassessed_full_text_access_gap |
 | [F154](https://zctaskin.github.io/files/MIM.pdf) | full text screened | 1 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
 | [F155](https://optimization-online.org/wp-content/uploads/2007/12/1859.pdf) | full text screened | 0 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
@@ -255,7 +255,7 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F170](https://johnhooker.tepper.cmu.edu/papers.html) | metadata or selected passages only | Not assessed | Author bibliography confirms metadata and original1995 version; published primary PDF identified but not retrieved. Not relied on for a C16 theorem or speedup. |
 | [F171](https://people.eng.unimelb.edu.au/pstuckey/COMP90046/resources/lazyj.pdf) | metadata or selected passages only | Not assessed | Author-copy lead identified, not retrieved or screened; no full-text access denial inferred from a DOI web-tool failure. |
 | [F172](https://epubs.siam.org/doi/10.1137/21M139339X) | metadata or selected passages only | Not assessed | Primary abstract read. Early source gate finds all45 representative listed cocircuits nonseparating, so no pruning follows from a theorem merely requiring nonseparating fundamental cocircuits. Full paper not prioritized or retrieved; 3-connectivity not established. |
-| [F173](https://www.sciencedirect.com/science/article/pii/0095895684900236) | metadata or selected passages only | Not assessed | Indexed abstract and author metadata inspected. Full-text retrieval routes and browser challenge are recorded; acquisition requested in issue63. Question screen remains unassessed with null target count. |
+| [F173](https://doi.org/10.1016/0095-8956(84)90023-6) | full text screened | 1 | One algorithmic target recorded. The grand-augmentation sketch is proved later in the paper. |
 | [F174](https://andrasfrank.web.elte.hu/cikkek/FrankJ62.PDF) | full text screened | 0 | All15pages read. Section3 supplies the exact rational basis-mixture push–relabel method. The question in Section6.2 is answered by the paper itself; no unresolved question or future direction was found. |
 | [F175](https://publications.info.uaic.ro/files/tr/tr13-01.pdf) | full text screened | 0 | All6pages read. One historical direction asks to adapt the lowest-level/BFS strategy to submodular flow. The later primary TR13-02 explicitly supplies that adaptation, so this passage is not added as an unresolved inventory target. |
 | [F176](https://publications.info.uaic.ro/files/tr/tr13-02.pdf) | full text screened | 2 | All7pages read. Sections4–5 address the earlier TR13-01 adaptation direction. Section6 contains two linked broad directions concerning smallest tight sets and an O(n²m) feasibility method. Their present-day status and Lean discovery remain unassessed. |
@@ -264,6 +264,13 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F179](https://pmc.ncbi.nlm.nih.gov/articles/PMC9237001/) | full text screened | 1 | Complete publisher text screened: introduction, Sections2–6, both appendices and references. One norm-generalization direction, including its Euclidean subcase. The recoverable-robust strongly-polynomial question is answered in this paper. Direct PMC acquisition failed; Europe PMC full-text XML was retained. |
 | [F180](https://arxiv.org/html/2202.06561v2) | metadata or selected passages only | Not assessed | Targeted reading of Remark4.4 and its cited context only. Later primary evidence says weighted discrete quadratic minimization over an integral base-polyhedron is known strongly polynomial. Complete HTML acquired, but complete question screening remains unassessed. |
 | [F181](https://arxiv.org/html/1805.05528v3) | metadata or selected passages only | Not assessed | Targeted reading of generalized-polymatroid/paramodularity and two-polyhedron intersection hypotheses only. Complete HTML acquired, but complete question screening remains unassessed; no zero-question conclusion or source-frame implication. |
+| [F182](https://doi.org/10.1002/sam.11450) | full text screened | 1 | One method direction recorded. The asymptotic forms are not written in the paper. |
+| [F183](https://doi.org/10.1093/bib/bbt061) | full text screened | 0 | No additional explicit mathematical target recorded. |
+| [F184](https://doi.org/10.1111/jwas.12782) | full text screened | 0 | Author manuscript screened. No additional explicit mathematical target recorded. |
+| [F185](https://doi.org/10.1186/s12918-015-0200-0) | full text screened | 0 | No additional explicit mathematical target recorded. |
+| [F186](https://doi.org/10.1186/s12864-020-06833-2) | full text screened | 0 | Genomic-selection applicability is an application request without a fixed estimand. No inventory target recorded. |
+| [F187](https://digitalcommons.unl.edu/dissunl/339/) | full text screened | 3 | Same PDF as MorrisDissertation2025. Three Chapter 6 directions recorded beside the linked P34 targets. |
+| [F188](https://arxiv.org/abs/2502.15166) | full text screened | 1 | Conjecture 7.4 recorded. Conjecture 7.2 is refuted in the paper and is not an inventory target. |
 
 ## Reproducible evidence and limits
 
@@ -5089,3 +5096,63 @@ Determine tractability of two-polymatroid-base cost minimization with an arbitra
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F179: Section5, discussion following Theorem4](https://pmc.ncbi.nlm.nih.gov/articles/PMC9237001/); extraction lines 298–300; explicit research direction.
+
+### L-F182-stacking-mse-asymptotics
+
+Combine the stated asymptotic clauses to give pointwise MSE forms for the (PC, LM) and (NW, LM) predictors.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated conjecture that named asymptotic clauses combine into pointwise MSE forms. The forms are not written in the paper, so this stays a method direction until the expression and hypotheses are fixed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F182: Section 3.2, after the citation of Liu's clauses. Two-column extraction interleaves the neighboring paragraph through this range](https://doi.org/10.1002/sam.11450); extraction lines 890–908; author stated question or direction.
+
+### L-F173-strongly-polynomial-sfm
+
+Find a strongly polynomial algorithm for submodular function minimization, or a practical combinatorial polynomial-time method.
+
+- Type: algorithmic question; written formulation: precise math in source.
+- Coverage denominator: included. Author-stated algorithmic existence question for submodular function minimization given by an evaluation oracle. Present-day resolution and Lean discovery were not assessed in this screen.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F173: Section 6, printed p. 182 / PDF p. 22. The open-problem sentence was compared with the rendered page.](https://doi.org/10.1016/0095-8956(84)90023-6); extraction lines 973–976; author stated question or direction.
+
+### L-F187-nonabsorbing-failure-sets
+
+Characterize failure-inducing sets that are not absorbing sets.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Chapter 6 says this characterization remains open and asks for an overlying combinatorial description. The description is not given, so the target stays a direction.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F187: Chapter 6 conclusion, PDF page 85, extracted lines 3208–3212](https://digitalcommons.unl.edu/dissunl/339/); extraction lines 3208–3212; author stated question or direction.
+
+### L-F187-gallager-b-convergence-bound
+
+Ask whether the graphical condition that guarantees Gallager-B convergence in two iterations can be relaxed.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Chapter 6 calls the two-iteration graphical condition strong and asks whether it can be lightened, perhaps by allowing more than two iterations. No weakened hypothesis is stated.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F187: Chapter 6 conclusion, PDF pages 85–86, extracted lines 3214–3221. Printed page 74 is the running header on PDF page 86](https://digitalcommons.unl.edu/dissunl/339/); extraction lines 3214–3221; author stated question or direction.
+
+### L-F187-redundancy-other-families
+
+Study the effect of redundant parity checks on lifted-product and balanced-product QLDPC families.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Chapter 6 asks about redundancy for lifted-product and balanced-product codes after reporting Hamming CSS and hypergraph-product cases. No estimand is fixed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F187: Chapter 6 conclusion, PDF page 86, printed page 74, extracted lines 3222–3227](https://digitalcommons.unl.edu/dissunl/339/); extraction lines 3222–3227; author stated question or direction.
+
+### L-F188-finite-quotient-tensor
+
+If S is a Macaulay ring, x is a new variable, and n exceeds every degree in S, then S tensor K[x]/(x^n) is a Macaulay ring.
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Conjecture 7.4 states this tensor-product claim. The weaker Conjecture 7.2, with only n>0, is refuted in the same section and is not this target. Present-day resolution was not assessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F188: Conjecture 7.4, PDF page 30, printed page 30, extracted lines 1797–1798. The formula was read from the rendered page; the text layer drops the superscript on n](https://arxiv.org/abs/2502.15166); extraction lines 1797–1798; author stated question or direction.

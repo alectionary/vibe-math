@@ -1,5 +1,6 @@
 # Research reference
 
+- [Replication plan](#replication-plan)
 - [Headline, direction and uncertainty inventory](#headline-direction-and-uncertainty-inventory)
 - [Engine](#engine)
 - [Recovering a printed number is not the procedure](#recovering-a-printed-number-is-not-the-procedure)
@@ -10,6 +11,17 @@
 - [Availability ledger](#availability-ledger)
 
 Read only for the corresponding stage in [SKILL.md](../SKILL.md).
+
+## Replication plan
+
+Before any fit or simulation, write `REPLICATION-PLAN.yaml` in the study
+directory and commit it. That commit is the baseline the done check diffs.
+List every substantive part: studies and chapters, research questions and
+hypotheses, analyses, simulation arms and conditions, and the headline
+conclusions. Each part has a stable `id`, a `kind`, a short `label`, and a
+`plan` note that says how we will replicate it. The schema, statuses, and
+`preflight.py done` command are in [SKILL.md](../SKILL.md#replication-plan).
+Do not put analysis code in that first commit.
 
 ## Headline, direction and uncertainty inventory
 
@@ -129,9 +141,15 @@ Run feasible checks; explicitly justify blocked or resource-limited checks with
 a stopping record. Such records permit an honest incomplete result, not success. A headline arm is every
 estimator, condition, or model the original conclusion rests on.
 
-If compute limits force a subset, run that subset, size it to the budget,
-and document the subset in the note. Keep the arm in the inventory even if no feasible run is possible; record the blocker and withhold its verdict. Estimate run time
-before a long simulation, and stay inside the research time budget.
+Replicate the full design: every condition, arm, table, and analysis the
+dissertation reports, whenever that work is feasible. A subset or a reduced
+replication count is a last resort. Record a cost estimate and what was tried
+on that plan part, put the exact counts in the paper and the abstract (for
+example, `8 of 208`), and keep the headline verdict to the runs that finished.
+An arm that cannot be run stays in the plan with status `not_attempted` or
+`input_unavailable` and a reason. Estimate run time before a long simulation.
+Stopping after a headline-carrying subset, such as 8 of 208 settings, is not
+a completed replication.
 
 A gap between a printed number and our number is the start of an
 investigation. It is not yet a discrepancy. For each gap, write the
@@ -193,6 +211,28 @@ for the printed powers 64, 77, and 96 is on the order of \(10^{-12}\) only
 under that independence assumption
 ([printed_probability.py](../../../../formalization/correlated-residuals/simulation/printed_probability.py)).
 The figure does not say how the printed numbers were obtained.
+
+## Source text and rendered pages
+
+Before the manuscript says that a source, or its pages, is unavailable, attempt
+each public route and record the target and the result in
+`provenance/source-acquisition.json`:
+
+- the repository record
+- the direct PDF
+- ProQuest, DigitalCommons, or another institutional repository
+- an arXiv or author version
+
+`not attempted` is not a result. Text that was read and pages that were
+visually inspected are separate records (`text_read` with `"mode": "text"`,
+and `rendered_pages_inspected` with `"mode": "visual"`). Reading an extracted
+text file does not inspect figures, tables, or equations. Whenever the PDF is
+obtainable, visual inspection of every page that supports a headline or
+Published entry is a pre-merge requirement: list those pages in
+`headline_pages` and include them in `rendered_pages_inspected.pages`. If the
+PDF was obtained, do not describe the source or those pages as unavailable.
+`preflight.py done` checks this record. The route log and the page list bind
+the attempt; they do not prove that a figure means what the prose says.
 
 ## Availability ledger
 

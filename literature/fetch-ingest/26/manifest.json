@@ -1,0 +1,135 @@
+{
+  "manifest_version": "0.2",
+  "manifest_id": "vibe-math-26-worker-20261102",
+  "supersedes": null,
+  "recorded_at": "2026-11-02T17:25:00Z",
+  "producer": {
+    "role": "retrieval_worker",
+    "name": "grokbot-retrieval-worker-20261102"
+  },
+  "campaign_id": null,
+  "priority": "normal",
+  "retryable": false,
+  "requested_source_id": "10.1093/bib/bbt061",
+  "issue": {
+    "repository": "alectionary/vibe-math",
+    "number": 26,
+    "url": "https://github.com/alectionary/vibe-math/issues/26"
+  },
+  "document": {
+    "title": "An efficient approach to large-scale genotype–phenotype association analyses",
+    "author": "Runqing Yang, Hongwang Li, and Lina Fu",
+    "year": 2013,
+    "document_type": "article",
+    "stable_ids": [
+      {
+        "scheme": "doi",
+        "value": "10.1093/bib/bbt061"
+      }
+    ]
+  },
+  "discovered_identifiers": [],
+  "routes_tried": [
+    {
+      "id": "doi-resolution-26-0",
+      "route": "doi-resolution@1",
+      "url": "https://doi.org/10.1093/bib/bbt061",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "HTTP 403 challenge at academic.oup.com. No PDF bytes."
+    },
+    {
+      "id": "openalex-oa-26-1",
+      "route": "openalex-oa@1",
+      "url": "https://api.openalex.org/works/doi:10.1093/bib/bbt061",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "HTTP 200, bronze OA; publisher PDF only. No PDF bytes."
+    },
+    {
+      "id": "unpaywall-oa-26-2",
+      "route": "unpaywall-oa@1",
+      "url": "https://api.unpaywall.org/v2/10.1093/bib/bbt061",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "HTTP 200 metadata. No PDF bytes."
+    },
+    {
+      "id": "publisher-landing-26-3",
+      "route": "publisher-landing@1",
+      "url": "https://academic.oup.com/bib/article-pdf/15/5/814/17489820/bbt061.pdf",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "HTTP 403 challenge page. No PDF bytes."
+    },
+    {
+      "id": "browser-26",
+      "route": "browser-download@1",
+      "url": "https://academic.oup.com/bib/article-pdf/15/5/814/17489820/bbt061.pdf",
+      "resolved_url": null,
+      "method": "browser",
+      "attempted_at": "2026-11-02T17:10:00Z",
+      "http_status": null,
+      "error_category": null,
+      "obtained_bytes": true,
+      "notes": "Real browser on OUP; Download PDF saved the complete 9-page PDF."
+    }
+  ],
+  "question_screen": {
+    "status": "not_screened",
+    "question_count": null,
+    "candidates": [],
+    "screen_owner": "research_agent"
+  },
+  "outcome": "verified",
+  "artifact": {
+    "media_type": "application/pdf",
+    "sha256": "480f4f39ee6f5efd396188213fcf1994e4b86dae5e45ead344eb4721f16fe284",
+    "byte_length": 246102,
+    "page_count": 9,
+    "committed_to_git": false,
+    "storage": {
+      "kind": "worker_local",
+      "locator": "worker/26/paper.pdf",
+      "cross_machine": false
+    }
+  },
+  "completeness": {
+    "classification": "complete_body",
+    "identity_matched": true,
+    "front_matter_only": false,
+    "preview": false,
+    "evidence": [
+      "First page reads Briefings in Bioinformatics vol 15 no 5, 814-822, doi:10.1093/bib/bbt061, 'An efficient approach to large-scale genotype-phenotype association analyses', Runqing Yang, Hongwang Li, Lina Fu and Yongxin Liu; advance access 2013; matches the request.",
+      "Page count is 9. Body and the reference list through the final page are present in the extracted text.",
+      "Extracted text is 58373 Unicode characters (text_characters), distinct from the PDF byte_length 246102 bytes."
+    ]
+  },
+  "extraction": {
+    "status": "extracted",
+    "method": "born_digital",
+    "ocr_applied": false,
+    "ocr_engine": null,
+    "readable": true,
+    "text_sha256": "a4215eaf1fee7c6c7d753e4becfe64451140ff59d07dfe2e0d1e7d668f5284f7",
+    "text_characters": 58373,
+    "unreadable_reason": null
+  },
+  "notes": "Complete PDF saved by the browser pass to worker/26/paper.pdf; headless routes had hit bot mitigation. pdftotext -layout gave readable text; OCR not run. Question count stays null. Request campaign is not a valid campaign_id under the schema pattern, so campaign_id is null."
+}
