@@ -736,6 +736,26 @@ Two complete primary screens add one specific M2 square-minimization algorithm q
 - [L-F178-inverse-optimization-algorithms](OPEN-PROBLEMS.md#l-f178-inverse-optimization-algorithms): Develop efficient or strongly polynomial inverse-optimization algorithms using the box-TDI framework.
 - [L-F179-polymatroid-norm-constraints](OPEN-PROBLEMS.md#l-f179-polymatroid-norm-constraints): Determine tractability of two-polymatroid-base cost minimization with an arbitrary-norm distance bound, especially the Euclidean norm.
 
-Current cohort: **430 canonical entries,161 eligible targets,213 paper records,170 full-text screens**; **6/161 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: fetched-papers-2026-11-02
 
-The current source index has **141** records, with actual access levels retained.
+Seven verified fetch manifests were screened. Five citing papers of Mi et al. 2010 are new records F182–F186. F150, previously an access gap, now has a complete-text screen with question count 0. Cunningham 1984 is F173. One method direction and one eligible algorithmic question were added. Present resolution and Lean discovery were not assessed. PDF bytes are not committed.
+
+[Screen report](../literature/fetched-papers-2026-11-02.md). Added **2 entries**, **1 eligible targets**, **5 paper records**, **7 full-text screens** and **0 completed proofs**.
+
+- [L-F182-stacking-mse-asymptotics](OPEN-PROBLEMS.md#l-f182-stacking-mse-asymptotics): Combine the stated asymptotic clauses to give pointwise MSE forms for the (PC, LM) and (NW, LM) predictors.
+- [L-F173-strongly-polynomial-sfm](OPEN-PROBLEMS.md#l-f173-strongly-polynomial-sfm): Find a strongly polynomial algorithm for submodular function minimization, or a practical combinatorial polynomial-time method.
+
+## Separate indexing extension: fetch-ingest-11-12-2026-11-02
+
+Fetch issues 11 and 12 were screened. Issue 11 is the Morris dissertation already stored as source-manifest id 2025-Morris; F187 links that seed and does not add a second file. Three Chapter 6 directions were recorded. Issue 12 is arXiv:2502.15166v2, a new row F188. Conjecture 7.2 is refuted in the paper. Conjecture 7.4 is the one eligible target. Present resolution and Lean discovery were not assessed. PDF bytes are not committed.
+
+[Screen report](../literature/fetched-papers-2026-11-02-issues-11-12.md). Added **4 entries**, **1 eligible targets**, **2 paper records**, **2 full-text screens** and **0 completed proofs**.
+
+- [L-F187-nonabsorbing-failure-sets](OPEN-PROBLEMS.md#l-f187-nonabsorbing-failure-sets): Characterize failure-inducing sets that are not absorbing sets.
+- [L-F187-gallager-b-convergence-bound](OPEN-PROBLEMS.md#l-f187-gallager-b-convergence-bound): Ask whether the graphical condition that guarantees Gallager-B convergence in two iterations can be relaxed.
+- [L-F187-redundancy-other-families](OPEN-PROBLEMS.md#l-f187-redundancy-other-families): Study the effect of redundant parity checks on lifted-product and balanced-product QLDPC families.
+- [L-F188-finite-quotient-tensor](OPEN-PROBLEMS.md#l-f188-finite-quotient-tensor): If S is a Macaulay ring, x is a new variable, and n exceeds every degree in S, then S tensor K[x]/(x^n) is a Macaulay ring.
+
+Current cohort: **436 canonical entries,163 eligible targets,220 paper records,179 full-text screens**; **6/163 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **148** records, with actual access levels retained.

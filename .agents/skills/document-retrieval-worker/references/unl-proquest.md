@@ -56,7 +56,12 @@ URL is temporary and signed. `media.proquest.com` is listed as a temporary host
 in the route catalog; do not put it, or any signed query, in the manifest.
 
 Non-open-access records served watermarked preview PDFs of about 10 to 24
-pages. Outcome `preview_only`. A later public copy can still exist.
+pages. Save that file and use outcome `preview_only` so the hash cannot later
+be treated as the full text. A watermarked Document Preview that was seen and
+not saved has no hash: log `proquest-browser@1` with `error_category`
+`preview_only`, `obtained_bytes` false, and notes that say the preview was not
+saved. Outcome `needs_human`, `artifact` null, classification `not_obtained`.
+A later public copy can still exist.
 
 The positive control is `aai:AAI3402936` / `proquest-docview:305217740`:
 open-access Download PDF, 283 pages, sha256

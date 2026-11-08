@@ -1,18 +1,20 @@
 {
-  "catalog_version": 2,
+  "catalog_version": 3,
   "applicability": {
     "identifier_source": "document.stable_ids",
     "discovered_identifiers_expand_routes": false,
     "backfill_earlier_routes": false,
     "log_skipped_routes_after_complete_bytes": false
   },
+  "requires_match_values": ["any", "all", "always", "prefixes"],
   "temporary_hosts": ["media.proquest.com"],
   "identifier_prefixes": [
     {"prefix": "aai", "pattern": "^AAI\\d+$", "site": "unl-proquest"},
     {"prefix": "bepress", "pattern": "^[a-z0-9]+/\\d+$", "site": "unl-proquest"},
     {"prefix": "proquest-docview", "pattern": "^\\d+$", "site": "unl-proquest"},
     {"prefix": "proquest-publication", "pattern": "^\\d+$", "site": "unl-proquest"},
-    {"prefix": "core", "pattern": "^\\d+$", "site": "unl-proquest"}
+    {"prefix": "core", "pattern": "^\\d+$", "site": "unl-proquest"},
+    {"prefix": "pmcid", "pattern": "^PMC\\d+$", "site": "pmc-oa"}
   ],
   "routes": [
     {
@@ -20,6 +22,7 @@
       "order": 10,
       "scope": "generic",
       "requires": ["doi"],
+      "requires_match": "any",
       "tool": "curl",
       "status": "active",
       "summary": "Resolve https://doi.org/<DOI> with curl and follow the landing page."
@@ -29,6 +32,7 @@
       "order": 20,
       "scope": "generic",
       "requires": ["arxiv"],
+      "requires_match": "any",
       "tool": "curl",
       "status": "active",
       "summary": "Download the arXiv PDF for the id."
@@ -38,6 +42,8 @@
       "order": 30,
       "scope": "generic",
       "requires": [],
+      "requires_match": "always",
+      "requires_note": "Empty requires is not an omission. OpenAlex accepts a DOI, an arXiv id, or the title, and the title is on every request, so the route is not gated on a scheme.",
       "tool": "curl",
       "status": "active",
       "summary": "Read OpenAlex open-access locations for the DOI, arXiv id, or title."
@@ -47,15 +53,30 @@
       "order": 40,
       "scope": "generic",
       "requires": ["doi"],
+      "requires_match": "any",
       "tool": "curl",
       "status": "active",
-      "summary": "Read Unpaywall open-access locations for the DOI."
+      "summary": "Read Unpaywall open-access locations for the DOI. The API contact address comes from UNPAYWALL_EMAIL and is not written into the manifest URL. See references/unpaywall.md."
+    },
+    {
+      "id": "pmc-oa-package@1",
+      "order": 45,
+      "scope": "generic",
+      "requires": [],
+      "requires_prefixes": ["pmcid"],
+      "requires_match": "prefixes",
+      "requires_note": "Applies when an archive_record value starts with pmcid:. A PMCID learned from OpenAlex or Unpaywall in this same run is still fetched and logged. That discovery does not backfill an earlier route and does not, by itself, reopen a not_found issue.",
+      "tool": "curl",
+      "status": "active",
+      "summary": "Download the article PDF from the public PMC Open Access dataset over HTTPS. No cloud credentials. See references/pmc-oa.md."
     },
     {
       "id": "publisher-landing@1",
       "order": 50,
       "scope": "generic",
-      "requires": [],
+      "requires": ["doi", "url"],
+      "requires_match": "any",
+      "requires_note": "any: a DOI or a canonical URL is enough. An arXiv id or an archive record alone does not select this route.",
       "tool": "curl",
       "status": "active",
       "summary": "Open the publisher landing page with curl and follow its public download control."
@@ -65,6 +86,8 @@
       "order": 75,
       "scope": "generic",
       "requires": ["doi", "url"],
+      "requires_match": "any",
+      "requires_note": "any, not all: a DOI or a URL makes the route applicable. It does not require both. Call the availability API only when an earlier curl route followed an open-access https URL onto a redirect, an empty platform, or a page with no file. A DOI is listed because resolution is how that URL often appears. If no moved URL appeared, log one not_found row and say the API was not called. If complete bytes are already stored, skip this route and do not log it.",
       "tool": "curl",
       "status": "active",
       "summary": "After an open-access link moves, query the Wayback availability API and fetch the raw file with the id_ URL."
@@ -74,6 +97,8 @@
       "order": 52,
       "scope": "site",
       "site": "unl-proquest",
+      "requires": [],
+      "requires_match": "prefixes",
       "requires_prefixes": ["proquest-publication", "aai"],
       "tool": "curl",
       "status": "active",
@@ -83,7 +108,9 @@
       "id": "institutional-repository@1",
       "order": 60,
       "scope": "generic",
-      "requires": [],
+      "requires": ["url", "archive_record"],
+      "requires_match": "any",
+      "requires_note": "any: a repository URL or an archive_record. A DOI alone does not select this route. A PMC Open Access package uses pmc-oa-package@1, not this id.",
       "tool": "curl",
       "status": "active",
       "summary": "Fetch an institutional-repository record and its public file with curl."
@@ -93,6 +120,8 @@
       "order": 61,
       "scope": "site",
       "site": "unl-proquest",
+      "requires": [],
+      "requires_match": "prefixes",
       "requires_prefixes": ["aai", "bepress"],
       "tool": "curl",
       "status": "active",
@@ -103,6 +132,8 @@
       "order": 62,
       "scope": "site",
       "site": "unl-proquest",
+      "requires": [],
+      "requires_match": "prefixes",
       "requires_prefixes": ["core"],
       "tool": "curl",
       "status": "active",
@@ -113,6 +144,8 @@
       "order": 70,
       "scope": "generic",
       "requires": [],
+      "requires_match": "always",
+      "requires_note": "The author string is on every request and is not a stable-id scheme. Run the route until complete bytes are stored. Log the page that was opened, as the worker skill describes.",
       "tool": "curl",
       "status": "active",
       "summary": "Check the author or departmental page for a manuscript copy."
@@ -122,6 +155,8 @@
       "order": 80,
       "scope": "generic",
       "requires": [],
+      "requires_match": "always",
+      "requires_note": "Not gated on a stable-id scheme. Run it only when a page answered with a bot check, a cookie wall, or a challenge and no route has complete bytes. If no challenge page remains, log one not_found row. If complete bytes are already stored, skip it and do not log it.",
       "tool": "browser",
       "status": "active",
       "summary": "Open the record in a real browser, pass a cookie banner or bot check, and activate Download."
@@ -131,6 +166,8 @@
       "order": 81,
       "scope": "site",
       "site": "unl-proquest",
+      "requires": [],
+      "requires_match": "prefixes",
       "requires_prefixes": ["aai", "bepress"],
       "tool": "browser",
       "status": "active",
@@ -141,10 +178,12 @@
       "order": 82,
       "scope": "site",
       "site": "unl-proquest",
+      "requires": [],
+      "requires_match": "prefixes",
       "requires_prefixes": ["proquest-docview", "proquest-publication"],
       "tool": "browser",
       "status": "active",
-      "summary": "Browser Download PDF on a ProQuest docview page."
+      "summary": "Browser Download PDF on a ProQuest docview page. A watermarked preview that is seen and not saved is needs_human, with error_category preview_only and obtained_bytes false. A saved preview is preview_only and keeps its hash."
     }
   ]
 }

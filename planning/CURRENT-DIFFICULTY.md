@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 30, 2026. Low-confidence planning priors for all 430 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated November 2, 2026. Low-confidence planning priors for all 436 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Inventory updated October 30, 2026. Low-confidence planning priors for all 430 e
 | 3 | 38 | 22 |
 | 4 | 41 | 41 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 56 | 56 |
+| Unestimated / scope gate | 58 | 58 |
 
 ### 2026-Geraci-O01
 
@@ -6701,3 +6701,99 @@ First milestone: Specify the norm representation, submodular evaluation oracle, 
 Gate: Specify the norm representation, submodular evaluation oracle, numerical data and exact-versus-approximate output. Preserve the Euclidean subcase and conjectured convex-optimization approach within this single question.
 
 Basis: Dated full-text source-question accounting; no current-resolution, Lean-discovery or effort assessment claimed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f179-polymatroid-norm-constraints).
+
+### L-F182-stacking-mse-asymptotics
+
+Combine the stated asymptotic clauses to give pointwise MSE forms for the (PC, LM) and (NW, LM) predictors.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The source conjectures that two named asymptotic clauses combine. It does not display the resulting MSE expression, so the formal statement is not yet fixed.
+
+First milestone: Write the pointwise MSE forms and the hypotheses taken from Theorem 3.2 and Theorem 3.3.
+
+Gate: Write the asymptotic pointwise MSE expressions obtained by combining Theorem 3.3, Clause 1, with Theorem 3.2, Clause 2 or Clause 3, for the (PC, LM) and (NW, LM) predictors, including the hypotheses those clauses use.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f182-stacking-mse-asymptotics).
+
+### L-F173-strongly-polynomial-sfm
+
+Find a strongly polynomial algorithm for submodular function minimization, or a practical combinatorial polynomial-time method.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The 1984 text states a strongly polynomial, or practical combinatorial polynomial-time, algorithm for submodular function minimization as open. Later resolution was not checked, so no effort tier is assigned.
+
+First milestone: Freeze the oracle model and the polynomial bound, then check whether a later paper already gives the algorithm, before any formalization.
+
+Gate: State the evaluation-oracle model, the input size, and the strongly polynomial or practical combinatorial bound. Do not treat the 1984 open label as a present-day status.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f173-strongly-polynomial-sfm).
+
+### L-F187-nonabsorbing-failure-sets
+
+Characterize failure-inducing sets that are not absorbing sets.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Chapter 6 says a characterization of non-absorbing failure-inducing sets remains open. It does not name the description, so no effort tier is assigned.
+
+First milestone: Freeze the decoder and the failure predicate, then write the combinatorial description the conclusion asks for.
+
+Gate: Name the decoder, the failure-inducing condition, and the combinatorial description that would count as a characterization. The dissertation leaves the description unnamed.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f187-nonabsorbing-failure-sets).
+
+### L-F187-gallager-b-convergence-bound
+
+Ask whether the graphical condition that guarantees Gallager-B convergence in two iterations can be relaxed.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Chapter 6 asks whether a strong two-iteration condition can be lightened. It does not state the weaker theorem, so no effort tier is assigned.
+
+First milestone: Quote the two-iteration hypothesis and write one explicit relaxation.
+
+Gate: State the graphical hypothesis that the dissertation uses for two-iteration convergence, and the weakened hypothesis or the iteration bound being asked about.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f187-gallager-b-convergence-bound).
+
+### L-F187-redundancy-other-families
+
+Study the effect of redundant parity checks on lifted-product and balanced-product QLDPC families.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Chapter 6 names lifted-product and balanced-product codes as further redundancy cases. It does not fix an estimand, so no effort tier is assigned.
+
+First milestone: Choose one named family and write the redundancy operation and the quantity being compared.
+
+Gate: Fix the code family, the redundancy operation, and the decoder and performance measure.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f187-redundancy-other-families).
+
+### L-F188-finite-quotient-tensor
+
+If S is a Macaulay ring, x is a new variable, and n exceeds every degree in S, then S tensor K[x]/(x^n) is a Macaulay ring.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Conjecture 7.4 is a stated tensor-product claim. The weaker n>0 form is refuted in the same section. Later resolution was not checked, so no effort tier is assigned.
+
+First milestone: Freeze Conjecture 7.4, then check whether a later paper already proves or refutes it, before any formalization.
+
+Gate: State the Macaulay-ring hypotheses and the degree bound on n as Conjecture 7.4. Do not treat the 2026 proposal as a present-day status.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f188-finite-quotient-tensor).

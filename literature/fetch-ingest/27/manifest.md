@@ -1,0 +1,145 @@
+<!-- fetch-manifest: vibe-math-27-worker-20261102 -->
+
+```json
+{
+  "manifest_version": "0.2",
+  "manifest_id": "vibe-math-27-worker-20261102",
+  "supersedes": null,
+  "recorded_at": "2026-11-02T17:05:00Z",
+  "producer": {
+    "role": "retrieval_worker",
+    "name": "grokbot-retrieval-worker-20261102"
+  },
+  "campaign_id": null,
+  "priority": "normal",
+  "retryable": false,
+  "requested_source_id": "10.1111/jwas.12782",
+  "outcome": "verified",
+  "issue": {
+    "repository": "alectionary/vibe-math",
+    "number": 27,
+    "url": "https://github.com/alectionary/vibe-math/issues/27"
+  },
+  "document": {
+    "title": "Understanding the metabolome and metagenome as extended phenotypes: The next frontier in macroalgae domestication and selection",
+    "author": "Kelly DeWeese and Melisa G. Osborne",
+    "year": 2021,
+    "document_type": "article",
+    "stable_ids": [
+      {
+        "scheme": "doi",
+        "value": "10.1111/jwas.12782"
+      }
+    ]
+  },
+  "discovered_identifiers": [
+    {
+      "scheme": "other",
+      "value": "pmcid:PMC8562568",
+      "route": "openalex-oa@1"
+    }
+  ],
+  "routes_tried": [
+    {
+      "id": "doi-27",
+      "route": "doi-resolution@1",
+      "url": "https://doi.org/10.1111/jwas.12782",
+      "resolved_url": "https://onlinelibrary.wiley.com/doi/10.1111/jwas.12782",
+      "method": "headless",
+      "attempted_at": "2026-11-02T17:00:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "Followed to the publisher landing, which returned a challenge page; no PDF bytes."
+    },
+    {
+      "id": "openalex-27",
+      "route": "openalex-oa@1",
+      "url": "https://api.openalex.org/works/doi:10.1111/jwas.12782",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T17:00:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "OpenAlex lists the publisher PDF https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jwas.12782 and a PubMed Central location PMC8562568. Metadata only; no PDF bytes."
+    },
+    {
+      "id": "unpaywall-27",
+      "route": "unpaywall-oa@1",
+      "url": "https://api.unpaywall.org/v2/10.1111/jwas.12782",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T17:00:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "Unpaywall is_oa true: publisher PDF URL plus PubMed Central repository locations. Metadata only; no PDF bytes."
+    },
+    {
+      "id": "publisher-pdf-27",
+      "route": "publisher-landing@1",
+      "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jwas.12782",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T17:00:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "HTTP 403 HTML challenge page, not a PDF. Bot mitigation, not a paywall."
+    },
+    {
+      "id": "pmc-oa-27",
+      "route": "institutional-repository@1",
+      "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8562568.1/PMC8562568.1.pdf",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T17:00:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": true,
+      "notes": "PubMed Central Open Access dataset copy of PMC8562568 (NIH/HHS author manuscript in PMC, not the Wiley typeset version). Ordinary public https object; complete PDF bytes stored."
+    }
+  ],
+  "artifact": {
+    "media_type": "application/pdf",
+    "sha256": "48dd4be4d8f6bcb18a949754307023a5ee214cbb9c0192ea0e05942341026c8e",
+    "byte_length": 939379,
+    "page_count": 28,
+    "committed_to_git": false,
+    "storage": {
+      "kind": "worker_local",
+      "locator": "worker/27/paper.pdf",
+      "cross_machine": false
+    }
+  },
+  "completeness": {
+    "classification": "complete_body",
+    "identity_matched": true,
+    "front_matter_only": false,
+    "preview": false,
+    "evidence": [
+      "First page is the HHS Public Access author manuscript, 'Published in final edited form as: J World Aquac Soc. 2021 October; 52(5): 1009-1030. doi:10.1111/jwas.12782', authors Kelly J. DeWeese and Melisa G. Osborne. The printed title ends 'domestication and improvement'; the request title says 'selection'. Same DOI and authors, so identity is matched; the request title wording differs.",
+      "Page count is 28. Abstract, body, and the reference list through the final page are present in the extracted text.",
+      "Extracted text is 148324 Unicode characters (text_characters), distinct from the PDF byte_length 939379 bytes."
+    ]
+  },
+  "extraction": {
+    "status": "extracted",
+    "method": "born_digital",
+    "ocr_applied": false,
+    "ocr_engine": null,
+    "readable": true,
+    "text_sha256": "b497c872f4bc0a55270c0bc17b9a32f6c513a6c24a5538636c0a0679f687c905",
+    "text_characters": 148324,
+    "unreadable_reason": null
+  },
+  "question_screen": {
+    "status": "not_screened",
+    "question_count": null,
+    "candidates": [],
+    "screen_owner": "research_agent"
+  },
+  "notes": "Retrieved headless from the PubMed Central Open Access dataset (NIH/HHS author manuscript in PMC, not the Wiley typeset version). Publisher PDF routes returned challenge pages. pdftotext -layout gave readable text; OCR not needed. Wayback and browser routes were not run because complete bytes were already stored. Question count stays null. Request campaign L-F102-correlated-residuals is not a valid campaign_id under the schema pattern, so campaign_id is null."
+}
+```

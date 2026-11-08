@@ -34,12 +34,22 @@ our evidence. Then any reversal of direction, with both sets of numbers.
 Supporting detail comes after that. The research question comes after the
 verdict, not before it.
 
+Match the opening verdict to `REPLICATION-PLAN.yaml`. The abstract says
+replicated only when every headline part was fully run. A reduced headline
+uses partly replicated, and the abstract and the body both state the exact
+counts as `N of M` (for example, `8 of 208`). An unavailable or unrun headline
+is not established. A mismatch is not replicated. Write "fully replicated",
+"replicated every condition", or "replicated the whole dissertation" only
+when every plan part was fully run.
+
 State the match tolerance and the direction of each key effect or ordering
 on page 1, in the abstract or in the headline table. Use "reported" or
 "concluded". Do not write "the author claims".
 
 Put the headline table immediately after the abstract, before the
-introduction. Columns: scientific estimand/claim, published signed effect, ours,
+introduction. Columns must distinguish the scientific claim, published finding, our finding,
+and comparison. Preserve the published signed effect and our signed effect where
+applicable, separately from the findings. Comparison columns include
 Effect magnitude, direction, scientific verdict. Magnitude is smaller/same/larger
 at the declared rounding-aware or prespecified tolerance, or not established
 for unresolved/unstable estimates. Keep reversals explicit even when absolute
@@ -47,8 +57,9 @@ magnitudes agree. These are descriptive point estimates, not equivalence; keep
 uncertainty-supported inferences separate. See the first-page contract for the
 structured fields and rendered checks.
 The verdict is one of `match`, `partial`, `close`, `no match`,
-`not separated`. Use `not separated` when a ranking is not established under
-the stated uncertainty analysis; a descriptive magnitude label of `same` does
+`not separated`, or `unassessed`. Use `unassessed` when no comparable test, fit,
+or independent proof assessment was completed. Reserve `not separated` for a
+ranking unresolved under an actual uncertainty analysis; a descriptive magnitude label of `same` does
 not establish that result or equivalence. The caption or abstract states the
 comparison tolerance and distinguishes it from sampling uncertainty.
 
