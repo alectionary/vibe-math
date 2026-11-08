@@ -1,112 +1,15 @@
 #!/usr/bin/env python3
-"""Write lean-appendix.tex: complete bodies of the central Lean declarations, taken from the
-checked files in ../lean, with current (master) and commit-pinned links to each declaration.
+"""Write lean-appendix.tex: complete bodies of the central Lean declarations, with current
+(master) and commit-pinned links to each, from lean-appendix.json.
 
-  python3 gen_lean_appendix.py      (run from this directory; rerun after the Lean files change)
+  python3 gen_lean_appendix.py      (rerun after the Lean files change)
 
-Each listing is checked against the pinned commit: the declaration must start at the same line
-with identical text, so the master and pinned links show the same proof.
+The work is done by the shared verified-release script scripts/release/lean_appendix.py,
+which fails if a declaration differs from its pinned copy.
 """
-import re, subprocess
+import runpy, sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-LEAN = HERE.parent / 'lean'
-REPO = 'https://github.com/alectionary/vibe-math'
-CDIR = 'formalization/canonical-width/c16/lean'
-PIN = {'C16Frames.lean': 'e534c654d83261929da5f0bd4a1cd24db09d06c9',
-       'Aut.lean': 'e5bc8a686da85d9de8c326de41d0076974fcbb16'}
-GPT = '7820f6af3f4be5aadc452914153eaff74d7c20c2'
-
-GROUPS = [
-    ('Frame identity and the search lemmas', 'C16Frames.lean',
-     ['gram_one_iff_sum_outer', 'exists_pair_of_residual_entry', 'first_member_unique',
-      'induced_matching_le_rank']),
-    ('The symmetry group', 'Aut.lean',
-     ['col_iter_equiv', 'aut_of_certificate', 'class_v0', 'dM_id', 'aut_classification']),
-    ('Certificate soundness: the generic search kernel', 'CertGPTKernel.lean',
-     ['RulesSound', 'checkChildren_sound', 'check_sound']),
-    ('Certificate soundness: the concrete frame semantics', 'CertGPTCompletion.lean',
-     ['Completion', 'completionRulesSound']),
-    ('From a swap-invariant frame to a root completion', 'CertGPTRoot.lean',
-     ['frame_root_completion', 'no_swap_frame_of_check']),
-    ('The concrete theorem for the swap class', 'CertGPTNoSwap.lean',
-     ['no_finite_swap_frame_of_check', 'no_swap_frame']),
-    ('Bridge to the $(S,T)$ form of the paper', 'CertGPTVertex.lean',
-     ['no_swap_vertex_frame_of_no_pair']),
-]
-
-START = re.compile(r'^\s*(?:private |protected )?(?:noncomputable )?(theorem|lemma|def|structure|inductive|abbrev) ([^\s:({\[]+)')
-TOP = re.compile(r'^(?:\s?(?:private |protected )?(?:noncomputable )?(?:theorem|lemma|def|structure|inductive|abbrev|instance)\b|/-|#|@\[|end |section|namespace|open |variable|set_option)')
-
-def extract(lines, name):
-    for i, l in enumerate(lines):
-        m = START.match(l)
-        if m and m.group(2) == name:
-            j = i + 1
-            while j < len(lines) and not TOP.match(lines[j]):
-                j += 1
-            while lines[j - 1].strip() == '':
-                j -= 1
-            # include a doc comment directly above
-            k = i
-            if k > 0 and lines[k - 1].rstrip().endswith('-/'):
-                while not lines[k - 1].lstrip().startswith('/-'):
-                    k -= 1
-                k -= 1
-            return i + 1, '\n'.join(lines[k:j])
-    raise SystemExit(f'declaration {name} not found')
-
-SYM = {'→': r'\to', '↔': r'\leftrightarrow', '∀': r'\forall', '∃': r'\exists', '∈': r'\in',
-       '∉': r'\notin', '≤': r'\le', '≥': r'\ge', '≠': r'\ne', '¬': r'\neg', '∧': r'\wedge',
-       '∨': r'\vee', 'ℕ': r'\mathbb N', 'ℤ': r'\mathbb Z', '⟨': r'\langle', '⟩': r'\rangle',
-       '·': r'\cdot', '∑': r'\sum', '⬝': r'\cdot', 'ᵥ': r'_v', '×': r'\times', '∘': r'\circ',
-       'σ': r'\sigma', 'φ': r'\varphi', 'π': r'\pi', 'τ': r'\tau', 'α': r'\alpha', 'β': r'\beta',
-       'γ': r'\gamma', 'ι': r'\iota', 'κ': r'\kappa', 'λ': r'\lambda', 'ω': r'\omega',
-       '≃': r'\simeq', '⁻': r'^{-}', '¹': r'^{1}', '₀': r'_0', '₁': r'_1', '₂': r'_2', 'ᵀ': r'^{\mathsf T}',
-       '⊆': r'\subseteq', '∩': r'\cap', '∪': r'\cup', '∅': r'\emptyset', '≫': r'\gg', '▸': r'\triangleright',
-       '⦃': r'\{\!|', '⦄': r'|\!\}', '‖': r'\|', '⊥': r'\bot', '⊤': r'\top', '∣': r'\mid', '•': r'\bullet',
-       '⁅': '[', '⁆': ']', '×ˢ': r'\times', 'ˢ': r'^s', '⊔': r'\sqcup', '⊓': r'\sqcap', 'Δ': r'\Delta', 'Σ': r'\Sigma'}
-
-SYM.update({'ψ': r'\psi', '←': r'\leftarrow', '—': '--', '–': '-', 'ᵢ': r'_i', 'ⁿ': r'^n',
-            '⁸': r'^8', '⊢': r'\vdash', '…': r'\ldots', 'δ': r'\delta', 'ₗ': r'_l', '↥': r'\uparrow',
-            '≅': r'\cong', '₆': r'_6'})
-
-def tex(code):
-    out = []
-    for ch in code:
-        if ord(ch) < 128:
-            out.append(ch)
-        elif ch in SYM:
-            out.append('(*@\\ensuremath{' + SYM[ch] + '}@*)')
-        else:
-            raise SystemExit(f'no LaTeX mapping for {ch!r} (U+{ord(ch):04X})')
-    return ''.join(out)
-
-def git_show(rev, path):
-    r = subprocess.run(['git', 'show', f'{rev}:{CDIR}/{path}'], capture_output=True, text=True,
-                       cwd=HERE)
-    if r.returncode:
-        raise SystemExit(f'cannot read {path} at {rev}')
-    return r.stdout.split('\n')
-
-def ttname(s):
-    return s.replace('_', r'\_')
-
-parts = ['% Generated by gen_lean_appendix.py. Do not edit.']
-for title, fname, names in GROUPS:
-    pin = PIN.get(fname, GPT)
-    cur = (LEAN / fname).read_text().split('\n')
-    old = git_show(pin, fname)
-    parts.append(r'\subsection*{' + title + r' (\texttt{' + ttname(fname) + '})}')
-    for n in names:
-        line, body = extract(cur, n)
-        pline, pbody = extract(old, n)
-        if (line, body) != (pline, pbody):
-            raise SystemExit(f'{fname}:{n} differs between the working tree and pinned {pin[:8]}')
-        parts.append(r'\noindent\href{' + f'{REPO}/blob/master/{CDIR}/{fname}\\#L{line}' + r'}{\texttt{'
-                     + ttname(n) + r'}}~(\href{' + f'{REPO}/blob/{pin}/{CDIR}/{fname}\\#L{line}'
-                     + r'}{pinned}), line ' + str(line) + '.')
-        parts.append(r'\begin{lstlisting}' + '\n' + tex(body) + '\n' + r'\end{lstlisting}')
-(HERE / 'lean-appendix.tex').write_text('\n'.join(parts) + '\n')
-print('wrote lean-appendix.tex:', sum(len(g[2]) for g in GROUPS), 'declarations')
+here = Path(__file__).resolve().parent
+sys.argv = ['lean_appendix.py', str(here / 'lean-appendix.json')]
+runpy.run_path(str(here.parents[3] / 'scripts' / 'release' / 'lean_appendix.py'), run_name='__main__')
