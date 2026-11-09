@@ -1,12 +1,12 @@
 {
  "writer": "isolated writer (fresh agent context)",
  "context": "fresh",
- "isolation_note": "Written from scratch in a fresh agent context that had no access to the research conversation. Read: evidence-packet.json; the template paper/approved-preamble.tex and paper/references.bib; handoff/writer-stage.md, handoff/manuscript.md, handoff/first-page-contract.md, handoff/SNAPSHOTS.md; README.md; REPLICATION-PLAN.yaml; DISAGREEMENTS.yaml; source-inventory.json; notes/availability.md and notes/run-record.md (both packet artifacts; no other notes/ file); every file listed under inputs (results/, source-values/, secondary/ outputs, r-reproduction run records, simulation/chen_sim.py and fallback.json; large CSVs were read by header and by the rows the paper cites); the local source PDF source/chen2021.pdf (title page, abstract, Chapter 5 pages 161-164 and keyword passages; recorded under local_only_inputs because it is not in git); and, outside the study, the replication-paper skill SKILL.md sections Pre-done checklist, Disagreements and Keep the paper current plus the check scripts listed under skill_inputs. Also consulted: the user's stored project working preferences (no study evidence). Not read: any earlier manuscript (.tex, .pdf, .log), paper/downloaded/, other notes/ files, provenance/, the writer-manifest.json that preceded this writer, delivery-record.json, git history or diffs, other studies. Revision: after independent cold review 10 (notes/review-10-cold-pass.md, notes/editorial-review-10.json), this same isolated writer edited its own draft against the rebuilt evidence packet (13 claims), DISAGREEMENTS.yaml (10 entries), REPLICATION-PLAN.yaml, results/disagreement_tests.json and the new files source-values/table_4_7.csv, secondary/significance_conclusions.py and results/significance_conclusions.json; it read no other notes/ file, provenance/ or git history.",
- "packet_sha256": "2a91ed9599f525efc47d82bdbecca6c2b5503d38e3cf6696812759dce917eb55",
+ "isolation_note": "Written from scratch in a fresh agent context that had no access to the research conversation. Read: evidence-packet.json; the template paper/approved-preamble.tex and paper/references.bib; handoff/writer-stage.md, handoff/manuscript.md, handoff/first-page-contract.md, handoff/SNAPSHOTS.md; README.md; REPLICATION-PLAN.yaml; DISAGREEMENTS.yaml; source-inventory.json; notes/availability.md and notes/run-record.md (both packet artifacts; no other notes/ file); every file listed under inputs (results/, source-values/, secondary/ outputs, r-reproduction run records, simulation/chen_sim.py and fallback.json; large CSVs were read by header and by the rows the paper cites); the local source PDF source/chen2021.pdf (title page, abstract, Chapter 5 pages 161-164 and keyword passages; recorded under local_only_inputs because it is not in git); and, outside the study, the replication-paper skill SKILL.md sections Pre-done checklist, Disagreements and Keep the paper current plus the check scripts listed under skill_inputs. Also consulted: the user's stored project working preferences (no study evidence). Not read: any earlier manuscript (.tex, .pdf, .log), paper/downloaded/, other notes/ files, provenance/, the writer-manifest.json that preceded this writer, delivery-record.json, git history or diffs, other studies. Revision: after independent cold review 10 (notes/review-10-cold-pass.md, notes/editorial-review-10.json), this same isolated writer edited its own draft against the rebuilt evidence packet (13 claims), DISAGREEMENTS.yaml (10 entries), REPLICATION-PLAN.yaml, results/disagreement_tests.json and the new files source-values/table_4_7.csv, secondary/significance_conclusions.py and results/significance_conclusions.json; it read no other notes/ file, provenance/ or git history. Second revision: after independent cold review 11 (notes/review-11-cold-pass.md, notes/editorial-review-11.json), the same isolated writer again edited its own draft against the rebuilt evidence-packet.json, DISAGREEMENTS.yaml and simulation/fallback.json, and derived the Monte Carlo standard error of the E2/E3 means from results/cells.csv. While locating the new revision it also displayed the latest commit message (git show --stat HEAD) once; no diffs or older history were read.",
+ "packet_sha256": "0b2145ccfaa7561cdbed1e82acb0a09d9d4bcf6824b5ad10a654fc155854ac9a",
  "inputs": [
   {
    "path": "evidence-packet.json",
-   "sha256": "2a91ed9599f525efc47d82bdbecca6c2b5503d38e3cf6696812759dce917eb55"
+   "sha256": "0b2145ccfaa7561cdbed1e82acb0a09d9d4bcf6824b5ad10a654fc155854ac9a"
   },
   {
    "path": "paper/approved-preamble.tex",
@@ -42,7 +42,7 @@
   },
   {
    "path": "DISAGREEMENTS.yaml",
-   "sha256": "b56bd9dfb359508ecc2908b1f06d60f51e125d0b5b78ba93f3c0976aaef87ee3"
+   "sha256": "65b91466de181312655a56da34737169948b6c9a6ec61b17a2f84b3a921c7ccf"
   },
   {
    "path": "source-inventory.json",
@@ -62,7 +62,7 @@
   },
   {
    "path": "simulation/fallback.json",
-   "sha256": "d348e2635a58aedc0457896de4ab238143774406f8b15b6a7052433a197f85e6"
+   "sha256": "30e0e7f4256355f4819d6c395168623db398d5ac48eeebb8eb5e1dea39e283cf"
   },
   {
    "path": "r-reproduction/README.md",
@@ -207,6 +207,14 @@
   {
    "path": "notes/editorial-review-10.json",
    "sha256": "949e6bd6da0a28e141b2e06765a9efc013ace1917e4168d6ad18cda616fa4e8d"
+  },
+  {
+   "path": "notes/review-11-cold-pass.md",
+   "sha256": "bda5460b908b3d8ef8cd21bf13f6655c2184c125d7f24665e5fc391a6d07c938"
+  },
+  {
+   "path": "notes/editorial-review-11.json",
+   "sha256": "4963dde49c5e7f7c4d6316f9edabf1d0b955ebadaf905597dcfc66c75b8a0c36"
   }
  ],
  "local_only_inputs": [
@@ -231,7 +239,7 @@
   },
   {
    "path": "../../.agents/skills/replication-paper/scripts/first_page.py",
-   "sha256": "dcabd1b7e5b9aa557d17e39c2b301079557c95083de057db1ae775945a9d295b"
+   "sha256": "e43affc0325a12adc2e22c4ba579c2df56f2c270cc0e561e1ae429622fd8552e"
   },
   {
    "path": "../../.agents/skills/replication-paper/scripts/paper_freshness.py",
@@ -269,7 +277,7 @@
  "outputs": [
   {
    "path": "paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021.tex",
-   "sha256": "e773d34f7e23345e9afb866751b75b75a17e6a872d9316f94293105f85c1c526"
+   "sha256": "c06bc906bb6d73b695cb00f4e0f1e681c37ee1b134a8e31f6a7cb4fe6ec721ef"
   },
   {
    "path": "paper/references.bib",
@@ -277,11 +285,11 @@
   },
   {
    "path": "paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf",
-   "sha256": "66416a27bb9da7e22bcea4a083fc41d6f92995835aec57ba714b9c534d6ed623"
+   "sha256": "c5ab63a7a1e06d1c087cd04392df19eac1f1ec0bf56faf44660964f5c36e9530"
   },
   {
    "path": "paper/build.log",
-   "sha256": "a47c2c79c8e9e82afc12d4a4f6b971654896bb029b62c36c8c475d5fd81fd7b4"
+   "sha256": "ce92f7b175b56e911b10a2d11b14035b2f5dac45ce3727c9aba48e00e1be632e"
   }
  ],
  "template": {
@@ -323,24 +331,24 @@
   "H1": "Table 1 row E1 (page 1); Section 4.1 (page 5); Sections 6.1-6.3 (pages 10-12); Table 3 (page 9)",
   "H2": "Table 1 rows E2-E3 (page 1); Section 4.2 (page 6); Section 6.2 (page 11); Table 3 (page 9)",
   "H3": "Table 1 row E4 (page 1); Section 4.3 (page 6); Section 6.1 (page 10); Table 3 (page 9)",
-  "H4": "Table 1 row E5 (page 1); Section 4.4 (page 7); Section 6.8 (page 14); Table 3 (page 9)",
+  "H4": "Table 1 row E5 (page 1); Section 4.4 (page 7); Section 6.8 (page 15); Table 3 (page 9)",
   "S1": "Section 4.5 (page 7); Table 3 (page 9)",
-  "S2": "Section 4.6 (page 7); Sections 6.5-6.6 (page 13); Table 3 (page 9)",
+  "S2": "Section 4.6 (page 7); Sections 6.5-6.6 (pages 13-14); Table 3 (page 9)",
   "S3": "Section 4.7 (page 7); Sections 6.5-6.7 (pages 13-14); Table 3 (page 9)",
-  "S4": "Section 4.8 (page 8) (blocked); Section 11 (page 18); Table 3 (page 9)",
+  "S4": "Section 4.8 (page 8) (blocked); Section 11 (page 19); Table 3 (page 9)",
   "S5": "Section 4.8 (page 8); Sections 6.4 and 6.9 (pages 13, 15); Table 3 (page 9)",
   "S6": "Section 4.8 (page 8) (blocked); Table 3 (page 9)",
   "S7": "Section 4.9 (page 8) (not established); Table 3 (page 9)",
-  "S8": "Section 4.9 (page 8) (blocked: announced, never reported); Table 3 (page 9)",
-  "S9": "Section 4.8 (page 8); Section 6.10 (page 15); Table 3 (page 9)"
+  "S8": "Section 4.9 (page 8) (not established: announced, never reported); Table 3 (page 9)",
+  "S9": "Section 4.8 (page 8); Section 6.10 (page 16); Table 3 (page 10)"
  },
  "limitations_map": {
-  "0": "Section 10 item 1 (page 18); Section 3.3 (page 3); Table 3 reasons (page 9)",
-  "1": "Section 10 item 2 (page 18); Sections 6.1-6.2 and 9 (pages 10-11, 17)",
-  "2": "Section 10 item 3 (page 18); Section 3.4 (page 4)",
-  "3": "Section 10 item 4 (page 18); Sections 4.8 and 11 (pages 8, 18)",
+  "0": "Section 10 item 1 (page 18); Section 3.3 (page 3); Table 3 reasons (page 10)",
+  "1": "Section 10 item 2 (page 18); Sections 6.1-6.2 and 9 (pages 10-11, 18)",
+  "2": "Section 10 item 3 (page 18); Sections 3.4 and 4.3 (pages 4, 6)",
+  "3": "Section 10 item 4 (page 18); Sections 4.8 and 11 (pages 8, 19)",
   "4": "Section 10 item 5 (page 18); Section 4.9 (page 8)",
-  "5": "Section 10 item 6 (page 18); Section 8.1 (page 16)",
+  "5": "Section 10 item 6 (page 18); Section 8.1 (page 17)",
   "6": "Section 10 item 7 (page 18)"
  },
  "first_page": {
@@ -348,9 +356,9 @@
   "abstract": {
    "bbox": [
     58.04,
-    105.39,
+    116.45,
     553.96,
-    327.54
+    341.37
    ],
    "citation_key": "chen2021",
    "source_identification": "Chen (2021)",
@@ -367,9 +375,9 @@
   "table": {
    "bbox": [
     57.04,
-    359.49,
+    376.08,
     555.04,
-    733.65
+    731.32
    ],
    "magnitude_heading": "Effect magnitude",
    "comparison_note": "Descriptive point estimates; not equivalence.",
@@ -377,66 +385,66 @@
    "ours_heading": "Ours",
    "published_heading_bbox": [
     114.04,
-    361.59,
+    378.18,
     224.04,
-    385.96
+    402.55
    ],
    "ours_heading_bbox": [
     224.04,
-    361.59,
+    378.18,
     342.04,
-    385.96
+    402.55
    ],
    "published_column_bbox": [
     114.04,
-    361.59,
+    378.18,
     224.04,
-    650.12
+    638.32
    ],
    "ours_column_bbox": [
     224.04,
-    361.59,
+    378.18,
     342.04,
-    650.12
+    638.32
    ],
    "rows": [
     {
      "effect_id": "E1",
      "bbox": [
       57.54,
-      386.16,
+      402.75,
       554.54,
-      438.76
+      445.89
      ],
-     "estimand_text": "Direct-effect results outside [-.10, .10]",
+     "estimand_text": "Direct effects outside [-.10, .10]",
      "units_text": "percentage points",
      "published_text": "PNDE and TNDE within [-.10, .10] in only 12.50-18.75% of conditions, with negative bias",
      "published_bbox": [
       114.04,
-      386.16,
+      402.75,
       224.04,
-      438.76
+      445.89
      ],
      "ours_text": "PNDE and TNDE within [-.05, .05] in 100% of conditions; largest |bias| 0.016",
      "ours_bbox": [
       224.04,
-      386.16,
+      402.75,
       342.04,
-      438.76
+      445.89
      ],
      "tolerance_text": "E1 tolerance 0.005 percentage points",
      "display": {
       "magnitude_bbox": [
        424.04,
-       386.16,
+       402.75,
        472.04,
-       438.76
+       445.89
       ],
       "direction_bbox": [
        472.04,
-       386.16,
+       402.75,
        519.04,
-       438.76
+       445.89
       ],
       "form": "signed",
       "decimals": [
@@ -445,9 +453,9 @@
       ],
       "values_bbox": [
        342.04,
-       386.16,
+       402.75,
        424.04,
-       438.76
+       445.89
       ]
      }
     },
@@ -455,39 +463,39 @@
      "effect_id": "E2",
      "bbox": [
       57.54,
-      438.96,
+      446.09,
       554.54,
-      482.09
+      479.76
      ],
-     "estimand_text": "Coverage shortfall below 95%",
+     "estimand_text": "Coverage short of 95%",
      "units_text": "percentage points",
      "published_text": "Coverage 24.10-83.99% by effect and cutoff; true value usually above the CI",
      "published_bbox": [
       114.04,
-      438.96,
+      446.09,
       224.04,
-      482.09
+      479.76
      ],
      "ours_text": "Coverage 94.6-95.6% by effect and cutoff; misses on both sides at similar rates",
      "ours_bbox": [
       224.04,
-      438.96,
+      446.09,
       342.04,
-      482.09
+      479.76
      ],
      "tolerance_text": "E2 tolerance 0.005 percentage points",
      "display": {
       "magnitude_bbox": [
        424.04,
-       438.96,
+       446.09,
        472.04,
-       482.09
+       479.76
       ],
       "direction_bbox": [
        472.04,
-       438.96,
+       446.09,
        519.04,
-       482.09
+       479.76
       ],
       "form": "signed",
       "decimals": [
@@ -496,9 +504,9 @@
       ],
       "values_bbox": [
        342.04,
-       438.96,
+       446.09,
        424.04,
-       482.09
+       479.76
       ]
      }
     },
@@ -506,39 +514,39 @@
      "effect_id": "E3",
      "bbox": [
       57.54,
-      482.29,
+      479.96,
       554.54,
-      525.43
+      513.63
      ],
-     "estimand_text": "Truth above minus below the CI",
+     "estimand_text": "Above minus below the CI",
      "units_text": "percentage points",
      "published_text": "Coverage 24.10-83.99% by effect and cutoff; true value usually above the CI",
      "published_bbox": [
       114.04,
-      482.29,
+      479.96,
       224.04,
-      525.43
+      513.63
      ],
      "ours_text": "Coverage 94.6-95.6% by effect and cutoff; misses on both sides at similar rates",
      "ours_bbox": [
       224.04,
-      482.29,
+      479.96,
       342.04,
-      525.43
+      513.63
      ],
      "tolerance_text": "E3 tolerance 0.01 percentage points",
      "display": {
       "magnitude_bbox": [
        424.04,
-       482.29,
+       479.96,
        472.04,
-       525.43
+       513.63
       ],
       "direction_bbox": [
        472.04,
-       482.29,
+       479.96,
        519.04,
-       525.43
+       513.63
       ],
       "form": "signed",
       "decimals": [
@@ -547,9 +555,9 @@
       ],
       "values_bbox": [
        342.04,
-       482.29,
+       479.96,
        424.04,
-       525.43
+       513.63
       ]
      }
     },
@@ -557,39 +565,39 @@
      "effect_id": "E4",
      "bbox": [
       57.54,
-      525.63,
+      513.83,
       554.54,
-      578.23
+      566.43
      ],
-     "estimand_text": "MINT power minus .05, n = 500, a = .59, h = .34",
+     "estimand_text": "MINT power minus .05, n = 500, ah = .20",
      "units_text": "rejection rate",
      "published_text": "MINT power near zero at every sample size; never reaches .80 (Figure 4.28: 0.057-0.068 in this cell)",
      "published_bbox": [
       114.04,
-      525.63,
+      513.83,
       224.04,
-      578.23
+      566.43
      ],
      "ours_text": "MINT power 0.836 at n = 500 for ah = .20; at least .97 for ah >= .13 from n = 1,000",
      "ours_bbox": [
       224.04,
-      525.63,
+      513.83,
       342.04,
-      578.23
+      566.43
      ],
-     "tolerance_text": "E4 tolerance 0.013 rejection rate",
+     "tolerance_text": "E4 tolerance 0.0123 rejection rate",
      "display": {
       "magnitude_bbox": [
        424.04,
-       525.63,
+       513.83,
        472.04,
-       578.23
+       566.43
       ],
       "direction_bbox": [
        472.04,
-       525.63,
+       513.83,
        519.04,
-       578.23
+       566.43
       ],
       "form": "signed",
       "decimals": [
@@ -598,9 +606,9 @@
       ],
       "values_bbox": [
        342.04,
-       525.63,
+       513.83,
        424.04,
-       578.23
+       566.43
       ]
      }
     },
@@ -608,40 +616,40 @@
      "effect_id": "E5",
      "bbox": [
       57.54,
-      578.43,
+      566.63,
       554.54,
-      650.12
+      638.32
      ],
      "estimand_text": "Minimum n; qualitative, no scalar contrast",
      "units_text": "not applicable",
      "published_text": "Tentative minimum n of 5,000 for accurate Type I error and power above .80",
      "published_bbox": [
       114.04,
-      578.43,
+      566.63,
       224.04,
-      650.12
+      638.32
      ],
      "ours_text": "At n = 5,000, 86.3% of zero-effect results have Type I in range and 89.2% of nonzero results reach .80 power, similar at each cutoff; both-zero products stay conservative",
      "ours_bbox": [
       224.04,
-      578.43,
+      566.63,
       342.04,
-      650.12
+      638.32
      ],
      "applicability_text": "qualitative, no scalar contrast",
      "tolerance_text": "E5 tolerance not applicable",
      "display": {
       "magnitude_bbox": [
        424.04,
-       578.43,
+       566.63,
        472.04,
-       650.12
+       638.32
       ],
       "direction_bbox": [
        472.04,
-       578.43,
+       566.63,
        519.04,
-       650.12
+       638.32
       ]
      }
     }
@@ -651,8 +659,8 @@
  "build": {
   "working_directory": "paper",
   "command": "pdflatex -interaction=nonstopmode mediation_in_regression_discontinuity__a_replication_of_chen_2021.tex && bibtex mediation_in_regression_discontinuity__a_replication_of_chen_2021 && pdflatex -interaction=nonstopmode mediation_in_regression_discontinuity__a_replication_of_chen_2021.tex && pdflatex -interaction=nonstopmode mediation_in_regression_discontinuity__a_replication_of_chen_2021.tex",
-  "engine": "This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.30)  9 NOV 2026 04:58",
-  "pages": 22,
+  "engine": "This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.30)  9 NOV 2026 05:12",
+  "pages": 23,
   "undefined_references": 0,
   "overfull_boxes": 0,
   "log": "paper/build.log"
