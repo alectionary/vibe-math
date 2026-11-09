@@ -1,0 +1,119 @@
+{
+  "manifest_version": "0.3",
+  "manifest_id": "vibe-math-101-worker-20261109",
+  "supersedes": null,
+  "recorded_at": "2026-11-09T15:40:00Z",
+  "producer": {
+    "role": "retrieval_worker",
+    "name": "grokbot-retrieval-20261109T1525"
+  },
+  "campaign_id": "moss-score-reliability",
+  "priority": "low",
+  "retryable": false,
+  "requested_source_id": "https://github.com/JonasMoss/phd-thesis/blob/c539b0bc4ab1424352ab93f5aaae5150f02fa9e3/papers/paperI.pdf",
+  "outcome": "verified",
+  "issue": {
+    "repository": "alectionary/vibe-math",
+    "number": 101,
+    "url": "https://github.com/alectionary/vibe-math/issues/101"
+  },
+  "document": {
+    "title": "Psychometrics and the modelling of publication bias (Paper I)",
+    "author": "Jonas Moss",
+    "year": 2020,
+    "document_type": "doctoral_dissertation",
+    "stable_ids": [
+      {
+        "scheme": "url",
+        "value": "https://github.com/JonasMoss/phd-thesis/blob/c539b0bc4ab1424352ab93f5aaae5150f02fa9e3/papers/paperI.pdf"
+      },
+      {
+        "scheme": "url",
+        "value": "https://github.com/JonasMoss/phd-thesis"
+      }
+    ]
+  },
+  "discovered_identifiers": [],
+  "routes_tried": [
+    {
+      "id": "openalex-101",
+      "route": "openalex-oa@1",
+      "url": "https://api.openalex.org/works?search=PLEASE+AVOID+THE+STANDARDIZED+ALPHA+Moss",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "OpenAlex may list the Psychometrika paper; bytes taken from the pinned JonasMoss/phd-thesis paperI.pdf.",
+      "attempted_by": null
+    },
+    {
+      "id": "publisher-landing-101",
+      "route": "publisher-landing@1",
+      "url": "https://github.com/JonasMoss/phd-thesis/blob/c539b0bc4ab1424352ab93f5aaae5150f02fa9e3/papers/paperI.pdf",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "GitHub blob HTML 200. Raw file URL is the public download. No PDF bytes from the HTML blob page.",
+      "attempted_by": null
+    },
+    {
+      "id": "author-page-101",
+      "route": "author-page@1",
+      "url": "https://raw.githubusercontent.com/JonasMoss/phd-thesis/c539b0bc4ab1424352ab93f5aaae5150f02fa9e3/papers/paperI.pdf",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:30:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": true,
+      "notes": "Pinned author repository raw PDF (papers/paperI.pdf at c539b0b) HTTP 200; anonymized Psychometrika submission layout.",
+      "attempted_by": null
+    }
+  ],
+  "artifact": {
+    "media_type": "application/pdf",
+    "sha256": "0d4aa07b8fef0df14b47a43412a3356d652afed80e371a4be2712c417a5ad458",
+    "byte_length": 543449,
+    "page_count": 44,
+    "committed_to_git": false,
+    "storage": {
+      "kind": "worker_local",
+      "locator": "worker/101/paper.pdf",
+      "cross_machine": false
+    }
+  },
+  "completeness": {
+    "classification": "complete_body",
+    "identity_matched": true,
+    "front_matter_only": false,
+    "preview": false,
+    "evidence": [
+      "Requested path papers/paperI.pdf at commit c539b0bc4ab1424352ab93f5aaae5150f02fa9e3; title page is the Psychometrika submission 'PLEASE AVOID THE STANDARDIZED ALPHA AND THE ORDINAL ALPHA' (Paper I of the thesis).",
+      "sha256 0d4aa07b8fef0df14b47a43412a3356d652afed80e371a4be2712c417a5ad458; 44 pages; no prior sha256 on the issue.",
+      "Page count is 44. Body and references through the final page are present in the extracted text.",
+      "Extracted text is 116759 Unicode characters (text_characters), distinct from the PDF byte_length 543449 bytes."
+    ]
+  },
+  "extraction": {
+    "status": "extracted",
+    "method": "born_digital",
+    "ocr_applied": false,
+    "ocr_engine": null,
+    "readable": true,
+    "text_sha256": "f80df70eef4ccf57ccd1ed0b8fa05102d51f9827b8ce666ceec94bf833291017",
+    "text_characters": 116759,
+    "unreadable_reason": null
+  },
+  "question_screen": {
+    "status": "not_screened",
+    "question_count": null,
+    "candidates": [],
+    "screen_owner": "research_agent"
+  },
+  "notes": "Complete PDF is Paper I from the pinned JonasMoss/phd-thesis commit named in the request. The PDF is an anonymized submission (author name not in the text layer); identity is the requested path. Question count null."
+}

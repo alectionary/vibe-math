@@ -756,6 +756,34 @@ Fetch issues 11 and 12 were screened. Issue 11 is the Morris dissertation alread
 - [L-F187-redundancy-other-families](OPEN-PROBLEMS.md#l-f187-redundancy-other-families): Study the effect of redundant parity checks on lifted-product and balanced-product QLDPC families.
 - [L-F188-finite-quotient-tensor](OPEN-PROBLEMS.md#l-f188-finite-quotient-tensor): If S is a Macaulay ring, x is a new variable, and n exceeds every degree in S, then S tensor K[x]/(x^n) is a Macaulay ring.
 
-Current cohort: **436 canonical entries,163 eligible targets,220 paper records,179 full-text screens**; **6/163 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: fetch-ingest-2026-11-09
 
-The current source index has **148** records, with actual access levels retained.
+Eleven fetched texts were screened. Each already had a replication folder or, for Chen, only an unmerged pull-request note, and each now has one bibliography row F189–F199 pointing at that material. Jeffries matches UNL-SEM-D055 byte for byte. Abbott's fetch hash matches formalization/abbott-ctse and differs from the UNL-SEM-D067 seed hash, which is left in place. Chen's fetched file is 204 pages and differs from the issue's earlier hash; Kupzyk's fetched file is 143 pages and differs from the replication's earlier hash. Twenty-one directions were recorded and none is an eligible precise target. Present resolution and Lean discovery were not assessed. PDF bytes are not committed.
+
+[Screen report](../literature/fetched-papers-2026-11-09.md). Added **21 entries**, **0 eligible targets**, **11 paper records**, **11 full-text screens** and **0 completed proofs**.
+
+- [L-F189-rdd-mediation-ci-correction](OPEN-PROBLEMS.md#l-f189-rdd-mediation-ci-correction): Derive bias-correction methods for confidence intervals of mediation effects inside a regression-discontinuity design.
+- [L-F194-polytomous-generalizations](OPEN-PROBLEMS.md#l-f194-polytomous-generalizations): Generalize further nonparametric person-fit statistics to polytomous models and prove those generalizations.
+- [L-F195-realtime-decoder](OPEN-PROBLEMS.md#l-f195-realtime-decoder): Decode a stream of surface-code measurements in real time without giving up minimum-weight perfect matching or belief-matching accuracy.
+- [L-F195-belief-matching-speed](OPEN-PROBLEMS.md#l-f195-belief-matching-speed): Improve the practical speed of belief-matching relative to sparse blossom without giving up its accuracy.
+- [L-F195-qldpc-decoder-runtime](OPEN-PROBLEMS.md#l-f195-qldpc-decoder-runtime): Develop decoders for colour codes and general quantum LDPC codes whose expected running time improves on cubic BP-OSD.
+- [L-F195-memory-in-computation](OPEN-PROBLEMS.md#l-f195-memory-in-computation): Use the subsystem-hyperbolic and hyperbolic Floquet constructions to reduce the space-time cost of a quantum algorithm.
+- [L-F195-sigf-other-codes](OPEN-PROBLEMS.md#l-f195-sigf-other-codes): Measure schedule-induced gauge fixing on Bacon-Shor, heavy-hexagon, compass, and subsystem codes whose detection events do not come in pairs.
+- [L-F195-floquet-variants](OPEN-PROBLEMS.md#l-f195-floquet-variants): Compare other Floquet-code variants, including CSS Floquet codes on the hyperbolic and semi-hyperbolic tilings, with CSS honeycomb codes.
+- [L-F196-qpsk-analytical-bound](OPEN-PROBLEMS.md#l-f196-qpsk-analytical-bound): Derive an analytical secret-key-rate bound for QPSK modulation that is tighter than the bound in this thesis.
+- [L-F196-composable-general-attacks](OPEN-PROBLEMS.md#l-f196-composable-general-attacks): Give a composable finite-size security proof of discretely modulated continuous-variable QKD against general attacks.
+- [L-F196-2t-universal-gates](OPEN-PROBLEMS.md#l-f196-2t-universal-gates): Determine whether the 2T-qutrit, or the 2T-qubit, has a universal gate set.
+- [L-F196-exact-correction-criterion](OPEN-PROBLEMS.md#l-f196-exact-correction-criterion): Give a criterion for when the general bosonic constructions exactly correct a stated class of physically relevant errors.
+- [L-F196-explicit-recovery](OPEN-PROBLEMS.md#l-f196-explicit-recovery): Give explicit error-correction procedures for the bosonic codes constructed in the thesis.
+- [L-F196-stabilizer-gate-tradeoff](OPEN-PROBLEMS.md#l-f196-stabilizer-gate-tradeoff): Decide whether the constructions trade the number of stabilisers against the number of easily implemented gates, and quantify that trade-off if it exists.
+- [L-F196-construction-relations](OPEN-PROBLEMS.md#l-f196-construction-relations): Relate the coset, representation, and quantum-spherical-code constructions when one code arises from more than one of them.
+- [L-F198-bposd-improvements](OPEN-PROBLEMS.md#l-f198-bposd-improvements): Improve BP-OSD for the deformed 3D codes by addressing degeneracy and by trying higher-order ordered statistics decoding.
+- [L-F198-coprime-dimensions](OPEN-PROBLEMS.md#l-f198-coprime-dimensions): Evaluate the threshold of the 3D code when the three dimensions are coprime.
+- [L-F198-open-boundaries](OPEN-PROBLEMS.md#l-f198-open-boundaries): Extend the 3D threshold estimates from periodic boundaries to the open boundaries cited in the thesis.
+- [L-F198-measurement-errors](OPEN-PROBLEMS.md#l-f198-measurement-errors): Include measurement errors in the threshold estimates for the deformed 3D codes.
+- [L-F198-statphys-threshold](OPEN-PROBLEMS.md#l-f198-statphys-threshold): Evaluate the deformed-code threshold with a statistical-physics model.
+- [L-F198-biased-2d-3d](OPEN-PROBLEMS.md#l-f198-biased-2d-3d): Compare 2D and 3D codes again with stabilizer deformations and biased noise included.
+
+Current cohort: **457 canonical entries,163 eligible targets,231 paper records,190 full-text screens**; **6/163 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **159** records, with actual access levels retained.

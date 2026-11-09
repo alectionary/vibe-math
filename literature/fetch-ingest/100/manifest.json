@@ -1,0 +1,119 @@
+{
+  "manifest_version": "0.3",
+  "manifest_id": "vibe-math-100-worker-20261109",
+  "supersedes": null,
+  "recorded_at": "2026-11-09T15:40:00Z",
+  "producer": {
+    "role": "retrieval_worker",
+    "name": "grokbot-retrieval-20261109T1525"
+  },
+  "campaign_id": "denys-bosonic-pauli",
+  "priority": "low",
+  "retryable": false,
+  "requested_source_id": "https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf",
+  "outcome": "verified",
+  "issue": {
+    "repository": "alectionary/vibe-math",
+    "number": 100,
+    "url": "https://github.com/alectionary/vibe-math/issues/100"
+  },
+  "document": {
+    "title": "Quantum key distribution and quantum error correction with bosonic systems",
+    "author": "Aurélie Denys",
+    "year": 2024,
+    "document_type": "doctoral_dissertation",
+    "stable_ids": [
+      {
+        "scheme": "url",
+        "value": "https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf"
+      },
+      {
+        "scheme": "url",
+        "value": "https://raw.githubusercontent.com/aurelie-denys/aurelie-denys.github.io/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf"
+      }
+    ]
+  },
+  "discovered_identifiers": [],
+  "routes_tried": [
+    {
+      "id": "openalex-100",
+      "route": "openalex-oa@1",
+      "url": "https://api.openalex.org/works?search=Quantum+key+distribution+bosonic+Denys",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "OpenAlex may list related works; bytes taken from the pinned author GitHub raw URL on the request.",
+      "attempted_by": null
+    },
+    {
+      "id": "publisher-landing-100",
+      "route": "publisher-landing@1",
+      "url": "https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "GitHub blob HTML 200. Raw file URL is the public download. No PDF bytes from the HTML blob page.",
+      "attempted_by": null
+    },
+    {
+      "id": "author-page-100",
+      "route": "author-page@1",
+      "url": "https://raw.githubusercontent.com/aurelie-denys/aurelie-denys.github.io/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:30:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": true,
+      "notes": "Pinned author GitHub Pages raw PDF HTTP 200; sha256 matches the issue's previously verified copy.",
+      "attempted_by": null
+    }
+  ],
+  "artifact": {
+    "media_type": "application/pdf",
+    "sha256": "4cadbf1bbacdc7b21bb36479dbbadc0da5013c8c67f794bff0206d345e0b4156",
+    "byte_length": 3264677,
+    "page_count": 169,
+    "committed_to_git": false,
+    "storage": {
+      "kind": "worker_local",
+      "locator": "worker/100/paper.pdf",
+      "cross_machine": false
+    }
+  },
+  "completeness": {
+    "classification": "complete_body",
+    "identity_matched": true,
+    "front_matter_only": false,
+    "preview": false,
+    "evidence": [
+      "Title/author match Sorbonne thesis: Aurélie Denys, Quantum key distribution and quantum error correction with bosonic systems, 2024.",
+      "sha256 4cadbf1bbacdc7b21bb36479dbbadc0da5013c8c67f794bff0206d345e0b4156 matches the issue's previously verified copy; 169 pages.",
+      "Page count is 169. Body and references through the final page are present in the extracted text.",
+      "Extracted text is 682580 Unicode characters (text_characters), distinct from the PDF byte_length 3264677 bytes."
+    ]
+  },
+  "extraction": {
+    "status": "extracted",
+    "method": "born_digital",
+    "ocr_applied": false,
+    "ocr_engine": null,
+    "readable": true,
+    "text_sha256": "79006b762557b8bd2f598e486fd6a4b9bba8b139d65a371a65da9a3d2e5ea19e",
+    "text_characters": 682580,
+    "unreadable_reason": null
+  },
+  "question_screen": {
+    "status": "not_screened",
+    "question_count": null,
+    "candidates": [],
+    "screen_owner": "research_agent"
+  },
+  "notes": "Complete PDF from the request's pinned raw.githubusercontent.com alias; sha256 matches. Question count null."
+}
