@@ -105,3 +105,17 @@ Wall clock unchanged from the 22:40Z note. Cell 3 started 2026-11-09T20:46:02Z a
 **Surprising:** the remote branch history was rewritten (same commit messages, new SHAs, plus unrelated log-file byte changes outside this study). The push of the 22:40Z check-in was rebased onto that history and then pushed. No force-push from this agent.
 
 **Blocking:** none.
+
+## 2026-11-09T23:14Z (cell 3 committed)
+
+**Accomplished:** 3 of 36 cells. `mgcfa_true_n240_c3` is commit `77f62409`, pushed. 12000 rows fitted, 10730 converged, 1440247 bytes, wall 8613 s (2026-11-09T20:46:02Z to 2026-11-09T23:09:35Z).
+
+**New:** `mgcfa_null_n240_c1` started 2026-11-09T23:09:37Z with 4 cores and is in `exportData`. Cell times so far: condition 1, 2074 s; condition 2, 2637 s; condition 3, 8613 s. The 45/5 cell needed 12 batches of 1000 to reach 10000 converged fits.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: three finished cells are 35, 44, and 144 minutes. If the other 11 cells of each imbalance match those three, the remaining work is about 41 hours, finishing around 2026-11-11 16:00 UTC. N=960 generation may be slower than that. Three cells are 4.3 MB, so 36 cells stay near 55 MB, under 100 MB. The exactness gate on cell 1 remains FAIL (means off by 1.8e-6, 9.3e-6, and 1.2e-5; significant counts 8723, 3557, 528 against 8723, 3557, 529). Current cell SHAs on this branch: cell 1 `c33bddb8`, cell 2 `af8248b2`, cell 3 `77f62409`.
+
+**Surprising:** condition 3 took 8613 s, about four times condition 1, because more replicates failed to converge and each fit was slower.
+
+**Blocking:** none. Replicates, allocation, and the engine are unchanged.
