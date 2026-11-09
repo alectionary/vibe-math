@@ -503,16 +503,14 @@ source_items:
   reason: qualitative integrated table of assumptions for RQ1, which this replication did not attempt
   reported_to_person: *id003
 - label: Table 4.2
-  use: excluded
-  reason: statistics of the restricted-use Head Start data (RQ2); checked only for whether they could stand in for
-    the data
-  reported_to_person: *id003
+  use: read
   sufficient_statistics:
     found: true
     what: within-group means and SDs by cutoff (Table 4.2)
     sufficient: false
     why: no treatment-by-mediator or treatment-by-outcome covariances are printed, so the a, b, c' and h paths cannot
       be rebuilt (notes/availability.md)
+  data_file: source-values/table_4_2.csv
 - label: Figure 4.1
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
@@ -598,6 +596,13 @@ source_items:
     sufficient: false
     why: estimates and SEs allow the printed differences and standardized biases to be recomputed, not the models
       to be refitted
+  identity_checks:
+  - identity: PNIE = a b, TNIE = a b + a h, TNDE - PNDE = a h (RCT and three cutoffs)
+    holds: true
+    file: results/empirical_consistency.json
+  - identity: implied i0M = (PNDE - c') / h against the mediator means of Table 4.2
+    holds: true
+    file: results/empirical_consistency.json
 - label: Table 4.7
   use: read
   data_file: secondary/table_arithmetic.csv
@@ -607,6 +612,13 @@ source_items:
     sufficient: false
     why: estimates and SEs allow the printed differences and standardized biases to be recomputed, not the models
       to be refitted
+  identity_checks:
+  - identity: PNIE = a b, TNIE = a b + a h, TNDE - PNDE = a h (RCT and three cutoffs)
+    holds: true
+    file: results/empirical_consistency.json
+  - identity: implied i0M = (PNDE - c') / h against the mediator means of Table 4.2
+    holds: true
+    file: results/empirical_consistency.json
 - label: Table 4.8
   use: read
   data_file: source-values/table_4_8.csv
