@@ -76,14 +76,14 @@ The reconstruction uses the population model, factor settings, original comparis
 
 The 54 initial settings cross ICC .05, .10 and .15, 0\%, 5\% and 15\% interval attrition, 50/50 or 70/30 allocation, and equal, normal-shaped or skewed cluster sizes. The ICC factor refers to the correlation of individual slopes within a cluster, and there are four occasions and 20 participants per cluster on average. The exemplary designs with unequal sizes use the source's printed integer frequency schedules (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/outputs/normsizes.csv}{\nolinkurl{outputs/normsizes.csv}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/outputs/skewsizes.csv}{\nolinkurl{outputs/skewsizes.csv}}). The empirical simulations draw new cluster sizes from a normal distribution with mean 20 and standard deviation 2, round them to integers and constrain them to 15 through 25. For skewed sizes, they apply two transformations in alternation to draws above 20 and constrain the final sizes to 15 through 22 (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/scripts/model.R#L6-L20}{\nolinkurl{scripts/model.R}}). Attrition removes a subset of the original participants at each interval without reentry. The empirical generator draws new outcomes and dropout masks. The exemplary calculation holds the variance components at their generating values. The initial cluster counts were 16, 22 and 28 as ICC increased, and the final exemplary grid used 13, 19 and 25. The six realized oversampling scenarios in Table 3 differ from the plans in Figure 5 (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/source-values/figure-5.csv}{\nolinkurl{source-values/figure-5.csv}}).
 
-Empirical power estimates use restricted maximum likelihood (REML) with a two-sided .05 interaction test. The source used SAS/IML and PROC MIXED. The R reconstruction profiles the REML objective and checks the fitted interaction and its standard error against lme4 \citep{bates2015} and nlme, two R mixed-model implementations. A generator check compared 540 paired outputs and their random number states for the direct and reference implementations in R. The source's SAS calls \texttt{RANNOR(0)} and \texttt{RANUNI(0)} provide no fixed seeds for replay. See \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/rerun/validate_generator.R}{\nolinkurl{rerun/validate_generator.R}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/rerun/validate_profile.R}{\nolinkurl{rerun/validate_profile.R}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/engine-comparison.csv}{\nolinkurl{results/engine-comparison.csv}}.
+Empirical power estimates use restricted maximum likelihood (REML) with a two-sided .05 interaction test. The source used SAS/IML and PROC MIXED. The SAS/STAT 15.2 manual documents the PROC MIXED REML default \citep[PROC MIXED statement, METHOD option]{sasmixed}. The R reconstruction profiles the REML objective and checks the fitted interaction and its standard error against lme4 \citep{bates2015} and nlme \citep{nlme2026}, two R mixed-model implementations. A generator check compared 540 paired outputs and their random number states for the direct and reference implementations in R. The source's SAS calls \texttt{RANNOR(0)} and \texttt{RANUNI(0)} provide no fixed seeds for replay. See \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/rerun/validate_generator.R}{\nolinkurl{rerun/validate_generator.R}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/rerun/validate_profile.R}{\nolinkurl{rerun/validate_profile.R}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/engine-comparison.csv}{\nolinkurl{results/engine-comparison.csv}}.
 
 Exemplary power conditions on the observed design matrix \(X\) and generating covariance \(V\). With \(e\) selecting the treatment-by-time coefficient \(\delta\), the GLS variance is \(v=e^\mathsf{T}(X^\mathsf{T}V^{-1}X)^{-1}e\). The noncentrality of the one-numerator-degree-of-freedom \(F\) test is \(\delta^2/v\). We checked the variance by three calculations using dense, block and reduced representations of the covariance (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/fresh-gls-validation.csv}{\nolinkurl{results/full/fresh-gls-validation.csv}}). The dropout calculations average power across independently sampled masks. The source's exemplary estimate is conditional on its realized design.
 
 The formulaic calculation isolates the effect of the denominator degrees of freedom. In balanced complete designs with \(J\) clusters, \(n\) people per cluster and \(t\) occasions, Optimal Design uses \(J-2\), while Kupzyk's between--within Equation 4.1 uses \(Jnt-J-2\). At the initial baseline this gives 1,262 degrees of freedom and power .877206 under the between--within calculation, consistent with the source's approximately .88. The even balanced Optimal Design crossings are 16, 22 and 28, and allowing odd counts yields 16, 21 and 27. Formulaic between--within crossings are 13, 19 and 25. At the final baseline, formulaic and exemplary powers can differ even at a common denominator rule because the formulaic and realized design calculations differ. See \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/formulaic.csv}{\nolinkurl{results/full/formulaic.csv}} and \citet[pp.~83--89, 97, 103--104]{kupzyk2011}.
 
 \section{How well did the power estimates reproduce?}\label{sec:grid}
-The 54 initial empirical estimates all agreed at the scale of the adjusted comparison. We ran 25,600 new draws per cell, for 1,382,400 successful fits. The source lost one fit in each of four cells. Reading the plotted values adds uncertainty to both the comparison and the estimates of the published Monte Carlo errors. We combined the two binomial Monte Carlo standard errors in quadrature and added the figure-reading allowance to the resulting band. A Monte Carlo standard error for a rejection fraction \(\hat p\) from \(R\) independent draws is \(\sqrt{\hat p(1-\hat p)/R}\) \citep{morris2019}. Two initial empirical cells exceeded the ordinary band of two combined standard errors plus reading error, and both were inside the two-sided 95\% band with a Bonferroni adjustment across 54 cells. At ICC .10 with 70/30 allocation and normal sizes, the 5\% attrition estimates were .792557 versus .780898, and the 15\% estimates were .754458 versus .763672. The adjusted half-widths were about .0143 and .0141, respectively. These comparisons are checks at the resolution of the source and Monte Carlo estimates. See \citet[Figures 6--8]{kupzyk2011} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/power-cell-comparison.csv}{\nolinkurl{results/full/power-cell-comparison.csv}}.
+The 54 initial empirical estimates all agreed at the scale of the adjusted comparison. We ran 25,600 new draws per cell, for 1,382,400 successful fits. The source lost one fit in each of four cells. Reading the plotted values adds uncertainty to both the comparison and the estimates of the published Monte Carlo errors. We combined the two binomial Monte Carlo standard errors in quadrature and added the figure-reading allowance to the resulting band. A Monte Carlo standard error for a rejection fraction \(\hat p\) from \(R\) independent draws is \(\sqrt{\hat p(1-\hat p)/R}\) \citep{morris2019}. Two initial empirical cells exceeded the ordinary band of two combined standard errors plus reading error, and both were inside the two-sided 95\% band with a Bonferroni adjustment across 54 cells \citep{dunn1961}. At ICC .10 with 70/30 allocation and normal sizes, the 5\% attrition estimates were .792557 versus .780898, and the 15\% estimates were .754458 versus .763672. The adjusted half-widths were about .0143 and .0141, respectively. These comparisons are checks at the resolution of the source and Monte Carlo estimates. See \citet[Figures 6--8]{kupzyk2011} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/power-cell-comparison.csv}{\nolinkurl{results/full/power-cell-comparison.csv}}.
 
 Exemplary power was also consistent at the resolution of the plotted values. We reconstructed all 54 initial and all 54 final settings. Three initial markers are hidden by other marks, leaving 51 readable initial comparisons. All 51 fit the adjusted bands, and all 54 final plotted comparisons fit their bands. The 18 no-dropout Table 1 values reproduce to five decimal places. With dropout, the variation among realized masks is distinct from the Monte Carlo error in estimating mean power over masks. A comparison of the source point with the mean uses the mask spread to account for the unknown source mask. See \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/source-values/figures-6-11.csv}{\nolinkurl{source-values/figures-6-11.csv}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/source-values/table-1.csv}{\nolinkurl{source-values/table-1.csv}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/exemplary-v2.csv}{\nolinkurl{results/full/exemplary-v2.csv}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/power-cell-comparison.csv}{\nolinkurl{results/full/power-cell-comparison.csv}}.
 
@@ -95,12 +95,12 @@ Empirical power was usually below exemplary power. The source reports 41 of 54 i
 The six Appendix C parameter tables agree at adjusted diagnostic precision. All 324 comparisons lie within their Bonferroni bands when the source's unavailable Monte Carlo standard errors are approximated by ours. The six parameters are the person and cluster intercept and slope variances, the slope ICC, and the time-by-treatment interaction. Boundary estimates, where a fitted variance equals zero, are distinct from failed fits. The initial baseline boundary fraction in R was .07266. The slope ICC is computed within each fit before averaging, so the average of the fitted ratios can differ from a ratio of averaged variances. See \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/appendix-c-comparison.csv}{\nolinkurl{results/full/appendix-c-comparison.csv}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/empirical.csv}{\nolinkurl{results/full/empirical.csv}}.
 
 \section{Null calibration and denominator rules}\label{sec:null}
-The two Appendix D settings show that denominator rules can change both power and false positive rates. We used 25,600 draws under the null per setting. The corresponding alternative rates use the initial grid draws. We compared Optimal Design's $J-2$ rule, between--within, containment, Satterthwaite and Kenward--Roger. Kenward--Roger also adjusts the covariance of the fixed effects. Its implementation was checked against pbkrtest \citep{halekoh2014} (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/kr-validation.csv}{\nolinkurl{results/full/kr-validation.csv}}).
+The two Appendix D settings show that denominator rules can change both power and false positive rates. We used 25,600 draws under the null per setting. The corresponding alternative rates use the initial grid draws. We compared Optimal Design's $J-2$ rule, between--within, containment, Satterthwaite and Kenward--Roger. The SAS manual documents the between--within and containment rules \citep[MODEL statement, DDFM options]{sasmixed}. We checked our Satterthwaite calculation \citep{satterthwaite1946} against the lmerTest implementation \citep{kuznetsova2017}. Kenward--Roger also adjusts the covariance of the fixed effects. Its implementation was checked against pbkrtest \citep{halekoh2014} (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/kr-validation.csv}{\nolinkurl{results/full/kr-validation.csv}}).
 
-At baseline, between--within has a Type I error rate of .06500, compared with .06839 in Table D.1. Both exceed the nominal .05, as does containment. The reconstructed Kenward--Roger rate is .04625 with all variance components retained and .04891 when zero components are dropped. The source reports .05021. The reconstructed and source rates for all five rules fall within the broad practical interval [.025, .075] around .05 used in the dissertation. The source's own two-standard-error interval for Satterthwaite and Kenward--Roger, [.04744, .05279], centers on .050115 rather than the reported .05021. The .000095 offset exceeds the .00001 rounding allowance. If the interval was symmetric at two standard errors, using the printed point in the variance formula implies about 26,658 draws, versus about 25,000 from most neighboring widths. These calculations leave the original interval procedure unresolved (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/appendix-d-source-identity.csv}{\nolinkurl{results/appendix-d-source-identity.csv}}).
+At baseline, between--within has a Type I error rate of .06500, compared with .06839 in Table D.1. Both exceed the nominal .05, as does containment. The reconstructed Kenward--Roger rate is .04625 with all variance components retained and .04891 when zero components are dropped. The source reports .05021. The reconstructed and source rates for all five rules fall within Bradley’s liberal robustness interval [.025, .075] around .05 \citep{bradley1978}, as applied by \citet[p.~105]{kupzyk2011}. The source's own two-standard-error interval for Satterthwaite and Kenward--Roger, [.04744, .05279], centers on .050115 rather than the reported .05021. The .000095 offset exceeds the .00001 rounding allowance. If the interval was symmetric at two standard errors, using the printed point in the variance formula implies about 26,658 draws, versus about 25,000 from most neighboring widths. These calculations leave the original interval procedure unresolved (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/appendix-d-source-identity.csv}{\nolinkurl{results/appendix-d-source-identity.csv}}).
 \label{dis:appendix-d1-interval}\disagreement{appendix-d1-interval}
 
-The point classifications differ under the narrower Serlin interval [.035, .065] described by \citet[p.~105]{kupzyk2011}. The published between--within and containment rates of .06839 and .06811 exceed .065. The corresponding R estimates, .06500 and .0648828, lie at and just inside that endpoint. Both R rates are within .00012 of the cutoff, with Monte Carlo standard errors of about .00154, so the change in classification at the point estimates does not establish a difference in the underlying classification (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/appendix-d-comparison.csv}{\nolinkurl{results/full/appendix-d-comparison.csv}}).
+The point classifications differ under the narrower robustness interval [.035, .065] that \citet[p.~105]{kupzyk2011} attributes to \citet{serlin2000}. The published between--within and containment rates of .06839 and .06811 exceed .065. The corresponding R estimates, .06500 and .0648828, lie at and just inside that endpoint. Both R rates are within .00012 of the cutoff, with Monte Carlo standard errors of about .00154, so the change in classification at the point estimates does not establish a difference in the underlying classification (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/appendix-d-comparison.csv}{\nolinkurl{results/full/appendix-d-comparison.csv}}).
 \label{dis:appendix-d1-serlin}\disagreement{appendix-d1-serlin}
 
 At ICC .15 with skewed sizes, 15\% interval attrition, and 70/30 allocation, the $J-2$ rule differs materially from Table D.2. Its power and Type I error at $J=28$ and 26 degrees of freedom were .69594 and .04969, versus .67128 and .04279 in the source. The rerun's two-standard-error bands are approximately [.69019, .70169] and [.04697, .05240]. The published null interval [.04023, .04535] excludes the rerun point. A replay recovered 17,816 alternative and 1,272 null rejections at 26 degrees of freedom. Recomputing the tests on the same fits at 15 degrees of freedom gives .66953 and .04270. This sensitivity explains how a smaller effective denominator could produce both rates. The original denominator and fitted state are unresolved. See \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/appendix-d-comparison.csv}{\nolinkurl{results/full/appendix-d-comparison.csv}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/appendix-d2-df-sweep.csv}{\nolinkurl{results/full/appendix-d2-df-sweep.csv}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/kenward-roger-summary.csv}{\nolinkurl{results/full/kenward-roger-summary.csv}}.
@@ -194,17 +194,8 @@ Use the repository's \texttt{master} branch. Set the study path from the reposit
 \begin{quote}
 \small\verb|sh "$study/rerun/reproduce.sh" /tmp/kupzyk-reproduction 4|
 \end{quote}
-The run used \href{https://www.r-project.org/}{R 4.5.3},
-\href{https://cran.r-project.org/package=Rcpp}{Rcpp 1.1.2},
-\href{https://cran.r-project.org/package=lme4}{lme4 2.0.6},
-\href{https://cran.r-project.org/package=nlme}{nlme 3.1.170},
-\href{https://cran.r-project.org/package=lmerTest}{lmerTest 3.2.1}, and
-\href{https://cran.r-project.org/package=pbkrtest}{pbkrtest 0.5.5}.
-It used \href{https://www.python.org/}{Python 3.14.10} with
-\href{https://numpy.org/}{NumPy 2.5.4},
-\href{https://scipy.org/}{SciPy 1.18.1},
-\href{https://pyyaml.org/}{PyYAML 6.0.3}, and
-\href{https://github.com/pymupdf/PyMuPDF}{PyMuPDF 2.1}.
+\href{https://www.r-project.org/}{R 4.5.3} supplied random draws, distribution functions and numerical optimization \citep{rcore2026}. \href{https://cran.r-project.org/package=Rcpp}{Rcpp 1.1.2} compiled the C++ profile evaluator \citep{eddelbuettel2011}. The fitting and denominator checks used \href{https://cran.r-project.org/package=lme4}{lme4 2.0-6} \citep{bates2015}, \href{https://cran.r-project.org/package=nlme}{nlme 3.1-170} \citep{nlme2026}, \href{https://cran.r-project.org/package=lmerTest}{lmerTest 3.2-1} \citep{kuznetsova2017}, \href{https://cran.r-project.org/package=pbkrtest}{pbkrtest 0.5.5} \citep{halekoh2014}, and \href{https://cran.r-project.org/package=Matrix}{Matrix 1.7-5} for rank calculations \citep{matrix2026}.
+\href{https://www.python.org/}{Python 3.14.10} aggregated and compared results \citep{python2026}. The independent precision calculation used \href{https://numpy.org/}{NumPy 2.5.4} for arrays \citep{harris2020} and \href{https://scipy.org/}{SciPy 1.18.1} for numerical roots and distributions \citep{virtanen2020}. \href{https://pyyaml.org/}{PyYAML 6.0.3} parsed the evidence records \citep{pyyaml2026}. \href{https://github.com/pymupdf/PyMuPDF}{PyMuPDF 2.1} extracted source-figure geometry, and \href{https://github.com/pymupdf/PyMuPDF}{PyMuPDF 1.26.6} extracted annotations from the replication PDF for link review \citep{pymupdf2026}.
 The environment is recorded in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/provenance/rerun-runtime.txt}{\nolinkurl{provenance/rerun-runtime.txt}}. See the prerequisites and checkpoints in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/rerun/README.md}{\nolinkurl{rerun/README.md}} and the exact command chain in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/rerun/reproduce.sh}{\nolinkurl{rerun/reproduce.sh}}. The full empirical grid schedules 128 batches of 200 draws per setting, plus the 50,000-draw follow-up and two null cases.  The following paths are relative to the selected run directory. Each link opens the corresponding checked-in result.
 
 \begin{itemize}
@@ -216,10 +207,10 @@ The environment is recorded in \href{https://github.com/alectionary/vibe-math/bl
 \end{itemize}
 
 Reuse the checkpoint directory for a resumed identical run. Use a new directory after changes to scientific inputs, versions or seeds.
-\item[S, source measurements.] Retrieve the archived PDF recorded in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/provenance/source-acquisition.json}{\nolinkurl{provenance/source-acquisition.json}} and verify its SHA-256. Use the source audit instructions in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/rerun/README.md}{\nolinkurl{rerun/README.md}}. This step regenerates the source transcriptions and calculations from the archival PDF. Route R uses the checked-in transcriptions and can run without the archival file.
+\item[S, source measurements.] Retrieve the archived PDF recorded in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/provenance/source-acquisition.json}{\nolinkurl{provenance/source-acquisition.json}} and verify its SHA-256. \href{https://poppler.freedesktop.org/}{Poppler 26.10.0} extracts layout text from the source \citep{poppler2026}. Use the source audit instructions in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/rerun/README.md}{\nolinkurl{rerun/README.md}}. This step regenerates the source transcriptions and calculations from the archival PDF. Route R uses the checked-in transcriptions and can run without the archival file.
 \end{description}
 
-The report rebuild uses the saved results. With \href{https://github.com/tectonic-typesetting/tectonic}{Tectonic 0.17.0} and its LaTeX bundle, run the following command from the repository root.
+The report rebuild uses the saved results. With \href{https://github.com/tectonic-typesetting/tectonic}{Tectonic 0.17.0} \citep{tectonic2026} and its LaTeX bundle, run the following command from the repository root.
 \begin{quote}
 \small\verb|(cd "$study/paper" && tectonic kupzyk-replication.tex)|
 \end{quote}
@@ -274,17 +265,37 @@ Design coverage & followed & \href{https://github.com/alectionary/vibe-math/blob
 Original engine & departed & SAS and Optimal Design were unavailable. The independent R checks and limits are described in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/notes/rerun-engine.json}{\nolinkurl{notes/rerun-engine.json}}. \\
 Exact source streams & departed & The published code supplies zero-valued seed arguments and the unit-level masks are unavailable. New streams cover all settings. \\
 Comparisons and uncertainty & followed & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/results/full/power-cell-comparison.csv}{\nolinkurl{results/full/power-cell-comparison.csv}} separates reading allowances, Monte Carlo error and mask spread. \\
-Citation scope & followed & Kupzyk is the source for the original design and values. The lme4 and pbkrtest papers identify the independent methods. Morris et al. supports the Monte Carlo error calculation. \\
+Citation scope & followed & The \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/citation-inventory.json}{\nolinkurl{citation-inventory.json}} maps methods and software to their citations and accounts for all earlier references. \\
 Discrepancy record & followed & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/DISAGREEMENTS.yaml}{\nolinkurl{DISAGREEMENTS.yaml}} records the checks and unresolved cases. \\
 \bottomrule
 \end{tabular}
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \bibitem[Bates et~al.(2015)Bates, Mächler, Bolker, and Walker]{bates2015}
 Bates, D., Mächler, M., Bolker, B., and Walker, S. (2015).
 Fitting linear mixed-effects models using lme4.
 \emph{Journal of Statistical Software}, 67(1).
 \href{https://www.jstatsoft.org/article/view/v067i01}{doi:10.18637/jss.v067.i01}.
+
+\bibitem[Bates et~al.(2026)]{matrix2026}
+Bates, D., Maechler, M., and Jagan, M. (2026).
+\emph{Matrix: Sparse and dense matrix classes and methods}, [R package 1.7-5].
+\href{https://doi.org/10.32614/CRAN.package.Matrix}{doi:10.32614/CRAN.package.Matrix}.
+
+\bibitem[Bradley(1978)]{bradley1978}
+Bradley, J. V. (1978). Robustness?
+\emph{British Journal of Mathematical and Statistical Psychology}, 31(2), 144--152.
+\href{https://doi.org/10.1111/j.2044-8317.1978.tb00581.x}{doi:10.1111/j.2044-8317.1978.tb00581.x}.
+
+\bibitem[Dunn(1961)]{dunn1961}
+Dunn, O. J. (1961). Multiple comparisons among means.
+\emph{Journal of the American Statistical Association}, 56(293), 52--64.
+\href{https://doi.org/10.1080/01621459.1961.10482090}{doi:10.1080/01621459.1961.10482090}.
+
+\bibitem[Eddelbuettel and François(2011)]{eddelbuettel2011}
+Eddelbuettel, D. and François, R. (2011). Rcpp: Seamless R and C++ integration.
+\emph{Journal of Statistical Software}, 40(8), 1--18.
+\href{https://doi.org/10.18637/jss.v040.i08}{doi:10.18637/jss.v040.i08}.
 
 \bibitem[Halekoh and Højsgaard(2014)]{halekoh2014}
 Halekoh, U. and Højsgaard, S. (2014).
@@ -292,16 +303,81 @@ A Kenward--Roger approximation and parametric bootstrap methods for tests in lin
 \emph{Journal of Statistical Software}, 59(9).
 \href{https://www.jstatsoft.org/article/view/v059i09}{doi:10.18637/jss.v059.i09}.
 
+\bibitem[Harris et~al.(2020)]{harris2020}
+Harris, C. R., Millman, K. J., van der Walt, S. J., et al. (2020). Array programming with NumPy.
+\emph{Nature}, 585, 357--362.
+\href{https://doi.org/10.1038/s41586-020-2649-2}{doi:10.1038/s41586-020-2649-2}.
+
 \bibitem[Kupzyk(2011)]{kupzyk2011}
 Kupzyk, K. A. (2011).
 \emph{The Effects of Simplifying Assumptions in Power Analysis}.
 PhD dissertation, University of Nebraska--Lincoln.
 \href{https://digitalcommons.unl.edu/cehsdiss/106/}{DigitalCommons@University of Nebraska--Lincoln, record 106}.
 
+\bibitem[Kuznetsova et~al.(2017)]{kuznetsova2017}
+Kuznetsova, A., Brockhoff, P. B., and Christensen, R. H. B. (2017). lmerTest package: Tests in linear mixed effects models.
+\emph{Journal of Statistical Software}, 82(13), 1--26.
+\href{https://doi.org/10.18637/jss.v082.i13}{doi:10.18637/jss.v082.i13}.
+
 \bibitem[Morris et~al.(2019)Morris, White, and Crowther]{morris2019}
 Morris, T. P., White, I. R., and Crowther, M. J. (2019).
 Using simulation studies to evaluate statistical methods.
 \emph{Statistics in Medicine}, 38(11), 2074--2102.
 \href{https://doi.org/10.1002/sim.8086}{doi:10.1002/sim.8086}.
+\bibitem[Pinheiro et~al.(2026)]{nlme2026}
+Pinheiro, J., Bates, D., and R Core Team. (2026).
+\emph{nlme: Linear and nonlinear mixed effects models}, [R package 3.1-170].
+\href{https://doi.org/10.32614/CRAN.package.nlme}{doi:10.32614/CRAN.package.nlme}.
+
+\bibitem[Poppler Project(2026)]{poppler2026}
+Poppler Project. (2026).
+\emph{Poppler}, [PDF library and tools, version 26.10.0].
+\href{https://poppler.freedesktop.org/}{Poppler project}.
+
+\bibitem[PyMuPDF contributors(n.d.)]{pymupdf2026}
+PyMuPDF contributors. (n.d.).
+\emph{PyMuPDF}, [Python package, versions 2.1 and 1.26.6].
+\href{https://github.com/pymupdf/PyMuPDF}{PyMuPDF project}.
+
+\bibitem[Python Software Foundation(n.d.)]{python2026}
+Python Software Foundation. (n.d.).
+\emph{Python}, [Programming language, version 3.14.10].
+\href{https://www.python.org/}{Python project}.
+
+\bibitem[PyYAML contributors(n.d.)]{pyyaml2026}
+PyYAML contributors. (n.d.).
+\emph{PyYAML}, [Python package, version 6.0.3].
+\href{https://pyyaml.org/}{PyYAML project}.
+
+\bibitem[R Core Team(2026)]{rcore2026}
+R Core Team. (2026).
+\emph{R: A language and environment for statistical computing}, [Version 4.5.3]. R Foundation for Statistical Computing, Vienna, Austria.
+\href{https://www.r-project.org/}{R: A language and environment for statistical computing project}. \href{https://cran.r-project.org/src/base/R-4/}{CRAN R 4 source archive}.
+
+\bibitem[SAS Institute(n.d.)]{sasmixed}
+SAS Institute. (n.d.).
+\emph{The MIXED procedure}, [SAS/STAT 15.2 User’s Guide].
+\href{https://go.documentation.sas.com/api/docsets/statug/15.2/content/mixed.pdf}{SAS/STAT 15.2 User’s Guide}.
+
+\bibitem[Satterthwaite(1946)]{satterthwaite1946}
+Satterthwaite, F. E. (1946). An approximate distribution of estimates of variance components.
+\emph{Biometrics Bulletin}, 2(6), 110--114.
+\href{https://doi.org/10.2307/3002019}{doi:10.2307/3002019}.
+
+\bibitem[Serlin(2000)]{serlin2000}
+Serlin, R. C. (2000). Testing for robustness in Monte Carlo studies.
+\emph{Psychological Methods}, 5(2), 230--240.
+\href{https://doi.org/10.1037/1082-989X.5.2.230}{doi:10.1037/1082-989X.5.2.230}.
+
+\bibitem[Tectonic contributors(n.d.)]{tectonic2026}
+Tectonic contributors. (n.d.).
+\emph{Tectonic}, [TeX and LaTeX engine, version 0.17.0].
+\href{https://github.com/tectonic-typesetting/tectonic}{Tectonic project}.
+
+\bibitem[Virtanen et~al.(2020)]{virtanen2020}
+Virtanen, P., Gommers, R., Oliphant, T. E., et al. (2020). SciPy 1.0: Fundamental algorithms for scientific computing in Python.
+\emph{Nature Methods}, 17(3), 261--272.
+\href{https://doi.org/10.1038/s41592-019-0686-2}{doi:10.1038/s41592-019-0686-2}.
+
 \end{thebibliography}
 \end{document}

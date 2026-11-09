@@ -10,6 +10,7 @@ unresolved under the labeled denominator degrees of freedom.
 - [Full re-replication manuscript](paper/kupzyk-replication.pdf) and [editable LaTeX](paper/kupzyk-replication.tex)
 - [Full comparisons](results/full/comparison-summary.json) and [discrepancy audit](DISAGREEMENTS.yaml)
 - [Replication plan](REPLICATION-PLAN.yaml) and [evidence packet](evidence-packet.json)
+- [Citation coverage audit](notes/rerun-citation-audit.md) and [citation inventory](citation-inventory.json)
 - [Reproduce the full R run](rerun/README.md) and [archived batch checksums](provenance/full-run-checkpoints.json)
 
 Build the current PDF with Tectonic from the study's `paper/` directory.
