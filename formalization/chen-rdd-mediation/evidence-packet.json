@@ -23,7 +23,7 @@
   {
    "id": "plan",
    "path": "REPLICATION-PLAN.yaml",
-   "sha256": "577689e1a3f416445046b07201062aee524aded64e692e174bd29556a219928f"
+   "sha256": "a5b113a530c6d828de6159a8ee85cbf8a2b64a97a687d019572827b329daa747"
   },
   {
    "id": "sim",
@@ -38,7 +38,7 @@
   {
    "id": "fallback",
    "path": "simulation/fallback.json",
-   "sha256": "80cdc0cffaa23371fabfe45f2a919cd1ced01b67b9bbba9786a38ab4a76039c0"
+   "sha256": "d348e2635a58aedc0457896de4ab238143774406f8b15b6a7052433a197f85e6"
   },
   {
    "id": "aggregate",
@@ -78,12 +78,12 @@
   {
    "id": "stmt_code",
    "path": "simulation/statement_checks.py",
-   "sha256": "d0a1b08c98e0684bccbaa755820f2130b3b6e28cba1a3a1facb86bcf4eb274cd"
+   "sha256": "90301f45f09b0b3b419a11b49b05b89ecb871633d977c817897e46659c13a214"
   },
   {
    "id": "stmt",
    "path": "results/statement_checks.csv",
-   "sha256": "73049ea9bb43fd1e64ac7b56105d8c8971143381fb253555563439665f44e3d0"
+   "sha256": "06636b29a6b57849a32795d8de7a2599a38ad53f093154c5cad664933c562d38"
   },
   {
    "id": "zero_code",
@@ -118,7 +118,157 @@
   {
    "id": "builder",
    "path": "build_packet.py",
-   "sha256": "ef7ef4a7f592acde5ebfa9073df5574530ceb124c03d6a4d3cb164143dad20c5"
+   "sha256": "e999fa1a26b9fbbe4c07fec5cde72c8e1c2e1e15e8ec38a1d5f486d7aeaff527"
+  },
+  {
+   "id": "r_code",
+   "path": "r-reproduction/chen_exact.R",
+   "sha256": "d299cadf574483f86e98911812c1cee33ab5a75e53d7ac1d29939bd50722593c"
+  },
+  {
+   "id": "r_rows",
+   "path": "r-reproduction/out/estimates.csv",
+   "sha256": "0e79c067fb251a9e869f1a7b8d2f49824b7d76d704f31b32c0e451bacf885887"
+  },
+  {
+   "id": "r_literal",
+   "path": "r-reproduction/out/literal_check.txt",
+   "sha256": "9ebc9922aa0c9014ab68300974cc54fc7068bff0428e242abf05ec26139e901f"
+  },
+  {
+   "id": "r_full",
+   "path": "r-reproduction/out-full/condition_summary.csv",
+   "sha256": "8f1ca30474b684aecf93f432e1d289e34cde2bd38114e4631c842bb48e76c020"
+  },
+  {
+   "id": "r_full_run",
+   "path": "r-reproduction/out-full/RUN.md",
+   "sha256": "055a1e1102c3aac95b33976a422dfa1a46bfbb01eb832197c44fb976e8613cb5"
+  },
+  {
+   "id": "r_full_literal",
+   "path": "r-reproduction/out-full/literal_check.txt",
+   "sha256": "9ebc9922aa0c9014ab68300974cc54fc7068bff0428e242abf05ec26139e901f"
+  },
+  {
+   "id": "r_cmp_code",
+   "path": "secondary/r_full_comparison.py",
+   "sha256": "4092562b8ba9b9e05b25d127fcd0f6b7c1d5007821b8687336906281b970b80d"
+  },
+  {
+   "id": "r_cmp",
+   "path": "results/r_full_comparison.json",
+   "sha256": "4e301bf766a6ca9bac0173855c6f12f86e8b535f23bbaa13d16d5de1c1913be9"
+  },
+  {
+   "id": "dig_bias_code",
+   "path": "secondary/digitize_bias_figures.py",
+   "sha256": "3521ec9dcd347ef97747d10f5a84e375f93d9b29d0bd41aaa739d730d9279864"
+  },
+  {
+   "id": "dig_bias",
+   "path": "results/digitized_bias.csv",
+   "sha256": "c0a9904bbcb1604e07c5614dbba87dbb7a1121493ae7ba82625a41d49fe11996"
+  },
+  {
+   "id": "dig_rates_code",
+   "path": "secondary/digitize_raster_figures.py",
+   "sha256": "8bdea07d186a6426af5141382b64e62687ce7e2cd51876b9cacbfc7aa8f47aa7"
+  },
+  {
+   "id": "dig_rates",
+   "path": "results/digitized_rates.csv",
+   "sha256": "a39c79eb87446c6d5b02de71725dffe57f763c0f2f9b07dc2a0abd6c48e1c8cd"
+  },
+  {
+   "id": "dig_imb_code",
+   "path": "secondary/digitize_imbalance_figures.py",
+   "sha256": "dea4f20cff961f3431b4fadfc5945aff4bc2ec71fa59a2cc0ac40eb3fb3f7256"
+  },
+  {
+   "id": "dig_imb",
+   "path": "results/digitized_imbalance.csv",
+   "sha256": "769206a946cbb14c83a91c39d091248cec3f352203d58e1f0b6144ee79162750"
+  },
+  {
+   "id": "dig_cross",
+   "path": "results/digitize_crosscheck.csv",
+   "sha256": "9175dc619521b6eec5d75ad4b4600b443bad7f037a32067143ec93d34f1d3119"
+  },
+  {
+   "id": "rates_agree",
+   "path": "results/rates_agreement.csv",
+   "sha256": "bc0e0b5140e1ea521dc8941e27e7f5c5c6439f47c6e4d7faf12d6f39fc0557a2"
+  },
+  {
+   "id": "bias_struct",
+   "path": "results/bias_structure.csv",
+   "sha256": "0d5384a18af81752db22c0d085eb129fc1b2dd487fd881807bcfe92d03257f82"
+  },
+  {
+   "id": "dis",
+   "path": "DISAGREEMENTS.yaml",
+   "sha256": "9fd3a8e301a69fbe48f1451aa04f08f6315b41102cae2e8a7fdc7e4fee42fd34"
+  },
+  {
+   "id": "dis_code",
+   "path": "secondary/disagreement_tests.py",
+   "sha256": "c565071055ec631f6e0cad3ed640ade9ffbd4f4344e9f619f0b0acbca91b263f"
+  },
+  {
+   "id": "dis_tests",
+   "path": "results/disagreement_tests.json",
+   "sha256": "7c603647b6c0d131702f35eba0c86496168515aaa00e6952ca4f5c710068b233"
+  },
+  {
+   "id": "emp_code",
+   "path": "secondary/empirical_consistency.py",
+   "sha256": "1615ad27078ac415103f88b47a680f3f1b6d1631e23319bfe5f9d98a3f892573"
+  },
+  {
+   "id": "emp",
+   "path": "results/empirical_consistency.json",
+   "sha256": "42730f8a98a5333d60e9c1cd9d691501b7965b56d2be672a3d74e830692c4599"
+  },
+  {
+   "id": "identities",
+   "path": "results/table_identities.json",
+   "sha256": "8b980bf4f38eda1a6e292f6eb78e50d25552d30fd3438f07451260c79218fc06"
+  },
+  {
+   "id": "sv_readme",
+   "path": "source-values/README.md",
+   "sha256": "1baf067388273261ff8a2e5cd5eaa01a6e3c8ca721ab87b4d573b5c3bdc41e94"
+  },
+  {
+   "id": "sv_31",
+   "path": "source-values/table_3_1.csv",
+   "sha256": "7078ad3e255fabd9c3562668305de0cd59bc6da5510b978f0a472a8b7ffd23c5"
+  },
+  {
+   "id": "sv_42",
+   "path": "source-values/table_4_2.csv",
+   "sha256": "74c6595106be46663d3db2195077f865f0bdb2bc583605a7e9ce695df3da9ffb"
+  },
+  {
+   "id": "sv_43",
+   "path": "source-values/table_4_3.csv",
+   "sha256": "1b4f31f2b2159bc875f456afc18274534728e687c2354a19c374098a27387414"
+  },
+  {
+   "id": "sv_48",
+   "path": "source-values/table_4_8.csv",
+   "sha256": "edd14aa0bb8760a58af6eda8eb87177d679de5db56fc4ce273d459045553c8b0"
+  },
+  {
+   "id": "sv_49",
+   "path": "source-values/table_4_9.csv",
+   "sha256": "3c4ff06778b17ef0e588f5982538156621394ac7b450637883b5d174ca62e9b1"
+  },
+  {
+   "id": "inventory",
+   "path": "source-inventory.json",
+   "sha256": "ee2c68e66faa15013d4012ee05eaebd506e299b581709e62ac2071243a715b68"
   }
  ],
  "sections": [
@@ -243,22 +393,22 @@
     }
    ],
    "reproduction_deviation": "ours minus printed = -85.42 percentage points",
-   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Bias is the mean of 1,000 estimates minus the population value (PNDE = c', TNDE = c' + ah).",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Bias is the mean of 1,000 estimates minus the population value (PNDE = c', TNDE = c' + ah).",
    "uncertainty": "Our largest |bias| over all 19,200 condition-cutoff-effect results is 0.016, far inside .10; Monte Carlo standard error of a mean of 1,000 estimates is at most 0.006 in any cell.",
    "multiplicity": "Descriptive summary over the full grid; no tests.",
    "status": "not_replicated",
-   "status_reason": "Every direct-effect result in our run lies within [-.05, .05]. Chen's printed estimation code matches ours line by line, and her data-generating model contains no term that would bias OLS.",
+   "status_reason": "Every direct-effect result in our run lies within [-.05, .05]. Her replayed code over all 1,000 replications: largest condition-mean bias 0.017 (0% beyond .10); 5.3% of 19,200 cell biases beyond 1.96 Monte Carlo SEs and 0.14% beyond 3.29, as expected with no bias; her estimates and ours differ beyond 1.96 combined SEs in 5.3% of cells; median SD ratio 1.000; slope of estimated on true h 0.9998-1.0005 (results/r_full_comparison.json). Her digitized bias (Figures 4.12-4.16) is an almost exact function of the design with no dependence on n: MINT -0.998*ah; PNDE -1.466, -0.965, -0.446 times c' by cutoff plus about -0.928*h (results/bias_structure.csv). DISAGREEMENTS.yaml entries h-absent, population-values and pnde-definition give the competing explanations and tests.",
    "numerical": "mismatch",
    "reconstruction_scope": "full design, independent re-implementation, own seeds",
    "limitations": [
-    "Chen's step that matched estimates to population values is not printed, so the cause of the printed bias cannot be identified."
+    "Chen's step that compared estimates with population values is not printed; the mechanism is inferred from her digitized figures and tables (DISAGREEMENTS.yaml population-values: partly explained), not read from her code."
    ],
    "stopping": {
     "reason": "Full design completed.",
     "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
     "untested": "Chen's own R output and seeds.",
-    "resource_basis": "13.7 core-hours.",
-    "next_evidence": "Chen's result files or aggregation code would show where the printed bias arises."
+    "resource_basis": "13.7 core-hours (Python); 3.4 hours for the full R replay.",
+    "next_evidence": "Chen's result files or aggregation code would confirm the per-case rule directly."
    },
    "findings": {
     "published": {
@@ -329,22 +479,23 @@
     }
    ],
    "reproduction_deviation": "coverage shortfall: ours minus printed = -43.58; imbalance: ours minus printed = -46.74 percentage points",
-   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Coverage is the share of 1,000 95% percentile CIs containing the population value.",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Coverage is the share of 1,000 95% percentile CIs containing the population value.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error. Our lowest cell coverage is 0.916; 92.9% of the 19,200 results lie in Bradley's [.925, .975].",
    "multiplicity": "Descriptive; 19,200 cell coverages, no correction because nothing is tested.",
    "status": "not_replicated",
-   "status_reason": "Coverage is close to nominal in every effect-cutoff row of our run, and misses fall on both sides of the interval at similar rates.",
+   "status_reason": "Coverage is close to nominal in every effect-cutoff row of our run, and misses fall on both sides of the interval at similar rates. Her digitized coverage of nonzero PNIE falls with n to a plateau of 0.25, 0.487 and 0.736 at cutoffs 1-3 (the control share under her code), with the truth above the interval in about the treated share; a wrong population value per condition would drive coverage toward 0 instead. Her PNIE Type I and power agree with ours in 100.0% and 97.8% of points, so her intervals sit where ours do; only the comparison with population values differs (DISAGREEMENTS.yaml population-values).",
    "numerical": "mismatch",
    "reconstruction_scope": "full design, independent re-implementation, own seeds",
    "limitations": [
-    "Our run shows a small positive imbalance (the truth lies above the CI slightly more often than below it), two orders of magnitude smaller than Chen's; we did not investigate its cause."
+    "Our run shows a small positive imbalance (the truth lies above the CI slightly more often than below it), two orders of magnitude smaller than Chen's; we did not investigate its cause.",
+    "Which per-case rule produced her population values is not determined: one rule fits cutoffs 1-2 but not cutoff 3 exactly, and a step written for her text's reversed cutoff labels predicts the same plateau."
    ],
    "stopping": {
     "reason": "Full design completed.",
     "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
     "untested": "Chen's own R output and seeds.",
-    "resource_basis": "13.7 core-hours.",
-    "next_evidence": "Chen's per-replication CIs and population values would locate the discrepancy."
+    "resource_basis": "13.7 core-hours (Python); 3.4 hours for the full R replay.",
+    "next_evidence": "Chen's per-replication CIs and population values would identify the rule."
    },
    "findings": {
     "published": {
@@ -383,7 +534,6 @@
   {
    "id": "H3",
    "level": "headline",
-   "comparison_kind": "scalar_unestablished",
    "statement": "Power for the mediated interaction (MINT) is near zero at every sample size and never reaches .80.",
    "source_locator": "Chapter 4, Figure 4.28 text, printed p. 121 (PDF page 135); Chapter 5 power, printed p. 148 (PDF page 162)",
    "artifact_ids": [
@@ -393,8 +543,8 @@
     "cells"
    ],
    "published": {
-    "value": "near zero at every sample size; never reaches .80",
-    "units": "rejection rate (verbal)"
+    "value": 0.063,
+    "units": "rejection rate, read from Figure 4.28"
    },
    "ours": {
     "value": 0.836,
@@ -406,33 +556,31 @@
      "definition": "MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c' and cutoffs",
      "units": "rejection rate",
      "positive_means": "the 95% CI excludes zero more often",
-     "published": null,
-     "ours": 0.836,
-     "comparison_kind": "scalar_unestablished",
-     "unavailable_reason": "Chen gives no number for this cell; the figure is not tabulated."
+     "published": 0.063,
+     "ours": 0.836
     }
    ],
-   "contrast_unestablished_reason": "The published value is only the verbal statement \"near zero\"; no printed number or rounding precision exists to define a tolerance.",
-   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Rejection means the 95% percentile CI excludes zero; it does not use population values.",
+   "reproduction_deviation": "ours minus published = 0.773 (rejection rate)",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Rejection means the 95% percentile CI excludes zero; it does not use population values.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "One cell: the largest MINT in the design at the smallest n. It was chosen after the full results were available; results/summary.json gives MINT power for every n and ah.",
    "status": "not_replicated",
-   "status_reason": "In our run MINT power rises with n and ah: 0.836 at n = 500 for ah = .20, and at least 0.974 for ah >= .13 once n >= 1,000. Rejection rates do not use population values, so this disagreement cannot come from how estimates were matched to population values; it could still come from another unprinted step.",
-   "numerical": "withheld: no published number",
-   "reconstruction_scope": "full design, independent re-implementation",
+   "status_reason": "In our run MINT power rises with n and ah: 0.836 at n = 500 for ah = .20, and at least 0.974 for ah >= .13 once n >= 1,000. Her Figure 4.28 gives 0.063, 0.068 and 0.057 in this cell at cutoffs 1-3, and no point above about .07: a Type I error curve. Rejection rates do not use population values. Her MINT power matches our rates with h set to 0 at 97.8% of points (against 6.7% with h as designed) and her MINT bias is -0.998*ah, so the data behind her results contained no interaction, while her printed code recovers h (Her replayed code over all 1,000 replications: largest condition-mean bias 0.017 (0% beyond .10); 5.3% of 19,200 cell biases beyond 1.96 Monte Carlo SEs and 0.14% beyond 3.29, as expected with no bias; her estimates and ours differ beyond 1.96 combined SEs in 5.3% of cells; median SD ratio 1.000; slope of estimated on true h 0.9998-1.0005 (results/r_full_comparison.json).) (DISAGREEMENTS.yaml h-absent: explained).",
+   "numerical": "mismatch",
+   "reconstruction_scope": "full design, independent re-implementation and exact replay",
    "limitations": [
-    "Chen also reports MINT Type I error near zero with a = 0 at every h > 0 and no variation across h. Ours is below Bradley's range at h = .05 through n = 5,000 (at most .019; .026-.036 at n = 10,000) and at h = .15 at n = 500 (.014-.020), but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), so it varies with h. Both MINT differences are consistent with smaller h estimates or wider h intervals in her runs than the printed code produces; this is not tested."
+    "The published value is read from an image (reading error about .013 averaged over cutoffs; the cutoff 1 point is partly hidden by another series). Which mechanism removed the interaction from her data (y generated before the t*m column was filled, or h not reaching gendata) cannot be told apart from her published results."
    ],
    "stopping": {
     "reason": "Full design completed.",
     "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
     "untested": "Chen's own R output and seeds.",
-    "resource_basis": "13.7 core-hours.",
-    "next_evidence": "Chen's MINT CIs for one condition would show whether her h estimates were attenuated."
+    "resource_basis": "13.7 core-hours (Python); 3.4 hours for the full R replay.",
+    "next_evidence": "Chen's y intercepts or result files would tell the two mechanisms apart."
    },
    "findings": {
     "published": {
-     "text": "MINT power near zero at every sample size; never reaches .80",
+     "text": "MINT power near zero at every sample size; never reaches .80 (Figure 4.28: 0.057-0.068 in this cell)",
      "state": "reported",
      "artifact_ids": [
       "pdf"
@@ -441,6 +589,9 @@
      "source_excerpt": "All power for MINT is near zero.",
      "page_locator": "printed p. 121 (PDF page 135)",
      "claim_type": "numerical estimate",
+     "value_source": "figure_digitized",
+     "digitized_file": "results/digitized_rates.csv",
+     "reading_error": 0.013,
      "conditions": "Nonzero MINT cells (a and h nonzero), all n and cutoffs",
      "component_claim_ids": [],
      "component_contrast_indices": [
@@ -460,8 +611,7 @@
       0
      ]
     }
-   },
-   "reproduction_deviation": "Not computable: the published result is verbal; ours is a rejection rate of .836 in the contrast cell."
+   }
   },
   {
    "id": "H4",
@@ -486,7 +636,7 @@
    "conditions": "Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b, c' in {0, .14, .39, .59}, h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples.",
    "contrasts": [],
    "contrast_not_applicable": "A qualitative design recommendation over the whole grid; no single signed contrast represents it, and any pooled share would depend on the grid's mix of effect sizes.",
-   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries.",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02).",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "Shares over 1,176 zero-effect and 2,664 nonzero results at n = 5,000.",
    "status": "partly_replicated",
@@ -500,7 +650,7 @@
     "reason": "Full design completed.",
     "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
     "untested": "Chen's own R output and seeds.",
-    "resource_basis": "13.7 core-hours.",
+    "resource_basis": "13.7 core-hours (Python); 3.4 hours for the full R replay.",
     "next_evidence": "None needed for the recommendation; it is fully characterized by results/type1.csv and power.csv."
    },
    "findings": {
@@ -574,21 +724,21 @@
      "ours": 0.0
     }
    ],
-   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries.",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02).",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "Descriptive.",
    "status": "not_replicated",
-   "status_reason": "All indirect and MINT results lie within [-.05, .05] in our run. At the median cutoff, Chen's PNIE and MINT rows and her TNIE [-.05, .05] entry equal what |bias| = population value would give over the grid; her TNIE [-.10, .10] entry is 60.00 against 59.38 (secondary/zero_estimate_check.csv). This is a consistency observation, not a diagnosis.",
+   "status_reason": "All indirect and MINT results lie within [-.05, .05] in our run, and in the full replay of her code. Her digitized PNIE bias is -k*ab with k = 1.469, 0.959, 0.441 at cutoffs 1-3 and no dependence on n, and her MINT bias is exactly -ah (results/bias_structure.csv; DISAGREEMENTS.yaml h-absent and population-values). At the median cutoff, Chen's PNIE and MINT rows and her TNIE [-.05, .05] entry also equal what |bias| = population value would give over the grid (secondary/zero_estimate_check.csv).",
    "numerical": "mismatch",
    "reconstruction_scope": "full design",
    "limitations": [
-    "The zero-estimate pattern does not fit every printed entry (for example PNDE needs c' + h)."
+    "The zero-estimate pattern does not fit every printed entry (for example PNDE needs c' + h); the bias-structure fit is the fuller description."
    ],
    "stopping": {
     "reason": "Full design completed.",
     "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
     "untested": "Chen's own R output and seeds.",
-    "resource_basis": "13.7 core-hours.",
+    "resource_basis": "13.7 core-hours (Python); 3.4 hours for the full R replay.",
     "next_evidence": "Chen's population-value table, if one existed, would test the pattern directly."
    },
    "reproduction_deviation": "PNIE: ours minus printed = -27.08; TNIE: -39.06; MINT: -12.5 percentage points"
@@ -615,23 +765,23 @@
    "conditions": "Every zero-effect cell set named in each statement, all n and cutoffs; rates averaged over the factors a statement does not name, as in Chen's figures.",
    "contrasts": [],
    "contrast_not_applicable": "Each statement is a threshold claim about a set of cells; results/statement_checks.csv holds the per-cell rates and verdicts.",
-   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the factors it does not name, as in Chen's figures, and with fixed numeric readings of her words (for example \"near zero\" Type I < .025, \"close to zero\" power < .10, \"around .80\" .70-.90). A second reading moves every threshold .01 in her favour.",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the factors it does not name, as in Chen's figures, and with fixed numeric readings of her words (for example \"near zero\" Type I < .025, \"close to zero\" power < .10, \"around .80\" .70-.90). A second reading moves every threshold .01 in her favour.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "18 statements, each judged at its own threshold; no correction (descriptive).",
    "status": "partly_replicated",
-   "status_reason": "13 of 18 Type I statements agree (14 with slack). The robust disagreements are MINT with a = 0, where ours is below Bradley's range at h = .05 through n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation across h; and TNIE Type I statements with a = 0 at small n (statements 9, 10, 11), where our rates and her description fall on different sides of the robustness bounds. Read with h = 0, statements 9, 18 would hold in our run.",
+   "status_reason": "13 of 18 Type I statements agree (14 with slack). As a consistency check, every statement was also read on our cells with h replaced by 0 (other factors unchanged; the verdict_if_h_were_0 column). Then 39 of 46 statements hold, against 29 as designed; 10 of the 15 statements that disagree under both readings become agreements, and none that agrees becomes a disagreement. The 5 that still disagree are statements 10, 11, 30, 41, 44 (the number column of results/statement_checks.csv). Chen also defines PNDE as \"adding c' and h\" (printed p. 104), whereas with the mediator intercept zero in her data-generating model the population PNDE is c'. Her digitized Figures 4.17-4.28 match our rates read with h = 0 at 84.9-100.0% of points per figure (at 6.7-100.0% with h as designed; results/rates_agreement.csv), and each statement was also read against her own figure points (verdict_on_chen_figures). Together with the exact replay of her code, which recovers h, this establishes that the data behind her results contained no interaction (DISAGREEMENTS.yaml h-absent). The remaining disagreements are threshold cases, her text against her own figures, and one TNDE cell set explained by her particular random draws (DISAGREEMENTS.yaml threshold-noise, prose-versus-own-figure, tnde-power-gap). The robust disagreements are MINT with a = 0, where ours is below Bradley's range at h = .05 through n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation across h; and TNIE Type I statements with a = 0 at small n (statements 9, 10, 11), where our rates and her description fall on different sides of the robustness bounds. Read with h = 0, statements 9, 18 would hold in our run.",
    "numerical": "not applicable",
    "reconstruction_scope": "full design",
    "limitations": [
     "The numeric readings of Chen's words are ours; the slack column shows which verdicts depend on them.",
-    "The figures themselves were not digitized; only the text was tested."
+    "Figures 4.17-4.21 were read from images; points hidden by another series are excluded from verdicts."
    ],
    "stopping": {
     "reason": "Full design completed.",
     "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
     "untested": "Chen's own R output and seeds.",
-    "resource_basis": "13.7 core-hours.",
-    "next_evidence": "Digitized Figures 4.17-4.21 would allow a cell-by-cell numeric comparison."
+    "resource_basis": "13.7 core-hours (Python); 3.4 hours for the full R replay.",
+    "next_evidence": "None needed: the figures were digitized and compared cell by cell (results/rates_agreement.csv)."
    },
    "reproduction_deviation": "Not computable: threshold statements; 5 of 18 disagree (4 with slack)."
   },
@@ -657,23 +807,23 @@
    "conditions": "Every nonzero-effect cell set named in each statement; rates averaged over unnamed factors.",
    "contrasts": [],
    "contrast_not_applicable": "Threshold statements; per-cell rates are in results/statement_checks.csv.",
-   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the factors it does not name, as in Chen's figures, and with fixed numeric readings of her words (for example \"near zero\" Type I < .025, \"close to zero\" power < .10, \"around .80\" .70-.90). A second reading moves every threshold .01 in her favour.",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the factors it does not name, as in Chen's figures, and with fixed numeric readings of her words (for example \"near zero\" Type I < .025, \"close to zero\" power < .10, \"around .80\" .70-.90). A second reading moves every threshold .01 in her favour.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "28 statements; no correction (descriptive).",
    "status": "partly_replicated",
-   "status_reason": "16 of 28 power statements agree (17 with slack): all 6 PNIE statements and all 5 PNDE statements agree; the disagreements concern TNIE, TNDE and MINT. As a consistency check, every statement was also read on our cells with h replaced by 0 (other factors unchanged; the verdict_if_h_were_0 column). Then 39 of 46 statements hold, against 29 as designed; 10 of the 15 statements that disagree under both readings become agreements, and none that agrees becomes a disagreement. The 5 that still disagree are statements 10, 11, 30, 41, 44 (the number column of results/statement_checks.csv). Chen also defines PNDE as \"adding c' and h\" (printed p. 104), whereas with the mediator intercept zero in her data-generating model the population PNDE is c'. These observations are consistent with h contributing little to her estimates; they do not establish it.",
+   "status_reason": "16 of 28 power statements agree (17 with slack): all 6 PNIE statements and all 5 PNDE statements agree; the disagreements concern TNIE, TNDE and MINT. As a consistency check, every statement was also read on our cells with h replaced by 0 (other factors unchanged; the verdict_if_h_were_0 column). Then 39 of 46 statements hold, against 29 as designed; 10 of the 15 statements that disagree under both readings become agreements, and none that agrees becomes a disagreement. The 5 that still disagree are statements 10, 11, 30, 41, 44 (the number column of results/statement_checks.csv). Chen also defines PNDE as \"adding c' and h\" (printed p. 104), whereas with the mediator intercept zero in her data-generating model the population PNDE is c'. Her digitized Figures 4.17-4.28 match our rates read with h = 0 at 84.9-100.0% of points per figure (at 6.7-100.0% with h as designed; results/rates_agreement.csv), and each statement was also read against her own figure points (verdict_on_chen_figures). Together with the exact replay of her code, which recovers h, this establishes that the data behind her results contained no interaction (DISAGREEMENTS.yaml h-absent). The remaining disagreements are threshold cases, her text against her own figures, and one TNDE cell set explained by her particular random draws (DISAGREEMENTS.yaml threshold-noise, prose-versus-own-figure, tnde-power-gap).",
    "numerical": "not applicable",
    "reconstruction_scope": "full design",
    "limitations": [
-    "Agreement on PNIE and PNDE is consistent with Chen's rejection rates for those effects not being affected by whatever produced her bias and coverage results.",
+    "Figures 4.22-4.28 were read from images; points hidden by another series are excluded from verdicts.",
     "The numeric readings of Chen's words are ours; the slack column shows which verdicts depend on them."
    ],
    "stopping": {
     "reason": "Full design completed.",
     "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
     "untested": "Chen's own R output and seeds.",
-    "resource_basis": "13.7 core-hours.",
-    "next_evidence": "Chen's h estimates for one condition would test whether h was attenuated in her runs."
+    "resource_basis": "13.7 core-hours (Python); 3.4 hours for the full R replay.",
+    "next_evidence": "None needed: the figures were digitized and compared cell by cell (results/rates_agreement.csv)."
    },
    "reproduction_deviation": "Not computable: threshold statements; 12 of 28 disagree (11 with slack)."
   },
@@ -721,11 +871,16 @@
    "id": "S5",
    "level": "supporting",
    "statement": "Tables 4.6-4.7 report RCT-minus-RDD differences and standardized biases for the HSIS path and mediation estimates, with SB defined in equation 3.12 as the difference over the RCT outcome SD.",
-   "source_locator": "Tables 4.6-4.7, equation 3.12",
+   "source_locator": "Tables 4.2-4.3, 4.6-4.7, equation 3.12",
    "artifact_ids": [
     "pdf",
     "arith",
-    "arith_code"
+    "arith_code",
+    "emp",
+    "emp_code",
+    "identities",
+    "sv_42",
+    "sv_43"
    ],
    "published": {
     "value": 24,
@@ -742,7 +897,7 @@
    "uncertainty": "Exact at the printed precision.",
    "multiplicity": "24 entries.",
    "status": "replicated",
-   "status_reason": "All 24 differences match; all 24 SBs match only when the divisor is the RCT estimate's SE rather than the outcome SD stated in equation 3.12.",
+   "status_reason": "All 24 differences match; all 24 SBs match only when the divisor is the RCT estimate's SE rather than the outcome SD stated in equation 3.12. Her printed effects also obey their definitions: 12 of 12 identities hold (PNIE = ab, TNIE = ab + ah, TNDE - PNDE = ah in the RCT and three cutoffs), so on real data her code estimated h and used it; the PNDE identity implies a mediator intercept of about 19.7 (RCT) and 22.1 (cutoff 3), the scale of the mediator mean, so her real-data code used the fitted intercept. Table 4.2 shows treatment below the cutoff (treated shares .36, .72, .86 at cutoffs 1-3), as her text labels them and the reverse of her simulation code. In Table 4.3, 8 of 9 t values equal the coefficient over its SE; one (cutoff 3, child age, -0.127/0.061 = -2.08 against -2.252) is a one-digit typo (DISAGREEMENTS.yaml table-4-3-t-value).",
    "numerical": "match",
    "reconstruction_scope": "printed numbers only",
    "limitations": [
@@ -975,23 +1130,20 @@
    "id": "E4",
    "claim_id": "H3",
    "contrast_index": 0,
-   "comparison_kind": "scalar_unestablished",
    "estimand": "MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c' and cutoffs",
    "units": "rejection rate",
    "positive_means": "the 95% CI excludes zero more often",
-   "published_effect": null,
+   "published_effect": 0.063,
    "ours_effect": 0.836,
-   "estimate_status": "unresolved",
-   "unresolved_reason": "No published number for this cell.",
+   "estimate_status": "resolved",
    "display_decimals": 3,
    "tolerance": {
-    "kind": "unestablished",
-    "value": null,
-    "basis": "The source gives \"near zero\" with no printed value or precision."
+    "kind": "prespecified",
+    "value": 0.013,
+    "basis": "Reading error of the digitized Figure 4.28 points, averaged over the three cutoffs (results/digitized_rates.csv), rounded up; our Monte Carlo error is smaller (about .012)."
    },
-   "applicability_reason": "The source states a verbal result; a scalar contrast exists but no defensible margin.",
-   "magnitude": "not established",
-   "direction": "not established",
+   "magnitude": "larger",
+   "direction": "same direction",
    "interpretation": "descriptive point estimates; not equivalence",
    "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
   },
@@ -1022,14 +1174,14 @@
    "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
   }
  ],
- "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 46 testable Type I and power statements, 29 agree (31 with .01 threshold slack), and 39 would hold in our run if h were 0. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access.",
+ "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 46 testable Type I and power statements, 29 agree (31 with .01 threshold slack), and 39 would hold in our run if h were 0. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access. Her own seeded R code, replayed exactly on all 1,280,000 of her datasets, behaves like our run, so the disagreements arise in unprinted steps: her digitized figures show results computed from data without the interaction h and population values wrong for one group of cases. Of 9 disagreements (DISAGREEMENTS.yaml), 8 are explained, 1 partly explained and 0 unexplained.",
  "limitations": [
-  "R is unavailable here, so the simulation is an independent Python re-implementation with our own seeds; it agrees with Chen on summaries only (H1-H4, S1-S3).",
-  "Chen's aggregation code and population-value table are not printed, so the source of her bias, coverage and MINT results cannot be identified (H1, H2, H3, S1); our Type I and power agree with most of her statements (S2, S3).",
-  "RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the printed arithmetic was checked (S5).",
+  "The bootstrap-based results (coverage, Type I error, power) come from the Python run with our own seeds; Chen's bootstrap is unseeded, so they agree with hers on summaries only. Her datasets and point estimates are reproduced exactly by the R replay of all 1,000 replications per condition (H1-H4, S1-S3).",
+  "Chen's aggregation code, population values and result files are not printed. The mechanisms behind her bias, coverage and MINT results are inferred from her digitized figures and printed tables; they reproduce her patterns but are not read from her code (H1, H2, H3, S1).",
+  "Figures 4.17-4.38 were read from images (reading errors up to about .02 on rates); points hidden behind another series are flagged and not used for verdicts (H3, S2, S3).",
+  "RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the printed arithmetic and identities were checked (S5).",
   "The announced power analysis by the SD of Y is not reported, so it cannot be assessed (S8).",
-  "The dissertation labels the cutoffs inconsistently: the code's index 1 is the 25th percentile (75% treated), as is the Chapter 4 description of the cut scores, while Chapter 3 and the Table 4.8 note call index 1 25% treatment; we report by the code (H1, H2).",
-  "Chen suggests global estimation with an incorrect functional form as a plausible explanation of the bias; in her data-generating model the assignment variable does not enter M or Y, so the fitted linear models are correctly specified (H1).",
-  "Read on our cells with h replaced by 0, most of Chen's Type I and power statements that disagree with our run would hold, and her text defines PNDE as c' + h where the population value is c'; both are consistent with h contributing little to her estimates or population values, but neither is tested against her runs (S2, S3, H3)."
+  "The dissertation labels the cutoffs inconsistently: the code's index 1 is the 25th percentile (75% treated), while Chapter 3, the Table 4.8 note and her Head Start analysis have treatment below the cutoff; we report by the code (H1, H2).",
+  "Chen suggests global estimation with an incorrect functional form as a plausible explanation of the bias; in her data-generating model the assignment variable does not enter M or Y, so the fitted linear models are correctly specified (H1)."
  ]
 }
