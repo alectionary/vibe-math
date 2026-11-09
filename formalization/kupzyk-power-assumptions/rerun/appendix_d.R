@@ -51,13 +51,14 @@ run_validation <- function(path) {
   df <- sat_df(d,z,f)
   xz <- cbind(lme4::getME(l,'X'),lme4::getME(l,'Z'))
   rank_df <- nrow(z)-as.integer(Matrix::rankMatrix(xz,method='qr.R'))
-  rows[[length(rows)+1]] <- data.frame(cell=i,draw=rep,sat_df=df,lmerTest_df=ref[4],
-    sat_p=2*pt(-abs(f[['beta']]/f[['se']]),df),lmerTest_p=ref[5],
+  rows[[length(rows)+1]] <- data.frame(cell=i,draw=rep,sat_df=df,lmerTest_df=ref[['df']],
+    sat_p=2*pt(-abs(f[['beta']]/f[['se']]),df),lmerTest_p=ref[['Pr(>|t|)']],
     containment_df=containment_df(d),containment_rank_check=rank_df,
     profile_boundary=f[['boundary']],lme4_boundary=lme4::isSingular(l))
  }
  a <- do.call(rbind,rows)
  write.csv(a,path,row.names=FALSE)
- stopifnot(all(a$containment_df==a$containment_rank_check))
+ stopifnot(all(a$containment_df==a$containment_rank_check),
+           max(abs(a$sat_p-a$lmerTest_p),na.rm=TRUE)<.00025)
 }
 if(sys.nframe()==0) run_validation(commandArgs(TRUE)[[1]])
