@@ -135,20 +135,25 @@ for (i in seq_len(nrow(first))) {
   if (i %% 2 == 1) {
     rebuilt[[i]] <- do.call(gendata, as.list(row %>% select(-sim_block)))
   } else {
-    invisible(rnorm(7 * row$nobs))      # skip, then rebuild from the saved state below
-    rebuilt[[i]] <- NULL
+    invisible(rnorm(7 * row$nobs))      # skip; leave rebuilt[[i]] empty (assigning NULL would delete it)
   }
 }
 seed_after_skip <- .Random.seed
-same_kept <- all(vapply(seq(1, nrow(first), by = 2), function(i) {
+# compare values only: row names differ between the stacked literal output and one dataset
+diffs <- vapply(seq(1, nrow(first), by = 2), function(i) {
   rows <- literal$id == first$id[i]
-  isTRUE(all.equal(as.matrix(literal[rows, -1]), as.matrix(rebuilt[[i]][, -1]), tolerance = 0))
-}, logical(1)))
-writeLines(c(sprintf("first sim_block = %d, datasets = %d", blocks[1], nrow(first)),
+  a <- unname(as.matrix(literal[rows, -1])); b <- unname(as.matrix(rebuilt[[i]][, -1]))
+  if (!identical(dim(a), dim(b))) return(Inf)
+  max(abs(a - b))
+}, numeric(1))
+same_kept <- all(diffs == 0)
+writeLines(c(sprintf("first sim_block = %d, datasets = %d, compared = %d", blocks[1], nrow(first), length(diffs)),
+             sprintf("rows in literal output = %d, expected = %d", nrow(literal), sum(first$nobs)),
+             sprintf("largest absolute difference over kept datasets = %s", format(max(diffs))),
              sprintf("kept datasets identical to literal pipeline: %s", same_kept),
              sprintf("RNG state identical after the block: %s", identical(seed_after_literal, seed_after_skip))),
            file.path(outdir, "literal_check.txt"))
-stopifnot(same_kept, identical(seed_after_literal, seed_after_skip))
+stopifnot(nrow(literal) == sum(first$nobs), same_kept, identical(seed_after_literal, seed_after_skip))
 
 # --- full pass in Chen's order --------------------------------------------------
 set.seed(95409)
