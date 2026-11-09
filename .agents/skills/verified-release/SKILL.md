@@ -39,6 +39,9 @@ Give each claim one evidence label and keep it in notes, paper and announcement:
 | Sampled experiment | Outcomes under the recorded sampling protocol. |
 | Search lead / unresolved | A candidate or gap, not an established result. |
 
+For manuscript releases, require the shared
+[citation coverage gate](references/citations.md) and a rendered citation review.
+
 Before calling a release complete, add a requirement-to-evidence table to the
 reproducibility record: **met**, **partial**, **access-limited** or **not
 applicable**, each with a concrete location. Never report a build, run, push or

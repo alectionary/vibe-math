@@ -8,6 +8,11 @@ rows defined by the [first-page contract](first-page-contract.md).
 The validator checks declared coverage and file hashes, not whether an author
 has omitted a claim. A source-reading inventory audit is mandatory.
 
+Before freezing the writer handoff, assemble
+[`citation-inventory.json`](../../verified-release/references/citations.md)
+from the actual methods, software and earlier bibliography. Supply it with
+the evidence packet so the manuscript credits every required source.
+
 ## Packet contract
 
 - `scope`: `whole_dissertation`; `dissertation`: citation and stable source locator.

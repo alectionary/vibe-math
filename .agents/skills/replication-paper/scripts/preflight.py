@@ -47,6 +47,7 @@ import commit_refs
 import paper_freshness
 import source_acquisition
 import source_items
+import check_citations
 
 
 def probe(which=None, runner=None) -> dict:
@@ -544,6 +545,15 @@ def done_check(root, plan, paper, analysis=None) -> dict:
     errors.extend(fresh["stale"])
     incomplete.extend(fresh["draft"])
     if paper_text is not None:
+        citation_source = paper_path
+        if paper_path.suffix.lower() == ".pdf":
+            companion = paper_path.with_suffix(".tex")
+            if companion.is_file():
+                citation_source = companion
+        inventory_present = (root / "citation-inventory.json").exists()
+        staged_latex = citation_source.suffix.lower() == ".tex" and (root / "writer-manifest.json").is_file()
+        if inventory_present or staged_latex:
+            errors.extend(check_citations.study_errors(root, citation_source))
         try:
             errors.extend(
                 'links: ' + item if not item.startswith('links:') else item
