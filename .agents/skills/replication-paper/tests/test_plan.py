@@ -214,6 +214,11 @@ class PlanDone(unittest.TestCase):
                         "cost_estimate": "208 settings at about 40 minutes each is about 139 CPU-hours; the budget was 6 hours.",
                         "attempted": "Ran one setting from each estimator family, then stopped.",
                     },
+                    limit_kind=["not_run"],
+                    cost_estimate="208 settings at about 40 minutes each is about 139 CPU-hours.",
+                    decision="Stopped after the pilot.",
+                    tractable=False,
+                    reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told; chose to stop here"},
                 ),
                 chapter(),
             ]
@@ -319,7 +324,10 @@ class PlanDone(unittest.TestCase):
         data = plan(
             [
                 headline(),
-                chapter(status="not_attempted", reason="The source file for Chapter 1 was unreadable."),
+                chapter(status="not_attempted", reason="The source file for Chapter 1 was unreadable.",
+                        limit_kind=["input_unavailable"], missing_input="a readable Chapter 1 source file",
+                        looked_in="the dissertation PDF and the repository archive",
+                        sufficient_statistics=NOT_DATA, reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told; chose to stop here"}),
             ]
         )
         paper = (
@@ -349,7 +357,12 @@ class PlanDone(unittest.TestCase):
     def test_unavailable_input_is_not_called_a_failed_replication(self):
         data = plan(
             [
-                headline(status="input_unavailable", reason="The original data were not released."),
+                headline(status="input_unavailable", reason="The original data were not released.",
+                         limit_kind=["input_unavailable"], missing_input="the original data",
+                         looked_in="the dissertation appendices and the data archive",
+                         sufficient_statistics={"found": False, "what": "no means, SDs or correlation matrix printed",
+                                                "sufficient": False, "why": "nothing printed to rebuild the moments from"},
+                         reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told; chose to stop here"}),
                 chapter(),
             ]
         )
@@ -591,14 +604,18 @@ def limited(part_id, evidence, **updates):
 
 
 class LimitKinds(unittest.TestCase):
-    def test_plans_without_the_schema_keep_shared_boilerplate(self):
+    def test_every_plan_gets_the_same_checks(self):
+        """One plan format: an old plan without limit_schema is checked like any other."""
         shared = "See named artifacts and limitations."
         data = plan([
             headline(status="partly", reason=shared, evidence="notes.md"),
             chapter(status="partly", reason=shared, evidence="notes.md"),
         ])
         found = errors(data, PARTIAL_PAPER)
-        self.assertFalse(any("limit_kind" in item or "generic template" in item for item in found))
+        self.assertTrue(any("limit_kind" in item for item in found))
+        self.assertTrue(any("generic template" in item for item in found))
+        flagged = dict(data, limit_schema=1)
+        self.assertEqual(sorted(errors(flagged, PARTIAL_PAPER)), sorted(found))
 
     def test_schema_requires_a_specific_kind_reason_and_evidence(self):
         data = plan([
@@ -613,7 +630,6 @@ class LimitKinds(unittest.TestCase):
                 evidence="notes.md",
             ),
         ])
-        data["limit_schema"] = 1
         found = errors(data, PARTIAL_PAPER)
         self.assertTrue(any("limit_kind required" in item for item in found))
         self.assertTrue(any("generic template" in item for item in found))
@@ -640,7 +656,6 @@ class LimitKinds(unittest.TestCase):
                     looked_in="sources/browser-extraction.txt and the code archive",
                     sufficient_statistics=NOT_DATA),
         ])
-        good["limit_schema"] = 1
         self.assertEqual(errors(good, PARTIAL_PAPER), [])
         costly = plan([
             headline(),
@@ -653,7 +668,6 @@ class LimitKinds(unittest.TestCase):
                     tractable=True,
                     justification="1 CPU-minute"),
         ])
-        costly["limit_schema"] = 1
         found = errors(costly, PARTIAL_PAPER)
         self.assertTrue(any("compute cost alone is not acceptable" in item for item in found))
         declined = plan([
@@ -668,7 +682,6 @@ class LimitKinds(unittest.TestCase):
                     decision_by="project",
                     decision_reason="The source design can be run. This project declines L=9 and L=11 at N=8 because one toric L=11 point is about 54 CPU-hours and the grid is several days on 4 cores."),
         ])
-        declined["limit_schema"] = 1
         self.assertEqual(errors(declined, PARTIAL_PAPER), [])
         unnamed = copy.deepcopy(declined)
         unnamed["parts"][1]["decision_reason"] = "See named artifacts and limitations."
@@ -685,7 +698,6 @@ class LimitKinds(unittest.TestCase):
                     looked_in="the code archive",
                     sufficient_statistics=NOT_DATA),
         ])
-        data["limit_schema"] = 1
         self.assertTrue(any("reported_to_person" in item for item in errors(data, PARTIAL_PAPER)))
         data["parts"][1]["reported_to_person"] = {"date": "2026-11-08", "channel": "chat",
                                                   "summary": "told the matrices are missing; chose to stop at the finite check"}
@@ -701,7 +713,6 @@ class LimitKinds(unittest.TestCase):
             if stats is not None:
                 part["sufficient_statistics"] = stats
             data = plan([headline(), part])
-            data["limit_schema"] = 1
             return errors(data, PARTIAL_PAPER)
 
         self.assertTrue(any("sufficient_statistics" in item for item in data_with(None)))
@@ -715,7 +726,6 @@ class LimitKinds(unittest.TestCase):
 
     def test_published_evidence_names_where_each_value_came_from(self):
         data = plan([headline()])
-        data["limit_schema"] = 1
         self.assertEqual(errors(data, PARTIAL_PAPER), [])
         del data["published_evidence"]
         self.assertTrue(any("requires published_evidence" in item for item in errors(data, PARTIAL_PAPER)))
@@ -750,7 +760,6 @@ class LimitKinds(unittest.TestCase):
                 scope_reason="A new general proof is outside this finite audit.",
             ),
         ])
-        data["limit_schema"] = 1
         self.assertEqual(errors(data, PARTIAL_PAPER), [])
 
 

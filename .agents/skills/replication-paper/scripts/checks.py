@@ -391,11 +391,6 @@ _COST_WORD = re.compile(
 )
 
 
-def _limit_schema(plan) -> bool:
-    """New limit checks apply only when the plan declares limit_schema 1."""
-    return isinstance(plan, dict) and plan.get("limit_schema") == 1
-
-
 def _evidence_paths(value):
     if not isinstance(value, str):
         return []
@@ -483,7 +478,7 @@ def published_evidence_errors(plan) -> list:
     """
     items = plan.get("published_evidence") if isinstance(plan, dict) else None
     if not isinstance(items, list) or not items:
-        return ["plan: limit_schema 1 requires published_evidence: one entry per published "
+        return ["plan: requires published_evidence: one entry per published "
                 "quantity compared, with location, quantity, value_source and plotted_in"]
     errors = []
     seen = set()
@@ -532,7 +527,7 @@ def published_evidence_errors(plan) -> list:
 def _limit_kind_errors(parts) -> list:
     """Reject stock reasons, shared evidence, and incomplete not_run decisions.
 
-    Applies only to plans that set ``limit_schema: 1``. A status other than
+    Applies to every plan. A status other than
     ``replicated`` needs one or more limit kinds, each with its own facts.
     """
     errors = []
@@ -904,9 +899,10 @@ def replication_plan_errors(plan, baseline, paper, *, baseline_error=None, paper
             }
         )
 
-    if _limit_schema(plan):
-        errors.extend(_limit_kind_errors(current_parts))
-        errors.extend(published_evidence_errors(plan))
+    # One plan format: every check applies to every plan. A `limit_schema` key in
+    # an older plan is ignored; it switches nothing on or off.
+    errors.extend(_limit_kind_errors(current_parts))
+    errors.extend(published_evidence_errors(plan))
     if paper_error:
         errors.append(paper_error)
     elif not isinstance(paper, str):

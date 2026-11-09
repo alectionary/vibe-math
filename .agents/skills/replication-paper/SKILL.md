@@ -71,7 +71,7 @@ or colour blobs in a raster image, calibrated with `Axis` from ticks,
 gridlines or reference lines) and record `digitized_file` and
 `reading_error` in data units, or record `figure_not_digitized` with a
 `reason` and `reported_to_person`. Every tolerance against a digitized value
-includes its reading error. Both lists are required when `limit_schema: 1`.
+includes its reading error. Every plan carries both.
 
 Record each engine fallback as JSON: `name`, `kind` (`blocked` or `domain`),
 `justification`, `independent_validation`, `source_path`,
@@ -115,7 +115,7 @@ needs a recorded reason. A removal is `{id, reason}` under `removals`. The
 done check diffs the current file against the first committed version and
 fails when a part disappeared without that reason.
 
-A plan that sets `limit_schema: 1` must classify every part whose status is
+Every plan must classify every part whose status is
 not `replicated`. `limit_kind` is one of, or a list of:
 
 - `input_unavailable`: name `missing_input` and `looked_in`.
@@ -135,7 +135,9 @@ to that part: the done check rejects a reason copied verbatim onto another
 part, and generic templates such as "See named artifacts and limitations".
 Each part's evidence paths must be specific to that part. The same path list
 may not be repeated, and a path may not be listed twice inside one part.
-Plans that omit `limit_schema` are not subject to these fields.
+There is one plan format: every check applies to every plan, old or new, so a
+study can be re-replicated against the current standard. A `limit_schema` key
+in an older plan is ignored.
 
 ```yaml
 schema_version: 1
@@ -188,7 +190,7 @@ equations, and appendix tables, are hints only.
 - [ ] The full design was run, or the reduced run is a last resort with a cost estimate, what was tried, and exact `N of M` counts in the abstract and the body.
 - [ ] The headline verdict is no stronger than the headline parts that were run.
 - [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.
-- [ ] When `REPLICATION-PLAN.yaml` sets `limit_schema: 1`, every part that is not `replicated` has its own `limit_kind` (`input_unavailable`, `not_run`, `theorem_finite_only`, or `out_of_scope`), a part-specific reason, and part-specific evidence. `preflight.py done` rejects copied reasons, generic templates such as "See named artifacts and limitations", a repeated evidence path, and a `not_run` part that lacks an estimate and a decision. A tractable `not_run` part needs a non-cost justification, or an explicit `decision_by: project` with a `decision_reason`, before a resource decline is accepted.
+- [ ] Every part of `REPLICATION-PLAN.yaml` that is not `replicated` has its own `limit_kind` (`input_unavailable`, `not_run`, `theorem_finite_only`, or `out_of_scope`), a part-specific reason, and part-specific evidence. `preflight.py done` rejects copied reasons, generic templates such as "See named artifacts and limitations", a repeated evidence path, and a `not_run` part that lacks an estimate and a decision. A tractable `not_run` part needs a non-cost justification, or an explicit `decision_by: project` with a `decision_reason`, before a resource decline is accepted.
 - [ ] No part was removed or narrowed against the first commit without a recorded reason.
 - [ ] `preflight.py done` exits 0. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
 - [ ] Optional caption hints were reviewed.
