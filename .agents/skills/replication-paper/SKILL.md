@@ -32,6 +32,91 @@ runs that finished. Stopping at a headline-carrying subset is not a completed
 replication. That stop has come up before, including Koziol (8 of 208
 settings) and Chumney.
 
+## Blockers go to the person
+
+The source's own path is its software, its printed or archived code with its
+seeds, its data, and its files. When any part of it cannot be run or obtained
+here, that is a blocker, and blockers are the person's decision, not a choice
+to make quietly. Tell them as soon as it happens, before adopting anything
+else for that part: what is blocked, what the source path would give that an
+alternative cannot, and the ways to unblock it. Those ways include their own
+computer (its shell, or computer use for apps such as Terminal, run through a
+`.command` file when typing is not allowed), the session's network settings,
+another host, and a data-use agreement. Replications never contact the
+original authors, so do not offer that. Keep working on parts that
+do not depend on the answer, but do not build the blocked part on a fallback
+until they choose.
+
+Exact reproduction raises the stakes. Run `scripts/checks.py seeds SOURCE` on
+the source text: seeded code means the source's own engine can regenerate its
+data exactly, so an engine fallback loses exactness and must be put to the
+person.
+
+Missing data is not yet missing evidence. Before an `input_unavailable` for
+data, search the source for sufficient statistics: means, SDs, correlation or
+covariance matrices and Ns reproduce regression, path, SEM and many mediation
+models exactly. Record the search as `sufficient_statistics: {found, what,
+sufficient, why}` (for an input that is not data, `{applies: false, why}`). If
+the printed statistics suffice, reproduce from them; the done check rejects
+`input_unavailable` with `sufficient: true`. If they fall short, say exactly
+which moments are missing.
+
+Figures are evidence too. List every published quantity the paper compares
+against under the plan's `published_evidence`: `id`, `location`, `quantity`,
+`value_source` (`table`, `text`, `figure_digitized`, `figure_not_digitized`)
+and `plotted_in` (the figures that plot it, `[]` if none). A quantity read
+from prose while a figure plots it is rejected: digitize the figure with
+`scripts/digitize.py` (vector markers straight from the PDF's drawing paths,
+or colour blobs in a raster image, calibrated with `Axis` from ticks,
+gridlines or reference lines) and record `digitized_file` and
+`reading_error` in data units, or record `figure_not_digitized` with a
+`reason` and `reported_to_person`. Every tolerance against a digitized value
+includes its reading error. Every plan carries both.
+
+Record each engine fallback as JSON: `name`, `kind` (`blocked` or `domain`),
+`justification`, `independent_validation`, `source_path`,
+`exact_reproduction` (`possible`, `not_possible`, `unknown`) with
+`exact_reproduction_evidence`, and for `blocked` also `lost`,
+`unblock_options: [{option, outcome}]` and `decision`. `decision.by: person`
+needs `date`, `channel` and `summary`; `by: unreachable` needs a `reason` and is
+accepted only when exact reproduction was not possible anyway. `preflight.py
+done` finds every such record in the study by its content and rejects an
+incomplete one. A plan part whose `limit_kind` is `input_unavailable` or
+`not_run` needs `reported_to_person: {date, channel, summary}`. These fields
+record that the question was asked; they do not replace asking it. Name every
+engine fallback and blocked part near the top of the pull request description.
+
+## The source and every figure and table in it
+
+Other authors' PDFs and documents (the source, supplements, articles) are
+never committed; `preflight.py done` fails on any such file tracked outside
+`paper/`. What is committed is the evidence read from the source:
+those values are scientific statements. With the verified PDF in hand:
+
+1. Record `source_locator` and `source_sha256`.
+2. Run `scripts/source_items.py inventory SOURCE.pdf --out source-inventory.json`
+   and commit the record; name it in `source_inventory`. It lists every figure
+   and table caption with its page, classifies figures as vector, raster or
+   none, and flags tables that mention means, SDs or correlations.
+3. Under `source_items` (start from `source_items.py stub SOURCE.pdf`), give
+   every item `use: read` with a `data_file` that holds the values (a table
+   transcribed, a figure digitized with `scripts/digitize.py`), or
+   `use: excluded` with a specific `reason` and `reported_to_person`. A table
+   flagged for moments also records `sufficient_statistics`.
+
+`preflight.py done` checks this with or without the PDF. When the PDF is here,
+it must match `source_sha256` and a fresh inventory must equal the committed
+one. When it is not, the committed record stands in for it, and the study can
+be complete. Every source figure or table the paper cites must exist in the
+inventory.
+
+Only when there is neither the PDF nor a committed inventory is evidence
+missing. Never substitute another file. Record `source_missing: {fetch_issue,
+since, reason}` with the number of an open `fetch:` issue (the retrieval queue,
+#9). The done check then reports the study as `incomplete` (exit 3): it can be
+committed, but it is not done. Once the PDF is fetched, make and commit the
+inventory and extracted values, remove `source_missing`, and close the issue.
+
 ## Replication plan
 
 The first research commit is `REPLICATION-PLAN.yaml` in the study directory.
@@ -61,7 +146,7 @@ needs a recorded reason. A removal is `{id, reason}` under `removals`. The
 done check diffs the current file against the first committed version and
 fails when a part disappeared without that reason.
 
-A plan that sets `limit_schema: 1` must classify every part whose status is
+Every plan must classify every part whose status is
 not `replicated`. `limit_kind` is one of, or a list of:
 
 - `input_unavailable`: name `missing_input` and `looked_in`.
@@ -86,7 +171,9 @@ to that part: the done check rejects a reason copied verbatim onto another
 part, and generic templates such as "See named artifacts and limitations".
 Each part's evidence paths must be specific to that part. The same path list
 may not be repeated, and a path may not be listed twice inside one part.
-Plans that omit `limit_schema` are not subject to these fields.
+There is one plan format: every check applies to every plan, old or new, so a
+study can be re-replicated against the current standard. A `limit_schema` key
+in an older plan is ignored.
 
 ```yaml
 schema_version: 1
@@ -134,12 +221,15 @@ equations, and appendix tables, are hints only.
 ## Pre-done checklist
 
 - [ ] `REPLICATION-PLAN.yaml` lists every substantive part and was committed before analysis.
+- [ ] Every blocker on the source's own path (software, code and seeds, data, files) was reported to the person when it happened, with what it costs and how to unblock it, and they decided. `checks.py seeds` was run on the source; each fallback record and each `input_unavailable` or `not_run` part carries that decision.
+- [ ] `source_sha256` and the committed `source_inventory` identify the source, and `source_items` covers every figure and table in it with committed values or a reported exclusion; or, with neither the PDF nor an inventory, the plan records `source_missing` with an open fetch issue and the study is reported as incomplete, not done. Other authors' PDFs and documents are never committed; the done check fails on any tracked outside `paper/`.
+- [ ] Every published quantity compared is in `published_evidence` with its `value_source`; any quantity a figure plots was digitized (`scripts/digitize.py`, with its reading error) or the person was told why not. Every `input_unavailable` for data records the `sufficient_statistics` search, and none is marked unavailable when the printed moments suffice.
 - [ ] The full design was run, or the reduced run is a last resort with a cost estimate, what was tried, and exact `N of M` counts in the abstract and the body.
 - [ ] The headline verdict is no stronger than the headline parts that were run.
 - [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.
-- [ ] When `REPLICATION-PLAN.yaml` sets `limit_schema: 1`, every part that is not `replicated` has its own `limit_kind` (`input_unavailable`, `not_run`, `theorem_finite_only`, or `out_of_scope`), a part-specific reason, and part-specific evidence. `preflight.py done` rejects copied reasons, generic templates such as "See named artifacts and limitations", a repeated evidence path, and a `not_run` part that lacks an estimate and a decision. A tractable `not_run` part needs a non-cost justification, or an explicit `decision_by: project` with a `decision_reason`, before a resource decline is accepted.
+- [ ] Every part of `REPLICATION-PLAN.yaml` that is not `replicated` has its own `limit_kind` (`input_unavailable`, `not_run`, `theorem_finite_only`, or `out_of_scope`), a part-specific reason, and part-specific evidence. `preflight.py done` rejects copied reasons, generic templates such as "See named artifacts and limitations", a repeated evidence path, and a `not_run` part that lacks an estimate and a decision. A tractable `not_run` part needs a non-cost justification, or an explicit `decision_by: project` with a `decision_reason`, before a resource decline is accepted.
 - [ ] No part was removed or narrowed against the first commit without a recorded reason.
-- [ ] `preflight.py done` exits 0. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
+- [ ] `preflight.py done` exits 0 (complete). Exit 3 means incomplete: no errors, but neither the source PDF nor a committed inventory of it is available, and that is recorded; the study is not done. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
 - [ ] Optional caption hints were reviewed.
 - [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
 - [ ] Rendered pages for headline and Published entries were inspected when the PDF could be obtained. Text reading and visual inspection are recorded separately.
