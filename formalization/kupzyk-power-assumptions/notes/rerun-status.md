@@ -1,5 +1,11 @@
 # Kupzyk re-replication: research status
 
+The computational run is complete. See the [final comparison summary](../results/full/comparison-summary.json),
+the [five-rule Appendix D evidence](../results/full/appendix-d-comparison.csv)
+with its [Kenward–Roger results](../results/full/kenward-roger-summary.csv),
+and the [discrepancy audit](../DISAGREEMENTS.yaml). The historical checkpoint
+notes below document progress during the run.
+
 The new run uses the November 9 replication-paper workflow on a branch based on
 the current master. The prior report and outputs are historical and remain in
 place. The new results and source transcriptions have separate paths.

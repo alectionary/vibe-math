@@ -1,5 +1,21 @@
 # Kupzyk (2011): simplifying assumptions in power analysis
 
+The full R re-replication completed 1,382,400 empirical fits across all 54
+initial design settings and the 50,000-draw baseline follow-up. All 54
+empirical powers are within the adjusted comparison bands. The practical
+planning ordering recurs. Three mean-power sample-size thresholds are one
+cluster earlier, and the extreme Appendix D Optimal Design row remains
+unresolved under the labeled denominator degrees of freedom.
+
+- [Full comparisons](results/full/comparison-summary.json) and [discrepancy audit](DISAGREEMENTS.yaml)
+- [Replication plan](REPLICATION-PLAN.yaml) and [evidence packet](evidence-packet.json)
+- [Reproduce the full R run](rerun/README.md)
+
+## Earlier replication
+
+The material below describes the earlier reduced run. Its manuscript and
+supporting files are retained for provenance.
+
 This investigation reconstructs the dissertation's 54 final exemplary-data cells and runs a reduced empirical simulation across all 54 initial-stage cells. The report separates numerical agreement from reconstruction scope. This PR provides the research report and reproducible artifacts; exact SAS replay is not claimed. Reusable skill improvements are reviewed separately in [PR #56](https://github.com/alectionary/vibe-math/pull/56).
 
 Start with `paper/simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.pdf` or its editable LaTeX source `paper/report.tex`. The exact manuscript is generated from saved results by `scripts/build_report.py`. `notes/compliance-ledger.json` records adherence and justified departures from the pinned replication skill. `notes/availability.csv` records what source/code was and was not obtained.
