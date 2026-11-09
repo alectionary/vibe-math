@@ -42,6 +42,7 @@ from pathlib import Path
 import checks
 import layout
 import pdf_links
+import disagreements
 import source_acquisition
 import source_items
 
@@ -526,6 +527,11 @@ def done_check(root, plan, paper, analysis=None) -> dict:
     if paper_error and plan_obj is None:
         errors.append(paper_error)
     errors.extend(committed_document_errors(root))
+    if isinstance(plan_obj, dict):
+        try:
+            errors.extend(disagreements.disagreement_errors(plan_path.parent, plan_obj, paper_text))
+        except ImportError:
+            errors.append("disagreements: PyYAML is required to read DISAGREEMENTS.yaml")
     incomplete = result["incomplete"]
     if isinstance(plan_obj, dict):
         gate_errors, gate_incomplete = source_gate(root, plan_obj, paper_text)
