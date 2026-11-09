@@ -113,7 +113,9 @@ disagreements:
       cutoffs 1-3 from n = 2,500; Figures 4.29-4.38, Table 4.9), with the truth mostly above the
       interval; bias of the path products is -k times the product, k = 1.47, .96, .44 by cutoff and
       not dependent on n (Figures 4.12-4.15, Table 4.8).
-    ours: Coverage within 0.04 points of 95% and bias within .016 of zero everywhere.
+    ours: >-
+      Mean coverage 0.04 points short of 95% (rows 94.59-95.63% by effect and cutoff; lowest single cell
+      91.6%, and 92.9% of cells inside Bradley's [92.5, 97.5]); every bias within .016 of zero.
     covers: [out-bias, out-coverage, hl-bias-direct, hl-coverage, pe-table-4-8, pe-table-4-9, pe-fig-bias,
              pe-fig-coverage, pe-fig-imbalance]
     hypotheses:
@@ -220,7 +222,10 @@ disagreements:
         test:
           method: Fit of her digitized PNDE and TNDE bias.
           files: [results/bias_structure.csv, results/disagreement_tests.json]
-        result: The h coefficient is about -0.93 (PNDE) and -1.0 (TNDE) at every cutoff.
+        result: >-
+          The h coefficient is about -0.93 (PNDE) and -1.0 (TNDE) at every cutoff. The PNDE fit also has an
+          a*h coefficient of about -0.26 at every cutoff, which this hypothesis does not predict and which is
+          not explained; the -0.93 against -1 may share that cause.
         verdict: supported
       - id: her-estimation-code
         side: source
@@ -245,7 +250,7 @@ disagreements:
         verdict: ruled_out
     conclusion: explained
     whose: source
-    confidence: high
+    confidence: medium
 
   - id: headstart-sb-divisor
     claim: Equation 3.12 divides the RCT-RDD difference by the standard deviation of the RCT outcome.
@@ -344,8 +349,8 @@ disagreements:
     whose: both
     confidence: high
     fixed_in: >-
-      statement_checks.py now reports each statement against her own figures (verdict_on_chen_figures);
-      the paper reports statements 30 and 44 under both readings.
+      statement_checks.py reports each statement against her own figures (verdict_on_chen_figures), and
+      statements 30 and 44 are reported under both readings.
 
   - id: tnde-power-gap
     claim: "TNDE1 power at c' = .39, a = .59, h = 0, n = 500 is .736 in her Figure 4.26."
@@ -374,13 +379,16 @@ disagreements:
         verdict: ruled_out
       - id: monte-carlo-noise
         side: neither
-        statement: The gap is sampling noise.
+        statement: The gap is sampling noise in this one cell set, judged as a single prespecified comparison.
         prediction: It would be within about 2 combined standard errors.
         test:
           method: Combined Monte Carlo and reading error.
           files: [results/disagreement_tests.json]
-        result: 3.7 standard errors.
-        verdict: ruled_out
+        result: >-
+          3.7 standard errors, too large for one prespecified comparison. But the cell set was singled out
+          after the fact as the largest gap among thousands of points, so the single-comparison criterion does
+          not apply; her-specific-draws tests the chance explanation properly.
+        verdict: inconclusive
       - id: her-specific-draws
         side: neither
         statement: >-
@@ -476,6 +484,47 @@ disagreements:
           method: Solve for the coefficient or SE that the printed t implies.
           files: [results/table_identities.json]
         result: A coefficient of -0.137 (one digit) reproduces t = -2.25; which number is wrong cannot be told from the table. The row is significant at .05 either way, so no conclusion changes.
+        verdict: supported
+    conclusion: explained
+    whose: source
+    confidence: high
+
+  - id: significance-conclusions
+    claim: >-
+      On the Head Start data, 95% CIs for the RDD estimates "made opposite significance conclusions than the
+      RCT estimates" (abstract); "if the RCT was significant, the RDD estimate would not be significant"
+      (printed p. 143). Her text on p. 81 also says the PNDE and TNDE "were not significant".
+    ours: >-
+      Read from her own printed Table 4.7 intervals: 10 of the 15 RCT-RDD comparisons reach opposite
+      conclusions and 5 the same (PNDE and TNDE at cutoff 3, MINT at all three). Where the RCT is significant
+      (PNIE, TNIE) the RDD is not, in all 6 cells; but in 4 cells (PNDE and TNDE at cutoffs 1-2) the RDD
+      interval excludes zero where the RCT interval does not.
+    covers: [pe-table-4-7-significance, an-hsis-significance]
+    hypotheses:
+      - id: our-transcription
+        side: ours
+        statement: We transcribed the intervals wrongly.
+        prediction: The PDF text layer and the rendered page would show different bounds.
+        test:
+          method: Re-read Table 4.7 from the text layer (PDF pp. 97-98) and the rendered page.
+          files: [source-values/table_4_7.csv, results/significance_conclusions.json]
+        result: The bounds match both; the four RDD direct-effect intervals that exclude zero read [-1.592, -0.413], [-1.696, -0.375], [-1.606, -0.389] and [-1.689, -0.396].
+        verdict: ruled_out
+      - id: summary-overgeneralizes
+        side: source
+        statement: >-
+          Her summary generalizes from the indirect effects, where the pattern holds, to all effects; and her
+          p. 81 sentence refers to the RCT direct effects only.
+        prediction: >-
+          The pattern would hold for every cell where the RCT is significant and fail elsewhere; the RCT PNDE
+          and TNDE intervals would include zero.
+        test:
+          method: Significance of every printed interval.
+          files: [results/significance_conclusions.json]
+        result: >-
+          It holds in all 6 cells where the RCT is significant and fails in the 9 where it is not (4 opposite in
+          the other direction, 5 the same). The RCT PNDE and TNDE intervals include zero; the RDD ones at
+          cutoffs 1-2 do not, so the p. 81 sentence is true only of the RCT.
         verdict: supported
     conclusion: explained
     whose: source

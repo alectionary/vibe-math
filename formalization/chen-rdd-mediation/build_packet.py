@@ -62,9 +62,11 @@ DIS_CONC = {d['id']: d['conclusion'] for d in DIS}
 _e4 = [r for r in rows('results/digitized_rates.csv') if r['figure'] == '4.28' and r['n'] == '500'
        and r['a'] == '0.59' and r['h'] == '0.34']
 assert len(_e4) == 3, _e4
-pub_mint = round(sum(float(r['chen_value']) for r in _e4) / 3, 3)
+pub_mint_raw = round(sum(float(r['chen_value']) for r in _e4) / 3, 3)
 pub_mint_cuts = [round(float(r['chen_value']), 3) for r in sorted(_e4, key=lambda r: r['cut_index'])]
 e4_read_err = round(sum(float(r['reading_error']) for r in _e4) / 3 + 0.0005, 3)
+NOMINAL = 0.05
+pub_mint = round(pub_mint_raw - NOMINAL, 3)
 fig_t1_pw = [f'4.{i}' for i in range(17, 29)]
 pct_h0 = [float(ragree[f]['pct_agree_if_h_were_0']) for f in fig_t1_pw]
 pct_h = [float(ragree[f]['pct_agree']) for f in fig_t1_pw]
@@ -109,7 +111,8 @@ pub_imb = r2(sum(v[2] - v[0] for e in EFF for v in P49[e]) / 15)
 our_imb = r2(sum(float(t49[(e, c)]['truth_above_ci']) - float(t49[(e, c)]['truth_below_ci'])
                  for e in EFF for c in (1, 2, 3)) / 15)
 mint = summary['mint_power_by_n_and_ah']
-our_mint = round(mint['n=500 ah=0.2006'], 3)
+our_mint_raw = round(mint['n=500 ah=0.2006'], 3)
+our_mint = round(our_mint_raw - 0.05, 3)
 n5000 = [r for r in checks if r['statement'].startswith('n = 5000:')][0]
 SH = {r['statement'].split(':')[0]: [float(x.strip().rstrip('%')) for x in r['our_rejection_rate_cut1/cut2/cut3'].split(';')]
       for r in checks if r['verdict'] == 'summary'}
@@ -164,6 +167,8 @@ ART = [
     ('sv_42', 'source-values/table_4_2.csv'), ('sv_43', 'source-values/table_4_3.csv'),
     ('sv_48', 'source-values/table_4_8.csv'), ('sv_49', 'source-values/table_4_9.csv'),
     ('inventory', 'source-inventory.json'),
+    ('sv_47', 'source-values/table_4_7.csv'), ('sig_code', 'secondary/significance_conclusions.py'),
+    ('sig', 'results/significance_conclusions.json'), ('r_cmp_csv', 'results/r_full_comparison.csv'),
 ]
 artifacts = [dict(id=i, path=p, sha256=sha(p)) for i, p in ART]
 
@@ -199,16 +204,18 @@ GRID = ('Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b,
         'h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff '
         'cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples.')
 METHODS = ('Two engines. Chen\'s own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the '
-           '2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are '
-           'identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per '
-           'condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. '
+           '2021-08-02 package snapshot on an R-capable host (issues #92 and #118): the datasets her printed, '
+           'seeded code generates are identical to her literal printed pipeline (largest difference 0), first 64,000 '
+           'of them (50 replications per condition), then all 1,280,000 (1,000 per condition). This reproduces what '
+           'her printed code produces; it is not necessarily the data behind her published results, which the '
+           'h-absent analysis shows lacked the interaction wherever h > 0 (DISAGREEMENTS.yaml). '
            'Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an '
            'independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; '
            'the first run used Python without asking the person, who then agreed to keep it for the bootstrap, '
            'simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen\'s figures 4.12-4.38 '
            'were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from '
            'images (reading errors up to about .02).')
-RFULL = (f'Her replayed code over all 1,000 replications: largest condition-mean bias {rfull["max_abs_r_bias"]:.3f} '
+RFULL = (f'Her printed code, replayed over all 1,000 replications: largest condition-mean bias {rfull["max_abs_r_bias"]:.3f} '
          f'(0% beyond .10); {100*rfull["share_abs_bias_z_gt_1.96"]:.1f}% of 19,200 cell biases beyond 1.96 Monte Carlo SEs '
          f'and {100*rfull["share_abs_bias_z_gt_3.29"]:.2f}% beyond 3.29, as expected with no bias; her estimates and ours '
          f'differ beyond 1.96 combined SEs in {100*rfull["share_abs_diff_z_gt_1.96"]:.1f}% of cells; median SD ratio '
@@ -323,19 +330,21 @@ claim(id='H3', level='headline',
       statement='Power for the mediated interaction (MINT) is near zero at every sample size and never reaches .80.',
       source_locator=f'Chapter 4, Figure 4.28 text, {loc(135)}; Chapter 5 power, {loc(162)}',
       artifact_ids=['pdf', 'summary', 'power', 'cells'],
-      published=dict(value=pub_mint, units='rejection rate, read from Figure 4.28'),
-      ours=dict(value=our_mint, units='rejection rate'),
+      published=dict(value=pub_mint, units='rejection rate minus the nominal .05; raw rate read from Figure 4.28'),
+      ours=dict(value=our_mint, units='rejection rate minus the nominal .05'),
       conditions=GRID + ' Contrast cell: n = 500, a = .59, h = .34 (ah = .2006), averaged over b, c\' and the three cutoffs.',
-      contrasts=[dict(definition='MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c\' and cutoffs',
-                      units='rejection rate', positive_means='the 95% CI excludes zero more often',
+      contrasts=[dict(definition='MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c\' and cutoffs, '
+                                 'minus the nominal .05 (excess rejection over a null effect)',
+                      units='rejection rate', positive_means='the 95% CI excludes zero more often than under a null effect',
                       published=pub_mint, ours=our_mint)],
-      reproduction_deviation=f'ours minus published = {round(our_mint - pub_mint, 3)} (rejection rate)',
+      reproduction_deviation=f'ours minus published = {round(our_mint - pub_mint, 3)} (rejection rate; raw rates '
+                             f'{our_mint_raw} and {pub_mint_raw})',
       methods=METHODS + ' Rejection means the 95% percentile CI excludes zero; it does not use population values.',
       uncertainty=MC,
       multiplicity='One cell: the largest MINT in the design at the smallest n. It was chosen after the full results '
                    'were available; results/summary.json gives MINT power for every n and ah.',
       status='not_replicated',
-      status_reason=(f'In our run MINT power rises with n and ah: {our_mint:.3f} at n = 500 for ah = .20, and at least '
+      status_reason=(f'In our run MINT power rises with n and ah: {our_mint_raw:.3f} at n = 500 for ah = .20, and at least '
                      f'{min(mint["n=1000 ah=0.1326"], mint["n=1000 ah=0.2006"]):.3f} for ah >= .13 once n >= 1,000. Her '
                      f'Figure 4.28 gives {pub_mint_cuts[0]}, {pub_mint_cuts[1]} and {pub_mint_cuts[2]} in this cell at '
                      'cutoffs 1-3, and no point above about .07: a Type I error curve. Rejection rates do not use '
@@ -343,7 +352,9 @@ claim(id='H3', level='headline',
                      f'{ragree["4.28"]["pct_agree_if_h_were_0"]}% of points (against {ragree["4.28"]["pct_agree"]}% '
                      f'with h as designed) and her MINT bias is {bstruct[("4.16", 1)]["coef_ah"]}*ah, so the data behind '
                      'her results contained no interaction, while her printed code recovers h (' + RFULL + ') '
-                     '(DISAGREEMENTS.yaml h-absent: explained).'),
+                     '(DISAGREEMENTS.yaml h-absent: explained). Her own abstract and Chapter 5 (printed p. 143) say '
+                     'that Type I error and power for all five effects were within or reached the robustness criteria, '
+                     'which her MINT power statement contradicts.'),
       numerical='mismatch', reconstruction_scope='full design, independent re-implementation and exact replay',
       limitations=['The published value is read from an image (reading error about .013 averaged over cutoffs; the '
                    'cutoff 1 point is partly hidden by another series). Which mechanism removed the interaction from '
@@ -359,7 +370,7 @@ claim(id='H3', level='headline',
                          digitized_file='results/digitized_rates.csv', reading_error=e4_read_err,
                          conditions='Nonzero MINT cells (a and h nonzero), all n and cutoffs',
                          component_claim_ids=[], component_contrast_indices=[0]),
-          ours=dict(text=f'MINT power {our_mint:.3f} at n = 500 for ah = .20; at least .97 for ah >= .13 from n = 1,000',
+          ours=dict(text=f'MINT power {our_mint_raw:.3f} at n = 500 for ah = .20; at least .97 for ah >= .13 from n = 1,000',
                     state='observed', artifact_ids=['summary', 'power'],
                     locator='results/summary.json mint_power_by_n_and_ah', component_claim_ids=[],
                     component_contrast_indices=[0])))
@@ -540,6 +551,37 @@ claim(id='S5', level='supporting',
                     untested='Which divisor Chen intended; the HSIS fits themselves (S4).', resource_basis='Seconds.',
                     next_evidence='None needed for the arithmetic.'))
 
+
+sigc = json.load(open(ROOT / 'results/significance_conclusions.json'))
+claim(id='S9', level='supporting',
+      statement='In the Head Start analysis, 95% CIs for the RDD estimates reach opposite significance conclusions to '
+                'the RCT estimates: if the RCT was significant, the RDD estimate was not (abstract; printed p. 143).',
+      source_locator=f'Abstract, PDF p. 3; Chapter 5, {loc(157)}; Table 4.7, {loc(97)}-{loc(98)}; Chapter 4, {loc(95)}',
+      artifact_ids=['pdf', 'sv_47', 'sig', 'sig_code'],
+      published=dict(value='opposite significance conclusions in every comparison', units='qualitative'),
+      ours=dict(value=f'{sigc["opposite"]} of {sigc["comparisons"]} comparisons opposite', units='comparisons'),
+      conditions='Printed 95% CIs of Table 4.7 (RCT and three synthetic-RDD cutoffs, five effects); an estimate is '
+                 'significant when its printed interval excludes 0.', contrasts=[],
+      contrast_not_applicable='A count of significance conclusions read from printed intervals.',
+      methods='Read from her printed Table 4.7 (source-values/table_4_7.csv; secondary/significance_conclusions.py). '
+              'No refit: the HSIS data are unavailable (S4).',
+      uncertainty='Exact at the printed precision of the interval bounds.', multiplicity='15 comparisons; descriptive.',
+      status='partly_replicated',
+      status_reason=(f'{sigc["opposite"]} of {sigc["comparisons"]} RCT-RDD comparisons reach opposite conclusions and '
+                     f'{sigc["same"]} the same ({", ".join(sigc["same_conclusion_cells"])}). Where the RCT is significant '
+                     f'(PNIE, TNIE), the RDD is not in all {sigc["rct_significant"]} cells, as she says; but in '
+                     f'{sigc["rct_not_significant_but_rdd_significant"]} cells ({", ".join(sigc["rdd_significant_cells"])}) '
+                     'the RDD interval excludes zero where the RCT interval does not, so her p. 81 sentence that PNDE '
+                     'and TNDE "were not significant" holds for the RCT only (DISAGREEMENTS.yaml '
+                     'significance-conclusions).'),
+      numerical='not applicable', reconstruction_scope='printed numbers only',
+      limitations=['Read from printed intervals; the fits themselves cannot be rerun (S4).'],
+      stopping=dict(reason='Complete: every printed interval read.', attempted='All 20 intervals of Table 4.7.',
+                    untested='The HSIS fits behind them (S4).', resource_basis='Seconds.',
+                    next_evidence='The restricted-use HSIS file would allow a refit.'))
+excerpt('made opposite statistical significance conclusions compared to the RCT estimates', 157)
+excerpt('TNDE were not significant at the', 95)
+
 claim(id='S6', level='supporting',
       statement='HSIS assumption checks: density, covariate balance (Table 4.3), residual correlations (Table 4.4) '
                 'and functional form (Table 4.5) show slight violations of independence and functional form.',
@@ -587,7 +629,7 @@ DEV = dict(
         r2(our_ind[e] - pub_ind[e]) for e in ('PNIE', 'TNIE', 'MINT')),
     S2=f'Not computable: threshold statements; {len(T1S) - t1_agree} of {len(T1S)} disagree ({len(T1S) - t1_slack} with slack).',
     S3=f'Not computable: threshold statements; {len(PWS) - pw_agree} of {len(PWS)} disagree ({len(PWS) - pw_slack} with slack).',
-    S4='Not computable: not rerun.', S5='0 of 24 entries differ (SB with the RCT-estimate SE divisor).',
+    S4='Not computable: not rerun.', S9='Not computable: a count of significance conclusions.', S5='0 of 24 entries differ (SB with the RCT-estimate SE divisor).',
     S6='Not computable: not rerun.', S7='Not applicable: conceptual.', S8='Not computable: not reported.')
 for c in claims:
     if 'reproduction_deviation' not in c:
@@ -596,6 +638,7 @@ for c in claims:
     for p in ('published', 'ours'):
         if c[p].get('value') is None and 'unavailable_reason' not in c[p]:
             sys.exit(f'{c["id"]} {p} null without reason')
+excerpt('Type I error rate and power for all five effects were either within the robustness criteria or reached', 157)
 excerpt('An additional power analysis by standard deviation of the outcome', 72)
 excerpt('Bias for the indirect effects and MINT were more often within the ideal', 161)
 
@@ -622,9 +665,12 @@ EFFECTS = [
          positive_means=claims[2]['contrasts'][0]['positive_means'], published_effect=pub_mint, ours_effect=our_mint,
          estimate_status='resolved', display_decimals=3,
          tolerance=dict(kind='prespecified', value=e4_read_err,
-                        basis=f'Reading error of the digitized Figure 4.28 points, averaged over the three cutoffs '
-                              f'(results/digitized_rates.csv), rounded up; our Monte Carlo error is smaller (about .012).'),
-         magnitude='larger', direction='same direction',
+                        basis=f'Not set in the plan: fixed before this comparison from the reading error of the '
+                              f'digitized Figure 4.28 points, averaged over the three cutoffs '
+                              f'(results/digitized_rates.csv) and rounded up. Our Monte Carlo error of this 48-cell '
+                              f'average is about .002. Her value is within this tolerance of the nominal .05, i.e. '
+                              f'of no excess rejection.'),
+         magnitude='larger', direction='zero vs nonzero',
          interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC),
     dict(id='E5', claim_id='H4', contrast_index=None, comparison_kind='nonscalar', estimand='qualitative sample-size '
          'recommendation over the grid', units='not applicable', positive_means='not applicable',
@@ -640,7 +686,7 @@ for e in EFFECTS[:4]:
     tol = e['tolerance']['value']
     a, b = abs(e['published_effect']), abs(e['ours_effect'])
     e['magnitude'] = 'same' if abs(a - b) <= tol else ('larger' if b > a else 'smaller')
-    if abs(e['ours_effect']) <= tol and abs(e['published_effect']) > tol:
+    if (abs(e['ours_effect']) <= tol) != (abs(e['published_effect']) <= tol):
         e['direction'] = 'zero vs nonzero'
     elif (e['ours_effect'] > 0) == (e['published_effect'] > 0):
         e['direction'] = 'same direction'
@@ -656,8 +702,8 @@ sections = [
     dict(id='ch3', locator='Chapter 3, Methods and procedures', claim_ids=['S5', 'S8']),
     dict(id='ch4', locator='Chapter 4, Results (RQ1 Table 4.1; RQ2 Tables 4.2-4.7, Figures 4.1-4.11; RQ3 Tables '
                            '4.8-4.9, Figures 4.12-4.38)',
-         claim_ids=['H1', 'H2', 'H3', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7']),
-    dict(id='ch5', locator='Chapter 5, Discussion', claim_ids=['H1', 'H2', 'H3', 'H4', 'S4', 'S6']),
+         claim_ids=['H1', 'H2', 'H3', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S9']),
+    dict(id='ch5', locator='Chapter 5, Discussion', claim_ids=['H1', 'H2', 'H3', 'H4', 'S4', 'S6', 'S9']),
     dict(id='refs', locator='References', claim_ids=[], exclusion_reason='Bibliography only.'),
     dict(id='appA', locator=f'Appendix A, R syntax for data generation, {loc(189)}-{loc(192)}', claim_ids=['H1', 'H2'],
          exclusion_reason=None),
@@ -669,8 +715,10 @@ for s in sections:
 
 limitations = [
     'The bootstrap-based results (coverage, Type I error, power) come from the Python run with our own seeds; '
-    'Chen\'s bootstrap is unseeded, so they agree with hers on summaries only. Her datasets and point estimates are '
-    'reproduced exactly by the R replay of all 1,000 replications per condition (H1-H4, S1-S3).',
+    'Chen\'s bootstrap is unseeded, so they agree with hers on summaries only. The R replay reproduces exactly the '
+    'datasets and point estimates her printed, seeded code generates (all 1,000 replications per condition); her '
+    'published results came from data without the interaction wherever h > 0, which the printed code does not '
+    'produce, so the replay is not her published runs (H1-H4, S1-S3).',
     'Chen\'s aggregation code, population values and result files are not printed. The mechanisms behind her bias, '
     'coverage and MINT results are inferred from her digitized figures and printed tables; they reproduce her patterns '
     'but are not read from her code (H1, H2, H3, S1).',
@@ -709,7 +757,7 @@ packet = dict(
     synthesis=(f'Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is '
                f'unbiased (largest |bias| {summary["overall_max_abs_bias"]:.3f}) and percentile-bootstrap coverage '
                f'averages {summary["overall_mean_coverage"]*100:.1f}%, against Chen\'s 6-87% non-bias and 24-84% '
-               f'coverage; MINT power reaches {our_mint:.2f} at n = 500 for the largest interaction, where Chen reports near zero. Of her '
+               f'coverage; MINT power reaches {our_mint_raw:.2f} at n = 500 for the largest interaction, where Chen reports near zero. Of her '
                f'{len(verdicts)} testable Type I and power statements, {n_agree} agree ({n_slack} with .01 threshold '
                f'slack), and {n_h0} would hold in our run if h were 0. The n = 5,000 '
                f'recommendation holds for most but not all cells. RQ2 is blocked by data access. Her own seeded R code, '

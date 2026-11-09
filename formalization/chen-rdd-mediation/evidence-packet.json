@@ -23,7 +23,7 @@
   {
    "id": "plan",
    "path": "REPLICATION-PLAN.yaml",
-   "sha256": "a5b113a530c6d828de6159a8ee85cbf8a2b64a97a687d019572827b329daa747"
+   "sha256": "0c541eb455090a44e6471a4ee148db00c3e95f5018117ecd0e3b4bf14191e9e3"
   },
   {
    "id": "sim",
@@ -118,7 +118,7 @@
   {
    "id": "builder",
    "path": "build_packet.py",
-   "sha256": "e999fa1a26b9fbbe4c07fec5cde72c8e1c2e1e15e8ec38a1d5f486d7aeaff527"
+   "sha256": "d0369e327b9392d4e6a0461382115596a87e572bcccf11967c9bb7245845f5ba"
   },
   {
    "id": "r_code",
@@ -208,17 +208,17 @@
   {
    "id": "dis",
    "path": "DISAGREEMENTS.yaml",
-   "sha256": "9fd3a8e301a69fbe48f1451aa04f08f6315b41102cae2e8a7fdc7e4fee42fd34"
+   "sha256": "b56bd9dfb359508ecc2908b1f06d60f51e125d0b5b78ba93f3c0976aaef87ee3"
   },
   {
    "id": "dis_code",
    "path": "secondary/disagreement_tests.py",
-   "sha256": "c565071055ec631f6e0cad3ed640ade9ffbd4f4344e9f619f0b0acbca91b263f"
+   "sha256": "e8f9e9259c151ca62c5a7ddc86c81645988cd1b47586d311e1c550989d4bba53"
   },
   {
    "id": "dis_tests",
    "path": "results/disagreement_tests.json",
-   "sha256": "7c603647b6c0d131702f35eba0c86496168515aaa00e6952ca4f5c710068b233"
+   "sha256": "ddec6c596a569a61968530d1c32f82eb6bdfc70ea39fdb0ad5ba83de9e1118ca"
   },
   {
    "id": "emp_code",
@@ -238,7 +238,7 @@
   {
    "id": "sv_readme",
    "path": "source-values/README.md",
-   "sha256": "1baf067388273261ff8a2e5cd5eaa01a6e3c8ca721ab87b4d573b5c3bdc41e94"
+   "sha256": "ad6990346cb6328869a1a50ea703abe04bd77dc7b1157ea7a14e6e31b42bf85a"
   },
   {
    "id": "sv_31",
@@ -269,6 +269,26 @@
    "id": "inventory",
    "path": "source-inventory.json",
    "sha256": "ee2c68e66faa15013d4012ee05eaebd506e299b581709e62ac2071243a715b68"
+  },
+  {
+   "id": "sv_47",
+   "path": "source-values/table_4_7.csv",
+   "sha256": "74c28ee2a8a4690b13bb5e07083745896f690687d1e9e0ae9c77bee97667680b"
+  },
+  {
+   "id": "sig_code",
+   "path": "secondary/significance_conclusions.py",
+   "sha256": "32973aca2902fde86f25ac4d0e6b98884ef98c26cb0907cf46c06868a082d4d9"
+  },
+  {
+   "id": "sig",
+   "path": "results/significance_conclusions.json",
+   "sha256": "d45e50c47b6b77a182356bdd4136f85a79581bd9c1526e0e774ce3132da649b6"
+  },
+  {
+   "id": "r_cmp_csv",
+   "path": "results/r_full_comparison.csv",
+   "sha256": "7baf5c7d3df107e578022c83dfda7859f3ff0800b5c2533d0484e506923064a8"
   }
  ],
  "sections": [
@@ -316,7 +336,8 @@
     "S4",
     "S5",
     "S6",
-    "S7"
+    "S7",
+    "S9"
    ]
   },
   {
@@ -328,7 +349,8 @@
     "H3",
     "H4",
     "S4",
-    "S6"
+    "S6",
+    "S9"
    ]
   },
   {
@@ -393,11 +415,11 @@
     }
    ],
    "reproduction_deviation": "ours minus printed = -85.42 percentage points",
-   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Bias is the mean of 1,000 estimates minus the population value (PNDE = c', TNDE = c' + ah).",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (issues #92 and #118): the datasets her printed, seeded code generates are identical to her literal printed pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). This reproduces what her printed code produces; it is not necessarily the data behind her published results, which the h-absent analysis shows lacked the interaction wherever h > 0 (DISAGREEMENTS.yaml). Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Bias is the mean of 1,000 estimates minus the population value (PNDE = c', TNDE = c' + ah).",
    "uncertainty": "Our largest |bias| over all 19,200 condition-cutoff-effect results is 0.016, far inside .10; Monte Carlo standard error of a mean of 1,000 estimates is at most 0.006 in any cell.",
    "multiplicity": "Descriptive summary over the full grid; no tests.",
    "status": "not_replicated",
-   "status_reason": "Every direct-effect result in our run lies within [-.05, .05]. Her replayed code over all 1,000 replications: largest condition-mean bias 0.017 (0% beyond .10); 5.3% of 19,200 cell biases beyond 1.96 Monte Carlo SEs and 0.14% beyond 3.29, as expected with no bias; her estimates and ours differ beyond 1.96 combined SEs in 5.3% of cells; median SD ratio 1.000; slope of estimated on true h 0.9998-1.0005 (results/r_full_comparison.json). Her digitized bias (Figures 4.12-4.16) is an almost exact function of the design with no dependence on n: MINT -0.998*ah; PNDE -1.466, -0.965, -0.446 times c' by cutoff plus about -0.928*h (results/bias_structure.csv). DISAGREEMENTS.yaml entries h-absent, population-values and pnde-definition give the competing explanations and tests.",
+   "status_reason": "Every direct-effect result in our run lies within [-.05, .05]. Her printed code, replayed over all 1,000 replications: largest condition-mean bias 0.017 (0% beyond .10); 5.3% of 19,200 cell biases beyond 1.96 Monte Carlo SEs and 0.14% beyond 3.29, as expected with no bias; her estimates and ours differ beyond 1.96 combined SEs in 5.3% of cells; median SD ratio 1.000; slope of estimated on true h 0.9998-1.0005 (results/r_full_comparison.json). Her digitized bias (Figures 4.12-4.16) is an almost exact function of the design with no dependence on n: MINT -0.998*ah; PNDE -1.466, -0.965, -0.446 times c' by cutoff plus about -0.928*h (results/bias_structure.csv). DISAGREEMENTS.yaml entries h-absent, population-values and pnde-definition give the competing explanations and tests.",
    "numerical": "mismatch",
    "reconstruction_scope": "full design, independent re-implementation, own seeds",
    "limitations": [
@@ -479,7 +501,7 @@
     }
    ],
    "reproduction_deviation": "coverage shortfall: ours minus printed = -43.58; imbalance: ours minus printed = -46.74 percentage points",
-   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Coverage is the share of 1,000 95% percentile CIs containing the population value.",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (issues #92 and #118): the datasets her printed, seeded code generates are identical to her literal printed pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). This reproduces what her printed code produces; it is not necessarily the data behind her published results, which the h-absent analysis shows lacked the interaction wherever h > 0 (DISAGREEMENTS.yaml). Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Coverage is the share of 1,000 95% percentile CIs containing the population value.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error. Our lowest cell coverage is 0.916; 92.9% of the 19,200 results lie in Bradley's [.925, .975].",
    "multiplicity": "Descriptive; 19,200 cell coverages, no correction because nothing is tested.",
    "status": "not_replicated",
@@ -543,29 +565,29 @@
     "cells"
    ],
    "published": {
-    "value": 0.063,
-    "units": "rejection rate, read from Figure 4.28"
+    "value": 0.013,
+    "units": "rejection rate minus the nominal .05; raw rate read from Figure 4.28"
    },
    "ours": {
-    "value": 0.836,
-    "units": "rejection rate"
+    "value": 0.786,
+    "units": "rejection rate minus the nominal .05"
    },
    "conditions": "Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b, c' in {0, .14, .39, .59}, h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples. Contrast cell: n = 500, a = .59, h = .34 (ah = .2006), averaged over b, c' and the three cutoffs.",
    "contrasts": [
     {
-     "definition": "MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c' and cutoffs",
+     "definition": "MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c' and cutoffs, minus the nominal .05 (excess rejection over a null effect)",
      "units": "rejection rate",
-     "positive_means": "the 95% CI excludes zero more often",
-     "published": 0.063,
-     "ours": 0.836
+     "positive_means": "the 95% CI excludes zero more often than under a null effect",
+     "published": 0.013,
+     "ours": 0.786
     }
    ],
-   "reproduction_deviation": "ours minus published = 0.773 (rejection rate)",
-   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Rejection means the 95% percentile CI excludes zero; it does not use population values.",
+   "reproduction_deviation": "ours minus published = 0.773 (rejection rate; raw rates 0.836 and 0.063)",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (issues #92 and #118): the datasets her printed, seeded code generates are identical to her literal printed pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). This reproduces what her printed code produces; it is not necessarily the data behind her published results, which the h-absent analysis shows lacked the interaction wherever h > 0 (DISAGREEMENTS.yaml). Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Rejection means the 95% percentile CI excludes zero; it does not use population values.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "One cell: the largest MINT in the design at the smallest n. It was chosen after the full results were available; results/summary.json gives MINT power for every n and ah.",
    "status": "not_replicated",
-   "status_reason": "In our run MINT power rises with n and ah: 0.836 at n = 500 for ah = .20, and at least 0.974 for ah >= .13 once n >= 1,000. Her Figure 4.28 gives 0.063, 0.068 and 0.057 in this cell at cutoffs 1-3, and no point above about .07: a Type I error curve. Rejection rates do not use population values. Her MINT power matches our rates with h set to 0 at 97.8% of points (against 6.7% with h as designed) and her MINT bias is -0.998*ah, so the data behind her results contained no interaction, while her printed code recovers h (Her replayed code over all 1,000 replications: largest condition-mean bias 0.017 (0% beyond .10); 5.3% of 19,200 cell biases beyond 1.96 Monte Carlo SEs and 0.14% beyond 3.29, as expected with no bias; her estimates and ours differ beyond 1.96 combined SEs in 5.3% of cells; median SD ratio 1.000; slope of estimated on true h 0.9998-1.0005 (results/r_full_comparison.json).) (DISAGREEMENTS.yaml h-absent: explained).",
+   "status_reason": "In our run MINT power rises with n and ah: 0.836 at n = 500 for ah = .20, and at least 0.974 for ah >= .13 once n >= 1,000. Her Figure 4.28 gives 0.063, 0.068 and 0.057 in this cell at cutoffs 1-3, and no point above about .07: a Type I error curve. Rejection rates do not use population values. Her MINT power matches our rates with h set to 0 at 97.8% of points (against 6.7% with h as designed) and her MINT bias is -0.998*ah, so the data behind her results contained no interaction, while her printed code recovers h (Her printed code, replayed over all 1,000 replications: largest condition-mean bias 0.017 (0% beyond .10); 5.3% of 19,200 cell biases beyond 1.96 Monte Carlo SEs and 0.14% beyond 3.29, as expected with no bias; her estimates and ours differ beyond 1.96 combined SEs in 5.3% of cells; median SD ratio 1.000; slope of estimated on true h 0.9998-1.0005 (results/r_full_comparison.json).) (DISAGREEMENTS.yaml h-absent: explained). Her own abstract and Chapter 5 (printed p. 143) say that Type I error and power for all five effects were within or reached the robustness criteria, which her MINT power statement contradicts.",
    "numerical": "mismatch",
    "reconstruction_scope": "full design, independent re-implementation and exact replay",
    "limitations": [
@@ -636,7 +658,7 @@
    "conditions": "Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b, c' in {0, .14, .39, .59}, h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples.",
    "contrasts": [],
    "contrast_not_applicable": "A qualitative design recommendation over the whole grid; no single signed contrast represents it, and any pooled share would depend on the grid's mix of effect sizes.",
-   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02).",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (issues #92 and #118): the datasets her printed, seeded code generates are identical to her literal printed pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). This reproduces what her printed code produces; it is not necessarily the data behind her published results, which the h-absent analysis shows lacked the interaction wherever h > 0 (DISAGREEMENTS.yaml). Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02).",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "Shares over 1,176 zero-effect and 2,664 nonzero results at n = 5,000.",
    "status": "partly_replicated",
@@ -724,7 +746,7 @@
      "ours": 0.0
     }
    ],
-   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02).",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (issues #92 and #118): the datasets her printed, seeded code generates are identical to her literal printed pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). This reproduces what her printed code produces; it is not necessarily the data behind her published results, which the h-absent analysis shows lacked the interaction wherever h > 0 (DISAGREEMENTS.yaml). Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02).",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "Descriptive.",
    "status": "not_replicated",
@@ -765,7 +787,7 @@
    "conditions": "Every zero-effect cell set named in each statement, all n and cutoffs; rates averaged over the factors a statement does not name, as in Chen's figures.",
    "contrasts": [],
    "contrast_not_applicable": "Each statement is a threshold claim about a set of cells; results/statement_checks.csv holds the per-cell rates and verdicts.",
-   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the factors it does not name, as in Chen's figures, and with fixed numeric readings of her words (for example \"near zero\" Type I < .025, \"close to zero\" power < .10, \"around .80\" .70-.90). A second reading moves every threshold .01 in her favour.",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (issues #92 and #118): the datasets her printed, seeded code generates are identical to her literal printed pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). This reproduces what her printed code produces; it is not necessarily the data behind her published results, which the h-absent analysis shows lacked the interaction wherever h > 0 (DISAGREEMENTS.yaml). Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the factors it does not name, as in Chen's figures, and with fixed numeric readings of her words (for example \"near zero\" Type I < .025, \"close to zero\" power < .10, \"around .80\" .70-.90). A second reading moves every threshold .01 in her favour.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "18 statements, each judged at its own threshold; no correction (descriptive).",
    "status": "partly_replicated",
@@ -807,7 +829,7 @@
    "conditions": "Every nonzero-effect cell set named in each statement; rates averaged over unnamed factors.",
    "contrasts": [],
    "contrast_not_applicable": "Threshold statements; per-cell rates are in results/statement_checks.csv.",
-   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the factors it does not name, as in Chen's figures, and with fixed numeric readings of her words (for example \"near zero\" Type I < .025, \"close to zero\" power < .10, \"around .80\" .70-.90). A second reading moves every threshold .01 in her favour.",
+   "methods": "Two engines. Chen's own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the 2021-08-02 package snapshot on an R-capable host (issues #92 and #118): the datasets her printed, seeded code generates are identical to her literal printed pipeline (largest difference 0), first 64,000 of them (50 replications per condition), then all 1,280,000 (1,000 per condition). This reproduces what her printed code produces; it is not necessarily the data behind her published results, which the h-absent analysis shows lacked the interaction wherever h > 0 (DISAGREEMENTS.yaml). Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; the first run used Python without asking the person, who then agreed to keep it for the bootstrap, simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen's figures 4.12-4.38 were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from images (reading errors up to about .02). Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the factors it does not name, as in Chen's figures, and with fixed numeric readings of her words (for example \"near zero\" Type I < .025, \"close to zero\" power < .10, \"around .80\" .70-.90). A second reading moves every threshold .01 in her favour.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "28 statements; no correction (descriptive).",
    "status": "partly_replicated",
@@ -911,6 +933,47 @@
     "next_evidence": "None needed for the arithmetic."
    },
    "reproduction_deviation": "0 of 24 entries differ (SB with the RCT-estimate SE divisor)."
+  },
+  {
+   "id": "S9",
+   "level": "supporting",
+   "statement": "In the Head Start analysis, 95% CIs for the RDD estimates reach opposite significance conclusions to the RCT estimates: if the RCT was significant, the RDD estimate was not (abstract; printed p. 143).",
+   "source_locator": "Abstract, PDF p. 3; Chapter 5, printed p. 143 (PDF page 157); Table 4.7, printed p. 83 (PDF page 97)-printed p. 84 (PDF page 98); Chapter 4, printed p. 81 (PDF page 95)",
+   "artifact_ids": [
+    "pdf",
+    "sv_47",
+    "sig",
+    "sig_code"
+   ],
+   "published": {
+    "value": "opposite significance conclusions in every comparison",
+    "units": "qualitative"
+   },
+   "ours": {
+    "value": "10 of 15 comparisons opposite",
+    "units": "comparisons"
+   },
+   "conditions": "Printed 95% CIs of Table 4.7 (RCT and three synthetic-RDD cutoffs, five effects); an estimate is significant when its printed interval excludes 0.",
+   "contrasts": [],
+   "contrast_not_applicable": "A count of significance conclusions read from printed intervals.",
+   "methods": "Read from her printed Table 4.7 (source-values/table_4_7.csv; secondary/significance_conclusions.py). No refit: the HSIS data are unavailable (S4).",
+   "uncertainty": "Exact at the printed precision of the interval bounds.",
+   "multiplicity": "15 comparisons; descriptive.",
+   "status": "partly_replicated",
+   "status_reason": "10 of 15 RCT-RDD comparisons reach opposite conclusions and 5 the same (PNDE cut 3, TNDE cut 3, MINT cut 1, MINT cut 2, MINT cut 3). Where the RCT is significant (PNIE, TNIE), the RDD is not in all 6 cells, as she says; but in 4 cells (PNDE cut 1, PNDE cut 2, TNDE cut 1, TNDE cut 2) the RDD interval excludes zero where the RCT interval does not, so her p. 81 sentence that PNDE and TNDE \"were not significant\" holds for the RCT only (DISAGREEMENTS.yaml significance-conclusions).",
+   "numerical": "not applicable",
+   "reconstruction_scope": "printed numbers only",
+   "limitations": [
+    "Read from printed intervals; the fits themselves cannot be rerun (S4)."
+   ],
+   "stopping": {
+    "reason": "Complete: every printed interval read.",
+    "attempted": "All 20 intervals of Table 4.7.",
+    "untested": "The HSIS fits behind them (S4).",
+    "resource_basis": "Seconds.",
+    "next_evidence": "The restricted-use HSIS file would allow a refit."
+   },
+   "reproduction_deviation": "Not computable: a count of significance conclusions."
   },
   {
    "id": "S6",
@@ -1130,20 +1193,20 @@
    "id": "E4",
    "claim_id": "H3",
    "contrast_index": 0,
-   "estimand": "MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c' and cutoffs",
+   "estimand": "MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c' and cutoffs, minus the nominal .05 (excess rejection over a null effect)",
    "units": "rejection rate",
-   "positive_means": "the 95% CI excludes zero more often",
-   "published_effect": 0.063,
-   "ours_effect": 0.836,
+   "positive_means": "the 95% CI excludes zero more often than under a null effect",
+   "published_effect": 0.013,
+   "ours_effect": 0.786,
    "estimate_status": "resolved",
    "display_decimals": 3,
    "tolerance": {
     "kind": "prespecified",
     "value": 0.013,
-    "basis": "Reading error of the digitized Figure 4.28 points, averaged over the three cutoffs (results/digitized_rates.csv), rounded up; our Monte Carlo error is smaller (about .012)."
+    "basis": "Not set in the plan: fixed before this comparison from the reading error of the digitized Figure 4.28 points, averaged over the three cutoffs (results/digitized_rates.csv) and rounded up. Our Monte Carlo error of this 48-cell average is about .002. Her value is within this tolerance of the nominal .05, i.e. of no excess rejection."
    },
    "magnitude": "larger",
-   "direction": "same direction",
+   "direction": "zero vs nonzero",
    "interpretation": "descriptive point estimates; not equivalence",
    "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
   },
@@ -1174,9 +1237,9 @@
    "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
   }
  ],
- "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 46 testable Type I and power statements, 29 agree (31 with .01 threshold slack), and 39 would hold in our run if h were 0. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access. Her own seeded R code, replayed exactly on all 1,280,000 of her datasets, behaves like our run, so the disagreements arise in unprinted steps: her digitized figures show results computed from data without the interaction h and population values wrong for one group of cases. Of 9 disagreements (DISAGREEMENTS.yaml), 8 are explained, 1 partly explained and 0 unexplained.",
+ "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 46 testable Type I and power statements, 29 agree (31 with .01 threshold slack), and 39 would hold in our run if h were 0. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access. Her own seeded R code, replayed exactly on all 1,280,000 of her datasets, behaves like our run, so the disagreements arise in unprinted steps: her digitized figures show results computed from data without the interaction h and population values wrong for one group of cases. Of 10 disagreements (DISAGREEMENTS.yaml), 9 are explained, 1 partly explained and 0 unexplained.",
  "limitations": [
-  "The bootstrap-based results (coverage, Type I error, power) come from the Python run with our own seeds; Chen's bootstrap is unseeded, so they agree with hers on summaries only. Her datasets and point estimates are reproduced exactly by the R replay of all 1,000 replications per condition (H1-H4, S1-S3).",
+  "The bootstrap-based results (coverage, Type I error, power) come from the Python run with our own seeds; Chen's bootstrap is unseeded, so they agree with hers on summaries only. The R replay reproduces exactly the datasets and point estimates her printed, seeded code generates (all 1,000 replications per condition); her published results came from data without the interaction wherever h > 0, which the printed code does not produce, so the replay is not her published runs (H1-H4, S1-S3).",
   "Chen's aggregation code, population values and result files are not printed. The mechanisms behind her bias, coverage and MINT results are inferred from her digitized figures and printed tables; they reproduce her patterns but are not read from her code (H1, H2, H3, S1).",
   "Figures 4.17-4.38 were read from images (reading errors up to about .02 on rates); points hidden behind another series are flagged and not used for verdicts (H3, S2, S3).",
   "RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the printed arithmetic and identities were checked (S5).",

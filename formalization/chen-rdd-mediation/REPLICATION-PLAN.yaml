@@ -178,6 +178,16 @@ parts:
   evidence: secondary/table_arithmetic.py; secondary/table_arithmetic.csv
   note: 24 of 24 differences match (RCT minus RDD); 24 of 24 standardized biases match only with the RCT estimate's
     SE as divisor, not the outcome SD stated in equation 3.12.
+- id: an-hsis-significance
+  kind: analysis
+  label: RDD versus RCT significance conclusions from the printed Table 4.7 intervals
+  plan: Read the significance of every printed RCT and RDD 95% CI in Table 4.7 and compare the conclusions, testing
+    the abstract's statement that RDD intervals reach opposite significance conclusions.
+  status: partly
+  run_complete: true
+  evidence: secondary/significance_conclusions.py; results/significance_conclusions.json
+  reason: 10 of 15 comparisons are opposite; where the RCT is significant (6 cells) the RDD is not, but in 4 cells
+    the RDD is significant where the RCT is not, and 5 agree (DISAGREEMENTS.yaml significance-conclusions).
 - id: cond-grid
   kind: condition
   label: 'Full factorial: n (5 levels) x a (4) x b (4) x c'' (4) x h (4) x cutoff (3)'
@@ -448,6 +458,12 @@ published_evidence:
 - id: pe-tables-4-6-4-7
   location: Tables 4.6-4.7 and equation 3.12
   quantity: RCT-RDD differences and standardized biases (Head Start)
+  value_source: table
+  plotted_in: []
+  agreement: disagree
+- id: pe-table-4-7-significance
+  location: Abstract (PDF p. 3), printed p. 143 and Table 4.7 (PDF pp. 97-98)
+  quantity: RDD versus RCT significance conclusions of the 95% CIs (Head Start)
   value_source: table
   plotted_in: []
   agreement: disagree
@@ -863,7 +879,7 @@ source_items:
     file: results/empirical_consistency.json
 - label: Table 4.7
   use: read
-  data_file: secondary/table_arithmetic.csv
+  data_file: source-values/table_4_7.csv
   sufficient_statistics:
     found: true
     what: RCT and RDD path and effect estimates with standard errors
