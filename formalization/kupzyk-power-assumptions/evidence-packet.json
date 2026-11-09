@@ -34,12 +34,12 @@
     {
       "id": "DISAGREEMENTS.yaml",
       "path": "DISAGREEMENTS.yaml",
-      "sha256": "ccf80381bfca9f0bb4b838758a6852835588cdadfd90d08f8d0fc2b1da6ea261"
+      "sha256": "0e63afaceefc865fbc09034978e0af72e77c74d5e842a14ff2b24e7a36ad5f68"
     },
     {
       "id": "REPLICATION-PLAN.yaml",
       "path": "REPLICATION-PLAN.yaml",
-      "sha256": "befadcbeaedb1a9a2d2331341f4c51d4be91210c74647a315eef06de31bf0297"
+      "sha256": "54d42e3c307944c3e2a22b194857f8b5afd3d9c45dbe7cbdac74a2531973624a"
     },
     {
       "id": "rerun/README.md",
@@ -49,7 +49,7 @@
     {
       "id": "rerun/reproduce.sh",
       "path": "rerun/reproduce.sh",
-      "sha256": "f0d70dffe7dd5d51511939211b6f9e939448b47ea440b1aa0cb4b2617d50573d"
+      "sha256": "74a42d9e84635ffff83824f932d6e468855ef64af0ddc4eb631defb388311a48"
     },
     {
       "id": "rerun/check_oversampling.py",
@@ -65,6 +65,11 @@
       "id": "rerun/precision_demo.py",
       "path": "rerun/precision_demo.py",
       "sha256": "76f584a3d3c6a0acc64e37e6c196ad03fa42912e2539e1cf72507730bf19ecc3"
+    },
+    {
+      "id": "rerun/baseline_paired.R",
+      "path": "rerun/baseline_paired.R",
+      "sha256": "d4bf9403b8b5dce27a1840f73cfb3e313f7754353145af2c802fa95c72cffa78"
     },
     {
       "id": "scripts/model.R",
@@ -230,6 +235,11 @@
       "id": "results/full/appendix-d2-df-sweep.csv",
       "path": "results/full/appendix-d2-df-sweep.csv",
       "sha256": "d666ef134f646fbb215b226943edff9d2a9fc7e53fff75f3daa02eb6da6fb8dc"
+    },
+    {
+      "id": "results/full/baseline-paired.csv",
+      "path": "results/full/baseline-paired.csv",
+      "sha256": "70ac4447ec347dd7e81179f5ada088836712dd57551877f2907906c7c4f977a3"
     },
     {
       "id": "results/full/comparison-summary.json",
@@ -777,11 +787,11 @@
         "source-values/table-1.csv"
       ],
       "published": {
-        "value": "All five losses peak at .05",
+        "value": "All peak at .05. Prose reports decline.",
         "units": "reported finding"
       },
       "ours": {
-        "value": "All five losses peak at .05",
+        "value": "All peak at .05. Skew loss rises .56 to .62 pp.",
         "units": "observed finding"
       },
       "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
@@ -790,7 +800,7 @@
       "multiplicity": "Point comparisons are descriptive. For grid tests, report the original comparison family's Bonferroni-adjusted bands.",
       "status": "partly_replicated",
       "status_reason": "ICC .05 has the largest mean losses throughout, but skewed-size loss increases between .10 and .15 in both grids.",
-      "numerical": "All five losses peak at .05",
+      "numerical": "All peak at .05. Skew loss rises .56 to .62 pp.",
       "reconstruction_scope": "Source-derived distributional reconstruction in R and independent arithmetic checks.",
       "reproduction_deviation": "ICC .05 has the largest mean losses throughout, but skewed-size loss increases between .10 and .15 in both grids.",
       "contrasts": [
@@ -814,7 +824,7 @@
       },
       "findings": {
         "published": {
-          "text": "All five losses peak at .05",
+          "text": "All peak at .05. Prose reports decline.",
           "state": "reported",
           "artifact_ids": [
             "source-values/table-1.csv",
@@ -822,7 +832,7 @@
           ],
           "locator": "p. 96, Tables 1 and 4",
           "page_locator": "p. 96, Tables 1 and 4",
-          "source_excerpt": "higher losses in power were seen at the lowest level of ICC",
+          "source_excerpt": "the bias in power is greatest at the lowest level of ICC and decreases as the ICC increases",
           "claim_type": "numerical estimate",
           "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
           "component_claim_ids": [],
@@ -831,7 +841,7 @@
           ]
         },
         "ours": {
-          "text": "All five losses peak at .05",
+          "text": "All peak at .05. Skew loss rises .56 to .62 pp.",
           "state": "observed",
           "artifact_ids": [
             "results/full/comparison-summary.json"
@@ -932,6 +942,7 @@
         "provenance/source-acquisition.json",
         "notes/claim-inventory.md",
         "results/full/empirical-exemplary-gaps.csv",
+        "results/full/baseline-paired.csv",
         "source-values/figures-6-11.csv"
       ],
       "published": {
@@ -961,7 +972,8 @@
         }
       ],
       "limitations": [
-        "For initial-exemplary and empirical-gap, three plotted exemplary markers are occluded. The publication gives the full-grid sign count separately."
+        "For initial-exemplary and empirical-gap, three plotted exemplary markers are occluded. The publication gives the full-grid sign count separately.",
+        "For baseline-50000 and empirical-gap, the paired refit difference is identified in the balanced baseline only. The finite simulations do not establish a universal asymptotic statement or equivalence."
       ],
       "stopping": {
         "reason": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
@@ -1495,7 +1507,8 @@
         "notes/claim-inventory.md",
         "results/full/appendix-d-comparison.csv",
         "results/full/kenward-roger-summary.csv",
-        "results/full/completers-arithmetic.json"
+        "results/full/completers-arithmetic.json",
+        "results/full/baseline-paired.csv"
       ],
       "published": {
         "value": "Empirical gap and two Appendix D scenarios",
@@ -1510,17 +1523,17 @@
       "uncertainty": "See this claim's interpretation and the full result artifact. Original numerical and software uncertainty is only partially observable.",
       "multiplicity": "Point comparisons are descriptive. For grid tests, report the original comparison family's Bonferroni-adjusted bands.",
       "status": "partly_replicated",
-      "status_reason": "The planning pattern and empirical gap recur. Appendix D includes a material Optimal Design difference at the extreme setting.",
+      "status_reason": "The planning pattern recurs. The extreme Optimal Design difference and the persistent paired baseline gap limit the discussion conclusions.",
       "numerical": "Planning result recurs for available-observation analyses. Extreme Optimal Design power and Type I error differ. The source completers example gives 230, yielding 195.5 expected completers. A target expectation of 200 at 15% loss requires 236.",
       "reconstruction_scope": "Source-derived distributional reconstruction in R and independent arithmetic checks.",
-      "reproduction_deviation": "The planning pattern and empirical gap recur. Appendix D includes a material Optimal Design difference at the extreme setting.",
+      "reproduction_deviation": "The planning pattern recurs. The extreme Optimal Design difference and the persistent paired baseline gap limit the discussion conclusions.",
       "contrasts": [],
       "contrast_not_applicable": "The underlying comparison is recorded directly in the study artifacts.",
       "limitations": [
         "This comparison is conditional on the source model and reported design."
       ],
       "stopping": {
-        "reason": "The planning pattern and empirical gap recur. Appendix D includes a material Optimal Design difference at the extreme setting.",
+        "reason": "The planning pattern recurs. The extreme Optimal Design difference and the persistent paired baseline gap limit the discussion conclusions.",
         "attempted": "Check claimed consequences, reference-DF choice, and reasons for empirical versus exemplary differences against the component analyses.",
         "untested": "The original executable state and random streams were not recovered.",
         "resource_basis": "All planned main-grid draws, follow-up draws and reported design settings are accounted for.",
@@ -1536,14 +1549,15 @@
         "provenance/source-acquisition.json",
         "notes/claim-inventory.md",
         "results/full/empirical.csv",
+        "results/full/baseline-paired.csv",
         "outputs/baseline-diagnostic.csv"
       ],
       "published": {
-        "value": "Reported deficit about 0.9 pp",
+        "value": "Reported deficit about 0.9 pp. Kupzyk inferred that the difference would likely vanish with more draws and suggested equivalence.",
         "units": "reported finding"
       },
       "ours": {
-        "value": "Deficit 0.879 pp after 50,000 draws; paired diagnostic supports a variance-refitting contribution",
+        "value": "The deficit is 0.879 pp against theoretical exemplary power after 50,000 draws. Replaying those same outcomes with the generating versus refitted covariance gives .87752 versus .86842 (paired refit-minus-known difference -.00910, MCSE .001068). The baseline supports a refitting contribution. It cannot establish general convergence or equivalence",
         "units": "observed finding"
       },
       "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
@@ -1552,13 +1566,13 @@
       "multiplicity": "Point comparisons are descriptive. For grid tests, report the original comparison family's Bonferroni-adjusted bands.",
       "status": "replicated",
       "status_reason": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
-      "numerical": "Deficit 0.879 pp after 50,000 draws; paired diagnostic supports a variance-refitting contribution",
+      "numerical": "The deficit is 0.879 pp against theoretical exemplary power after 50,000 draws. Replaying those same outcomes with the generating versus refitted covariance gives .87752 versus .86842 (paired refit-minus-known difference -.00910, MCSE .001068). The baseline supports a refitting contribution. It cannot establish general convergence or equivalence",
       "reconstruction_scope": "Source-derived distributional reconstruction in R and independent arithmetic checks.",
       "reproduction_deviation": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
       "contrasts": [],
       "contrast_not_applicable": "The underlying comparison is recorded directly in the study artifacts.",
       "limitations": [
-        "This comparison is conditional on the source model and reported design."
+        "For baseline-50000 and empirical-gap, the paired refit difference is identified in the balanced baseline only. The finite simulations do not establish a universal asymptotic statement or equivalence."
       ],
       "stopping": {
         "reason": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
@@ -1879,7 +1893,7 @@
       "uncertainty_statement": "The estimates describe the reconstructed design. Mask variation and figure reading error are considered separately.",
       "findings": {
         "published": {
-          "text": "15% dropout reduces power",
+          "text": "4.4 pp mean loss",
           "state": "reported",
           "artifact_ids": [
             "source-values/table-1.csv",
@@ -1887,7 +1901,7 @@
           ],
           "locator": "pp. 93–94, Tables 1–2",
           "page_locator": "pp. 93–94, Tables 1–2",
-          "source_excerpt": "The decrease in power as a result of 15% attrition per interval",
+          "source_excerpt": "interval ranges from 4.3% to 4.7%, with an average of 4.4%",
           "claim_type": "numerical estimate",
           "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
           "component_claim_ids": [],
@@ -1897,7 +1911,7 @@
           ]
         },
         "ours": {
-          "text": "15% dropout reduces power",
+          "text": "4.47 pp mean loss",
           "state": "observed",
           "artifact_ids": [
             "results/full/paired-contrasts.csv"
@@ -2116,6 +2130,7 @@
     "For precision and ch2, the toy seed states and the precise implementation of the original Optimal Design interface are unavailable.",
     "For practical-verdict, the four-occasion Gaussian model and the published dropout mechanism limit the scope of planning conclusions.",
     "For rq1 and oversample, the reported planning result uses all available occasions. A completers-only or listwise analysis is outside the evaluated design.",
+    "For baseline-50000 and empirical-gap, the paired refit difference is identified in the balanced baseline only. The finite simulations do not establish a universal asymptotic statement or equivalence.",
     "For formula-bw, the observed-N extension to the reported complete-design equation is an implementation assumption."
   ],
   "sections": [

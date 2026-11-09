@@ -24,7 +24,7 @@ artifact("DISAGREEMENTS.yaml")
 artifact("REPLICATION-PLAN.yaml")
 artifact("rerun/README.md")
 artifact("rerun/reproduce.sh")
-for p in ("rerun/check_oversampling.py", "rerun/formulaic.R", "rerun/precision_demo.py",
+for p in ("rerun/check_oversampling.py", "rerun/formulaic.R", "rerun/precision_demo.py", "rerun/baseline_paired.R",
           "scripts/model.R", "rerun/full_grid.R", "rerun/validate_profile.R"):
     artifact(p)
 artifact("handoff/method-references.md")
@@ -55,6 +55,7 @@ limits = [
     "For precision and ch2, the toy seed states and the precise implementation of the original Optimal Design interface are unavailable.",
     "For practical-verdict, the four-occasion Gaussian model and the published dropout mechanism limit the scope of planning conclusions.",
     "For rq1 and oversample, the reported planning result uses all available occasions. A completers-only or listwise analysis is outside the evaluated design.",
+    "For baseline-50000 and empirical-gap, the paired refit difference is identified in the balanced baseline only. The finite simulations do not establish a universal asymptotic statement or equivalence.",
     "For formula-bw, the observed-N extension to the reported complete-design equation is an implementation assumption.",
 ]
 def claim(key, statement, published, ours, locator, extra=(), method=None):
@@ -104,7 +105,7 @@ def headline(key, statement, pub_text, our_text, locator, excerpt, source_file, 
         if len(contrasts)>1 and i>0:
             row_excerpt = {
                 "SS": "an average decline of 0.85% in the negatively skewed",
-                "A15": "The decrease in power as a result of 15% attrition per interval",
+                "A15": "interval ranges from 4.3% to 4.7%, with an average of 4.4%",
             }.get(ident, excerpt)
             e["findings"]=findings(ptext,otext,row_excerpt,list(range(len(contrasts))))
         effects.append(e)
@@ -120,7 +121,7 @@ T="source-values/table-1.csv"
 headline("rq1","Interval attrition reduces power.","1.3 pp mean loss","1.27 pp mean loss",
          "pp. 93–94, Tables 1–2","with an average of 1.3%",T,P,[
           loss("attrition-5","A5","5% dropout","1.3 pp mean loss","1.27 pp mean loss"),
-          loss("attrition-15","A15","15% dropout","15% dropout reduces power","15% dropout reduces power")])
+          loss("attrition-15","A15","15% dropout","4.4 pp mean loss","4.47 pp mean loss")])
 headline("rq2","Allocation imbalance reduces power.","6.4 pp mean loss","6.44 pp mean loss",
          "p. 95, Table 1","with an average decline of 6.4%",T,P,[
           loss("allocation","A70","70/30 allocation","6.4 pp mean loss","6.44 pp mean loss")])
@@ -131,8 +132,8 @@ headline("rq3","Unequal sizes produce smaller power losses than other violations
 p=matches["attrition-15",.05]["published_pp"]-matches["attrition-15",.15]["published_pp"]
 o=matches["attrition-15",.05]["ours_pp"]-matches["attrition-15",.15]["ours_pp"]
 headline("rq4","The tested losses are greatest at ICC .05, with a nonmonotonic skewed-size exception.",
-         "All five losses peak at .05","All five losses peak at .05","p. 96, Tables 1 and 4",
-         "higher losses in power were seen at the lowest level of ICC",T,"results/full/comparison-summary.json",[
+         "All peak at .05. Prose reports decline.","All peak at .05. Skew loss rises .56 to .62 pp.","p. 96, Tables 1 and 4",
+         "the bias in power is greatest at the lowest level of ICC and decreases as the ICC increases",T,"results/full/comparison-summary.json",[
           ("ICC","ICC .05 vs .15 at 15% dropout","pp","dropout loss is greater at ICC .05",p,o,
            (.002,3,"Difference of two mean power losses, each with a .001 pp bound from Table 1 rounding."),"","")])
 headline("thresholds","The planning penalty can be several clusters.","Up to 8 extra clusters","Up to 7 extra clusters",
@@ -160,7 +161,7 @@ support = [
  ("oversample","Increasing clusters for dropout raises power above the target.","Table 3 range .83961 to .90204, including .88187 at 19 clusters","Six participant-loss means .83938 to .90192. At 19 clusters .88491 with central mask interval .88369 to .88569. The prose-only observation-loss heuristic gives .81179–.85463 using either nearest or upward rounding.","pp. 94–95 and 99–100, Table 3 and prose-only observation-loss heuristic"),
  ("hypothesis-order","The proposed hypothesis predicts that attrition is largest.","The hypothesis places attrition first","The published and R results both put 70/30 allocation first on average","p. 67 and Table 1"),
  ("ch5","The discussion draws planning and denominator-rule conclusions.","Empirical gap and two Appendix D scenarios","Planning result recurs for available-observation analyses. Extreme Optimal Design power and Type I error differ. The source completers example gives 230, yielding 195.5 expected completers. A target expectation of 200 at 15% loss requires 236.","pp. 99–112"),
- ("baseline-50000","The longer baseline run still gives lower empirical power.","Reported deficit about 0.9 pp","Deficit 0.879 pp after 50,000 draws; paired diagnostic supports a variance-refitting contribution","pp. 106–107"),
+ ("baseline-50000","The longer baseline run still gives lower empirical power.","Reported deficit about 0.9 pp. Kupzyk inferred that the difference would likely vanish with more draws and suggested equivalence.","The deficit is 0.879 pp against theoretical exemplary power after 50,000 draws. Replaying those same outcomes with the generating versus refitted covariance gives .87752 versus .86842 (paired refit-minus-known difference -.00910, MCSE .001068). The baseline supports a refitting contribution. It cannot establish general convergence or equivalence","pp. 106–107"),
  ("appendix-a","The SAS code specifies the empirical generator and fit.","RANNOR(0), RANUNI(0), SAS PROC MIXED","Seed-state replay unavailable; independent generator and fit checks agree","pp. 124–126, Appendix A"),
  ("appendix-b","The exemplary implementation uses printed frequency arrays.","Normal and skew frequency arrays and independent random effects","Independent covariance implementations agree. Original masks unavailable.","pp. 127–129, Appendix B"),
  ("appendix-c","The fitted means track population values.","324 reported means, four isolated lost draws","All 324 means within adjusted diagnostic bands; no failed rerun fits","pp. 130–132, Appendix C"),

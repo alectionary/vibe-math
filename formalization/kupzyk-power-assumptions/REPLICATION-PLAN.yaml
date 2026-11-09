@@ -164,8 +164,9 @@ parts:
   label: Discussion and practical conclusions (pp. 99–112)
   plan: Check claimed consequences, reference-DF choice, and reasons for empirical versus exemplary differences against the component analyses.
   status: partly
-  evidence: results/full/appendix-d-comparison.csv; results/full/kenward-roger-summary.csv; results/full/completers-arithmetic.json
-  reason: The planning pattern and empirical gap recur. Appendix D includes a material Optimal Design difference at the extreme setting.
+  evidence: results/full/appendix-d-comparison.csv; results/full/kenward-roger-summary.csv; results/full/completers-arithmetic.json; results/full/baseline-paired.csv
+  reason: The planning pattern recurs. The extreme Optimal Design difference and the persistent paired baseline gap limit the discussion
+    conclusions.
   run_complete: true
 - id: baseline-50000
   kind: analysis
@@ -174,7 +175,7 @@ parts:
   plan: Run a distinct 50,000-draw stream at the initial baseline; compare the gap from exemplary power to the main-grid baseline and its
     Monte Carlo uncertainty.
   status: replicated
-  evidence: results/full/empirical.csv; outputs/baseline-diagnostic.csv
+  evidence: results/full/empirical.csv; results/full/baseline-paired.csv; outputs/baseline-diagnostic.csv
   run_count: 50000
 - id: empirical-gap
   kind: headline
@@ -182,7 +183,7 @@ parts:
   plan: Compare all 54 empirical–exemplary pairs to published signs and ranges, and isolate fixed versus refitted variance with a paired
     diagnostic.
   status: replicated
-  evidence: results/full/empirical-exemplary-gaps.csv
+  evidence: results/full/empirical-exemplary-gaps.csv; results/full/baseline-paired.csv
 - id: appendix-a
   kind: analysis
   label: 'Appendix A: empirical SAS implementation'
