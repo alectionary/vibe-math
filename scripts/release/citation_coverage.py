@@ -228,6 +228,8 @@ def study_errors(root, paper, inventory="citation-inventory.json"):
     try:
         manuscript = paper.resolve() if paper.is_absolute() else (root / paper).resolve()
         manuscript.relative_to(root)
+        if manuscript.suffix.lower() != ".tex":
+            raise ValueError("provide the editable LaTeX manuscript")
         record = json.loads(relative_file(root, inventory).read_text(encoding="utf-8"))
         return coverage_errors(root, tex_source(manuscript, root), record)
     except (OSError, UnicodeError, ValueError) as exc:
