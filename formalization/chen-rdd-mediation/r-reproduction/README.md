@@ -33,6 +33,18 @@ The full pass replays all 1,280,000 datasets in Chen's order (about 3.4e10 norma
 draws); expect roughly 30-90 minutes on one core. `KEEP_REPS` only changes how many
 are rebuilt and fitted. `1000` rebuilds every dataset and takes many hours.
 
+## Full run (all 1,000 replications)
+
+```sh
+Rscript chen_exact.R 1000 out-full summary 2>&1 | tee out-full/run.log
+```
+
+`summary` mode keeps every dataset (her exact data for every replication) but
+writes `condition_summary.csv`: for each of the 1,280 conditions, the number
+of replications and the mean and SD of every estimate (a, b, c', h, i0M and
+the five effects, at each cutoff). Expect several hours on one core: the 50-
+replication run took 23 minutes, most of it the replay.
+
 ## Return
 
 Commit the whole `out/` folder (`session.txt`, `data_iter_sha256.txt`,

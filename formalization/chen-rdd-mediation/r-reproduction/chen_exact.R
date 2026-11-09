@@ -10,9 +10,12 @@
 # lm() calls, so they are her datasets and her point estimates.
 #
 # Usage:
-#   Rscript chen_exact.R [KEEP_REPS] [OUTDIR]
+#   Rscript chen_exact.R [KEEP_REPS] [OUTDIR] [MODE]
 #     KEEP_REPS  replications kept per condition (default 50; Chen ran 1000)
 #     OUTDIR     output folder (default "out")
+#     MODE       rows (default): estimates.csv, one row per kept dataset;
+#                summary: condition_summary.csv, per condition the mean and SD of
+#                every estimate over the kept replications (use with KEEP_REPS 1000)
 #
 # Outputs (OUTDIR):
 #   session.txt            R and package versions, RNG kind
@@ -29,6 +32,11 @@
 args <- commandArgs(trailingOnly = TRUE)
 keep_reps <- if (length(args) >= 1) as.integer(args[1]) else 50L
 outdir <- if (length(args) >= 2) args[2] else "out"
+# "rows" writes one row per kept dataset (estimates.csv); "summary" instead accumulates,
+# per condition, the mean and SD of every estimate over the kept replications
+# (condition_summary.csv), which stays small when all 1,000 replications are kept.
+mode <- if (length(args) >= 3) args[3] else "rows"
+stopifnot(mode %in% c("rows", "summary"))
 nrep <- "1000"  # Chen passes nrep on the command line; it reaches 1:nrep as a string
 dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
 
@@ -159,8 +167,11 @@ stopifnot(nrow(literal) == sum(first$nobs), same_kept, identical(seed_after_lite
 set.seed(95409)
 ordered <- factorcombo %>% arrange(sim_block)   # group_walk visits groups in sim_block order;
 # arrange() is stable, so rows keep their crossing() order within a block, as in group_walk
-res <- vector("list", 1280L * keep_reps)
+res <- if (mode == "rows") vector("list", 1280L * keep_reps) else NULL
 k <- 0L
+cond_keys <- unique(paste(ordered$nobs, ordered$effa, ordered$effb, ordered$effcpr, ordered$effh))
+cond_id <- match(paste(ordered$nobs, ordered$effa, ordered$effb, ordered$effcpr, ordered$effh), cond_keys)
+acc_sum <- NULL; acc_sq <- NULL; acc_n <- integer(length(cond_keys))
 t0 <- Sys.time()
 O <- as.list(ordered)   # plain vectors: indexing a tibble row by row is slow at 1.28M rows
 N <- length(O$id)
@@ -173,15 +184,38 @@ for (i in seq_len(N)) {
                  file.path(outdir, "first_dataset_sha256.txt"))
     }
     k <- k + 1L
-    res[[k]] <- cbind(data.frame(id = O$id[i], sim_block = O$sim_block[i], nobs = O$nobs[i],
-                                 effa = O$effa[i], effb = O$effb[i], effcpr = O$effcpr[i],
-                                 effh = O$effh[i], reps = O$reps[i], stringsAsFactors = FALSE),
-                      estimates(d))
+    est <- estimates(d)
+    if (mode == "rows") {
+      res[[k]] <- cbind(data.frame(id = O$id[i], sim_block = O$sim_block[i], nobs = O$nobs[i],
+                                   effa = O$effa[i], effb = O$effb[i], effcpr = O$effcpr[i],
+                                   effh = O$effh[i], reps = O$reps[i], stringsAsFactors = FALSE),
+                        est)
+    } else {
+      v <- unlist(est)
+      if (is.null(acc_sum)) {
+        acc_sum <- matrix(0, length(cond_keys), length(v), dimnames = list(NULL, names(v)))
+        acc_sq <- acc_sum
+      }
+      j <- cond_id[i]
+      acc_sum[j, ] <- acc_sum[j, ] + v
+      acc_sq[j, ] <- acc_sq[j, ] + v * v
+      acc_n[j] <- acc_n[j] + 1L
+    }
   } else {
     invisible(rnorm(7 * O$nobs[i]))
   }
   if (i %% 100000 == 0) message(sprintf("%d / %d datasets, %.1f min", i, N,
                                          as.numeric(difftime(Sys.time(), t0, units = "mins"))))
 }
-fwrite(rbindlist(res[seq_len(k)]), file.path(outdir, "estimates.csv"))
+if (mode == "rows") {
+  fwrite(rbindlist(res[seq_len(k)]), file.path(outdir, "estimates.csv"))
+} else {
+  key <- do.call(rbind, strsplit(cond_keys, " "))
+  m <- acc_sum / acc_n
+  sdv <- sqrt(pmax(acc_sq - acc_n * m^2, 0) / pmax(acc_n - 1, 1))
+  colnames(m) <- paste0("mean_", colnames(m)); colnames(sdv) <- paste0("sd_", colnames(acc_sum))
+  out <- data.frame(nobs = as.numeric(key[, 1]), effa = as.numeric(key[, 2]), effb = as.numeric(key[, 3]),
+                    effcpr = as.numeric(key[, 4]), effh = as.numeric(key[, 5]), reps = acc_n, m, sdv)
+  fwrite(out, file.path(outdir, "condition_summary.csv"))
+}
 message(sprintf("done: %d kept datasets in %.1f min", k, as.numeric(difftime(Sys.time(), t0, units = "mins"))))
