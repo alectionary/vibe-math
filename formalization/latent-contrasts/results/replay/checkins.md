@@ -91,3 +91,17 @@ Wall clock: cells 1 and 2 were 35 and 44 minutes. Cell 3 (45/45/5/5) is past 114
 **Surprising:** the 45/5 cell is more than twice the balanced cell, and it is still in the fit loop at 114 minutes.
 
 **Blocking:** none. Replicates, allocation, and engine are unchanged.
+
+## 2026-11-09T22:42Z (branch SHAs rewritten upstream)
+
+**Accomplished:** 2 of 36 cells, same files as before. The branch was force-updated on the remote while cell 3 was fitting. The replay blobs are unchanged. Current SHAs on `replication/jeffries-2024`: cell 1 `c33bddb8`, cell 2 `af8248b2`, session record `c1aad9b4`. The 22:40Z check-in is `34e4ce74`.
+
+**New:** Nothing about the fits. `mgcfa_true_n240_c3` is still running (R etime about 1:36, four workers near 99% CPU).
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0.
+
+Wall clock unchanged from the 22:40Z note. Cell 3 started 2026-11-09T20:46:02Z and has not finished.
+
+**Surprising:** the remote branch history was rewritten (same commit messages, new SHAs, plus unrelated log-file byte changes outside this study). The push of the 22:40Z check-in was rebased onto that history and then pushed. No force-push from this agent.
+
+**Blocking:** none.
