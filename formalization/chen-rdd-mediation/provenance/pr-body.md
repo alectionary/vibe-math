@@ -1,4 +1,7 @@
-**Paper (reviewable now, the reviewed bytes):** [paper folder at commit 2aa873df](https://github.com/alectionary/vibe-math/tree/2aa873df4b6b43b6d80a1a7ef887f9c5da90d715/formalization/chen-rdd-mediation/paper), file `mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf`
+> **Draft: the paper is ahead of its review.** The paper was revised on 2026-11-08 in the research context to carry the R replay (#92, #118), the digitized Figures 4.12-4.38 and the nine disagreements. That revision is a shared-context draft (`writer-manifest.json`: `context: shared`); it still needs an isolated writing pass and fresh cold reviews, and the full 1,000-replication R run (#118) is in progress. The PR stays draft until those are done.
+
+**Paper (current draft):** [paper folder at commit 00107ee6](https://github.com/alectionary/vibe-math/tree/00107ee6373715ee0a8edea216ce31e3e55a1a61/formalization/chen-rdd-mediation/paper), file `mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf`
+**Last reviewed version:** [paper folder at commit 2aa873df](https://github.com/alectionary/vibe-math/tree/2aa873df4b6b43b6d80a1a7ef887f9c5da90d715/formalization/chen-rdd-mediation/paper)
 **After merge (live on master):** [paper folder on master](https://github.com/alectionary/vibe-math/tree/master/formalization/chen-rdd-mediation/paper), same file
 
 Closes #88 when merged.
@@ -13,7 +16,7 @@ Chen asked how natural direct and indirect effects and the mediated interaction 
 
 ## What ties together
 
-The design, the data-generating model and the estimation code are Chen's (her Table 3.1 and Appendices A-B). Our part is an independent Python re-implementation of that code, the full simulation (all 1,280 conditions at three cutoffs, 3,840 of 3,840 cells, 1,000 replications and 500 bootstrap resamples each), the comparison with her printed tables and text, and a recomputation of the arithmetic in her Tables 4.6-4.7. No numbers are taken from other papers.
+The design, the data-generating model and the estimation code are Chen's (her Table 3.1 and Appendices A-B). Our part is an exact replay of her seeded R code on her own datasets (run on an R-capable host through #92 and #118), the digitization of her 27 result figures, an independent Python re-implementation for the full simulation (all 1,280 conditions at three cutoffs, 3,840 of 3,840 cells, 1,000 replications and 500 bootstrap resamples each), the comparison with her printed tables and text, and a recomputation of the arithmetic in her Tables 4.6-4.7. No numbers are taken from other papers.
 
 ## Findings
 
@@ -21,7 +24,7 @@ The design, the data-generating model and the estimation code are Chen's (her Ta
 - **Not replicated: low coverage.** Mean coverage falls 0.04 percentage points short of 95%, against 43.62 in her Table 4.9; the truth lies above the interval 0.33 rather than 47.07 points more often than below it.
 - **Not replicated: near-zero MINT power.** MINT power is 0.836 at n = 500 for the largest interaction (a = .59, h = .34) and at least .97 for ah >= .13 from n = 1,000.
 - **Partly replicated: the n = 5,000 recommendation.** At n = 5,000, 86.3% of zero-effect results have Type I error in Bradley's range and 89.2% of nonzero results reach .80 power, similar at each cutoff; effects whose two paths are both zero stay conservative at every n.
-- **Not established: why her results differ.** Her printed estimation code matches ours, and the step that compared her estimates with population values is not printed. Of 46 Type I and power statements in her text, 29 agree with our run (31 if each threshold is relaxed by .01). Read on our cells with the treatment-by-mediator interaction h set to 0, 39 would hold, and her text defines PNDE as c' + h where the population value is c'. These are consistency observations, not a diagnosis.
+- **Explained: why her results differ.** Her own seeded R code, replayed exactly (identical to her literal pipeline), recovers h and is unbiased, like our run. The difference is in unprinted steps: her Type I and power figures match our rates with h set to 0 in 85-100% of points (MINT power 6.7% -> 97.8%) and her MINT bias is exactly -ah, so her simulated data had no interaction; her coverage falls to a plateau at the control share (.25/.49/.74), consistent with population values computed per case and wrong for treated cases (partly explained); her population PNDE uses c' + h. All nine disagreements, with competing explanations and tests, are in `DISAGREEMENTS.yaml` and Section 10; one (a TNDE power gap in one cell set) is unexplained.
 - **Not established: the Head Start comparison.** The restricted-use data were not available; all 24 printed differences and standardized biases in her Tables 4.6-4.7 were recomputed (the standardized biases match only with the RCT estimate's standard error as divisor, not the outcome SD of her equation 3.12).
 
 Uncertainty: each cell has 1,000 replications, so a coverage or rejection rate near .95 or .05 has a Monte Carlo standard error of about .007; Chen reports no Monte Carlo error. Magnitude labels on page 1 compare point estimates at the printed rounding tolerance and are not equivalence tests.
@@ -32,13 +35,13 @@ The paper's sections answer, in order:
 
 - **Abstract, Table 1, Section 1 (Introduction):** what Chen reported and our verdict on each headline.
 - **Section 2:** what is ours and what is hers.
-- **Section 3 (Methods):** the design, the estimators, the Python engine and how comparable the two simulations are.
+- **Section 3 (Methods):** the design, the estimators, the exact R replay of her code, the Python engine, how her figures were digitized, and how comparable the runs are.
 - **Section 4:** each headline (H1-H4) in turn: Chen's direct effects are not biased in our run, coverage is near nominal, MINT power is not near zero, and n = 5,000 holds for most but not all cells.
 - **Section 5:** the supporting claims, including all 46 testable Type I and power statements (29 agree) and the Head Start, assumption and power-analysis parts.
 - **Section 6:** every published number against ours, with numerical and scope labels.
 - **Sections 7-8:** the assumptions we supplied and the ambiguities we resolved (cutoff labels, the standardized-bias divisor, the R-to-Python engine fallback).
 - **Section 9:** the seven limits of the evidence.
-- **Section 10:** what remains unresolved, ranked, with the evidence that would settle it.
+- **Section 10:** the nine disagreements, each with her claim, our result, the competing explanations, the test of each and the conclusion; then the gaps that stay open.
 - **Sections 11-12:** code and source availability, and next steps.
 - **Appendices A-C:** artifacts and reproduction commands, the compliance ledger, and the inventory of every claim and dissertation section.
 
@@ -48,15 +51,17 @@ From `formalization/chen-rdd-mediation/`, the [README](https://github.com/alecti
 
 ## Open issues and next steps
 
-The cause of Chen's bias, coverage and MINT results is unresolved; her result files, or her h estimates and intervals for one condition, would settle whether h was attenuated in her runs or her population values differed. The Head Start comparison needs the restricted-use ICPSR file.
+- #118: full 1,000-replication R replay (running); its condition summaries will be compared with ours.
+- Isolated writer pass and fresh cold reviews of the revised paper.
+- The exact rule behind her coverage plateau, and the TNDE power gap, would need her result files. The Head Start comparison needs the restricted-use ICPSR file.
 
 ## Review record
 
-The paper was written by an isolated writer from the frozen evidence packet and reviewed by independent cold readers; reviews 1-7 failed and are kept in `notes/` with the fixes each led to, and the accepted review is `notes/editorial-review.json`. The delivery record is `delivery-record.json`.
+The last reviewed version (commit 2aa873df) was written by an isolated writer from the frozen evidence packet and reviewed by independent cold readers; reviews 1-7 failed and are kept in `notes/` with the fixes each led to, and the accepted review is `notes/editorial-review.json`. The delivery record is `delivery-record.json`.
 
-## Follow-ups (not done, to keep the reviewed PDF unchanged)
+## Follow-ups from the last accepted review
 
-The accepted review (`notes/editorial-review.json`) passed every check and listed polish only:
+The E4 item is now done (Figure 4.28 digitized). The accepted review (`notes/editorial-review.json`) passed every check and listed polish only:
 - the abstract could say what the 46 statements are, and that the unprinted population-value step cannot by itself explain the MINT power difference;
 - for E4, Chen's Figure 4.28 plots MINT power near zero; the figure was not digitized, so the paper's "no printed number" is accurate but terse;
 - the Monte Carlo error in the Table 1 note (about 0.7 percentage points) is for rates near .05 or .95; near .84 it is about 1.2;
