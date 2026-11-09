@@ -216,3 +216,55 @@ disagreements:
     conclusion: partly_explained
     whose: undetermined
     confidence: medium
+  - id: completer-inflation
+    claim: The completers-only illustration adds 15 percent to a target of 200, giving an enrollment of 230.
+    ours: At 15 percent dropout this enrollment gives 195.5 expected completers. The minimum integer enrollment for an expectation of 200 is 236.
+    covers: [ch5]
+    hypotheses:
+      - id: our-denominator
+        side: ours
+        statement: The source example defines the 15 percent loss relative to the desired final count.
+        prediction: The text would describe 15 percent of completers as the expected number lost.
+        test:
+          method: Read printed p. 100 for the stated denominator and reproduce the expectation.
+          files: [provenance/source-acquisition.json, results/full/completers-arithmetic.json]
+        result: The prose specifies an overall attrition rate by the end of the study.
+        verdict: ruled_out
+      - id: initial-denominator
+        side: source
+        statement: Adding a fraction of the target does not compensate for that fraction of initial enrollments being lost.
+        prediction: Multiplication by the retention proportion falls short, while dividing by retention gives the correct expectation target.
+        test:
+          method: Compare 230 times .85 with the rounded-up ratio 200 divided by .85.
+          files: [results/full/completers-arithmetic.json]
+        result: The expected counts are 195.5 and 200.6 respectively. This arithmetic does not assess the power of a completers-only analysis.
+        verdict: supported
+    conclusion: explained
+    whose: source
+    confidence: high
+  - id: appendix-d1-serlin
+    claim: In baseline Table D.1 the between-within and containment rates are outside the narrower .035 to .065 criterion described on p. 105.
+    ours: The corresponding R point estimates are .06500 and .06488, on and just inside the upper endpoint.
+    covers: [null-baseline]
+    hypotheses:
+      - id: our-read
+        side: ours
+        statement: The apparent classification change comes from a misread endpoint or rounded rate.
+        prediction: The exact rejection fractions would have the same classification.
+        test:
+          method: Compare the full-precision rejection fractions with the reported criterion and Table D.1.
+          files: [source-values/table-D.1.csv, results/full/appendix-d-comparison.csv]
+        result: The original rates .06839 and .06811 exceed .065. The R estimates .065 and .0648828125 do not exceed it.
+        verdict: ruled_out
+      - id: boundary-sensitivity
+        side: neither
+        statement: Ordinary finite-run variability can alter a point-estimate classification near the cutoff.
+        prediction: R Monte Carlo error would be comparable to the distances from the cutoff.
+        test:
+          method: Compare each rate and Monte Carlo standard error with .065.
+          files: [results/full/appendix-d-comparison.csv]
+        result: Both R rates are within .00012 of the threshold and have MCSE about .00154. The point classifications differ without establishing different underlying classifications.
+        verdict: supported
+    conclusion: partly_explained
+    whose: neither
+    confidence: high

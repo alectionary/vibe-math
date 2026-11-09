@@ -34,12 +34,12 @@
     {
       "id": "DISAGREEMENTS.yaml",
       "path": "DISAGREEMENTS.yaml",
-      "sha256": "8be3eeb6340c975b8f870192dea22cde0fba63ce087dbfbdd02b910172038e62"
+      "sha256": "ccf80381bfca9f0bb4b838758a6852835588cdadfd90d08f8d0fc2b1da6ea261"
     },
     {
       "id": "REPLICATION-PLAN.yaml",
       "path": "REPLICATION-PLAN.yaml",
-      "sha256": "b1f0897b4de4e6ac3ac3e305181f254c9daecd5e9e455a6ce3436cf16a3129e7"
+      "sha256": "befadcbeaedb1a9a2d2331341f4c51d4be91210c74647a315eef06de31bf0297"
     },
     {
       "id": "rerun/README.md",
@@ -49,7 +49,37 @@
     {
       "id": "rerun/reproduce.sh",
       "path": "rerun/reproduce.sh",
-      "sha256": "2a6f38a179e27f509319f238caf81316eb0214120e301a184a7fdef80d901d0f"
+      "sha256": "f0d70dffe7dd5d51511939211b6f9e939448b47ea440b1aa0cb4b2617d50573d"
+    },
+    {
+      "id": "rerun/check_oversampling.py",
+      "path": "rerun/check_oversampling.py",
+      "sha256": "384dbcdbe9dd933ec17fd809afc76c5d376741ee877391bd3bef18a81394d694"
+    },
+    {
+      "id": "rerun/formulaic.R",
+      "path": "rerun/formulaic.R",
+      "sha256": "50660f3211c4e35655b4fad3b85dcad807deabbdef5af242680799d95164d425"
+    },
+    {
+      "id": "rerun/precision_demo.py",
+      "path": "rerun/precision_demo.py",
+      "sha256": "76f584a3d3c6a0acc64e37e6c196ad03fa42912e2539e1cf72507730bf19ecc3"
+    },
+    {
+      "id": "scripts/model.R",
+      "path": "scripts/model.R",
+      "sha256": "6fb99386f09bbb165d4020394a7fef3db5047c27ce0af4d65bff9b84a59f2719"
+    },
+    {
+      "id": "rerun/full_grid.R",
+      "path": "rerun/full_grid.R",
+      "sha256": "e9b58f1bdb293211cd7361d178f682179d5ce2fb16e1ba69da983a247d37aa8e"
+    },
+    {
+      "id": "rerun/validate_profile.R",
+      "path": "rerun/validate_profile.R",
+      "sha256": "dc3a8d0f2e82f2cb51853463923de85467ec1f2ba7294091c13e94ad6047ce87"
     },
     {
       "id": "handoff/method-references.md",
@@ -207,6 +237,11 @@
       "sha256": "6df61844e22ecce280baef63abee9a759daa986a1bee30bcfec5453dda6622ec"
     },
     {
+      "id": "results/full/completers-arithmetic.json",
+      "path": "results/full/completers-arithmetic.json",
+      "sha256": "45cef8e7c31f755a7bb6f98a30ead6b8c4b43ec04814c60279e7c5869a215395"
+    },
+    {
       "id": "results/full/empirical-exemplary-gaps.csv",
       "path": "results/full/empirical-exemplary-gaps.csv",
       "sha256": "7efdaa5acdc221059a7dc91a68643f31532d17d36368d58d1511efc836cee970"
@@ -240,6 +275,11 @@
       "id": "results/full/kr-validation.csv",
       "path": "results/full/kr-validation.csv",
       "sha256": "88c141de02205c579788ee8db5e30fcd056e3eacb4a3a5f78818e1dc0acaa619"
+    },
+    {
+      "id": "results/full/observation-loss-oversampling.csv",
+      "path": "results/full/observation-loss-oversampling.csv",
+      "sha256": "7889d017a5703247eefc006dff1c382b8a214b9cc4e5c9614da5d1c09d5824fb"
     },
     {
       "id": "results/full/oversampling-v2.csv",
@@ -456,11 +496,6 @@
       "sha256": "455d28f1d755f1ad6e4b5ef42867452f6445588a246f93d43bb91a50dd03ef72"
     },
     {
-      "id": "rerun/validate_profile.R",
-      "path": "rerun/validate_profile.R",
-      "sha256": "dc3a8d0f2e82f2cb51853463923de85467ec1f2ba7294091c13e94ad6047ce87"
-    },
-    {
       "id": "outputs/normsizes.csv",
       "path": "outputs/normsizes.csv",
       "sha256": "76205802dde2db0ecc0aa80b0098812a7a4182a99276be3f4bf0e29dc1e89368"
@@ -485,11 +520,11 @@
         "source-values/table-1.csv"
       ],
       "published": {
-        "value": "Loss at both dropout rates",
+        "value": "1.3 pp mean loss",
         "units": "reported finding"
       },
       "ours": {
-        "value": "Loss at both dropout rates",
+        "value": "1.27 pp mean loss",
         "units": "observed finding"
       },
       "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
@@ -498,7 +533,7 @@
       "multiplicity": "Point comparisons are descriptive. For grid tests, report the original comparison family's Bonferroni-adjusted bands.",
       "status": "replicated",
       "status_reason": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
-      "numerical": "Loss at both dropout rates",
+      "numerical": "1.27 pp mean loss",
       "reconstruction_scope": "Source-derived distributional reconstruction in R and independent arithmetic checks.",
       "reproduction_deviation": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
       "contrasts": [
@@ -518,7 +553,8 @@
         }
       ],
       "limitations": [
-        "For rq1, rq2, rq3, rq4, thresholds and oversample, the source exemplary estimates describe realized designs. Rerun estimates with dropout average independently sampled masks."
+        "For rq1, rq2, rq3, rq4, thresholds and oversample, the source exemplary estimates describe realized designs. Rerun estimates with dropout average independently sampled masks.",
+        "For rq1 and oversample, the reported planning result uses all available occasions. A completers-only or listwise analysis is outside the evaluated design."
       ],
       "stopping": {
         "reason": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
@@ -529,7 +565,7 @@
       },
       "findings": {
         "published": {
-          "text": "Loss at both dropout rates",
+          "text": "1.3 pp mean loss",
           "state": "reported",
           "artifact_ids": [
             "source-values/table-1.csv",
@@ -537,7 +573,7 @@
           ],
           "locator": "pp. 93–94, Tables 1–2",
           "page_locator": "pp. 93–94, Tables 1–2",
-          "source_excerpt": "a decrease in power ranging",
+          "source_excerpt": "with an average of 1.3%",
           "claim_type": "numerical estimate",
           "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
           "component_claim_ids": [],
@@ -547,7 +583,7 @@
           ]
         },
         "ours": {
-          "text": "Loss at both dropout rates",
+          "text": "1.27 pp mean loss",
           "state": "observed",
           "artifact_ids": [
             "results/full/paired-contrasts.csv"
@@ -652,11 +688,11 @@
         "source-values/table-1.csv"
       ],
       "published": {
-        "value": "Small losses for both size shapes",
+        "value": "0.45 pp mean loss",
         "units": "reported finding"
       },
       "ours": {
-        "value": "Small losses for both size shapes",
+        "value": "0.44 pp mean loss",
         "units": "observed finding"
       },
       "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
@@ -665,7 +701,7 @@
       "multiplicity": "Point comparisons are descriptive. For grid tests, report the original comparison family's Bonferroni-adjusted bands.",
       "status": "replicated",
       "status_reason": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
-      "numerical": "Small losses for both size shapes",
+      "numerical": "0.44 pp mean loss",
       "reconstruction_scope": "Source-derived distributional reconstruction in R and independent arithmetic checks.",
       "reproduction_deviation": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
       "contrasts": [
@@ -696,7 +732,7 @@
       },
       "findings": {
         "published": {
-          "text": "Small losses for both size shapes",
+          "text": "0.45 pp mean loss",
           "state": "reported",
           "artifact_ids": [
             "source-values/table-1.csv",
@@ -704,7 +740,7 @@
           ],
           "locator": "pp. 95–96, Table 1",
           "page_locator": "pp. 95–96, Table 1",
-          "source_excerpt": "average decline due to unequal cluster sizes was 0.65%",
+          "source_excerpt": "an average decline of 0.45% in the normally distributed condition",
           "claim_type": "numerical estimate",
           "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
           "component_claim_ids": [],
@@ -714,7 +750,7 @@
           ]
         },
         "ours": {
-          "text": "Small losses for both size shapes",
+          "text": "0.44 pp mean loss",
           "state": "observed",
           "artifact_ids": [
             "results/full/paired-contrasts.csv"
@@ -1060,7 +1096,7 @@
         "units": "reported finding"
       },
       "ours": {
-        "value": "Both counts follow from binomial variance at power .80. Two fresh toy runs show threshold variation.",
+        "value": "Both counts follow from binomial variance at power .80. The independent single-predictor illustration calibrates population power to .80 at n=75. The source power curve is unknown.",
         "units": "observed finding"
       },
       "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
@@ -1069,7 +1105,7 @@
       "multiplicity": "Point comparisons are descriptive. For grid tests, report the original comparison family's Bonferroni-adjusted bands.",
       "status": "partly_replicated",
       "status_reason": "The count formula agrees. The independent demonstration shows variability but cannot replay the two plotted seeds.",
-      "numerical": "Both counts follow from binomial variance at power .80. Two fresh toy runs show threshold variation.",
+      "numerical": "Both counts follow from binomial variance at power .80. The independent single-predictor illustration calibrates population power to .80 at n=75. The source power curve is unknown.",
       "reconstruction_scope": "Source-derived distributional reconstruction in R and independent arithmetic checks.",
       "reproduction_deviation": "The count formula agrees. The independent demonstration shows variability but cannot replay the two plotted seeds.",
       "contrasts": [],
@@ -1089,7 +1125,7 @@
       "id": "ch3",
       "level": "supporting",
       "statement": "The design crosses four factors.",
-      "source_locator": "pp. 68–83, Figure 5",
+      "source_locator": "pp. 68–83, Figure 5 and Appendices A–B",
       "artifact_ids": [
         "provenance/source-acquisition.json",
         "notes/claim-inventory.md",
@@ -1100,7 +1136,7 @@
         "units": "reported finding"
       },
       "ours": {
-        "value": "All settings represented in the design and fitted",
+        "value": "All settings represented. Empirical unequal sizes are freshly drawn, rounded and truncated, with the specified skew adjustment. The exemplary grid uses the printed frequency schedules.",
         "units": "observed finding"
       },
       "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
@@ -1109,7 +1145,7 @@
       "multiplicity": "Point comparisons are descriptive. For grid tests, report the original comparison family's Bonferroni-adjusted bands.",
       "status": "replicated",
       "status_reason": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
-      "numerical": "All settings represented in the design and fitted",
+      "numerical": "All settings represented. Empirical unequal sizes are freshly drawn, rounded and truncated, with the specified skew adjustment. The exemplary grid uses the printed frequency schedules.",
       "reconstruction_scope": "Source-derived distributional reconstruction in R and independent arithmetic checks.",
       "reproduction_deviation": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
       "contrasts": [],
@@ -1370,18 +1406,19 @@
       "id": "oversample",
       "level": "supporting",
       "statement": "Increasing clusters for dropout raises power above the target.",
-      "source_locator": "pp. 94–95, Table 3",
+      "source_locator": "pp. 94–95 and 99–100, Table 3 and prose-only observation-loss heuristic",
       "artifact_ids": [
         "provenance/source-acquisition.json",
         "notes/claim-inventory.md",
-        "results/full/oversampling-v2.csv"
+        "results/full/oversampling-v2.csv",
+        "results/full/observation-loss-oversampling.csv"
       ],
       "published": {
         "value": "Table 3 range .83961 to .90204, including .88187 at 19 clusters",
         "units": "reported finding"
       },
       "ours": {
-        "value": "Six means .83938 to .90192; at 19 clusters .88491 with central mask interval .88369 to .88569",
+        "value": "Six participant-loss means .83938 to .90192. At 19 clusters .88491 with central mask interval .88369 to .88569. The prose-only observation-loss heuristic gives .81179–.85463 using either nearest or upward rounding.",
         "units": "observed finding"
       },
       "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
@@ -1390,14 +1427,15 @@
       "multiplicity": "Point comparisons are descriptive. For grid tests, report the original comparison family's Bonferroni-adjusted bands.",
       "status": "partly_replicated",
       "status_reason": "Oversampling clears 80% throughout, but the published 0.88187 falls below the rerun central predictive interval.",
-      "numerical": "Six means .83938 to .90192; at 19 clusters .88491 with central mask interval .88369 to .88569",
+      "numerical": "Six participant-loss means .83938 to .90192. At 19 clusters .88491 with central mask interval .88369 to .88569. The prose-only observation-loss heuristic gives .81179–.85463 using either nearest or upward rounding.",
       "reconstruction_scope": "Source-derived distributional reconstruction in R and independent arithmetic checks.",
       "reproduction_deviation": "Oversampling clears 80% throughout, but the published 0.88187 falls below the rerun central predictive interval.",
       "contrasts": [],
       "contrast_not_applicable": "The underlying comparison is recorded directly in the study artifacts.",
       "limitations": [
         "For rq1, rq2, rq3, rq4, thresholds and oversample, the source exemplary estimates describe realized designs. Rerun estimates with dropout average independently sampled masks.",
-        "For oversample, .88187 lies below the central rerun predictive interval. A rare-mask diagnostic shows feasibility without identifying the source mask."
+        "For oversample, .88187 lies below the central rerun predictive interval. A rare-mask diagnostic shows feasibility without identifying the source mask.",
+        "For rq1 and oversample, the reported planning result uses all available occasions. A completers-only or listwise analysis is outside the evaluated design."
       ],
       "stopping": {
         "reason": "Oversampling clears 80% throughout, but the published 0.88187 falls below the rerun central predictive interval.",
@@ -1456,14 +1494,15 @@
         "provenance/source-acquisition.json",
         "notes/claim-inventory.md",
         "results/full/appendix-d-comparison.csv",
-        "results/full/kenward-roger-summary.csv"
+        "results/full/kenward-roger-summary.csv",
+        "results/full/completers-arithmetic.json"
       ],
       "published": {
         "value": "Empirical gap and two Appendix D scenarios",
         "units": "reported finding"
       },
       "ours": {
-        "value": "Planning result recurs. Extreme Optimal Design power and Type I error differ.",
+        "value": "Planning result recurs for available-observation analyses. Extreme Optimal Design power and Type I error differ. The source completers example gives 230, yielding 195.5 expected completers. A target expectation of 200 at 15% loss requires 236.",
         "units": "observed finding"
       },
       "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
@@ -1472,7 +1511,7 @@
       "multiplicity": "Point comparisons are descriptive. For grid tests, report the original comparison family's Bonferroni-adjusted bands.",
       "status": "partly_replicated",
       "status_reason": "The planning pattern and empirical gap recur. Appendix D includes a material Optimal Design difference at the extreme setting.",
-      "numerical": "Planning result recurs. Extreme Optimal Design power and Type I error differ.",
+      "numerical": "Planning result recurs for available-observation analyses. Extreme Optimal Design power and Type I error differ. The source completers example gives 230, yielding 195.5 expected completers. A target expectation of 200 at 15% loss requires 236.",
       "reconstruction_scope": "Source-derived distributional reconstruction in R and independent arithmetic checks.",
       "reproduction_deviation": "The planning pattern and empirical gap recur. Appendix D includes a material Optimal Design difference at the extreme setting.",
       "contrasts": [],
@@ -1656,7 +1695,7 @@
       "id": "null-baseline",
       "level": "supporting",
       "statement": "Baseline Type I error depends on denominator rule.",
-      "source_locator": "p. 133, Table D.1",
+      "source_locator": "pp. 105 and 133, Table D.1",
       "artifact_ids": [
         "provenance/source-acquisition.json",
         "notes/claim-inventory.md",
@@ -1668,25 +1707,25 @@
         "units": "reported finding"
       },
       "ours": {
-        "value": "Between–within .06500; Kenward–Roger .04625, or .04891 dropping zero variance components",
+        "value": "Between–within .06500; containment .0648828; Kenward–Roger .04625, or .04891 dropping zero variance components. The original between–within and containment estimates exceed Serlin’s .065 endpoint. The reconstructed point estimates are on or inside it.",
         "units": "observed finding"
       },
       "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
       "methods": "Simulate the first initial-stage cell under the null at the source count where verifiable and evaluate J−2, between–within, containment, Satterthwaite and Kenward–Roger.",
       "uncertainty": "See this claim's interpretation and the full result artifact. Original numerical and software uncertainty is only partially observable.",
       "multiplicity": "Point comparisons are descriptive. For grid tests, report the original comparison family's Bonferroni-adjusted bands.",
-      "status": "replicated",
-      "status_reason": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
-      "numerical": "Between–within .06500; Kenward–Roger .04625, or .04891 dropping zero variance components",
+      "status": "partly_replicated",
+      "status_reason": "The broad Bradley classification agrees, while the between-within and containment point estimates move onto or inside the tighter Serlin interval.",
+      "numerical": "Between–within .06500; containment .0648828; Kenward–Roger .04625, or .04891 dropping zero variance components. The original between–within and containment estimates exceed Serlin’s .065 endpoint. The reconstructed point estimates are on or inside it.",
       "reconstruction_scope": "Source-derived distributional reconstruction in R and independent arithmetic checks.",
-      "reproduction_deviation": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
+      "reproduction_deviation": "The broad Bradley classification agrees, while the between-within and containment point estimates move onto or inside the tighter Serlin interval.",
       "contrasts": [],
       "contrast_not_applicable": "The underlying comparison is recorded directly in the study artifacts.",
       "limitations": [
         "This comparison is conditional on the source model and reported design."
       ],
       "stopping": {
-        "reason": "The reconstructed analysis recovers the reported scientific result at the comparison scale stated.",
+        "reason": "The broad Bradley classification agrees, while the between-within and containment point estimates move onto or inside the tighter Serlin interval.",
         "attempted": "Simulate the first initial-stage cell under the null at the source count where verifiable and evaluate J−2, between–within, containment, Satterthwaite and Kenward–Roger.",
         "untested": "The original executable state and random streams were not recovered.",
         "resource_basis": "All planned main-grid draws, follow-up draws and reported design settings are accounted for.",
@@ -1848,7 +1887,7 @@
           ],
           "locator": "pp. 93–94, Tables 1–2",
           "page_locator": "pp. 93–94, Tables 1–2",
-          "source_excerpt": "a decrease in power ranging",
+          "source_excerpt": "The decrease in power as a result of 15% attrition per interval",
           "claim_type": "numerical estimate",
           "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
           "component_claim_ids": [],
@@ -1962,7 +2001,7 @@
           ],
           "locator": "pp. 95–96, Table 1",
           "page_locator": "pp. 95–96, Table 1",
-          "source_excerpt": "average decline due to unequal cluster sizes was 0.65%",
+          "source_excerpt": "an average decline of 0.85% in the negatively skewed condition",
           "claim_type": "numerical estimate",
           "conditions": "Four occasions and 20 participants per cluster on average. The 54 cells cross ICC .05/.10/.15, interval dropout 0/5/15%, allocation 50/50 or 70/30, and equal, normal, or skewed cluster sizes.",
           "component_claim_ids": [],
@@ -2076,6 +2115,7 @@
     "For null-extreme, the printed Optimal Design values differ under the labeled df. A smaller effective df is compatible with the reported rates, while its historical use is unknown.",
     "For precision and ch2, the toy seed states and the precise implementation of the original Optimal Design interface are unavailable.",
     "For practical-verdict, the four-occasion Gaussian model and the published dropout mechanism limit the scope of planning conclusions.",
+    "For rq1 and oversample, the reported planning result uses all available occasions. A completers-only or listwise analysis is outside the evaluated design.",
     "For formula-bw, the observed-N extension to the reported complete-design equation is an implementation assumption."
   ],
   "sections": [

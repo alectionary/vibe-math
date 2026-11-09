@@ -1,0 +1,87 @@
+{
+  "stage": "cold rendered manuscript pass",
+  "reviewer": "final_reader (independent)",
+  "context": "fresh",
+  "read_order": ["rendered_manuscript"],
+  "pdf": "/private/tmp/vibe-math-kupzyk-20261109/formalization/kupzyk-power-assumptions/paper/kupzyk-replication.pdf",
+  "pdf_sha256": "8d8cf8c5d3fa58d9ffeac7e94dfa22acaf816f7b030145a4db553e932d6505bb",
+  "rendered_pages_inspected": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+  "criteria_read": "/private/tmp/vibe-math-kupzyk-20261109/.agents/skills/replication-paper/references/editorial-review.md",
+  "checks": {
+    "abstract_verdict_first": {
+      "cold_verdict": "pass",
+      "findings": [
+        {"page": 1, "location": "abstract, sentences 1–2", "finding": "“We partly replicated the planning findings of Kupzyk (2011)” is immediately followed by the four component patterns and then the limit on exact replay."},
+        {"page": 1, "location": "abstract, last two sentences", "finding": "The adjusted empirical comparison and the threshold and Optimal Design disagreements complete the composite verdict."}
+      ]
+    },
+    "introduction_verdict_first": {
+      "cold_verdict": "pass",
+      "findings": [
+        {"page": 1, "location": "Introduction, opening paragraph", "finding": "“We partly replicated Kupzyk’s headline findings” comes first. The paragraph immediately describes fresh samples, the replay limit, the planning loss hierarchy and ICC pattern, the 51 of 54 threshold agreement, the maximum cluster difference, and the empirical versus exemplary count."},
+        {"page": 2, "location": "Introduction continuation", "finding": "Definitions of formulaic, exemplary, and empirical power follow the verdict and supply the planning context."}
+      ]
+    },
+    "standalone_prose": {
+      "cold_verdict": "fail",
+      "findings": [
+        {"page": 2, "location": "Introduction continuation and §2", "finding": "The power definitions and scope of the loss comparisons can be understood without the repository. The disagreement record IDs follow the scientific explanations and serve as evidence locators."},
+        {"page": 8, "location": "§12, caption to Selected printed estimates", "finding": "The manuscript numbers this table as Table 1 and also labels its distinct p. 1 Headline comparisons table Table 1. This breaks unique internal identification and increases confusion with the many nearby references to the dissertation's Table 1."},
+        {"page": 6, "location": "page top before §7", "finding": "The previous section ends with a single wrapped evidence link on this page. The link remains legible."},
+        {"page": 10, "location": "Appendix A evidence table continuation", "finding": "The continuation repeats its column headings. No clipping or overlap is apparent."},
+        {"page": 11, "location": "Appendix B and References", "finding": "The source and code availability distinctions are explicit. The ledger and references render cleanly."}
+      ]
+    },
+    "headline_fidelity": {
+      "cold_verdict": "pending_evidence",
+      "findings": [
+        {"page": 1, "location": "abstract, Table 1, and Introduction", "finding": "The loss, ICC, maximum-cluster and empirical-below-exemplary patterns are explicit. The reported 6.409/6.443 and 4.391/4.472 pp, 8/7 maximum and 41/40 cell counts agree across the first-page presentations."},
+        {"page": 2, "location": "§2 and §2.1", "finding": "The paper distinguishes the lowest-ICC peak from strict monotonicity and identifies the three sample-size disagreements."}
+      ]
+    },
+    "claim_coverage": {
+      "cold_verdict": "pending_evidence",
+      "findings": [
+        {"page": 9, "location": "Appendix A, start of evidence table", "finding": "The displayed claim map includes the motivation, software examples, simulation precision, crossed design, all three grids and formulaic power."},
+        {"page": 10, "location": "Appendix A, evidence table continuation", "finding": "The table continues with loss contrasts, oversampling, ICC moderation, thresholds, baseline, empirical–exemplary gap and Appendices A–D. The body separately discusses these scientific components."}
+      ]
+    },
+    "limitations_preserved": {
+      "cold_verdict": "pending_evidence",
+      "findings": [
+        {"page": 3, "location": "§2.2, oversampling exception", "finding": "The source power falls outside the central mask interval. An adverse mask gives a similar power and its feasibility is separated from the identity of the unknown original mask."},
+        {"page": 6, "location": "§7.1–§7.3", "finding": "The missing-data denominator rule is a reconstruction choice, the mask-average and realized-design estimands are distinguished, and the source Monte Carlo standard-error proxy is stated."},
+        {"page": 7, "location": "§9, all five bullets", "finding": "The missing inputs and the limits of attribution remain explicit for thresholds, oversampling, extreme denominator rules, interval generation, and software displays or toy streams."}
+      ]
+    },
+    "scientific_process_distinction": {
+      "cold_verdict": "pass",
+      "findings": [
+        {"page": 1, "location": "abstract and headline table note", "finding": "Partial scientific replication is separated from exact historical replay. The note separates point-estimate magnitude and scientific-pattern verdicts from equivalence."},
+        {"page": 3, "location": "§3 opening and generator/GLS paragraphs", "finding": "The dissertation supplies design and targets. The replication supplies new R estimates and independent calculations."},
+        {"page": 4, "location": "§4 first two paragraphs", "finding": "The manuscript distinguishes Monte Carlo error, reading error and the spread across masks."},
+        {"page": 8, "location": "§12 opening", "finding": "Printed-value rounding labels are explicitly distinguished from reconstruction scope and the other uncertainty comparisons."}
+      ]
+    },
+    "abstract_source_fidelity": {
+      "cold_verdict": "pending_evidence",
+      "findings": [
+        {"page": 1, "location": "abstract, first sentence", "finding": "Kupzyk (2011) is named immediately and the planning ordering, lowest ICC peak, up-to-eight cluster count and empirical-below-generating-covariance power findings are attributed to that source."},
+        {"page": 11, "location": "References, Kupzyk entry", "finding": "The author, title, year, institution and repository record are printed in full."}
+      ]
+    },
+    "effect_magnitude_fidelity": {
+      "cold_verdict": "pending_evidence",
+      "findings": [
+        {"page": 1, "location": "headline table, signed effect and effect magnitude columns", "finding": "Both signed effects are printed for all eight rows. Their numerical order matches each larger/smaller label and both signs are positive throughout."},
+        {"page": 1, "location": "headline table note", "finding": "The note explains each positive orientation and gives 0.001 pp for the five main losses, 0.002 pp for the ICC contrast and 0.5 for integer counts. Each displayed gap exceeds its rounding tolerance. The note rules out equivalence as an inference from those comparisons."}
+      ]
+    },
+    "finding_attribution": {
+      "cold_verdict": "pending_evidence",
+      "findings": [
+        {"page": 1, "location": "headline table caption and Published/Ours cells", "finding": "The caption names the source tables and pages and identifies the R values separately. Every cell contains a finding, with specific values for allocation, skewed sizes, maximum extra clusters and empirical-below-exemplary counts, and qualitative findings plus adjacent signed effects for the remaining rows. Verify each against its own evidence in the second pass."}
+      ]
+    }
+  }
+}
