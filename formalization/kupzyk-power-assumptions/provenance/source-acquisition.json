@@ -9,28 +9,6 @@
   "pages": 143,
   "retrieved": "2026-11-09",
   "verification": "UNL wrapper names repository record 106. The title page names Kevin A. Kupzyk, adviser James A. Bovaird, and April 2011. The sequence runs through printed p. 133, ending with Appendix D.2, and matches the prior 143-page count. This is an archived 2019-generation UNL export; the file hash differs from the earlier reviewer copy and no byte identity is asserted.",
-  "routes": [
-    {
-      "target": "UNL catalog",
-      "outcome": "Metadata and exact link verified"
-    },
-    {
-      "target": "UNL direct PDF",
-      "outcome": "HTTP 403"
-    },
-    {
-      "target": "CORE 188063525",
-      "outcome": "Indexed text accessible; PDF byte endpoint HTTP 403"
-    },
-    {
-      "target": "ProQuest publication 3450211",
-      "outcome": "Identifier route returned HTML, no complete PDF"
-    },
-    {
-      "target": "Internet Archive exact UNL Download URL",
-      "outcome": "Complete and verified 143-page PDF"
-    }
-  ],
   "text_read": {
     "mode": "text",
     "pages": [
@@ -95,7 +73,8 @@
       141,
       142,
       143
-    ]
+    ],
+    "done": true
   },
   "rendered_pages_inspected": {
     "mode": "visual",
@@ -122,7 +101,8 @@
       141,
       142,
       143
-    ]
+    ],
+    "done": true
   },
   "headline_pages": [
     97,
@@ -136,5 +116,50 @@
     107,
     143
   ],
-  "fetch_issue": 96
+  "fetch_issue": 96,
+  "route_details": [
+    {
+      "target": "UNL catalog",
+      "outcome": "Metadata and exact link verified"
+    },
+    {
+      "target": "UNL direct PDF",
+      "outcome": "HTTP 403"
+    },
+    {
+      "target": "CORE 188063525",
+      "outcome": "Indexed text accessible; PDF byte endpoint HTTP 403"
+    },
+    {
+      "target": "ProQuest publication 3450211",
+      "outcome": "Identifier route returned HTML, no complete PDF"
+    },
+    {
+      "target": "Internet Archive exact UNL Download URL",
+      "outcome": "Complete and verified 143-page PDF"
+    }
+  ],
+  "routes": [
+    {
+      "route": "repository_record",
+      "target": "https://digitalcommons.unl.edu/cehsdiss/106/",
+      "result": "Title, author, year and canonical download located."
+    },
+    {
+      "route": "direct_pdf",
+      "target": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1107&context=cehsdiss",
+      "result": "HTTP 403 directly. The verified 143-page archival response is recorded in archive_url."
+    },
+    {
+      "route": "institutional_repository",
+      "target": "https://digitalcommons.unl.edu/dissertations/AAI3450211/",
+      "result": "Second institutional record confirms the same title and author."
+    },
+    {
+      "route": "arxiv_or_author",
+      "target": "Exact-title search with author name, arXiv and author terms",
+      "result": "Two institutional records surfaced, with no separate arXiv or author-hosted copy located."
+    }
+  ],
+  "pdf_obtainable": true
 }
