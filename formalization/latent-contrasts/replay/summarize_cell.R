@@ -22,7 +22,7 @@ sig_n <- function(p) sum(num(p) < 0.05, na.rm = TRUE)
 accept_ge <- function(x, cut) sum(num(x) >= cut, na.rm = TRUE)
 accept_le <- function(x, cut) sum(num(x) <= cut, na.rm = TRUE)
 
-one_contrast <- function(est, p, target, prefix) {
+one_contrast <- function(est, p, target, prefix, mse_div = 10000) {
   est <- num(est)
   n <- length(est)
   avg <- mean(est)
@@ -42,7 +42,7 @@ one_contrast <- function(est, p, target, prefix) {
     setNames(avg - 1.96 * se, paste0(prefix, "_ci_lower_est")),
     setNames(n_sig, paste0(prefix, "_n_sig")),
     setNames(n_sig / nrow(conv), paste0(prefix, "_prop_sig")),
-    setNames(mean(bias^2) / 10000, paste0("mse_", prefix)),
+    setNames(mean(bias^2) / mse_div, paste0("mse_", prefix)),
     setNames(avg_abs, paste0("avg_abs_bias_", prefix, "_est")),
     setNames(abs_se, paste0("abs_bias_", prefix, "_se")),
     setNames(avg_abs - 1.386 * abs_se, paste0("abs_bias_", prefix, "_83.4ci_lower")),
@@ -88,7 +88,7 @@ fit_block <- function(cfi, rmsea, srmr, tag) {
 ours <- c(
   one_contrast(conv$c1_est, conv$c1_p, targets[1], "c1"),
   one_contrast(conv$c2_est, conv$c2_p, targets[2], "c2"),
-  one_contrast(conv$c3_est, conv$c3_p, targets[3], "c3"),
+  one_contrast(conv$c3_est, conv$c3_p, targets[3], "c3", mse_div = 1000),
   fit_block(conv$cfi, conv$rmsea, conv$srmr, ""),
   converged = nrow(conv),
   conv_prop = nrow(conv) / 10000
@@ -114,13 +114,14 @@ lines <- c(
 exact_means <- TRUE
 exact_sigs <- TRUE
 for (nm in names(osf_num)) {
-  ov <- osf_num[[nm]]
+  if (is.na(nm) || !nzchar(nm)) next
+  ov <- unname(osf_num[nm])
   if (is.na(ov)) next
   if (!nm %in% names(ours)) {
     lines <- c(lines, paste(nm, NA, ov, NA, NA, "not_in_cell_summary", sep = "\t"))
     next
   }
-  mv <- as.numeric(ours[[nm]])
+  mv <- as.numeric(unname(ours[nm]))
   diff <- mv - ov
   lines <- c(lines, paste(nm, sprintf("%.12g", mv), sprintf("%.12g", ov),
                           sprintf("%.12g", diff), sprintf("%.12g", abs(diff)),
@@ -130,11 +131,17 @@ mean_names <- c("c1_avg_est", "c2_avg_est", "c3_avg_est")
 sig_names <- c("c1_n_sig", "c2_n_sig", "c3_n_sig")
 mean_ok <- all(abs(as.numeric(ours[mean_names]) - osf_num[mean_names]) < 1e-8)
 sig_ok <- all(as.numeric(ours[sig_names]) == osf_num[sig_names])
+near <- function(p, lo, hi) sum(num(p) >= lo & num(p) <= hi, na.rm = TRUE)
 lines <- c(
   lines,
   paste("exact_means_1e-8", mean_ok),
   paste("exact_sig_counts", sig_ok),
-  paste("gate", if (isTRUE(mean_ok) && isTRUE(sig_ok)) "PASS" else "FAIL")
+  paste("gate", if (isTRUE(mean_ok) && isTRUE(sig_ok)) "PASS" else "FAIL"),
+  "mse_c3 uses mean(bias^2)/1000, matching osf/analysis/mgcfa_model.R; c1 and c2 use /10000.",
+  paste("c3_p_in_[0.049,0.051]", near(conv$c3_p, 0.049, 0.051)),
+  paste("c3_p_in_[0.0499,0.0501]", near(conv$c3_p, 0.0499, 0.0501)),
+  paste("c1_p_in_[0.0499,0.0501]", near(conv$c1_p, 0.0499, 0.0501)),
+  paste("c2_p_in_[0.0499,0.0501]", near(conv$c2_p, 0.0499, 0.0501))
 )
 dir.create(dirname(out_path), recursive = TRUE, showWarnings = FALSE)
 writeLines(lines, out_path)
