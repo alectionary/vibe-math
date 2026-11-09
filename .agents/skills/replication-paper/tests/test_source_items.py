@@ -168,5 +168,25 @@ class SourceGate(unittest.TestCase):
         self.assertTrue(any("differs from a fresh inventory" in e for e in errors))
 
 
+class CommittedDocuments(unittest.TestCase):
+    def test_other_authors_documents_cannot_be_committed(self):
+        import subprocess
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            git = lambda *a: subprocess.run(["git", "-C", tmp, *a], check=True, capture_output=True)
+            git("init", "-q")
+            (root / "source").mkdir()
+            (root / "paper").mkdir()
+            (root / "source" / "dissertation.pdf").write_bytes(b"%PDF-1.4 test")
+            (root / "source" / "supplement.docx").write_bytes(b"PK test")
+            (root / "paper" / "our_note.pdf").write_bytes(b"%PDF-1.4 ours")
+            self.assertEqual(preflight.committed_document_errors(root), [])   # untracked local copies are fine
+            git("add", "-f", ".")
+            errs = preflight.committed_document_errors(root)
+            self.assertEqual(len(errs), 2)
+            self.assertTrue(any("source/dissertation.pdf" in e for e in errs))
+            self.assertTrue(any("source/supplement.docx" in e for e in errs))
+
+
 if __name__ == "__main__":
     unittest.main()

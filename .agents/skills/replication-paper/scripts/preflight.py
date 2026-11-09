@@ -437,6 +437,31 @@ def source_gate(root, plan_obj, paper_text):
     return errors, []
 
 
+THIRD_PARTY_SUFFIXES = (".pdf", ".docx", ".doc", ".epub", ".djvu")
+
+
+def committed_document_errors(root) -> list:
+    """Other authors' documents are never committed; the values read from them are.
+
+    Any tracked PDF or word-processor file in the study outside `paper/` (where
+    our own builds live) is reported, so a source PDF, a supplement or a
+    downloaded article cannot slip into git. `git ls-files` sees only what is
+    committed or staged; gitignored local copies are fine.
+    """
+    try:
+        listed = subprocess.run(["git", "-C", str(root), "ls-files", "-z", "--", "."],
+                                capture_output=True, check=True).stdout.decode("utf-8", "replace")
+    except (OSError, subprocess.CalledProcessError):
+        return []
+    errors = []
+    for name in filter(None, listed.split("\0")):
+        parts = Path(name).parts
+        if name.lower().endswith(THIRD_PARTY_SUFFIXES) and "paper" not in parts:
+            errors.append(f"documents: {name} is committed; other authors' documents are not stored in git "
+                          "(commit the values read from them, and their sha256, instead)")
+    return errors
+
+
 def done_check(root, plan, paper, analysis=None) -> dict:
     """Fail when the plan, its first commit, or the paper's coverage claims do not line up."""
     root = Path(root).resolve()
@@ -500,6 +525,7 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         errors.append(baseline_error)
     if paper_error and plan_obj is None:
         errors.append(paper_error)
+    errors.extend(committed_document_errors(root))
     incomplete = result["incomplete"]
     if isinstance(plan_obj, dict):
         gate_errors, gate_incomplete = source_gate(root, plan_obj, paper_text)
