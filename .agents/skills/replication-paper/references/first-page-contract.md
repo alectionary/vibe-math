@@ -34,7 +34,11 @@ for it. Use `not established` direction only when the signed comparison cannot
 be computed. Do not round away a nonzero effect's sign. An effect within its
 row's tolerance of zero counts as zero for direction (its sign carries no
 information), so such a row is `zero vs nonzero` against a clearly nonzero one.
-Define each contrast against its null (for a rejection rate, minus the nominal
+A published value read from a figure uses `kind: "measurement"`: the value is
+the recorded reading error itself (unrounded, or rounded down), with
+`source_file` naming where it is recorded; never round a margin up so that a
+label changes, and never call a margin `prespecified` unless the plan set it
+before the results were seen. Define each contrast against its null (for a rejection rate, minus the nominal
 level), so that zero means "no effect".
 
 Define a nonnegative tolerance using source rounding precision (half a unit in
