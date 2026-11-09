@@ -1,0 +1,380 @@
+% Layout extracted from Kupzyk report at ca1d062; retain a descriptive title.
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.82in]{geometry}
+\usepackage{booktabs,longtable,array,graphicx,amsmath,xcolor,hyperref,xurl}
+\usepackage[authoryear,round]{natbib}
+\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\emergencystretch}{1em}
+\setlength{\parskip}{5pt}\setlength{\parindent}{0pt}
+% Use scalable fonts; inspect pdffonts output after building. Avoid adding T1
+% fontenc without an installed scalable font family. Add title/date in manuscript.
+
+\begin{document}
+\begin{center}{\Large\bfseries Hypergraph product codes: finite support,\\ unresolved production results}\\[4pt]
+{\large A whole-dissertation replication of Quintavalle (2022)}\end{center}
+\begin{abstract}\small
+We partly replicated Quintavalle's dissertation findings that product codes admit adversarial decoding, logical gates and confinement-based single-shot correction \citep{quintavalle2022}: finite tests support several constructions, but the whole-dissertation replication is incomplete. We completed 0 of 4 sustainable threshold estimates, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-family analyses. Published threshold advantages are 0.18 and 0.12 percentage points; our fitted advantages are not established. Published capacity and suppression contrasts are 6.05 percentage points and 0.76; ours are not established. Exact finite checks and 560,000 reconstructed ReShape trials provide limited support, not universal proofs or complete source-design reproduction. Source-ink and gate-convention gaps prevent interpreting candidate gate discrepancies as established source errors.
+\end{abstract}
+\vspace{-5pt}
+{\fontsize{8.3}{9.4}\selectfont\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{140pt}>{\raggedright\arraybackslash}p{55pt}>{\raggedright\arraybackslash}p{55pt}>{\raggedright\arraybackslash}p{76pt}>{\raggedright\arraybackslash}p{76pt}>{\raggedright\arraybackslash}p{62pt}@{}}
+\toprule Scientific estimand/claim & Published & Ours & Effect magnitude & Direction & Scientific verdict\\\midrule
+Adversarial decoding\newline Qualitative & not established & not established & not established & not established & partial\\
+Toric anti-threshold\newline Qualitative & not established & not established & not established & not established & partial\\
+Random (3,4) scaling\newline Qualitative & not established & not established & not established & not established & not separated\\
+Logical line basis\newline Qualitative & not established & not established & not established & not established & partial\\
+Round-robin logical gates\newline Qualitative & not established & not established & not established & not established & partial\\
+Adversarial single-shot correction\newline Qualitative & not established & not established & not established & not established & partial\\
+Stochastic single-shot threshold\newline Qualitative & not established & not established & not established & not established & not separated\\
+Cubic product confinement\newline Qualitative & not established & not established & not established & not established & partial\\
+Sustainable threshold family\newline No pooled scalar & not established & not established & not established & not established & not separated\\
+Toric BP+OSD minus sweep & 6.05 & not established & not established & not established & not separated\\
+Failure-mode repair\newline Qualitative & not established & not established & not established & not established & partial\\
+Beta N0 minus beta N8 & 0.76 & not established & not established & not established & not separated\\
+Random-product performance\newline Qualitative & not established & not established & not established & not established & not separated\\
+Complete computing architecture\newline Qualitative & not established & not established & not established & not established & partial\\
+\bottomrule\end{tabular}
+\par\vspace{3pt}Published: Chapters 3--6 of \citet{quintavalle2022}; ours: frozen computational evidence. ``Qualitative'' means no scalar estimand; no scalar tolerance applies. The threshold family retains both component contrasts (0.18, 0.12 percentage points; tolerance 0.01 each). Scalar tolerances: capacity 0.055 percentage points; beta difference 0.01, dimensionless. Positive means the first named quantity exceeds the second. Descriptive point estimates; not equivalence. Sampling uncertainty is separate; no fitted replication contrast is available. ``Not separated'' denotes an unresolved scientific comparison, not evidence of equality.
+}
+\newpage
+\section{Scientific question and principal findings}
+We partly replicated the dissertation's findings, with finite support and an incomplete whole-dissertation replication. The exact completion counts are 0 of 4 sustainable threshold estimates, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-family analyses. The question is whether hypergraph product constructions support reliable decoding, logical operations and correction with noisy measurements. The evidence answers some finite construction questions, while leaving the production performance and universal guarantees unestablished.
+
+The published numerical targets are heterogeneous. Chapter 5 Table II reports surface thresholds of 3.08(0.04)\% and 2.90(0.01)\%, and toric thresholds of 2.90(0.02)\% and 2.78(0.02)\%, for matching plus belief propagation with ordered statistics decoding (BP+OSD) versus BP+OSD twice. Their differences are 0.18 and 0.12 percentage points; the two topologies have no justified pooled contrast. Table I gives toric capacity 21.55(0.01)\% versus a cited sweep-decoder value of 15.5\%; the 6.05-point contrast is inherited from that source comparison, not a new evaluation of sweep decoding. The text reports approximately 21.6\% for each capacity family. Appendix E gives suppression exponents 1.91(0.03) and 1.15(0.03), a difference of 0.76 \citep[Ch.~5, Tables I--II, Fig.~3, Appendix E]{quintavalle2022}. None has a corresponding fitted estimate here.
+
+\section{What we did ourselves, and what we took from others}
+Our contribution is an independent finite computational audit and reconstructed simulation, not a new universal proof. The dissertation supplies the constructions, theorem statements, designs and published results. Original C++ single-shot code supplies BP+OSD behavior; our wrapper supplies reconstructed settings and timed stopping. Independent binary linear algebra, sparse tensor construction and computational-basis phase calculations check different representations of the same objects.
+
+The finite decoding census passes 1,061 below-half-distance phase errors on six named instances and classifies all 8,192 planar3 and 256 toric2 patterns. Failures outside the guarantee are retained. All 256 ordered pairs of binary 2-by-2 seeds pass the finite logical-basis check. All nine symmetric-code rows agree in length, dimension, seed distance and maximum stabilizer weight; quantum distance is inherited from the cited theorem, not exhaustively established. These are our calculations in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\nolinkurl{results/exact_checks.json}}.
+
+The independent 3D construction matches all 19 available original check and metacheck matrices entry for entry. The 12-qubit surface instance has 4,096 error words and 128 syndrome classes; 31,232 syndrome/noise checks pass the finite residual-bound diagnostic. These finite checks do not establish the general confinement theorems or stochastic threshold. Evidence is in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\nolinkurl{results/independent_checks.json}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\nolinkurl{results/exact_checks.json}}.
+
+\section{Decoding under stochastic noise}
+Reconstructed ReShape simulations support unfavorable size scaling in part of the toric grid, but do not recreate Figure 4. At physical error probability 0.03, failure fractions are 0.0596, 0.0623, 0.0714 and 0.1828 for sizes 6, 8, 10 and 20. Each of 56 settings has 10,000 trials, split equally between uniform and binomial generators. The seed is 20261103. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/toric_noise.json}{\nolinkurl{results/toric_noise.json}} contains individual Wilson intervals and approximate simultaneous intervals using a 56-cell Bonferroni adjustment. These describe our binomial sampling error only; source uncertainty and reconstruction uncertainty are not quantified. The exact probability grid, random-family seeds and tie conventions were not recovered.
+
+The original BP+OSD-twice program supports a finite repair benefit at high measurement noise. At data error 0.1 and measurement error 0.03, failure counts are 617 without repair and 72 with repair, each out of 10,000 trials. This is a reconstructed one-cycle diagnostic followed by the program's final perfect-measurement round with fresh data noise. It is neither the source's unrecovered production depth nor a sustainable threshold estimate. Eight conditions cover four measurement rates and both repair choices; low-rate outcomes are retained in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_diagnostic_grid.json}{\nolinkurl{results/original_diagnostic_grid.json}}. No source-wide significance claim is made.
+
+\section{Logical operations and provisional discrepancies}
+The square gates pass phase-sensitive finite stabilizer checks, while sibling gates require source review. Literal sibling Hadamard-SWAP fails 18 support checks for the cyclic three-bit repetition seed under the weaker equality-of-images condition. Truly symmetric matrices remove that support failure. Literal sibling CZ produces 16 negative stabilizer images in the 98-qubit Hamming construction; independent computational-basis phases confirm those signs. A Z-Pauli correction repairs the signs for symmetric seeds but changes the implemented gate. These are candidate source-comparison gaps, not established author errors.
+
+The diagonal-twin Z-sector distances are 3, 2 and 3 for planar3, toric2 and toric3. Treating the extracted floor-distance expression as a lower bound rather than equality changes the comparison; the source ink and full sector conventions are not certified. Separately, 361 round-robin support-size schedules and 256 ideal logical-pair actions pass. Neither noisy intermediate correction nor a fault-tolerant gate threshold was tested. Two ideal injection branches are related diagnostics, not a certification of image-only source wiring. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\nolinkurl{results/independent_checks.json}} records the independent checks.
+
+\section{Assumptions}
+\subsection{Reconstructed probability grid and generators}
+We supplied a toric grid and random seed because original simulation inputs were not recovered. Equal generator allocation is our diagnostic choice. Off-tie agreement between generic binary decoding and batched recurrence does not settle even-distance tie or complement conventions.
+\subsection{Finite scope in place of universal enumeration}
+We restrict algebraic checks to named instances and a complete small seed census. Finite success supports implementation consistency, not general correctness, asymptotic complexity or hardware scalability.
+\subsection{Reconstructed single-shot depth}
+We used one noisy cycle for the failure-mode grid and eight cycles for timing pilots. These settings do not establish the source's production design. Original surface and toric BP defaults are retained, rather than silently standardized.
+
+\section{Ambiguities that were resolved}
+\subsection{Sparse rank calculation}
+A rank discrepancy arose because our sparse representation treated explicitly stored zeros as ones. Removing explicit zeros restores agreement on all 19 archived instances. This was our implementation defect, resolved by the independent matrix comparison in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\nolinkurl{results/independent_checks.json}}.
+\subsection{Reduced error weight}
+The residual-bound check uses minimum weight among all errors with the same syndrome, as defined in the source. Minimization only modulo stabilizers would answer a different question. The 4,096-word census implements the same-syndrome definition and underlies the 31,232 finite checks.
+\subsection{Support preservation versus phase preservation}
+A support-only gate test is insufficient. Independent basis-state phases reproduce the sibling-CZ sign failures, so a single Pauli conjugation implementation is not the leading remaining explanation. Source ink, coordinate conventions and Pauli-frame conventions still require review.
+
+\section{What remains unresolved}
+The largest source gap is the unavailable original PDF ink. Browser text covers 122 pages, but PDF-byte download and screenshots failed under this environment's access policy. The first settling artifact is thesis PDF pages 66--68 (zero-based), followed by gate and Pauli-frame conventions or original implementation. Text extraction or convention mismatch ranks ahead of an established source error because these checks are missing. A later author HTML version corroborates text but cannot replace source-page inspection.
+
+The largest numerical gap combines missing inputs and measured cost. Surface size 11, random-code seeds, raw figure grids, fitting notebooks and the matching first-stage implementation were not recovered. Surface and toric size-5 eight-cycle pilots completed ten trials in 0.165 and 0.366 seconds, respectively. Toric size 11 completed nine trials before a 180-second cap. At that throughput, one 10,000-trial point costs approximately 55.6 CPU-hours, before larger cycle counts, full grids or the source's minimum 25-failure rule. This is an approximate throughput extrapolation, dependent on error rate, not a full resource budget. At most two CPU processes ran concurrently. Unbounded production runs were stopped with missing inputs unresolved; pilots cannot be substituted for fitted thresholds. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_pilots.json}{\nolinkurl{results/original_pilots.json}} records attempts and outcomes.
+
+Universal proof gaps are separate from computational cost. Chapter 3 complement, homology and correctness appendices received finite construction checks. Chapter 4 triangular reduction was checked through independently computed line pairing. Chapter 5 percolation, inheritance and expander arguments were inventoried but not independently re-proved or formalized. The nonlinear-confinement stochastic question and complete scalable architecture remain open within this replication.
+
+\section{Code and source availability}
+The dated ledger \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}} records what was obtained on 2026-11-03. The thesis text extraction is bundled, but the actual source PDF is not. Original single-shot C++ source and its historical BP+OSD dependency were obtained without source changes; the dependency revision is \texttt{74f86d3ef00f04bbb90a043dfef52e92a091f4d3}. Searches did not identify additional verified supplements; coverage was incomplete and no author was contacted. The local access restriction is not a statement that the thesis is globally unavailable.
+
+\section{Next steps}
+Recover the thesis source pages and gate conventions first, then rerun support and phase comparisons under verified coordinates. Obtain the surface size-11 matrices, matching implementation, original random seeds and full numerical grid before spending the measured production budget. Refit all four sustainable thresholds, both capacity analyses and both suppression exponents, retaining the original denominators and uncertainty rules. Formal proofs require a separate mathematical argument or formalization; larger finite tests alone cannot settle them.
+
+\appendix
+\section{Complete claim inventory}
+Every one of the 37 packet claims is accounted for below. ``Partial'' is a scope verdict, not a scalar magnitude match. Generic documentary entries do not imply an independent proof. Source locators refer to \citet{quintavalle2022}; PDF indices in the saved extraction are zero-based. Each entry links its supporting evidence and regeneration route in Appendix B.
+\subsection{ch1: Context and notation}
+\label{claim:ch1}
+\textbf{Source:} Ch1. Context and notation.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Audit background and explicitly exclude previously published introductory results.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{ch2: Motivation and overview}
+\label{claim:ch2}
+\textbf{Source:} Ch2. Motivation and overview.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Map the three research questions to Chapters 3--5; do not treat architectural motivation as a demonstrated device.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{ch3: ReShape decoding}
+\label{claim:ch3}
+\textbf{Source:} Ch3. ReShape decoding.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Cover canonical form, homological invariants, adversarial correctness, complexity, worked examples, and both stochastic-noise families.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{ch4: Logical gates}
+\label{claim:ch4}
+\textbf{Source:} Ch4. Logical gates.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Cover canonical line bases, partition distances, square and symmetric gates, examples, pieceable circuits and injection.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{ch5: Confinement and single-shot correction}
+\label{claim:ch5}
+\textbf{Source:} Ch5. Confinement and single-shot correction.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Cover theoretical results and all numerical analyses, including negative and unavailable outcomes.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{ch6: Outlook}
+\label{claim:ch6}
+\textbf{Source:} Ch6. Outlook.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Preserve open problems as open; distinguish conjectured extension to nonlinear confinement from established theorems.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{reshape-canonical: Canonical decomposition and quotient invariant}
+\label{claim:reshape-canonical}
+\textbf{Source:} Dissertation: Canonical decomposition and quotient invariant. Canonical decomposition and quotient invariant.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Implement GF(2) splitting and independently check stabilizer invariance and kernel representatives; audit Chapter 3 Propositions 1--3 and Appendices A--C.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{reshape-correctness: Adversarial decoding and shaped errors}
+\label{claim:reshape-correctness}
+\textbf{Source:} Ch3 Theorem 1, Corollary 2; PDF49--50. Corrects phase errors below half distance; shaped-error extension.
+
+\textbf{Our evidence:} 1061 guaranteed-range errors pass; 8448 exhaustive patterns classified. \textbf{Scope/status:} partly replicated. Implement Algorithm 1 with exact classical nearest-codeword oracles. Exhaustively test small instances and all errors below half-distance for larger examples; finite tests do not prove the universal theorem.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\nolinkurl{results/exact_checks.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{reshape-cost: Oracle and classical resource bounds}
+\label{claim:reshape-cost}
+\textbf{Source:} Dissertation: Oracle and classical resource bounds. Oracle and classical resource bounds.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Audit dimensions and count active oracle calls against logical dimension; distinguish operation counts from measured wall time.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{reshape-examples: Figures 1--3 illustrative constructions}
+\label{claim:reshape-examples}
+\textbf{Source:} Dissertation: Figures 1--3 illustrative constructions. Figures 1--3 illustrative constructions.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Reconstruct repetition, toric and worked planar code structure and enumerate planar errors; preserve graphical input ambiguity if figures cannot be rendered.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{reshape-toric: Figure 4 toric anti-threshold}
+\label{claim:reshape-toric}
+\textbf{Source:} Ch3 Figure 4; PDF51--52. Toric ReShape performance worsens with size at substantial stochastic noise.
+
+\textbf{Our evidence:} 560000 trials on reconstructed 56-setting grid; at p=.03 failure .0596,.0623,.0714,.1828 for L6,8,10,20. \textbf{Scope/status:} partly replicated. Reconstruct all identifiable source distances and probabilities with at least 10000 trials per point, or exact probabilities where derivable and independently checked; do not substitute planar codes for toric codes.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/toric_noise.json}{\nolinkurl{results/toric_noise.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{reshape-random: Figure 4 random (3,4) family}
+\label{claim:reshape-random}
+\textbf{Source:} Ch3 Figure 4; PDF51--52. Random (3,4) family exhibits unfavorable stochastic scaling.
+
+\textbf{Our evidence:} Not estimated. \textbf{Scope/status:} blocked. Search for exact seed matrices, original inputs and code; replicate the full source grid if recovered. Missing seeds remain unresolved, not replaced by convenient random matrices.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{line-basis: Canonical logical line basis}
+\label{claim:line-basis}
+\textbf{Source:} Ch4 Theorem 1 and Appendix A. Canonical paired line-supported logical basis.
+
+\textbf{Our evidence:} All 256 seed pairs and named examples satisfy finite basis checks. \textbf{Scope/status:} partly replicated. Implement independent kernel RREF basis construction and verify symplectic pairing, line support and completeness on all source worked examples and a fixed small-matrix census; audit Appendix A termination and complexity.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\nolinkurl{results/exact_checks.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{diagonal-partition: Diagonal-twin partition distance}
+\label{claim:diagonal-partition}
+\textbf{Source:} Ch4 diagonal-twin partition. Extracted floor(d/2) partition-distance expression.
+
+\textbf{Our evidence:} Z-sector distances 3,2,3 on planar3,toric2,toric3; equality versus bound/source ink unresolved. \textbf{Scope/status:} not established. Compute exact partition distances on tractable planar and toric instances; compare lower-bound versus equality wording and inspect rendered equations before alleging discrepancy.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\nolinkurl{results/independent_checks.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{square-hswap: Square Hadamard-SWAP}
+\label{claim:square-hswap}
+\textbf{Source:} Dissertation: Square Hadamard-SWAP. Square Hadamard-SWAP.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Verify full stabilizer and logical Pauli action on repetition and the specified 65-qubit Hamming example.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{square-czs: Square CZ-S}
+\label{claim:square-czs}
+\textbf{Source:} Dissertation: Square CZ-S. Square CZ-S.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Verify phases as well as binary support for stabilizer preservation and logical action, including right-sector S dagger.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{sibling-partition: Symmetric sibling partition distance}
+\label{claim:sibling-partition}
+\textbf{Source:} Dissertation: Symmetric sibling partition distance. Symmetric sibling partition distance.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Verify exact distances on small symmetric examples and inspect sector-transversal argument.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{sibling-hswap: Sibling Hadamard-SWAP}
+\label{claim:sibling-hswap}
+\textbf{Source:} Ch4 sibling Hadamard-SWAP proposition. Sibling H-SWAP under symmetry condition.
+
+\textbf{Our evidence:} Weak image symmetry toric3 fails 18 support checks; truly symmetric matrices pass; pending source review. \textbf{Scope/status:} not established. Verify Pauli action on cyclic repetition and symmetric Hamming examples.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\nolinkurl{results/exact_checks.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{sibling-cz: Sibling CZ}
+\label{claim:sibling-cz}
+\textbf{Source:} Ch4 sibling CZ proposition. Sibling CZ preserves encoded space.
+
+\textbf{Our evidence:} 16 negative stabilizer images in Hamming98, confirmed by independent basis phases; pending source-ink/convention review. \textbf{Scope/status:} not established. Verify stabilizer preservation and logical CZ pairing on source symmetric examples.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\nolinkurl{results/independent_checks.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{gate-examples: Hamming and toric examples}
+\label{claim:gate-examples}
+\textbf{Source:} Dissertation: Hamming and toric examples. Hamming and toric examples.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Reconstruct the specified seed matrices, code dimensions and logical basis, including 65 and 98 physical qubits.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{pieceable: Round-robin entangling gates}
+\label{claim:pieceable}
+\textbf{Source:} Ch4 Section 4. Pieceable round-robin logical entangling gates.
+
+\textbf{Our evidence:} 361 schedules and 256 ideal logical pair actions pass; noisy intermediate correction untested. \textbf{Scope/status:} partly replicated. Construct schedules, verify each bipartite pair is applied once, no within-piece collision, and ideal logical Pauli action; separately assess fault propagation and ReShape intermediate correction.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\nolinkurl{results/independent_checks.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{injection: Single-qubit injection and universality}
+\label{claim:injection}
+\textbf{Source:} Dissertation: Single-qubit injection and universality. Single-qubit injection and universality.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Check ideal state-injection branches with exact small complex matrices; do not infer noisy gate thresholds or resource savings.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{confinement-adversarial: Confinement implies adversarial single-shot correction}
+\label{claim:confinement-adversarial}
+\textbf{Source:} Ch5 Theorem 1, Lemma 1. Confinement implies adversarial single-shot correction.
+
+\textbf{Our evidence:} 31232 finite syndrome/noise checks on 12-qubit surface instance pass. \textbf{Scope/status:} partly replicated. Audit shadow-decoder Lemma 1 and Theorem 1; implement finite exact shadow decoder and residual-weight checks on a tractable 3D surface code.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\nolinkurl{results/exact_checks.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{confinement-stochastic: Linear confinement implies stochastic single-shot threshold}
+\label{claim:confinement-stochastic}
+\textbf{Source:} Ch5 Theorem 2, Appendix A. Linear confinement implies stochastic single-shot threshold.
+
+\textbf{Our evidence:} Not estimated. \textbf{Scope/status:} not established. Inventory Appendix A Lemmas 3--8, closeness and percolation dependencies; distinguish proof audit from a new formal proof or numerical threshold.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{confinement-product: Cubic confinement of 3D products}
+\label{claim:confinement-product}
+\textbf{Source:} Ch5 Theorem 3, Appendix C. 3D products have cubic confinement f(x)=x\textasciicircum{}3/4 under stated distance conditions.
+
+\textbf{Our evidence:} 4096 finite error words checked; universal proof not reproduced. \textbf{Scope/status:} partly replicated. Audit Appendix C Lemmas 9--10 and their conditions; exact finite quotient checks where tractable, not an extrapolation to all products.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\nolinkurl{results/exact_checks.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{confinement-expander: Soundness and expander confinement}
+\label{claim:confinement-expander}
+\textbf{Source:} Dissertation: Soundness and expander confinement. Soundness and expander confinement.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Audit Lemma 2 and Appendix D, including strictness and expansion assumptions; no replacement by an unverified random graph.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{product-construction: 3D chain complex and locality}
+\label{claim:product-construction}
+\textbf{Source:} Ch5 Appendix B. 3D tensor chain complexes and metachecks.
+
+\textbf{Our evidence:} All 19 available original Hx/metacheck matrices match independent construction entry for entry. \textbf{Scope/status:} partly replicated. Independently build all three boundary maps, verify chain identities, rank parameters and metachecks against archived original matrices for available sizes; account for Appendix B.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\nolinkurl{results/independent_checks.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{single-shot-algorithm: Two-stage decoding and invalid syndromes}
+\label{claim:single-shot-algorithm}
+\textbf{Source:} Dissertation: Two-stage decoding and invalid syndromes. Two-stage decoding and invalid syndromes.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Build the original C++ source with pinned dependency; validate metacode failure detection and compare independent construction and controls.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{threshold-table: Four sustainable threshold estimates}
+\label{claim:threshold-table}
+\textbf{Source:} Ch5 Table II. Sustainable thresholds: surface MWPM/BPOSD 3.08(.04)\%, BPOSD twice 2.90(.01)\%; toric 2.90(.02)\%, 2.78(.02)\%.
+
+\textbf{Our evidence:} Not estimated. \textbf{Scope/status:} not established. Attempt both decoder strategies on both topologies, all reported lattice sizes and cycle counts; benchmark before full simulations, preserving minimum 10000 trials and at least 25 failures when specified.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_pilots.json}{\nolinkurl{results/original_pilots.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{capacity: Code-capacity threshold and prior-decoder comparison}
+\label{claim:capacity}
+\textbf{Source:} Ch5 Table I, Figure 3. Toric BP+OSD 21.55(.01)\% versus literature sweep 15.5\%; surface approximately 21.6\%.
+
+\textbf{Our evidence:} Not estimated. \textbf{Scope/status:} not established. Reproduce original BP+OSD toric and surface designs and critical exponent fitting; do not relabel literature thresholds as our experiments.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_pilots.json}{\nolinkurl{results/original_pilots.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{failure-subroutine: Figure 2 failure-mode improvement}
+\label{claim:failure-subroutine}
+\textbf{Source:} Ch5 Figure 2. Syndrome failure repair improves logical performance at high measurement noise.
+
+\textbf{Our evidence:} At q=.03, 617 versus 72 failures in 10000 trials each; reconstructed depth N1. \textbf{Scope/status:} partly replicated. Reproduce L=5, data p=0.1, varying syndrome q, with and without repair, keeping metacode failures distinct.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_diagnostic_grid.json}{\nolinkurl{results/original_diagnostic_grid.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{suppression: Below-threshold exponents}
+\label{claim:suppression}
+\textbf{Source:} Ch5 Appendix E. Suppression beta 1.91(.03) at N0 and 1.15(.03) at N8.
+
+\textbf{Our evidence:} Not estimated. \textbf{Scope/status:} not established. Reproduce code-capacity and N=8 data and Appendix E two-stage slope fits; retain both beta values and uncertainty separately.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_pilots.json}{\nolinkurl{results/original_pilots.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{nontopological: Random-product single-shot performance}
+\label{claim:nontopological}
+\textbf{Source:} Ch5 Table III, Figure 4. Three random product codes [[1336,4,6]], [[3100,5,8]], [[5964,6,10]]; N16 crossing about 2.7\%.
+
+\textbf{Our evidence:} Not estimated. \textbf{Scope/status:} blocked. Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries and run BP+OSD twice for N=16 when inputs permit.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_pilots.json}{\nolinkurl{results/original_pilots.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{fit-methods: Appendix E thresholds and suppression fits}
+\label{claim:fit-methods}
+\textbf{Source:} Dissertation: Appendix E thresholds and suppression fits. Appendix E thresholds and suppression fits.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Implement cited rescaling and extrapolation methods only on adequate comparable data; synthetic recovery tests do not replicate reported fitted values.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{limitations: Limits of a complete HGP computing architecture}
+\label{claim:limitations}
+\textbf{Source:} Ch6 and Ch3--5 discussions. No complete demonstrated scalable computing architecture.
+
+\textbf{Our evidence:} Open nonlinear-confinement threshold, restricted gates and noisy gate performance remain unresolved. \textbf{Scope/status:} partly replicated. Preserve lack of stochastic threshold for ReShape, restricted Clifford gates, conjectured nonlinear-confinement thresholds, and absence of a complete architecture demonstration.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{symmetric-table: Chapter 4 Appendix B Table 2: all nine symmetric codes}
+\label{claim:symmetric-table}
+\textbf{Source:} Ch4 Appendix B Table 2. Nine symmetric HGP parameter rows.
+
+\textbf{Our evidence:} 9 of 9 n,k,seed distance,maxweight rows agree; quantum distance inherited, not exhaustively established. \textbf{Scope/status:} partly replicated. Parse all nine printed seed matrices; independently enumerate each classical kernel, construct H transpose H and verify n, k, rate, seed distance and maximum stabilizer weight. Distinguish inherited distance theorem from exhaustive quantum distance search.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\nolinkurl{results/exact_checks.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+\subsection{parallel-overhead: Pieceable parallelism and overhead}
+\label{claim:parallel-overhead}
+\textbf{Source:} Dissertation: Pieceable parallelism and overhead. Pieceable parallelism and overhead.
+
+\textbf{Our evidence:} Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations. \textbf{Scope/status:} partly replicated. Account for Section 4.3 and Figure 7: verify disjoint support criterion and schedule counts; preserve unmeasured syndrome extraction cost and fault-tolerance limits.
+
+\textbf{Boundary:} Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified. Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\nolinkurl{availability.md}}.
+
+\section{Artifacts and reproduction recipe}
+The artifact links below are master navigation aids. Newly delivered files may not yet resolve remotely; the local study directory is the available bundle. The verified computational reproduction revision is a18f642710aa192bdaa9f0dc4c68cb32bb08895c; it contains the code and inputs, while this manuscript is delivered separately. Historical planning revisions 37d61d0b and bde0771d are provenance only, not asserted runnable reproduction targets. Rebuilding this report from saved outputs, rerunning simulations and reacquiring source PDF ink are different operations.
+
+Run commands from \texttt{formalization/quintavalle-hgp}. Report build: \texttt{cd paper}; run \texttt{pdflatex -interaction=nonstopmode manuscript.tex} twice. The descriptive PDF is copied from the resulting \texttt{manuscript.pdf}. This consumes saved results and does not rerun science. Editable references are in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/paper/references.tex}{\nolinkurl{paper/references.tex}}.
+
+Exact checks: \texttt{python3 analysis/verify.py}; output \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\nolinkurl{results/exact_checks.json}}. Independent checks: \texttt{python3 analysis/independent\_checks.py UPSTREAM}; output \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\nolinkurl{results/independent_checks.json}}. ReShape: \texttt{python3 analysis/toric\_noise.py}; output \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/toric_noise.json}{\nolinkurl{results/toric_noise.json}}, seed 20261103. Original diagnostics: \texttt{python3 analysis/upstream\_runs.py UPSTREAM --suite}; output \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_diagnostic_grid.json}{\nolinkurl{results/original_diagnostic_grid.json}}. Pilots: omit \texttt{--suite}; output \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_pilots.json}{\nolinkurl{results/original_pilots.json}}. UPSTREAM is \texttt{vendor/single\_shot\_3D\_HGP}, the local original repository with its pinned dependency, code matrices and compiled \texttt{build/single\_shot\_hgp3d}. Missing surface size 11 remains an expected missing-input outcome. The wrapper saves each completed condition and raw logs, caps each job at 180 seconds, and does not implement automatic resume; rerunning can overwrite output. Preserve the frozen results before rerunning.
+
+The diagnostic seeds are \texttt{20261103 + 100*i + repair}, where \texttt{i=0,1,2,3} selects measurement rates 0.005, 0.01, 0.02 and 0.03. Pilot seeds are \texttt{20261103+i} for surface5, toric5, surface11 and toric11. Exact checks are deterministic. Python, NumPy and SciPy supply binary and sparse numerical operations; Matplotlib renders the simulation plot; original C++ implements the inherited decoder. The reproduction environment pins NumPy 2.3.5, SciPy 1.17.0, Matplotlib 3.10.8, PyYAML 6.0.3, PyMuPDF 1.26.6 and CMake 4.4.4 in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/requirements.txt}{\nolinkurl{requirements.txt}}. Use Python 3.11 or newer. These are reproduction versions, not asserted original thesis versions. The accepted engine preflight uses model-specific binary algebra and original C++; SEM engines are inapplicable.
+
+Script navigation: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/verify.py}{\nolinkurl{analysis/verify.py}}; \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/independent_checks.py}{\nolinkurl{analysis/independent_checks.py}}; \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/toric_noise.py}{\nolinkurl{analysis/toric_noise.py}}; \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/upstream_runs.py}{\nolinkurl{analysis/upstream_runs.py}}. Documentary claims consume \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\nolinkurl{sources/browser-extraction.txt}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/research-notes.md}{\nolinkurl{research-notes.md}}; they have no command that generates a missing proof or original observation. The inventory's artifact assignments give a per-claim route to these commands. Re-extracting the thesis requires access to the public source URL and is not equivalent to possessing original PDF bytes.
+
+\section{Compliance and interpretation ledger}
+\begin{longtable}{p{0.25\linewidth}p{0.16\linewidth}p{0.51\linewidth}}
+\toprule Requirement & Status & Evidence or departure reason\\\midrule
+Whole-dissertation scope & followed & 37-claim inventory; exact incomplete fit counts in abstract and body.\\
+Verdict and magnitude separate & followed & First-page table; qualitative propositions have no invented scalar.\\
+Original source ink & departed & Text obtained; original rendered PDF inaccessible locally. Gate comparisons remain provisional.\\
+Universal theorem verification & departed & Finite checks only; no universal proof or formal certificate.\\
+Scholarly source citation & followed & Thesis cited at first attribution and throughout, with source locators.\\
+Method citation metadata & departed & Wilson and Bonferroni procedures named; primary bibliographic metadata was not supplied in the isolated packet. No unverified citation invented.\\
+Computational reproduction revision & followed & Code and inputs: a18f6427; new report delivered locally, master links navigation only.\\
+Reproduction software versions & followed & Requirements pinned; original decoder and BP+OSD revisions retained.\\
+Rendering engine & followed & pdfLaTeX with approved article preamble; actual build logged locally.\\
+\bottomrule\end{longtable}
+\input{references.tex}
+\end{document}

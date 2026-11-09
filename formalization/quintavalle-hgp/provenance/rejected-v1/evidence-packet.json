@@ -1,0 +1,2424 @@
+{
+  "schema_version": 1,
+  "scope": "whole_dissertation",
+  "dissertation": "Armanda Ottaviano Quintavalle (2022). Hypergraph product codes: a bridge to scalable quantum computers. PhD, University of Sheffield.",
+  "synthesis": "Incomplete whole-dissertation replication: substantial finite supporting checks and reconstructed experiments; headline production fits and universal proofs remain unestablished.",
+  "limitations": [
+    "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+    "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+    "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+    "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+    "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+    "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+  ],
+  "artifacts": [
+    {
+      "id": "source",
+      "path": "sources/browser-extraction.txt",
+      "sha256": "f2533a6b653ac47b022e12fc6a17f8590548a11b2b997bdb9313acea26ac4eb6"
+    },
+    {
+      "id": "notes",
+      "path": "research-notes.md",
+      "sha256": "aa06842ea1ed1f546211585578ff21fa3613d70daf132342185e511f552d9d9a"
+    },
+    {
+      "id": "availability",
+      "path": "availability.md",
+      "sha256": "2d63fc89b1eae0fab40bcfd7eee2267e5db5d863ed90ebc26fec503a15dcf221"
+    },
+    {
+      "id": "exact",
+      "path": "results/exact_checks.json",
+      "sha256": "0f073e8f791011ffcec208bc7133d331623bfbcfd1450df0c7e5ff93d76d26af"
+    },
+    {
+      "id": "independent",
+      "path": "results/independent_checks.json",
+      "sha256": "3d5b2d0db5469c2877cd50b58a8fcfbc75fc457554cf7502c86e3ba82165af65"
+    },
+    {
+      "id": "toric",
+      "path": "results/toric_noise.json",
+      "sha256": "76b3553fdd9dd1d9c03336dc9d8c94a98bd19cffa325b4aa28fcfa1af687652a"
+    },
+    {
+      "id": "original",
+      "path": "results/original_diagnostic_grid.json",
+      "sha256": "115a41c084984b31598c52c87d3864f71bd1635b5431c59a9573f33b443ee507"
+    },
+    {
+      "id": "pilot",
+      "path": "results/original_pilots.json",
+      "sha256": "8cfdd740ab792bbcddf0d8fb592c29026e04230833613fa620ee6bdb24448dbf"
+    }
+  ],
+  "claims": [
+    {
+      "id": "ch1",
+      "statement": "Context and notation",
+      "source_locator": "Ch1",
+      "level": "supporting",
+      "conditions": "Audit background and explicitly exclude previously published introductory results.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Audit background and explicitly exclude previously published introductory results.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Context and notation",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "ch2",
+      "statement": "Motivation and overview",
+      "source_locator": "Ch2",
+      "level": "supporting",
+      "conditions": "Map the three research questions to Chapters 3\u20135; do not treat architectural motivation as a demonstrated device.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Map the three research questions to Chapters 3\u20135; do not treat architectural motivation as a demonstrated device.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Motivation and overview",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "ch3",
+      "statement": "ReShape decoding",
+      "source_locator": "Ch3",
+      "level": "supporting",
+      "conditions": "Cover canonical form, homological invariants, adversarial correctness, complexity, worked examples, and both stochastic-noise families.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Cover canonical form, homological invariants, adversarial correctness, complexity, worked examples, and both stochastic-noise families.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "ReShape decoding",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "ch4",
+      "statement": "Logical gates",
+      "source_locator": "Ch4",
+      "level": "supporting",
+      "conditions": "Cover canonical line bases, partition distances, square and symmetric gates, examples, pieceable circuits and injection.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Cover canonical line bases, partition distances, square and symmetric gates, examples, pieceable circuits and injection.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Logical gates",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "ch5",
+      "statement": "Confinement and single-shot correction",
+      "source_locator": "Ch5",
+      "level": "supporting",
+      "conditions": "Cover theoretical results and all numerical analyses, including negative and unavailable outcomes.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Cover theoretical results and all numerical analyses, including negative and unavailable outcomes.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Confinement and single-shot correction",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "ch6",
+      "statement": "Outlook",
+      "source_locator": "Ch6",
+      "level": "supporting",
+      "conditions": "Preserve open problems as open; distinguish conjectured extension to nonlinear confinement from established theorems.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Preserve open problems as open; distinguish conjectured extension to nonlinear confinement from established theorems.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Outlook",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "reshape-canonical",
+      "statement": "Canonical decomposition and quotient invariant",
+      "source_locator": "Dissertation: Canonical decomposition and quotient invariant",
+      "level": "supporting",
+      "conditions": "Implement GF(2) splitting and independently check stabilizer invariance and kernel representatives; audit Chapter 3 Propositions 1\u20133 and Appendices A\u2013C.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Implement GF(2) splitting and independently check stabilizer invariance and kernel representatives; audit Chapter 3 Propositions 1\u20133 and Appendices A\u2013C.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Canonical decomposition and quotient invariant",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "reshape-correctness",
+      "statement": "Adversarial decoding and shaped errors",
+      "source_locator": "Ch3 Theorem 1, Corollary 2; PDF49\u201350",
+      "level": "headline",
+      "conditions": "Implement Algorithm 1 with exact classical nearest-codeword oracles. Exhaustively test small instances and all errors below half-distance for larger examples; finite tests do not prove the universal theorem.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "1061 guaranteed-range errors pass; 8448 exhaustive patterns classified",
+      "reconstruction_scope": "Implement Algorithm 1 with exact classical nearest-codeword oracles. Exhaustively test small instances and all errors below half-distance for larger examples; finite tests do not prove the universal theorem.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Corrects phase errors below half distance; shaped-error extension",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "1061 guaranteed-range errors pass; 8448 exhaustive patterns classified",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "exact",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "reshape-cost",
+      "statement": "Oracle and classical resource bounds",
+      "source_locator": "Dissertation: Oracle and classical resource bounds",
+      "level": "supporting",
+      "conditions": "Audit dimensions and count active oracle calls against logical dimension; distinguish operation counts from measured wall time.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Audit dimensions and count active oracle calls against logical dimension; distinguish operation counts from measured wall time.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Oracle and classical resource bounds",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "reshape-examples",
+      "statement": "Figures 1\u20133 illustrative constructions",
+      "source_locator": "Dissertation: Figures 1\u20133 illustrative constructions",
+      "level": "supporting",
+      "conditions": "Reconstruct repetition, toric and worked planar code structure and enumerate planar errors; preserve graphical input ambiguity if figures cannot be rendered.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Reconstruct repetition, toric and worked planar code structure and enumerate planar errors; preserve graphical input ambiguity if figures cannot be rendered.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Figures 1\u20133 illustrative constructions",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "reshape-toric",
+      "statement": "Figure 4 toric anti-threshold",
+      "source_locator": "Ch3 Figure 4; PDF51\u201352",
+      "level": "headline",
+      "conditions": "Reconstruct all identifiable source distances and probabilities with at least 10000 trials per point, or exact probabilities where derivable and independently checked; do not substitute planar codes for toric codes.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "560000 trials on reconstructed 56-setting grid; at p=.03 failure .0596,.0623,.0714,.1828 for L6,8,10,20",
+      "reconstruction_scope": "Reconstruct all identifiable source distances and probabilities with at least 10000 trials per point, or exact probabilities where derivable and independently checked; do not substitute planar codes for toric codes.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Toric ReShape performance worsens with size at substantial stochastic noise",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "560000 trials on reconstructed 56-setting grid; at p=.03 failure .0596,.0623,.0714,.1828 for L6,8,10,20",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "toric",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "reshape-random",
+      "statement": "Figure 4 random (3,4) family",
+      "source_locator": "Ch3 Figure 4; PDF51\u201352",
+      "level": "headline",
+      "conditions": "Search for exact seed matrices, original inputs and code; replicate the full source grid if recovered. Missing seeds remain unresolved, not replaced by convenient random matrices.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "blocked",
+      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+      "numerical": "Not estimated",
+      "reconstruction_scope": "Search for exact seed matrices, original inputs and code; replicate the full source grid if recovered. Missing seeds remain unresolved, not replaced by convenient random matrices.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Random (3,4) family exhibits unfavorable stochastic scaling",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": null,
+        "units": "finite result",
+        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "line-basis",
+      "statement": "Canonical logical line basis",
+      "source_locator": "Ch4 Theorem 1 and Appendix A",
+      "level": "headline",
+      "conditions": "Implement independent kernel RREF basis construction and verify symplectic pairing, line support and completeness on all source worked examples and a fixed small-matrix census; audit Appendix A termination and complexity.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "All 256 seed pairs and named examples satisfy finite basis checks",
+      "reconstruction_scope": "Implement independent kernel RREF basis construction and verify symplectic pairing, line support and completeness on all source worked examples and a fixed small-matrix census; audit Appendix A termination and complexity.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Canonical paired line-supported logical basis",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "All 256 seed pairs and named examples satisfy finite basis checks",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "exact",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "diagonal-partition",
+      "statement": "Diagonal-twin partition distance",
+      "source_locator": "Ch4 diagonal-twin partition",
+      "level": "supporting",
+      "conditions": "Compute exact partition distances on tractable planar and toric instances; compare lower-bound versus equality wording and inspect rendered equations before alleging discrepancy.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "not_established",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Z-sector distances 3,2,3 on planar3,toric2,toric3; equality versus bound/source ink unresolved",
+      "reconstruction_scope": "Compute exact partition distances on tractable planar and toric instances; compare lower-bound versus equality wording and inspect rendered equations before alleging discrepancy.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Extracted floor(d/2) partition-distance expression",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Z-sector distances 3,2,3 on planar3,toric2,toric3; equality versus bound/source ink unresolved",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "independent",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "square-hswap",
+      "statement": "Square Hadamard-SWAP",
+      "source_locator": "Dissertation: Square Hadamard-SWAP",
+      "level": "supporting",
+      "conditions": "Verify full stabilizer and logical Pauli action on repetition and the specified 65-qubit Hamming example.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Verify full stabilizer and logical Pauli action on repetition and the specified 65-qubit Hamming example.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Square Hadamard-SWAP",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "square-czs",
+      "statement": "Square CZ-S",
+      "source_locator": "Dissertation: Square CZ-S",
+      "level": "supporting",
+      "conditions": "Verify phases as well as binary support for stabilizer preservation and logical action, including right-sector S dagger.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Verify phases as well as binary support for stabilizer preservation and logical action, including right-sector S dagger.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Square CZ-S",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "sibling-partition",
+      "statement": "Symmetric sibling partition distance",
+      "source_locator": "Dissertation: Symmetric sibling partition distance",
+      "level": "supporting",
+      "conditions": "Verify exact distances on small symmetric examples and inspect sector-transversal argument.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Verify exact distances on small symmetric examples and inspect sector-transversal argument.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Symmetric sibling partition distance",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "sibling-hswap",
+      "statement": "Sibling Hadamard-SWAP",
+      "source_locator": "Ch4 sibling Hadamard-SWAP proposition",
+      "level": "supporting",
+      "conditions": "Verify Pauli action on cyclic repetition and symmetric Hamming examples.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "not_established",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Weak image symmetry toric3 fails 18 support checks; truly symmetric matrices pass; pending source review",
+      "reconstruction_scope": "Verify Pauli action on cyclic repetition and symmetric Hamming examples.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Sibling H-SWAP under symmetry condition",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Weak image symmetry toric3 fails 18 support checks; truly symmetric matrices pass; pending source review",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "exact",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "sibling-cz",
+      "statement": "Sibling CZ",
+      "source_locator": "Ch4 sibling CZ proposition",
+      "level": "supporting",
+      "conditions": "Verify stabilizer preservation and logical CZ pairing on source symmetric examples.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "not_established",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "16 negative stabilizer images in Hamming98, confirmed by independent basis phases; pending source-ink/convention review",
+      "reconstruction_scope": "Verify stabilizer preservation and logical CZ pairing on source symmetric examples.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Sibling CZ preserves encoded space",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "16 negative stabilizer images in Hamming98, confirmed by independent basis phases; pending source-ink/convention review",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "independent",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "gate-examples",
+      "statement": "Hamming and toric examples",
+      "source_locator": "Dissertation: Hamming and toric examples",
+      "level": "supporting",
+      "conditions": "Reconstruct the specified seed matrices, code dimensions and logical basis, including 65 and 98 physical qubits.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Reconstruct the specified seed matrices, code dimensions and logical basis, including 65 and 98 physical qubits.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Hamming and toric examples",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "pieceable",
+      "statement": "Round-robin entangling gates",
+      "source_locator": "Ch4 Section 4",
+      "level": "headline",
+      "conditions": "Construct schedules, verify each bipartite pair is applied once, no within-piece collision, and ideal logical Pauli action; separately assess fault propagation and ReShape intermediate correction.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "361 schedules and 256 ideal logical pair actions pass; noisy intermediate correction untested",
+      "reconstruction_scope": "Construct schedules, verify each bipartite pair is applied once, no within-piece collision, and ideal logical Pauli action; separately assess fault propagation and ReShape intermediate correction.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Pieceable round-robin logical entangling gates",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "361 schedules and 256 ideal logical pair actions pass; noisy intermediate correction untested",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "independent",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "injection",
+      "statement": "Single-qubit injection and universality",
+      "source_locator": "Dissertation: Single-qubit injection and universality",
+      "level": "supporting",
+      "conditions": "Check ideal state-injection branches with exact small complex matrices; do not infer noisy gate thresholds or resource savings.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Check ideal state-injection branches with exact small complex matrices; do not infer noisy gate thresholds or resource savings.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Single-qubit injection and universality",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "confinement-adversarial",
+      "statement": "Confinement implies adversarial single-shot correction",
+      "source_locator": "Ch5 Theorem 1, Lemma 1",
+      "level": "headline",
+      "conditions": "Audit shadow-decoder Lemma 1 and Theorem 1; implement finite exact shadow decoder and residual-weight checks on a tractable 3D surface code.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "31232 finite syndrome/noise checks on 12-qubit surface instance pass",
+      "reconstruction_scope": "Audit shadow-decoder Lemma 1 and Theorem 1; implement finite exact shadow decoder and residual-weight checks on a tractable 3D surface code.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Confinement implies adversarial single-shot correction",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "31232 finite syndrome/noise checks on 12-qubit surface instance pass",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "exact",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "confinement-stochastic",
+      "statement": "Linear confinement implies stochastic single-shot threshold",
+      "source_locator": "Ch5 Theorem 2, Appendix A",
+      "level": "headline",
+      "conditions": "Inventory Appendix A Lemmas 3\u20138, closeness and percolation dependencies; distinguish proof audit from a new formal proof or numerical threshold.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "not_established",
+      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+      "numerical": "Not estimated",
+      "reconstruction_scope": "Inventory Appendix A Lemmas 3\u20138, closeness and percolation dependencies; distinguish proof audit from a new formal proof or numerical threshold.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Linear confinement implies stochastic single-shot threshold",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": null,
+        "units": "finite result",
+        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "confinement-product",
+      "statement": "Cubic confinement of 3D products",
+      "source_locator": "Ch5 Theorem 3, Appendix C",
+      "level": "headline",
+      "conditions": "Audit Appendix C Lemmas 9\u201310 and their conditions; exact finite quotient checks where tractable, not an extrapolation to all products.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "4096 finite error words checked; universal proof not reproduced",
+      "reconstruction_scope": "Audit Appendix C Lemmas 9\u201310 and their conditions; exact finite quotient checks where tractable, not an extrapolation to all products.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "3D products have cubic confinement f(x)=x^3/4 under stated distance conditions",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "4096 finite error words checked; universal proof not reproduced",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "exact",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "confinement-expander",
+      "statement": "Soundness and expander confinement",
+      "source_locator": "Dissertation: Soundness and expander confinement",
+      "level": "supporting",
+      "conditions": "Audit Lemma 2 and Appendix D, including strictness and expansion assumptions; no replacement by an unverified random graph.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Audit Lemma 2 and Appendix D, including strictness and expansion assumptions; no replacement by an unverified random graph.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Soundness and expander confinement",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "product-construction",
+      "statement": "3D chain complex and locality",
+      "source_locator": "Ch5 Appendix B",
+      "level": "supporting",
+      "conditions": "Independently build all three boundary maps, verify chain identities, rank parameters and metachecks against archived original matrices for available sizes; account for Appendix B.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "All 19 available original Hx/metacheck matrices match independent construction entry for entry",
+      "reconstruction_scope": "Independently build all three boundary maps, verify chain identities, rank parameters and metachecks against archived original matrices for available sizes; account for Appendix B.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "3D tensor chain complexes and metachecks",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "All 19 available original Hx/metacheck matrices match independent construction entry for entry",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "independent",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "single-shot-algorithm",
+      "statement": "Two-stage decoding and invalid syndromes",
+      "source_locator": "Dissertation: Two-stage decoding and invalid syndromes",
+      "level": "supporting",
+      "conditions": "Build the original C++ source with pinned dependency; validate metacode failure detection and compare independent construction and controls.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Build the original C++ source with pinned dependency; validate metacode failure detection and compare independent construction and controls.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Two-stage decoding and invalid syndromes",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "threshold-table",
+      "statement": "Four sustainable threshold estimates",
+      "source_locator": "Ch5 Table II",
+      "level": "headline",
+      "conditions": "Attempt both decoder strategies on both topologies, all reported lattice sizes and cycle counts; benchmark before full simulations, preserving minimum 10000 trials and at least 25 failures when specified.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "not_established",
+      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+      "numerical": "Not estimated",
+      "reconstruction_scope": "Attempt both decoder strategies on both topologies, all reported lattice sizes and cycle counts; benchmark before full simulations, preserving minimum 10000 trials and at least 25 failures when specified.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Sustainable thresholds: surface MWPM/BPOSD 3.08(.04)%, BPOSD twice 2.90(.01)%; toric 2.90(.02)%, 2.78(.02)%",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": null,
+        "units": "finite result",
+        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+      },
+      "contrasts": [
+        {
+          "definition": "Surface MWPM/BPOSD minus BPOSD twice",
+          "units": "percentage points",
+          "positive_means": "First named quantity exceeds the second",
+          "published": 0.18,
+          "ours": null,
+          "unavailable_reason": "No comparable production fit completed"
+        },
+        {
+          "definition": "Toric MWPM/BPOSD minus BPOSD twice",
+          "units": "percentage points",
+          "positive_means": "First named quantity exceeds the second",
+          "published": 0.12,
+          "ours": null,
+          "unavailable_reason": "No comparable production fit completed"
+        }
+      ],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "pilot",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "capacity",
+      "statement": "Code-capacity threshold and prior-decoder comparison",
+      "source_locator": "Ch5 Table I, Figure 3",
+      "level": "headline",
+      "conditions": "Reproduce original BP+OSD toric and surface designs and critical exponent fitting; do not relabel literature thresholds as our experiments.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "not_established",
+      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+      "numerical": "Not estimated",
+      "reconstruction_scope": "Reproduce original BP+OSD toric and surface designs and critical exponent fitting; do not relabel literature thresholds as our experiments.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Toric BP+OSD 21.55(.01)% versus literature sweep 15.5%; surface approximately 21.6%",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": null,
+        "units": "finite result",
+        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+      },
+      "contrasts": [
+        {
+          "definition": "Toric BP+OSD minus cited sweep threshold",
+          "units": "percentage points",
+          "positive_means": "First named quantity exceeds the second",
+          "published": 6.05,
+          "ours": null,
+          "unavailable_reason": "No comparable production fit completed"
+        }
+      ],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "pilot",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "failure-subroutine",
+      "statement": "Figure 2 failure-mode improvement",
+      "source_locator": "Ch5 Figure 2",
+      "level": "headline",
+      "conditions": "Reproduce L=5, data p=0.1, varying syndrome q, with and without repair, keeping metacode failures distinct.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "At q=.03, 617 versus 72 failures in 10000 trials each; reconstructed depth N1",
+      "reconstruction_scope": "Reproduce L=5, data p=0.1, varying syndrome q, with and without repair, keeping metacode failures distinct.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Syndrome failure repair improves logical performance at high measurement noise",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "At q=.03, 617 versus 72 failures in 10000 trials each; reconstructed depth N1",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "original",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "suppression",
+      "statement": "Below-threshold exponents",
+      "source_locator": "Ch5 Appendix E",
+      "level": "headline",
+      "conditions": "Reproduce code-capacity and N=8 data and Appendix E two-stage slope fits; retain both beta values and uncertainty separately.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "not_established",
+      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+      "numerical": "Not estimated",
+      "reconstruction_scope": "Reproduce code-capacity and N=8 data and Appendix E two-stage slope fits; retain both beta values and uncertainty separately.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Suppression beta 1.91(.03) at N0 and 1.15(.03) at N8",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": null,
+        "units": "finite result",
+        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+      },
+      "contrasts": [
+        {
+          "definition": "Beta N0 minus beta N8",
+          "units": "dimensionless",
+          "positive_means": "First named quantity exceeds the second",
+          "published": 0.76,
+          "ours": null,
+          "unavailable_reason": "No comparable production fit completed"
+        }
+      ],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "pilot",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "nontopological",
+      "statement": "Random-product single-shot performance",
+      "source_locator": "Ch5 Table III, Figure 4",
+      "level": "headline",
+      "conditions": "Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries and run BP+OSD twice for N=16 when inputs permit.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "blocked",
+      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+      "numerical": "Not estimated",
+      "reconstruction_scope": "Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries and run BP+OSD twice for N=16 when inputs permit.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Three random product codes [[1336,4,6]], [[3100,5,8]], [[5964,6,10]]; N16 crossing about 2.7%",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": null,
+        "units": "finite result",
+        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "pilot",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "fit-methods",
+      "statement": "Appendix E thresholds and suppression fits",
+      "source_locator": "Dissertation: Appendix E thresholds and suppression fits",
+      "level": "supporting",
+      "conditions": "Implement cited rescaling and extrapolation methods only on adequate comparable data; synthetic recovery tests do not replicate reported fitted values.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Implement cited rescaling and extrapolation methods only on adequate comparable data; synthetic recovery tests do not replicate reported fitted values.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Appendix E thresholds and suppression fits",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "limitations",
+      "statement": "Limits of a complete HGP computing architecture",
+      "source_locator": "Ch6 and Ch3\u20135 discussions",
+      "level": "headline",
+      "conditions": "Preserve lack of stochastic threshold for ReShape, restricted Clifford gates, conjectured nonlinear-confinement thresholds, and absence of a complete architecture demonstration.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Open nonlinear-confinement threshold, restricted gates and noisy gate performance remain unresolved",
+      "reconstruction_scope": "Preserve lack of stochastic threshold for ReShape, restricted Clifford gates, conjectured nonlinear-confinement thresholds, and absence of a complete architecture demonstration.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "No complete demonstrated scalable computing architecture",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Open nonlinear-confinement threshold, restricted gates and noisy gate performance remain unresolved",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "comparison_kind": "nonscalar",
+      "component_claim_ids": []
+    },
+    {
+      "id": "symmetric-table",
+      "statement": "Chapter 4 Appendix B Table 2: all nine symmetric codes",
+      "source_locator": "Ch4 Appendix B Table 2",
+      "level": "supporting",
+      "conditions": "Parse all nine printed seed matrices; independently enumerate each classical kernel, construct H transpose H and verify n, k, rate, seed distance and maximum stabilizer weight. Distinguish inherited distance theorem from exhaustive quantum distance search.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "9 of 9 n,k,seed distance,maxweight rows agree; quantum distance inherited, not exhaustively established",
+      "reconstruction_scope": "Parse all nine printed seed matrices; independently enumerate each classical kernel, construct H transpose H and verify n, k, rate, seed distance and maximum stabilizer weight. Distinguish inherited distance theorem from exhaustive quantum distance search.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Nine symmetric HGP parameter rows",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "9 of 9 n,k,seed distance,maxweight rows agree; quantum distance inherited, not exhaustively established",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "exact",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    },
+    {
+      "id": "parallel-overhead",
+      "statement": "Pieceable parallelism and overhead",
+      "source_locator": "Dissertation: Pieceable parallelism and overhead",
+      "level": "supporting",
+      "conditions": "Account for Section 4.3 and Figure 7: verify disjoint support criterion and schedule counts; preserve unmeasured syndrome extraction cost and fault-tolerance limits.",
+      "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
+      "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
+      "status": "partly_replicated",
+      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+      "numerical": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+      "reconstruction_scope": "Account for Section 4.3 and Figure 7: verify disjoint support criterion and schedule counts; preserve unmeasured syndrome extraction cost and fault-tolerance limits.",
+      "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
+      "published": {
+        "value": "Pieceable parallelism and overhead",
+        "units": "source statement"
+      },
+      "ours": {
+        "value": "Accounted in source inventory; see research notes for finite checks and outstanding proof or source limitations",
+        "units": "finite result"
+      },
+      "contrasts": [],
+      "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
+      "artifact_ids": [
+        "source",
+        "notes",
+        "availability"
+      ],
+      "limitations": [
+        "Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.",
+        "Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.",
+        "Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.",
+        "0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.",
+        "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
+      ],
+      "stopping": {
+        "reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
+        "attempted": "See exact_checks, independent_checks, toric_noise, original_diagnostic_grid and original_pilots JSON; source coverage in notes.",
+        "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
+        "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
+        "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      }
+    }
+  ],
+  "headline_order": [
+    "reshape-correctness",
+    "reshape-toric",
+    "reshape-random",
+    "line-basis",
+    "pieceable",
+    "confinement-adversarial",
+    "confinement-stochastic",
+    "confinement-product",
+    "threshold-table",
+    "capacity",
+    "failure-subroutine",
+    "suppression",
+    "nontopological",
+    "limitations"
+  ],
+  "sections": [
+    {
+      "id": "chapter1",
+      "locator": "Chapter 1",
+      "claim_ids": [
+        "ch1"
+      ]
+    },
+    {
+      "id": "chapter2",
+      "locator": "Chapter 2",
+      "claim_ids": [
+        "ch2"
+      ]
+    },
+    {
+      "id": "chapter3",
+      "locator": "Chapter 3",
+      "claim_ids": [
+        "reshape-canonical",
+        "reshape-correctness",
+        "reshape-cost",
+        "reshape-examples",
+        "reshape-toric",
+        "reshape-random",
+        "ch3"
+      ]
+    },
+    {
+      "id": "chapter4",
+      "locator": "Chapter 4",
+      "claim_ids": [
+        "ch4",
+        "line-basis",
+        "diagonal-partition",
+        "square-hswap",
+        "square-czs",
+        "sibling-partition",
+        "sibling-hswap",
+        "sibling-cz",
+        "gate-examples",
+        "pieceable",
+        "injection",
+        "symmetric-table",
+        "parallel-overhead"
+      ]
+    },
+    {
+      "id": "chapter5",
+      "locator": "Chapter 5",
+      "claim_ids": [
+        "ch5",
+        "confinement-adversarial",
+        "confinement-stochastic",
+        "confinement-product",
+        "confinement-expander",
+        "product-construction",
+        "single-shot-algorithm",
+        "threshold-table",
+        "capacity",
+        "failure-subroutine",
+        "suppression",
+        "nontopological",
+        "fit-methods"
+      ]
+    },
+    {
+      "id": "chapter6",
+      "locator": "Chapter 6",
+      "claim_ids": [
+        "ch6",
+        "limitations"
+      ]
+    },
+    {
+      "id": "appendix3A",
+      "locator": "Chapter/appendix 3A",
+      "claim_ids": [
+        "reshape-canonical"
+      ]
+    },
+    {
+      "id": "appendix3B",
+      "locator": "Chapter/appendix 3B",
+      "claim_ids": [
+        "reshape-canonical"
+      ]
+    },
+    {
+      "id": "appendix3C",
+      "locator": "Chapter/appendix 3C",
+      "claim_ids": [
+        "reshape-correctness"
+      ]
+    },
+    {
+      "id": "appendix4A",
+      "locator": "Chapter/appendix 4A",
+      "claim_ids": [
+        "line-basis"
+      ]
+    },
+    {
+      "id": "appendix4B",
+      "locator": "Chapter/appendix 4B",
+      "claim_ids": [
+        "symmetric-table"
+      ]
+    },
+    {
+      "id": "appendix5A",
+      "locator": "Chapter/appendix 5A",
+      "claim_ids": [
+        "confinement-stochastic"
+      ]
+    },
+    {
+      "id": "appendix5B",
+      "locator": "Chapter/appendix 5B",
+      "claim_ids": [
+        "product-construction"
+      ]
+    },
+    {
+      "id": "appendix5C",
+      "locator": "Chapter/appendix 5C",
+      "claim_ids": [
+        "confinement-product"
+      ]
+    },
+    {
+      "id": "appendix5D",
+      "locator": "Chapter/appendix 5D",
+      "claim_ids": [
+        "confinement-expander"
+      ]
+    },
+    {
+      "id": "appendix5E",
+      "locator": "Chapter/appendix 5E",
+      "claim_ids": [
+        "fit-methods",
+        "suppression"
+      ]
+    }
+  ],
+  "inventory_audit": {
+    "reviewer": "Research agent; text-only source inventory, not independent proof certification",
+    "rationale": "All six chapters and ten embedded appendices mapped; every plan item retained, including negative and unavailable results.",
+    "source_artifact_ids": [
+      "source",
+      "notes"
+    ]
+  },
+  "replicated_work": {
+    "kind": "dissertation",
+    "authors": "Armanda Ottaviano Quintavalle",
+    "year": "2022",
+    "title": "Hypergraph product codes: a bridge to scalable quantum computers",
+    "institution_or_venue": "University of Sheffield",
+    "identifier": "https://etheses.whiterose.ac.uk/id/eprint/32300/1/AOQ_thesis.pdf",
+    "verification_locator": "Thesis title page and institutional record https://etheses.whiterose.ac.uk/id/eprint/32300/",
+    "artifact_ids": [
+      "source"
+    ]
+  },
+  "headline_effects": [
+    {
+      "id": "E-reshape-correctness",
+      "claim_id": "reshape-correctness",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Adversarial decoding and shaped errors",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Qualitative proposition",
+      "component_claim_ids": [],
+      "component_contrast_indices": [],
+      "component_comparisons": []
+    },
+    {
+      "id": "E-reshape-toric",
+      "claim_id": "reshape-toric",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Figure 4 toric anti-threshold",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Qualitative proposition",
+      "component_claim_ids": [],
+      "component_contrast_indices": [],
+      "component_comparisons": []
+    },
+    {
+      "id": "E-reshape-random",
+      "claim_id": "reshape-random",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Figure 4 random (3,4) family",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Qualitative proposition",
+      "component_claim_ids": [],
+      "component_contrast_indices": [],
+      "component_comparisons": []
+    },
+    {
+      "id": "E-line-basis",
+      "claim_id": "line-basis",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Canonical logical line basis",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Qualitative proposition",
+      "component_claim_ids": [],
+      "component_contrast_indices": [],
+      "component_comparisons": []
+    },
+    {
+      "id": "E-pieceable",
+      "claim_id": "pieceable",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Round-robin entangling gates",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Qualitative proposition",
+      "component_claim_ids": [],
+      "component_contrast_indices": [],
+      "component_comparisons": []
+    },
+    {
+      "id": "E-confinement-adversarial",
+      "claim_id": "confinement-adversarial",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Confinement implies adversarial single-shot correction",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Qualitative proposition",
+      "component_claim_ids": [],
+      "component_contrast_indices": [],
+      "component_comparisons": []
+    },
+    {
+      "id": "E-confinement-stochastic",
+      "claim_id": "confinement-stochastic",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Linear confinement implies stochastic single-shot threshold",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Qualitative proposition",
+      "component_claim_ids": [],
+      "component_contrast_indices": [],
+      "component_comparisons": []
+    },
+    {
+      "id": "E-confinement-product",
+      "claim_id": "confinement-product",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Cubic confinement of 3D products",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Qualitative proposition",
+      "component_claim_ids": [],
+      "component_contrast_indices": [],
+      "component_comparisons": []
+    },
+    {
+      "id": "E-threshold-table",
+      "claim_id": "threshold-table",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Four sustainable threshold estimates",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Multiple topology-specific effects; no justified pooled effect",
+      "component_claim_ids": [],
+      "component_contrast_indices": [
+        0,
+        1
+      ],
+      "component_comparisons": [
+        {
+          "id": "E-threshold-table-0",
+          "claim_id": "threshold-table",
+          "contrast_index": 0,
+          "estimand": "Surface MWPM/BPOSD minus BPOSD twice",
+          "units": "percentage points",
+          "positive_means": "First named quantity exceeds the second",
+          "published_effect": 0.18,
+          "ours_effect": null,
+          "estimate_status": "unresolved",
+          "display_decimals": 2,
+          "tolerance": {
+            "kind": "rounding",
+            "value": 0.01,
+            "components": [
+              {
+                "decimals": 2,
+                "weight": 1
+              },
+              {
+                "decimals": 2,
+                "weight": 1
+              }
+            ],
+            "basis": "Both thresholds printed to .01 percentage points"
+          },
+          "magnitude": "not established",
+          "direction": "not established",
+          "interpretation": "descriptive point estimates; not equivalence",
+          "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+          "unresolved_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+        },
+        {
+          "id": "E-threshold-table-1",
+          "claim_id": "threshold-table",
+          "contrast_index": 1,
+          "estimand": "Toric MWPM/BPOSD minus BPOSD twice",
+          "units": "percentage points",
+          "positive_means": "First named quantity exceeds the second",
+          "published_effect": 0.12,
+          "ours_effect": null,
+          "estimate_status": "unresolved",
+          "display_decimals": 2,
+          "tolerance": {
+            "kind": "rounding",
+            "value": 0.01,
+            "components": [
+              {
+                "decimals": 2,
+                "weight": 1
+              },
+              {
+                "decimals": 2,
+                "weight": 1
+              }
+            ],
+            "basis": "Both thresholds printed to .01 percentage points"
+          },
+          "magnitude": "not established",
+          "direction": "not established",
+          "interpretation": "descriptive point estimates; not equivalence",
+          "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+          "unresolved_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+        }
+      ]
+    },
+    {
+      "id": "E-capacity",
+      "claim_id": "capacity",
+      "contrast_index": 0,
+      "estimand": "Toric BP+OSD minus cited sweep threshold",
+      "units": "percentage points",
+      "positive_means": "First named quantity exceeds the second",
+      "published_effect": 6.05,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": 2,
+      "tolerance": {
+        "kind": "prespecified",
+        "value": 0.055,
+        "basis": "Source rounding bound: sum of half-units of printed endpoints; fixed before any fitted replication estimate."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+    },
+    {
+      "id": "E-failure-subroutine",
+      "claim_id": "failure-subroutine",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Figure 2 failure-mode improvement",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Qualitative proposition",
+      "component_claim_ids": [],
+      "component_contrast_indices": [],
+      "component_comparisons": []
+    },
+    {
+      "id": "E-suppression",
+      "claim_id": "suppression",
+      "contrast_index": 0,
+      "estimand": "Beta N0 minus beta N8",
+      "units": "dimensionless",
+      "positive_means": "First named quantity exceeds the second",
+      "published_effect": 0.76,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": 2,
+      "tolerance": {
+        "kind": "prespecified",
+        "value": 0.01,
+        "basis": "Source rounding bound: sum of half-units of printed endpoints; fixed before any fitted replication estimate."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+    },
+    {
+      "id": "E-nontopological",
+      "claim_id": "nontopological",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Random-product single-shot performance",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Qualitative proposition",
+      "component_claim_ids": [],
+      "component_contrast_indices": [],
+      "component_comparisons": []
+    },
+    {
+      "id": "E-limitations",
+      "claim_id": "limitations",
+      "comparison_kind": "nonscalar",
+      "contrast_index": null,
+      "estimand": "Limits of a complete HGP computing architecture",
+      "units": "qualitative or multicomponent",
+      "positive_means": "Not applicable without a scalar contrast",
+      "published_effect": null,
+      "ours_effect": null,
+      "estimate_status": "unresolved",
+      "display_decimals": null,
+      "tolerance": {
+        "kind": "not_applicable",
+        "value": null,
+        "basis": "No scalar aggregate is justified for this theoretical or multicomponent claim."
+      },
+      "magnitude": "not established",
+      "direction": "not established",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
+      "unresolved_reason": "Scalar magnitude not defined; scientific status is separate.",
+      "applicability_reason": "Qualitative proposition",
+      "component_claim_ids": [],
+      "component_contrast_indices": [],
+      "component_comparisons": []
+    }
+  ]
+}
