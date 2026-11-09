@@ -23,11 +23,16 @@ artifact("source-inventory.json")
 artifact("DISAGREEMENTS.yaml")
 artifact("REPLICATION-PLAN.yaml")
 artifact("rerun/README.md")
+artifact("rerun/reproduce.sh")
+artifact("handoff/method-references.md")
 artifact("notes/rerun-engine.json")
 for path in sorted(Path("source-values").glob("*.csv")):
     artifact(path)
-for path in sorted(Path("results/full").glob("*")):
-    artifact(path)
+for path in sorted(Path("results").rglob("*")):
+    if path.is_file():
+        artifact(path)
+        if "interim" in path.parts:
+            artifacts[str(path)]["role"] = "historical_interim"
 for path in ("results/source-identities.json", "outputs/baseline-diagnostic.csv",
              "outputs/table3-gap-summary.csv", "outputs/table3-independent-check.csv",
              "outputs/table3-allocation-summary.csv", "results/independent-engines.csv"):
