@@ -1,0 +1,179 @@
+{
+ "identities": [
+  {
+   "design": "RCT",
+   "identity": "PNIE = a b",
+   "printed": 0.069,
+   "from_paths": 0.0682,
+   "tolerance": 0.002,
+   "holds": true
+  },
+  {
+   "design": "RCT",
+   "identity": "TNIE = a b + a h",
+   "printed": 0.075,
+   "from_paths": 0.0744,
+   "tolerance": 0.0031,
+   "holds": true
+  },
+  {
+   "design": "RCT",
+   "identity": "TNDE - PNDE = a h",
+   "printed": 0.005,
+   "from_paths": 0.0062,
+   "tolerance": 0.0025,
+   "holds": true
+  },
+  {
+   "design": "RDD1",
+   "identity": "PNIE = a b",
+   "printed": 0.028,
+   "from_paths": 0.0286,
+   "tolerance": 0.0017,
+   "holds": true
+  },
+  {
+   "design": "RDD1",
+   "identity": "TNIE = a b + a h",
+   "printed": 0.03,
+   "from_paths": 0.0299,
+   "tolerance": 0.0023,
+   "holds": true
+  },
+  {
+   "design": "RDD1",
+   "identity": "TNDE - PNDE = a h",
+   "printed": 0.002,
+   "from_paths": 0.0013,
+   "tolerance": 0.0022,
+   "holds": true
+  },
+  {
+   "design": "RDD2",
+   "identity": "PNIE = a b",
+   "printed": 0.034,
+   "from_paths": 0.0334,
+   "tolerance": 0.0016,
+   "holds": true
+  },
+  {
+   "design": "RDD2",
+   "identity": "TNIE = a b + a h",
+   "printed": 0.035,
+   "from_paths": 0.0345,
+   "tolerance": 0.0021,
+   "holds": true
+  },
+  {
+   "design": "RDD2",
+   "identity": "TNDE - PNDE = a h",
+   "printed": 0.001,
+   "from_paths": 0.0011,
+   "tolerance": 0.0021,
+   "holds": true
+  },
+  {
+   "design": "RDD3",
+   "identity": "PNIE = a b",
+   "printed": 0.064,
+   "from_paths": 0.0636,
+   "tolerance": 0.0016,
+   "holds": true
+  },
+  {
+   "design": "RDD3",
+   "identity": "TNIE = a b + a h",
+   "printed": 0.032,
+   "from_paths": 0.0318,
+   "tolerance": 0.0022,
+   "holds": true
+  },
+  {
+   "design": "RDD3",
+   "identity": "TNDE - PNDE = a h",
+   "printed": -0.032,
+   "from_paths": -0.0318,
+   "tolerance": 0.0021,
+   "holds": true
+  }
+ ],
+ "implied_i0M": {
+  "RCT": {
+   "value": 19.67,
+   "h": 0.003,
+   "note": "(PNDE - c') / h"
+  },
+  "RDD1": {
+   "value": null,
+   "h": 0.001,
+   "note": "h = 0.001 is too close to 0 for the printed rounding to identify i0M"
+  },
+  "RDD2": {
+   "value": null,
+   "h": 0.001,
+   "note": "h = 0.001 is too close to 0 for the printed rounding to identify i0M"
+  },
+  "RDD3": {
+   "value": 22.11,
+   "h": -0.028,
+   "note": "(PNDE - c') / h"
+  }
+ },
+ "treatment_direction": {
+  "1": {
+   "treated_range": [
+    0.0,
+    3.0
+   ],
+   "control_range": [
+    4.0,
+    13.0
+   ],
+   "treated_share": 0.356,
+   "treated_below_cutoff": true
+  },
+  "2": {
+   "treated_range": [
+    0.0,
+    4.0
+   ],
+   "control_range": [
+    5.0,
+    13.0
+   ],
+   "treated_share": 0.717,
+   "treated_below_cutoff": true
+  },
+  "3": {
+   "treated_range": [
+    0.0,
+    6.0
+   ],
+   "control_range": [
+    7.0,
+    13.0
+   ],
+   "treated_share": 0.856,
+   "treated_below_cutoff": true
+  }
+ },
+ "mediator_means": {
+  "1": {
+   "treated": 20.86,
+   "control": 20.98
+  },
+  "2": {
+   "treated": 22.12,
+   "control": 22.27
+  },
+  "3": {
+   "treated": 22.33,
+   "control": 22.8
+  }
+ },
+ "summary": {
+  "identities_hold": 12,
+  "identities_checked": 12,
+  "finding": "Her real-data effects obey their definitions; her code estimated h on real data; the i0M implied by PNDE is the scale of the mediator mean (Table 4.2), not 1; and in her Head Start analysis treatment is below the cutoff with the treated share as her text labels it, the reverse of her simulation code."
+ }
+}

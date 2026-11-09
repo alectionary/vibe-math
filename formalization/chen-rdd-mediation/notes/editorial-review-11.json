@@ -1,0 +1,633 @@
+{
+ "verdict": "fail",
+ "context": "fresh",
+ "read_order": [
+  "rendered_manuscript",
+  "evidence_packet"
+ ],
+ "reviewer": "independent cold-reader agent (fresh context)",
+ "cold_pass": "notes/review-11-cold-pass.md",
+ "pdf_sha256": "66416a27bb9da7e22bcea4a083fc41d6f92995835aec57ba714b9c534d6ed623",
+ "source_sha256": "e773d34f7e23345e9afb866751b75b75a17e6a872d9316f94293105f85c1c526",
+ "packet_sha256": "2a91ed9599f525efc47d82bdbecca6c2b5503d38e3cf6696812759dce917eb55",
+ "writer_manifest_sha256": "67be5c9169da270ff38ef9dd8927f2124502641efaf9f8115af97cd6f08edce1",
+ "disagreements_sha256": "b56bd9dfb359508ecc2908b1f06d60f51e125d0b5b78ba93f3c0976aaef87ee3",
+ "source_dissertation_sha256": "9206b3d824077d36c86b4935ff7f19f64b3fdebde7746943b8a94500fe11e557",
+ "repo_commit": "1c0e51eeed9a8c4c6daac859f55819b3c6a183f2",
+ "checks": {
+  "abstract_verdict_first": {
+   "verdict": "pass",
+   "findings": [
+    {
+     "page": 1,
+     "location": "abstract, sentence 1",
+     "finding": "Opens 'We did not replicate the three simulation headlines of Chen (2021), who reported that direct-effect estimates are biased, that percentile bootstrap intervals cover the true value far too rarely, and that power for the mediated interaction (MINT) is near zero', then gives evidence for each component (85.42% vs 0.00%; 43.62 vs 0.04 points; MINT excess). Composite verdict first, source identified with its finding."
+    },
+    {
+     "page": 1,
+     "location": "abstract, sentences 2-3",
+     "finding": "H4 'holds only in part' with 86.3%/89.2% and the both-zero exception; HSIS 'not established either way'; unseeded bootstrap stated. Limits follow the verdict."
+    },
+    {
+     "page": 1,
+     "location": "abstract, penultimate sentence",
+     "finding": "SHOULD-FIX: 'Of ten disagreements, nine are explained and that one only partly' is ungrammatical and can be read as one of the nine being partial; p.10 says nine explained and one (Section 6.2) partly explained."
+    },
+    {
+     "page": 1,
+     "location": "abstract, mid",
+     "finding": "POLISH: '(her cutoff 3 is not reproduced)' is cryptic for a standalone abstract."
+    }
+   ]
+  },
+  "introduction_verdict_first": {
+   "verdict": "pass",
+   "findings": [
+    {
+     "page": 2,
+     "location": "Section 1, paragraph 1, sentence 1",
+     "finding": "'We did not replicate the simulation headlines of Chen (2021): ...' with H1-H3 evidence, then H4 'holds for most but not all cells', then the limits (HSIS restricted-use data, unseeded bootstrap). Verdict-first, independently of the abstract."
+    },
+    {
+     "page": 2,
+     "location": "Section 1, paragraph 1, last sentence",
+     "finding": "SHOULD-FIX: 'Our coverage shortfall and imbalance ... are about two orders of magnitude smaller.' E2 is 43.62 vs 0.04 (0.0358 unrounded, ~1,200x, three orders); only E3 (47.07 vs 0.33) is two orders."
+    },
+    {
+     "page": 2,
+     "location": "Section 1, paragraph 3",
+     "finding": "BLOCKING (recorded under scientific_process_distinction): 'replayed her own seeded R code on every dataset she generated' overstates the replay; see that check."
+    }
+   ]
+  },
+  "standalone_prose": {
+   "verdict": "pass",
+   "findings": [
+    {
+     "page": 1,
+     "location": "Table 1 caption",
+     "finding": "Defines each estimand, units, positive meaning and tolerance in place; a reader needs no packet."
+    },
+    {
+     "page": 4,
+     "location": "Section 3.3 'How the engines were chosen'",
+     "finding": "POLISH: refers to 'the project owner' and 'repository issues #92 and #118'; insider process references, acceptable as disclosure but not meaningful to an outside reader."
+    },
+    {
+     "page": 7,
+     "location": "Section 4.7",
+     "finding": "POLISH: '39 of 46 hold' under h = 0 but only five 'still disagree' are named; the other two (statements 2 and 43, slack-only agreements) are left for the reader to infer (verified in results/statement_checks.csv)."
+    },
+    {
+     "page": 9,
+     "location": "Table 3 legend",
+     "finding": "POLISH: legend defines match/close/mismatch but the table also uses 'withheld' and 'not applicable'; H4 'Same direction?' = 'mostly' is not a direction label."
+    }
+   ]
+  },
+  "headline_fidelity": {
+   "verdict": "fail",
+   "findings": [
+    {
+     "page": 1,
+     "location": "Table 1 rows E1-E3",
+     "finding": "Published 85.42/43.62/47.07 recompute from source-values/table_4_8.csv and table_4_9.csv (85.417, 43.619, 47.071); ours 0.00/0.04/0.33 from results/table48_ours.csv and table49_ours.csv (0.0, 0.0358, 0.3258). Correct."
+    },
+    {
+     "page": 1,
+     "location": "abstract sentence 1 and Table 1 row E4",
+     "finding": "FAIL: 'her MINT rejection rate exceeds the nominal .05 by 0.013 (raw 0.063 ...), within reading error of no excess'. Unrounded, her excess is 0.0127 (mean of 0.0627, 0.0683, 0.0571 in results/digitized_rates.csv) and the mean reading error is 0.0123; build_packet.py line 67 adds 0.0005 and rounds to 0.013. 'Within reading error of no excess' and 'zero vs nonzero' exist only because of that rounding up. Headline wording must reflect the borderline comparison."
+    },
+    {
+     "page": 2,
+     "location": "Section 1, paragraph 1",
+     "finding": "FAIL (should-fix level): 'about two orders of magnitude smaller' is wrong for the E2 headline component (about three orders)."
+    },
+    {
+     "page": 1,
+     "location": "Table 1 row E5",
+     "finding": "H4 partial verdict and shares 86.3%/89.2% match results/statement_checks.csv summary rows."
+    }
+   ]
+  },
+  "claim_coverage": {
+   "verdict": "pass",
+   "findings": [
+    {
+     "page": 22,
+     "location": "Appendix C",
+     "finding": "All 13 packet claims (H1-H4, S1-S9) appear with statuses matching the packet; writer claim_map page references verified (e.g. S5 at pp. 8, 13, 15; H4 at pp. 1, 7, 14)."
+    },
+    {
+     "page": 8,
+     "location": "Section 4.8",
+     "finding": "S4/S6 are 'blocked: not established, and not a failure to replicate'; S5 replicated at printed precision with the divisor caveat; S9 partly replicated with the 10-of-15 count; all faithful to packet status_reason."
+    },
+    {
+     "page": 22,
+     "location": "Appendix C row S8 vs p.9 Table 3",
+     "finding": "SHOULD-FIX: S8 is 'blocked: announced, never reported' in Appendix C (as in the packet) but 'not applicable'/'nothing to compare' in Table 3 and Section 4.9; S8 is not blocked by access. Reconcile vocabulary (packet too)."
+    }
+   ]
+  },
+  "limitations_preserved": {
+   "verdict": "pass",
+   "findings": [
+    {
+     "page": 18,
+     "location": "Section 10 items 1-7",
+     "finding": "All seven packet limitations present and faithful (near-verbatim); writer limitations_map pages verified."
+    },
+    {
+     "page": 18,
+     "location": "Section 10, closing paragraph",
+     "finding": "Claim-specific limits (H3 image reading/occlusion, H4 tentative, S1 zero-estimate pattern, S5 divisor) preserved. POLISH: 'S6, S7 and S8 are unassessed' omits S4."
+    },
+    {
+     "page": 6,
+     "location": "Section 4.3",
+     "finding": "Post hoc choice of the E4 cell is disclosed ('chosen after the full results were available'), matching packet multiplicity field. But see effect_magnitude_fidelity: the occluded cutoff-1 point enters the E4 average although limitation 3 says occluded points are 'not used for verdicts'."
+    }
+   ]
+  },
+  "scientific_process_distinction": {
+   "verdict": "fail",
+   "findings": [
+    {
+     "page": 2,
+     "location": "Section 1, paragraph 3: 'We ran her full RQ3 design, replayed her own seeded R code on every dataset she generated'",
+     "finding": "BLOCKING: the replay reproduces the datasets her PRINTED seeded code generates; Section 3.3 (p.4: 'They are not necessarily the data behind her published results ... reproduces her printed pipeline, not her published runs'), Table 2 (p.5), Section 5 reasons (pp.9-10) and Limitation 1 (p.18) all say the published results came from different (h-absent) data. Fix: 'replayed her printed, seeded R code on all 1,280,000 datasets that code generates'."
+    },
+    {
+     "page": 4,
+     "location": "Section 3.3",
+     "finding": "Correct and clear distinction between what the exact R replay reproduces and what it does not (bootstrap; published runs). Python fallback and the owner's decision disclosed."
+    },
+    {
+     "page": 11,
+     "location": "Section 6.2, theory 'Population values right for control cases, wrong for treated cases'",
+     "finding": "SHOULD-FIX: its own prediction is 'one λ for every cutoff'; the result is λ = 1.96, 1.92, 1.76 'not constant', yet 'Verdict: supported'. Should be 'partly supported' (the section conclusion already says partly explained)."
+    },
+    {
+     "page": 12,
+     "location": "Section 6.3 conclusion",
+     "finding": "SHOULD-FIX: 'Explained' although the PNDE ah coefficient (-0.26) 'is not explained'; this entry is counted among the nine 'explained' in the abstract. Label 'mostly explained' or justify the count."
+    },
+    {
+     "page": 10,
+     "location": "Section 6.1, first theory",
+     "finding": "POLISH: prediction 'her own printed code on her own seeded data' - say 'on the datasets her printed seeds generate'."
+    }
+   ]
+  },
+  "abstract_source_fidelity": {
+   "verdict": "pass",
+   "findings": [
+    {
+     "page": 1,
+     "location": "abstract, sentence 1, citation Chen (2021)",
+     "finding": "Citation key chen2021 resolves to Donna Chen, 'Statistical Mediation Analysis in Regression Discontinuity Design for Causal Inference', doctoral dissertation, University of Nebraska-Lincoln, December 2021 (p.19 references); verified against the title page of source/chen2021.pdf (PDF p.1)."
+    },
+    {
+     "page": 1,
+     "location": "abstract, original findings",
+     "finding": "Bias negative (source printed p.147: 'When bias was present, the measure of bias was a negative value'); coverage/imbalance (p.150: 'the true parameter value systematically fell above the CIs'); MINT power (p.121: 'All power for MINT is near zero'; p.148: 'never reached the .80 level'); H4 (p.150: 'Tentatively, a minimum sample size of 5000 has accurate Type I error rates and power above .80, regardless of cutoff score'). All faithful."
+    },
+    {
+     "page": 6,
+     "location": "Section 4.3, her abstract/Chapter 5 inconsistency",
+     "finding": "Source p.143 indeed says 'Type I error rate and power for all five effects were either within the robustness criteria or reached the ideal range'. Correctly quoted."
+    }
+   ]
+  },
+  "effect_magnitude_fidelity": {
+   "verdict": "fail",
+   "findings": [
+    {
+     "page": 1,
+     "location": "Table 1 row E4 and caption ('E4 tolerance 0.013 rejection rate (reading error of her figure; her value is within it of zero)')",
+     "finding": "BLOCKING: the tolerance is the mean reading error 0.01233 rounded UP (build_packet.py: round(mean + 0.0005, 3)), while her unrounded excess is 0.0127 > 0.0123. The 'zero vs nonzero' direction exists only through rounding up; unrounded it is 'same direction'. The packet labels the tolerance kind 'prespecified' while its basis says 'Not set in the plan'; the paper (Section 7.5, p.16) does not disclose either fact."
+    },
+    {
+     "page": 6,
+     "location": "Section 4.3: 'the cutoff 1 point is partly hidden by another series but enters the average, and the two directly read points (0.068 and 0.057) lead to the same conclusion'",
+     "finding": "BLOCKING (same item): the occluded point (reading error .0187) inflates the tolerance; the two directly read points have mean reading error 0.0092 against an excess of 0.0127, so they do NOT lead to 'within reading error of zero'. Also conflicts with the stated rule that occluded points are not used for verdicts (p.4, p.18)."
+    },
+    {
+     "page": 1,
+     "location": "Table 1 rows E1-E3",
+     "finding": "Rounding tolerances 0.005/0.005/0.01 correctly derived (mean of 2-decimal values; difference of two means); magnitude 'smaller' and directions ('zero vs nonzero' for E1; 'same' for E2, E3) arithmetically correct. Caption carries 'Descriptive point estimates; not equivalence.' POLISH: the MC uncertainty of our 0.04 and 0.33 means is not stated, so the intro's 'point the same way as hers' has no uncertainty qualifier (MC SE of the mean is roughly 0.005-0.02 points)."
+    },
+    {
+     "page": 1,
+     "location": "Table 1 row E5",
+     "finding": "Nonscalar H4 row: magnitude and direction 'not established', tolerance 'not applicable'. POLISH: effect cells read 'no scalar' rather than 'not established'."
+    }
+   ]
+  },
+  "finding_attribution": {
+   "verdict": "pass",
+   "findings": [
+    {
+     "page": 1,
+     "location": "Table 1 E1 Published/Ours",
+     "finding": "Published 'within [-.10, .10] in only 12.50-18.75% of conditions, with negative bias' matches source Table 4.8 (PDF p.102) and p.147; Ours 'within [-.05, .05] in 100% ...; largest |bias| 0.016' matches results/table48_ours.csv and summary.json (0.0155)."
+    },
+    {
+     "page": 1,
+     "location": "Table 1 E2/E3 Published/Ours",
+     "finding": "Published 'Coverage 24.10-83.99% ...; true value usually above the CI' matches source Table 4.9 (PDF p.138) and p.150; Ours 'Coverage 94.6-95.6% ...; misses on both sides at similar rates' matches table49_ours.csv (94.59-95.63; below 1.84-2.71, above 2.52-2.90)."
+    },
+    {
+     "page": 1,
+     "location": "Table 1 E4 Published/Ours",
+     "finding": "Published 'MINT power near zero at every sample size; never reaches .80 (Figure 4.28: 0.057-0.068 in this cell)' matches source pp.121/148 and digitized_rates.csv (0.0571-0.0683); Ours '0.836 at n = 500 for ah = .20; at least .97 for ah >= .13 from n = 1,000' matches summary.json (0.8361; 0.9735, 0.9824, 1.0)."
+    },
+    {
+     "page": 1,
+     "location": "Table 1 E5 Published/Ours",
+     "finding": "Published matches the p.150 sentence including 'Tentative'; Ours 86.3%/89.2%, cutoff similarity and both-zero conservatism match statement_checks.csv summary rows and disagreement_tests.json n5000.both_paths_zero."
+    }
+   ]
+  },
+  "comparison_applicability": {
+   "verdict": "pass",
+   "findings": [
+    {
+     "page": 1,
+     "location": "Table 1 row E5 'Minimum n; qualitative, no scalar contrast'",
+     "finding": "Nonscalar classification is justified by the source: p.150 states a qualitative design recommendation over the grid; no single signed contrast represents it. Claim verdict 'partial' kept separate from 'not established' magnitude/direction; uncertainty (MC SE .007) retained in caption; component lists are empty, consistent with a purely qualitative claim (contrast_not_applicable on H4)."
+    }
+   ]
+  }
+ },
+ "phrase_dispositions": [],
+ "phrase_cue_note": "stage_checks.py cues returned [] (no cue IDs) for the reviewed .tex; nothing to disposition. Absence of cues was not treated as a standalone-prose pass.",
+ "numbers_checked": [
+  {
+   "value": "85.42 (E1 published)",
+   "source_file": "source-values/table_4_8.csv",
+   "artifact_value": "100 - mean(12.5,12.5,18.75,12.5,12.5,18.75) = 85.417",
+   "result": "ok"
+  },
+  {
+   "value": "0.00 (E1 ours)",
+   "source_file": "results/table48_ours.csv",
+   "artifact_value": "within_10 = 100 in all PNDE/TNDE rows",
+   "result": "ok"
+  },
+  {
+   "value": "43.62 (E2 published)",
+   "source_file": "source-values/table_4_9.csv",
+   "artifact_value": "43.619",
+   "result": "ok"
+  },
+  {
+   "value": "0.04 (E2 ours)",
+   "source_file": "results/table49_ours.csv",
+   "artifact_value": "0.0358",
+   "result": "ok"
+  },
+  {
+   "value": "47.07 (E3 published)",
+   "source_file": "source-values/table_4_9.csv",
+   "artifact_value": "47.071",
+   "result": "ok"
+  },
+  {
+   "value": "0.33 (E3 ours)",
+   "source_file": "results/table49_ours.csv",
+   "artifact_value": "0.3258",
+   "result": "ok"
+  },
+  {
+   "value": "0.013 / raw 0.063 (E4 published)",
+   "source_file": "results/digitized_rates.csv",
+   "artifact_value": "mean 0.0627, excess 0.0127",
+   "result": "ok as rounded; borderline"
+  },
+  {
+   "value": "E4 tolerance 0.013",
+   "source_file": "results/digitized_rates.csv; build_packet.py line 67",
+   "artifact_value": "mean reading error 0.01233, rounded up via +0.0005",
+   "result": "PROBLEM: label depends on rounding up"
+  },
+  {
+   "value": "0.786 / raw 0.836 (E4 ours)",
+   "source_file": "results/summary.json",
+   "artifact_value": "n=500 ah=0.2006: 0.8361",
+   "result": "ok"
+  },
+  {
+   "value": "24.10-83.99% published coverage",
+   "source_file": "source-values/table_4_9.csv",
+   "artifact_value": "24.1-83.99",
+   "result": "ok"
+  },
+  {
+   "value": "94.6-95.6% ours coverage",
+   "source_file": "results/table49_ours.csv",
+   "artifact_value": "94.594-95.635",
+   "result": "ok"
+  },
+  {
+   "value": "largest |bias| 0.016",
+   "source_file": "results/summary.json",
+   "artifact_value": "0.01551",
+   "result": "ok"
+  },
+  {
+   "value": "lowest cell coverage 0.916; 92.9% in Bradley",
+   "source_file": "results/summary.json",
+   "artifact_value": "0.916; 92.885",
+   "result": "ok"
+  },
+  {
+   "value": "below 1.8-2.7%, above 2.5-2.9%",
+   "source_file": "results/table49_ours.csv",
+   "artifact_value": "1.84-2.71; 2.52-2.90",
+   "result": "ok"
+  },
+  {
+   "value": "R replay max condition-mean bias 0.017 / none > .10",
+   "source_file": "results/r_full_comparison.json",
+   "artifact_value": "0.01736; all 0.0",
+   "result": "ok"
+  },
+  {
+   "value": "5.3% beyond 1.96 SE; 0.14% beyond 3.29; 5.3% differ",
+   "source_file": "results/r_full_comparison.json",
+   "artifact_value": "0.0534; 0.0014; 0.0533",
+   "result": "ok"
+  },
+  {
+   "value": "median SD ratio 1.000",
+   "source_file": "results/r_full_comparison.json",
+   "artifact_value": "1.0001",
+   "result": "ok"
+  },
+  {
+   "value": "h slopes 0.9998, 1.0005, 0.9999",
+   "source_file": "results/r_full_comparison.json",
+   "artifact_value": "same",
+   "result": "ok"
+  },
+  {
+   "value": "MINT mean estimate 0.2009 vs 0.2006",
+   "source_file": "results/r_full_comparison.json",
+   "artifact_value": "same",
+   "result": "ok"
+  },
+  {
+   "value": "mean i0M 0.0001, 0.0000, 0.0000",
+   "source_file": "results/r_full_comparison.json",
+   "artifact_value": "8e-05, 0.0, -1e-05",
+   "result": "ok"
+  },
+  {
+   "value": "MINT power 0.719 (ah .1326), >= 0.9735 from n=1000",
+   "source_file": "results/summary.json",
+   "artifact_value": "0.7193; 0.9735, 0.9824",
+   "result": "ok"
+  },
+  {
+   "value": "Fig 4.28: 0.063, 0.068, 0.057; no point above ~.07",
+   "source_file": "results/digitized_rates.csv",
+   "artifact_value": "0.0627, 0.0683, 0.0571; max 0.0698",
+   "result": "ok"
+  },
+  {
+   "value": "H4 shares 70.0/74.0/80.1/86.3/89.6 and 35.9/53.3/61.5/89.2/91.4; 85.7-87.0, 88.3-89.9; 1,176/2,664",
+   "source_file": "results/statement_checks.csv",
+   "artifact_value": "same",
+   "result": "ok"
+  },
+  {
+   "value": "ah=.007 power 0.328 / 0.669",
+   "source_file": "results/summary.json",
+   "artifact_value": "0.3281 / 0.6692",
+   "result": "ok"
+  },
+  {
+   "value": "S1 27.08 / 39.06 / 12.50",
+   "source_file": "source-values/table_4_8.csv",
+   "artifact_value": "27.083 / 39.06 / 12.5",
+   "result": "ok"
+  },
+  {
+   "value": "PNIE k 1.469/0.959/0.441; PNDE -1.466/-0.965/-0.446 c', -0.928 h, ah -0.26; MINT -0.998",
+   "source_file": "results/bias_structure.csv",
+   "artifact_value": "same",
+   "result": "ok"
+  },
+  {
+   "value": "13/18 (14 slack), 16/28 (17 slack), 29/31 of 46, 39 of 46 if h=0, 10 of 15, statements 2,9,10,11,18 and 10,11,30,41,44",
+   "source_file": "results/statement_checks.csv",
+   "artifact_value": "recounted per numbered statement",
+   "result": "ok"
+  },
+  {
+   "value": "PNIE Type I/power agreement 100.0% / 97.8%; MINT 6.7% -> 97.8%; 84.9-100.0% if h=0",
+   "source_file": "results/rates_agreement.csv",
+   "artifact_value": "same",
+   "result": "ok"
+  },
+  {
+   "value": "1,098 of 1,102 coverage readings agree",
+   "source_file": "results/digitize_crosscheck.csv",
+   "artifact_value": "read+merged 978/982; all 1,282/1,357",
+   "result": "MISMATCH"
+  },
+  {
+   "value": "plateau .25/.487/.736; below .008-.017; lambda 1.96/1.92/1.76",
+   "source_file": "results/disagreement_tests.json",
+   "artifact_value": "same",
+   "result": "ok"
+  },
+  {
+   "value": "statement 10: .0275 vs .0241, 0.7 and 1.0 SE",
+   "source_file": "results/disagreement_tests.json",
+   "artifact_value": "0.73, 0.97",
+   "result": "ok"
+  },
+  {
+   "value": "TNDE gap .736/.698, 3.7 SE; ratio 1.014; .715/.687; bias -.0004/-.0087",
+   "source_file": "results/disagreement_tests.json; r_full_comparison.json",
+   "artifact_value": "0.7362/0.6975, 3.68; 1.0136; 0.7152/0.6865",
+   "result": "ok"
+  },
+  {
+   "value": "4,685 digitized rate points",
+   "source_file": "results/digitized_rates.csv",
+   "artifact_value": "4,685 rows",
+   "result": "ok"
+  },
+  {
+   "value": "36 and 48 cell sets; spreads .33 (ours .34) and .051",
+   "source_file": "results/disagreement_tests.json",
+   "artifact_value": "0.329/0.341; 0.051",
+   "result": "ok"
+  },
+  {
+   "value": "Fig 4.17 a=b=0: hers .0014-.0020, ours .0015-.0020",
+   "source_file": "results/disagreement_tests.json",
+   "artifact_value": "same",
+   "result": "ok"
+  },
+  {
+   "value": "statement 18: <= .019; .014-.020; .026-.033; ~.05",
+   "source_file": "results/statement_checks.csv",
+   "artifact_value": "same",
+   "result": "ok"
+  },
+  {
+   "value": "S5: 24/24 differences and SBs; SB sign RDD minus RCT",
+   "source_file": "secondary/table_arithmetic.csv",
+   "artifact_value": "24 rows all True",
+   "result": "ok"
+  },
+  {
+   "value": "implied divisor equals printed SE 'to four decimals'",
+   "source_file": "secondary/table_arithmetic.csv",
+   "artifact_value": "0.7327-0.7331 vs 0.733",
+   "result": "minor overstatement"
+  },
+  {
+   "value": "12/12 identities; i0M 19.67 / 22.11; h .003/.001/.001/-.028; treated .356/.717/.856",
+   "source_file": "results/empirical_consistency.json",
+   "artifact_value": "same",
+   "result": "ok"
+  },
+  {
+   "value": "Table 4.3: 8 of 9; -2.082 (2.057-2.107) vs -2.252",
+   "source_file": "results/table_identities.json",
+   "artifact_value": "same",
+   "result": "ok"
+  },
+  {
+   "value": "four Table 4.9 rows sum to 99.99/100.01",
+   "source_file": "results/table_identities.json",
+   "artifact_value": "PNDE2, TNDE1, TNDE2, MINT2",
+   "result": "ok"
+  },
+  {
+   "value": "S9: 10 of 15 opposite, 5 same, 6 and 4 cells",
+   "source_file": "results/significance_conclusions.json",
+   "artifact_value": "same",
+   "result": "ok"
+  },
+  {
+   "value": "R replay 3 h 25 min, R 4.1.3, literal check difference 0",
+   "source_file": "r-reproduction/out-full/RUN.md; literal_check.txt",
+   "artifact_value": "12295 s; TRUE",
+   "result": "ok"
+  }
+ ],
+ "required_fixes": [
+  {
+   "severity": "blocking",
+   "page": 2,
+   "location": "Section 1, paragraph 3",
+   "fix": "Replace 'replayed her own seeded R code on every dataset she generated' with 'replayed her printed, seeded R code on all 1,280,000 datasets that code generates' (consistent with Section 3.3 and Limitation 1)."
+  },
+  {
+   "severity": "blocking",
+   "page": 1,
+   "location": "abstract; Table 1 row E4 and caption; p.2 intro; p.6 Section 4.3; p.10 Table 3 reasons; p.16 Section 7.5",
+   "fix": "E4 tolerance is the mean reading error 0.0123 rounded up to 0.013 (build_packet.py) and includes the occluded cutoff-1 point; her unrounded excess 0.0127 exceeds it, and on the two directly read points (mean reading error 0.0092) it is clearly nonzero. Either use the unrounded tolerance and relabel direction 'same direction' (diagnostic) with abstract/intro wording such as 'about one reading error above .05', or justify a margin that was not chosen after the results and disclose that it was not in the plan. Remove 'the two directly read points lead to the same conclusion' unless re-derived; resolve the conflict with the stated rule that occluded points are not used for verdicts; correct the packet's tolerance kind 'prespecified'."
+  },
+  {
+   "severity": "should-fix",
+   "page": 2,
+   "location": "Section 1, paragraph 1, last sentence",
+   "fix": "'about two orders of magnitude smaller' -> 'about three orders (coverage shortfall) and two orders (imbalance) of magnitude smaller'."
+  },
+  {
+   "severity": "should-fix",
+   "page": 1,
+   "location": "abstract, 'Of ten disagreements, nine are explained and that one only partly'",
+   "fix": "'nine are explained and the tenth only partly'."
+  },
+  {
+   "severity": "should-fix",
+   "page": 4,
+   "location": "Section 3.4; also p.10 and p.11 (Section 6.1, 6.2) and DISAGREEMENTS.yaml",
+   "fix": "'1,098 of 1,102 directly read points' is not reproducible from results/digitize_crosscheck.csv (read+merged: 978 of 982; all: 1,282 of 1,357). Correct the counts or cite the artifact that yields them."
+  },
+  {
+   "severity": "should-fix",
+   "page": 11,
+   "location": "Section 6.2, theory 'Population values right for control cases, wrong for treated cases'",
+   "fix": "Verdict 'supported' -> 'partly supported', since the stated prediction of one λ for every cutoff fails at cutoff 3."
+  },
+  {
+   "severity": "should-fix",
+   "page": 12,
+   "location": "Section 6.3 conclusion; abstract count",
+   "fix": "Label 'mostly explained' (unexplained ah coefficient -0.26) or explain why it counts as explained in the abstract's 'nine are explained'."
+  },
+  {
+   "severity": "should-fix",
+   "page": 22,
+   "location": "Appendix C row S8 vs Table 3 (p.9) and Section 4.9 (p.8)",
+   "fix": "Use one status for S8 (announced but never reported; nothing to assess), not 'blocked', which implies an access barrier; align the packet."
+  }
+ ],
+ "polish": [
+  {
+   "page": 1,
+   "location": "abstract",
+   "item": "'(her cutoff 3 is not reproduced)' is cryptic; say the per-case rule does not fit her third cutoff."
+  },
+  {
+   "page": 1,
+   "location": "Table 1 Verdict column",
+   "item": "'no match'/'partial' vs 'not replicated'/'partly replicated' elsewhere; unify."
+  },
+  {
+   "page": 1,
+   "location": "Table 1 row E5 effect cells",
+   "item": "'no scalar' -> 'not established' per the contract wording."
+  },
+  {
+   "page": 1,
+   "location": "Table 1 caption / p.2 intro",
+   "item": "State the Monte Carlo SE of our E2/E3 means (well under 0.05 points) so 'point the same way as hers' carries uncertainty."
+  },
+  {
+   "page": 4,
+   "location": "Section 3.3",
+   "item": "Replace 'project owner' and issue numbers with outsider-readable wording, or footnote them."
+  },
+  {
+   "page": 7,
+   "location": "Section 4.7",
+   "item": "Name statements 2 and 43 (slack-only agreements) so '39 of 46' and 'the 5 that still disagree' reconcile."
+  },
+  {
+   "page": 9,
+   "location": "Table 3",
+   "item": "Define 'withheld' and 'not applicable' in the legend; replace H4 direction 'mostly' with 'not applicable' or 'not established'."
+  },
+  {
+   "page": 10,
+   "location": "Section 6.1, first theory",
+   "item": "'her own printed code on her own seeded data' -> 'on the datasets her printed seeds generate'."
+  },
+  {
+   "page": 13,
+   "location": "Section 6.4",
+   "item": "'equals the printed standard error to four decimals' -> 'to the printed precision' (implied divisors 0.7327-0.7331 vs 0.733)."
+  },
+  {
+   "page": 18,
+   "location": "Section 10, closing paragraph and item 5",
+   "item": "Add S4 to 'unassessed'; remove the repeated 'announced ... never reported' clause in item 5."
+  },
+  {
+   "page": 20,
+   "location": "Appendix A",
+   "item": "Clarify that revision 35eba69... is the code revision, distinct from the paper's commit."
+  }
+ ]
+}
