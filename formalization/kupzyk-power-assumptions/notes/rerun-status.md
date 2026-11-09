@@ -33,3 +33,20 @@ SAS containment, Satterthwaite and Kenward–Roger are separate checks. Batch
 counts and convergence come from checkpoint files, not the scheduling totals.
 No new empirical result is considered final until all its intended batches
 have been checked.
+
+## Saved progress
+
+The committed interim snapshot preserves counts by arm and the repeat of the
+fixed-covariance calculations across all 54 final and 54 initial settings.
+It also retains the original exploratory denominator-rule pilot. The full
+empirical analysis, independent fresh-mask threshold sweep, and compact
+Kenward–Roger validation were still running at the time of this checkpoint.
+The prior manuscript has not been replaced. The replication plan remains
+open and the new paper has not entered independent editorial review.
+
+To resume without the original temporary run directory, extract
+`results/interim/checkpoints.tar.gz` into the new run directory. Point the main
+runner to its `grid` subdirectory and the Appendix D runner to
+`appendix-d-grid`. Their file names and seeds are stable. The snapshot's
+scientific comparisons use its own counts; the archive can contain additional
+checkpoints that completed while it was being preserved.
