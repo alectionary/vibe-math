@@ -43,6 +43,7 @@ import checks
 import layout
 import pdf_links
 import disagreements
+import commit_refs
 import paper_freshness
 import source_acquisition
 import source_items
@@ -552,6 +553,7 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         except (OSError, RuntimeError) as exc:
             errors.append('links: branch target check failed: ' + type(exc).__name__)
         errors.extend(source_acquisition.acquisition_errors(root, paper_text))
+        errors.extend(commit_refs.commit_reference_errors(paper_text, root))
         pdf = layout.paper_pdf(paper_path)
         errors.extend(layout.layout_errors(paper_text, paper_path, pdf))
     if revision is not None:
