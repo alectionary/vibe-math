@@ -69,6 +69,18 @@ class Inventory(unittest.TestCase):
         self.assertEqual(by["Figure 2.2"]["mode"], "none")
         self.assertTrue(by["Table 2.1"]["moments"])
 
+    def test_appendix_and_glued_caption_labels(self):
+        import fitz
+
+        source = self.root / "appendix.pdf"
+        with fitz.open() as doc:
+            page = doc.new_page()
+            page.insert_text((72, 100), "Figure 3Example of a chart")
+            page.insert_text((72, 200), "Table C.1. Person Intercept Variance")
+            doc.save(source)
+        self.assertEqual([item["label"] for item in source_items.inventory(source)],
+                         ["Figure 3", "Table C.1"])
+
     def test_every_item_must_be_read_or_excluded(self):
         self.assertTrue(any("source_items: required" in e for e in source_items.source_items_errors({}, self.items, self.root)))
         plan = {"source_items": [{"label": "Figure 1.1", "use": "read", "data_file": "results/fig11.csv"}]}

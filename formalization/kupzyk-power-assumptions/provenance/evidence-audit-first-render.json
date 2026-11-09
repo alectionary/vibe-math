@@ -1,0 +1,330 @@
+{
+  "stage": "evidence audit of the first final candidate",
+  "editorial": {
+    "verdict": "fail",
+    "context": "fresh",
+    "read_order": [
+      "rendered_manuscript",
+      "evidence_packet"
+    ],
+    "checks": {
+      "abstract_verdict_first": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "abstract, sentences 1–2",
+            "finding": "“We partly replicated the planning findings of Kupzyk (2011)” is immediately followed by the four component patterns and then the limit on exact replay."
+          },
+          {
+            "page": 1,
+            "location": "abstract, last two sentences",
+            "finding": "The adjusted empirical comparison and the threshold and Optimal Design disagreements complete the composite verdict."
+          }
+        ]
+      },
+      "introduction_verdict_first": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Introduction, opening paragraph",
+            "finding": "“We partly replicated Kupzyk’s headline findings” comes first. The paragraph immediately describes fresh samples, the replay limit, the planning loss hierarchy and ICC pattern, the 51 of 54 threshold agreement, the maximum cluster difference, and the empirical versus exemplary count."
+          },
+          {
+            "page": 2,
+            "location": "Introduction continuation",
+            "finding": "Definitions of formulaic, exemplary, and empirical power follow the verdict and supply the planning context."
+          }
+        ]
+      },
+      "standalone_prose": {
+        "verdict": "fail",
+        "findings": [
+          {
+            "page": 2,
+            "location": "Introduction continuation and §2",
+            "finding": "The power definitions and scope of the loss comparisons can be understood without the repository. The disagreement record IDs follow the scientific explanations and serve as evidence locators."
+          },
+          {
+            "page": 8,
+            "location": "§12, caption to Selected printed estimates",
+            "finding": "The manuscript numbers this table as Table 1 and also labels its distinct p. 1 Headline comparisons table Table 1. This breaks unique internal identification and increases confusion with the many nearby references to the dissertation's Table 1."
+          },
+          {
+            "page": 6,
+            "location": "page top before §7",
+            "finding": "The previous section ends with a single wrapped evidence link on this page. The link remains legible."
+          },
+          {
+            "page": 10,
+            "location": "Appendix A evidence table continuation",
+            "finding": "The continuation repeats its column headings. No clipping or overlap is apparent."
+          },
+          {
+            "page": 11,
+            "location": "Appendix B and References",
+            "finding": "The source and code availability distinctions are explicit. The ledger and references render cleanly."
+          },
+          {
+            "page": 9,
+            "location": "Appendix A, Figure 4 and formulaic power route cells",
+            "finding": "The Figure 4 summary is produced by precision_demo.py, which is absent from Route S. Formulaic.csv is not emitted by rerun/reproduce.sh. The older scripts/run_exemplary.R writes outputs/formulaic.csv, numerically identical to the current table at the reported precision. Appendix A should give the actual producer of each artifact or label it as a saved diagnostic."
+          },
+          {
+            "page": 2,
+            "location": "§2, predicted-order paragraph",
+            "finding": "Qualify 'Holding the remaining factors fixed preserves the ordering' as a statement about the final exemplary grid. In the initial empirical grid, cell 3 (ICC .05, balanced and skewed with no attrition) has 5.5431 vs 5.7926 pp for allocation vs high attrition in the source and 5.33594 vs 5.67578 pp in R."
+          }
+        ]
+      },
+      "headline_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "abstract, Table 1, and Introduction",
+            "finding": "The loss, ICC, maximum-cluster and empirical-below-exemplary patterns are explicit. The reported 6.409/6.443 and 4.391/4.472 pp, 8/7 maximum and 41/40 cell counts agree across the first-page presentations."
+          },
+          {
+            "page": 2,
+            "location": "§2 and §2.1",
+            "finding": "The paper distinguishes the lowest-ICC peak from strict monotonicity and identifies the three sample-size disagreements."
+          },
+          {
+            "page": 1,
+            "location": "Abstract, signed contrasts and Introduction",
+            "finding": "The four source headline components and the partial scientific verdict are supported by dissertation pp. 92–98 and 106–107. The signed comparisons independently agree with Table 1 arithmetic and paired-contrasts.csv, the threshold output, and the empirical/exemplary gap CSV. In the final grid all five factor-specific mean losses peak at .05 and skewed-size loss then rises at .15 relative to .10 on both sides."
+          },
+          {
+            "page": 4,
+            "location": "§4 and results/full/power-cell-comparison.csv",
+            "finding": "54 initial empirical source estimates are readable; two exceed the ordinary band and zero exceed adjusted bands. Initial exemplary has 51 readable of 54, and final exemplary 54 of 54, with none outside adjusted bands. All 18 deterministic final Table 1 cells round to the printed values."
+          }
+        ]
+      },
+      "claim_coverage": {
+        "verdict": "fail",
+        "findings": [
+          {
+            "page": 9,
+            "location": "Appendix A, start of evidence table",
+            "finding": "The displayed claim map includes the motivation, software examples, simulation precision, crossed design, all three grids and formulaic power."
+          },
+          {
+            "page": 10,
+            "location": "Appendix A, evidence table continuation",
+            "finding": "The table continues with loss contrasts, oversampling, ICC moderation, thresholds, baseline, empirical–exemplary gap and Appendices A–D. The body separately discusses these scientific components."
+          },
+          {
+            "page": 2,
+            "location": "Introduction, second paragraph and writer claim map",
+            "finding": "The ch1 map embeds conflicting locators, ending '(p. 1)' for the paragraph on p. 2. Twenty-six claim IDs were inspected against their mapped sections. The scope and validation deficiencies below affect appendix-b/ch3, ch5/null-baseline, and precision."
+          },
+          {
+            "page": 5,
+            "location": "§5, baseline classification",
+            "finding": "Source p. 105 uses both Bradley's [.025,.075] and Serlin's [.035,.065] criterion. The latter distinguishes the source and R baseline results. Published between–within .06839 and containment .06811 exceed the upper limit. R between–within .06500 lies on that limit and containment .0648828125 is inside. Include this finding with the existing broad classification."
+          },
+          {
+            "page": 5,
+            "location": "§6, Figure 4 illustration",
+            "finding": "The underlying toy experiment is not reconstructed from a known source power curve. precision_demo.py chooses a fixed standardized continuous-predictor illustration and calibrates the power to .80 at n=75. The first-crossing ranges 71–80 and 74–77 are correct for that illustration. Preserve the limitation by naming the independently calibrated example and its producer."
+          },
+          {
+            "page": 3,
+            "location": "§2.2, oversampling heuristics",
+            "finding": "The six published Table 3 values and matching R mean range were verified, including .88187 versus .884912 and the [.883690,.885691] predictive interval in oversampling-v2.csv. The source additionally discusses the level-1 observation-loss heuristic in prose on pp. 94–95 and 99–100. Distinguish it from participant-loss oversampling. The later observation-loss check should be attributed to R and state its rounding rule, not described as recovering published numeric results."
+          }
+        ]
+      },
+      "limitations_preserved": {
+        "verdict": "fail",
+        "findings": [
+          {
+            "page": 3,
+            "location": "§2.2, oversampling exception",
+            "finding": "The source power falls outside the central mask interval. An adverse mask gives a similar power and its feasibility is separated from the identity of the unknown original mask."
+          },
+          {
+            "page": 6,
+            "location": "§7.1–§7.3",
+            "finding": "The missing-data denominator rule is a reconstruction choice, the mask-average and realized-design estimands are distinguished, and the source Monte Carlo standard-error proxy is stated."
+          },
+          {
+            "page": 7,
+            "location": "§9, all five bullets",
+            "finding": "The missing inputs and the limits of attribution remain explicit for thresholds, oversampling, extreme denominator rules, interval generation, and software displays or toy streams."
+          },
+          {
+            "page": 2,
+            "location": "§2, scope of attrition results",
+            "finding": "The eight listed packet limitations have locations in the paper. The original dissertation additionally explicitly limits attrition conclusions to analyses that retain all available observations (pp. 100–101). The paper should state this limit and avoid generalizing its attrition planning results to complete-case or completer-only analyses."
+          },
+          {
+            "page": 3,
+            "location": "§3, empirical versus exemplary cluster-size generation",
+            "finding": "The statement that unequal-size conditions use printed schedules needs qualification. scripts/model.R uses those schedules in exemplary designs. rerun/full_grid.R calls design with exemplary=FALSE on every draw. Empirical normal sizes are freshly generated from rounded, bounded normals and empirical skewed sizes apply the documented skew transform and bounds."
+          }
+        ]
+      },
+      "scientific_process_distinction": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "abstract and headline table note",
+            "finding": "Partial scientific replication is separated from exact historical replay. The note separates point-estimate magnitude and scientific-pattern verdicts from equivalence."
+          },
+          {
+            "page": 3,
+            "location": "§3 opening and generator/GLS paragraphs",
+            "finding": "The dissertation supplies design and targets. The replication supplies new R estimates and independent calculations."
+          },
+          {
+            "page": 4,
+            "location": "§4 first two paragraphs",
+            "finding": "The manuscript distinguishes Monte Carlo error, reading error and the spread across masks."
+          },
+          {
+            "page": 8,
+            "location": "§12 opening",
+            "finding": "Printed-value rounding labels are explicitly distinguished from reconstruction scope and the other uncertainty comparisons."
+          },
+          {
+            "page": 7,
+            "location": "§9 and §10",
+            "finding": "The text preserves why the exact SAS fit state, random streams and realized designs are unavailable and uses separate terms for the R replay of the denominator calculation and the unrecovered historical implementation."
+          }
+        ]
+      },
+      "abstract_source_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "abstract, first sentence",
+            "finding": "Kupzyk (2011) is named immediately and the planning ordering, lowest ICC peak, up-to-eight cluster count and empirical-below-generating-covariance power findings are attributed to that source."
+          },
+          {
+            "page": 11,
+            "location": "References, Kupzyk entry",
+            "finding": "The author, title, year, institution and repository record are printed in full."
+          },
+          {
+            "page": 1,
+            "location": "Abstract attribution",
+            "finding": "Verified the archived 143-page dissertation's SHA-256, title page and UNL institutional record. The author's April 2011 dissertation is the cited work. Its abstract and Tables 1–5 support the planning ordering and lowest-ICC peak. Table 5 supports the maximum increase of eight, and p. 106 separately gives 41 of 54."
+          }
+        ]
+      },
+      "effect_magnitude_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "headline table, signed effect and effect magnitude columns",
+            "finding": "Both signed effects are printed for all eight rows. Their numerical order matches each larger/smaller label and both signs are positive throughout."
+          },
+          {
+            "page": 1,
+            "location": "headline table note",
+            "finding": "The note explains each positive orientation and gives 0.001 pp for the five main losses, 0.002 pp for the ICC contrast and 0.5 for integer counts. Each displayed gap exceeds its rounding tolerance. The note rules out equivalence as an inference from those comparisons."
+          },
+          {
+            "page": 1,
+            "location": "Headline table signed effects, row labels and note",
+            "finding": "Final-grid paired differences give, in table order, 1.327333/1.274814, 4.391278/4.471858, 6.409407/6.443263, .453500/.438215, .851278/.778279 and 3.036667/3.062175 pp. The last two pairs are 8/7 clusters and 14/13 cells. All eight signs are positive. The larger/smaller labels follow the displayed direction and absolute gaps. Table 1's .00001 power unit equals .001 pp. Each mean difference allows two half-units and the difference across ICC allows four. The exact count references yield half-cluster/cell print tolerances. This checks descriptive magnitude without testing equivalence."
+          }
+        ]
+      },
+      "finding_attribution": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "headline table caption and Published/Ours cells",
+            "finding": "The caption names the source tables and pages and identifies the R values separately. Every cell contains a finding, with specific values for allocation, skewed sizes, maximum extra clusters and empirical-below-exemplary counts, and qualitative findings plus adjacent signed effects for the remaining rows. Verify each against its own evidence in the second pass."
+          },
+          {
+            "page": 1,
+            "location": "Headline table, 5% dropout Published and Ours cells",
+            "finding": "Dissertation p. 93 and Table 2 give positive power loss at both nonzero attrition rates (about 1.3 pp at 5%). All R final matched 5% and 15% losses are positive. The repeated broad sentence is true but a condition-specific p. 93 finding such as the 1.3 pp mean would clarify this row."
+          },
+          {
+            "page": 1,
+            "location": "Headline table, 15% dropout Published and Ours cells",
+            "finding": "Dissertation p. 93 says the loss averages 4.4 pp. In R all 18 final paired high-dropout losses are positive, with a 4.472 pp mean."
+          },
+          {
+            "page": 1,
+            "location": "Headline table, 70/30 allocation Published and Ours cells",
+            "finding": "Dissertation p. 95 reports the mean 6.4 pp. The 27 corresponding R losses average 6.443 pp, shown to two decimals in the Ours cell."
+          },
+          {
+            "page": 1,
+            "location": "Headline table, Normal sizes Published and Ours cells",
+            "finding": "Dissertation p. 95 reports a 0.45 pp mean for normal sizes and 0.85 pp for skewed. Both R means are small and positive, .438 and .778 pp. Use a normal-specific cell and retain the mean qualification, as one of the source normal-size contrasts increases power by .053 pp."
+          },
+          {
+            "page": 1,
+            "location": "Headline table, Skewed sizes Published and Ours cells",
+            "finding": "Dissertation p. 95 explicitly states the 0.85 pp mean. The packet's quoted p. 96 overall .65 pp combines normal and skewed and should be replaced by the exact p. 95 skewed excerpt. The R skewed mean is .778 pp and rounds to .78."
+          },
+          {
+            "page": 1,
+            "location": "Headline table, ICC .05 vs .15 at 15% dropout Published and Ours cells",
+            "finding": "Source Table 4 and Table 1 independently establish that all five mean losses peak at .05, as do the final-grid per-ICC rerun means. The row's signed contrast is only the 15% loss and the partial verdict is about the broader source monotonic assertion. The prose on p. 2 explains the exception."
+          },
+          {
+            "page": 1,
+            "location": "Headline table, Maximum extra clusters Published and Ours cells",
+            "finding": "Source Table 5 and pp. 97–98 give eight above the 25-cluster between–within reference in the most extreme cell. R requires 32 against the same reference, seven extra, with three overall threshold disagreements."
+          },
+          {
+            "page": 1,
+            "location": "Headline table, Count below minus 27 Published and Ours cells",
+            "finding": "Dissertation p. 106 reports 41 of 54 directly. Of 51 readable figure pairs, 39 are below. The R gaps count 40 negatives over 54, yielding the signed pair 14/13 after subtracting half the grid."
+          }
+        ]
+      }
+    },
+    "phrase_dispositions": []
+  },
+  "cold_record_sha256": "43d78b949ddf9e4ebf2a734297ed0ef4fb0b7b22b4d3cba61ad4191cd4787557",
+  "pdf_sha256": "8d8cf8c5d3fa58d9ffeac7e94dfa22acaf816f7b030145a4db553e932d6505bb",
+  "packet_sha256": "c3eed9394047942771f4d3ce380544c949285d0a9be9f232dd31b64e847a3a03",
+  "writer_manifest_sha256": "207f80f9d30c648a26e333c7ddebf68cebb93b730c23c3dd8485a0c79535cad3",
+  "source_tex_sha256": "5cc38b3e2e4e72e0cebce7a063c9d4021a19b94e2542f1248b0c730d0314d7af",
+  "dissertation_sha256": "368dc575d9f744bf5ca5516873a633691d999fbdd5d19516994c64e10674896a",
+  "packet_artifacts": {
+    "total": 86,
+    "sha256_mismatches": 0,
+    "claim_maps_inspected": 26,
+    "limitations_maps_inspected": 8
+  },
+  "pdf_links": {
+    "verdict": "fail",
+    "pdf_sha256": "8d8cf8c5d3fa58d9ffeac7e94dfa22acaf816f7b030145a4db553e932d6505bb",
+    "inventory_sha256": "207f98f273651e113bf10172a50a7d780ce9492e3056cada5bad2f8050bd3d7d",
+    "annotations": 113,
+    "findings": [
+      {
+        "page": 2,
+        "finding": "Both wrapped paired-contrasts.csv fragments target the complete intended path. All same-repository annotations use canonical master navigation and branch-target validation passes against HEAD."
+      },
+      {
+        "page": 3,
+        "finding": "The current profile/lme4/nlme diagnostic paragraph links results/independent-engines.csv, an older diagnostic without the profiled estimate. Link results/engine-comparison.csv as in the Appendix A evidence map. It is generated by validate_profile.R; the runner's current output name is engine-validation.csv."
+      },
+      {
+        "page": 9,
+        "finding": "Tool links target the named software websites, package pages or publisher repositories. Add exact auxiliary script targets for the Figure 4 independent check and formulaic table."
+      },
+      {
+        "page": 11,
+        "finding": "The dissertation institutional URI and Morris et al. DOI resolve to the expected works. Both JSS DOI annotations identify the correct papers but returned errors through their legacy htaccess redirects in the browser tool. The direct journal article pages at /article/view/v067i01 and /article/view/v059i09 resolve and show the same DOIs."
+      }
+    ]
+  }
+}
