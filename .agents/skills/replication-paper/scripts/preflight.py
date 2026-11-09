@@ -43,6 +43,7 @@ import checks
 import layout
 import pdf_links
 import disagreements
+import paper_freshness
 import source_acquisition
 import source_items
 
@@ -537,6 +538,10 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         gate_errors, gate_incomplete = source_gate(root, plan_obj, paper_text)
         errors.extend(gate_errors)
         incomplete.extend(gate_incomplete)
+    # The paper a reviewer reads must be written from the current evidence.
+    fresh = paper_freshness.freshness(root)
+    errors.extend(fresh["stale"])
+    incomplete.extend(fresh["draft"])
     if paper_text is not None:
         try:
             errors.extend(
@@ -572,7 +577,9 @@ def done_check(root, plan, paper, analysis=None) -> dict:
             if not precedes:
                 errors.append(f"analysis {label}: plan was not committed before this analysis")
     # complete: no errors and nothing missing. incomplete: no errors, but material
-    # evidence (the source PDF) is missing and recorded. failing: anything else.
+    # evidence (the source PDF) is missing and recorded, or the paper is a
+    # shared-context draft pending an isolated writing pass. failing: anything
+    # else, including a paper that is stale against the evidence.
     result["status"] = "failing" if errors else ("incomplete" if result["incomplete"] else "complete")
     result["accepted"] = result["status"] == "complete"
     return result
