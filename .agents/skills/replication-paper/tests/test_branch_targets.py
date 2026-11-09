@@ -87,6 +87,9 @@ class BranchTargets(unittest.TestCase):
             '  plan: Run every cell the headline conclusion uses.\n'
             '  status: replicated\n  evidence: results.txt\n'
             'removals: []\n'
+            'published_evidence:\n'
+            '- id: table-1\n  location: Table 1\n  quantity: headline estimate\n'
+            '  value_source: table\n  plotted_in: []\n'
         )
         (self.root / 'REPLICATION-PLAN.yaml').write_text(plan, encoding='utf-8')
         self.git('add', 'REPLICATION-PLAN.yaml')

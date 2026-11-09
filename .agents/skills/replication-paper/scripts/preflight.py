@@ -15,11 +15,11 @@ supplies a justification, a separate validation, and, for a blocked source
 path, the person's decision (see `fallback_errors`). Exit 2 when the
 preferred engine is missing and the fallback is absent or incomplete.
 `done` exits 0 when the replication plan passes, and 2 when it does not.
-A plan with `limit_schema: 1` is also checked for per-part limit kinds,
-part-specific reasons and evidence, and a not_run estimate and decision.
-A tractable not_run part is accepted when `decision_by` is `project` and a
-`decision_reason` records the resource decline. Plans that omit
-`limit_schema` skip that check.
+Every plan is checked the same way (there is one plan format): per-part
+limit kinds, part-specific reasons and evidence, a not_run estimate and
+decision, and the published-evidence inventory. A tractable not_run part is
+accepted when `decision_by` is `project` and a `decision_reason` records the
+resource decline.
 Optional `--pr-body` and `--record` also check the PR description's primary
 PDF links. Omit them and `done` does not read a description.
 """
