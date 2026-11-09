@@ -177,7 +177,8 @@ def _uses_considered_errors(label, entry, root) -> list:
     numbers), reconstruction (recovering data or moments to rerun the analysis)
     and evidence (bearing on a disagreement, such as how the source coded a
     variable in its other analyses): `{useful: false, why}`. If any use is
-    found, the item is read, not excluded.
+    found, the item is read, unless the person declined that use
+    (`declined_by_person: {date, channel, summary}`).
     """
     uc = entry.get("uses_considered")
     if not isinstance(uc, dict):
@@ -190,8 +191,11 @@ def _uses_considered_errors(label, entry, root) -> list:
                 or not isinstance(v.get("why"), str) or len(v["why"].strip()) < 12:
             errors.append(f"source_items {label}: uses_considered.{key} needs useful (true/false) and a specific why")
         elif v["useful"]:
-            errors.append(f"source_items {label}: uses_considered.{key} is useful, so read it (use: read) "
-                          "instead of excluding it")
+            d = v.get("declined_by_person")
+            if not isinstance(d, dict) or not all(isinstance(d.get(k), str) and d[k].strip()
+                                                  for k in ("date", "channel", "summary")):
+                errors.append(f"source_items {label}: uses_considered.{key} is useful, so read it (use: read), "
+                              "or record declined_by_person {date, channel, summary}")
     return errors
 
 
