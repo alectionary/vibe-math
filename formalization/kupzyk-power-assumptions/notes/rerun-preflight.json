@@ -1,0 +1,20 @@
+{
+  "accepted": true,
+  "engine": "R lme4 REML and nlme with fixed-covariance GLS checks",
+  "fallback": true,
+  "os": "Darwin",
+  "missing": [
+    "OpenMx"
+  ],
+  "reason": null,
+  "kind": "blocked",
+  "exact_reproduction": "not_possible",
+  "decision": {
+    "by": "person",
+    "date": "2026-11-09",
+    "channel": "Codex chat",
+    "summary": "After disclosure of the SAS/IML, PROC MIXED and Optimal Design blockers and loss of SAS-specific behavior, the user chose Use R with independent checks."
+  },
+  "justification": "SAS and Optimal Design are absent on this host. The source uses a three-level mixed model with independent slope and intercept terms. R mixed-model engines reproduce that model class, and the formulaic arm can be computed from the source's stated formulas.",
+  "independent_validation": "The validation design fits the same generated data with nlme and two lme4 optimizers, and compares independent block and dense covariance implementations for exemplary power. Historical validation is in outputs/independent-engines.csv; the fresh run retains separate results."
+}
