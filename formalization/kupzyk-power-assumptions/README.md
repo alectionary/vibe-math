@@ -7,9 +7,16 @@ planning ordering recurs. Three mean-power sample-size thresholds are one
 cluster earlier, and the extreme Appendix D Optimal Design row remains
 unresolved under the labeled denominator degrees of freedom.
 
+- [Full re-replication manuscript](paper/kupzyk-replication.pdf) and [editable LaTeX](paper/kupzyk-replication.tex)
 - [Full comparisons](results/full/comparison-summary.json) and [discrepancy audit](DISAGREEMENTS.yaml)
 - [Replication plan](REPLICATION-PLAN.yaml) and [evidence packet](evidence-packet.json)
-- [Reproduce the full R run](rerun/README.md)
+- [Reproduce the full R run](rerun/README.md) and [archived batch checksums](provenance/full-run-checkpoints.json)
+
+Build the current PDF with Tectonic from the study's `paper/` directory.
+
+```sh
+tectonic kupzyk-replication.tex
+```
 
 ## Earlier replication
 
