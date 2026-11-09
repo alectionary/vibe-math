@@ -1,0 +1,316 @@
+schema_version: 1
+dissertation: 'Jeffries, J. B. (2024). Navigating Non-Orthogonality: Exploring Latent Mean Differences
+  in Unbalanced Conditions (Doctoral dissertation). University of Nebraska-Lincoln. Adviser: James A.
+  Bovaird.'
+source_locator: source/jeffries2024.pdf
+source_sha256: a21df98c20401491e6b4a1d00a21b6f7cee5551a00c04a89fb414ec6cfd469b3
+source_inventory: source-inventory.json
+parts:
+- id: study-dissertation
+  kind: study
+  label: 'Whole dissertation: latent mean contrasts under group-size imbalance'
+  plan: Account for every chapter, research question, hypothesis, table and figure; replay the Monte Carlo
+    through the source's own R path.
+- id: ch-1
+  kind: chapter
+  label: Chapter I introduction
+  plan: Record its claims against the later chapters; no independent analysis.
+- id: ch-2
+  kind: chapter
+  label: Chapter II literature review and worked contrast theory
+  plan: Check Table 2.2 orthogonality and the equations against the existing Lean proof; record literature
+    claims as out of scope.
+- id: ch-3
+  kind: chapter
+  label: Chapter III methods and design
+  plan: Reproduce the 18-cell design, Tables 3.1-3.5 and the population values from the printed and OSF
+    syntax.
+- id: ch-4
+  kind: chapter
+  label: Chapter IV results
+  plan: Reproduce every result table and figure from the replayed fits.
+- id: ch-5
+  kind: chapter
+  label: Chapter V discussion and recommendations
+  plan: Reconcile each empirical statement with the replayed results.
+- id: rq-1
+  kind: research_question
+  label: 'RQ1: effect of unbalanced subgroup sizes on Wald accuracy in both SEM forms'
+  plan: Answer from all 18 cells in both models.
+  headline: true
+- id: rq-2
+  kind: research_question
+  label: 'RQ2: MIMIC versus re-parameterized MGCFA accuracy under diverging group sizes'
+  plan: Answer from all 18 cells in both models.
+  headline: true
+- id: h-1a
+  kind: hypothesis
+  label: 'Hypothesis 1a: power falls as imbalance grows'
+  plan: Evaluate H1a on the replayed cell summaries using the source's own outcome definitions.
+  headline: true
+- id: h-1b
+  kind: hypothesis
+  label: 'Hypothesis 1b: Type I error rises as imbalance grows'
+  plan: Evaluate H1b on the replayed cell summaries using the source's own outcome definitions.
+  headline: true
+- id: h-1c
+  kind: hypothesis
+  label: 'Hypothesis 1c: bias is lower when balanced'
+  plan: Evaluate H1c on the replayed cell summaries using the source's own outcome definitions.
+  headline: true
+- id: h-1d
+  kind: hypothesis
+  label: 'Hypothesis 1d: efficiency is greater when balanced'
+  plan: Evaluate H1d on the replayed cell summaries using the source's own outcome definitions.
+  headline: true
+- id: h-2a
+  kind: hypothesis
+  label: 'Hypothesis 2a: MIMIC has more power than MGCFA'
+  plan: Evaluate H2a on the replayed cell summaries using the source's own outcome definitions.
+  headline: true
+- id: h-2b
+  kind: hypothesis
+  label: 'Hypothesis 2b: MIMIC Type I error is closer to .05'
+  plan: Evaluate H2b on the replayed cell summaries using the source's own outcome definitions.
+  headline: true
+- id: h-2c
+  kind: hypothesis
+  label: 'Hypothesis 2c: MIMIC has lower bias'
+  plan: Evaluate H2c on the replayed cell summaries using the source's own outcome definitions.
+  headline: true
+- id: h-2d
+  kind: hypothesis
+  label: 'Hypothesis 2d: MIMIC is more efficient'
+  plan: Evaluate H2d on the replayed cell summaries using the source's own outcome definitions.
+  headline: true
+- id: headline-imbalance
+  kind: headline
+  label: 'Abstract: accuracy declines with imbalance, most in N = 240'
+  plan: Compare the abstract's statement with the replayed power, Type I error and bias.
+  headline: true
+- id: headline-mimic
+  kind: headline
+  label: 'Abstract: MIMIC outperforms MGCFA; a respecified MGCFA is nearly equivalent'
+  plan: Replay both models, and fit the MIMIC-mirroring MGCFA respecification from Chapter IV.
+  headline: true
+- id: analysis-generation
+  kind: analysis
+  label: Data generation with simsem exportData, nRep 15000, seed 13131
+  plan: Run exportData under R 4.2.2 and simsem 0.5-16 with the printed seed and each cell's allocation;
+    test the n480 cond3 null allocation (168,168,72,72) in the OSF script.
+- id: analysis-replay-osf
+  kind: analysis
+  label: Exact replay of the OSF summary CSVs
+  plan: Compare every numeric column of the four OSF summary files with the replay, cell by cell.
+  headline: true
+- id: analysis-dynamic
+  kind: analysis
+  label: Dynamic fit cutoffs from the dynamic package 1.1.0
+  plan: Run cfaOne as in the source's commented code and compare the dynamic-acceptance columns.
+- id: analysis-fit-measures
+  kind: analysis
+  label: CFI, RMSEA and SRMR acceptance rates
+  plan: Recompute from each fit; compare with Tables 4.6-4.9 and the OSF columns.
+- id: analysis-convergence
+  kind: analysis
+  label: Initial convergence rates, Table 4.5
+  plan: Tabulate convergence across all generated datasets per cell and model.
+- id: analysis-respecified-mgcfa
+  kind: analysis
+  label: MGCFA respecified to mirror MIMIC assumptions, Tables 4.10-4.11 and Figures 4.3-4.4
+  plan: Fit the respecification on the replayed data, after reading its specification in Chapter IV.
+- id: analysis-lean
+  kind: analysis
+  label: Orthogonality of the Table 2.2 contrasts
+  plan: Keep the existing Lean development as evidence and rebuild it.
+- id: arm-mgcfa
+  kind: arm
+  label: MGCFA model form
+  plan: Fit with lavaan 0.6-17, MLR, missing = ML, using the OSF mgcfa syntax.
+  headline: true
+- id: arm-mimic
+  kind: arm
+  label: MIMIC model form
+  plan: Fit with lavaan 0.6-17, MLR, missing = ML, using the OSF mimic syntax.
+  headline: true
+- id: cell-mgcfa-true-n240-c1
+  kind: condition
+  label: MGCFA true N=240 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-true-n240-c2
+  kind: condition
+  label: MGCFA true N=240 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-true-n240-c3
+  kind: condition
+  label: MGCFA true N=240 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-true-n480-c1
+  kind: condition
+  label: MGCFA true N=480 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-true-n480-c2
+  kind: condition
+  label: MGCFA true N=480 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-true-n480-c3
+  kind: condition
+  label: MGCFA true N=480 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-true-n960-c1
+  kind: condition
+  label: MGCFA true N=960 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-true-n960-c2
+  kind: condition
+  label: MGCFA true N=960 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-true-n960-c3
+  kind: condition
+  label: MGCFA true N=960 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-null-n240-c1
+  kind: condition
+  label: MGCFA null N=240 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-null-n240-c2
+  kind: condition
+  label: MGCFA null N=240 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-null-n240-c3
+  kind: condition
+  label: MGCFA null N=240 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-null-n480-c1
+  kind: condition
+  label: MGCFA null N=480 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-null-n480-c2
+  kind: condition
+  label: MGCFA null N=480 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-null-n480-c3
+  kind: condition
+  label: MGCFA null N=480 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-null-n960-c1
+  kind: condition
+  label: MGCFA null N=960 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-null-n960-c2
+  kind: condition
+  label: MGCFA null N=960 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mgcfa-null-n960-c3
+  kind: condition
+  label: MGCFA null N=960 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-true-n240-c1
+  kind: condition
+  label: MIMIC true N=240 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-true-n240-c2
+  kind: condition
+  label: MIMIC true N=240 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-true-n240-c3
+  kind: condition
+  label: MIMIC true N=240 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-true-n480-c1
+  kind: condition
+  label: MIMIC true N=480 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-true-n480-c2
+  kind: condition
+  label: MIMIC true N=480 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-true-n480-c3
+  kind: condition
+  label: MIMIC true N=480 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-true-n960-c1
+  kind: condition
+  label: MIMIC true N=960 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-true-n960-c2
+  kind: condition
+  label: MIMIC true N=960 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-true-n960-c3
+  kind: condition
+  label: MIMIC true N=960 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-null-n240-c1
+  kind: condition
+  label: MIMIC null N=240 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-null-n240-c2
+  kind: condition
+  label: MIMIC null N=240 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-null-n240-c3
+  kind: condition
+  label: MIMIC null N=240 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-null-n480-c1
+  kind: condition
+  label: MIMIC null N=480 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-null-n480-c2
+  kind: condition
+  label: MIMIC null N=480 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-null-n480-c3
+  kind: condition
+  label: MIMIC null N=480 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-null-n960-c1
+  kind: condition
+  label: MIMIC null N=960 imbalance condition 1
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-null-n960-c2
+  kind: condition
+  label: MIMIC null N=960 imbalance condition 2
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+- id: cell-mimic-null-n960-c3
+  kind: condition
+  label: MIMIC null N=960 imbalance condition 3
+  plan: Fit datasets in the source's file order up to 10,000 converged, of 15,000 generated.
+  design_count: 10000
+removals: []
