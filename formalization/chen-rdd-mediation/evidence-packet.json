@@ -38,7 +38,7 @@
   {
    "id": "fallback",
    "path": "simulation/fallback.json",
-   "sha256": "d348e2635a58aedc0457896de4ab238143774406f8b15b6a7052433a197f85e6"
+   "sha256": "30e0e7f4256355f4819d6c395168623db398d5ac48eeebb8eb5e1dea39e283cf"
   },
   {
    "id": "aggregate",
@@ -118,7 +118,7 @@
   {
    "id": "builder",
    "path": "build_packet.py",
-   "sha256": "d0369e327b9392d4e6a0461382115596a87e572bcccf11967c9bb7245845f5ba"
+   "sha256": "33bf62504a7594e98349de6791eccfc8b0f24a12a0869b67322acac85d11462e"
   },
   {
    "id": "r_code",
@@ -208,7 +208,7 @@
   {
    "id": "dis",
    "path": "DISAGREEMENTS.yaml",
-   "sha256": "b56bd9dfb359508ecc2908b1f06d60f51e125d0b5b78ba93f3c0976aaef87ee3"
+   "sha256": "65b91466de181312655a56da34737169948b6c9a6ec61b17a2f84b3a921c7ccf"
   },
   {
    "id": "dis_code",
@@ -565,7 +565,7 @@
     "cells"
    ],
    "published": {
-    "value": 0.013,
+    "value": 0.0127,
     "units": "rejection rate minus the nominal .05; raw rate read from Figure 4.28"
    },
    "ours": {
@@ -578,7 +578,7 @@
      "definition": "MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c' and cutoffs, minus the nominal .05 (excess rejection over a null effect)",
      "units": "rejection rate",
      "positive_means": "the 95% CI excludes zero more often than under a null effect",
-     "published": 0.013,
+     "published": 0.0127,
      "ours": 0.786
     }
    ],
@@ -587,7 +587,7 @@
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "One cell: the largest MINT in the design at the smallest n. It was chosen after the full results were available; results/summary.json gives MINT power for every n and ah.",
    "status": "not_replicated",
-   "status_reason": "In our run MINT power rises with n and ah: 0.836 at n = 500 for ah = .20, and at least 0.974 for ah >= .13 once n >= 1,000. Her Figure 4.28 gives 0.063, 0.068 and 0.057 in this cell at cutoffs 1-3, and no point above about .07: a Type I error curve. Rejection rates do not use population values. Her MINT power matches our rates with h set to 0 at 97.8% of points (against 6.7% with h as designed) and her MINT bias is -0.998*ah, so the data behind her results contained no interaction, while her printed code recovers h (Her printed code, replayed over all 1,000 replications: largest condition-mean bias 0.017 (0% beyond .10); 5.3% of 19,200 cell biases beyond 1.96 Monte Carlo SEs and 0.14% beyond 3.29, as expected with no bias; her estimates and ours differ beyond 1.96 combined SEs in 5.3% of cells; median SD ratio 1.000; slope of estimated on true h 0.9998-1.0005 (results/r_full_comparison.json).) (DISAGREEMENTS.yaml h-absent: explained). Her own abstract and Chapter 5 (printed p. 143) say that Type I error and power for all five effects were within or reached the robustness criteria, which her MINT power statement contradicts.",
+   "status_reason": "In our run MINT power rises with n and ah: 0.836 at n = 500 for ah = .20, and at least 0.9735 for ah >= .13 once n >= 1,000. Her Figure 4.28 gives 0.063, 0.068 and 0.057 in this cell at cutoffs 1-3, and no point above about .07: a Type I error curve. Rejection rates do not use population values. Her MINT power matches our rates with h set to 0 at 97.8% of points (against 6.7% with h as designed) and her MINT bias is -0.998*ah, so the data behind her results contained no interaction, while her printed code recovers h (Her printed code, replayed over all 1,000 replications: largest condition-mean bias 0.017 (0% beyond .10); 5.3% of 19,200 cell biases beyond 1.96 Monte Carlo SEs and 0.14% beyond 3.29, as expected with no bias; her estimates and ours differ beyond 1.96 combined SEs in 5.3% of cells; median SD ratio 1.000; slope of estimated on true h 0.9998-1.0005 (results/r_full_comparison.json).) (DISAGREEMENTS.yaml h-absent: explained). Her own abstract and Chapter 5 (printed p. 143) say that Type I error and power for all five effects were within or reached the robustness criteria, which her MINT power statement contradicts.",
    "numerical": "mismatch",
    "reconstruction_scope": "full design, independent re-implementation and exact replay",
    "limitations": [
@@ -613,7 +613,7 @@
      "claim_type": "numerical estimate",
      "value_source": "figure_digitized",
      "digitized_file": "results/digitized_rates.csv",
-     "reading_error": 0.013,
+     "reading_error": 0.0123,
      "conditions": "Nonzero MINT cells (a and h nonzero), all n and cutoffs",
      "component_claim_ids": [],
      "component_contrast_indices": [
@@ -1080,8 +1080,8 @@
    "methods": "Searched the dissertation.",
    "uncertainty": "Not applicable.",
    "multiplicity": "Not applicable.",
-   "status": "blocked",
-   "status_reason": "The analysis is announced but not reported.",
+   "status": "not_established",
+   "status_reason": "The analysis is announced in Chapter 3 but never reported, so there is nothing to assess; nothing blocks access.",
    "numerical": "withheld",
    "reconstruction_scope": "none",
    "limitations": [
@@ -1196,17 +1196,18 @@
    "estimand": "MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c' and cutoffs, minus the nominal .05 (excess rejection over a null effect)",
    "units": "rejection rate",
    "positive_means": "the 95% CI excludes zero more often than under a null effect",
-   "published_effect": 0.013,
+   "published_effect": 0.0127,
    "ours_effect": 0.786,
    "estimate_status": "resolved",
    "display_decimals": 3,
    "tolerance": {
-    "kind": "prespecified",
-    "value": 0.013,
-    "basis": "Not set in the plan: fixed before this comparison from the reading error of the digitized Figure 4.28 points, averaged over the three cutoffs (results/digitized_rates.csv) and rounded up. Our Monte Carlo error of this 48-cell average is about .002. Her value is within this tolerance of the nominal .05, i.e. of no excess rejection."
+    "kind": "measurement",
+    "value": 0.0123,
+    "source_file": "results/digitized_rates.csv",
+    "basis": "Reading error of the digitized Figure 4.28 points, averaged over the three cutoffs and rounded down; not set in the plan. The cutoff-1 point is partly hidden by another series (status occluded); the two directly read points have a mean reading error of about .009. Her excess over .05 (0.0127) is about one reading error: small, positive, and far below ours. Our Monte Carlo error of this 48-cell average is about .002."
    },
    "magnitude": "larger",
-   "direction": "zero vs nonzero",
+   "direction": "same direction",
    "interpretation": "descriptive point estimates; not equivalence",
    "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
   },
@@ -1237,7 +1238,7 @@
    "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
   }
  ],
- "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 46 testable Type I and power statements, 29 agree (31 with .01 threshold slack), and 39 would hold in our run if h were 0. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access. Her own seeded R code, replayed exactly on all 1,280,000 of her datasets, behaves like our run, so the disagreements arise in unprinted steps: her digitized figures show results computed from data without the interaction h and population values wrong for one group of cases. Of 10 disagreements (DISAGREEMENTS.yaml), 9 are explained, 1 partly explained and 0 unexplained.",
+ "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 46 testable Type I and power statements, 29 agree (31 with .01 threshold slack), and 39 would hold in our run if h were 0. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access. Her printed, seeded R code, replayed exactly on all 1,280,000 datasets it generates, behaves like our run, so the disagreements arise in unprinted steps: her digitized figures show results computed from data without the interaction h and population values wrong for one group of cases. Of 10 disagreements (DISAGREEMENTS.yaml), 8 are explained, 2 partly explained and 0 unexplained.",
  "limitations": [
   "The bootstrap-based results (coverage, Type I error, power) come from the Python run with our own seeds; Chen's bootstrap is unseeded, so they agree with hers on summaries only. The R replay reproduces exactly the datasets and point estimates her printed, seeded code generates (all 1,000 replications per condition); her published results came from data without the interaction wherever h > 0, which the printed code does not produce, so the replay is not her published runs (H1-H4, S1-S3).",
   "Chen's aggregation code, population values and result files are not printed. The mechanisms behind her bias, coverage and MINT results are inferred from her digitized figures and printed tables; they reproduce her patterns but are not read from her code (H1, H2, H3, S1).",
