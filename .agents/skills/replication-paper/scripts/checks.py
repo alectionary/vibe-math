@@ -10,6 +10,7 @@ Run from the repository root:
 
     python3 .agents/skills/replication-paper/scripts/checks.py
     python3 .agents/skills/replication-paper/scripts/checks.py captions FILE
+    python3 .agents/skills/replication-paper/scripts/checks.py seeds FILE
 """
 
 from __future__ import annotations
@@ -390,11 +391,6 @@ _COST_WORD = re.compile(
 )
 
 
-def _limit_schema(plan) -> bool:
-    """New limit checks apply only when the plan declares limit_schema 1."""
-    return isinstance(plan, dict) and plan.get("limit_schema") == 1
-
-
 def _evidence_paths(value):
     if not isinstance(value, str):
         return []
@@ -440,10 +436,98 @@ def _detail(entry, part, key):
     return part.get(key)
 
 
+def _sufficient_statistics_errors(label: str, record) -> list:
+    """A missing data file is not missing evidence until the printed summaries were checked.
+
+    Means, SDs, correlation or covariance matrices, and sample sizes printed in the
+    source often reproduce a regression, SEM or mediation model without raw data.
+    `sufficient_statistics` records that search: {found, what, sufficient, why}.
+    For an input that is not data (software, a proof), set {applies: false, why}.
+    """
+    if not isinstance(record, dict):
+        return [f"{label}: input_unavailable requires sufficient_statistics "
+                "{found, what, sufficient, why}: check whether printed means, SDs, "
+                "correlation or covariance matrices and Ns reproduce the analysis"]
+    if record.get("applies") is False:
+        if not _nonempty(record.get("why")):
+            return [f"{label}: sufficient_statistics applies: false requires why"]
+        return []
+    errors = []
+    for key in ("found", "sufficient"):
+        if type(record.get(key)) is not bool:
+            errors.append(f"{label}: sufficient_statistics.{key} must be true or false")
+    for key in ("what", "why"):
+        if not _nonempty(record.get(key)):
+            errors.append(f"{label}: sufficient_statistics.{key} is required")
+    if record.get("sufficient") is True:
+        errors.append(f"{label}: the printed statistics are sufficient; reproduce the "
+                      "analysis from them instead of marking the input unavailable")
+    return errors
+
+
+VALUE_SOURCES = ("table", "text", "figure_digitized", "figure_not_digitized")
+
+
+def published_evidence_errors(plan) -> list:
+    """Every published quantity the paper compares against names where its value came from.
+
+    A comparison read from prose ("near zero") when a figure plots the values is
+    weaker than one read from the figure. `plotted_in` lists the figures that plot
+    the quantity; such an item must be read from a table or a digitized figure, or
+    say why the figure was not digitized and that the person was told.
+    """
+    items = plan.get("published_evidence") if isinstance(plan, dict) else None
+    if not isinstance(items, list) or not items:
+        return ["plan: requires published_evidence: one entry per published "
+                "quantity compared, with location, quantity, value_source and plotted_in"]
+    errors = []
+    seen = set()
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            errors.append(f"published_evidence[{index}]: mapping required")
+            continue
+        ident = item.get("id")
+        label = f"published_evidence {ident}" if _id_ok(ident) else f"published_evidence[{index}]"
+        if not _id_ok(ident):
+            errors.append(f"{label}: id required")
+        elif ident in seen:
+            errors.append(f"{label}: id is repeated")
+        seen.add(ident)
+        for key in ("location", "quantity"):
+            if not _nonempty(item.get(key)):
+                errors.append(f"{label}: {key} is required")
+        source = item.get("value_source")
+        if source not in VALUE_SOURCES:
+            errors.append(f"{label}: value_source must be one of {', '.join(VALUE_SOURCES)}")
+            continue
+        plotted = item.get("plotted_in")
+        if plotted is None or not isinstance(plotted, list):
+            errors.append(f"{label}: plotted_in must list the figures that plot this quantity ([] if none)")
+            plotted = []
+        if source == "figure_digitized":
+            if not _nonempty(item.get("digitized_file")):
+                errors.append(f"{label}: figure_digitized requires digitized_file")
+            if not _nonempty(item.get("reading_error")):
+                errors.append(f"{label}: figure_digitized requires reading_error (data units)")
+        if source == "figure_not_digitized":
+            report = item.get("reported_to_person")
+            if not _nonempty(item.get("reason")):
+                errors.append(f"{label}: figure_not_digitized requires a reason")
+            if not isinstance(report, dict) or not all(
+                    _nonempty(report.get(key)) for key in ("date", "channel", "summary")):
+                errors.append(f"{label}: figure_not_digitized requires reported_to_person "
+                              "{date, channel, summary}")
+        if source == "text" and plotted:
+            errors.append(f"{label}: read from prose while {', '.join(map(str, plotted))} plots it; "
+                          "digitize the figure (scripts/digitize.py) or record figure_not_digitized "
+                          "with the reason and reported_to_person")
+    return errors
+
+
 def _limit_kind_errors(parts) -> list:
     """Reject stock reasons, shared evidence, and incomplete not_run decisions.
 
-    Applies only to plans that set ``limit_schema: 1``. A status other than
+    Applies to every plan. A status other than
     ``replicated`` needs one or more limit kinds, each with its own facts.
     """
     errors = []
@@ -473,11 +557,18 @@ def _limit_kind_errors(parts) -> list:
                 errors.append(f"{label}: limit_kind {kind} is repeated")
                 continue
             seen_kinds.append(kind)
+            if kind in ("input_unavailable", "not_run"):
+                report = _detail(entry, part, "reported_to_person")
+                if not isinstance(report, dict) or not all(
+                        _nonempty(report.get(key)) for key in ("date", "channel", "summary")):
+                    errors.append(f"{label}: {kind} requires reported_to_person "
+                                  "{date, channel, summary}: a blocked part is the person's decision")
             if kind == "input_unavailable":
                 if not _nonempty(_detail(entry, part, "missing_input")):
                     errors.append(f"{label}: input_unavailable requires missing_input")
                 if not _nonempty(_detail(entry, part, "looked_in")):
                     errors.append(f"{label}: input_unavailable requires looked_in")
+                errors.extend(_sufficient_statistics_errors(label, _detail(entry, part, "sufficient_statistics")))
             elif kind == "not_run":
                 estimate = _detail(entry, part, "cost_estimate")
                 decision = _detail(entry, part, "decision")
@@ -808,8 +899,10 @@ def replication_plan_errors(plan, baseline, paper, *, baseline_error=None, paper
             }
         )
 
-    if _limit_schema(plan):
-        errors.extend(_limit_kind_errors(current_parts))
+    # One plan format: every check applies to every plan. A `limit_schema` key in
+    # an older plan is ignored; it switches nothing on or off.
+    errors.extend(_limit_kind_errors(current_parts))
+    errors.extend(published_evidence_errors(plan))
     if paper_error:
         errors.append(paper_error)
     elif not isinstance(paper, str):
@@ -870,6 +963,46 @@ def caption_hints(text: str) -> list:
     return found
 
 
+SEED_PATTERNS = (
+    ("R", re.compile(r"\bset\.seed\s*\(\s*([^)]*)\)")),
+    ("R", re.compile(r"\bRNGkind\s*\(")),
+    ("Python", re.compile(r"\b(?:np\.)?random\.(?:seed|default_rng|SeedSequence)\s*\(\s*([^)]*)\)")),
+    ("SAS", re.compile(r"\bcall\s+streaminit\s*\(\s*([^)]*)\)", re.I)),
+    ("SAS", re.compile(r"\bseed\s*=\s*(\d+)", re.I)),
+    ("Mplus", re.compile(r"\bSEED\s*=\s*(\d+)\s*;")),
+    ("Stata", re.compile(r"\bset\s+seed\s+(\d+)")),
+    ("Julia/MATLAB", re.compile(r"\b(?:Random\.seed!|rng)\s*\(\s*([^)]*)\)")),
+)
+
+
+def seed_hints(text: str) -> list:
+    """Seeds and RNG settings in a source's printed code.
+
+    Seeded code means the source's own software can reproduce its data exactly.
+    A fallback to another engine then loses exact reproduction, which makes it a
+    blocker to put to the person, not a choice to make silently.
+    """
+    found = []
+    for number, line in enumerate(text.splitlines(), start=1):
+        for language, pattern in SEED_PATTERNS:
+            match = pattern.search(line)
+            if match:
+                found.append({"line": number, "language": language, "text": line.strip()[:160]})
+                break
+    return found
+
+
+def _seeds_main(argv: list) -> None:
+    if len(argv) != 1:
+        raise SystemExit("usage: checks.py seeds FILE")
+    try:
+        hints = seed_hints(read_source_text(Path(argv[0])))
+    except (OSError, UnicodeError, RuntimeError) as exc:
+        raise SystemExit(f"seeds: {exc}") from exc
+    json.dump({"seeded": bool(hints), "hints": hints}, sys.stdout, indent=2)
+    sys.stdout.write("\n")
+
+
 def _captions_main(argv: list) -> None:
     if len(argv) != 1:
         raise SystemExit("usage: checks.py captions FILE")
@@ -887,8 +1020,11 @@ def main(argv=None) -> None:
     if args[:1] == ["captions"]:
         _captions_main(args[1:])
         return
+    if args[:1] == ["seeds"]:
+        _seeds_main(args[1:])
+        return
     if args:
-        raise SystemExit("usage: checks.py [captions FILE]")
+        raise SystemExit("usage: checks.py [captions FILE | seeds FILE]")
     fixture = Path(__file__).resolve().parents[1] / "fixtures" / "abbott_regression.json"
     data = json.loads(fixture.read_text())
     pair = data["scaled_difference"]["initial_versus_refined"]
