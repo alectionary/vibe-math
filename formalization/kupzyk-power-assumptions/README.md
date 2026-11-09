@@ -1,5 +1,29 @@
 # Kupzyk (2011): simplifying assumptions in power analysis
 
+The full R re-replication completed 1,382,400 empirical fits across all 54
+initial design settings and the 50,000-draw baseline follow-up. All 54
+empirical powers are within the adjusted comparison bands. The practical
+planning ordering recurs. Three mean-power sample-size thresholds are one
+cluster earlier, and the extreme Appendix D Optimal Design row remains
+unresolved under the labeled denominator degrees of freedom.
+
+- [Full re-replication manuscript](paper/kupzyk-replication.pdf) and [editable LaTeX](paper/kupzyk-replication.tex)
+- [Full comparisons](results/full/comparison-summary.json) and [discrepancy audit](DISAGREEMENTS.yaml)
+- [Replication plan](REPLICATION-PLAN.yaml) and [evidence packet](evidence-packet.json)
+- [Citation coverage audit](notes/rerun-citation-audit.md) and [citation inventory](citation-inventory.json)
+- [Reproduce the full R run](rerun/README.md) and [archived batch checksums](provenance/full-run-checkpoints.json)
+
+Build the current PDF with Tectonic from the study's `paper/` directory.
+
+```sh
+tectonic kupzyk-replication.tex
+```
+
+## Earlier replication
+
+The material below describes the earlier reduced run. Its manuscript and
+supporting files are retained for provenance.
+
 This investigation reconstructs the dissertation's 54 final exemplary-data cells and runs a reduced empirical simulation across all 54 initial-stage cells. The report separates numerical agreement from reconstruction scope. This PR provides the research report and reproducible artifacts; exact SAS replay is not claimed. Reusable skill improvements are reviewed separately in [PR #56](https://github.com/alectionary/vibe-math/pull/56).
 
 Start with `paper/simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.pdf` or its editable LaTeX source `paper/report.tex`. The exact manuscript is generated from saved results by `scripts/build_report.py`. `notes/compliance-ledger.json` records adherence and justified departures from the pinned replication skill. `notes/availability.csv` records what source/code was and was not obtained.
@@ -88,9 +112,9 @@ The computational run made no skill changes. A later user-authorized editorial r
 
 `kupzyk-source-evidence-appendix.pdf` is a separate9-page companion prepared and visually reviewed by the independent source reviewer, containing16 crops rendered at600 dpi. It includes the title/adviser page, source tables and code, and Table3 (.88187). It accompanies this report but is not included in this repository.
 
-## Citation revision
+## Citation audit for the earlier replication
 
-`paper/references.tex` is the editable author–year bibliography, included by the generated manuscript. `notes/citation-audit.md` documents the gap, claim coverage, and source verification limits. All numerical output hashes were compared before and after this editorial change. The existing two-pass LaTeX build resolves citations without BibTeX. Optional citation validation requires [skill PR #56](https://github.com/alectionary/vibe-math/pull/56), which supplies `check_citations.py`. It is not part of this replication-only diff. After that PR is merged or its checker is available in the working checkout, run:
+The historical 14-entry bibliography in `paper/references.tex` belongs to the earlier manuscript `paper/report.tex`. The check below validates that manuscript. The full re-replication embeds its own bibliography and uses the citation inventory linked above. `notes/citation-audit.md` documents the gap, claim coverage, and source verification limits. All numerical output hashes were compared before and after this editorial change. The existing two-pass LaTeX build resolves citations without BibTeX. Optional citation validation requires [skill PR #56](https://github.com/alectionary/vibe-math/pull/56), which supplies `check_citations.py`. It is not part of this replication-only diff. After that PR is merged or its checker is available in the working checkout, run:
 
 ```sh
 python3 .agents/skills/replication-paper/scripts/check_citations.py formalization/kupzyk-power-assumptions/paper/report.tex --references formalization/kupzyk-power-assumptions/paper/references.tex --log formalization/kupzyk-power-assumptions/paper/simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.log

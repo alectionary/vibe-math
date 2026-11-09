@@ -40,7 +40,7 @@ import re
 import sys
 from pathlib import Path
 
-LABEL = re.compile(r"^\s*(Figure|Table)\s+([A-Z]?\d+(?:\.\d+)*)\b\.?\s*(.*)$")
+LABEL = re.compile(r"^\s*(Figure|Table)\s+((?:[A-Z]\.?)?\d+(?:\.\d+)*)(?=\b|[A-Z][a-z])\.?\s*(.*)$")
 VERB = re.compile(r"^(?:\(?[a-z]\)?\s*)?(shows?|displays?|depicts?|presents?|illustrates?|gives?|"
                   r"summari[sz]es?|lists?|reports?|provides?|contains?|indicates?|is|are|was|were|"
                   r"and|or|to|in|of|for|with|as|from|on|at|by|that|which|also|below|above|,|;|\))\b", re.I)
