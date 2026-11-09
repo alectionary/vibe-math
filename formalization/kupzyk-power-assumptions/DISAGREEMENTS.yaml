@@ -1,0 +1,62 @@
+disagreements:
+  - id: table4-high-attrition-label
+    claim: "Table 4 labels the second attrition condition 10 percent per interval."
+    ours: "That column reproduces the 15 percent contrasts in Table 1 at all three ICCs."
+    covers: [table4-label]
+    hypotheses:
+      - id: our-reading
+        side: ours
+        statement: "A lost glyph or OCR problem changed 15 to 10 in our transcription."
+        prediction: "The rendered heading reads 15 percent."
+        test:
+          method: "Read the rendered PDF p. 106 independently of Poppler's layout text."
+          files: [source-values/table-4.csv, provenance/source-acquisition.json]
+        result: "The ink reads 10 percent."
+        verdict: ruled_out
+      - id: source-label
+        side: source
+        statement: "The heading is a label error and the column reports the high-attrition design arm."
+        prediction: "All entries round to the 0-minus-15 percent matched differences in Table 1, and the design does not include 10 percent."
+        test:
+          method: "Recalculate the three ICC means from Table 1 and cross-check the full design in Figure 5."
+          files: [results/source-identities.json, source-values/figure-5.csv]
+        result: "Recomputed losses are 6.1692, 3.8722 and 3.1325 percentage points; these round to 6.2, 3.9 and 3.1. The design uses 0, 5 and 15 percent."
+        verdict: supported
+    conclusion: explained
+    whose: source
+    confidence: high
+  - id: appendix-d1-interval
+    claim: "Table D.1 reports 0.05021 and a two-SE interval (.04744,.05279) for both Satterthwaite and Kenward–Roger."
+    ours: "The printed interval centers on .050115, not .05021."
+    covers: [appendix-d1-interval]
+    hypotheses:
+      - id: our-transcription
+        side: ours
+        statement: "The point estimate or endpoint was misread or shifted to the wrong row."
+        prediction: "The rendered page or a different extraction will disagree with the stored row."
+        test:
+          method: "Read PDF p. 143 and compare both full rows with the Poppler text and arithmetic output."
+          files: [source-values/table-D.1.csv, results/appendix-d-source-identity.csv]
+        result: "The rendered point and endpoints agree with the transcription in both rows."
+        verdict: ruled_out
+      - id: rounding
+        side: neither
+        statement: "Rounding a symmetric interval to five places explains the off-center midpoint."
+        prediction: "The discrepancy is no larger than .00001 at the printed precision."
+        test:
+          method: "Propagate half-unit rounding in the point and both endpoints."
+          files: [results/appendix-d-source-identity.csv]
+        result: "The midpoint is .000095 below the reported point. Rounding cannot explain it."
+        verdict: ruled_out
+      - id: different-input
+        side: source
+        statement: "The reported endpoints were constructed from a different rate, denominator, or procedure."
+        prediction: "Under a symmetric two-SE calculation, the endpoints imply a different point or a different draw count from neighboring rows."
+        test:
+          method: "Invert the center and width for every Appendix D interval and compare across methods."
+          files: [results/appendix-d-source-identity.csv]
+        result: "The affected rows center on .050115 and imply about 26,658 draws if the printed point is used; most neighboring widths imply about 25,000. This does not identify which input or procedure produced the printed numbers."
+        verdict: inconclusive
+    conclusion: unexplained
+    whose: undetermined
+    confidence: high
