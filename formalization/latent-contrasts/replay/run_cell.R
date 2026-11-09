@@ -65,7 +65,7 @@ one <- function(i) {
   }, error = function(e) c(conv = 0, rep(NA_real_, 17)))
   c(rep = i, r)
 }
-idx <- split(seq_along(paths), ceiling(seq_along(paths) / 250))
+idx <- split(seq_along(paths), ceiling(seq_along(paths) / 1000))
 done <- 0L; res <- list()
 for (b in idx) {
   res <- c(res, mclapply(b, one, mc.cores = ncores, mc.preschedule = TRUE))
