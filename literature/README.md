@@ -36,7 +36,7 @@ The selected P34 girth target now has a [complete checked characterization](../f
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **186 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **197 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -1458,6 +1458,72 @@ Same PDF as source-manifest id 2025-Morris and research source MorrisDissertatio
 Penelope Beall; Erenay Boyali; Nancy Chen; Ellen Chlachidze; Toan Trong Dao; Frederic Garvey; Mitchell Johnson; Yu Olivier Li; Nikola Kuzmanovski; Kelvin Ma; Treanungkur Mal; Rukshan Marasinghe Mudiyanselage; Quinlan Mayo; Nava Minsky-Primus; Alexandra Seceleanu; Sriram Veerapaneni. 2025. [macaulay posets preprint](https://arxiv.org/abs/2502.15166).
 
 arXiv:2502.15166v2 screened from the fetched PDF. No earlier bibliography row matched this id or title. Fetch issue 12. One open conjecture recorded. Conjecture 7.2 is refuted in the paper and is not an inventory target. The journal version was not opened.
+
+### F189 Statistical Mediation Analysis in Regression Discontinuity Design for Causal Inference
+
+Donna Chen. 2021. [fetched dissertation](https://digitalcommons.unl.edu/cehsdiss/403/).
+
+Fetch issue 93. No earlier bibliography row. The fetched SHA-256 differs from the issue's previously verified copy. Unmerged PR #90 is not a source record on master. One method request for bias-corrected confidence intervals. The other future-work sentences are simulation and design extensions and are not inventory targets.
+
+### F190 Constructing a Creative Self-Efficacy Inventory: A Mixed Methods Inquiry
+
+Daniel H. Abbott. 2010. [seed dissertation screen](https://digitalcommons.unl.edu/cehsdiss/68/).
+
+Fetch issue 94. Same dissertation as UNL-SEM-D067 and formalization/abbott-ctse. The fetch hash matches that replication and differs from the seed hash d39a696d20d6df6d9467a8906e67c40f336c3856ac74637f8db6629ca9fcc9d2, which is left in place. No additional mathematical target. The existing seed screen's question count 0 stands.
+
+### F191 Structural equation models with small samples: A comparative study of four approaches
+
+Frances L. Chumney. 2013. [fetched dissertation](https://digitalcommons.unl.edu/cehsdiss/189/).
+
+Fetch issue 95. UNL-SEM-D022 had no stored PDF hash. The fetch hash matches formalization/chumney-sem-small-samples. No additional mathematical target. Future-work passages are simulation extensions.
+
+### F192 The Effects of Simplifying Assumptions in Power Analysis
+
+Kevin A. Kupzyk. 2011. [fetched dissertation](https://digitalcommons.unl.edu/cehsdiss/106/).
+
+Fetch issue 96. The SHA-256 differs from c3b7af14877156cf6506e1c3c4ea57b23bcba6ce2139cf82bdce8417c451a1d1, the copy recorded in formalization/kupzyk-power-assumptions. Both are described as 143 pages, and the title and author match. No additional mathematical target. Chapter V reports findings and a software gap, not a conjecture.
+
+### F193 Navigating Non-Orthogonality: Exploring Latent Mean Differences in Unbalanced Conditions
+
+Jay B. Jeffries. 2024. [seed dissertation screen](https://digitalcommons.unl.edu/dissunl/216/).
+
+Fetch issue 97. Same SHA-256 as UNL-SEM-D055 and formalization/latent-contrasts. No second file. No additional mathematical target. The existing seed screen's question count 0 stands.
+
+### F194 The Examination of Nonparametric Person-Fit Statistics as Appropriate Measures of Response Bias in Ordered Polytomous Items
+
+Mark F. Beck. 2023. [fetched dissertation](https://digitalcommons.unl.edu/cehsdiss/425/).
+
+Fetch issue 98. The hash matches formalization/polytomous-person-fit. One direction asking for proofs of further polytomous generalizations. The other future-research items are simulation studies.
+
+### F195 Practical and Efficient Quantum Error Correction
+
+Oscar Higgott. 2024. [fetched dissertation](https://discovery.ucl.ac.uk/id/eprint/10186408/).
+
+Fetch issue 99. The hash matches formalization/higgott-quantum-decoding. WebsterJacobHiggott2026Distance is a different 2026 paper. Six conclusion directions. Present-day resolution was not assessed.
+
+### F196 Quantum key distribution and quantum error correction with bosonic systems
+
+Aurélie Denys. 2024. [fetched dissertation](https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf).
+
+Fetch issue 100. The hash matches formalization/denys-bosonic-pauli. Seven directions. The general asymptotic secret-key-rate question is solved in Chapter 1 and is not a target.
+
+### F197 Psychometrics and the modelling of publication bias (Paper I)
+
+Jonas Moss. 2020. [fetched paper](https://github.com/JonasMoss/phd-thesis/blob/c539b0bc4ab1424352ab93f5aaae5150f02fa9e3/papers/paperI.pdf).
+
+Fetch issue 101. Paper I at the pinned thesis path. The hash matches formalization/moss-score-reliability. The author name is not in the text layer. No additional mathematical target. Theorem 10 is proved in the paper. The Figure 1 caveat is not a conjecture.
+
+### F198 Tailoring 3D topological codes and decoders to biased noise
+
+Arthur Pesah. 2021. [fetched thesis](https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf).
+
+Fetch issue 102. The hash matches formalization/pesah-biased-cubic. Six Chapter 4 directions. The authors' plan to simulate more sizes before publication is not an inventory target.
+
+### F199 A comparison of population-averaged and cluster-specific approaches in the context of unequal probabilities of selection
+
+Natalie A. Koziol. 2015. [fetched dissertation](https://digitalcommons.unl.edu/cehsdiss/229/).
+
+Fetch issue 114. The hash matches formalization/koziol-weighted-multilevel. No additional mathematical target. Future directions are simulation and applied-method extensions.
 
 ## Question by question cross references
 

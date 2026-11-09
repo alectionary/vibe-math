@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated November 2, 2026. Low-confidence planning priors for all 436 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated November 9, 2026. Low-confidence planning priors for all 457 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -6797,3 +6797,339 @@ First milestone: Freeze Conjecture 7.4, then check whether a later paper already
 Gate: State the Macaulay-ring hypotheses and the degree bound on n as Conjecture 7.4. Do not treat the 2026 proposal as a present-day status.
 
 Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f188-finite-quotient-tensor).
+
+### L-F189-rdd-mediation-ci-correction
+
+Derive bias-correction methods for confidence intervals of mediation effects inside a regression-discontinuity design.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Chapter 5 says a different confidence-interval construction is necessary and that existing bias corrections do not extend. No formula is given, so no effort tier is assigned.
+
+First milestone: Write the integrated estimator and one candidate interval, then say which bias the interval is supposed to correct.
+
+Gate: Name the mediation-in-RDD estimator and the interval procedure being replaced.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f189-rdd-mediation-ci-correction).
+
+### L-F194-polytomous-generalizations
+
+Generalize further nonparametric person-fit statistics to polytomous models and prove those generalizations.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The second future-research item asks for proofs of polytomous generalizations. The statistic and the model are not fixed, so no effort tier is assigned.
+
+First milestone: Name one statistic and write the polytomous definition that would be proved.
+
+Gate: Choose one nonparametric person-fit statistic and the polytomous response model it is to be extended to.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f194-polytomous-generalizations).
+
+### L-F195-realtime-decoder
+
+Decode a stream of surface-code measurements in real time without giving up minimum-weight perfect matching or belief-matching accuracy.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The conclusion asks for a streaming decoder, and for FPGA or ASIC implementations that do not sacrifice matching accuracy. No runtime theorem is stated. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: State the code, the arrival model, and the accuracy being preserved.
+
+Gate: State the code, the arrival model, and the accuracy being preserved.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f195-realtime-decoder).
+
+### L-F195-belief-matching-speed
+
+Improve the practical speed of belief-matching relative to sparse blossom without giving up its accuracy.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The conclusion says belief-matching is asymptotically efficient and slower than sparse blossom in practice. It does not state a complexity bound to prove. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Fix the implementation and the speed measure being compared with sparse blossom.
+
+Gate: Fix the implementation and the speed measure being compared with sparse blossom.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f195-belief-matching-speed).
+
+### L-F195-qldpc-decoder-runtime
+
+Develop decoders for colour codes and general quantum LDPC codes whose expected running time improves on cubic BP-OSD.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The conclusion contrasts cubic expected BP-OSD time with linear expected matching and union-find time, and asks for more efficient general LDPC decoders. No algorithm is specified. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Name the code family and the running-time claim.
+
+Gate: Name the code family and the running-time claim.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f195-qldpc-decoder-runtime).
+
+### L-F195-memory-in-computation
+
+Use the subsystem-hyperbolic and hyperbolic Floquet constructions to reduce the space-time cost of a quantum algorithm.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The conclusion asks for a detailed study of Dehn twists, lattice surgery, and automorphism or ZX-duality gates on these codes, aimed at space-time cost. No cost theorem is stated. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Fix the algorithm, the code, and the space-time cost being reduced.
+
+Gate: Fix the algorithm, the code, and the space-time cost being reduced.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f195-memory-in-computation).
+
+### L-F195-sigf-other-codes
+
+Measure schedule-induced gauge fixing on Bacon-Shor, heavy-hexagon, compass, and subsystem codes whose detection events do not come in pairs.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Chapter 4 names those codes as further schedule-induced gauge-fixing cases. It does not state a threshold or a decoder theorem. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Choose one named code and the noise model and performance measure.
+
+Gate: Choose one named code and the noise model and performance measure.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f195-sigf-other-codes).
+
+### L-F195-floquet-variants
+
+Compare other Floquet-code variants, including CSS Floquet codes on the hyperbolic and semi-hyperbolic tilings, with CSS honeycomb codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Section 7.4 expects similar advantages and asks for the performance study. It does not state a threshold theorem. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Fix the variant, the tiling, and the comparison with honeycomb codes.
+
+Gate: Fix the variant, the tiling, and the comparison with honeycomb codes.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f195-floquet-variants).
+
+### L-F196-qpsk-analytical-bound
+
+Derive an analytical secret-key-rate bound for QPSK modulation that is tighter than the bound in this thesis.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The chapter solves the general asymptotic-rate question and leaves the QPSK gap: the bound matches an earlier numerical bound and is more pessimistic than another reference. No tighter formula is conjectured. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: State the QPSK protocol and the quantity the tighter bound must improve.
+
+Gate: State the QPSK protocol and the quantity the tighter bound must improve.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f196-qpsk-analytical-bound).
+
+### L-F196-composable-general-attacks
+
+Give a composable finite-size security proof of discretely modulated continuous-variable QKD against general attacks.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The conclusion says a composable finite-size proof against general attacks is what is needed, and Chapter 1 leaves the optimality of collective attacks unresolved. The proof is not outlined. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Fix the protocol, the finite-size estimand, and the attack class.
+
+Gate: Fix the protocol, the finite-size estimand, and the attack class.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f196-composable-general-attacks).
+
+### L-F196-2t-universal-gates
+
+Determine whether the 2T-qutrit, or the 2T-qubit, has a universal gate set.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The chapter calls this the most intriguing open question and does not conjecture an answer. The two-mode Clifford code later in the thesis is a different code and is not this question. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Use the 2T-qutrit defined in Chapter 2, and say which gate set would count as universal.
+
+Gate: Use the 2T-qutrit defined in Chapter 2, and say which gate set would count as universal.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f196-2t-universal-gates).
+
+### L-F196-exact-correction-criterion
+
+Give a criterion for when the general bosonic constructions exactly correct a stated class of physically relevant errors.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The conclusion points at a spin-code criterion in another paper and asks for the same kind of criterion here. The criterion is not stated. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Name the construction and the error set the criterion would decide.
+
+Gate: Name the construction and the error set the criterion would decide.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f196-exact-correction-criterion).
+
+### L-F196-explicit-recovery
+
+Give explicit error-correction procedures for the bosonic codes constructed in the thesis.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The conclusion calls explicit recovery an important open problem. No decoder is specified. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Choose one code and the recovery map being asked for.
+
+Gate: Choose one code and the recovery map being asked for.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f196-explicit-recovery).
+
+### L-F196-stabilizer-gate-tradeoff
+
+Decide whether the constructions trade the number of stabilisers against the number of easily implemented gates, and quantify that trade-off if it exists.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The conclusion says such a trade-off seems to exist, with the Clifford code as an example that is not a stabiliser code, and asks whether it exists and how to quantify it. No inequality is stated. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Define the two quantities being traded off.
+
+Gate: Define the two quantities being traded off.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f196-stabilizer-gate-tradeoff).
+
+### L-F196-construction-relations
+
+Relate the coset, representation, and quantum-spherical-code constructions when one code arises from more than one of them.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The conclusion asks how the three constructions connect and whether their groups can be related. No isomorphism is conjectured. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Name the two constructions and the code that is supposed to arise from both.
+
+Gate: Name the two constructions and the code that is supposed to arise from both.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f196-construction-relations).
+
+### L-F198-bposd-improvements
+
+Improve BP-OSD for the deformed 3D codes by addressing degeneracy and by trying higher-order ordered statistics decoding.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The conclusion lists message noise, memory effects, and higher-order OSD as ways to speed or improve the decoder. No new threshold is claimed. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Fix the decoder variant and the threshold or runtime being improved.
+
+Gate: Fix the decoder variant and the threshold or runtime being improved.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f198-bposd-improvements).
+
+### L-F198-coprime-dimensions
+
+Evaluate the threshold of the 3D code when the three dimensions are coprime.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The item generalizes a 2D observation and does not state a 3D threshold. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: State the lattice sizes and the noise model.
+
+Gate: State the lattice sizes and the noise model.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f198-coprime-dimensions).
+
+### L-F198-open-boundaries
+
+Extend the 3D threshold estimates from periodic boundaries to the open boundaries cited in the thesis.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The item names open boundaries as more experimentally relevant. No threshold value is conjectured. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Name the boundary conditions and the code.
+
+Gate: Name the boundary conditions and the code.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f198-open-boundaries).
+
+### L-F198-measurement-errors
+
+Include measurement errors in the threshold estimates for the deformed 3D codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The item asks for a more realistic noise model. The measurement-error model is not fixed. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Write the measurement-error model and the threshold being estimated.
+
+Gate: Write the measurement-error model and the threshold being estimated.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f198-measurement-errors).
+
+### L-F198-statphys-threshold
+
+Evaluate the deformed-code threshold with a statistical-physics model.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The introduction and the conclusion leave the statistical-physics threshold as future work. The conclusion says that work had been started by collaborators. No formula is stated here. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Name the statistical-physics model and the threshold it is supposed to compute.
+
+Gate: Name the statistical-physics model and the threshold it is supposed to compute.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f198-statphys-threshold).
+
+### L-F198-biased-2d-3d
+
+Compare 2D and 3D codes again with stabilizer deformations and biased noise included.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The item asks whether the deformed 3D code can be a relevant alternative to the surface code under biased noise. No overhead theorem is stated. Present-day resolution was not assessed, so no effort tier is assigned.
+
+First milestone: Fix the codes, the bias model, and the cost being compared.
+
+Gate: Fix the codes, the bias model, and the cost being compared.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f198-biased-2d-3d).
