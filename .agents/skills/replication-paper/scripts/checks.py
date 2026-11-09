@@ -496,6 +496,9 @@ def published_evidence_errors(plan) -> list:
         for key in ("location", "quantity"):
             if not _nonempty(item.get(key)):
                 errors.append(f"{label}: {key} is required")
+        if item.get("agreement") not in ("agree", "disagree", "not_compared"):
+            errors.append(f"{label}: agreement must be agree, disagree or not_compared "
+                          "(each disagree is analysed in DISAGREEMENTS.yaml)")
         source = item.get("value_source")
         if source not in VALUE_SOURCES:
             errors.append(f"{label}: value_source must be one of {', '.join(VALUE_SOURCES)}")

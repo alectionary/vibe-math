@@ -64,7 +64,8 @@ which moments are missing.
 Figures are evidence too. List every published quantity the paper compares
 against under the plan's `published_evidence`: `id`, `location`, `quantity`,
 `value_source` (`table`, `text`, `figure_digitized`, `figure_not_digitized`)
-and `plotted_in` (the figures that plot it, `[]` if none). A quantity read
+and `plotted_in` (the figures that plot it, `[]` if none), and `agreement`
+(`agree`, `disagree` or `not_compared`). A quantity read
 from prose while a figure plots it is rejected: digitize the figure with
 `scripts/digitize.py` (vector markers straight from the PDF's drawing paths,
 or colour blobs in a raster image, calibrated with `Axis` from ticks,
@@ -116,6 +117,41 @@ since, reason}` with the number of an open `fetch:` issue (the retrieval queue,
 #9). The done check then reports the study as `incomplete` (exit 3): it can be
 committed, but it is not done. Once the PDF is fetched, make and commit the
 inventory and extracted values, remove `source_missing`, and close the issue.
+
+## Every disagreement gets theories and tests
+
+A result that disagrees with the source is the start of an investigation, not
+its end. For each disagreement (a `mismatch` part, a `partly` part after a
+complete run, or a `published_evidence` entry marked `agreement: disagree`):
+
+1. State it exactly: what the source reports, what we find, where.
+2. Write at least two competing hypotheses. One is always that the error is
+   ours (our code, our reading of the source, our digitizing), and it is
+   tested first. Others may be on the source's side (a step not printed, a
+   step described but not well enough to reproduce, a printed formula that
+   disagrees with the printed numbers) or neither (Monte Carlo noise, a
+   threshold on a knife edge, the source's prose misdescribing its own figure).
+3. For each hypothesis, say what we would observe if it were true, then test
+   it: rerun the source's own code, refit, simulate the hypothesized mistake
+   and compare it with the source's digitized values, or compute how far a
+   value sits from a threshold in Monte Carlo standard errors. Read every
+   disputed statement against the source's own digitized figures as well as
+   against our run: if its figures contradict its text, the disagreement is
+   with its prose, not its results. Use only directly read points for this;
+   an occluded marker can carry a neighbouring series' value. Commit the
+   outputs.
+4. Conclude: explained, partly explained or unexplained; whose error (source,
+   ours, both, neither, undetermined); and how sure we are. An error of ours
+   is fixed, and the fix named, before the paper goes out.
+5. Discuss each one in the paper under `\label{dis:<id>}`: the theories, the
+   tests and what they showed, not only the verdict.
+
+Record this in `DISAGREEMENTS.yaml` next to the plan (format in
+`scripts/disagreements.py`). `preflight.py done` checks it mechanically: every
+disagreement is covered; each entry has at least two hypotheses including a
+tested one on our side; every test names committed files that exist; an
+untested hypothesis says why and that the person was told; the conclusion and
+`whose` follow from the verdicts; and the paper carries every label.
 
 ## Replication plan
 
@@ -219,6 +255,7 @@ equations, and appendix tables, are hints only.
 - [ ] Every blocker on the source's own path (software, code and seeds, data, files) was reported to the person when it happened, with what it costs and how to unblock it, and they decided. `checks.py seeds` was run on the source; each fallback record and each `input_unavailable` or `not_run` part carries that decision.
 - [ ] `source_sha256` and the committed `source_inventory` identify the source, and `source_items` covers every figure and table in it with committed values or a reported exclusion; or, with neither the PDF nor an inventory, the plan records `source_missing` with an open fetch issue and the study is reported as incomplete, not done. Other authors' PDFs and documents are never committed; the done check fails on any tracked outside `paper/`.
 - [ ] Every published quantity compared is in `published_evidence` with its `value_source`; any quantity a figure plots was digitized (`scripts/digitize.py`, with its reading error) or the person was told why not. Every `input_unavailable` for data records the `sufficient_statistics` search, and none is marked unavailable when the printed moments suffice.
+- [ ] Every disagreement is in `DISAGREEMENTS.yaml` with at least two tested-or-justified hypotheses (one that the error is ours, tested), committed test outputs, a conclusion, whose error and confidence, and a `\label{dis:<id>}` section in the paper; every `published_evidence` entry says `agreement`.
 - [ ] The full design was run, or the reduced run is a last resort with a cost estimate, what was tried, and exact `N of M` counts in the abstract and the body.
 - [ ] The headline verdict is no stronger than the headline parts that were run.
 - [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.
