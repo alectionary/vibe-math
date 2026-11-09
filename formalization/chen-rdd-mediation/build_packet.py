@@ -693,7 +693,7 @@ EFFECTS = [
                                  f'{max(v[2] for e in EFF for v in P49[e]):.2f}% of replications and below it in '
                                  f'{min(v[0] for e in EFF for v in P49[e]):.2f}-{max(v[0] for e in EFF for v in P49[e]):.2f}%, '
                                  f'by effect and cutoff',
-                            state='reported', artifact_ids=['pdf', 'sv_49'], locator=f'Table 4.9, {loc(138)}',
+                            state='reported', artifact_ids=['pdf'], locator=f'Table 4.9, {loc(138)}',
                             source_excerpt=excerpt('the imbalance measure showed that the true parameter value '
                                                    'systematically fell above the CIs', 164),
                             page_locator=loc(164), claim_type='numerical estimate',
