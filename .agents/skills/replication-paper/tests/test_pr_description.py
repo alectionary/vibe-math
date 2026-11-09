@@ -120,5 +120,45 @@ class Description(unittest.TestCase):
             self.assertIn('pr: reviewable primary PDF link required', json.loads(delivery.stdout)['errors'])
 
 
+class Rendered(unittest.TestCase):
+    """What GitHub stores and renders decides whether a reviewer can click the link."""
+
+    def tree(self, ref):
+        return f'https://github.com/{REPO}/tree/{ref}/formalization/example-study/paper'
+
+    def test_folder_links_count_and_must_render_as_anchors(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = study(tmp)
+            body = f'[paper folder]({self.tree(SHA)}) and [on master]({self.tree("master")})'
+            self.assertEqual(pr_description.description_errors(body, record(), root), [])
+            html = (f'<p><a href="{self.tree(SHA)}">paper folder</a> and '
+                    f'<a href="{self.tree("master")}">on master</a></p>')
+            self.assertEqual(pr_description.rendered_errors(body, html, record(), root), [])
+
+    def test_a_link_stored_inside_code_is_not_clickable(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = study(tmp)
+            # what a rewriting route stored for PR #90: the target wrapped in backticks
+            body = f'[finite_audit.pdf](``{link(SHA)})`` and [live](```{link("master")})```'
+            html = f'<p>finite_audit.pdf`` <code>{link("master")}</code></p>'
+            errors = pr_description.rendered_errors(body, html, record(), root)
+            self.assertTrue(any('not a clickable link' in e for e in errors))
+            self.assertTrue(any('rendered as code' in e for e in errors))
+
+    def test_live_mode_reads_the_stored_pull_request(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = study(tmp)
+            body = f'[pdf]({link(SHA)}) [live]({link("master")})'
+            html = f'<a href="{link(SHA)}">pdf</a> <a href="{link("master")}">live</a>'
+            original = pr_description.fetch_pull_request
+            pr_description.fetch_pull_request = lambda repo, n: (body, html)
+            try:
+                self.assertEqual(pr_description.live_errors(REPO, 90, record(), root), [])
+                pr_description.fetch_pull_request = lambda repo, n: (body, '<p>pdf live</p>')
+                self.assertEqual(len(pr_description.live_errors(REPO, 90, record(), root)), 2)
+            finally:
+                pr_description.fetch_pull_request = original
+
+
 if __name__ == '__main__':
     unittest.main()
