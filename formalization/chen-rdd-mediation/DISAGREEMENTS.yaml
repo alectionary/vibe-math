@@ -48,7 +48,8 @@ disagreements:
           files: [results/digitized_bias.csv, results/bias_structure.csv, results/digitize_crosscheck.csv]
         result: >-
           The MINT bias fit is -1.00*a*h with residual at most .001 against a reading error of at most
-          .002; the two coverage readings agree for 1,098 of 1,102 directly read points.
+          .002; the two coverage readings agree for 898 of 902 directly read points (978 of 982 with merged
+          panels; 1,282 of 1,357 including points hidden behind another series).
         verdict: ruled_out
       - id: printed-code-drops-h
         side: source
@@ -139,7 +140,9 @@ disagreements:
         test:
           method: Cross-check of the two independent readings of her coverage.
           files: [results/digitize_crosscheck.csv]
-        result: 1,098 of 1,102 directly read points agree within their combined reading error.
+        result: >-
+          898 of 902 directly read points agree within their combined reading error (978 of 982 with merged
+          panels; 1,282 of 1,357 including points hidden behind another series).
         verdict: ruled_out
       - id: wrong-value-per-condition
         side: source
@@ -154,20 +157,30 @@ disagreements:
         side: source
         statement: >-
           Population values were computed per case and were right for control cases but not for
-          treated cases, and coverage and bias were averaged over cases.
+          treated cases, and coverage was averaged over cases.
         prediction: >-
           Coverage would fall with n to a plateau near the control share; imbalance "above" would
-          approach the treated share and "below" a small fraction of the control share; bias would be
-          -lambda x treated share x the path product with one lambda for every cutoff.
+          approach the treated share and "below" a small fraction of the control share.
         test:
-          method: Her digitized coverage and imbalance by cutoff and n, and the bias multipliers from her bias figures.
-          files: [results/digitized_rates.csv, results/digitized_imbalance.csv, results/bias_structure.csv,
-                  results/disagreement_tests.json]
+          method: Her digitized coverage and imbalance by cutoff and n.
+          files: [results/digitized_rates.csv, results/digitized_imbalance.csv, results/disagreement_tests.json]
         result: >-
           Coverage plateaus at the control share and "above" at the treated share at every cutoff, with
-          "below" .008-.017. The bias multipliers give lambda = 1.96, 1.92 and 1.76: close for cutoffs 1-2
-          but not constant, so this rule does not reproduce cutoff 3 exactly.
+          "below" .008-.017.
         verdict: supported
+      - id: per-case-single-scale
+        side: source
+        statement: >-
+          The same per-case rule, with one scale of error for every cutoff, also produced her bias:
+          bias = -lambda x treated share x the path product with one lambda.
+        prediction: The bias multipliers divided by the treated share would give the same lambda at every cutoff.
+        test:
+          method: Bias multipliers from the fit of her digitized bias figures.
+          files: [results/bias_structure.csv, results/disagreement_tests.json]
+        result: >-
+          lambda = 1.96, 1.92 and 1.76 at cutoffs 1-3: close for cutoffs 1-2 but not constant, so one
+          scale does not reproduce cutoff 3. The rule that produced her bias is not determined.
+        verdict: ruled_out
       - id: treatment-labels-reversed
         side: source
         statement: >-
@@ -248,7 +261,7 @@ disagreements:
           files: [results/bias_structure.csv]
         result: The coefficient is stable across cutoffs and residuals are at most .010.
         verdict: ruled_out
-    conclusion: explained
+    conclusion: partly_explained
     whose: source
     confidence: medium
 
