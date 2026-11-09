@@ -11,14 +11,18 @@ From the repository root:
         --plan REPLICATION-PLAN.yaml --paper paper/paper.tex --root STUDY_ROOT
 
 Exit 0 when lavaan and OpenMx can be loaded, or when a fallback record
-supplies a justification and a separate validation. Exit 2 when the
+supplies a justification, a separate validation, and, for a blocked source
+path, the person's decision (see `fallback_errors`). Exit 2 when the
 preferred engine is missing and the fallback is absent or incomplete.
-`done` exits 0 when the replication plan passes, and 2 when it does not.
-A plan with `limit_schema: 1` is also checked for per-part limit kinds,
-part-specific reasons and evidence, and a not_run estimate and decision.
-A tractable not_run part is accepted when `decision_by` is `project` and a
-`decision_reason` records the resource decline. Plans that omit
-`limit_schema` skip that check.
+`done` exits 0 when the study is complete, 3 when it is incomplete (no errors,
+but neither the source PDF nor a committed inventory of it is available, as
+recorded in `source_missing` with its fetch issue: it may be committed, but it
+is not done), and 2 when it fails.
+Every plan is checked the same way (there is one plan format): per-part
+limit kinds, part-specific reasons and evidence, a not_run estimate and
+decision, and the published-evidence inventory. A tractable not_run part is
+accepted when `decision_by` is `project` and a `decision_reason` records the
+resource decline.
 Optional `--pr-body` and `--record` also check the PR description's primary
 PDF links. Omit them and `done` does not read a description.
 """
@@ -39,6 +43,7 @@ import checks
 import layout
 import pdf_links
 import source_acquisition
+import source_items
 
 
 def probe(which=None, runner=None) -> dict:
@@ -135,17 +140,15 @@ def assess(record: dict, fallback: dict | None = None) -> dict:
     justification = str(fallback.get("justification", "")).strip()
     validation = str(fallback.get("independent_validation", "")).strip()
     name = str(fallback.get("name", "")).strip()
-    if not name or not justification or not validation:
+    problems = fallback_errors(fallback)
+    if problems:
         return {
             "accepted": False,
             "engine": name or None,
             "fallback": True,
             "os": record.get("os"),
             "missing": missing,
-            "reason": (
-                "a fallback needs a name, a justification, and an "
-                "independent validation"
-            ),
+            "reason": "; ".join(problems),
         }
     return {
         "accepted": True,
@@ -154,9 +157,75 @@ def assess(record: dict, fallback: dict | None = None) -> dict:
         "os": record.get("os"),
         "missing": missing,
         "reason": None,
+        "kind": fallback.get("kind"),
+        "exact_reproduction": fallback.get("exact_reproduction"),
+        "decision": fallback.get("decision"),
         "justification": justification,
         "independent_validation": validation,
     }
+
+
+FALLBACK_KINDS = ("blocked", "domain")
+EXACT = ("possible", "not_possible", "unknown")
+
+
+def _filled(value) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def fallback_errors(fallback: dict) -> list:
+    """A fallback is a decision the person makes when the source's own path is blocked.
+
+    Every record names what the source used and whether running that path could
+    reproduce the source exactly (for example, seeded code in the source's
+    software). A `blocked` fallback also says what is lost, which ways to unblock
+    were considered, and who decided: `by: person` with the date, channel and a
+    summary of what the person was told and chose. `by: unreachable` is accepted
+    only when exact reproduction was not possible anyway. A `domain` fallback is a
+    scientific choice (the preferred engine does not implement the model), not a
+    workaround for something that failed to install.
+    """
+    if not isinstance(fallback, dict):
+        return ["fallback record must be an object"]
+    errors = []
+    for key in ("name", "justification", "independent_validation", "source_path"):
+        if not _filled(fallback.get(key)):
+            errors.append(f"fallback needs {key}")
+    kind = fallback.get("kind")
+    if kind not in FALLBACK_KINDS:
+        errors.append("fallback kind must be blocked (the source path could not be run here) "
+                      "or domain (the preferred engine does not implement the model)")
+    exact = fallback.get("exact_reproduction")
+    if exact not in EXACT:
+        errors.append("fallback needs exact_reproduction: possible, not_possible or unknown "
+                      "(run checks.py seeds on the source text)")
+    if not _filled(fallback.get("exact_reproduction_evidence")):
+        errors.append("fallback needs exact_reproduction_evidence (e.g. the seeds found in the source code)")
+    if kind != "blocked":
+        return errors
+    if not _filled(fallback.get("lost")):
+        errors.append("blocked fallback needs lost: what the source path would give that the fallback cannot")
+    options = fallback.get("unblock_options")
+    if not isinstance(options, list) or not options or not all(
+            isinstance(o, dict) and _filled(o.get("option")) and _filled(o.get("outcome")) for o in options):
+        errors.append("blocked fallback needs unblock_options: [{option, outcome}] for each way of running the "
+                      "source path that was considered (the person's own computer, network settings, another "
+                      "host, a data agreement; never the original authors)")
+    decision = fallback.get("decision")
+    by = decision.get("by") if isinstance(decision, dict) else None
+    if by == "person":
+        for key in ("date", "channel", "summary"):
+            if not _filled(decision.get(key)):
+                errors.append(f"blocked fallback decision by the person needs {key}")
+    elif by == "unreachable":
+        if not _filled(decision.get("reason")):
+            errors.append("blocked fallback decided without the person needs a reason they could not be reached")
+        if exact != "not_possible":
+            errors.append("a blocked path that could reproduce the source exactly (or might) cannot be given up "
+                          "without the person's decision; ask them and record decision.by = person")
+    else:
+        errors.append("blocked fallback needs decision.by: person (the person was told and chose) or unreachable")
+    return errors
 
 
 def _git(root: Path, *args):
@@ -250,6 +319,149 @@ def _display(root: Path, path: Path) -> str:
         return full.as_posix()
 
 
+def fallback_records(root: Path):
+    """Every JSON file in the study shaped like an engine fallback record.
+
+    Found by content, not by name, so a record cannot skip the decision check by
+    being left off a command line. Downloaded copies are ignored.
+    """
+    found = []
+    for path in sorted(Path(root).rglob("*.json")):
+        if "downloaded" in path.parts or ".git" in path.parts:
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeError, ValueError):
+            continue
+        if isinstance(data, dict) and "independent_validation" in data and "justification" in data:
+            found.append((path, data))
+    return found
+
+
+def _sha256(path) -> str:
+    import hashlib
+
+    h = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def source_gate(root, plan_obj, paper_text):
+    """Check the study against its source's figures and tables. Returns (errors, incomplete).
+
+    The source PDF may not be redistributable, so it need not be stored. What
+    must be committed is the evidence read from it: `source_inventory`, the
+    record written by `source_items.py inventory SOURCE.pdf --out FILE` (every
+    figure and table caption, with the PDF's sha256 and page count), and the
+    values read from each item (`source_items`).
+
+    PDF present: it must match `source_sha256`, and a fresh inventory of it must
+    equal the committed one. PDF absent: the committed inventory stands in for
+    it, and the study can be complete. With neither the PDF nor a committed
+    inventory, the plan must record `source_missing: {fetch_issue, since,
+    reason}` and the study is `incomplete`: committed, but never done. A
+    stand-in file is never acceptable; only the recorded sha256 counts.
+    """
+    locator = plan_obj.get("source_locator")
+    if not isinstance(locator, str) or not locator.strip():
+        return [], []           # _structure already reports a missing source_locator
+    if not locator.lower().endswith(".pdf"):
+        return [f"source: {locator} is not a PDF; the source gate reads figures and tables from the PDF"], []
+    root = Path(root)
+    source = Path(locator) if Path(locator).is_absolute() else root / locator
+    missing = plan_obj.get("source_missing")
+    expected = plan_obj.get("source_sha256")
+    inv_name = plan_obj.get("source_inventory")
+    errors = []
+    record = None
+    if inv_name is not None:
+        try:
+            record = source_items.load_inventory_record(root / str(inv_name))
+        except (OSError, ValueError, json.JSONDecodeError):
+            errors.append(f"source: source_inventory {inv_name} is missing or is not an inventory record")
+    has_sha = isinstance(expected, str) and re.fullmatch(r"[0-9a-f]{64}", expected) is not None
+    if record is not None and has_sha and record["source_sha256"] != expected:
+        errors.append("source: source_inventory was made from a different PDF than source_sha256")
+
+    if not source.is_file():
+        if record is not None and not errors:
+            if isinstance(missing, dict):
+                errors.append("source: remove source_missing; the committed inventory and extracted values "
+                              "stand in for the PDF")
+            if not has_sha:
+                errors.append("source: source_sha256 (64 hex) is required")
+            items = record["items"]
+            errors.extend(source_items.source_items_errors(plan_obj, items, root))
+            errors.extend(source_items.cited_label_errors(paper_text, items))
+            return errors, []
+        if errors:
+            return errors, []
+        if not isinstance(missing, dict):
+            return [f"source: {locator} is not here, and the plan has neither a source_inventory record "
+                    "nor a source_missing record {fetch_issue, since, reason}"], []
+        problems = []
+        if type(missing.get("fetch_issue")) is not int or missing["fetch_issue"] < 1:
+            problems.append("source_missing.fetch_issue must be the number of the open fetch issue")
+        for key in ("since", "reason"):
+            if not isinstance(missing.get(key), str) or not missing[key].strip():
+                problems.append(f"source_missing.{key} is required")
+        if problems:
+            return [f"source: {p}" for p in problems], []
+        return [], [f"source: {locator} is missing and no inventory of it was committed (fetch issue "
+                    f"#{missing['fetch_issue']}, since {missing['since']}); its figures and tables cannot be checked"]
+
+    if not has_sha:
+        errors.append("source: source_sha256 (64 hex) is required so the PDF checked is the one used")
+    elif _sha256(source) != expected:
+        errors.append(f"source: {locator} does not match source_sha256; a different file is not the source")
+        return errors, []
+    try:
+        items = source_items.inventory(source)
+    except ImportError:
+        return errors + ["source: PyMuPDF (fitz) is required to inventory the source's figures and tables"], []
+    except Exception as exc:            # a damaged PDF must not pass silently
+        return errors + [f"source: could not read {locator}: {type(exc).__name__}"], []
+    if record is None and inv_name is None:
+        errors.append("source: commit the inventory (source_items.py inventory SOURCE.pdf --out FILE) and "
+                      "name it in source_inventory, so the study can be checked without the PDF")
+    elif record is not None:
+        def key(i):
+            return (i["label"], i["page"], i.get("mode"), i.get("moments"))
+        if sorted(map(key, record["items"])) != sorted(map(key, items)):
+            errors.append("source: the committed source_inventory differs from a fresh inventory of the PDF; "
+                          "regenerate it")
+    errors.extend(source_items.source_items_errors(plan_obj, items, root))
+    errors.extend(source_items.cited_label_errors(paper_text, items))
+    return errors, []
+
+
+THIRD_PARTY_SUFFIXES = (".pdf", ".docx", ".doc", ".epub", ".djvu")
+
+
+def committed_document_errors(root) -> list:
+    """Other authors' documents are never committed; the values read from them are.
+
+    Any tracked PDF or word-processor file in the study outside `paper/` (where
+    our own builds live) is reported, so a source PDF, a supplement or a
+    downloaded article cannot slip into git. `git ls-files` sees only what is
+    committed or staged; gitignored local copies are fine.
+    """
+    try:
+        listed = subprocess.run(["git", "-C", str(root), "ls-files", "-z", "--", "."],
+                                capture_output=True, check=True).stdout.decode("utf-8", "replace")
+    except (OSError, subprocess.CalledProcessError):
+        return []
+    errors = []
+    for name in filter(None, listed.split("\0")):
+        parts = Path(name).parts
+        if name.lower().endswith(THIRD_PARTY_SUFFIXES) and "paper" not in parts:
+            errors.append(f"documents: {name} is committed; other authors' documents are not stored in git "
+                          "(commit the values read from them, and their sha256, instead)")
+    return errors
+
+
 def done_check(root, plan, paper, analysis=None) -> dict:
     """Fail when the plan, its first commit, or the paper's coverage claims do not line up."""
     root = Path(root).resolve()
@@ -262,11 +474,15 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         "plan": _display(root, plan_path),
         "paper": _display(root, paper_path),
         "baseline_revision": None,
+        "incomplete": [],
+        "status": "failing",
     }
     if not plan_path.is_file():
         errors.append("plan: file is missing")
         result["accepted"] = False
         return result
+    for path, fallback in fallback_records(root):
+        errors.extend(f"fallback {_display(root, path)}: {e}" for e in fallback_errors(fallback))
     try:
         plan_obj = checks.load_plan(plan_path.read_text(encoding="utf-8"))
     except (OSError, UnicodeError, ValueError):
@@ -309,6 +525,12 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         errors.append(baseline_error)
     if paper_error and plan_obj is None:
         errors.append(paper_error)
+    errors.extend(committed_document_errors(root))
+    incomplete = result["incomplete"]
+    if isinstance(plan_obj, dict):
+        gate_errors, gate_incomplete = source_gate(root, plan_obj, paper_text)
+        errors.extend(gate_errors)
+        incomplete.extend(gate_incomplete)
     if paper_text is not None:
         try:
             errors.extend(
@@ -343,7 +565,10 @@ def done_check(root, plan, paper, analysis=None) -> dict:
                 continue
             if not precedes:
                 errors.append(f"analysis {label}: plan was not committed before this analysis")
-    result["accepted"] = not errors
+    # complete: no errors and nothing missing. incomplete: no errors, but material
+    # evidence (the source PDF) is missing and recorded. failing: anything else.
+    result["status"] = "failing" if errors else ("incomplete" if result["incomplete"] else "complete")
+    result["accepted"] = result["status"] == "complete"
     return result
 
 
@@ -378,10 +603,14 @@ def done_main(argv) -> int:
             else:
                 decision["errors"].extend(_pr_description().description_errors(
                     body, record, args.root, head_branch=args.head_branch))
-        decision["accepted"] = not decision["errors"]
+        if decision["errors"]:
+            decision["status"] = "failing"
+        decision["accepted"] = decision["status"] == "complete"
     json.dump(decision, sys.stdout, indent=2)
     sys.stdout.write("\n")
-    return 0 if decision["accepted"] else 2
+    # 0 complete; 3 incomplete (no errors, but material evidence is missing and
+    # recorded, so the study may be committed but is not done); 2 failing.
+    return {"complete": 0, "incomplete": 3}.get(decision["status"], 2)
 
 
 def main(argv=None) -> int:
@@ -391,7 +620,7 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--fallback",
-        help="JSON file with name, justification, and independent_validation",
+        help="JSON fallback record (see fallback_errors for the required fields)",
     )
     args = parser.parse_args(argv)
     fallback = None
