@@ -124,6 +124,8 @@ class Inventory(unittest.TestCase):
         p = copy.deepcopy(base)
         p["source_items"][1]["uses_considered"]["evidence"] = {"useful": True, "why": "shows how treatment was coded"}
         self.assertTrue(any("so read it" in e for e in source_items.source_items_errors(p, self.items, self.root)))
+        p["source_items"][1]["uses_considered"]["evidence"]["declined_by_person"] = REPORT
+        self.assertEqual(source_items.source_items_errors(p, self.items, self.root), [])
 
     def test_the_paper_cannot_cite_a_label_the_source_lacks(self):
         errs = source_items.cited_label_errors("Chen's Figure 1.1 and Table 7.4 show ...", self.items)
