@@ -373,6 +373,19 @@ def finding_column_errors(table, table_rect, region):
             errors.append('Published/Ours columns must be separate and ordered left to right')
     return errors, columns
 
+def row_findings_claim(claim, effect):
+    """A row may carry its own findings when several rows share one claim (e.g. two contrasts of H2).
+
+    Row findings follow the same contract as claim findings and are validated the same way; the
+    page-1 cells then match the row's own text instead of repeating the claim's."""
+    own = effect.get('findings') if isinstance(effect, dict) else None
+    if isinstance(own, dict) and own:
+        merged = dict(claim)
+        merged['findings'] = own
+        return merged
+    return claim
+
+
 def finding_cell_errors(claim, row, row_rect, table_rect, region, columns):
     """Verify separate, correctly ordered own cells before any scalar early return."""
     errors, boxes = [], {}
@@ -437,6 +450,8 @@ def packet_errors(packet, source_text=None, paper_text=None):
         claim = claims.get(claim_id) if text(claim_id) else None
         if not claim or claim.get('level') != 'headline':
             errors.append(label+': headline claim reference required')
+        elif isinstance(row.get('findings'), dict) and row.get('findings'):
+            errors.extend(label+' row findings: '+e for e in finding_errors(row_findings_claim(claim, row), ids, source_text, paper_text))
         else:
             covered.add(claim_id)
         errors.extend(label+': '+e for e in applicability_errors(row, claim, claims))
@@ -668,7 +683,8 @@ def check_data(packet, writer, source, pdf_path, editorial_checks, bundled_sourc
                 if not table_rect.contains(rect):
                     errors.append('first-page: row lies outside table region')
                 claim = next(c for c in packet['claims'] if c['id'] == effect['claim_id'])
-                errors.extend('first-page '+effect['id']+': '+e for e in finding_cell_errors(claim, row, rect, table_rect, region, finding_columns))
+                cell_source = row_findings_claim(claim, effect)
+                errors.extend('first-page '+effect['id']+': '+e for e in finding_cell_errors(cell_source, row, rect, table_rect, region, finding_columns))
                 exceptional = effect.get('comparison_kind', 'scalar') != 'scalar'
                 if exceptional:
                     explanation = row.get('applicability_text')

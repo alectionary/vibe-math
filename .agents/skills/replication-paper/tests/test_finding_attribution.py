@@ -172,6 +172,17 @@ class Findings(unittest.TestCase):
         checks['findings']=[{'page': 7, 'location': 'Section 4.4', 'finding': 'Only a later page.'}]
         self.assertTrue(any('page-specific finding_attribution' in e for e in m.check(self.record,self.root)))
 
+    def test_row_may_carry_its_own_findings(self):
+        effect=self.packet['headline_effects'][0]
+        claim=next(c for c in self.packet['claims'] if c['id']==effect['claim_id'])
+        own={k: dict(v, text=v['text']+' (row)') for k, v in claim['findings'].items()}
+        effect['findings']=own
+        merged=m.row_findings_claim(claim, effect)
+        self.assertEqual(merged['findings']['ours']['text'], own['ours']['text'])
+        self.assertEqual(m.row_findings_claim(claim, {}), claim)
+        effect['findings']={'published': {'text': ''}, 'ours': {}}
+        self.assertTrue(any('row findings' in e for e in m.packet_errors(self.packet)))
+
     def test_scalar_arithmetic_still_checked_independently(self):
         self.assertEqual(m.check(self.record,self.root),[])
         self.packet['headline_effects'][0]['ours_effect']=99;self.save()
