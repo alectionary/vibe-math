@@ -1,0 +1,16 @@
+{
+  "name": "R lme4 REML and nlme with fixed-covariance GLS checks",
+  "kind": "blocked",
+  "source_path": "SAS/IML, SAS PROC MIXED, and Optimal Design 2.0",
+  "justification": "SAS and Optimal Design are absent on this host. The source uses a three-level mixed model with independent slope and intercept terms. R mixed-model engines reproduce that model class, and the formulaic arm can be computed from the source's stated formulas.",
+  "independent_validation": "The validation design fits the same generated data with nlme and two lme4 optimizers, and compares independent block and dense covariance implementations for exemplary power. Historical validation is in outputs/independent-engines.csv; the fresh run retains separate results.",
+  "exact_reproduction": "not_possible",
+  "exact_reproduction_evidence": "checks.py seeds on all 143 pages found no fixed seeds. Appendix A/B use RANNOR(0) and RANUNI(0); the original random streams and retained masks are not given.",
+  "lost": "Direct verification of SAS RNG, PROC MIXED convergence and degrees-of-freedom behavior, and Optimal Design executable output.",
+  "unblock_options": [
+    {"option": "Another host or the user's own machine with SAS/IML and Optimal Design", "outcome": "Offered; user chose the independent R reconstruction."},
+    {"option": "Change network settings on this host", "outcome": "Would not provide a SAS license or an installed Windows engine."},
+    {"option": "Data-use agreement", "outcome": "No private participant data; it would not supply an unpublished simulation stream."}
+  ],
+  "decision": {"by": "person", "date": "2026-11-09", "channel": "Codex chat", "summary": "After disclosure of the SAS/IML, PROC MIXED and Optimal Design blockers and loss of SAS-specific behavior, the user chose Use R with independent checks."}
+}
