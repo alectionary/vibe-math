@@ -357,7 +357,10 @@ def source_gate(root, plan_obj, paper_text):
     Absent: the plan must say so in `source_missing: {fetch_issue, since,
     reason}`. The study is then `incomplete`: it can be committed, but it never
     passes as complete, because the figures and tables cannot be checked. A
-    stand-in file is never acceptable; only the recorded sha256 counts.
+    stand-in file is never acceptable; only the recorded sha256 counts. The
+    record stays while a copy happens to be present: that copy is checked, but
+    the study stays incomplete until the PDF is stored durably and its fetch
+    issue is closed.
     """
     locator = plan_obj.get("source_locator")
     if not isinstance(locator, str) or not locator.strip():
@@ -382,8 +385,8 @@ def source_gate(root, plan_obj, paper_text):
         return [], [f"source: {locator} is missing (fetch issue #{missing['fetch_issue']}, since "
                     f"{missing['since']}); its figures and tables cannot be checked"]
     errors = []
-    if isinstance(missing, dict):
-        errors.append("source: the PDF is present; remove source_missing and close its fetch issue")
+    # A source_missing record may stay while the PDF is here: it tracks durable
+    # storage (the fetch issue), and a fresh checkout will not have this copy.
     if not isinstance(expected, str) or not re.fullmatch(r"[0-9a-f]{64}", expected):
         errors.append("source: source_sha256 (64 hex) is required so the PDF checked is the one used")
     elif _sha256(source) != expected:
@@ -397,7 +400,11 @@ def source_gate(root, plan_obj, paper_text):
         return errors + [f"source: could not read {locator}: {type(exc).__name__}"], []
     errors.extend(source_items.source_items_errors(plan_obj, items, root))
     errors.extend(source_items.cited_label_errors(paper_text, items))
-    return errors, []
+    incomplete = []
+    if isinstance(missing, dict):
+        incomplete.append(f"source: {locator} is here and was checked, but it is not stored durably "
+                          f"(fetch issue #{missing.get('fetch_issue')} is open); a later session could not re-check it")
+    return errors, incomplete
 
 
 def done_check(root, plan, paper, analysis=None) -> dict:
