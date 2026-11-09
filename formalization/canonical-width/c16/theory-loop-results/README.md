@@ -19,7 +19,7 @@ unresolved; the original width remains 16 or 18.
 ## Frozen inputs and clean replay
 
 The [scientific manifest](manifest.json) binds 630 files at immutable commit
-`bfc58d42ce21d83529f5e36d86a63d1be79448fa`. Its old 497 base dependencies
+`909dc04c70ed9ec3d024c64a35e4285a17d2c79d`. Its old 497 base dependencies
 and all local Python consumer modules are included. The
 [historical manifest receipt](historical-manifests-check.json) checks 331 hash
 entries at their own publication revisions. Later shared lessons incorporate

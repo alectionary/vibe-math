@@ -10,9 +10,9 @@ import datetime, hashlib, json, re, subprocess, sys, time
 
 OUT = Path(__file__).resolve().parent
 ROOT = OUT.parents[4]
-PRE = 'c04fffddc552a81735904dd9d0d9655621396f95'
-MERGED = '85bdc843134579a842ebe97622747ac1a83c3d71'
-MASTER = 'e89a439b057e9d5e76abc6af66f7b978471af3c6'
+PRE = 'ae2c14ed5e1b816055bfdb4def949a30faf8bd13'
+MERGED = '6d4f079b04a7216a37c35a63075e09a49a4ae6c9'
+MASTER = '934389ccd041fa5848a352f65ee81dddda3ae6e9'
 VALIDATORS = ('validate_literature.py','validate_open_problems.py',
               'validate_current_difficulty.py','validate_research_question_screening.py')
 

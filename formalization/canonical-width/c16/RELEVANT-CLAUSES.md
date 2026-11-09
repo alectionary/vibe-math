@@ -8,7 +8,7 @@ solve the same compact case. The original width16/18 question remains open.
 Canonical target: `L-F91-c16-unrestricted-width`; source issue8 is read-only.
 Session/work branch: `c16-relevant-20261029T1807` /
 `research/c16-relevant-20261029T1807`.
-Baseline: `dc04b0c0b395be8066eb2b45bbd866f4011851f7`.
+Baseline: `40a14afc9bb42b1b9e4c4fb18369470ec52a7cf8`.
 Started 2026-10-29T18:07:49Z. First decision gate: 18:52:49Z.
 Overall deadline: 20:07:49Z. This is the user's approved two-hour follow-up.
 

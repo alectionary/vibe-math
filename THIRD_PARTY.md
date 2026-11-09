@@ -1,6 +1,6 @@
 # Rights and provenance inventory
 
-Audit baseline: `1dbe3fbab99c8c43dbc8bc7abafff663d9898b4c` (master after PR #59),
+Audit baseline: `eb344d4e87d659f16fd815933d246ef5f7d9d0c1` (master after PR #59),
 2026-10-30. Read this together with [LICENSING.md](LICENSING.md).
 
 ## Coverage and limits

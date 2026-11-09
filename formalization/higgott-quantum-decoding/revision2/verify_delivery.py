@@ -27,6 +27,6 @@ evidence=[entry(p.relative_to(root).as_posix(),True) for p in sorted((root/'sour
 evidence.extend([entry('paper/references.tex',True),entry('README.md',True)])
 if record_dir.name=='revision3':
  evidence.extend(entry('revision3/'+name,True) for name in ['comparison_decisions.json','claim_inventory.json','comparisons.py','tests.log','inventory_check.json','manuscript_review.json'])
-template_path='../kupzyk-power-assumptions/paper/report.tex';template=entry(template_path);template['revision']='ca1d06209b03cad666db0a2ffb9678abc89a6b71'
-record=dict(primary=primary,source=entry(stem+'.tex',True),evidence=evidence,baseline_revision='8cbde40ad9db1b314e19e5878f2a8148ce2d958d',reproduction_revision=revision,artifact_revision=revision,template=template,build_inputs=[entry(p) for p in review['build_inputs']],review=review)
+template_path='../kupzyk-power-assumptions/paper/report.tex';template=entry(template_path);template['revision']='4775a6e8b86e0c569b428d1d1fd8c1d3755803bd'
+record=dict(primary=primary,source=entry(stem+'.tex',True),evidence=evidence,baseline_revision='2fb3afac52accde8c4dc57e8e939c347668eb396',reproduction_revision=revision,artifact_revision=revision,template=template,build_inputs=[entry(p) for p in review['build_inputs']],review=review)
 (record_dir/'delivery_record.json').write_text(json.dumps(record,indent=2)+'\n');print('Verified',len(evidence)+2,'remote files; PDF SHA256',primary['sha256'])

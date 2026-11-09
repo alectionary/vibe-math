@@ -40,7 +40,7 @@ sh formalization/moss-score-reliability/scripts/build_paper.sh
 python3 .agents/skills/replication-paper/scripts/check_citations.py formalization/moss-score-reliability/paper/score_weighting_and_reliability__a_replication_of_moss_2020.tex --references formalization/moss-score-reliability/paper/references.tex --log formalization/moss-score-reliability/outputs/paper-build.log
 ```
 
-build_tables.py regenerates headline.tex,comparison.tex,availability.tex and compliance.tex from the saved JSON records. The build runs LaTeX twice and creates the descriptively named main PDF. Build inputs are the main TeX, preamble.tex, references.tex, revision.tex and those four generated tables. Historical baseline and approved-template revision:69a290d2fadef4df1337d6ae93c31e0f784475a4. The final delivery record binds the rendered reviewer to all eight inputs, not just the main source.
+build_tables.py regenerates headline.tex,comparison.tex,availability.tex and compliance.tex from the saved JSON records. The build runs LaTeX twice and creates the descriptively named main PDF. Build inputs are the main TeX, preamble.tex, references.tex, revision.tex and those four generated tables. Historical baseline and approved-template revision:57b4e9a12a759070fa2c51404e5e76df7a735598. The final delivery record binds the rendered reviewer to all eight inputs, not just the main source.
 
 ## Re-extract source evidence
 

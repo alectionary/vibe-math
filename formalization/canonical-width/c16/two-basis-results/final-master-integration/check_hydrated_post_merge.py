@@ -8,7 +8,7 @@ from pathlib import Path
 import datetime,hashlib,json,subprocess,sys,tempfile,time
 OUT=Path(__file__).resolve().parent
 ROOT=OUT.parents[4]
-COMMIT='85bdc843134579a842ebe97622747ac1a83c3d71'
+COMMIT='6d4f079b04a7216a37c35a63075e09a49a4ae6c9'
 NAMES=('validate_literature.py','validate_open_problems.py','validate_current_difficulty.py','validate_research_question_screening.py')
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def git(*args):return subprocess.check_output(['git','-C',str(ROOT),*args])

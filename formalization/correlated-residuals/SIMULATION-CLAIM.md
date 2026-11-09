@@ -8,7 +8,7 @@ Session ID: `febd2771-c168-4e67-8ed4-277662d6eb85`.
 UTC start: `2026-10-27T17:39:24Z`.
 Project board: not requested.
 
-The previous claim at `64f01d6b3b5b6da4a42c8edb183b3f802e717826` was released at the last closeout. This commit is the new reservation for the same canonical target. It is preparation until the create-only ref update succeeds.
+The previous claim at `970bfd234a13b7f53110cdd02a13487a422331a5` was released at the last closeout. This commit is the new reservation for the same canonical target. It is preparation until the create-only ref update succeeds.
 
 ## Bounded question
 

@@ -5,12 +5,12 @@
 - Start: 2026-10-27T00:04:02Z.
 - Issue: https://github.com/alectionary/vibe-math/issues/8 (parent #3).
 - Work branch: `research/c16-takeover-20261027`.
-- Prior head: `593511c306339f994e7d0dd8cd52708e7e0ce5a9`.
+- Prior head: `9e21261094c77d7d161746beeaf8647710008c72`.
 - Scope: audit existing exclusions and pursue a global obstruction or a checked 128-pair weight-16 frame.
 - Answer contract: Lee arXiv:2610.06820v1 Proposition 9 asks for unrestricted width, including mixed Pauli representatives. A complete answer needs a physical 128-pair witness plus lower bound, or an exhaustive obstruction with a justified mixed reduction.
 - Existing result: checked 88-pair partial CSS frame, conditional mixed reduction, reported exclusions for 13–16 seed-4 monomials; width remains 16 or 18.
 - First bounded milestone: audit the forced partner list and quotient search, then test a global algebraic obstruction. Stop this block after a decisive result or a documented assessment of these routes. No expansion to other codes.
-- Research claim: create-only `refs/heads/claims/L-F91-c16-unrestricted-width`, acquired at ownership commit `e20b1db521bee1945f7d0bcadc2d3e7551dd7022`. No prior claim existed. Closeout releases only that exact SHA after verifying the pushed checkpoint.
+- Research claim: create-only `refs/heads/claims/L-F91-c16-unrestricted-width`, acquired at ownership commit `8f97d3b328075d75e3957f21a38f42bfbf9b9ba9`. No prior claim existed. Closeout releases only that exact SHA after verifying the pushed checkpoint.
 - User authorized takeover; no additional start permission required.
 - Research checkpoint: 2026-10-27T00:50:33Z, about 46.5 minutes after the recorded research start. The unrestricted question is not answered; this is a work-branch handoff.
 

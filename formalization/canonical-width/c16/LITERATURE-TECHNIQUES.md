@@ -3,7 +3,7 @@
 Session: codex-c16-literature-20261028T033734Z.
 Started2026-10-28T03:37:34Z. Canonical target: L-F91-c16-unrestricted-width,
 https://github.com/alectionary/vibe-math/issues/8 . Follow-up, not a new problem.
-Base:3e138b22f2f93c5bcc7f2f56bae21afc31ea0971.
+Base:8e96eeb6fd38b8ef96c84fd0b83931ffe205dd20.
 Work branch: research/c16-literature-20261028T033734.
 
 The original width remains16 or18; best physical partial frame88/128. Exact

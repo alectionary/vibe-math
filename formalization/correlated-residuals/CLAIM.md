@@ -13,7 +13,7 @@ This is a **new problem** in this repository, and a labeled restriction of an au
 - Issue: https://github.com/alectionary/vibe-math/issues/13
 - Work branch: `cursor/l-f102-correlated-residuals-4c01`
 - Claim ref (intended): `refs/heads/claims/L-F102-correlated-residuals`
-- Isolated checkout: worktree `/tmp/vibe-math-l-f102`, base `96ac6c493a4326d0575b7f1cd65e91f02d14de5c`
+- Isolated checkout: worktree `/tmp/vibe-math-l-f102`, base `581a900e430af6540a66a53b417e3484912344ef`
 - Project board: not requested
 - Study: authorized. This commit is preparation, not ownership. Ownership begins only after GitHub's create-reference call succeeds and is read back.
 - Next action after a confirmed claim: freeze the source equations from Mi et al. (2010), write the formal identification statement, and check the diagonal case and one-edge residual extensions.

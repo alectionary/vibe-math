@@ -6,7 +6,7 @@ Start with `paper/simplifying_assumptions_in_power_analysis__a_replication_of_ku
 
 ## Historical provenance
 
-Starting repository revision (before the replication code was added): `dbbdda83d1acce5ddd86e9ab7c27d79f2f300e12`. Original numerical-run skill SHA256: `1fd5e51cda8b58c8bcda00c3c43f521a7b1c791771067f1bb3b2125ea572bde3`.
+Starting repository revision (before the replication code was added): `b3457eb45200b5b90e7b170a16207a49618be4cf`. Original numerical-run skill SHA256: `1fd5e51cda8b58c8bcda00c3c43f521a7b1c791771067f1bb3b2125ea572bde3`.
 
 ## Reproduction prerequisites
 

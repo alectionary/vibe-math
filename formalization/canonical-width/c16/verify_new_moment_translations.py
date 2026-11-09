@@ -11,7 +11,7 @@ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     start=time.monotonic();rng=random.Random(202610300330);out=ROOT/'moment-resumption-results'
     global_path=out/'global-four-trial.json';replay_path=out/'global-four-trial-independent.json'
-    commit='a423fbe913ea02a7fa536e6994151fe65100f9d6'
+    commit='0fae8179616cfabe53888979f5c6b9759ecccfad'
     for p in (global_path,replay_path):
         relative='formalization/canonical-width/c16/'+str(p.relative_to(ROOT))
         assert hashlib.sha256(subprocess.check_output(['git','show',f'{commit}:{relative}'],cwd=ROOT)).hexdigest()==sha(p)

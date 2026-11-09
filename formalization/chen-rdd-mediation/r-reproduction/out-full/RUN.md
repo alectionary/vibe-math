@@ -1,6 +1,6 @@
 # Chen exact R replay, all 1,000 replications
 
-Successful summary-mode run of `chen_exact.R` on branch `grok/chen-r-full`, started from commit `73c595d4748bc0f659d66e278d40393cd3b0b854`.
+Successful summary-mode run of `chen_exact.R` on branch `grok/chen-r-full`, started from commit `6aaa23a1501f943510ba7742c00356ff6b6bc357`.
 
 ## Commands
 

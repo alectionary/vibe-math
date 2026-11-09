@@ -235,7 +235,7 @@ additional external scientific inputs.
 
 Repository: `alectionary/vibe-math`, branch
 `research/c16-structural-20261027T173245`, pinned commit
-`5e9b102b4af875ad9bed2d218711a3ac8ffe0002`.
+`872a3a9467947f65a30df636a38a7556abd00a52`.
 Full input SHA-256 hashes and the exact scientific read allowlist are recorded in
 `provenance.json`. It contains only SPEC.md and the four files listed there.
 

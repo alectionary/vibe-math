@@ -9,7 +9,7 @@ UTC start: `2026-10-27T18:49:33Z`.
 Project board: not requested.
 Draft PR: https://github.com/alectionary/vibe-math/pull/14.
 
-The gap claim at `d164f8295bb58b3f1ff6ad4c5536572a12834f04` was released at the previous closeout. This commit is the reservation for the assumption grid. It is preparation until the create-only ref update succeeds.
+The gap claim at `0f09a2bd34c783d014526c32ae577f9320baa7a1` was released at the previous closeout. This commit is the reservation for the assumption grid. It is preparation until the create-only ref update succeeds.
 
 ## Bounded question
 

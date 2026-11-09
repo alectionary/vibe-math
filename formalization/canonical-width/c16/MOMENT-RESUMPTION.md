@@ -13,7 +13,7 @@ with these final new inequalities has not yet been decided.
 Canonical target: `L-F91-c16-unrestricted-width` (issues3 and8).
 Session: `c16-moments-20261030T0025`.
 Branch: `research/c16-moments-20261030T0025`.
-Baseline: `806665b75d552de2fe85864bd4b1f76299d902e2`.
+Baseline: `0fa4c37da223e8e7da0b3f50260751b5426f5af1`.
 Start:2026-10-30T00:25:01Z. Hard deadline:2026-10-30T04:25:01Z
 (29 October,5:25–9:25p.m. America/Los_Angeles).
 
@@ -389,7 +389,7 @@ in a relaxation row bank, **not** in the 405-case source cover.
 
 The exact older-family feasible point and its 41 strict rank-cut separations
 also pass in a detached clean checkout of
-`a423fbe913ea02a7fa536e6994151fe65100f9d6`; that worktree remains clean.
+`0fae8179616cfabe53888979f5c6b9759ecccfad`; that worktree remains clean.
 See `clean-unified-replay.json` and `clean-replay-provenance.json`.
 Current planning now records the explicit resumption rather than the historical
 pause. Reconciliation and planning validators pass with unchanged counts:
@@ -621,7 +621,7 @@ additional information. No solve of that final intersection is claimed here.
 
 ## Preservation and independent replay
 
-The scientific checkpoint is `2c0824788c162ab24579c7311b08f112ec9d747b`.
+The scientific checkpoint is `470b44e0c6880f83696f83c14c160d07f0a2c0da`.
 Ten independently callable consumers pass in a detached clean checkout, with
 outputs kept outside that checkout. The replay covers augmented rank validity,
 span-closure dominance, final rank validity and strict separation, full combined
@@ -633,8 +633,8 @@ in `moment-resumption-results/final-clean-replay/`. The earlier global physical
 CNF replay remains an unchanged immutable dependency; its430-second replay is
 not silently counted as part of this44-second check.
 
-Concurrent master `4c78e0d9ec4fcdc0289d17b90e5ac40f0eaf5d4c` was merged without
-conflicts as `4d390f38df27407a5e5d5815931ded931119f1e3`. Those independent
+Concurrent master `27bacc812989fbc2c044980e761baca7d2baa0eb` was merged without
+conflicts as `b71aa124745fc141b4e024130fbf1479532baccc`. Those independent
 replication changes do not touch the C16 scientific inputs or central ledgers.
 The exact research artifacts remain identical to the scientific checkpoint.
 PR17 still reports `REVIEW_REQUIRED`, so publication to master is pending.
@@ -701,7 +701,7 @@ is `symmetry-bridge-independent.json`; no assertion of physical completion or
 new source resolution is involved.
 
 The additional physical-symmetry consumer also passes from a clean detached
-checkout of `fdb305e080590c4dfc4f77a903198b0866c8ea21`;
+checkout of `e538caf76c610bab4d654bb3e95e23b770126ad4`;
 `symmetry-bridge-clean-provenance.json` binds its receipt. At04:15:19Z the owned
 claim was deleted with its exact expected-SHA lease and verified absent, after
 both branches held the published results. This releases the bounded block's

@@ -26,7 +26,7 @@ Our dense/block GLS derivation, new simulated outputs, paired variance diagnosti
 
 ## Provenance and validation
 
-The numerical experiment used master dbbdda83d1acce5ddd86e9ab7c27d79f2f300e12 and the then-frozen skill SHA256 1fd5e51cda8b58c8bcda00c3c43f521a7b1c791771067f1bb3b2125ea572bde3. Original local implementation/artifact commit: ec340c7702a2924a1807269baf5ab686b88d0398.
+The numerical experiment used master b3457eb45200b5b90e7b170a16207a49618be4cf and the then-frozen skill SHA256 1fd5e51cda8b58c8bcda00c3c43f521a7b1c791771067f1bb3b2125ea572bde3. Original local implementation/artifact commit: ec340c7702a2924a1807269baf5ab686b88d0398.
 
 The subsequent citation revision was explicitly requested by the user. It changes manuscript attribution, corrects the SAS link, and strengthens future skill requirements. It does not rerun simulations, change an estimator, or retroactively claim the experiment used the updated skill. All433 numerical output files were checked against pre-revision SHA256 values and remained byte-identical.
 

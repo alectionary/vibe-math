@@ -3,7 +3,7 @@
 - Canonical target: `L-F91-c16-unrestricted-width`, Lee arXiv:2610.06820v1 Proposition9/equation50; issue https://github.com/alectionary/vibe-math/issues/8 .
 - Follow-up authorized by “Proceed to study the pool restrictions under matrix inversions, as you suggested.”
 - Session: `codex-c16-inversion-20261027T190522Z`; start2026-10-27T19:05:22Z.
-- Separate branch `research/c16-inversion-20261027T190522`, based on `e6280e125e67a3f7c583c2b5559ed38e20f4f8a2`. Prior PR17 is open and review-required; no master publication or rule override is claimed.
+- Separate branch `research/c16-inversion-20261027T190522`, based on `6b70cfc7947e772ed945fcb94b159b2d275a3931`. Prior PR17 is open and review-required; no master publication or rule override is claimed.
 - First bounded review endpoint20:35:22UTC; stop experiments by20:15 and reserve the remainder for verification/preservation. No new global exhaustive campaign. Short exact computations test candidate structural statements.
 - Current answer: width16 or18; best physical partial frame88 pairs; no Lean completion.
 
@@ -23,7 +23,7 @@ We now prioritize the structure of allowed inverse matrices over another search-
 
 ## Ownership
 
-The unique scope commit was pushed and the canonical claim acquired create-only, then read back at `d3c0bc0e6479a032ea2a1aae41c67fc96d9d8caf` before substantive research. The ownership commit stays fixed while the work branch advances. Release only that expected SHA after preserving the handoff. No Project or external announcement is requested; do not post issue comments.
+The unique scope commit was pushed and the canonical claim acquired create-only, then read back at `3222d035be52056e900f9baa51634d3db455d1f5` before substantive research. The ownership commit stays fixed while the work branch advances. Release only that expected SHA after preserving the handoff. No Project or external announcement is requested; do not post issue comments.
 
 ## First algebraic results
 
@@ -294,13 +294,13 @@ start, before the first review endpoint20:35:22UTC. No new experiment runs past
 the20:15 cutoff. Successful code/data and ordinary proofs are preserved on the
 inversion branch and in [PR17](https://github.com/alectionary/vibe-math/pull/17).
 The GitHub connector independently returned research snapshot
-`a59333233f9c4942c9a6e5ab1b858a94b41da480` with tree
+`c2600a7fc4e12685319030814b5d892d8394963f` with tree
 `23d1e891e71b48268589fb21622ceb7f506b895b`, matching the local tree.
 PR17 is OPEN, BLOCKED and REVIEW_REQUIRED; it has not been merged. No override
 was attempted. Issue8 remains open and unchanged, with zero comments.
 
 The canonical claim was released only after this preservation, using a lease
-against `d3c0bc0e6479a032ea2a1aae41c67fc96d9d8caf`; server matching-refs then
+against `3222d035be52056e900f9baa51634d3db455d1f5`; server matching-refs then
 returned an empty list. This session holds no claim. The final metadata commit
 records this handoff; all mathematical certificates remain those of the
 verified snapshot. [Structured handoff](inversion-results/handoff.json).

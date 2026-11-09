@@ -4,7 +4,7 @@ Canonical target: `L-F91-c16-unrestricted-width`, issue8 (read-only).
 Session: `c16-strategy-20261029T0321`; work branch
 `research/c16-strategy-20261029T0321`.
 Authorized start:2026-10-29T03:21:21Z; deadline:2026-10-29T09:21:21Z.
-Baseline:ffaa9f6f3513e1b91f34aac5741703ad39402d22.
+Baseline:fafd012eba8618ef8d706d636a21da6dfc47a2d1.
 The session was interrupted and explicitly resumed at2026-10-29T10:27Z,
 after the original deadline. The continuation completes saved proof checks and
 a bounded follow-up on three saved candidates; it is not six hours of claimed

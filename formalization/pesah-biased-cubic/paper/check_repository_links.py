@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[3]
 STUDY=ROOT/'formalization/pesah-biased-cubic'
 PDF=STUDY/'paper/biased_noise_thresholds_of_cubic_and_rhombic_codes__replication_of_pesah_2021.pdf'
 PREFIX='https://github.com/alectionary/vibe-math/'
-REPRO='ed52777cee600ce33e24d45a43f8938d8cc5d15d'
+REPRO='844848bf2f53c16e185f87d8e0c828d9498fcc39'
 def git(*args):return subprocess.check_output(['git','-C',str(ROOT),*args],text=True).strip()
 head=git('rev-parse','HEAD');master=git('rev-parse','refs/remotes/origin/master');rows=[];errors=[];nav=set();nann=0
 for n,page in enumerate(fitz.open(PDF),1):

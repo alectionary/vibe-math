@@ -9,7 +9,7 @@ UTC start: `2026-10-27T19:08:25Z`.
 Project board: not requested.
 Draft PR: https://github.com/alectionary/vibe-math/pull/14.
 
-The assumption-grid claim at `76a03bee0b2a15c6f612afaef61a2fcd5ebc69c5` was released at the previous closeout. This commit is the reservation for the QTL1 power search. It is preparation until the create-only ref update succeeds.
+The assumption-grid claim at `d4fb5a364436bcf103b0d49d38a5f946879fe469` was released at the previous closeout. This commit is the reservation for the QTL1 power search. It is preparation until the create-only ref update succeeds.
 
 ## Bounded question
 

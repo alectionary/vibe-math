@@ -203,7 +203,7 @@ Our follow-up `RQ-F91-c16-css-frame` is a project-derived search task. It is not
 - Issue: https://github.com/alectionary/vibe-math/issues/3
 - Help request: https://github.com/alectionary/vibe-math/issues/8
 - Work branch: `cursor/l-f91-c16-unrestricted-width-1697`
-- Claim ref: `refs/heads/claims/L-F91-c16-unrestricted-width` was created at `d417d1c9f811523120aa70caff10d517ed2af491` and released at the first closeout. This follow-up recreated it at `773fe8976c8c90345c81148fe33d1abdc15fac1d`. Closeout read that SHA back, deleted the ref with `--force-with-lease` on it, and a following read-back was empty. The work branch remains at `20dc4d0a261403e22317fdee7934b5fb91b06941`.
+- Claim ref: `refs/heads/claims/L-F91-c16-unrestricted-width` was created at `7132e38f81a2f37663fea877f7ed445fb537ce8d` and released at the first closeout. This follow-up recreated it at `1215f55d9454609af13df99dd340860abeef32a4`. Closeout read that SHA back, deleted the ref with `--force-with-lease` on it, and a following read-back was empty. The work branch remains at `2037a58fbf7251d80157823330d38751bb21f42c`.
 - Issue comment on #3 returned HTTP 403, `Resource not accessible by integration`, both in the first closeout and at this handoff. The result text is in this note and in pull request #4.
 - Session: `lf91-c16-20261026T174815Z-f4663e80`. Authorized start 2026-10-26T17:47:00Z. Deadline 2026-10-26T21:47:00Z.
 - X public search, `search_posts_all`, no posts written. Known-positive query `lifted product` returned posts. Query `"canonical width" OR "unrestricted canonical" OR C16,9 OR "1088,128,16"` returned result count 0. Query `2610.06820 OR "public-regular-logical-frames" OR "canonical frame width"` returned result count 0. A zero count is not a global absence.

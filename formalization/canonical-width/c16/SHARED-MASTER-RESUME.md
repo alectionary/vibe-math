@@ -4,7 +4,7 @@ Read [the completed block report](SHARED-MASTER-TWO-HOURS-RESULT.md) first.
 The source is still width 16 or 18, cover 405, physical partial 88/128, and
 zero full source anchors excluded. No optimization remains active.
 
-Scientific checkpoint: `3129963fcac399fe3422429aeed7247dbc2c9dd1`.
+Scientific checkpoint: `c9091b03ddc5f3bcfeaf6de03d591ea6c3a313ad`.
 Branch: `research/c16-shared-master-20261030T2207`.
 Existing publication PR: https://github.com/alectionary/vibe-math/pull/17.
 The completed block's claim must be released at closeout; acquire a fresh

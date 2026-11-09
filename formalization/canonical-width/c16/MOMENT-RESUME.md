@@ -7,7 +7,7 @@ width16 or18, sufficient selected-pair cover405, physical partial frame88/128,
 and zero full source anchors excluded. Do not restart an old cover sweep or
 count a local-moment exclusion as a full source case.
 
-Scientific revision: `2c0824788c162ab24579c7311b08f112ec9d747b`.
+Scientific revision: `470b44e0c6880f83696f83c14c160d07f0a2c0da`.
 Work branch: `research/c16-moments-20261030T0025`.
 PR17: <https://github.com/alectionary/vibe-math/pull/17>.
 Issue8: <https://github.com/alectionary/vibe-math/issues/8>.

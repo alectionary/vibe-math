@@ -70,8 +70,8 @@ For a new machine, select a suitable interpreter with the recorded packages.
 
 The broader36-stage source replay is archived under
 `coupling-results/final-clean-checkpoint0957/`, at immutable commit
-`1e852eea43956cbc38759e5182e6f3df9bb782d7`. The later clean checkout of
-`043a5bdca1b1691dee56e8ea164d959776729680` replays fourteen fresh stages,
+`d1c0d2a3a4ea9caff57194977d25b3c11db83e4d`. The later clean checkout of
+`c3b3e1fbe8ef335db12e632059eedb504cffd726` replays fourteen fresh stages,
 including the seven exchange checks and seven point15 checks, and verifies
 all old source bindings are unchanged. Its archive is
 `coupling-results/final-clean-checkpoint043a5bd/`.
