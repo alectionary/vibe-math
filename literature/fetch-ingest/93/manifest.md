@@ -1,0 +1,158 @@
+<!-- fetch-manifest: vibe-math-93-worker-20261109 -->
+
+```json
+{
+  "manifest_version": "0.3",
+  "manifest_id": "vibe-math-93-worker-20261109",
+  "supersedes": null,
+  "recorded_at": "2026-11-09T15:40:00Z",
+  "producer": {
+    "role": "retrieval_worker",
+    "name": "grokbot-retrieval-20261109T1525"
+  },
+  "campaign_id": "chen-rdd-mediation",
+  "priority": "high",
+  "retryable": false,
+  "requested_source_id": "https://digitalcommons.unl.edu/cehsdiss/403/",
+  "outcome": "verified",
+  "issue": {
+    "repository": "alectionary/vibe-math",
+    "number": 93,
+    "url": "https://github.com/alectionary/vibe-math/issues/93"
+  },
+  "document": {
+    "title": "Statistical Mediation Analysis in Regression Discontinuity Design for Causal Inference",
+    "author": "Donna Chen",
+    "year": 2021,
+    "document_type": "doctoral_dissertation",
+    "stable_ids": [
+      {
+        "scheme": "url",
+        "value": "https://digitalcommons.unl.edu/cehsdiss/403/"
+      }
+    ]
+  },
+  "discovered_identifiers": [],
+  "routes_tried": [
+    {
+      "id": "openalex-93",
+      "route": "openalex-oa@1",
+      "url": "https://api.openalex.org/works?search=Statistical+Mediation+Analysis+Regression+Discontinuity+Chen",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": "not_found",
+      "obtained_bytes": false,
+      "notes": "OpenAlex title search returned unrelated RDD works; no matching Chen 2021 UNL dissertation.",
+      "attempted_by": null
+    },
+    {
+      "id": "publisher-landing-93",
+      "route": "publisher-landing@1",
+      "url": "https://digitalcommons.unl.edu/cehsdiss/403/",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "Record HTML 200. Download control points at viewcontent.cgi. No PDF bytes from this route.",
+      "attempted_by": null
+    },
+    {
+      "id": "ir-record-93",
+      "route": "institutional-repository@1",
+      "url": "https://digitalcommons.unl.edu/cehsdiss/403/",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "Institutional repository record HTML 200. Public Download is viewcontent.cgi. No PDF bytes.",
+      "attempted_by": null
+    },
+    {
+      "id": "ir-viewcontent-93",
+      "route": "institutional-repository@1",
+      "url": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1414&context=cehsdiss",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:30:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "Cloudflare challenge page (Just a moment...). Bot mitigation, not an access restriction. No PDF bytes.",
+      "attempted_by": null
+    },
+    {
+      "id": "author-page-93",
+      "route": "author-page@1",
+      "url": "https://digitalcommons.unl.edu/do/search/?q=author%3A%22Donna%20Chen%22&start=0&context=10079136",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:30:00Z",
+      "http_status": 200,
+      "error_category": "not_found",
+      "obtained_bytes": false,
+      "notes": "Author/repository search lands on the same UNL dissertation record already logged; no separate author-page manuscript URL.",
+      "attempted_by": null
+    },
+    {
+      "id": "wayback-93",
+      "route": "wayback-available@1",
+      "url": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1414&context=cehsdiss",
+      "resolved_url": "https://web.archive.org/web/20240606014639id_/https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1414&context=cehsdiss",
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:32:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": true,
+      "notes": "Availability API closest timestamp 20240606014639. Fetched id_ URL; complete PDF.",
+      "attempted_by": null
+    }
+  ],
+  "artifact": {
+    "media_type": "application/pdf",
+    "sha256": "892f11399bca12d53b75bcc8131bef52539dd78f254d9117a20b253e9e7828e9",
+    "byte_length": 4416883,
+    "page_count": 204,
+    "committed_to_git": false,
+    "storage": {
+      "kind": "worker_local",
+      "locator": "worker/93/paper.pdf",
+      "cross_machine": false
+    }
+  },
+  "completeness": {
+    "classification": "complete_body",
+    "identity_matched": true,
+    "front_matter_only": false,
+    "preview": false,
+    "evidence": [
+      "DigitalCommons cover (cehsdiss/403, 12-2021) and title page match: Donna Chen, Statistical Mediation Analysis in Regression Discontinuity Design for Causal Inference.",
+      "sha256 892f11399bca12d53b75bcc8131bef52539dd78f254d9117a20b253e9e7828e9; page count 204 (issue previously recorded 203 / sha256 9206b3d8...); same work identity.",
+      "Page count is 204. Body and references through the final page are present in the extracted text.",
+      "Extracted text is 290325 Unicode characters (text_characters), distinct from the PDF byte_length 4416883 bytes."
+    ]
+  },
+  "extraction": {
+    "status": "extracted",
+    "method": "born_digital",
+    "ocr_applied": false,
+    "ocr_engine": null,
+    "readable": true,
+    "text_sha256": "2db3d0c80c1d0da1fbbb6fc1a58a0e7621117b1edbd75dbdfa267f48d2d71589",
+    "text_characters": 290325,
+    "unreadable_reason": null
+  },
+  "question_screen": {
+    "status": "not_screened",
+    "question_count": null,
+    "candidates": [],
+    "screen_owner": "research_agent"
+  },
+  "notes": "Complete PDF via wayback-available@1 after UNL viewcontent Cloudflare 403. Question count null for research agent. sha256 differs from the issue's previously verified copy 9206b3d824077d36c86b4935ff7f19f64b3fdebde7746943b8a94500fe11e557; this run's copy still matches title/author/identity and is the Wayback or live OA file obtained this session."
+}
+```

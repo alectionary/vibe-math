@@ -1,0 +1,115 @@
+{
+  "manifest_version": "0.3",
+  "manifest_id": "vibe-math-102-worker-20261109",
+  "supersedes": null,
+  "recorded_at": "2026-11-09T15:40:00Z",
+  "producer": {
+    "role": "retrieval_worker",
+    "name": "grokbot-retrieval-20261109T1525"
+  },
+  "campaign_id": "pesah-biased-cubic",
+  "priority": "low",
+  "retryable": false,
+  "requested_source_id": "https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf",
+  "outcome": "verified",
+  "issue": {
+    "repository": "alectionary/vibe-math",
+    "number": 102,
+    "url": "https://github.com/alectionary/vibe-math/issues/102"
+  },
+  "document": {
+    "title": "Tailoring 3D topological codes and decoders to biased noise",
+    "author": "Arthur Pesah",
+    "year": 2021,
+    "document_type": "masters_thesis",
+    "stable_ids": [
+      {
+        "scheme": "url",
+        "value": "https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf"
+      }
+    ]
+  },
+  "discovered_identifiers": [],
+  "routes_tried": [
+    {
+      "id": "openalex-102",
+      "route": "openalex-oa@1",
+      "url": "https://api.openalex.org/works?search=Tailoring+3D+topological+codes+biased+noise+Pesah",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "OpenAlex may list related works; bytes taken from the pinned author GitHub Pages PDF.",
+      "attempted_by": null
+    },
+    {
+      "id": "publisher-landing-102",
+      "route": "publisher-landing@1",
+      "url": "https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "GitHub blob HTML 200. Raw file URL is the public download. No PDF bytes from the HTML blob page.",
+      "attempted_by": null
+    },
+    {
+      "id": "author-page-102",
+      "route": "author-page@1",
+      "url": "https://raw.githubusercontent.com/artix41/artix41.github.io/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:30:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": true,
+      "notes": "Pinned author GitHub Pages raw PDF HTTP 200; complete MRes dissertation saved.",
+      "attempted_by": null
+    }
+  ],
+  "artifact": {
+    "media_type": "application/pdf",
+    "sha256": "f08f3ede0cfbd5411ca20cc223d5bed079fa9aefd1484805ba80cfc1360a4ea0",
+    "byte_length": 2697804,
+    "page_count": 66,
+    "committed_to_git": false,
+    "storage": {
+      "kind": "worker_local",
+      "locator": "worker/102/paper.pdf",
+      "cross_machine": false
+    }
+  },
+  "completeness": {
+    "classification": "complete_body",
+    "identity_matched": true,
+    "front_matter_only": false,
+    "preview": false,
+    "evidence": [
+      "Title page matches: Tailoring 3D topological codes and decoders to biased noise, Arthur Pesah, UCL MRes.",
+      "sha256 f08f3ede0cfbd5411ca20cc223d5bed079fa9aefd1484805ba80cfc1360a4ea0; 66 pages; no prior sha256 on the issue.",
+      "Page count is 66. Body and references through the final page are present in the extracted text.",
+      "Extracted text is 120577 Unicode characters (text_characters), distinct from the PDF byte_length 2697804 bytes."
+    ]
+  },
+  "extraction": {
+    "status": "extracted",
+    "method": "born_digital",
+    "ocr_applied": false,
+    "ocr_engine": null,
+    "readable": true,
+    "text_sha256": "2a844340b1507804128f4685c3566d23f7ca33c49378d0880d41241d7190aa28",
+    "text_characters": 120577,
+    "unreadable_reason": null
+  },
+  "question_screen": {
+    "status": "not_screened",
+    "question_count": null,
+    "candidates": [],
+    "screen_owner": "research_agent"
+  },
+  "notes": "Complete PDF from the pinned artix41.github.io commit named in the request. Question count null."
+}

@@ -1914,3 +1914,146 @@ Penelope Beall; Erenay Boyali; Nancy Chen; Ellen Chlachidze; Toan Trong Dao; Fre
 - Provenance: [source review ledger](../literature/fetched-papers-2026-11-02-issues-11-12.md).
 
 - Question screen: [full text screened](../literature/fetch-ingest/12/SCREEN.md); 1 linked canonical targets.
+
+## F189 — Statistical Mediation Analysis in Regression Discontinuity Design for Causal Inference
+
+Donna Chen. 2021 UNL dissertation; fetched copy, 204 pages. [Primary source](https://digitalcommons.unl.edu/cehsdiss/403/).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Chapter 5, Limitations and Future Directions, extracted lines 5571–5592.
+- Contribution: A mediation-in-RDD framework whose bootstrap intervals the author says do not support valid inferences.
+- Comparison limit: The bias-correction method is not written. Present-day resolution was not assessed.
+- Related canonical targets: [L-F189-rdd-mediation-ci-correction](OPEN-PROBLEMS.md#l-f189-rdd-mediation-ci-correction).
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-09.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/93/SCREEN.md); 1 linked canonical targets.
+
+## F190 — Constructing a Creative Self-Efficacy Inventory: A Mixed Methods Inquiry
+
+Daniel H. Abbott. 2010 UNL dissertation; fetch copy, 283 pages. [Primary source](https://digitalcommons.unl.edu/cehsdiss/68/).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Future Research, extracted lines 8309–8333.
+- Contribution: Inventory construction for creative self-efficacy. The fetch screen agrees with the existing UNL-SEM-D067 screen.
+- Comparison limit: Measurement and longitudinal directions are not mathematical targets. The seed PDF hash is a different 283-page copy.
+- Related canonical targets: .
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-09.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/94/SCREEN.md); 0 linked canonical targets.
+
+## F191 — Structural equation models with small samples: A comparative study of four approaches
+
+Frances L. Chumney. 2013 UNL dissertation, 146 pages. [Primary source](https://digitalcommons.unl.edu/cehsdiss/189/).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Limitations and Future Research, extracted lines 5863–5989.
+- Contribution: Small-sample comparison of ML, PLS, GSCA, and MCMC.
+- Comparison limit: The future-work sentences do not fix an estimand.
+- Related canonical targets: .
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-09.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/95/SCREEN.md); 0 linked canonical targets.
+
+## F192 — The Effects of Simplifying Assumptions in Power Analysis
+
+Kevin A. Kupzyk. 2011 UNL dissertation, 143 pages. [Primary source](https://digitalcommons.unl.edu/cehsdiss/106/).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Chapter V, General Discussion, extracted lines 5644–5718.
+- Contribution: Power-analysis bias from attrition, treatment imbalance, and unequal cluster sizes.
+- Comparison limit: The earlier hash was not reopened. Present-day resolution of the empirical claims was not reassessed.
+- Related canonical targets: .
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-09.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/96/SCREEN.md); 0 linked canonical targets.
+
+## F193 — Navigating Non-Orthogonality: Exploring Latent Mean Differences in Unbalanced Conditions
+
+Jay B. Jeffries. 2024 UNL dissertation, 191 pages. [Primary source](https://digitalcommons.unl.edu/dissunl/216/).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Limitations and Future Directions, extracted lines 6344–6459.
+- Contribution: Orthogonal latent-mean contrasts under unequal group sizes. The fetch screen agrees with the existing UNL-SEM-D055 screen.
+- Comparison limit: Future-work passages are empirical simulation extensions. RQ-D055-contrast-orthogonality stays a project-derived identity.
+- Related canonical targets: .
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-09.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/97/SCREEN.md); 0 linked canonical targets.
+
+## F194 — The Examination of Nonparametric Person-Fit Statistics as Appropriate Measures of Response Bias in Ordered Polytomous Items
+
+Mark F. Beck. 2023 UNL dissertation, 280 pages. [Primary source](https://digitalcommons.unl.edu/cehsdiss/425/).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Chapter V, Future Research, second item, extracted lines 6309–6319.
+- Contribution: Simulation study of nonparametric person-fit statistics for ordered polytomous items.
+- Comparison limit: The statistics to be generalized are not named. Present-day resolution was not assessed.
+- Related canonical targets: [L-F194-polytomous-generalizations](OPEN-PROBLEMS.md#l-f194-polytomous-generalizations).
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-09.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/98/SCREEN.md); 1 linked canonical targets.
+
+## F195 — Practical and Efficient Quantum Error Correction
+
+Oscar Higgott. UCL PhD thesis, 2024, 266 pages. [Primary source](https://discovery.ucl.ac.uk/id/eprint/10186408/).
+
+- Record type: academic source; access: full text.
+- Inspected locator: General conclusions, extracted lines 6868–6902.
+- Contribution: Sparse blossom, belief-matching, schedule-induced gauge fixing, and hyperbolic Floquet and subsystem codes.
+- Comparison limit: The directions do not state theorems. The 2026 distance paper is not this thesis.
+- Related canonical targets: [L-F195-realtime-decoder](OPEN-PROBLEMS.md#l-f195-realtime-decoder), [L-F195-belief-matching-speed](OPEN-PROBLEMS.md#l-f195-belief-matching-speed), [L-F195-qldpc-decoder-runtime](OPEN-PROBLEMS.md#l-f195-qldpc-decoder-runtime), [L-F195-memory-in-computation](OPEN-PROBLEMS.md#l-f195-memory-in-computation), [L-F195-sigf-other-codes](OPEN-PROBLEMS.md#l-f195-sigf-other-codes), [L-F195-floquet-variants](OPEN-PROBLEMS.md#l-f195-floquet-variants).
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-09.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/99/SCREEN.md); 6 linked canonical targets.
+
+## F196 — Quantum key distribution and quantum error correction with bosonic systems
+
+Aurélie Denys. 2024 thesis, pinned commit 5aefd7b6, 169 pages. [Primary source](https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Chapter 4 conclusion, extracted lines 9186–9308.
+- Contribution: An analytical collective-attack bound for discretely modulated CV QKD, and multimode bosonic code constructions.
+- Comparison limit: The solved asymptotic-rate question is not inventoried. Present-day resolution of the remaining directions was not assessed.
+- Related canonical targets: [L-F196-qpsk-analytical-bound](OPEN-PROBLEMS.md#l-f196-qpsk-analytical-bound), [L-F196-composable-general-attacks](OPEN-PROBLEMS.md#l-f196-composable-general-attacks), [L-F196-2t-universal-gates](OPEN-PROBLEMS.md#l-f196-2t-universal-gates), [L-F196-exact-correction-criterion](OPEN-PROBLEMS.md#l-f196-exact-correction-criterion), [L-F196-explicit-recovery](OPEN-PROBLEMS.md#l-f196-explicit-recovery), [L-F196-stabilizer-gate-tradeoff](OPEN-PROBLEMS.md#l-f196-stabilizer-gate-tradeoff), [L-F196-construction-relations](OPEN-PROBLEMS.md#l-f196-construction-relations).
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-09.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/100/SCREEN.md); 7 linked canonical targets.
+
+## F197 — Psychometrics and the modelling of publication bias (Paper I)
+
+Jonas Moss. Psychometrika submission header, 12 August 2020; Paper I of the 2020 thesis. [Primary source](https://github.com/JonasMoss/phd-thesis/blob/c539b0bc4ab1424352ab93f5aaae5150f02fa9e3/papers/paperI.pdf).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Section 6, Conclusion, extracted lines 1087–1107.
+- Contribution: Argument against standardized alpha and ordinal alpha, and a concrete ordinal reliability.
+- Comparison limit: An anonymized submission. Identity is the requested repository path.
+- Related canonical targets: .
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-09.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/101/SCREEN.md); 0 linked canonical targets.
+
+## F198 — Tailoring 3D topological codes and decoders to biased noise
+
+Arthur Pesah. UCL MRes thesis, submitted 1 September 2021, 66 pages. [Primary source](https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Chapter 4, future-work items 1–6, extracted lines 2013–2042.
+- Contribution: Deformed 3D toric and rhombic codes under biased noise, decoded with SweepMatch and BP-OSD.
+- Comparison limit: No threshold is conjectured. Present-day resolution was not assessed.
+- Related canonical targets: [L-F198-bposd-improvements](OPEN-PROBLEMS.md#l-f198-bposd-improvements), [L-F198-coprime-dimensions](OPEN-PROBLEMS.md#l-f198-coprime-dimensions), [L-F198-open-boundaries](OPEN-PROBLEMS.md#l-f198-open-boundaries), [L-F198-measurement-errors](OPEN-PROBLEMS.md#l-f198-measurement-errors), [L-F198-statphys-threshold](OPEN-PROBLEMS.md#l-f198-statphys-threshold), [L-F198-biased-2d-3d](OPEN-PROBLEMS.md#l-f198-biased-2d-3d).
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-09.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/102/SCREEN.md); 6 linked canonical targets.
+
+## F199 — A comparison of population-averaged and cluster-specific approaches in the context of unequal probabilities of selection
+
+Natalie A. Koziol. 2015 UNL dissertation, 222 pages. [Primary source](https://digitalcommons.unl.edu/cehsdiss/229/).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Chapter V, Future Directions, extracted lines 7076–7221.
+- Contribution: Comparison of weighted single-level and multilevel estimators under unequal selection probabilities.
+- Comparison limit: The level-mismatch sentence does not fix an estimand.
+- Related canonical targets: .
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-09.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/114/SCREEN.md); 0 linked canonical targets.
