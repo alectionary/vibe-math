@@ -172,6 +172,7 @@ ART = [
     ('inventory', 'source-inventory.json'),
     ('sv_47', 'source-values/table_4_7.csv'), ('sig_code', 'secondary/significance_conclusions.py'),
     ('sig', 'results/significance_conclusions.json'), ('r_cmp_csv', 'results/r_full_comparison.csv'),
+    ('mcse_code', 'secondary/mc_se_headline.py'), ('mcse', 'results/mc_se_headline.json'),
 ]
 artifacts = [dict(id=i, path=p, sha256=sha(p)) for i, p in ART]
 
@@ -196,6 +197,11 @@ def rounding_tol(n_inputs, k_rows):
 TOL2 = lambda k: rounding_tol(k, k)
 
 
+mcse = json.load(open(ROOT / 'results/mc_se_headline.json'))
+MC_HEAD = lambda e: (MC + f' Our {e} mean over 19,200 cells has a Monte Carlo standard error of about '
+                     f'{mcse[e]["se_cells_independent"]:.3f} percentage points if cells are independent and '
+                     f'{mcse[e]["se_cells_correlated_within_condition"]:.3f} if cells within a condition are fully '
+                     f'correlated (results/mc_se_headline.json).')
 claims = []
 
 
@@ -447,14 +453,16 @@ STMT_METHOD = ('Every Type I error and power statement in Chapter 4 that names c
 H_NOTE = (f'As a consistency check, every statement was also read on our cells with h replaced by 0 (other '
           f'factors unchanged; the verdict_if_h_were_0 column). Then {n_h0} of {len(verdicts)} statements hold, '
           f'against {n_agree} as designed; {len(H0_FIXES)} of the {len(robust_dis)} statements that disagree under '
-          f'both readings become agreements, and none that agrees becomes a disagreement. The {len(robust_dis) - len(H0_FIXES)} '
-          f'that still disagree are statements {rest} (the number column of results/statement_checks.csv). Chen also '
+          f'both readings become agreements, and none that agrees becomes a disagreement. With h = 0, '
+          f'{len(verdicts) - n_h0} statements still disagree under the strict reading: {rest} (which disagree under both '
+          f'readings) and ' + ', '.join(str(NUM[k]) for k in verdicts if h0v[k] == 'disagree' and k not in robust_dis) + ' '
+          f'(which agree with the .01 slack) (the number column of results/statement_checks.csv). Chen also '
           f'defines PNDE as "adding c\' and h" (printed p. 104), whereas with the mediator intercept zero in her '
           f'data-generating model the population PNDE is c\'. Her digitized Figures 4.17-4.28 match our rates read '
           f'with h = 0 at {min(pct_h0):.1f}-{max(pct_h0):.1f}% of points per figure (at {min(pct_h):.1f}-{max(pct_h):.1f}% '
           f'with h as designed; results/rates_agreement.csv), and each statement was also read against her own '
           f'figure points (verdict_on_chen_figures). Together with the exact replay of her code, which recovers h, '
-          f'this establishes that the data behind her results contained no interaction (DISAGREEMENTS.yaml h-absent). '
+          f'this indicates that the data behind her results contained no interaction (an inference from her outputs; her code and data for those runs are not available) (DISAGREEMENTS.yaml h-absent). '
           f'The remaining disagreements are threshold cases, her text against her own figures, and one TNDE cell set '
           f'explained by her particular random draws (DISAGREEMENTS.yaml threshold-noise, prose-versus-own-figure, '
           f'tnde-power-gap).')
@@ -575,7 +583,10 @@ claim(id='S9', level='supporting',
                      f'(PNIE, TNIE), the RDD is not in all {sigc["rct_significant"]} cells, as she says; but in '
                      f'{sigc["rct_not_significant_but_rdd_significant"]} cells ({", ".join(sigc["rdd_significant_cells"])}) '
                      'the RDD interval excludes zero where the RCT interval does not, so her p. 81 sentence that PNDE '
-                     'and TNDE "were not significant" holds for the RCT only (DISAGREEMENTS.yaml '
+                     'and TNDE "were not significant" holds for the RCT only. Her own Chapter 4 reading of the '
+                     'table (printed p. 85) agrees with ours cell by cell: it reports the RDD intervals for PNIE and '
+                     'TNIE as Type II errors and those for PNDE and TNDE at cutoffs 1-2 as Type I errors; the '
+                     'overgeneralization is in her abstract and the p. 143 summary only (DISAGREEMENTS.yaml '
                      'significance-conclusions).'),
       numerical='not applicable', reconstruction_scope='printed numbers only',
       limitations=['Read from printed intervals; the fits themselves cannot be rerun (S4).'],
@@ -584,6 +595,7 @@ claim(id='S9', level='supporting',
                     next_evidence='The restricted-use HSIS file would allow a refit.'))
 excerpt('made opposite statistical significance conclusions compared to the RCT estimates', 157)
 excerpt('TNDE were not significant at the', 95)
+excerpt('the RDD estimates would be a Type I error as a significant effect was falsely concluded', 99)
 
 claim(id='S6', level='supporting',
       statement='HSIS assumption checks: density, covariate balance (Table 4.3), residual correlations (Table 4.4) '
@@ -657,13 +669,13 @@ EFFECTS = [
          published_effect=pub_short, ours_effect=our_short, estimate_status='resolved', display_decimals=2,
          tolerance=TOL2(15), magnitude='smaller',
          direction='reversed direction' if our_short < 0 else 'same direction',
-         interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC),
+         interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC_HEAD('E2')),
     dict(id='E3', claim_id='H2', contrast_index=1, estimand=claims[1]['contrasts'][1]['definition'],
          units='percentage points', positive_means=claims[1]['contrasts'][1]['positive_means'],
          published_effect=pub_imb, ours_effect=our_imb, estimate_status='resolved', display_decimals=2,
          tolerance=rounding_tol(30, 15),
          magnitude='smaller', direction='same direction',
-         interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC),
+         interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC_HEAD('E3')),
     dict(id='E4', claim_id='H3', contrast_index=0,
          estimand=claims[2]['contrasts'][0]['definition'], units='rejection rate',
          positive_means=claims[2]['contrasts'][0]['positive_means'], published_effect=pub_mint, ours_effect=our_mint,
@@ -728,7 +740,9 @@ limitations = [
     'coverage and MINT results are inferred from her digitized figures and printed tables; they reproduce her patterns '
     'but are not read from her code (H1, H2, H3, S1).',
     'Figures 4.17-4.38 were read from images (reading errors up to about .02 on rates); points hidden behind another '
-    'series are flagged and not used for verdicts (H3, S2, S3).',
+    'series are flagged and not used for statement verdicts (S2, S3). The one exception is E4 (H3), whose published '
+    'value averages all three cutoffs including the partly hidden cutoff-1 point; the two directly read points give '
+    'the same mean (.063) with a reading error of about .009, so no label changes.',
     'RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the '
     'printed arithmetic and identities were checked (S5).',
     'The announced power analysis by the SD of Y is not reported, so it cannot be assessed (S8).',
