@@ -620,6 +620,7 @@ class LimitKinds(unittest.TestCase):
             headline(),
             limited("reshape-cost", "results/reshape_cost.json", status="not_attempted",
                     reason="Oracle call counts were not executed; the script is results/reshape_cost.py.",
+                    reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told the person; they chose to stop here"},
                     limit_kind=[{"kind": "not_run"}],
                     cost_estimate="About 1 CPU-minute for the six worked examples.",
                     decision="Not run in this pass.",
@@ -627,6 +628,7 @@ class LimitKinds(unittest.TestCase):
                     justification="The count is a short exact calculation, deferred only because the oracle implementation was still being checked."),
             limited("reshape-random", "sources/random-search.md", status="input_unavailable",
                     reason="The (3,4) seed matrices are not in the archived repository.",
+                    reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told the person; they chose to stop here"},
                     limit_kind=["input_unavailable"],
                     missing_input="original (3,4) seed matrices",
                     looked_in="sources/browser-extraction.txt and the code archive"),
@@ -637,6 +639,7 @@ class LimitKinds(unittest.TestCase):
             headline(),
             limited("reshape-cost", "results/reshape_cost.json", status="not_attempted",
                     reason="The resource count was left for later.",
+                    reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told the person; they chose to stop here"},
                     limit_kind=["not_run"],
                     cost_estimate="1 CPU-minute",
                     decision="1 CPU-minute",
@@ -650,6 +653,7 @@ class LimitKinds(unittest.TestCase):
             headline(),
             limited("threshold-table", "results/threshold_decision.json", status="partly",
                     reason="The N=8 grid at L=9 and L=11 is tractable and was declined for this project's compute limit.",
+                    reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told the person; they chose to stop here"},
                     limit_kind=["not_run"],
                     cost_estimate="About 54 CPU-hours per toric L=11 point, several days on 4 cores.",
                     decision="declined for resources",
@@ -663,6 +667,21 @@ class LimitKinds(unittest.TestCase):
         unnamed["parts"][1]["decision_reason"] = "See named artifacts and limitations."
         self.assertTrue(any("decision_reason" in item or "compute cost alone" in item
                             for item in errors(unnamed, PARTIAL_PAPER)))
+
+    def test_blocked_parts_must_be_reported_to_the_person(self):
+        data = plan([
+            headline(),
+            limited("seed-matrices", "sources/random-search.md", status="input_unavailable",
+                    reason="The (3,4) seed matrices are not in the archived repository.",
+                    limit_kind=["input_unavailable"],
+                    missing_input="original (3,4) seed matrices",
+                    looked_in="the code archive"),
+        ])
+        data["limit_schema"] = 1
+        self.assertTrue(any("reported_to_person" in item for item in errors(data, PARTIAL_PAPER)))
+        data["parts"][1]["reported_to_person"] = {"date": "2026-11-08", "channel": "chat",
+                                                  "summary": "asked whether to write to the author; declined"}
+        self.assertFalse(any("reported_to_person" in item for item in errors(data, PARTIAL_PAPER)))
 
     def test_several_limit_kinds_can_apply_to_one_part(self):
         data = plan([
