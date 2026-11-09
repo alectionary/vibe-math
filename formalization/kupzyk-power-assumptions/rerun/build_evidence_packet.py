@@ -103,7 +103,7 @@ def headline(key, statement, pub_text, our_text, locator, excerpt, source_file, 
                uncertainty_statement="The estimates describe the reconstructed design. Mask variation and figure reading error are considered separately.")
         if len(contrasts)>1 and i>0:
             row_excerpt = {
-                "SS": "an average decline of 0.85% in the negatively skewed condition",
+                "SS": "an average decline of 0.85% in the negatively skewed",
                 "A15": "The decrease in power as a result of 15% attrition per interval",
             }.get(ident, excerpt)
             e["findings"]=findings(ptext,otext,row_excerpt,list(range(len(contrasts))))
