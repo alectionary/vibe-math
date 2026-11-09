@@ -18,6 +18,10 @@ _spec.loader.exec_module(_stages)
 _link_spec = importlib.util.spec_from_file_location('replication_pdf_links', Path(__file__).with_name('pdf_links.py'))
 _links = importlib.util.module_from_spec(_link_spec)
 _link_spec.loader.exec_module(_links)
+_citation_spec = importlib.util.spec_from_file_location(
+    'replication_citations', Path(__file__).with_name('check_citations.py'))
+_citations = importlib.util.module_from_spec(_citation_spec)
+_citation_spec.loader.exec_module(_citations)
 REVIEW_ITEMS=('layout','headline_and_tolerance','citations','ledgers','links','independence_limits')
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def sha(value):return isinstance(value,str) and bool(re.fullmatch('[0-9a-f]{40}',value))
@@ -84,6 +88,10 @@ def check(record,root,legacy_audit=False,details=None,pr_body=None,head_branch=N
  for key in REVIEW_ITEMS:
   if not isinstance(items.get(key),str) or not items[key].strip():errors.append('manual review missing: '+key)
  if not legacy_audit:
+  if isinstance(source.get('path'), str) and source['path'].endswith('.tex'):
+   errors.extend(_citations.study_errors(root, source['path']))
+   if not any(isinstance(item, dict) and item.get('path') == 'citation-inventory.json' for item in evidence):
+    errors.append('citation-inventory.json must be included in delivery evidence')
   errors.extend(_stages.stage_errors(record,root))
   errors.extend(_stages._first.check(record,root))
   link_errors=_links.audit(record,root)

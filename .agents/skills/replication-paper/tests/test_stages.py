@@ -144,6 +144,12 @@ class Stages(unittest.TestCase):
             return dict(path=name, sha256=m.digest(self.root / name))
         abstract_text = case['abstract'] + ' Smith (2020) reported lower error for A and robustness across populations.'
         source = save('source.tex', r'\begin{abstract}'+abstract_text+r' \cite{smith2020}\end{abstract}'+case['introduction'])
+        with (self.root / 'source.tex').open('a') as manuscript:
+            manuscript.write(r'\section{Methods}\cite{smith2020}'
+                             r'\begin{thebibliography}{1}\bibitem{smith2020}Smith.\end{thebibliography}')
+        source['sha256'] = m.digest(self.root / 'source.tex')
+        citations = save('citation-inventory.json', json.dumps(dict(items=[dict(
+            subject='Original method', evidence='results.txt', key='smith2020', section='Methods')])))
         # A real PDF is required because acceptance extracts its link annotations.
         with fitz.open() as document:
             page = document.new_page()
@@ -193,7 +199,7 @@ class Stages(unittest.TestCase):
             (self.root / item['downloaded_path']).write_bytes((self.root / item['path']).read_bytes())
             return item
         r = dict(contract_version=2, repository='a/b', link_inventory=inventory, link_provenance=[], primary=dict(remote(pdf), role='manuscript'), source=remote(source),
-                 evidence=[remote(self.artifact)], packet=packet, writer_manifest=writer,
+                 evidence=[remote(self.artifact), remote(citations)], packet=packet, writer_manifest=writer,
                  artifact_revision=rev, reproduction_revision=rev, baseline_revision=rev,
                  template=dict(template, revision=rev), build_inputs=[source])
         r['review'] = dict(reviewer='independent reviewer', pdf_sha256=pdf['sha256'], source_sha256=source['sha256'],
@@ -208,6 +214,14 @@ class Stages(unittest.TestCase):
         self.assertEqual(d.check(r, self.root), [])
         r['review']['packet_sha256'] = '0'*64
         self.assertTrue(d.check(r, self.root))
+
+    def test_delivery_requires_a_citation_inventory_as_evidence(self):
+        r = self.delivery_record()
+        r['evidence'].pop()
+        (self.root / 'citation-inventory.json').unlink()
+        errors = d.check(r, self.root)
+        self.assertIn('citation-inventory.json must be included in delivery evidence', errors)
+        self.assertTrue(any('citation coverage:' in error for error in errors))
 
     def test_hash_correct_buried_verdict_delivery_fails(self):
         r = self.delivery_record(CASES[0])

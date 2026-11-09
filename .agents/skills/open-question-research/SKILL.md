@@ -410,6 +410,10 @@ graded claims, the availability section, and the pull-request description.
   and source-posed questions from our own follow-ups. Do not relabel a research
   direction as a numbered conjecture. Describe completed proofs as proofs or
   theorems rather than diminishing them as preliminary research notes.
+- Use the shared [citation coverage gate](../verified-release/references/citations.md)
+  for the manuscript. Build the inventory from the source-question and prior-art
+  records, imported theorems and methods, and used software. Require a passing
+  check and independent coverage review before delivering the manuscript.
 - Credit classical ingredients in related work. Keep concrete access and search
   limitations in one relevant passage or evidence ledger; avoid generic repeated
   priority disclaimers in the abstract, introduction and conclusion. An ordinary

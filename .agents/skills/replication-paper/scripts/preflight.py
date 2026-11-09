@@ -47,6 +47,7 @@ import commit_refs
 import paper_freshness
 import source_acquisition
 import source_items
+import check_citations
 
 
 def probe(which=None, runner=None) -> dict:
@@ -544,6 +545,8 @@ def done_check(root, plan, paper, analysis=None) -> dict:
     errors.extend(fresh["stale"])
     incomplete.extend(fresh["draft"])
     if paper_text is not None:
+        if (root / "writer-manifest.json").is_file() or (root / "citation-inventory.json").exists():
+            errors.extend(check_citations.study_errors(root, paper_path))
         try:
             errors.extend(
                 'links: ' + item if not item.startswith('links:') else item

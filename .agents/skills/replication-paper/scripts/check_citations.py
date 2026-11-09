@@ -1,41 +1,12 @@
-"""Check ordinary LaTeX citation integrity; semantic coverage needs human review.
+"""Compatibility entry point for the shared structural citation check."""
 
-Pass included reference files explicitly. Supports cite, citep, citet (optional
-notes/stars), bibitem keys and ordinary BibTeX entries; not a full TeX parser.
-"""
 import argparse
-from collections import Counter
 import json
 from pathlib import Path
-import re
+import sys
 
-
-def check_citations(paper, references, log=None):
-    def uncomment(text):
-        return re.sub(r"(?<!\\)%[^\n]*", "", text)
-
-    paper = uncomment(paper)
-    refs = uncomment(references)
-    cited = set()
-    for group in re.findall(r"\\cite(?:p|t)?\*?(?:\[[^\]]*\]){0,2}\{([^}]+)\}", paper):
-        cited.update(k.strip() for k in group.split(",") if k.strip())
-    keys = re.findall(r"\\bibitem(?:\[[^\]]*\])?\{([^}]+)\}", refs)
-    keys += re.findall(r"(?im)^\s*@(?!comment\b|string\b|preamble\b)\w+\s*\{\s*([^,\s]+)\s*,", refs)
-    defined = set(keys)
-    errors = []
-    if not cited:
-        errors.append("No in-text citations found")
-    if not defined:
-        errors.append("No bibliography entries found")
-    for label, values in (("Undefined citations", cited-defined),
-                          ("Uncited references", defined-cited),
-                          ("Duplicate references", {k for k,v in Counter(keys).items() if v > 1})):
-        if values:
-            errors.append(label + ": " + ", ".join(sorted(values)))
-    if log is not None and re.search(r"(?:Citation.*undefined|undefined citations|undefined references|multiply defined)", log, re.I):
-        errors.append("Build log contains unresolved or duplicate references")
-    return {"citations": len(cited), "references": len(defined), "errors": errors,
-            "limit": "Structural integrity only; verify claim support and source locators separately"}
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "scripts" / "release"))
+from citation_coverage import check_citations, study_errors  # noqa: E402,F401
 
 
 if __name__ == "__main__":
