@@ -1,5 +1,6 @@
 # Run from the repository root: Rscript --vanilla .../rerun/full_grid.R OUT WORKERS
 source('formalization/kupzyk-power-assumptions/rerun/profile_reml.R')
+source(file.path(study,'rerun/fast_generator.R'))
 args <- commandArgs(TRUE)
 stopifnot(length(args)==2L)
 out <- args[[1]]
@@ -19,6 +20,7 @@ jobs <- rbind(
 jobs$seed <- 20270001L+seq_len(nrow(jobs))
 jobs <- jobs[order(jobs$block,jobs$arm,jobs$cell),]
 run_job <- function(k) {
+  if (file.exists(file.path(out,'STOP'))) return(TRUE)
   j <- jobs[k,]
   fn <- file.path(out,sprintf('%s-%02d-%03d.csv',j$arm,j$cell,j$block))
   if (file.exists(fn)) return(TRUE)
@@ -28,10 +30,11 @@ run_job <- function(k) {
   effect <- if (j$arm=='null') 0 else .5
   draws <- replicate(batch,{
     d <- design(J,r$icc,r$attrition,r$treat,r$size,FALSE)
-    z <- generate(d,r$icc,effect)
-    f <- fit_profile(d,z,r$icc)
+    y <- generate_response(d,r$icc,effect)
+    f <- fit_profile(d,y,r$icc)
+    f <- f[!names(f) %in% c('logdet','rss','df_reml','variance_ratio')]
     t <- abs(f[['beta']]/f[['se']])
-    c(f,bw=as.integer(2*pt(-t,nrow(z)-J-2)<=.05),
+    c(f,bw=as.integer(2*pt(-t,length(y)-J-2)<=.05),
       od=as.integer(2*pt(-t,J-2)<=.05),
       icc_hat=f[['cluster_slope']]/(f[['cluster_slope']]+f[['person_slope']]))
   })

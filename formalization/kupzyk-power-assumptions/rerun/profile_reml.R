@@ -3,7 +3,8 @@ study <- 'formalization/kupzyk-power-assumptions'
 source(file.path(study, 'scripts/model.R'))
 Rcpp::sourceCpp(file.path(study, 'rerun/profile_reml.cpp'))
 fit_profile <- function(d, z, icc) {
-  s <- reml_statistics(as.integer(d$k), as.integer(d$cluster), z$y, max(d$cluster))
+  y <- if (is.numeric(z)) z else z$y
+  s <- reml_statistics(as.integer(d$k), as.integer(d$cluster), y, max(d$cluster))
   control <- max(d$cluster[d$group == 0])
   obj <- function(p) reml_eval(p, s, control)[[1L]]
   start <- c(.4, 2*(1-icc), .2, 2*icc)
