@@ -710,7 +710,11 @@ def check_data(packet, writer, source, pdf_path, editorial_checks, bundled_sourc
                 errors.append('first-page: explicit editorial pass required for '+name)
             if name in ('comparison_applicability', 'finding_attribution') and isinstance(item, dict):
                 findings = item.get('findings')
-                if not isinstance(findings, list) or not findings or any(not isinstance(f, dict) or type(f.get('page')) is not int or f.get('page') != 1 or not text(f.get('location')) or not text(f.get('finding')) for f in findings):
+                # At least one finding is about page 1; supporting findings may cite where the evidence sits.
+                if (not isinstance(findings, list) or not findings
+                        or any(not isinstance(f, dict) or type(f.get('page')) is not int or f.get('page') < 1
+                               or not text(f.get('location')) or not text(f.get('finding')) for f in findings)
+                        or not any(f.get('page') == 1 for f in findings)):
                     errors.append('first-page: page-specific '+name+' findings required')
     except (KeyError, TypeError, ValueError, OSError, ArithmeticError, ImportError, RuntimeError) as exc:
         errors.append('first-page: incomplete verification: '+str(exc))
