@@ -22,6 +22,9 @@ import source_items  # noqa: E402
 
 HAVE_FITZ = importlib.util.find_spec("fitz") is not None
 REPORT = {"date": "2026-11-08", "channel": "chat", "summary": "told the person; they agreed"}
+NOT_USEFUL = {k: {"useful": False, "why": "a path diagram with no numbers in it"}
+              for k in ("consistency", "reconstruction", "evidence")}
+NO_IDENTITY = {"identity_checks": "none", "identity_reason": "descriptive statistics with no relation among them"}
 
 
 def synthetic_source(path: Path) -> None:
@@ -80,8 +83,8 @@ class Inventory(unittest.TestCase):
         plan = {"source_items": [
             {"label": "Figure 1.1", "use": "read", "data_file": "results/fig11.csv"},
             {"label": "Figure 2.2", "use": "excluded", "reason": "a path diagram; it plots no values",
-             "reported_to_person": REPORT},
-            {"label": "Table 2.1", "use": "read", "data_file": "results/fig11.csv",
+             "reported_to_person": REPORT, "uses_considered": NOT_USEFUL},
+            {"label": "Table 2.1", "use": "read", "data_file": "results/fig11.csv", **NO_IDENTITY,
              "sufficient_statistics": {"found": True, "what": "means and SDs", "sufficient": False,
                                        "why": "no correlations, so the covariances cannot be rebuilt"}},
         ]}
@@ -93,6 +96,36 @@ class Inventory(unittest.TestCase):
         self.assertTrue(any("Figure 2.2: use excluded requires reported_to_person" in e for e in errs))
         self.assertTrue(any("Table 2.1" in e and "sufficient_statistics" in e for e in errs))
         self.assertTrue(any("Figure 9.9: not a caption in the source" in e for e in errs))
+
+    def test_every_number_is_put_to_work(self):
+        (self.root / "results").mkdir()
+        (self.root / "results" / "fig11.csv").write_text("n,bias\n500,0.01\n", encoding="utf-8")
+        base = {"source_items": [
+            {"label": "Figure 1.1", "use": "read", "data_file": "results/fig11.csv"},
+            {"label": "Figure 2.2", "use": "excluded", "reason": "a path diagram; it plots no values",
+             "reported_to_person": REPORT, "uses_considered": NOT_USEFUL},
+            {"label": "Table 2.1", "use": "read", "data_file": "results/fig11.csv",
+             "identity_checks": [{"identity": "effect = a b", "holds": True, "file": "results/fig11.csv"}],
+             "sufficient_statistics": {"found": True, "what": "means and SDs", "sufficient": False,
+                                       "why": "no correlations are printed"}}]}
+        self.assertEqual(source_items.source_items_errors(base, self.items, self.root), [])
+        import copy
+        p = copy.deepcopy(base)
+        p["source_items"][2].pop("identity_checks")
+        self.assertTrue(any("identity_checks" in e for e in source_items.source_items_errors(p, self.items, self.root)))
+        p = copy.deepcopy(base)
+        p["source_items"][2]["identity_checks"][0]["holds"] = False
+        self.assertTrue(any("names the disagreement" in e for e in source_items.source_items_errors(p, self.items, self.root)))
+        p["source_items"][2]["identity_checks"][0]["disagreement"] = "pnde-definition"
+        self.assertEqual(source_items.source_items_errors(p, self.items, self.root), [])
+        p = copy.deepcopy(base)
+        p["source_items"][1].pop("uses_considered")
+        self.assertTrue(any("uses_considered" in e for e in source_items.source_items_errors(p, self.items, self.root)))
+        p = copy.deepcopy(base)
+        p["source_items"][1]["uses_considered"]["evidence"] = {"useful": True, "why": "shows how treatment was coded"}
+        self.assertTrue(any("so read it" in e for e in source_items.source_items_errors(p, self.items, self.root)))
+        p["source_items"][1]["uses_considered"]["evidence"]["declined_by_person"] = REPORT
+        self.assertEqual(source_items.source_items_errors(p, self.items, self.root), [])
 
     def test_the_paper_cannot_cite_a_label_the_source_lacks(self):
         errs = source_items.cited_label_errors("Chen's Figure 1.1 and Table 7.4 show ...", self.items)
@@ -117,8 +150,8 @@ class SourceGate(unittest.TestCase):
                      "source_items": [
                          {"label": "Figure 1.1", "use": "read", "data_file": "results/fig11.csv"},
                          {"label": "Figure 2.2", "use": "excluded", "reason": "a path diagram; it plots no values",
-                          "reported_to_person": REPORT},
-                         {"label": "Table 2.1", "use": "read", "data_file": "results/fig11.csv",
+                          "reported_to_person": REPORT, "uses_considered": NOT_USEFUL},
+                         {"label": "Table 2.1", "use": "read", "data_file": "results/fig11.csv", **NO_IDENTITY,
                           "sufficient_statistics": {"found": True, "what": "means and SDs", "sufficient": False,
                                                     "why": "no correlations are printed"}}]}
 

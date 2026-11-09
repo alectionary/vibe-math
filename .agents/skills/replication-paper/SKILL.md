@@ -105,6 +105,28 @@ those values are scientific statements. With the verified PDF in hand:
    `use: excluded` with a specific `reason` and `reported_to_person`. A table
    flagged for moments also records `sufficient_statistics`.
 
+Put every number in the source to work before setting anything aside:
+
+- **Identities.** A table of results usually carries relations among its own
+  numbers: an effect equals a product of paths, a total equals its parts, a
+  test statistic equals estimate over SE, degrees of freedom match n. Check
+  each and record it under the item's `identity_checks` (`identity`, `holds`,
+  and the committed `file`). A failing identity is a disagreement and names
+  its entry in `DISAGREEMENTS.yaml`. A table with no such relation says
+  `identity_checks: none` with `identity_reason`.
+- **Values implied elsewhere.** Solve the identities for what they imply (an
+  intercept, a group mean, a treatment share) and compare it with the
+  source's other printed numbers.
+- **The source's other analyses as evidence.** An empirical chapter shows how
+  the author's own code behaves: whether it estimates a term the simulation
+  lost, how it codes treatment, which formula it applies. Use it to test
+  hypotheses about the simulation.
+- **Before excluding** a figure or table, record `uses_considered` for
+  `consistency`, `reconstruction` (recovering data or moments to rerun the
+  analysis) and `evidence` (bearing on a disagreement), each
+  `{useful: false, why}`. If any use exists, read the item instead, unless the
+  person declines that use (`declined_by_person: {date, channel, summary}`).
+
 `preflight.py done` checks this with or without the PDF. When the PDF is here,
 it must match `source_sha256` and a fresh inventory must equal the committed
 one. When it is not, the committed record stands in for it, and the study can
@@ -259,6 +281,7 @@ equations, and appendix tables, are hints only.
 - [ ] `REPLICATION-PLAN.yaml` lists every substantive part and was committed before analysis.
 - [ ] Every blocker on the source's own path (software, code and seeds, data, files) was reported to the person when it happened, with what it costs and how to unblock it, and they decided. `checks.py seeds` was run on the source; each fallback record and each `input_unavailable` or `not_run` part carries that decision.
 - [ ] `source_sha256` and the committed `source_inventory` identify the source, and `source_items` covers every figure and table in it with committed values or a reported exclusion; or, with neither the PDF nor an inventory, the plan records `source_missing` with an open fetch issue and the study is reported as incomplete, not done. Other authors' PDFs and documents are never committed; the done check fails on any tracked outside `paper/`.
+- [ ] Every read table records `identity_checks` (or `none` with a reason), every failing identity names its disagreement, and every excluded figure or table records `uses_considered` (consistency, reconstruction, evidence: none useful, each with a reason).
 - [ ] Every published quantity compared is in `published_evidence` with its `value_source`; any quantity a figure plots was digitized (`scripts/digitize.py`, with its reading error) or the person was told why not. Every `input_unavailable` for data records the `sufficient_statistics` search, and none is marked unavailable when the printed moments suffice.
 - [ ] Every disagreement is in `DISAGREEMENTS.yaml` with at least two tested-or-justified hypotheses (one that the error is ours, tested), committed test outputs, a conclusion, whose error and confidence, and a `\label{dis:<id>}` section in the paper; every `published_evidence` entry says `agreement`.
 - [ ] The full design was run, or the reduced run is a last resort with a cost estimate, what was tried, and exact `N of M` counts in the abstract and the body.
