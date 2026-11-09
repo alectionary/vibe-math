@@ -31,7 +31,7 @@ disagreements:
                   results/r_full_comparison.json, results/disagreement_tests.json]
         result: >-
           Her code recovers h: with all 1,000 replications the slope of estimated on true h is 0.9998,
-          1.0005 and 0.9999 at the three cutoffs. No condition-mean bias exceeds .018 for any effect
+          1.0005 and 0.9999 at the three cutoffs. No condition-mean bias exceeds .017 for any effect
           (0% beyond .10); 5.3% of the 19,200 cell biases are beyond 1.96 Monte Carlo SEs and 0.14%
           beyond 3.29, as expected with no bias. Her estimates and ours differ beyond 1.96 combined SEs
           in 5.3% of cells, and the SDs agree (median ratio 1.000). It behaves like our run, not like
@@ -130,7 +130,7 @@ disagreements:
           files: [r-reproduction/out-full/condition_summary.csv, results/r_full_comparison.json,
                   results/rates_agreement.csv, results/disagreement_tests.json]
         result: >-
-          Her code is unbiased (no condition-mean bias beyond .018 with 1,000 replications, h recovered), and her
+          Her code is unbiased (no condition-mean bias beyond .017 with 1,000 replications, h recovered), and her
           PNIE Type I and power agree with ours at 100% and 97% of directly read points, so her intervals' locations
           and widths match ours. Only the comparison with population values differs.
         verdict: ruled_out
@@ -380,7 +380,7 @@ disagreements:
           files: [r-reproduction/out-full/condition_summary.csv, results/r_full_comparison.json]
         result: >-
           Ours/hers = 1.014. Ours is 1.4% more variable, which lowers normal-approximation power by
-          about .01, a quarter of the .038 gap.
+          about .01, a quarter of the .039 gap.
         verdict: ruled_out
       - id: our-digitizing
         side: ours
@@ -389,7 +389,7 @@ disagreements:
         test:
           method: Directly read points of the same panel.
           files: [results/digitized_rates.csv]
-        result: Her four h series at n = 500 read .736-.762, all above ours.
+        result: Her three directly read h series at n = 500 read .736-.762 (the fourth is hidden), all above ours.
         verdict: ruled_out
       - id: monte-carlo-noise
         side: neither
@@ -419,8 +419,10 @@ disagreements:
             difference between the two is read.
           files: [r-reproduction/out-full/condition_summary.csv, results/r_full_comparison.json, results/digitized_rates.csv]
         result: >-
-          .715 on her datasets against .687 on ours, a difference of .029 of the .038 gap; mean TNDE bias
-          is -.0004 in hers and -.0087 in ours. The remaining .009 is within her reading error. A 3.7 SE
+          .715 on her datasets against .687 on ours, a difference of .029 of the .039 gap (her .7362 against
+          our .6975); mean TNDE bias is -.0004 in hers and -.0087 in ours. The remaining .010 is about 1.4
+          times her reading error of this point (.0071) and below one combined Monte Carlo and reading
+          error (about .012). A 3.7 SE
           gap is about what the most extreme of the 3,315 directly read rate points compared would show by
           chance.
         verdict: supported
