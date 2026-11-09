@@ -85,25 +85,15 @@ always re-extracts and validates the PDF rather than trusting that file alone.
 - The main-PDF/source/evidence URLs in the **delivery record and PR review** remain
   commit-pinned so the reviewed bytes can be verified. This does not authorize
   commit-pinned navigation inside the paper.
-- An immutable **same-repository provenance** link may point only to
-  `https://github.com/owner/repository/commit/FULL_40_CHARACTER_SHA`, with no fragment
-  or query. Its visible clickable label must be exactly `Reproduction revision`
-  or `Historical baseline` (case-insensitive). Alternatively, the full target SHA
-  may be clickable, optionally followed by a colon, with `reproduction revision`,
-  `immutable reproduction revision`, or `historical baseline` immediately before
-  it on the same rendered line, matching the declared role. Keep the role and
-  hash together so extraction can verify that relationship. Declare the actual annotation ID in `link_provenance` as
-  `{"link_id": "EXTRACTED_ID", "kind": "reproduction_revision"}` or
-  `{"link_id": "EXTRACTED_ID", "kind": "baseline_revision"}` respectively.
-  The target SHA must match the corresponding validated delivery-record revision.
-  No other exception kinds or discretionary navigation overrides are accepted.
-  A commit-pinned artifact file labeled "Reproduction revision" still fails.
-  Use master links for the associated files, with the immutable revision separately
-  identifying the reproducible snapshot.
+- The paper never links to a commit of this repository (`/commit/<sha>`) and names
+  no commit or working branch in its text: commit pins belong in the delivery record
+  and the pull request. `link_provenance` in the delivery record must be empty; the
+  checker refuses same-repository commit links (`commit_reference`) and any
+  provenance declaration (`provenance_declared`).
 - External scientific/software citations may retain DOI, release or immutable
   commit URLs. Do not rewrite them to this repository's master. Same-repository
-  home, issue and PR discussion links are allowed but cannot qualify as provenance
-  or replace required artifact navigation.
+  home, issue and PR discussion links are allowed but cannot replace required
+  artifact navigation.
 
 The checker verifies direct URI syntax and recorded artifact identity, not HTTP
 availability, redirects, source support, or whether line anchors identify the
