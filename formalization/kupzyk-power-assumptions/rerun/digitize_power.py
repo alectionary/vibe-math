@@ -17,7 +17,7 @@ panels = [
     (11,102,.15,82.8,273.57,[173.9,224.7,275.5,341.7,395.6,449.5]),
 ]
 with open(out,"w",newline="") as f:
-    writer=csv.writer(f)
+    writer=csv.writer(f,lineterminator="\n")
     writer.writerow(["figure","pdf_page","icc","allocation","size","method","attrition_pct",
                      "power","reading_error","x","y","read"])
     for fig,page,icc,top,bottom,cols in panels:

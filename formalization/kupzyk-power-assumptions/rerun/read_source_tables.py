@@ -15,7 +15,7 @@ def table(page, label):
 
 def save(name, header, rows):
     with (out / f"table-{name}.csv").open("w",newline="") as f:
-        w = csv.writer(f)
+        w = csv.writer(f,lineterminator="\n")
         w.writerow(header)
         w.writerows(rows)
 

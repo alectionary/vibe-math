@@ -23,7 +23,7 @@ def exact(n, beta):
 beta=brentq(lambda b: exact(75,b)-.8,0,1)
 probs=np.array([exact(n,beta) for n in sizes])
 with (out/"figure4-independent-demo.csv").open("w",newline="") as f:
-    w=csv.writer(f);w.writerow(["draws","seed_panel","n","exact_power","empirical_power"])
+    w=csv.writer(f,lineterminator="\n");w.writerow(["draws","seed_panel","n","exact_power","empirical_power"])
     for n_draws in (500,25600):
         for j in range(1,3):
             for n,p,y in zip(sizes,probs,rng.binomial(n_draws,probs),strict=True):

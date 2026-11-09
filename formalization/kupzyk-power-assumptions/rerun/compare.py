@@ -22,7 +22,7 @@ def read(path):
 
 def save(name,rows):
     with (args.out/name).open("w",newline="") as f:
-        w=csv.DictWriter(f,list(rows[0]));w.writeheader();w.writerows(rows)
+        w=csv.DictWriter(f,list(rows[0]),lineterminator="\n");w.writeheader();w.writerows(rows)
 
 def frac(r,k):
     return float(r[k]) if r[k] else None
