@@ -4,6 +4,8 @@ The plan's own lists say what was compared; this module reads the source PDF
 itself, so a figure or table that nobody listed still fails the done check.
 
     python3 source_items.py inventory SOURCE.pdf     # JSON: every caption found
+    python3 source_items.py inventory SOURCE.pdf --out source-inventory.json
+                                                     # the record to commit with the study
     python3 source_items.py stub SOURCE.pdf          # YAML to paste under source_items:
 
 A caption is a line that starts with "Figure N" or "Table N" (N may be dotted,
@@ -206,8 +208,38 @@ def stub(items) -> str:
     return "\n".join(out) + "\n"
 
 
+def inventory_record(pdf_path) -> dict:
+    """The inventory with the identity of the PDF it was read from, to commit with the study.
+
+    The PDF itself may not be redistributable; this record and the values read
+    from each item are what later sessions check against.
+    """
+    import hashlib
+
+    import fitz
+
+    data = Path(pdf_path).read_bytes()
+    with fitz.open(pdf_path) as doc:
+        pages = doc.page_count
+    return {"source_sha256": hashlib.sha256(data).hexdigest(), "page_count": pages,
+            "tool": "replication-paper/scripts/source_items.py", "items": inventory(pdf_path)}
+
+
+def load_inventory_record(path) -> dict:
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or not isinstance(data.get("items"), list) \
+            or not re.fullmatch(r"[0-9a-f]{64}", str(data.get("source_sha256", ""))):
+        raise ValueError("not a source inventory record")
+    return data
+
+
 def main(argv=None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
+    if len(args) == 4 and args[0] == "inventory" and args[2] == "--out":
+        record = inventory_record(args[1])
+        Path(args[3]).write_text(json.dumps(record, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(f"{len(record['items'])} items from {record['page_count']} pages -> {args[3]}")
+        return 0
     if len(args) == 2 and args[0] in ("inventory", "stub"):
         items = inventory(args[1])
         if args[0] == "inventory":

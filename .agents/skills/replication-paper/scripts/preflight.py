@@ -15,8 +15,9 @@ supplies a justification, a separate validation, and, for a blocked source
 path, the person's decision (see `fallback_errors`). Exit 2 when the
 preferred engine is missing and the fallback is absent or incomplete.
 `done` exits 0 when the study is complete, 3 when it is incomplete (no errors,
-but the source PDF is missing and recorded in `source_missing` with its fetch
-issue: it may be committed, but it is not done), and 2 when it fails.
+but neither the source PDF nor a committed inventory of it is available, as
+recorded in `source_missing` with its fetch issue: it may be committed, but it
+is not done), and 2 when it fails.
 Every plan is checked the same way (there is one plan format): per-part
 limit kinds, part-specific reasons and evidence, a not_run estimate and
 decision, and the published-evidence inventory. A tractable not_run part is
@@ -348,32 +349,58 @@ def _sha256(path) -> str:
 
 
 def source_gate(root, plan_obj, paper_text):
-    """Check the source PDF itself. Returns (errors, incomplete).
+    """Check the study against its source's figures and tables. Returns (errors, incomplete).
 
-    Present: `source_sha256` must match the file, and every figure and table in
-    it must be read or excluded in `source_items` (source_items.inventory reads
-    the PDF, so an item nobody listed still fails).
+    The source PDF may not be redistributable, so it need not be stored. What
+    must be committed is the evidence read from it: `source_inventory`, the
+    record written by `source_items.py inventory SOURCE.pdf --out FILE` (every
+    figure and table caption, with the PDF's sha256 and page count), and the
+    values read from each item (`source_items`).
 
-    Absent: the plan must say so in `source_missing: {fetch_issue, since,
-    reason}`. The study is then `incomplete`: it can be committed, but it never
-    passes as complete, because the figures and tables cannot be checked. A
-    stand-in file is never acceptable; only the recorded sha256 counts. The
-    record stays while a copy happens to be present: that copy is checked, but
-    the study stays incomplete until the PDF is stored durably and its fetch
-    issue is closed.
+    PDF present: it must match `source_sha256`, and a fresh inventory of it must
+    equal the committed one. PDF absent: the committed inventory stands in for
+    it, and the study can be complete. With neither the PDF nor a committed
+    inventory, the plan must record `source_missing: {fetch_issue, since,
+    reason}` and the study is `incomplete`: committed, but never done. A
+    stand-in file is never acceptable; only the recorded sha256 counts.
     """
     locator = plan_obj.get("source_locator")
     if not isinstance(locator, str) or not locator.strip():
         return [], []           # _structure already reports a missing source_locator
     if not locator.lower().endswith(".pdf"):
         return [f"source: {locator} is not a PDF; the source gate reads figures and tables from the PDF"], []
-    source = Path(locator) if Path(locator).is_absolute() else Path(root) / locator
+    root = Path(root)
+    source = Path(locator) if Path(locator).is_absolute() else root / locator
     missing = plan_obj.get("source_missing")
     expected = plan_obj.get("source_sha256")
+    inv_name = plan_obj.get("source_inventory")
+    errors = []
+    record = None
+    if inv_name is not None:
+        try:
+            record = source_items.load_inventory_record(root / str(inv_name))
+        except (OSError, ValueError, json.JSONDecodeError):
+            errors.append(f"source: source_inventory {inv_name} is missing or is not an inventory record")
+    has_sha = isinstance(expected, str) and re.fullmatch(r"[0-9a-f]{64}", expected) is not None
+    if record is not None and has_sha and record["source_sha256"] != expected:
+        errors.append("source: source_inventory was made from a different PDF than source_sha256")
+
     if not source.is_file():
+        if record is not None and not errors:
+            if isinstance(missing, dict):
+                errors.append("source: remove source_missing; the committed inventory and extracted values "
+                              "stand in for the PDF")
+            if not has_sha:
+                errors.append("source: source_sha256 (64 hex) is required")
+            items = record["items"]
+            errors.extend(source_items.source_items_errors(plan_obj, items, root))
+            errors.extend(source_items.cited_label_errors(paper_text, items))
+            return errors, []
+        if errors:
+            return errors, []
         if not isinstance(missing, dict):
-            return [f"source: {locator} is not here and the plan has no source_missing record "
-                    "{fetch_issue, since, reason}; open a fetch issue and record it"], []
+            return [f"source: {locator} is not here, and the plan has neither a source_inventory record "
+                    "nor a source_missing record {fetch_issue, since, reason}"], []
         problems = []
         if type(missing.get("fetch_issue")) is not int or missing["fetch_issue"] < 1:
             problems.append("source_missing.fetch_issue must be the number of the open fetch issue")
@@ -382,12 +409,10 @@ def source_gate(root, plan_obj, paper_text):
                 problems.append(f"source_missing.{key} is required")
         if problems:
             return [f"source: {p}" for p in problems], []
-        return [], [f"source: {locator} is missing (fetch issue #{missing['fetch_issue']}, since "
-                    f"{missing['since']}); its figures and tables cannot be checked"]
-    errors = []
-    # A source_missing record may stay while the PDF is here: it tracks durable
-    # storage (the fetch issue), and a fresh checkout will not have this copy.
-    if not isinstance(expected, str) or not re.fullmatch(r"[0-9a-f]{64}", expected):
+        return [], [f"source: {locator} is missing and no inventory of it was committed (fetch issue "
+                    f"#{missing['fetch_issue']}, since {missing['since']}); its figures and tables cannot be checked"]
+
+    if not has_sha:
         errors.append("source: source_sha256 (64 hex) is required so the PDF checked is the one used")
     elif _sha256(source) != expected:
         errors.append(f"source: {locator} does not match source_sha256; a different file is not the source")
@@ -398,13 +423,18 @@ def source_gate(root, plan_obj, paper_text):
         return errors + ["source: PyMuPDF (fitz) is required to inventory the source's figures and tables"], []
     except Exception as exc:            # a damaged PDF must not pass silently
         return errors + [f"source: could not read {locator}: {type(exc).__name__}"], []
+    if record is None and inv_name is None:
+        errors.append("source: commit the inventory (source_items.py inventory SOURCE.pdf --out FILE) and "
+                      "name it in source_inventory, so the study can be checked without the PDF")
+    elif record is not None:
+        def key(i):
+            return (i["label"], i["page"], i.get("mode"), i.get("moments"))
+        if sorted(map(key, record["items"])) != sorted(map(key, items)):
+            errors.append("source: the committed source_inventory differs from a fresh inventory of the PDF; "
+                          "regenerate it")
     errors.extend(source_items.source_items_errors(plan_obj, items, root))
     errors.extend(source_items.cited_label_errors(paper_text, items))
-    incomplete = []
-    if isinstance(missing, dict):
-        incomplete.append(f"source: {locator} is here and was checked, but it is not stored durably "
-                          f"(fetch issue #{missing.get('fetch_issue')} is open); a later session could not re-check it")
-    return errors, incomplete
+    return errors, []
 
 
 def done_check(root, plan, paper, analysis=None) -> dict:
