@@ -1,0 +1,44 @@
+# Fail when a commit in this push or pull request uses a consumer-domain
+# address. Published history is outside the range and is not read.
+
+name: Commit email domains
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  consumer-domains:
+    if: github.event_name == 'pull_request' || startsWith(github.ref, 'refs/heads/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch pull request commits
+        if: github.event_name == 'pull_request'
+        run: |
+          set -eu
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          if ! git cat-file -e "$base^{commit}" 2>/dev/null; then
+            git fetch --no-tags origin "$base"
+          fi
+          if ! git cat-file -e "$head^{commit}" 2>/dev/null; then
+            git fetch --no-tags origin "pull/${{ github.event.pull_request.number }}/head"
+          fi
+
+      - name: Check commits in the pushed or pull-request range
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+          PUSH_AFTER: ${{ github.sha }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: python3 scripts/check_commit_emails.py ci

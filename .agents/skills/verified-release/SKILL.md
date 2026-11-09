@@ -14,6 +14,14 @@ the shared release practice. Repository specifics, scripts and the worked
 example are in [vibe-math notes](references/vibe-math.md); file templates are in
 [release records](references/release-records.md).
 
+## Commit identity
+
+Make every commit as `alectionary <alectionary@users.noreply.github.com>`.
+Once per clone, run `git config core.hooksPath .githooks` so `commit-msg` and
+`pre-push` reject consumer-domain author, committer, and message addresses
+(noreply addresses stay allowed). Details are in
+[CONTRIBUTING.md](../../../CONTRIBUTING.md).
+
 ## 1. Ledger every claim with its evidence
 
 Give each claim one evidence label and keep it in notes, paper and announcement:

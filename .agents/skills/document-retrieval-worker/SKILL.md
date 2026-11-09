@@ -19,6 +19,14 @@ manifest, stores the PDF at the conventional local path, writes the question
 screen, and opens the pull request. How a worker is started (a person, a timer,
 a workflow) is a deployment choice and is not part of this procedure.
 
+## Commit identity
+
+Make every commit as `alectionary <alectionary@users.noreply.github.com>`.
+Once per clone, run `git config core.hooksPath .githooks` so `commit-msg` and
+`pre-push` reject consumer-domain author, committer, and message addresses
+(noreply addresses stay allowed). Details are in
+[CONTRIBUTING.md](../../../CONTRIBUTING.md).
+
 The versioned route list is [routes.json](routes.json). Site notes are under
 [references/](references/) and are read only when the source matches. The
 manifest contract is the queue skill's
