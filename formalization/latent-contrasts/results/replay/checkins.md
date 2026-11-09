@@ -63,3 +63,17 @@ Wall clock: cell 1 was 2074 s, cell 2 was 2637 s. Two cells total about 2.8 MB, 
 **Surprising:** cell 2 took 2637 s against 2074 s for cell 1, with 10794 converged of 11000 fitted against 10880. Same batch size, a bit more non-convergence.
 
 **Blocking:** none.
+
+## 2026-11-09T21:44Z (cell 3 still fitting)
+
+**Accomplished:** 2 of 36 cells. Commits `7d15dd67` (`mgcfa_true_n240_c1`, 2074 s) and `bc7a3802` (`mgcfa_true_n240_c2`, 2637 s). No new cell since 20:50Z.
+
+**New:** `mgcfa_true_n240_c3` is still running. It started 2026-11-09T20:46:02Z (elapsed about 50 minutes). Four workers are at about 99% CPU; the current fit batch has been alive about 5.5 minutes. `exportData` finished earlier. No new csv.gz yet. Memory is fine (MemAvailable about 3.7 GiB at the last look; no OOM).
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock: cell 1 2074 s, cell 2 2637 s, cell 3 past 3000 s and not finished. Condition 3 is the 45/45/5/5 allocation, and each fit is slower than in the balanced cell. If the remaining 34 cells average 50 minutes, the finish is about 28 hours from now, around 2026-11-11 02:00 UTC. That projection will be revised when cell 3 ends. Two cells are 2.8 MB; 36 cells stay near 50 MB, under 100 MB. The exactness gate on cell 1 remains FAIL.
+
+**Surprising:** condition 3 fits are taking longer per batch than conditions 1 and 2. The workers are busy, not stalled.
+
+**Blocking:** none.
