@@ -556,6 +556,8 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         errors.extend(commit_refs.commit_reference_errors(paper_text, root))
         pdf = layout.paper_pdf(paper_path)
         errors.extend(layout.layout_errors(paper_text, paper_path, pdf))
+        errors.extend(layout.title_errors(
+            paper_text, paper_path, pdf, required=paper_path.suffix.lower() == ".tex" and (root / "writer-manifest.json").is_file()))
     if revision is not None:
         for item in analysis or []:
             analysis_path = Path(item) if Path(item).is_absolute() else root / item

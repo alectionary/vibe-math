@@ -24,6 +24,10 @@ def sha(value):return isinstance(value,str) and bool(re.fullmatch('[0-9a-f]{40}'
 def _pr_description():
  spec=importlib.util.spec_from_file_location('replication_pr_description', Path(__file__).with_name('pr_description.py'))
  module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module); return module
+_layout_spec = importlib.util.spec_from_file_location(
+    'replication_layout', Path(__file__).with_name('layout.py'))
+_layout = importlib.util.module_from_spec(_layout_spec)
+_layout_spec.loader.exec_module(_layout)
 def check(record,root,legacy_audit=False,details=None,pr_body=None,head_branch=None):
  root=Path(root).resolve();errors=[]
  if not isinstance(record,dict):return ['record must be an object']
@@ -64,6 +68,15 @@ def check(record,root,legacy_audit=False,details=None,pr_body=None,head_branch=N
  primary=obj(record.get('primary'),'primary');source=obj(record.get('source'),'source')
  if primary.get('role')!='manuscript':errors.append('primary: main manuscript required')
  artifact(primary,'primary',True,revision if sha(revision) else None);artifact(source,'source',True,revision if sha(revision) else None)
+ source_path=source.get('path'); pdf_path=primary.get('path')
+ if not legacy_audit and isinstance(source_path,str) and source_path.lower().endswith('.tex') and isinstance(pdf_path,str):
+  try:
+   tex=(root/source_path).read_text(encoding='utf-8')
+  except (OSError,UnicodeError):
+   errors.append('title page: editable manuscript is unreadable')
+  else:
+   errors.extend(_layout.title_errors(
+       tex,root/source_path,root/pdf_path,required=_layout.uses_series_preamble(tex)))
  evidence=seq(record.get('evidence'),'evidence')
  if not evidence:errors.append('linked evidence required')
  for i,item in enumerate(evidence):artifact(item,f'evidence[{i}]',True,revision if sha(revision) else None)
