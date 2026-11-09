@@ -341,7 +341,9 @@ study considers the paper:
 - [ ] Optional caption hints were reviewed.
 - [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
 - [ ] Rendered pages for headline and Published entries were inspected when the PDF could be obtained. Text reading and visual inspection are recorded separately.
-- [ ] Page 1 was compared visually with a reference paper that uses the shared approved preamble (for example the Kupzyk replication). The geometry check only measures the text block, title, and abstract inset.
+- [ ] Page 1 was compared visually with the earlier Kupzyk replication. The
+  [shared academic title page](../verified-release/references/title-page.md)
+  check passed for the exact manuscript PDF, including the date and spacing.
 - [ ] Before reporting the pull request, its description links the built primary PDF near the top: a reviewable link pinned to a 40-hex SHA or the head branch, and the intended master link for that same path, labeled as live after merge. Run `scripts/pr_description.py` on the description and the delivery record, then again with `--pr NUMBER` after posting: the links must be clickable in the pull request as GitHub renders it, not only present in the text. Folder links (`tree/<ref>/<folder>`) count. `preflight.py done` and `delivery_check.py` run the text check when `--pr-body` is supplied.
 
 ## 1. Research and evidence handoff
