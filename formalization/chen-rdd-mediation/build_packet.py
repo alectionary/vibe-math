@@ -62,17 +62,22 @@ DIS_CONC = {d['id']: d['conclusion'] for d in DIS}
 _e4 = [r for r in rows('results/digitized_rates.csv') if r['figure'] == '4.28' and r['n'] == '500'
        and r['a'] == '0.59' and r['h'] == '0.34']
 assert len(_e4) == 3, _e4
-pub_mint_raw = round(sum(float(r['chen_value']) for r in _e4) / 3, 3)
-pub_mint_cuts = [round(float(r['chen_value']), 3) for r in sorted(_e4, key=lambda r: r['cut_index'])]
+# Only directly read points count: the cutoff-1 series is hidden under the others, and its 'occluded' value in
+# digitized_rates.csv is filled in as the mean of the visible series, not read.
+_e4_all = sorted(_e4, key=lambda r: r['cut_index'])
+_e4 = [r for r in _e4_all if r['status'] == 'read']
+E4_CUTS = [int(r['cut_index']) for r in _e4]
+assert E4_CUTS == [2, 3], E4_CUTS
+pub_mint_raw = round(sum(float(r['chen_value']) for r in _e4) / len(_e4), 4)
+pub_mint_cuts = [round(float(r['chen_value']), 3) for r in _e4]
 import math as _m
 # mean reading error of the three points, rounded DOWN to 4 decimals (never up)
-e4_read_err = _m.floor(sum(float(r['reading_error']) for r in _e4) / 3 * 1e4) / 1e4
-e4_status = {r['cut_index']: r['status'] for r in _e4}
+e4_read_err = _m.floor(sum(float(r['reading_error']) for r in _e4) / len(_e4) * 1e4) / 1e4
 NOMINAL = 0.05
-pub_mint = round(sum(float(r['chen_value']) for r in _e4) / 3 - NOMINAL, 4)
+pub_mint = round(pub_mint_raw - NOMINAL, 4)
 fig_t1_pw = [f'4.{i}' for i in range(17, 29)]
-pct_h0 = [float(ragree[f]['pct_agree_if_h_were_0']) for f in fig_t1_pw]
-pct_h = [float(ragree[f]['pct_agree']) for f in fig_t1_pw]
+pct_h0 = [float(ragree[f]['pct_agree_if_h_were_0_read']) for f in fig_t1_pw]
+pct_h = [float(ragree[f]['pct_agree_read']) for f in fig_t1_pw]
 n_dis = len(DIS)
 n_expl = sum(c == 'explained' for c in DIS_CONC.values())
 n_part = sum(c == 'partly_explained' for c in DIS_CONC.values())
@@ -114,7 +119,12 @@ pub_imb = r2(sum(v[2] - v[0] for e in EFF for v in P49[e]) / 15)
 our_imb = r2(sum(float(t49[(e, c)]['truth_above_ci']) - float(t49[(e, c)]['truth_below_ci'])
                  for e in EFF for c in (1, 2, 3)) / 15)
 mint = summary['mint_power_by_n_and_ah']
-our_mint_raw = round(mint['n=500 ah=0.2006'], 3)
+_cells_all = rows('results/cells.csv')
+_e4ours = [float(r['reject']) for r in _cells_all if r['effect'] == 'MINT' and r['n'] == '500' and r['a'] == '0.59'
+           and r['h'] == '0.34' and int(r['cut_index']) in E4_CUTS]
+assert len(_e4ours) == 16 * len(E4_CUTS), len(_e4ours)
+our_mint_raw = round(sum(_e4ours) / len(_e4ours), 4)
+our_mint_all_cuts = round(mint['n=500 ah=0.2006'], 3)
 our_mint = round(our_mint_raw - 0.05, 3)
 n5000 = [r for r in checks if r['statement'].startswith('n = 5000:')][0]
 SH = {r['statement'].split(':')[0]: [float(x.strip().rstrip('%')) for x in r['our_rejection_rate_cut1/cut2/cut3'].split(';')]
@@ -312,7 +322,7 @@ claim(id='H2', level='headline',
                      f'{pop["PNIE_coverage_by_cut_and_n_nonzero_paths"]["3"]["10000"]} at cutoffs 1-3 (the control share '
                      'under her code), with the truth above the interval in about the treated share; a wrong population '
                      'value per condition would drive coverage toward 0 instead. Her PNIE Type I and power agree with ours '
-                     f'in {ragree["4.17"]["pct_agree"]}% and {ragree["4.22"]["pct_agree"]}% of points, so her intervals '
+                     f'in {ragree["4.17"]["pct_agree_read"]}% and {ragree["4.22"]["pct_agree_read"]}% of directly read points, so her intervals '
                      'sit where ours do; only the comparison with population values differs (DISAGREEMENTS.yaml '
                      'population-values).'),
       numerical='mismatch', reconstruction_scope='full design, independent re-implementation, own seeds',
@@ -341,8 +351,9 @@ claim(id='H3', level='headline',
       artifact_ids=['pdf', 'summary', 'power', 'cells'],
       published=dict(value=pub_mint, units='rejection rate minus the nominal .05; raw rate read from Figure 4.28'),
       ours=dict(value=our_mint, units='rejection rate minus the nominal .05'),
-      conditions=GRID + ' Contrast cell: n = 500, a = .59, h = .34 (ah = .2006), averaged over b, c\' and the three cutoffs.',
-      contrasts=[dict(definition='MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c\' and cutoffs, '
+      conditions=GRID + ' Contrast cell: n = 500, a = .59, h = .34 (ah = .2006), averaged over b, c\' and cutoffs 2-3 '
+                        '(her cutoff-1 series is hidden under the others in Figure 4.28 and cannot be read).',
+      contrasts=[dict(definition='MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c\' and cutoffs 2-3, '
                                  'minus the nominal .05 (excess rejection over a null effect)',
                       units='rejection rate', positive_means='the 95% CI excludes zero more often than under a null effect',
                       published=pub_mint, ours=our_mint)],
@@ -353,20 +364,20 @@ claim(id='H3', level='headline',
       multiplicity='One cell: the largest MINT in the design at the smallest n. It was chosen after the full results '
                    'were available; results/summary.json gives MINT power for every n and ah.',
       status='not_replicated',
-      status_reason=(f'In our run MINT power rises with n and ah: {our_mint_raw:.3f} at n = 500 for ah = .20, and at least '
+      status_reason=(f'In our run MINT power rises with n and ah: {our_mint_all_cuts:.3f} at n = 500 for ah = .20 (all cutoffs), and at least '
                      f'{min(mint["n=1000 ah=0.1326"], mint["n=1000 ah=0.2006"]):.4f} for ah >= .13 once n >= 1,000. Her '
-                     f'Figure 4.28 gives {pub_mint_cuts[0]}, {pub_mint_cuts[1]} and {pub_mint_cuts[2]} in this cell at '
-                     'cutoffs 1-3, and no point above about .07: a Type I error curve. Rejection rates do not use '
+                     f'Figure 4.28 reads {pub_mint_cuts[0]} and {pub_mint_cuts[1]} in this cell at cutoffs 2 and 3 (the cutoff-1 series '
+                     'is hidden under the others and is not read), and no point above about .07: a Type I error curve. Rejection rates do not use '
                      'population values. Her MINT power matches our rates with h set to 0 at '
-                     f'{ragree["4.28"]["pct_agree_if_h_were_0"]}% of points (against {ragree["4.28"]["pct_agree"]}% '
+                     f'{ragree["4.28"]["pct_agree_if_h_were_0_read"]}% of directly read points (against {ragree["4.28"]["pct_agree_read"]}% '
                      f'with h as designed) and her MINT bias is {bstruct[("4.16", 1)]["coef_ah"]}*ah, so the data behind '
                      'her results contained no interaction, while her printed code recovers h (' + RFULL + ') '
                      '(DISAGREEMENTS.yaml h-absent: explained). Her own abstract and Chapter 5 (printed p. 143) say '
                      'that Type I error and power for all five effects were within or reached the robustness criteria, '
                      'which her MINT power statement contradicts.'),
       numerical='mismatch', reconstruction_scope='full design, independent re-implementation and exact replay',
-      limitations=['The published value is read from an image (reading error about .013 averaged over cutoffs; the '
-                   'cutoff 1 point is partly hidden by another series). Which mechanism removed the interaction from '
+      limitations=[f'The published value is read from an image (mean reading error {e4_read_err} at cutoffs 2-3); the '
+                   'cutoff-1 series is hidden under the others, so the contrast uses cutoffs 2-3 on both sides. Which mechanism removed the interaction from '
                    'her data (y generated before the t*m column was filled, or h not reaching gendata) cannot be told '
                    'apart from her published results.'],
       stopping=STOP_DONE('Chen\'s y intercepts or result files would tell the two mechanisms apart.'),
@@ -379,7 +390,7 @@ claim(id='H3', level='headline',
                          digitized_file='results/digitized_rates.csv', reading_error=e4_read_err,
                          conditions='Nonzero MINT cells (a and h nonzero), all n and cutoffs',
                          component_claim_ids=[], component_contrast_indices=[0]),
-          ours=dict(text=f'MINT power {our_mint_raw:.3f} at n = 500 for ah = .20; at least .97 for ah >= .13 from n = 1,000',
+          ours=dict(text=f'MINT power {our_mint_all_cuts:.3f} at n = 500 for ah = .20 (all cutoffs); at least .97 for ah >= .13 from n = 1,000',
                     state='observed', artifact_ids=['summary', 'power'],
                     locator='results/summary.json mint_power_by_n_and_ah', component_claim_ids=[],
                     component_contrast_indices=[0])))
@@ -681,12 +692,12 @@ EFFECTS = [
          positive_means=claims[2]['contrasts'][0]['positive_means'], published_effect=pub_mint, ours_effect=our_mint,
          estimate_status='resolved', display_decimals=3,
          tolerance=dict(kind='measurement', value=e4_read_err, source_file='results/digitized_rates.csv',
-                        basis=f'Reading error of the digitized Figure 4.28 points, averaged over the three cutoffs '
-                              f'and rounded down; not set in the plan. The cutoff-1 point is partly hidden by '
-                              f'another series (status {e4_status["1"]}); the two directly read points have a mean '
-                              f'reading error of about .009. Her excess over .05 ({pub_mint}) is about one reading '
-                              f'error: small, positive, and far below ours. Our Monte Carlo error of this 48-cell '
-                              f'average is about .002.'),
+                        basis=f'Mean reading error of the two directly read Figure 4.28 points (cutoffs 2-3), '
+                              f'rounded down; not set in the plan. The cutoff-1 series is hidden under the others; '
+                              f'digitized_rates.csv fills it in from the visible series (status occluded), so it is '
+                              f'not used. Her excess over .05 ({pub_mint}) is about 1.4 reading errors: small, '
+                              f'positive, and far below ours. Our Monte Carlo error of this 32-cell average is about '
+                              f'.002.'),
          magnitude='larger', direction='same direction',
          interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC),
     dict(id='E5', claim_id='H4', contrast_index=None, comparison_kind='nonscalar', estimand='qualitative sample-size '
@@ -740,9 +751,8 @@ limitations = [
     'coverage and MINT results are inferred from her digitized figures and printed tables; they reproduce her patterns '
     'but are not read from her code (H1, H2, H3, S1).',
     'Figures 4.17-4.38 were read from images (reading errors up to about .02 on rates); points hidden behind another '
-    'series are flagged and not used for statement verdicts (S2, S3). The one exception is E4 (H3), whose published '
-    'value averages all three cutoffs including the partly hidden cutoff-1 point; the two directly read points give '
-    'the same mean (.063) with a reading error of about .009, so no label changes.',
+    'series are not readings: digitized_rates.csv fills them in from the visible series (status occluded) and they '
+    'are not used for statement verdicts, figure-agreement rates or E4 (H3, S2, S3).',
     'RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the '
     'printed arithmetic and identities were checked (S5).',
     'The announced power analysis by the SD of Y is not reported, so it cannot be assessed (S8).',
@@ -776,7 +786,7 @@ packet = dict(
     synthesis=(f'Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is '
                f'unbiased (largest |bias| {summary["overall_max_abs_bias"]:.3f}) and percentile-bootstrap coverage '
                f'averages {summary["overall_mean_coverage"]*100:.1f}%, against Chen\'s 6-87% non-bias and 24-84% '
-               f'coverage; MINT power reaches {our_mint_raw:.2f} at n = 500 for the largest interaction, where Chen reports near zero. Of her '
+               f'coverage; MINT power reaches {our_mint_all_cuts:.2f} at n = 500 for the largest interaction, where Chen reports near zero. Of her '
                f'{len(verdicts)} testable Type I and power statements, {n_agree} agree ({n_slack} with .01 threshold '
                f'slack), and {n_h0} would hold in our run if h were 0. The n = 5,000 '
                f'recommendation holds for most but not all cells. RQ2 is blocked by data access. Her printed, seeded R '
