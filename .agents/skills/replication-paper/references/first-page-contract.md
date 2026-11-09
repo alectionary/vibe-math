@@ -282,6 +282,8 @@ known finding as a generic replication verdict in Published or Ours. This rule
 also applies to scalar rows: raw findings/endpoints and signed effects may be
 shown separately, with the existing arithmetic checks retained.
 
+When several rows share one claim (two contrasts of the same headline), a row may carry its own `findings` with the same structure; its page-1 cells then match the row's text, so rows do not repeat each other.
+
 Every headline claim requires `findings.published` and `findings.ours`:
 
 ```json
