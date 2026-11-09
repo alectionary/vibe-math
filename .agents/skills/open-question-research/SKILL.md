@@ -387,7 +387,8 @@ graded claims, the availability section, and the pull-request description.
 
 - Use the shared [academic title page](../verified-release/references/title-page.md)
   and run its checker on the exact release PDF. Keep the paper's theorem and
-  proof typography in its own preamble.
+  proof typography in its own preamble. If page one has an opening table,
+  center it and check both horizontal rules using the shared checker.
 - Inspect representative earlier papers in the repository before choosing the
   manuscript format. Reuse their established typography, theorem/proof structure,
   citation style and source workflow unless the user requests a departure or the

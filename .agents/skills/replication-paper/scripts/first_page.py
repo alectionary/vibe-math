@@ -1,10 +1,16 @@
 """Deterministic first-page evidence/arithmetic/render checks, not semantic review."""
+import importlib.util
 import json
 import math
 import re
 import unicodedata
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
+
+_title_spec = importlib.util.spec_from_file_location(
+    "research_title_page", Path(__file__).resolve().parents[4] / "scripts/release/title_page.py")
+_title_page = importlib.util.module_from_spec(_title_spec)
+_title_spec.loader.exec_module(_title_page)
 
 LABELS = {'smaller', 'same', 'larger', 'not established'}
 CLAIM_TYPES = ('theorem', 'numerical estimate', 'conjecture', 'open question', 'other')
@@ -649,6 +655,8 @@ def check_data(packet, writer, source, pdf_path, editorial_checks, bundled_sourc
             if abstract.get('original_finding') == abstract.get('verdict_evidence'):
                 errors.append('first-page: original finding and our evidence need distinct excerpts')
             table_rect, table_pdf = region(table['bbox'])
+            if _title_page.uses_template(source):
+                errors.extend(_title_page.opening_table_errors(page, table_rect))
             if abstract_rect.intersects(table_rect):
                 errors.append('first-page: abstract and table regions must not overlap')
             heading = table.get('magnitude_heading')

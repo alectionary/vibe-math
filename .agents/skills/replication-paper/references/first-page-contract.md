@@ -16,6 +16,11 @@ or a verdict without identifying its source, is incomplete. Verify author, year,
 title, institution/venue and source locator against the actual work; do not invent
 metadata. Cover every component of a composite headline and retain evidence limits.
 
+Center the body of the opening results table on the page, including the top
+and bottom rules. Keep the caption and notes readable in the text block.
+The delivery check measures the outer horizontal rules in the declared
+table region of the exact PDF when using the shared academic title template.
+
 On page 1, add an **Effect magnitude** column alongside the published and our
 signed effect values. Its labels are `smaller`, `same`, `larger`, or `not established`.
 Specify the scientific contrast/estimand, units, positive meaning, and tolerance.

@@ -71,5 +71,33 @@ class TitlePage(unittest.TestCase):
         self.assertIn("title page: title-to-date spacing is outside the approved range", errors)
 
 
+class OpeningTable(unittest.TestCase):
+    def test_accepts_centered_stroked_and_filled_rules(self):
+        with fitz.open() as pdf:
+            page = pdf.new_page(width=612, height=792)
+            page.draw_line((106, 300), (506, 300))
+            page.draw_line((240, 320), (372, 320))
+            page.draw_rect(fitz.Rect(106, 399, 506, 400), color=None, fill=(0, 0, 0))
+            self.assertEqual(title_page.opening_table_errors(page, (50, 290, 560, 410)), [])
+
+    def test_detects_off_center_and_misaligned_rules(self):
+        with fitz.open() as pdf:
+            page = pdf.new_page(width=612, height=792)
+            page.draw_line((76, 300), (476, 300))
+            page.draw_line((106, 400), (506, 400))
+            self.assertEqual(title_page.opening_table_errors(page, (50, 290, 560, 410)), [
+                "opening table: top rule is off center by 30.00 pt",
+                "opening table: top and bottom rule endpoints must align",
+            ])
+
+    def test_requires_two_outer_rules(self):
+        with fitz.open() as pdf:
+            page = pdf.new_page(width=612, height=792)
+            page.draw_line((106, 300), (506, 300))
+            self.assertEqual(title_page.opening_table_errors(page, (50, 290, 560, 410)), [
+                "opening table: top and bottom horizontal rules are required",
+            ])
+
+
 if __name__ == "__main__":
     unittest.main()
