@@ -49,3 +49,17 @@ Wall clock so far for this cell: about 27 minutes, not finished. The finished N=
 **Surprising:** none since the exactness gate.
 
 **Blocking:** none. Check-ins are in this file for the coordinator to relay. The 36-cell run is not stopped.
+
+## 2026-11-09T20:50Z (cell 2 committed)
+
+**Accomplished:** 2 of 36 cells. `mgcfa_true_n240_c2` is commit `bc7a3802`, pushed. 11000 rows, 10794 converged, 1408963 bytes, wall 2637 s (2026-11-09T20:02:03Z to 2026-11-09T20:46:00Z).
+
+**New:** `mgcfa_true_n240_c3` started 2026-11-09T20:46:02Z with 4 cores and is in `exportData`. The driver commit-and-push path worked for cell 2.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS and LAPACK.
+
+Wall clock: cell 1 was 2074 s, cell 2 was 2637 s. Two cells total about 2.8 MB, so 36 cells are near 50 MB, under 100 MB. If the remaining 34 cells average 40 minutes, they finish in about 23 hours, around 2026-11-10 19:30 UTC. N=960 generation may add time. The exactness gate on cell 1 remains FAIL (means off by 1.8e-6, 9.3e-6, 1.2e-5; significant counts 8723, 3557, 528 against 8723, 3557, 529).
+
+**Surprising:** cell 2 took 2637 s against 2074 s for cell 1, with 10794 converged of 11000 fitted against 10880. Same batch size, a bit more non-convergence.
+
+**Blocking:** none.
