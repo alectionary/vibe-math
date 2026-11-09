@@ -48,6 +48,33 @@ def rows(path):
 t48 = {(r['effect'], int(r['cut_index'])): r for r in rows('results/table48_ours.csv')}
 t49 = {(r['effect'], int(r['cut_index'])): r for r in rows('results/table49_ours.csv')}
 summary = json.load(open(ROOT / 'results/summary.json'))
+rfull = json.load(open(ROOT / 'results/r_full_comparison.json'))
+dtests = json.load(open(ROOT / 'results/disagreement_tests.json'))
+pop = dtests['population.patterns']
+bstruct = {(r['figure'], int(r['cut_index'])): r for r in rows('results/bias_structure.csv')}
+ragree = {r['figure']: r for r in rows('results/rates_agreement.csv')}
+emp = json.load(open(ROOT / 'results/empirical_consistency.json'))
+tident = json.load(open(ROOT / 'results/table_identities.json'))
+import yaml
+DIS = yaml.safe_load(open(ROOT / 'DISAGREEMENTS.yaml'))['disagreements']
+DIS_CONC = {d['id']: d['conclusion'] for d in DIS}
+# E4: Chen's MINT power at n = 500, a = .59, h = .34 read from Figure 4.28 (mean over cutoffs)
+_e4 = [r for r in rows('results/digitized_rates.csv') if r['figure'] == '4.28' and r['n'] == '500'
+       and r['a'] == '0.59' and r['h'] == '0.34']
+assert len(_e4) == 3, _e4
+pub_mint = round(sum(float(r['chen_value']) for r in _e4) / 3, 3)
+pub_mint_cuts = [round(float(r['chen_value']), 3) for r in sorted(_e4, key=lambda r: r['cut_index'])]
+e4_read_err = round(sum(float(r['reading_error']) for r in _e4) / 3 + 0.0005, 3)
+fig_t1_pw = [f'4.{i}' for i in range(17, 29)]
+pct_h0 = [float(ragree[f]['pct_agree_if_h_were_0']) for f in fig_t1_pw]
+pct_h = [float(ragree[f]['pct_agree']) for f in fig_t1_pw]
+n_dis = len(DIS)
+n_expl = sum(c == 'explained' for c in DIS_CONC.values())
+n_part = sum(c == 'partly_explained' for c in DIS_CONC.values())
+n_unexpl = sum(c == 'unexplained' for c in DIS_CONC.values())
+ident_hold = sum(i['holds'] for i in emp['identities'])
+t43 = tident['table_4_3_t_equals_coef_over_se']
+t43_hold = sum(r['holds'] for r in t43)
 checks = rows('results/statement_checks.csv')
 EFF = ['PNIE', 'TNIE', 'PNDE', 'TNDE', 'MINT']
 
@@ -119,6 +146,24 @@ ART = [
     ('zero_code', 'secondary/zero_estimate_check.py'), ('zero', 'secondary/zero_estimate_check.csv'),
     ('arith_code', 'secondary/table_arithmetic.py'), ('arith', 'secondary/table_arithmetic.csv'),
     ('avail', 'notes/availability.md'), ('runrec', 'notes/run-record.md'), ('builder', 'build_packet.py'),
+    ('r_code', 'r-reproduction/chen_exact.R'), ('r_rows', 'r-reproduction/out/estimates.csv'),
+    ('r_literal', 'r-reproduction/out/literal_check.txt'),
+    ('r_full', 'r-reproduction/out-full/condition_summary.csv'), ('r_full_run', 'r-reproduction/out-full/RUN.md'),
+    ('r_full_literal', 'r-reproduction/out-full/literal_check.txt'),
+    ('r_cmp_code', 'secondary/r_full_comparison.py'), ('r_cmp', 'results/r_full_comparison.json'),
+    ('dig_bias_code', 'secondary/digitize_bias_figures.py'), ('dig_bias', 'results/digitized_bias.csv'),
+    ('dig_rates_code', 'secondary/digitize_raster_figures.py'), ('dig_rates', 'results/digitized_rates.csv'),
+    ('dig_imb_code', 'secondary/digitize_imbalance_figures.py'), ('dig_imb', 'results/digitized_imbalance.csv'),
+    ('dig_cross', 'results/digitize_crosscheck.csv'), ('rates_agree', 'results/rates_agreement.csv'),
+    ('bias_struct', 'results/bias_structure.csv'),
+    ('dis', 'DISAGREEMENTS.yaml'), ('dis_code', 'secondary/disagreement_tests.py'),
+    ('dis_tests', 'results/disagreement_tests.json'),
+    ('emp_code', 'secondary/empirical_consistency.py'), ('emp', 'results/empirical_consistency.json'),
+    ('identities', 'results/table_identities.json'),
+    ('sv_readme', 'source-values/README.md'), ('sv_31', 'source-values/table_3_1.csv'),
+    ('sv_42', 'source-values/table_4_2.csv'), ('sv_43', 'source-values/table_4_3.csv'),
+    ('sv_48', 'source-values/table_4_8.csv'), ('sv_49', 'source-values/table_4_9.csv'),
+    ('inventory', 'source-inventory.json'),
 ]
 artifacts = [dict(id=i, path=p, sha256=sha(p)) for i, p in ART]
 
@@ -153,14 +198,28 @@ def claim(**kw):
 GRID = ('Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b, c\' in {0, .14, .39, .59}, '
         'h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff '
         'cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples.')
-METHODS = ('Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), '
-           'validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, '
-           'bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries.')
+METHODS = ('Two engines. Chen\'s own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the '
+           '2021-08-02 package snapshot on an R-capable host (Grokbot, issues #92 and #118): her datasets are '
+           'identical to her literal pipeline (largest difference 0), first 64,000 of them (50 replications per '
+           'condition), then all 1,280,000 (1,000 per condition). It reproduces her datasets and point estimates. '
+           'Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an '
+           'independent Python/NumPy re-implementation (validated against scikit-learn OLS and explicit resampling; '
+           'the first run used Python without asking the person, who then agreed to keep it for the bootstrap, '
+           'simulation/fallback.json); bootstrap-based agreement is judged on summaries. Chen\'s figures 4.12-4.38 '
+           'were digitized: 4.12-4.16 exactly from the PDF drawing paths (reading error at most .002), 4.17-4.38 from '
+           'images (reading errors up to about .02).')
+RFULL = (f'Her replayed code over all 1,000 replications: largest condition-mean bias {rfull["max_abs_r_bias"]:.3f} '
+         f'(0% beyond .10); {100*rfull["share_abs_bias_z_gt_1.96"]:.1f}% of 19,200 cell biases beyond 1.96 Monte Carlo SEs '
+         f'and {100*rfull["share_abs_bias_z_gt_3.29"]:.2f}% beyond 3.29, as expected with no bias; her estimates and ours '
+         f'differ beyond 1.96 combined SEs in {100*rfull["share_abs_diff_z_gt_1.96"]:.1f}% of cells; median SD ratio '
+         f'{rfull["sd_ratio_ours_over_r_median"]:.3f}; slope of estimated on true h '
+         f'{min(rfull["h_slope_by_cut"].values()):.4f}-{max(rfull["h_slope_by_cut"].values()):.4f} '
+         f'(results/r_full_comparison.json).')
 MC = ('With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a '
       'rejection rate near .05 about .007. Chen reports no Monte Carlo error.')
 STOP_DONE = lambda why: dict(reason='Full design completed.', attempted='All 3,840 condition-cutoff cells at the '
                              'printed replication and bootstrap counts.', untested='Chen\'s own R output and seeds.',
-                             resource_basis='13.7 core-hours.', next_evidence=why)
+                             resource_basis='13.7 core-hours (Python); 3.4 hours for the full R replay.', next_evidence=why)
 
 claim(id='H1', level='headline',
       statement='Direct-effect estimates (PNDE, TNDE) are biased, mostly negatively: only 12.50-18.75% of '
@@ -181,12 +240,17 @@ claim(id='H1', level='headline',
                   f'estimates is at most {max(float(r["sd"]) for r in rows("results/cells.csv")) / 1000 ** 0.5:.3f} in any cell.',
       multiplicity='Descriptive summary over the full grid; no tests.',
       status='not_replicated',
-      status_reason='Every direct-effect result in our run lies within [-.05, .05]. Chen\'s printed estimation code '
-                    'matches ours line by line, and her data-generating model contains no term that would bias OLS.',
+      status_reason=('Every direct-effect result in our run lies within [-.05, .05]. ' + RFULL + ' Her digitized bias '
+                     f'(Figures 4.12-4.16) is an almost exact function of the design with no dependence on n: MINT '
+                     f'{bstruct[("4.16", 1)]["coef_ah"]}*ah; PNDE {bstruct[("4.14", 1)]["coef_c"]}, '
+                     f'{bstruct[("4.14", 2)]["coef_c"]}, {bstruct[("4.14", 3)]["coef_c"]} times c\' by cutoff plus about '
+                     f'{bstruct[("4.14", 1)]["coef_h"]}*h (results/bias_structure.csv). DISAGREEMENTS.yaml entries '
+                     'h-absent, population-values and pnde-definition give the competing explanations and tests.'),
       numerical='mismatch', reconstruction_scope='full design, independent re-implementation, own seeds',
-      limitations=['Chen\'s step that matched estimates to population values is not printed, so the cause of the '
-                   'printed bias cannot be identified.'],
-      stopping=STOP_DONE('Chen\'s result files or aggregation code would show where the printed bias arises.'),
+      limitations=['Chen\'s step that compared estimates with population values is not printed; the mechanism is '
+                   'inferred from her digitized figures and tables (DISAGREEMENTS.yaml population-values: partly '
+                   'explained), not read from her code.'],
+      stopping=STOP_DONE('Chen\'s result files or aggregation code would confirm the per-case rule directly.'),
       findings=dict(
           published=dict(text='PNDE and TNDE within [-.10, .10] in only 12.50-18.75% of conditions, with negative bias',
                          state='reported', artifact_ids=['pdf'], locator=f'Table 4.8 and Chapter 5 bias, {loc(161)}',
@@ -225,12 +289,23 @@ claim(id='H2', level='headline',
                        f'[.925, .975].',
       multiplicity='Descriptive; 19,200 cell coverages, no correction because nothing is tested.',
       status='not_replicated',
-      status_reason='Coverage is close to nominal in every effect-cutoff row of our run, and misses fall on both '
-                    'sides of the interval at similar rates.',
+      status_reason=('Coverage is close to nominal in every effect-cutoff row of our run, and misses fall on both '
+                     'sides of the interval at similar rates. Her digitized coverage of nonzero PNIE falls with n to a '
+                     f'plateau of {pop["PNIE_coverage_by_cut_and_n_nonzero_paths"]["1"]["10000"]}, '
+                     f'{pop["PNIE_coverage_by_cut_and_n_nonzero_paths"]["2"]["10000"]} and '
+                     f'{pop["PNIE_coverage_by_cut_and_n_nonzero_paths"]["3"]["10000"]} at cutoffs 1-3 (the control share '
+                     'under her code), with the truth above the interval in about the treated share; a wrong population '
+                     'value per condition would drive coverage toward 0 instead. Her PNIE Type I and power agree with ours '
+                     f'in {ragree["4.17"]["pct_agree"]}% and {ragree["4.22"]["pct_agree"]}% of points, so her intervals '
+                     'sit where ours do; only the comparison with population values differs (DISAGREEMENTS.yaml '
+                     'population-values).'),
       numerical='mismatch', reconstruction_scope='full design, independent re-implementation, own seeds',
       limitations=['Our run shows a small positive imbalance (the truth lies above the CI slightly more often than '
-                   'below it), two orders of magnitude smaller than Chen\'s; we did not investigate its cause.'],
-      stopping=STOP_DONE('Chen\'s per-replication CIs and population values would locate the discrepancy.'),
+                   'below it), two orders of magnitude smaller than Chen\'s; we did not investigate its cause.',
+                   'Which per-case rule produced her population values is not determined: one rule fits cutoffs 1-2 '
+                   'but not cutoff 3 exactly, and a step written for her text\'s reversed cutoff labels predicts the '
+                   'same plateau.'],
+      stopping=STOP_DONE('Chen\'s per-replication CIs and population values would identify the rule.'),
       findings=dict(
           published=dict(text='Coverage 24.10-83.99% by effect and cutoff; true value usually above the CI',
                          state='reported', artifact_ids=['pdf'], locator=f'Table 4.9 and Chapter 5, {loc(164)}',
@@ -244,39 +319,44 @@ claim(id='H2', level='headline',
                          f'sides at similar rates', state='observed', artifact_ids=['t49', 'cells'],
                     locator='results/table49_ours.csv', component_claim_ids=[], component_contrast_indices=[0, 1])))
 
-claim(id='H3', level='headline', comparison_kind='scalar_unestablished',
+claim(id='H3', level='headline',
       statement='Power for the mediated interaction (MINT) is near zero at every sample size and never reaches .80.',
       source_locator=f'Chapter 4, Figure 4.28 text, {loc(135)}; Chapter 5 power, {loc(162)}',
       artifact_ids=['pdf', 'summary', 'power', 'cells'],
-      published=dict(value='near zero at every sample size; never reaches .80', units='rejection rate (verbal)'),
+      published=dict(value=pub_mint, units='rejection rate, read from Figure 4.28'),
       ours=dict(value=our_mint, units='rejection rate'),
       conditions=GRID + ' Contrast cell: n = 500, a = .59, h = .34 (ah = .2006), averaged over b, c\' and the three cutoffs.',
       contrasts=[dict(definition='MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c\' and cutoffs',
                       units='rejection rate', positive_means='the 95% CI excludes zero more often',
-                      published=None, ours=our_mint, comparison_kind='scalar_unestablished',
-                      unavailable_reason='Chen gives no number for this cell; the figure is not tabulated.')],
-      contrast_unestablished_reason='The published value is only the verbal statement "near zero"; no printed '
-                                    'number or rounding precision exists to define a tolerance.',
+                      published=pub_mint, ours=our_mint)],
+      reproduction_deviation=f'ours minus published = {round(our_mint - pub_mint, 3)} (rejection rate)',
       methods=METHODS + ' Rejection means the 95% percentile CI excludes zero; it does not use population values.',
       uncertainty=MC,
       multiplicity='One cell: the largest MINT in the design at the smallest n. It was chosen after the full results '
                    'were available; results/summary.json gives MINT power for every n and ah.',
       status='not_replicated',
-      status_reason=f'In our run MINT power rises with n and ah: {our_mint:.3f} at n = 500 for ah = .20, and at least '
-                    f'{min(mint["n=1000 ah=0.1326"], mint["n=1000 ah=0.2006"]):.3f} for ah >= .13 once n >= 1,000. '
-                    f'Rejection rates do not use population values, so this disagreement cannot come from how '
-                    f'estimates were matched to population values; it could still come from another unprinted step.',
-      numerical='withheld: no published number', reconstruction_scope='full design, independent re-implementation',
-      limitations=['Chen also reports MINT Type I error near zero with a = 0 at every h > 0 and no variation across '
-                   'h. Ours is below Bradley\'s range at h = .05 through n = 5,000 (at most .019; .026-.036 at n = 10,000) and at h = .15 at n = 500 (.014-.020), but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), so it varies with h. Both MINT differences are consistent '
-                   'with smaller h estimates or wider h intervals in her runs than the printed code produces; this is '
-                   'not tested.'],
-      stopping=STOP_DONE('Chen\'s MINT CIs for one condition would show whether her h estimates were attenuated.'),
+      status_reason=(f'In our run MINT power rises with n and ah: {our_mint:.3f} at n = 500 for ah = .20, and at least '
+                     f'{min(mint["n=1000 ah=0.1326"], mint["n=1000 ah=0.2006"]):.3f} for ah >= .13 once n >= 1,000. Her '
+                     f'Figure 4.28 gives {pub_mint_cuts[0]}, {pub_mint_cuts[1]} and {pub_mint_cuts[2]} in this cell at '
+                     'cutoffs 1-3, and no point above about .07: a Type I error curve. Rejection rates do not use '
+                     'population values. Her MINT power matches our rates with h set to 0 at '
+                     f'{ragree["4.28"]["pct_agree_if_h_were_0"]}% of points (against {ragree["4.28"]["pct_agree"]}% '
+                     f'with h as designed) and her MINT bias is {bstruct[("4.16", 1)]["coef_ah"]}*ah, so the data behind '
+                     'her results contained no interaction, while her printed code recovers h (' + RFULL + ') '
+                     '(DISAGREEMENTS.yaml h-absent: explained).'),
+      numerical='mismatch', reconstruction_scope='full design, independent re-implementation and exact replay',
+      limitations=['The published value is read from an image (reading error about .013 averaged over cutoffs; the '
+                   'cutoff 1 point is partly hidden by another series). Which mechanism removed the interaction from '
+                   'her data (y generated before the t*m column was filled, or h not reaching gendata) cannot be told '
+                   'apart from her published results.'],
+      stopping=STOP_DONE('Chen\'s y intercepts or result files would tell the two mechanisms apart.'),
       findings=dict(
-          published=dict(text='MINT power near zero at every sample size; never reaches .80', state='reported',
+          published=dict(text=f'MINT power near zero at every sample size; never reaches .80 (Figure 4.28: '
+                              f'{min(pub_mint_cuts)}-{max(pub_mint_cuts)} in this cell)', state='reported',
                          artifact_ids=['pdf'], locator=f'Figure 4.28 discussion, {loc(135)}',
                          source_excerpt=excerpt('All power for MINT is near zero.', 135), page_locator=loc(135),
-                         claim_type='numerical estimate',
+                         claim_type='numerical estimate', value_source='figure_digitized',
+                         digitized_file='results/digitized_rates.csv', reading_error=e4_read_err,
                          conditions='Nonzero MINT cells (a and h nonzero), all n and cutoffs',
                          component_claim_ids=[], component_contrast_indices=[0]),
           ours=dict(text=f'MINT power {our_mint:.3f} at n = 500 for ah = .20; at least .97 for ah >= .13 from n = 1,000',
@@ -334,12 +414,15 @@ claim(id='S1', level='supporting',
                       published=pub_ind[e], ours=our_ind[e]) for e in ('PNIE', 'TNIE', 'MINT')],
       methods=METHODS, uncertainty=MC, multiplicity='Descriptive.',
       status='not_replicated',
-      status_reason='All indirect and MINT results lie within [-.05, .05] in our run. At the median cutoff, Chen\'s '
-                    'PNIE and MINT rows and her TNIE [-.05, .05] entry equal what |bias| = population value would give '
-                    'over the grid; her TNIE [-.10, .10] entry is 60.00 against 59.38 '
-                    '(secondary/zero_estimate_check.csv). This is a consistency observation, not a diagnosis.',
+      status_reason=('All indirect and MINT results lie within [-.05, .05] in our run, and in the full replay of her '
+                     'code. Her digitized PNIE bias is -k*ab with k = ' + ', '.join(str(abs(float(bstruct[('4.12', c)]['coef_ab'])))
+                     for c in (1, 2, 3)) + ' at cutoffs 1-3 and no dependence on n, and her MINT bias is exactly -ah '
+                     '(results/bias_structure.csv; DISAGREEMENTS.yaml h-absent and population-values). At the median '
+                     'cutoff, Chen\'s PNIE and MINT rows and her TNIE [-.05, .05] entry also equal what |bias| = '
+                     'population value would give over the grid (secondary/zero_estimate_check.csv).'),
       numerical='mismatch', reconstruction_scope='full design',
-      limitations=['The zero-estimate pattern does not fit every printed entry (for example PNDE needs c\' + h).'],
+      limitations=['The zero-estimate pattern does not fit every printed entry (for example PNDE needs c\' + h); '
+                   'the bias-structure fit is the fuller description.'],
       stopping=STOP_DONE('Chen\'s population-value table, if one existed, would test the pattern directly.'))
 
 STMT_METHOD = ('Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is '
@@ -353,8 +436,14 @@ H_NOTE = (f'As a consistency check, every statement was also read on our cells w
           f'both readings become agreements, and none that agrees becomes a disagreement. The {len(robust_dis) - len(H0_FIXES)} '
           f'that still disagree are statements {rest} (the number column of results/statement_checks.csv). Chen also '
           f'defines PNDE as "adding c\' and h" (printed p. 104), whereas with the mediator intercept zero in her '
-          f'data-generating model the population PNDE is c\'. These observations are consistent with h contributing '
-          f'little to her estimates; they do not establish it.')
+          f'data-generating model the population PNDE is c\'. Her digitized Figures 4.17-4.28 match our rates read '
+          f'with h = 0 at {min(pct_h0):.1f}-{max(pct_h0):.1f}% of points per figure (at {min(pct_h):.1f}-{max(pct_h):.1f}% '
+          f'with h as designed; results/rates_agreement.csv), and each statement was also read against her own '
+          f'figure points (verdict_on_chen_figures). Together with the exact replay of her code, which recovers h, '
+          f'this establishes that the data behind her results contained no interaction (DISAGREEMENTS.yaml h-absent). '
+          f'The remaining disagreements are threshold cases, her text against her own figures, and one TNDE cell set '
+          f'explained by her particular random draws (DISAGREEMENTS.yaml threshold-noise, prose-versus-own-figure, '
+          f'tnde-power-gap).')
 excerpt('PNDE is calculated by adding c', 118)
 
 claim(id='S2', level='supporting',
@@ -371,7 +460,7 @@ claim(id='S2', level='supporting',
       methods=METHODS + ' ' + STMT_METHOD, uncertainty=MC,
       multiplicity=f'{len(T1S)} statements, each judged at its own threshold; no correction (descriptive).',
       status='partly_replicated',
-      status_reason=(f'{t1_agree} of {len(T1S)} Type I statements agree ({t1_slack} with slack). The robust '
+      status_reason=(f'{t1_agree} of {len(T1S)} Type I statements agree ({t1_slack} with slack). ' + H_NOTE + ' The robust '
                      f'disagreements are MINT with a = 0, where ours is below Bradley\'s range at h = .05 through '
                      f'n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at '
                      f'h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation '
@@ -382,8 +471,8 @@ claim(id='S2', level='supporting',
                      f'hold in our run.'),
       numerical='not applicable', reconstruction_scope='full design',
       limitations=['The numeric readings of Chen\'s words are ours; the slack column shows which verdicts depend on them.',
-                   'The figures themselves were not digitized; only the text was tested.'],
-      stopping=STOP_DONE('Digitized Figures 4.17-4.21 would allow a cell-by-cell numeric comparison.'))
+                   'Figures 4.17-4.21 were read from images; points hidden by another series are excluded from verdicts.'],
+      stopping=STOP_DONE('None needed: the figures were digitized and compared cell by cell (results/rates_agreement.csv).'))
 
 claim(id='S3', level='supporting',
       statement='Power statements for all five effects (Figures 4.22-4.28): for example, PNIE with a = b = .14 stays '
@@ -401,10 +490,9 @@ claim(id='S3', level='supporting',
                      f'statements and all {n_pnde} PNDE statements agree; the disagreements concern TNIE, TNDE and MINT. '
                      + H_NOTE),
       numerical='not applicable', reconstruction_scope='full design',
-      limitations=['Agreement on PNIE and PNDE is consistent with Chen\'s rejection rates for those effects not being '
-                   'affected by whatever produced her bias and coverage results.',
+      limitations=['Figures 4.22-4.28 were read from images; points hidden by another series are excluded from verdicts.',
                    'The numeric readings of Chen\'s words are ours; the slack column shows which verdicts depend on them.'],
-      stopping=STOP_DONE('Chen\'s h estimates for one condition would test whether h was attenuated in her runs.'))
+      stopping=STOP_DONE('None needed: the figures were digitized and compared cell by cell (results/rates_agreement.csv).'))
 
 claim(id='S4', level='supporting',
       statement='In the Head Start Impact Study, synthetic-RDD mediation estimates at three cutoffs are typically '
@@ -427,7 +515,7 @@ claim(id='S4', level='supporting',
 claim(id='S5', level='supporting',
       statement='Tables 4.6-4.7 report RCT-minus-RDD differences and standardized biases for the HSIS path and '
                 'mediation estimates, with SB defined in equation 3.12 as the difference over the RCT outcome SD.',
-      source_locator=f'Tables 4.6-4.7, equation 3.12', artifact_ids=['pdf', 'arith', 'arith_code'],
+      source_locator=f'Tables 4.2-4.3, 4.6-4.7, equation 3.12', artifact_ids=['pdf', 'arith', 'arith_code', 'emp', 'emp_code', 'identities', 'sv_42', 'sv_43'],
       published=dict(value=24, units='printed differences and SBs'),
       ours=dict(value=24, units='printed entries reproduced'),
       conditions='Printed estimates only.', contrasts=[],
@@ -435,8 +523,16 @@ claim(id='S5', level='supporting',
       methods='Recompute each difference and SB from the printed estimates.',
       uncertainty='Exact at the printed precision.', multiplicity='24 entries.',
       status='replicated',
-      status_reason='All 24 differences match; all 24 SBs match only when the divisor is the RCT estimate\'s SE '
-                    'rather than the outcome SD stated in equation 3.12.',
+      status_reason=('All 24 differences match; all 24 SBs match only when the divisor is the RCT estimate\'s SE '
+                     'rather than the outcome SD stated in equation 3.12. Her printed effects also obey their '
+                     f'definitions: {ident_hold} of {len(emp["identities"])} identities hold (PNIE = ab, TNIE = ab + ah, '
+                     'TNDE - PNDE = ah in the RCT and three cutoffs), so on real data her code estimated h and used it; '
+                     'the PNDE identity implies a mediator intercept of about 19.7 (RCT) and 22.1 (cutoff 3), the scale '
+                     'of the mediator mean, so her real-data code used the fitted intercept. Table 4.2 shows treatment '
+                     'below the cutoff (treated shares .36, .72, .86 at cutoffs 1-3), as her text labels them and the '
+                     f'reverse of her simulation code. In Table 4.3, {t43_hold} of {len(t43)} t values equal the '
+                     'coefficient over its SE; one (cutoff 3, child age, -0.127/0.061 = -2.08 against -2.252) is a '
+                     'one-digit typo (DISAGREEMENTS.yaml table-4-3-t-value).'),
       numerical='match', reconstruction_scope='printed numbers only',
       limitations=['The divisor discrepancy is between the text and the tables; which was intended is unknown.'],
       stopping=dict(reason='Complete: all 24 printed entries recomputed.', attempted='Differences and standardized '
@@ -486,7 +582,6 @@ claim(id='S8', level='supporting',
                     resource_basis='Not a resource limit.', next_evidence='Chen\'s analysis notes.'))
 
 DEV = dict(
-    H3='Not computable: the published result is verbal; ours is a rejection rate of .836 in the contrast cell.',
     H4='Not computable: qualitative recommendation.',
     S1='PNIE: ours minus printed = %s; TNIE: %s; MINT: %s percentage points' % tuple(
         r2(our_ind[e] - pub_ind[e]) for e in ('PNIE', 'TNIE', 'MINT')),
@@ -522,13 +617,14 @@ EFFECTS = [
          tolerance=rounding_tol(30, 15),
          magnitude='smaller', direction='same direction',
          interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC),
-    dict(id='E4', claim_id='H3', contrast_index=0, comparison_kind='scalar_unestablished',
+    dict(id='E4', claim_id='H3', contrast_index=0,
          estimand=claims[2]['contrasts'][0]['definition'], units='rejection rate',
-         positive_means=claims[2]['contrasts'][0]['positive_means'], published_effect=None, ours_effect=our_mint,
-         estimate_status='unresolved', unresolved_reason='No published number for this cell.', display_decimals=3,
-         tolerance=dict(kind='unestablished', value=None, basis='The source gives "near zero" with no printed value or precision.'),
-         applicability_reason='The source states a verbal result; a scalar contrast exists but no defensible margin.',
-         magnitude='not established', direction='not established',
+         positive_means=claims[2]['contrasts'][0]['positive_means'], published_effect=pub_mint, ours_effect=our_mint,
+         estimate_status='resolved', display_decimals=3,
+         tolerance=dict(kind='prespecified', value=e4_read_err,
+                        basis=f'Reading error of the digitized Figure 4.28 points, averaged over the three cutoffs '
+                              f'(results/digitized_rates.csv), rounded up; our Monte Carlo error is smaller (about .012).'),
+         magnitude='larger', direction='same direction',
          interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC),
     dict(id='E5', claim_id='H4', contrast_index=None, comparison_kind='nonscalar', estimand='qualitative sample-size '
          'recommendation over the grid', units='not applicable', positive_means='not applicable',
@@ -540,7 +636,7 @@ EFFECTS = [
          interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC),
 ]
 # magnitude and direction from the signed values (|ours| vs |published| beyond tolerance)
-for e in EFFECTS[:3]:
+for e in EFFECTS[:4]:
     tol = e['tolerance']['value']
     a, b = abs(e['published_effect']), abs(e['ours_effect'])
     e['magnitude'] = 'same' if abs(a - b) <= tol else ('larger' if b > a else 'smaller')
@@ -572,21 +668,22 @@ for s in sections:
         s.pop('exclusion_reason', None)
 
 limitations = [
-    'R is unavailable here, so the simulation is an independent Python re-implementation with our own seeds; it '
-    'agrees with Chen on summaries only (H1-H4, S1-S3).',
-    'Chen\'s aggregation code and population-value table are not printed, so the source of her bias, coverage and '
-    'MINT results cannot be identified (H1, H2, H3, S1); our Type I and power agree with most of her statements (S2, S3).',
+    'The bootstrap-based results (coverage, Type I error, power) come from the Python run with our own seeds; '
+    'Chen\'s bootstrap is unseeded, so they agree with hers on summaries only. Her datasets and point estimates are '
+    'reproduced exactly by the R replay of all 1,000 replications per condition (H1-H4, S1-S3).',
+    'Chen\'s aggregation code, population values and result files are not printed. The mechanisms behind her bias, '
+    'coverage and MINT results are inferred from her digitized figures and printed tables; they reproduce her patterns '
+    'but are not read from her code (H1, H2, H3, S1).',
+    'Figures 4.17-4.38 were read from images (reading errors up to about .02 on rates); points hidden behind another '
+    'series are flagged and not used for verdicts (H3, S2, S3).',
     'RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the '
-    'printed arithmetic was checked (S5).',
+    'printed arithmetic and identities were checked (S5).',
     'The announced power analysis by the SD of Y is not reported, so it cannot be assessed (S8).',
     'The dissertation labels the cutoffs inconsistently: the code\'s index 1 is the 25th percentile (75% treated), '
-    'as is the Chapter 4 description of the cut scores, while Chapter 3 and the Table 4.8 note call index 1 25% '
-    'treatment; we report by the code (H1, H2).',
+    'while Chapter 3, the Table 4.8 note and her Head Start analysis have treatment below the cutoff; we report by '
+    'the code (H1, H2).',
     'Chen suggests global estimation with an incorrect functional form as a plausible explanation of the bias; in her data-generating model '
     'the assignment variable does not enter M or Y, so the fitted linear models are correctly specified (H1).',
-    'Read on our cells with h replaced by 0, most of Chen\'s Type I and power statements that disagree with our run '
-    'would hold, and her text defines PNDE as c\' + h where the population value is c\'; both are consistent with h '
-    'contributing little to her estimates or population values, but neither is tested against her runs (S2, S3, H3).',
 ]
 
 packet = dict(
@@ -615,7 +712,11 @@ packet = dict(
                f'coverage; MINT power reaches {our_mint:.2f} at n = 500 for the largest interaction, where Chen reports near zero. Of her '
                f'{len(verdicts)} testable Type I and power statements, {n_agree} agree ({n_slack} with .01 threshold '
                f'slack), and {n_h0} would hold in our run if h were 0. The n = 5,000 '
-               f'recommendation holds for most but not all cells. RQ2 is blocked by data access.'),
+               f'recommendation holds for most but not all cells. RQ2 is blocked by data access. Her own seeded R code, '
+               f'replayed exactly on all 1,280,000 of her datasets, behaves like our run, so the disagreements arise in '
+               f'unprinted steps: her digitized figures show results computed from data without the interaction h and '
+               f'population values wrong for one group of cases. Of {n_dis} disagreements (DISAGREEMENTS.yaml), {n_expl} '
+               f'are explained, {n_part} partly explained and {n_unexpl} unexplained.'),
     limitations=limitations,
 )
 (ROOT / 'evidence-packet.json').write_text(json.dumps(packet, indent=1, ensure_ascii=False) + '\n')
