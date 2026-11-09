@@ -17,7 +17,17 @@ substantive original claim, including theory, empirical results, simulations,
 negative results and unavailable inputs. Do not substitute a convenient table
 for its research questions. Complete coverage means every claim is accounted
 for, not that every claim replicated. Follow the full-design rule and commit
-the replication plan before any analysis. Use
+the replication plan before any analysis.
+
+## Commit identity
+
+Make every commit as `alectionary <alectionary@users.noreply.github.com>`.
+Once per clone, run `git config core.hooksPath .githooks` so `commit-msg` and
+`pre-push` reject consumer-domain author, committer, and message addresses
+(noreply addresses stay allowed). `pre-push` then runs this skill's paper
+check. Details are in [CONTRIBUTING.md](../../../CONTRIBUTING.md).
+
+Use
 [open-question research](../open-question-research/SKILL.md) for proof methods
 when needed; keep its research chronology out of the manuscript.
 
@@ -288,10 +298,11 @@ study considers the paper:
   the pull request is then a draft), or `Paper: not-needed <reason>` (for
   example, a refactor that changes no number the paper prints). Commits that
   only change `paper/` need no trailer.
-- Install the pre-push hook once per clone:
-  `git config core.hooksPath .agents/skills/replication-paper/scripts/hooks`.
-  It blocks a push whose study commits lack the trailer and prints whether
-  each touched study's paper is current.
+- Install the repository hooks once per clone:
+  `git config core.hooksPath .githooks`.
+  `pre-push` rejects consumer-domain commit identities, then runs this skill's
+  paper check. That check blocks a push whose study commits lack the trailer
+  and prints whether each touched study's paper is current.
 - `scripts/paper_freshness.py check --root STUDY` re-hashes everything the paper
   was written from: the evidence packet against the writer manifest's
   `packet_sha256`, the packet's own `artifacts` (its build inputs), the writer

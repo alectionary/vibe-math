@@ -29,6 +29,10 @@ Lean builds here use the pinned toolchain and Mathlib in each project's `lean-to
 
 ## Repository conventions
 
+- Commit as `alectionary <alectionary@users.noreply.github.com>`. Once per clone,
+  `git config core.hooksPath .githooks`. Consumer-domain author, committer, and
+  message addresses are rejected; noreply addresses are allowed. See
+  [CONTRIBUTING.md](../../../../CONTRIBUTING.md).
 - Finished work belongs on `master`. `master` requires one approving review; ask the user
   before merging past it. Merge with ordinary merges, never squash, when pinned links exist.
 - Built papers are committed under `<project>/paper/output/pdf/` (force-add: `*.pdf` is
