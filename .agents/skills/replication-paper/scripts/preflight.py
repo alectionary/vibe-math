@@ -206,7 +206,7 @@ def fallback_errors(fallback: dict) -> list:
             isinstance(o, dict) and _filled(o.get("option")) and _filled(o.get("outcome")) for o in options):
         errors.append("blocked fallback needs unblock_options: [{option, outcome}] for each way of running the "
                       "source path that was considered (the person's own computer, network settings, another "
-                      "host, the author, a data agreement)")
+                      "host, a data agreement; never the original authors)")
     decision = fallback.get("decision")
     by = decision.get("by") if isinstance(decision, dict) else None
     if by == "person":
