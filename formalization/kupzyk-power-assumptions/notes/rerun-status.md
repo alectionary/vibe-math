@@ -50,3 +50,19 @@ runner to its `grid` subdirectory and the Appendix D runner to
 `appendix-d-grid`. Their file names and seeds are stable. The snapshot's
 scientific comparisons use its own counts; the archive can contain additional
 checkpoints that completed while it was being preserved.
+
+The new mask stream completed the initial and final exemplary grids and
+the threshold scan. The averaged-power threshold agrees with 51 of the 54
+published counts. The other three settings cross one cluster earlier on
+mean power, but between 16.6% and 36.0% of their predecessor-cluster masks
+fall below 80%. Thus the threshold criterion and the original single-mask
+realization matter at these three crossings. The independently sampled
+Table 3 check again puts the .05 ICC, 45% final attrition cell near .88491;
+the printed .88187 lies below the central predictive interval. These are
+separate findings from the still-running empirical grid.
+
+The compact Kenward–Roger calculation passed 16 paired comparisons to
+`pbkrtest` (maximum absolute p-value difference 0.000020). It is now running
+on the same corner streams as the other four rules. The base validation had
+no boundary fits; the run also calculates a sensitivity with zero estimated
+variance components omitted from the adjustment.
