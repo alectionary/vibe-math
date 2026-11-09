@@ -1,0 +1,218 @@
+{
+  "reviewer": "Independent cold-reader agent for the Chen formatting and citation revision",
+  "pdf_sha256": "22f70c815d785e37bf2b5b6fda05fe34282854736d772b58e6936323d9e3f33b",
+  "source_sha256": "dc6f4259a175da91fe4190bb9103db0b62c2cc85f59ec3dc31cb509e9c59a4b3",
+  "packet_sha256": "971ed02a47052b64a9ff541bd5f3836f650319e0a740e3bd8ad2f884955b2d98",
+  "writer_manifest_sha256": "2845edfa3d5673910a700f20138620cc5d5739a008d2a24f4f607784429a482a",
+  "build_inputs": [
+    {
+      "path": "paper/approved-preamble.tex",
+      "sha256": "03e1b01590e4268de4a2ab4600db045f327b803c3bf44a4fadf9942ed8cf345e"
+    },
+    {
+      "path": "paper/academic-title.tex",
+      "sha256": "b374fd18fff1c648920200a72a04ad7f46cd5ef019a86826edf7d3e3a1f4dfa2"
+    },
+    {
+      "path": "paper/references.bib",
+      "sha256": "db08366d019c9baca3586d2c009a645780a8dd5cf19e3073cc85afd4c52ed5b6"
+    }
+  ],
+  "items": {
+    "layout": "US Letter. Title and 9 November 2026 centered and compared with the approved Kupzyk example. Date-to-abstract baseline gap 32.751 pt. All 7 table rules align at x=59.923–552.077 pt (midpoint 306.000), all five rows and full note fit on page 1, and no marks overlap the footer.",
+    "headline_and_tolerance": "Independently recomputed E1–E4 from Tables 4.8/4.9 transcriptions, reproduced tables and the Figure 4.28 read-point CSV. Checked the E5 evidence and S9 totals. Compared revised and prior manuscripts for preservation of reported comparisons, uncertainty interpretation and conclusions.",
+    "citations": "All 24 in-text bibliography keys match their own named citation destinations on PDF pages 20–22. Page 4 correctly distinguishes Chen’s R 4.0.3 and the R 4.1.3 replay, gives the six package versions from the replay record, and credits Python, NumPy and scikit-learn at their recorded versions. Page 5 gives PyMuPDF, Pillow, pandas and SciPy their actual roles. The packet note covers PyYAML and Poppler. It leaves the six historical dependency versions unrecorded, and Appendix A names Tectonic 0.17.0.",
+    "ledgers": "Checked the bibliography and reproduction instructions as rendered, including the corrected Müller spelling and consistent Appendix A build command. Appendix B distinguishes versioned software from citations whose historical version is unknown.",
+    "links": "Independently extracted 165 URI annotations for 92 distinct targets with PyMuPDF 1.26.6. Inspected annotations and target semantics, checked the exact in-text GoTo citation destinations, and verified same-repository master target paths and the population-function line anchor.",
+    "independence_limits": "Opened and visually inspected the initial exact PDF before consulting the prior manuscript, source, evidence or prior review. Re-rendered and reviewed subsequent corrections, with final checks and hashes bound to the final PDF. This is a scoped revision review using the packet, checked-in source transcriptions and output records. The archival dissertation PDF was not present in the review workspace, and I did not rerun simulations or run the post-merge live-master gate.",
+    "metadata_recheck": "Independently verified that the replay RUN.md artifact hash is the only change to the evidence packet. Compared RUN.md, the handoff snapshot, and three historic editorial records before and after 4f4eab91. They agree after normalizing only the changed Git object IDs. The manifest input and output hashes match current files, and the exact PDF, TeX, build inputs, and link inventory match the rendered review. All available packet artifact hashes match. The packet validator reports the unavailable archived dissertation PDF, which was also absent during the review."
+  },
+  "editorial": {
+    "verdict": "pass",
+    "context": "fresh",
+    "read_order": [
+      "rendered_manuscript",
+      "evidence_packet"
+    ],
+    "checks": {
+      "abstract_verdict_first": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Abstract, first two sentences",
+            "finding": "Begins with three of four simulation headlines failing replication, names Chen (2021), and says what Chen found for bias, coverage and MINT before giving the comparisons. The recommendation is reported as partial."
+          },
+          {
+            "page": 1,
+            "location": "Abstract, closing sentences",
+            "finding": "Keeps the seeded R replay, fresh bootstrap seeds and restricted Head Start limit in the shortened abstract. The 10/15 empirical result is from printed estimates."
+          }
+        ]
+      },
+      "introduction_verdict_first": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 2,
+            "location": "Section 1 opening",
+            "finding": "The lead repeats the three-of-four verdict, gives direct-effect, coverage and MINT results, then gives the 5,000-case results, Head Start and bootstrap limits. It distinguishes Monte Carlo error from the comparison thresholds."
+          }
+        ]
+      },
+      "standalone_prose": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Title, abstract and Table 1",
+            "finding": "US Letter. Title and 9 November 2026 centered and compared with the approved Kupzyk example. Date-to-abstract baseline gap 32.751 pt. All 7 table rules align at x=59.923–552.077 pt (midpoint 306.000), all five rows and full note fit on page 1, and no marks overlap the footer."
+          },
+          {
+            "page": 22,
+            "location": "Appendix A",
+            "finding": "The prose build recipe and its artifact table agree on Tectonic. The standalone paper points readers to the study and output paths."
+          }
+        ]
+      },
+      "headline_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1 rows E1–E4",
+            "finding": "Recomputed from source and result CSVs. E1 85.41667 vs 0, E2 43.61933 vs .03581, E3 47.07133 vs .32584, and E4 .0627 vs .8518 raw, or .0127 vs .8018 above .05, round to the displayed pairs."
+          },
+          {
+            "page": 7,
+            "location": "Section 4.4, recommendation",
+            "finding": "The n=5,000 evidence reports 86.3% in the Bradley band and 89.2% reaching .80 power, as recorded in results/statement_checks.csv. The both-zero exception remains."
+          }
+        ]
+      },
+      "claim_coverage": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 24,
+            "location": "Appendix C, study claim inventory",
+            "finding": "All 13 claims H1–H4 and S1–S9 retain the packet statuses, including RQ2 blocked where restricted inputs are needed, S5 replicated arithmetic, and S7–S8 not established. S9 is partial (10 opposite, 5 same in results/significance_conclusions.json)."
+          }
+        ]
+      },
+      "limitations_preserved": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 19,
+            "location": "Section 10",
+            "finding": "The seven limitations retain the seeded-code/interval distinction, unknown aggregation, figure reading and occlusions, inaccessible HSIS inputs, absent SD-of-Y analysis, cutoff conventions and the model-specification issue."
+          },
+          {
+            "page": 1,
+            "location": "Table 1 notes",
+            "finding": "States that E4 used a post-hoc cell and cutoff 1 was hidden, and that the comparison concerns descriptive point estimates with Monte Carlo errors discussed separately in the introduction."
+          }
+        ]
+      },
+      "scientific_process_distinction": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 4,
+            "location": "Section 3.3",
+            "finding": "Separates exact replay of the printed, seeded R pipeline from the original published runs and the newly seeded Python bootstrap. The output records confirm the replay and simulation runtime versions and scopes."
+          }
+        ]
+      },
+      "abstract_source_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Abstract, Chen citation and original findings",
+            "finding": "The Chen (2021) in-text link reaches the Donna Chen dissertation entry. The headline descriptions agree with the source excerpts and locators in the evidence packet and transcribed tables. The repository copy of the dissertation PDF was unavailable for a fresh page-level check."
+          }
+        ]
+      },
+      "effect_magnitude_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1 magnitude, direction and notes",
+            "finding": "E1 is smaller and zero versus nonzero, E2–E3 smaller in the same direction, E4 larger in the same direction, and E5 magnitude and direction are unestablished. Units are stated and tolerances remain .005/.005/.01 percentage points and .0091 rejection rate. The E4 mean digitization error is .00915 before display rounding."
+          }
+        ]
+      },
+      "finding_attribution": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1 E1 Published and Ours",
+            "finding": "Chen Table 4.8 transcriptions give 12.50–18.75% within .10 for direct effects and the packet attributes the negative-bias finding to the dissertation discussion. All corresponding ours rows are within .05, with the largest absolute bias .0155 before rounding."
+          },
+          {
+            "page": 1,
+            "location": "Table 1 E2 and E3 Published and Ours",
+            "finding": "Published coverage is 24.10–83.99% with above/below ranges 14.08–75.55% and 0.34–1.93%. Ours coverage range is 94.5944–95.6348% and above/below are 2.5217–2.8974% and 1.8434–2.7070% in table49_ours.csv."
+          },
+          {
+            "page": 1,
+            "location": "Table 1 E4 Published and Ours",
+            "finding": "Figure 4.28 read points are .0571 and .0683, with cutoff 1 occluded. Ours reaches .8518 over these two cutoffs, .8361 over all three, and .97 or more for the stated larger effects from n=1,000."
+          },
+          {
+            "page": 1,
+            "location": "Table 1 E5 Published and Ours",
+            "finding": "The 5,000 recommendation is tentative in the source excerpts. Ours has explicit 86.3% and 89.2% findings, similar per-cutoff shares, and the conservative both-zero result."
+          }
+        ]
+      },
+      "comparison_applicability": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1 E5",
+            "finding": "The tentative minimum sample size is a qualitative grid-wide recommendation. The table gives separate Published/Ours findings and a partial scientific verdict while marking each scalar comparison field unestablished."
+          }
+        ]
+      }
+    },
+    "phrase_dispositions": []
+  },
+  "pdf_links": {
+    "verdict": "pass",
+    "pdf_sha256": "22f70c815d785e37bf2b5b6fda05fe34282854736d772b58e6936323d9e3f33b",
+    "inventory_sha256": "2c67c5bd3c0c43e3390f15624fac00f9f658c86ce96cbc2b86337ac37699d1b4",
+    "findings": [
+      {
+        "page": 1,
+        "finding": "The Chen (2021) author and year click areas resolve to cite.chen2021 on the dissertation bibliography entry. The note’s Section 1 link reaches the introduction. These are internal PDF destinations."
+      },
+      {
+        "page": 3,
+        "finding": "The simulation/chen_sim.py master URI with #L41 points to the population() definition at line 41 in the checked branch tree."
+      },
+      {
+        "page": 4,
+        "finding": "The displayed R 4.0.3 and 4.1.3 links reach the R Project, all six linked replay packages reach the corresponding CRAN packages, and the Python, NumPy and scikit-learn links point to their corresponding official project sites. The wrapped digest link segments retain the same URI."
+      },
+      {
+        "page": 20,
+        "finding": "Digital Commons record 403 points to the University of Nebraska–Lincoln dissertation record. Source-value and inventory filenames point to canonical master paths."
+      },
+      {
+        "page": 22,
+        "finding": "Tectonic 0.17.0 links to the official Tectonic site; the evidence and study folder references lead to matching master artifact locations."
+      },
+      {
+        "page": 22,
+        "finding": "The split bibliography link annotations have complete target strings. Inspected external method and software targets including SciPy and pandas DOIs, the PyMuPDF, Pillow, PyYAML and Poppler projects, and each CRAN package. The live-master navigation gate belongs after merge."
+      }
+    ]
+  },
+  "required_fixes": []
+}
