@@ -276,6 +276,41 @@ python3 .agents/skills/replication-paper/scripts/checks.py captions dissertation
 `Table 3.2` and `Figure 4.1`, plus hypotheses, research questions, numbered
 equations, and appendix tables, are hints only.
 
+## Keep the paper current
+
+The paper is what a reviewer reads. Evidence that is committed and pushed but
+not in the paper is invisible to them, so every commit and every push to a
+study considers the paper:
+
+- Each commit that changes a study outside `paper/` ends with a trailer saying
+  what was decided: `Paper: updated` (the paper was revised in this commit or
+  the one before it), `Paper: pending` (the paper must change and has not yet;
+  the pull request is then a draft), or `Paper: not-needed <reason>` (for
+  example, a refactor that changes no number the paper prints). Commits that
+  only change `paper/` need no trailer.
+- Install the pre-push hook once per clone:
+  `git config core.hooksPath .agents/skills/replication-paper/scripts/hooks`.
+  It blocks a push whose study commits lack the trailer and prints whether
+  each touched study's paper is current.
+- `scripts/paper_freshness.py check --root STUDY` re-hashes everything the paper
+  was written from: the evidence packet against the writer manifest's
+  `packet_sha256`, the packet's own `artifacts` (its build inputs), the writer
+  manifest's `inputs` and `outputs`, and every committed file under
+  `REPLICATION-PLAN.yaml`, `DISAGREEMENTS.yaml`, `results/` and `source-values/`
+  that the writer did not read. Any mismatch is `paper stale: <file>`; a
+  manifest with `context: shared` is a `draft`. `preflight.py done` fails on
+  stale and reports a draft as incomplete (exit 3).
+- While the paper is stale or a draft, the study's pull request is a draft and
+  its description opens with `> **Draft: the paper is ahead of its review.**`
+  followed by what the paper does not yet carry.
+  `paper_freshness.py pr --root STUDY --pr N` checks this; `--fix` converts the
+  pull request to draft. Tell the person in the same message that reports the
+  new evidence.
+- When new evidence changes a conclusion, revise the paper in the same working
+  session. A same-context revision records `context: shared` in the writer
+  manifest with the inputs it read; it is a draft until an isolated writer
+  rebuilds the paper from a rebuilt packet and a fresh cold review passes.
+
 ## Pre-done checklist
 
 - [ ] `REPLICATION-PLAN.yaml` lists every substantive part and was committed before analysis.
@@ -289,7 +324,8 @@ equations, and appendix tables, are hints only.
 - [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.
 - [ ] Every part of `REPLICATION-PLAN.yaml` that is not `replicated` has its own `limit_kind` (`input_unavailable`, `not_run`, `theorem_finite_only`, or `out_of_scope`), a part-specific reason, and part-specific evidence. `preflight.py done` rejects copied reasons, generic templates such as "See named artifacts and limitations", a repeated evidence path, and a `not_run` part that lacks an estimate and a decision. A tractable `not_run` part needs a non-cost justification, or an explicit `decision_by: project` with a `decision_reason`, before a resource decline is accepted.
 - [ ] No part was removed or narrowed against the first commit without a recorded reason.
-- [ ] `preflight.py done` exits 0 (complete). Exit 3 means incomplete: no errors, but neither the source PDF nor a committed inventory of it is available, and that is recorded; the study is not done. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
+- [ ] The paper is current: `paper_freshness.py check` reports `current` (packet, packet inputs, writer inputs and outputs re-hash; no committed evidence unread; fresh writer context), every study commit carries a `Paper:` trailer (`paper_freshness.py commits --since <merge-base>`), and while it was not current the pull request was a draft with the note.
+- [ ] `preflight.py done` exits 0 (complete). Exit 3 means incomplete: no errors, but neither the source PDF nor a committed inventory of it is available, and that is recorded, or the paper is a shared-context draft; the study is not done. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
 - [ ] Optional caption hints were reviewed.
 - [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
 - [ ] Rendered pages for headline and Published entries were inspected when the PDF could be obtained. Text reading and visual inspection are recorded separately.
