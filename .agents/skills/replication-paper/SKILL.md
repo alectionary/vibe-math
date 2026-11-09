@@ -88,8 +88,9 @@ engine fallback and blocked part near the top of the pull request description.
 
 ## The source and every figure and table in it
 
-The source PDF is often not ours to redistribute, so it is never committed
-unless its licence allows. What is committed is the evidence read from it:
+Other authors' PDFs and documents (the source, supplements, articles) are
+never committed; `preflight.py done` fails on any such file tracked outside
+`paper/`. What is committed is the evidence read from the source:
 those values are scientific statements. With the verified PDF in hand:
 
 1. Record `source_locator` and `source_sha256`.
@@ -216,7 +217,7 @@ equations, and appendix tables, are hints only.
 
 - [ ] `REPLICATION-PLAN.yaml` lists every substantive part and was committed before analysis.
 - [ ] Every blocker on the source's own path (software, code and seeds, data, files) was reported to the person when it happened, with what it costs and how to unblock it, and they decided. `checks.py seeds` was run on the source; each fallback record and each `input_unavailable` or `not_run` part carries that decision.
-- [ ] `source_sha256` and the committed `source_inventory` identify the source, and `source_items` covers every figure and table in it with committed values or a reported exclusion; or, with neither the PDF nor an inventory, the plan records `source_missing` with an open fetch issue and the study is reported as incomplete, not done. The PDF itself is not committed unless its licence allows.
+- [ ] `source_sha256` and the committed `source_inventory` identify the source, and `source_items` covers every figure and table in it with committed values or a reported exclusion; or, with neither the PDF nor an inventory, the plan records `source_missing` with an open fetch issue and the study is reported as incomplete, not done. Other authors' PDFs and documents are never committed; the done check fails on any tracked outside `paper/`.
 - [ ] Every published quantity compared is in `published_evidence` with its `value_source`; any quantity a figure plots was digitized (`scripts/digitize.py`, with its reading error) or the person was told why not. Every `input_unavailable` for data records the `sufficient_statistics` search, and none is marked unavailable when the printed moments suffice.
 - [ ] The full design was run, or the reduced run is a last resort with a cost estimate, what was tried, and exact `N of M` counts in the abstract and the body.
 - [ ] The headline verdict is no stronger than the headline parts that were run.

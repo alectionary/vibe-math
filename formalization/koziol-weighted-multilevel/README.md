@@ -64,5 +64,5 @@ pdflatex weighted_single_level_versus_multilevel__a_replication_of_koziol_2015.t
 pdflatex weighted_single_level_versus_multilevel__a_replication_of_koziol_2015.tex
 ```
 
-The dissertation PDF in `source/` is the Internet Archive copy described in `notes/availability.md`.
+The dissertation PDF is not in git: other authors' documents are not stored here. The copy used is the Internet Archive copy described in `notes/availability.md`, sha256 `b64a3c3fdeb43040875b88560b69d3b9b4f23c1a45b05f0834204e624a56eece` (222 pages). Place it at `source/koziol2015.pdf` to rerun `simulation/parse_published.py`. `source-inventory.json` lists every figure and table in it. The 2017 supplement (`hmbr_a_1292115_sm3492.docx`, Figshare `10.6084/m9.figshare.4743673`, md5 `12e1e163d79e59c824e55cb071b87e01`) is likewise not stored.
 It is not produced by these commands.
