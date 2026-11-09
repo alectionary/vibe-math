@@ -119,3 +119,17 @@ Wall clock and projection: three finished cells are 35, 44, and 144 minutes. If 
 **Surprising:** condition 3 took 8613 s, about four times condition 1, because more replicates failed to converge and each fit was slower.
 
 **Blocking:** none. Replicates, allocation, and the engine are unchanged.
+
+## 2026-11-09T23:59Z (cell 4 committed)
+
+**Accomplished:** 4 of 36 cells. `mgcfa_null_n240_c1` is commit `831fd202`, pushed. 11000 rows, 10929 converged, 1420224 bytes, wall 2301 s (2026-11-09T23:09:37Z to 2026-11-09T23:47:58Z).
+
+**New:** `mgcfa_null_n240_c2` started 2026-11-09T23:48:01Z with 4 cores and is in `exportData`. Finished walls: true c1 2074 s, true c2 2637 s, true c3 8613 s, null c1 2301 s.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: balanced cells are 35–38 minutes, the one 35/15 cell was 44 minutes, and the one 45/5 cell was 144 minutes. If the remaining 11 cells of each imbalance match those, the rest of the grid is about 40 hours, finishing around 2026-11-11 16:00 UTC. N=960 generation may be slower. Four cells are 5.7 MB, so 36 cells stay near 50 MB, under 100 MB. Exactness gate on cell 1 remains FAIL. SHAs: cell 1 `c33bddb8`, cell 2 `af8248b2`, cell 3 `77f62409`, cell 4 `831fd202`.
+
+**Surprising:** none. The null balanced cell is close to the true balanced cell (2301 s vs 2074 s).
+
+**Blocking:** none.
