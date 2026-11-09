@@ -1,0 +1,19 @@
+#!/bin/sh
+# Reject a consumer-domain author, committer, or message address.
+# Enable once per clone: git config core.hooksPath .githooks
+
+set -eu
+
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "commit-msg: python3 is required for the email-domain check" >&2
+    exit 1
+fi
+
+root=$(git rev-parse --show-toplevel)
+author=$(git var GIT_AUTHOR_IDENT)
+committer=$(git var GIT_COMMITTER_IDENT)
+
+exec python3 "$root/scripts/check_commit_emails.py" commit-msg \
+    --message-file "$1" \
+    --author-ident "$author" \
+    --committer-ident "$committer"
