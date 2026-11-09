@@ -51,7 +51,17 @@ def plan(parts, removals=None):
         "source_locator": "sources/dissertation.pdf",
         "parts": parts,
         "removals": [] if removals is None else removals,
+        "published_evidence": [dict(PUBLISHED_TABLE)],
+        "source_items": [],
+        # These test studies have no source PDF, and say so: the done check then
+        # reports them as incomplete, never complete.
+        "source_missing": {"fetch_issue": 1, "since": "2026-11-08", "reason": "test study without a source PDF"},
     }
+
+
+PUBLISHED_TABLE = {"id": "table-4", "location": "Table 4", "quantity": "headline estimates",
+                   "value_source": "table", "plotted_in": []}
+NOT_DATA = {"applies": False, "why": "the missing input is not data"}
 
 
 def headline(**updates):
@@ -208,6 +218,11 @@ class PlanDone(unittest.TestCase):
                         "cost_estimate": "208 settings at about 40 minutes each is about 139 CPU-hours; the budget was 6 hours.",
                         "attempted": "Ran one setting from each estimator family, then stopped.",
                     },
+                    limit_kind=["not_run"],
+                    cost_estimate="208 settings at about 40 minutes each is about 139 CPU-hours.",
+                    decision="Stopped after the pilot.",
+                    tractable=False,
+                    reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told; chose to stop here"},
                 ),
                 chapter(),
             ]
@@ -313,7 +328,10 @@ class PlanDone(unittest.TestCase):
         data = plan(
             [
                 headline(),
-                chapter(status="not_attempted", reason="The source file for Chapter 1 was unreadable."),
+                chapter(status="not_attempted", reason="The source file for Chapter 1 was unreadable.",
+                        limit_kind=["input_unavailable"], missing_input="a readable Chapter 1 source file",
+                        looked_in="the dissertation PDF and the repository archive",
+                        sufficient_statistics=NOT_DATA, reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told; chose to stop here"}),
             ]
         )
         paper = (
@@ -343,7 +361,12 @@ class PlanDone(unittest.TestCase):
     def test_unavailable_input_is_not_called_a_failed_replication(self):
         data = plan(
             [
-                headline(status="input_unavailable", reason="The original data were not released."),
+                headline(status="input_unavailable", reason="The original data were not released.",
+                         limit_kind=["input_unavailable"], missing_input="the original data",
+                         looked_in="the dissertation appendices and the data archive",
+                         sufficient_statistics={"found": False, "what": "no means, SDs or correlation matrix printed",
+                                                "sufficient": False, "why": "nothing printed to rebuild the moments from"},
+                         reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told; chose to stop here"}),
                 chapter(),
             ]
         )
@@ -507,7 +530,9 @@ class PlanGit(unittest.TestCase):
             ["sim/run.py"],
         )
         self.assertEqual(decision["errors"], [], decision)
-        self.assertTrue(decision["accepted"])
+        # no errors, but the source PDF is missing: incomplete, not accepted as done
+        self.assertEqual(decision["status"], "incomplete", decision)
+        self.assertFalse(decision["accepted"])
 
     def test_analysis_in_the_plan_commit_fails(self):
         self._write("REPLICATION-PLAN.yaml", _dump(plan([headline(), chapter()])))
@@ -585,14 +610,18 @@ def limited(part_id, evidence, **updates):
 
 
 class LimitKinds(unittest.TestCase):
-    def test_plans_without_the_schema_keep_shared_boilerplate(self):
+    def test_every_plan_gets_the_same_checks(self):
+        """One plan format: an old plan without limit_schema is checked like any other."""
         shared = "See named artifacts and limitations."
         data = plan([
             headline(status="partly", reason=shared, evidence="notes.md"),
             chapter(status="partly", reason=shared, evidence="notes.md"),
         ])
         found = errors(data, PARTIAL_PAPER)
-        self.assertFalse(any("limit_kind" in item or "generic template" in item for item in found))
+        self.assertTrue(any("limit_kind" in item for item in found))
+        self.assertTrue(any("generic template" in item for item in found))
+        flagged = dict(data, limit_schema=1)
+        self.assertEqual(sorted(errors(flagged, PARTIAL_PAPER)), sorted(found))
 
     def test_schema_requires_a_specific_kind_reason_and_evidence(self):
         data = plan([
@@ -607,7 +636,6 @@ class LimitKinds(unittest.TestCase):
                 evidence="notes.md",
             ),
         ])
-        data["limit_schema"] = 1
         found = errors(data, PARTIAL_PAPER)
         self.assertTrue(any("limit_kind required" in item for item in found))
         self.assertTrue(any("generic template" in item for item in found))
@@ -620,6 +648,7 @@ class LimitKinds(unittest.TestCase):
             headline(),
             limited("reshape-cost", "results/reshape_cost.json", status="not_attempted",
                     reason="Oracle call counts were not executed; the script is results/reshape_cost.py.",
+                    reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told the person; they chose to stop here"},
                     limit_kind=[{"kind": "not_run"}],
                     cost_estimate="About 1 CPU-minute for the six worked examples.",
                     decision="Not run in this pass.",
@@ -627,29 +656,31 @@ class LimitKinds(unittest.TestCase):
                     justification="The count is a short exact calculation, deferred only because the oracle implementation was still being checked."),
             limited("reshape-random", "sources/random-search.md", status="input_unavailable",
                     reason="The (3,4) seed matrices are not in the archived repository.",
+                    reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told the person; they chose to stop here"},
                     limit_kind=["input_unavailable"],
                     missing_input="original (3,4) seed matrices",
-                    looked_in="sources/browser-extraction.txt and the code archive"),
+                    looked_in="sources/browser-extraction.txt and the code archive",
+                    sufficient_statistics=NOT_DATA),
         ])
-        good["limit_schema"] = 1
         self.assertEqual(errors(good, PARTIAL_PAPER), [])
         costly = plan([
             headline(),
             limited("reshape-cost", "results/reshape_cost.json", status="not_attempted",
                     reason="The resource count was left for later.",
+                    reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told the person; they chose to stop here"},
                     limit_kind=["not_run"],
                     cost_estimate="1 CPU-minute",
                     decision="1 CPU-minute",
                     tractable=True,
                     justification="1 CPU-minute"),
         ])
-        costly["limit_schema"] = 1
         found = errors(costly, PARTIAL_PAPER)
         self.assertTrue(any("compute cost alone is not acceptable" in item for item in found))
         declined = plan([
             headline(),
             limited("threshold-table", "results/threshold_decision.json", status="partly",
                     reason="The N=8 grid at L=9 and L=11 is tractable and was declined for this project's compute limit.",
+                    reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told the person; they chose to stop here"},
                     limit_kind=["not_run"],
                     cost_estimate="About 54 CPU-hours per toric L=11 point, several days on 4 cores.",
                     decision="declined for resources",
@@ -657,7 +688,6 @@ class LimitKinds(unittest.TestCase):
                     decision_by="project",
                     decision_reason="The source design can be run. This project declines L=9 and L=11 at N=8 because one toric L=11 point is about 54 CPU-hours and the grid is several days on 4 cores."),
         ])
-        declined["limit_schema"] = 1
         self.assertEqual(errors(declined, PARTIAL_PAPER), [])
         unnamed = copy.deepcopy(declined)
         unnamed["parts"][1]["decision_reason"] = "See named artifacts and limitations."
@@ -672,7 +702,6 @@ class LimitKinds(unittest.TestCase):
         ])
         for key in ("limit_kind", "finite_checks"):
             data["parts"][1].pop(key)
-        data["limit_schema"] = 1
         self.assertFalse(any("limit_kind" in item for item in errors(data, PARTIAL_PAPER)))
         partly = copy.deepcopy(data)
         partly["parts"][1]["status"] = "partly"
@@ -691,6 +720,66 @@ class LimitKinds(unittest.TestCase):
         bare["parts"][1]["reason"] = "See named artifacts and limitations."
         self.assertTrue(any("generic template" in item for item in errors(bare, PARTIAL_PAPER)))
 
+    def test_blocked_parts_must_be_reported_to_the_person(self):
+        data = plan([
+            headline(),
+            limited("seed-matrices", "sources/random-search.md", status="input_unavailable",
+                    reason="The (3,4) seed matrices are not in the archived repository.",
+                    limit_kind=["input_unavailable"],
+                    missing_input="original (3,4) seed matrices",
+                    looked_in="the code archive",
+                    sufficient_statistics=NOT_DATA),
+        ])
+        self.assertTrue(any("reported_to_person" in item for item in errors(data, PARTIAL_PAPER)))
+        data["parts"][1]["reported_to_person"] = {"date": "2026-11-08", "channel": "chat",
+                                                  "summary": "told the matrices are missing; chose to stop at the finite check"}
+        self.assertFalse(any("reported_to_person" in item for item in errors(data, PARTIAL_PAPER)))
+
+    def test_missing_data_needs_a_sufficient_statistics_search(self):
+        def data_with(stats):
+            part = limited("rq2-headstart", "notes/availability.md", status="input_unavailable",
+                           reason="The restricted-use Head Start file could not be obtained.",
+                           reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told; ICPSR route refused"},
+                           limit_kind=["input_unavailable"], missing_input="HSIS restricted-use file",
+                           looked_in="ICPSR 29462 and the dissertation tables")
+            if stats is not None:
+                part["sufficient_statistics"] = stats
+            data = plan([headline(), part])
+            return errors(data, PARTIAL_PAPER)
+
+        self.assertTrue(any("sufficient_statistics" in item for item in data_with(None)))
+        self.assertTrue(any("sufficient_statistics.why" in item for item in data_with({"found": True, "sufficient": False})))
+        enough = data_with({"found": True, "what": "Table 2 correlation matrix, means, SDs, N",
+                            "sufficient": True, "why": "the model is linear in these moments"})
+        self.assertTrue(any("reproduce the analysis from them" in item for item in enough))
+        self.assertEqual(data_with({"found": True, "what": "within-group means and SDs (Table 4.2); residual correlations (Table 4.4)",
+                                    "sufficient": False,
+                                    "why": "no treatment-by-mediator covariances, so the a and b paths cannot be recovered"}), [])
+
+    def test_published_evidence_names_where_each_value_came_from(self):
+        data = plan([headline()])
+        self.assertEqual(errors(data, PARTIAL_PAPER), [])
+        del data["published_evidence"]
+        self.assertTrue(any("requires published_evidence" in item for item in errors(data, PARTIAL_PAPER)))
+        data["published_evidence"] = [{"id": "mint-power", "location": "p. 121", "quantity": "MINT power",
+                                       "value_source": "text", "plotted_in": ["Figure 4.28"]}]
+        self.assertTrue(any("digitize the figure" in item for item in errors(data, PARTIAL_PAPER)))
+        data["published_evidence"][0].update(value_source="figure_digitized")
+        found = errors(data, PARTIAL_PAPER)
+        self.assertTrue(any("digitized_file" in item for item in found))
+        self.assertTrue(any("reading_error" in item for item in found))
+        data["published_evidence"][0].update(digitized_file="results/fig_4_28.csv", reading_error="0.004")
+        self.assertEqual(errors(data, PARTIAL_PAPER), [])
+        data["published_evidence"][0] = {"id": "mint-power", "location": "p. 121", "quantity": "MINT power",
+                                         "value_source": "figure_not_digitized", "plotted_in": ["Figure 4.28"],
+                                         "reason": "a raster scan with overlapping markers"}
+        self.assertTrue(any("reported_to_person" in item for item in errors(data, PARTIAL_PAPER)))
+        data["published_evidence"][0]["reported_to_person"] = {"date": "2026-11-08", "channel": "chat",
+                                                               "summary": "told the figure cannot be read; agreed to compare text only"}
+        self.assertEqual(errors(data, PARTIAL_PAPER), [])
+        data["published_evidence"][0].pop("plotted_in")
+        self.assertTrue(any("plotted_in" in item for item in errors(data, PARTIAL_PAPER)))
+
     def test_several_limit_kinds_can_apply_to_one_part(self):
         data = plan([
             headline(),
@@ -703,7 +792,6 @@ class LimitKinds(unittest.TestCase):
                 scope_reason="A new general proof is outside this finite audit.",
             ),
         ])
-        data["limit_schema"] = 1
         self.assertEqual(errors(data, PARTIAL_PAPER), [])
 
 

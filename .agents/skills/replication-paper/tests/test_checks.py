@@ -122,6 +122,20 @@ class ScaledDifference(unittest.TestCase):
         self.assertFalse(judged["procedure_validated"])
 
 
+BLOCKED_FALLBACK = {
+    "name": "scipy",
+    "kind": "blocked",
+    "justification": "Rscript was not on the path and could not be installed here",
+    "independent_validation": "L-BFGS-B and SLSQP agreed to 1e-12 on the same discrepancy",
+    "source_path": "the source fitted the models in R with lavaan",
+    "exact_reproduction": "possible",
+    "exact_reproduction_evidence": "Appendix A sets set.seed(1234)",
+    "lost": "the source's exact simulated datasets",
+    "unblock_options": [{"option": "R on the person's own computer", "outcome": "offered; person chose the fallback"}],
+    "decision": {"by": "person", "date": "2026-11-08", "channel": "chat", "summary": "told R was blocked; chose scipy"},
+}
+
+
 class LedgerAndEngine(unittest.TestCase):
     def test_departure_without_justification_is_rejected(self):
         problems = checks.validate_ledger(
@@ -164,15 +178,52 @@ class LedgerAndEngine(unittest.TestCase):
         self.assertFalse(bare["accepted"])
         ready = preflight.assess(
             {"os": "Darwin", "rscript": None, "lavaan": None, "openmx": None},
-            {
-                "name": "scipy",
-                "justification": "Rscript was not on the path and could not be installed",
-                "independent_validation": "L-BFGS-B and SLSQP agreed to 1e-12 on the same discrepancy",
-            },
+            dict(BLOCKED_FALLBACK),
         )
-        self.assertTrue(ready["accepted"])
+        self.assertTrue(ready["accepted"], ready["reason"])
         self.assertTrue(ready["fallback"])
         self.assertEqual(ready["engine"], "scipy")
+
+    def test_blocked_fallback_needs_the_persons_decision(self):
+        silent = dict(BLOCKED_FALLBACK)
+        silent.pop("decision")
+        decision = preflight.assess({"os": "Linux", "rscript": None, "lavaan": None, "openmx": None}, silent)
+        self.assertFalse(decision["accepted"])
+        self.assertIn("decision.by", decision["reason"])
+        unreachable = dict(BLOCKED_FALLBACK, decision={"by": "unreachable", "reason": "scheduled run, no reply"})
+        self.assertIn("cannot be given up without the person's decision",
+                      " ".join(preflight.fallback_errors(unreachable)))
+        not_exact = dict(unreachable, exact_reproduction="not_possible",
+                         exact_reproduction_evidence="the source code sets no seed")
+        self.assertEqual(preflight.fallback_errors(not_exact), [])
+        no_options = dict(BLOCKED_FALLBACK, unblock_options=[])
+        self.assertTrue(any("unblock_options" in e for e in preflight.fallback_errors(no_options)))
+        no_loss = dict(BLOCKED_FALLBACK, lost="")
+        self.assertTrue(any("lost" in e for e in preflight.fallback_errors(no_loss)))
+
+    def test_domain_fallback_needs_source_path_but_no_decision(self):
+        domain = {"name": "CVXPY", "kind": "domain", "justification": "lavaan does not fit SDP recovery maps",
+                  "independent_validation": "SCS agrees with Clarabel to 1e-7",
+                  "source_path": "the source used MATLAB CVX", "exact_reproduction": "not_possible",
+                  "exact_reproduction_evidence": "deterministic optimization; solver tolerances differ"}
+        self.assertEqual(preflight.fallback_errors(domain), [])
+        self.assertTrue(preflight.fallback_errors(dict(domain, kind="convenience")))
+
+    def test_seed_scanner_flags_seeded_source_code(self):
+        hints = checks.seed_hints("x <- 1\nset.seed(18374788)\nTITLE: run; MONTECARLO: SEED = 4533;\nproc x; call streaminit(9);")
+        self.assertEqual([h["line"] for h in hints], [2, 3, 4])
+        self.assertEqual(checks.seed_hints("no seeds here"), [])
+
+    def test_done_check_finds_fallback_records_by_content(self):
+        import tempfile, json as _json
+        with tempfile.TemporaryDirectory() as tmp:
+            Path(tmp, "sub").mkdir()
+            Path(tmp, "sub", "engine.json").write_text(_json.dumps(
+                {"name": "numpy", "justification": "R did not install", "independent_validation": "sklearn"}))
+            Path(tmp, "other.json").write_text(_json.dumps({"unrelated": 1}))
+            found = preflight.fallback_records(Path(tmp))
+            self.assertEqual([p.name for p, _ in found], ["engine.json"])
+            self.assertTrue(preflight.fallback_errors(found[0][1]))
 
     def test_preferred_engine_does_not_need_a_fallback(self):
         decision = preflight.assess(
