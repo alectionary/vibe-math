@@ -6,7 +6,7 @@
 - User authorization: “Thanks, proceed with your recommendation. If this works, we may update our lessons learned accordingly.”
 - Start:2026-10-27T17:32:45Z.
 - Branch: `research/c16-structural-20261027T173245`; isolated worktree `/private/tmp/c16-structural-20261027T173245`.
-- Prior checkpoint: `baad1cd6811c78fd13da2c7e76bc14625b6db451`.
+- Prior checkpoint: `0703507ac96b66516862b9378be95c7f859dada5`.
 - Issue: https://github.com/alectionary/vibe-math/issues/8 . No Project requested. No external message authorized.
 
 ## Answer contract and bounded deliverable

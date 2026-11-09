@@ -6,7 +6,7 @@ def load(p):
  p=Path(p);return json.loads(gzip.decompress(p.read_bytes()) if p.suffix=='.gz' else p.read_bytes())
 def write(n,d):(O/n).write_text(json.dumps(d,indent=2)+'\n')
 assert not subprocess.check_output(['git','status','--porcelain'],cwd=REPO)
-commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip();assert commit=='1e852eea43956cbc38759e5182e6f3df9bb782d7'
+commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip();assert commit=='d1c0d2a3a4ea9caff57194977d25b3c11db83e4d'
 stages=[];point=r+'integer-witness15-rational.json.gz';checks=r+'integer-witness15-checks-frozen.json'
 def add(name,script,args):stages.append((name,[PY,'-u',script,*args,'--output',str(O/(name+'.json'))]))
 for n,command in enumerate(load(C/checks)['commands']):

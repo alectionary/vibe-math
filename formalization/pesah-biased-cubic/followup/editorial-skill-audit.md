@@ -1,7 +1,7 @@
 # Editorial failure analysis and proposed skill checks
 
 Inspected 2026-10-30. Latest remote master fetched and verified at
-`e2b553c06c872d8008061a26d05831e572e54789`; the local replication-paper skill
+`8e348375aaa5fa7175dd5ada1a54aad6274d8904`; the local replication-paper skill
 and supporting files have no differences from that revision. This is an
 investigation record, not a reusable skill change.
 

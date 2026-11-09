@@ -10,7 +10,7 @@ Session: `c16-three-term-20261029T1448`.
 Work branch: `research/c16-three-term-20261029T1448`.
 Prepared at2026-10-29T14:48Z; interrupted before claiming or beginning experiments.
 Research resumed at2026-10-29T17:00:28Z.
-Baseline:9d9977b2e4134bb4f3a50177f0e0f12545e4150f.
+Baseline:56b6c7fe42510e78c06e6734406c62e44d92c152.
 
 This is a follow-up to the proposed three-term gate in STRATEGY-REASSESSMENT.md.
 The source question remains whether the unrestricted canonical width of the

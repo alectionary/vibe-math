@@ -110,7 +110,7 @@ separate, preserved and unclaimed as executed results.
 
 ## Independent checkpoint replay and scope
 
-Checkpoint `3129963fcac399fe3422429aeed7247dbc2c9dd1` passed five new gates from
+Checkpoint `c9091b03ddc5f3bcfeaf6de03d591ea6c3a313ad` passed five new gates from
 an isolated declared copy: master preparation, probability bounds, numeric
 conversion, full residual pricing and final exact projection. All **2,164
 input files**, totaling **866,710,319 bytes**, matched both SHA-256 hashes and

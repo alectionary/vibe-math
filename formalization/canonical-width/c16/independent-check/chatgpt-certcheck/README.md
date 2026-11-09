@@ -6,7 +6,7 @@ can be verified. The `chatgpt` directory/branch token is a product identifier,
 not an invented model version.
 
 Base: `research/c16-structural-20261027T173245` at
-`010225566101d9431ab3d241f76162781796b15d`.
+`420c5db40a889e5c92ad01b5af8ea17df09d36a6`.
 Branch: `independent/c16-certcheck-chatgpt-20261107`.
 
 ## Independence and scope

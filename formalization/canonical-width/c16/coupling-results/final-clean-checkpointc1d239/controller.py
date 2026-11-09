@@ -7,7 +7,7 @@ def read(p):
  p=Path(p);return json.loads(gzip.decompress(p.read_bytes()) if p.suffix=='.gz' else p.read_bytes())
 def write(n,d):
  p=O/n;assert not p.exists();p.write_text(json.dumps(d,indent=2)+'\n')
-assert not subprocess.check_output(['git','status','--porcelain'],cwd=R);commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip();assert commit=='c1d2396154b77b9531cc1cb9a8f6abe703f441c1'
+assert not subprocess.check_output(['git','status','--porcelain'],cwd=R);commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip();assert commit=='1318fd30748b2d0a6e3d5cbb5968bde77f838cfb'
 inherited=[];hashes={}
 for folder,count in [('final-clean-checkpoint0957',689),('final-clean-checkpoint043a5bd',760)]:
  f=read(D/folder/'frozen.json');assert len(f['input_and_source_hashes'])==count and all(sha(C/p)==h for p,h in f['input_and_source_hashes'].items());hashes.update(f['input_and_source_hashes']);inv=read(D/folder/'inventory.json');assert all(sha(D/folder/p)==h for p,h in inv['files'].items());inherited.append({'archive':folder,'input_bindings':count,'frozen_sha256':sha(D/folder/'frozen.json'),'inventory_sha256':sha(D/folder/'inventory.json')})

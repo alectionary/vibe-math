@@ -379,7 +379,7 @@ The complete replay is in `algebraic-results/clean-replay/summary.json`;
 manifest records file hashes and Git blob identifiers at its stated revision.
 
 The canonical claim was reserved at ownership commit
-`5fa8a68dc6aa50f53fb9515102c9a611cfad8f04`, then deleted using an exact expected-SHA
+`d99652c71a96d91e021ef72c73cd14a69c65faca`, then deleted using an exact expected-SHA
 lease after preservation and clean replay. The server readback is empty at
 2026-10-29T01:39:14Z; `claim-release.json` records it. Issues3/8 remain read-only.
 The completed package is submitted through existing PR17. Required review

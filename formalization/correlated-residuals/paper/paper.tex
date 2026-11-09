@@ -16,7 +16,7 @@
 \makeatother
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,
   pdftitle={A replication and formalization of the Mi three-trait QTL SEM},pdfauthor={}}
-\newcommand{\proofcommit}{05d69ea141adf3d5ee936d3b48061bde241250dc}
+\newcommand{\proofcommit}{1ba6b8c891e61e725fb03fdbf779769bbc9c24b2}
 \newcommand{\proofbase}{https://github.com/alectionary/vibe-math/blob/\proofcommit/formalization/correlated-residuals}
 \newcommand{\lean}[2]{\href{\proofbase/#1.lean\#L#2}{\texttt{#2}}}
 \lstset{basicstyle=\footnotesize\ttfamily,columns=fullflexible,keepspaces=true,
@@ -108,7 +108,7 @@ central limit theorem.
 The Gaussian standard-error formula is a derivative plus a numerical check
 in \texttt{delta\_method.py}. It is not one of the Lean proofs. The proof
 text is in Appendix~\ref{app:lean}, taken from commit
-\sha{05d69ea141adf3d5ee936d3b48061bde241250dc}.
+\sha{1ba6b8c891e61e725fb03fdbf779769bbc9c24b2}.
 
 \subsection{The simulation studies}
 
@@ -342,7 +342,7 @@ The box check is
 \sha{python3 formalization/correlated-residuals/simulation/measure_glyphs.py --pdf local-extraction/literature/unl-sem/mi-qtl2010.pdf --check formalization/correlated-residuals/simulation/out/qtl1/glyphs.json}
 \end{quote}
 The stored boxes are \texttt{simulation/out/qtl1/glyphs.json}, commit
-\sha{b4e8a3c594f12f419560d5cb2a569b649ae93a55}.
+\sha{bb340b573b470b4d5130916e45f7c512b0413175}.
 
 Three matrices were worth computing. Only the third is printed.
 
@@ -537,7 +537,7 @@ under $B=-M$ and unsigned $G$, $100$ replicates, seed \texttt{20101027}.
 It is recomputed by \texttt{simulation/gaps.py}, which writes
 \texttt{simulation/out/gaps.json} and
 \texttt{simulation/out/gaps\_table.csv}, committed in
-\sha{c2769042e51806a77b2b70237fb4c014552e78fb}.
+\sha{d28cd4c12f75fba23bb0f4432bc65b42d7cafbb5}.
 \begin{verbatim}
 cd formalization/correlated-residuals/simulation
 python3 gaps.py
@@ -676,7 +676,7 @@ The position-reading baseline at the printed positions, $n=150$, threshold $14.8
 and $1000$ replicates gives $50.8$, $53.5$, and $86.1$
 (\texttt{simulation/out/assumptions/baseline.json}, seed
 \texttt{20101101}, commit
-\sha{82ff59d6bcfb02c273aaf1f83195e0d120fe0915}).
+\sha{04875ceb615280ded4b3f5c0d8ab031a330fd13a}).
 Rounded to the nearest percent, the comparison is $64/77/96$ against
 $51/54/86$. The command is
 \begin{verbatim}
@@ -716,7 +716,7 @@ that search is the inconsistent point QTL1 at $24$~cM and $n=250$: SEM
 powers $65.2$, $73.3$, and $99.3$, squared error about $26$, of which the
 third cell is the larger share. The output is
 \texttt{simulation/out/qtl1/qtl1\_24\_n250.json}, commit
-\sha{b4e8a3c594f12f419560d5cb2a569b649ae93a55}.
+\sha{bb340b573b470b4d5130916e45f7c512b0413175}.
 \begin{verbatim}
 cd formalization/correlated-residuals/simulation
 python3 qtl1_search.py --configs qtl1_24_n250 --reps 1000
@@ -954,7 +954,7 @@ Almost-sure consistency & \texttt{plug\_in\_consistent\_ae} and \texttt{plug\_in
 \end{tabular}
 \end{center}
 
-The links are pinned to commit \sha{05d69ea141adf3d5ee936d3b48061bde241250dc}, which contains these Lean files. The simulation script and the JSON outputs are commit \sha{5cd3c9f6d2f6e38f25e32146d74d55f3778436e1}. Appendix~\ref{app:lean} prints the central proof bodies.
+The links are pinned to commit \sha{1ba6b8c891e61e725fb03fdbf779769bbc9c24b2}, which contains these Lean files. The simulation script and the JSON outputs are commit \sha{6c8cdd50f5edd25f0466ae68ac0411bfd9a8b335}. Appendix~\ref{app:lean} prints the central proof bodies.
 
 Brito and Pearl (Structural Equation Modeling, 2002) prove that a recursive
 linear model is identifiable when no residual covariance joins a variable to
@@ -1526,10 +1526,10 @@ writes \texttt{study1.json}, \texttt{study2.json}, and
 \texttt{study3.json}. The CSV tables are built from those files.
 \begin{itemize}
 \item Simulation commit: \texttt{5cd3c9f}.
-\item Full hash: \sha{5cd3c9f6d2f6e38f25e32146d74d55f3778436e1}.
+\item Full hash: \sha{6c8cdd50f5edd25f0466ae68ac0411bfd9a8b335}.
 \item Branch: \texttt{cursor/l-f102-correlated-residuals-4c01}.
 \item Lean 4.22.0 and Mathlib v4.22.0, built with \texttt{lake build}.
-\item Theorem links are pinned to \sha{05d69ea141adf3d5ee936d3b48061bde241250dc}.
+\item Theorem links are pinned to \sha{1ba6b8c891e61e725fb03fdbf779769bbc9c24b2}.
 \item This PDF is \texttt{pdflatex paper.tex}. The ledger is \texttt{SOURCES.md}.
 \item The gap grid is \texttt{python3 gaps.py} in the simulation directory. Seeds are \texttt{20101027} through \texttt{20101042}.
 \end{itemize}
@@ -1597,7 +1597,7 @@ Claim & File and commit & Command \\
 \midrule
 \endhead
 Minus-sign positions in equation~(7): equals ends at $145.9$, parenthesis at $148.1$, four unary minuses &
-\sha{simulation/out/qtl1/glyphs.json}, \sha{b4e8a3c594f12f419560d5cb2a569b649ae93a55} &
+\sha{simulation/out/qtl1/glyphs.json}, \sha{bb340b573b470b4d5130916e45f7c512b0413175} &
 \sha{python3 formalization/correlated-residuals/simulation/measure_glyphs.py --pdf local-extraction/literature/unl-sem/mi-qtl2010.pdf --check formalization/correlated-residuals/simulation/out/qtl1/glyphs.json} \\
 \addlinespace
 Total effects, including $3/4$ and $-7/16$ &
@@ -1605,15 +1605,15 @@ Total effects, including $3/4$ and $-7/16$ &
 \sha{python3 formalization/correlated-residuals/simulation/table2_totals.py} \\
 \addlinespace
 Baseline SEM powers $50.8$, $53.5$, $86.1$ &
-\sha{simulation/out/assumptions/baseline.json}, \sha{82ff59d6bcfb02c273aaf1f83195e0d120fe0915} &
+\sha{simulation/out/assumptions/baseline.json}, \sha{04875ceb615280ded4b3f5c0d8ab031a330fd13a} &
 \sha{python3 assumptions.py --configs baseline --reps 1000} in \texttt{simulation/} \\
 \addlinespace
 Gap grid, including the $13\%$ and $86.2\%$ single-trait cells &
-\sha{simulation/out/gaps.json}, \sha{gaps_table.csv}, \sha{c2769042e51806a77b2b70237fb4c014552e78fb} &
+\sha{simulation/out/gaps.json}, \sha{gaps_table.csv}, \sha{d28cd4c12f75fba23bb0f4432bc65b42d7cafbb5} &
 \sha{python3 gaps.py} in \texttt{simulation/} \\
 \addlinespace
 Closest triple $65.2$, $73.3$, $99.3$ &
-\sha{simulation/out/qtl1/qtl1_24_n250.json}, \sha{b4e8a3c594f12f419560d5cb2a569b649ae93a55} &
+\sha{simulation/out/qtl1/qtl1_24_n250.json}, \sha{bb340b573b470b4d5130916e45f7c512b0413175} &
 \sha{python3 qtl1_search.py --configs qtl1_24_n250 --reps 1000} in \texttt{simulation/} \\
 \addlinespace
 Product $1.37\times 10^{-12}$ &
@@ -1621,7 +1621,7 @@ Product $1.37\times 10^{-12}$ &
 \sha{python3 formalization/correlated-residuals/simulation/printed_probability.py} \\
 \addlinespace
 Studies 1--3, bow Monte Carlo, Campbell scale check &
-\sha{simulation/out/study1.json}, \sha{study2.json}, \sha{study3.json}, \sha{5cd3c9f6d2f6e38f25e32146d74d55f3778436e1} &
+\sha{simulation/out/study1.json}, \sha{study2.json}, \sha{study3.json}, \sha{6c8cdd50f5edd25f0466ae68ac0411bfd9a8b335} &
 \sha{python3 studies.py --reps 100 --bow-reps 400 --studies 1,2,3} in \texttt{simulation/} \\
 \addlinespace
 Identification algebra at the earlier sign convention &
@@ -1637,7 +1637,7 @@ Bow-free plug-in numeric check &
 \sha{python3 fit_bow.py} in \sha{formalization/correlated-residuals/} \\
 \addlinespace
 Finished Lean proofs. Axioms: propositional extensionality, choice, and the construction of the reals &
-\sha{CorrelatedResiduals/*.lean}, listings pinned to \sha{05d69ea141adf3d5ee936d3b48061bde241250dc} &
+\sha{CorrelatedResiduals/*.lean}, listings pinned to \sha{1ba6b8c891e61e725fb03fdbf779769bbc9c24b2} &
 \sha{lake build} in \sha{formalization/correlated-residuals/} \\
 \addlinespace
 This PDF &

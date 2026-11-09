@@ -141,7 +141,7 @@ Canonical target: `L-F91-c16-unrestricted-width`, follow-up to issue 8
 (https://github.com/alectionary/vibe-math/issues/8; read-only).
 Session: `c16-transfer-20261029T1930`.
 Work branch: `research/c16-transfer-20261029T1930`.
-Baseline: `2e2dd2c6cd7598528e38e52cd4d7be2824de8a27`.
+Baseline: `d37d8a7c5b872d2e48e61051b4bb54845f1c59fe`.
 Start: 2026-10-29T19:30:58Z. Deadline: 2026-10-29T23:30:58Z.
 
 The user approved this four-hour continuation. At the start, the original source question was
@@ -182,7 +182,7 @@ complete global nonexistence certificate. A first full-anchor exclusion would
 be a stronger milestone than another sufficient-cover removal.
 
 Remote claim confirmed at ownership commit
-`5819f0d68c9dcce31657e3c1552521013194cb5c`.
+`4a89826c6900eea2a836a24e162b96797a9278c9`.
 The frozen comparison is commit `424934e`; discovery began at 19:34:25Z.
 The common domain has 113 nonzero-signature classes, plus every physical
 zero-signature pair. The cohort is (6,28,13), (8,26,1), (32,32,3), selected by

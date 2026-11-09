@@ -1,6 +1,6 @@
 # Final affine checkpoint replay
 
-Immutable commit c1d2396154b77b9531cc1cb9a8f6abe703f441c1 was replayed from a detached clean checkout. Both affine consumers passed. The span seed exactly matches the772 physically verified auxiliary columns and retains all columns with positive uniform numerical initialization weights. These weights do not certify the target.
+Immutable commit 1318fd30748b2d0a6e3d5cbb5968bde77f838cfb was replayed from a detached clean checkout. Both affine consumers passed. The span seed exactly matches the772 physically verified auxiliary columns and retains all columns with positive uniform numerical initialization weights. These weights do not certify the target.
 
 The accepted dimension is771 for the one-orbit/full-opposite-basis auxiliary hull. Its homogeneous linear identity space has dimension3. This is not target convex membership, a full compatible source frame, or affine completeness for the actual source-frame family. The14 additional nulls of the old saved archive are disproved coordinate-zero face artifacts.
 

@@ -4,7 +4,7 @@
 - Source: Lee arXiv:2610.06820v1, Proposition9/equation50, with previously independently checked complete physical pools and mixed-Pauli bridge.
 - Session: codex-c16-four-hour-inverse-20261027T202223Z.
 - Authorized start: 2026-10-27T20:22:23Z. User asks to proceed for the next four hours. Endpoint: 2026-10-28T00:22:23Z. Stop new experiments by23:50UTC and reserve the remaining32minutes for verification, reconciliation and preservation.
-- Work branch: research/c16-four-hour-inverse-20261027T202223, based on4a3d2bed698d717b29b21fb95981ae8a69385483, isolated worktree /private/tmp/c16-four-hour-inverse-20261027T202223.
+- Work branch: research/c16-four-hour-inverse-20261027T202223, based ondc89be6b7deaf82d17a074de863fe9e6736bc9ef, isolated worktree /private/tmp/c16-four-hour-inverse-20261027T202223.
 - Previous block: INVERSION.md and inversion-results/verification.json. Exact tensor normal form, thin-factor congruences and necessary type constraints are established. Reduced maximum7 is certified, but source-specific descent is unproved and generic descent is false.
 - Current answer: width16 or18; best physical partial frame88/128; no Lean completion.
 

@@ -1,6 +1,6 @@
 # Follow-up protocol, fixed before follow-up simulation
 
-Baseline: Git commit 8cbde40ad9db1b314e19e5878f2a8148ce2d958d; source evidence added at 6fb8e490467cca4d208c191c8616626455d46031. Existing results, scripts and source estimates remain unchanged. The follow-up code revision is recorded by the eventual Git commit containing this directory, not by either historical baseline hash.
+Baseline: Git commit 2fb3afac52accde8c4dc57e8e939c347668eb396; source evidence added at 8b292a12cbb3d4ba4b74f31e6498bb39f94c0fe6. Existing results, scripts and source estimates remain unchanged. The follow-up code revision is recorded by the eventual Git commit containing this directory, not by either historical baseline hash.
 
 Confirmation: 1,000,000 fresh shots per basis for each of Bolza and planar distance two, at original grid indices 0,6,8,10,15. Selection examines low noise, intermediate residuals and saturation; it is not a random sample of curve points. Use deterministic new seeds 710000 + condition index and fixed 10,000-shot batches. No stopping on significance. Report separately from baseline and do not pool. Compute block probabilities as before. Compare to source with our conditional uncertainty, never invented source counts. Report resource versus risk directly, without a new equivalence margin. Preserve .02 solely as historical exploratory analysis.
 
