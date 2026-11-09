@@ -15,3 +15,9 @@ DISAGREEMENTS.yaml.
 Tables 4.6-4.7 (Head Start estimates) are transcribed in `../secondary/table_arithmetic.csv`.
 Chen's figures are digitized in `../results/digitized_bias.csv`, `../results/digitized_rates.csv`
 and `../results/digitized_imbalance.csv`.
+
+## table_4_7.csv
+
+Chen (2021) Table 4.7 (printed pp. 83-84, PDF pp. 97-98): RCT and synthetic-RDD estimates of the five
+mediation effects on the Head Start data, with the SD in parentheses and the printed 95% CI, by cut
+score index (RDD1-RDD3). Transcribed from the PDF text layer and checked against the rendered page.
