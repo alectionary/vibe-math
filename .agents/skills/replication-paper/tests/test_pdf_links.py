@@ -46,12 +46,12 @@ class PDFLinks(unittest.TestCase):
                 self.assertEqual(inventory['links'][1]['uri'], case['uri'])
                 self.assertEqual(not m.policy_errors(inventory, 'a/b', [], REVISIONS), case['passes'])
 
-    def test_narrow_labeled_commit_provenance(self):
+    def test_commit_links_refused_even_when_labelled(self):
         for kind, label in [('reproduction_revision', 'Reproduction revision'), ('baseline_revision', 'Historical baseline')]:
             inventory = self.inventory(label, 'https://github.com/a/b/commit/'+REVISIONS[kind])
             declarations = [dict(link_id=inventory['links'][1]['id'], kind=kind)]
-            self.assertEqual(m.policy_errors(inventory, 'a/b', declarations, REVISIONS), [])
-            self.assertTrue(m.policy_errors(inventory, 'a/b', [], REVISIONS))
+            self.assertTrue(any('commit_reference' in e for e in m.policy_errors(inventory, 'a/b', declarations, REVISIONS)))
+            self.assertTrue(any('commit_reference' in e for e in m.policy_errors(inventory, 'a/b', [], REVISIONS)))
 
     def test_mislabeled_provenance(self):
         for label, uri, kind in [
@@ -177,7 +177,7 @@ class PDFLinks(unittest.TestCase):
         self.assertEqual(json.loads(out.read_text()),m.extract(self.pdf))
 
     def test_full_sha_with_adjacent_rendered_provenance_label(self):
-        for prefix, passes in [('immutable reproduction revision ', True),
+        for prefix, passes in [('immutable reproduction revision ', False),
                                ('historical baseline ', False), ('results file ', False)]:
             with fitz.open() as doc:
                 page=doc.new_page()

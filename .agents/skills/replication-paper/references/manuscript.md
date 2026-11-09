@@ -132,13 +132,16 @@ omit operational chatter that does not affect interpretation.
 Keep three distinct records:
 - Main text: scientific claim, method, finding, implication, and evidence link.
 - Reproduction appendix/README: prerequisites (including unavailable inputs),
-  exact command and working directory, expected output, checkpoint behavior,
-  and a revision that actually contains the required code and inputs.
-- Provenance: the starting repository revision and original workflow version,
-  labeled as historical context rather than runnable reproduction targets.
+  exact command and working directory, expected output, and checkpoint behavior,
+  run from `master`.
+- Provenance: commit pins (baseline, reproduction and reviewed revisions) live in
+  the delivery record and the pull request, never in the paper.
 
-A link to master is a navigation aid, not an immutable reproduction version.
-Verify the stated reproduction revision contains the files before giving it.
+The paper presents the final product on `master`: it names no commit hash or
+working branch of this repository and links only to `blob/master` or
+`tree/master` (file hashes of sources, labelled SHA-256, are fine).
+`scripts/commit_refs.py` checks this and `preflight.py done` runs it; the
+final-PDF link policy refuses same-repository commit links.
 Name a specific README subsection when the complete recipe lives there.
 Separate rebuilding a report from saved outputs, rerunning simulations, and
 re-extracting source data. Do not imply a missing source file is bundled.
@@ -186,9 +189,7 @@ from this skill directory. This structural check does not establish that a
 source supports a claim; the source-reading audit remains mandatory. Other
 formats need equivalent checks and a recorded result.
 
-Code and data links in papers point at `master`. An immutable reproduction
-revision is separate provenance, not a substitute for file navigation. Follow
-the narrow labeled commit-link rules in the
+Code and data links in papers point at `master`, and only there; see the
 [final-PDF link audit](pdf-link-review.md).
 
 Cite every piece of software used, with its exact version, and link its CRAN
