@@ -268,3 +268,29 @@ disagreements:
     conclusion: partly_explained
     whose: neither
     confidence: high
+  - id: power-equivalence
+    claim: Kupzyk suggests on pp. 106–107 that the empirical and exemplary power estimates converge with enough simulations.
+    ours: A 50,000-draw baseline gap persists, and a matched comparison separates covariance refitting from independent Monte Carlo noise.
+    covers: [ch5]
+    hypotheses:
+      - id: our-replay
+        side: ours
+        statement: A changed generator or fitting rule introduced the observed baseline gap.
+        prediction: Replay would fail to recover the baseline counts, or the generating-covariance calculation would disagree with the dense variance check.
+        test:
+          method: Replay the same 50,000 outcomes, compare fitted counts, and evaluate the alternative test using the generating covariance and dense GLS variance.
+          files: [results/full/empirical.csv, results/full/baseline-paired.csv, results/full/fresh-gls-validation.csv]
+        result: Refit rejections remain 43421. Known-covariance rejections are 43876 and the theoretical exemplary power is .877206.
+        verdict: ruled_out
+      - id: covariance-refitting
+        side: neither
+        statement: Variance estimation changes the rejection probability in this setting.
+        prediction: A paired comparison on the same outcomes would show a refit difference beyond the paired Monte Carlo error.
+        test:
+          method: Hold the design, outcomes and reference critical value fixed and change only the covariance supplied to GLS.
+          files: [results/full/baseline-paired.csv, outputs/baseline-diagnostic.csv]
+        result: The fresh paired difference is -.00910 with MCSE .001068. This supports a variance-refitting contribution in the baseline and does not prove a universal difference or equivalence.
+        verdict: supported
+    conclusion: partly_explained
+    whose: neither
+    confidence: high
