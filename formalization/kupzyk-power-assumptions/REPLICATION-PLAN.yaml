@@ -111,7 +111,7 @@ parts:
   plan: Recreate all published conditions and compare added-cluster and retained-power targets; investigate the .88187 value against independent
     GLS and dropout/allocation alternatives.
   status: partly
-  evidence: results/full/oversampling-v2.csv
+  evidence: results/full/oversampling-v2.csv; results/full/observation-loss-oversampling.csv
   reason: Oversampling clears 80% throughout, but the published 0.88187 falls below the rerun central predictive interval.
   run_complete: true
 - id: rq2
@@ -164,7 +164,7 @@ parts:
   label: Discussion and practical conclusions (pp. 99–112)
   plan: Check claimed consequences, reference-DF choice, and reasons for empirical versus exemplary differences against the component analyses.
   status: partly
-  evidence: results/full/appendix-d-comparison.csv; results/full/kenward-roger-summary.csv
+  evidence: results/full/appendix-d-comparison.csv; results/full/kenward-roger-summary.csv; results/full/completers-arithmetic.json
   reason: The planning pattern and empirical gap recur. Appendix D includes a material Optimal Design difference at the extreme setting.
   run_complete: true
 - id: baseline-50000
@@ -236,8 +236,11 @@ parts:
   label: 'Appendix D.1: baseline Type I error across five denominator rules'
   plan: Simulate the first initial-stage cell under the null at the source count where verifiable and evaluate J−2, between–within, containment,
     Satterthwaite and Kenward–Roger.
-  status: replicated
+  status: partly
   evidence: results/full/appendix-d-comparison.csv; source-values/table-D.1.csv
+  run_complete: true
+  reason: The broad Bradley classification agrees, while the between-within and containment point estimates move onto or inside the tighter
+    Serlin interval.
 - id: null-extreme
   kind: condition
   label: 'Appendix D.2: extreme-cell Type I error across five denominator rules'
