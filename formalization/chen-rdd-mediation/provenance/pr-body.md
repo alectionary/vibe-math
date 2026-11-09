@@ -1,4 +1,4 @@
-**Paper (reviewable now, the reviewed bytes):** [paper folder at commit c9b680b0](https://github.com/alectionary/vibe-math/tree/c9b680b05ffe18578efa0b60cdcf959a30fd923b/formalization/chen-rdd-mediation/paper), file `mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf`
+**Paper (reviewable now, on this branch):** [paper folder on replication/chen-2021](https://github.com/alectionary/vibe-math/tree/replication/chen-2021/formalization/chen-rdd-mediation/paper), file `mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf`
 **After merge (live on master):** [paper folder on master](https://github.com/alectionary/vibe-math/tree/master/formalization/chen-rdd-mediation/paper), same file
 
 Closes #88 when merged.
@@ -45,17 +45,20 @@ Uncertainty: each cell has 1,000 replications (Monte Carlo SE about .007 for a r
 
 ## How to check it
 
-From `formalization/chen-rdd-mediation/`, the [README](https://github.com/alectionary/vibe-math/blob/replication/chen-2021/formalization/chen-rdd-mediation/README.md) and the paper's Appendix A list every command, seed and output; the code and evidence are pinned at commit `1fa61083`. The full Python simulation takes about 13.7 core-hours; the R replay about 3.4 hours (R 4.1.3); every summary, figure comparison and the evidence packet regenerate in seconds. Not in git: the dissertation PDF (openly posted on Digital Commons; its SHA-256 is in the README) and the per-condition simulation files.
+From `formalization/chen-rdd-mediation/`, the [README](https://github.com/alectionary/vibe-math/blob/replication/chen-2021/formalization/chen-rdd-mediation/README.md) and the paper's Appendix A list every command, seed and output, run from master. The full Python simulation takes about 13.7 core-hours; the R replay about 3.4 hours (R 4.1.3); every summary, figure comparison and the evidence packet regenerate in seconds. Not in git: the dissertation PDF (openly posted on Digital Commons; its SHA-256 is in the README) and the per-condition simulation files.
 
 ## Review record
 
-The paper was written by an isolated writer from the evidence packet (`writer-manifest.json`, `context: fresh`) and checked by independent cold readers. Reviews 10-15 failed and are kept in `notes/` with the fixes each led to (among them: the R replay's scope, E4 defined against its null and measured only on readable points, hidden figure points recognised as filled in, the reproduction revision). Review 16 passed all eleven editorial checks and the final-PDF link review (`notes/editorial-review.json`). `delivery-record.json` binds the review to the PDF and its inputs at commit c9b680b0; `delivery_check.py` and `preflight.py done` pass, and `paper_freshness.py` reports the paper current.
+The paper was written by an isolated writer from the evidence packet (`writer-manifest.json`, `context: fresh`) and checked by independent cold readers. Reviews 10-15 failed and are kept in `notes/` with the fixes each led to (among them: the R replay's scope, E4 defined against its null and measured only on readable points, hidden figure points recognised as filled in). Review 16 passed. At the owner's request the paper's one reference to a specific commit was then removed (recorded in the writer manifest as an edit after the writer), and review 17 passed on those final bytes, with the final-PDF link review (`notes/editorial-review.json`). The paper links only to master and names no commits. `delivery-record.json` binds the review to the PDF and its inputs; `delivery_check.py` and `preflight.py done` pass, and `paper_freshness.py` reports the paper current.
 
 ## Follow-ups
 
-- Polish from review 16: shorten abstract sentence 1; give E3 its own above/below shares on page 1 (needs a separate packet finding); say in the Table 1 caption that the E4 cell was chosen after the results; clarify the "first block" wording, a `chen_exact.R` line reference, and the Figure 4.28 page (printed p. 122).
-- Appendix A says the pinned commit is "on branch replication/chen-2021"; after merge it is in master's history, so "commit 1fa61083" alone is the durable wording.
-- Skill changes made while doing this: #121, #122, #123, #124, #125, #126.
+Polish from reviews 16-17, not done to keep the reviewed PDF unchanged:
+- Section 3.3 and Table 2: the literal check rebuilt 635 of the first block's 1,270 datasets and skipped the rest; say so precisely (the full replay keeps all 1,280,000).
+- Abstract: "three of her four" simulation headlines; shorten sentence 1. Table 1: give E3 its own above/below shares (needs a separate packet finding) and note in the caption that the E4 cell was chosen after the results.
+- One scale for Bradley's range; the sign of the printed standardized bias in Section 6.4; the TNDE chance argument's point count (3,315 read of 4,685); hyphenation of long monospace paths.
+- `r-reproduction/out-full/RUN.md` (Grokbot's run log) names its branch and commit; the paper does not.
+- Skill changes made while doing this: #121, #122, #123, #124, #125 (reverted by #127), #126, #127.
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
