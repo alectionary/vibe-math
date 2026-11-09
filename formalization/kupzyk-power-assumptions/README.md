@@ -112,9 +112,9 @@ The computational run made no skill changes. A later user-authorized editorial r
 
 `kupzyk-source-evidence-appendix.pdf` is a separate9-page companion prepared and visually reviewed by the independent source reviewer, containing16 crops rendered at600 dpi. It includes the title/adviser page, source tables and code, and Table3 (.88187). It accompanies this report but is not included in this repository.
 
-## Citation revision
+## Citation audit for the earlier replication
 
-`paper/references.tex` is the editable author–year bibliography, included by the generated manuscript. `notes/citation-audit.md` documents the gap, claim coverage, and source verification limits. All numerical output hashes were compared before and after this editorial change. The existing two-pass LaTeX build resolves citations without BibTeX. Optional citation validation requires [skill PR #56](https://github.com/alectionary/vibe-math/pull/56), which supplies `check_citations.py`. It is not part of this replication-only diff. After that PR is merged or its checker is available in the working checkout, run:
+The historical 14-entry bibliography in `paper/references.tex` belongs to the earlier manuscript `paper/report.tex`. The check below validates that manuscript. The full re-replication embeds its own bibliography and uses the citation inventory linked above. `notes/citation-audit.md` documents the gap, claim coverage, and source verification limits. All numerical output hashes were compared before and after this editorial change. The existing two-pass LaTeX build resolves citations without BibTeX. Optional citation validation requires [skill PR #56](https://github.com/alectionary/vibe-math/pull/56), which supplies `check_citations.py`. It is not part of this replication-only diff. After that PR is merged or its checker is available in the working checkout, run:
 
 ```sh
 python3 .agents/skills/replication-paper/scripts/check_citations.py formalization/kupzyk-power-assumptions/paper/report.tex --references formalization/kupzyk-power-assumptions/paper/references.tex --log formalization/kupzyk-power-assumptions/paper/simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.log

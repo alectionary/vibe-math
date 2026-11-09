@@ -1,0 +1,154 @@
+{
+  "reviewer": "Independent Codex cold reader for the citation correction",
+  "pdf_sha256": "6972315d2095d3a0668377501ceefe8c6522a6c4fbfab2e5ec44a03628a2b82b",
+  "source_sha256": "386b3dc67e0b625fd0a33b2b30218c45649c457476f623fa8b7d70c009269adb",
+  "items": {
+    "layout": "Visually inspected all 13 pages in pinned PyMuPDF 1.26.6 before opening project evidence. Poppler 26.10.0 and bundled Poppler 26.05.0 independently rendered the final References page. The superseded blank page-13 raster did not recur. The final revised page 5 was re-read visually; the other twelve pages raster-compared identical to the cold-read candidate. Tables and citations remain legible, including both bibliography pages.",
+    "headline_and_tolerance": "Page 1 is identical to the earlier PR PDF in extracted text and unchanged in layout. Checked eight displayed comparisons, distinct Published/Ours columns, magnitudes, directions, precision tolerances and the uncertainty note. No numerical outputs or simulation settings changed in the correction.",
+    "citations": "All 21 in-text citation destinations resolve to their matching References entries on pages 12–13. Compared the 27-item inventory with the methods, runtime and prior bibliography. All 14 earlier keys have dispositions. Page 5 credits Satterthwaite (1946) and Kuznetsova et al. (2017) and identifies lmerTest as a validation comparator. Pages 10–11 give versions, project/CRAN links, roles and formal references for 14 software tools (15 linked versions). Page 13 gives R Core Team, R 4.5.3, official R project and CRAN archive links. Matched lmerTest and pbkrtest method descriptions to publisher records and checked code-level usage. The source p. 105 is the direct evidence for the two robustness bands.",
+    "ledgers": "The corrected Appendix B citation row links the inventory. The audit records the original omission and distinguishes nine prior entries retained, updated or combined from five source-specific exclusions. The existing artifact table and scope limits remain in the rendered PDF.",
+    "links": "Independently re-extracted 158 URI annotations with pinned PyMuPDF 1.26.6 and matched the saved inventory exactly. Checked all master file paths against the review branch. Verified R, CRAN, Rcpp, lme4, nlme, lmerTest, PyYAML, Tectonic and all other reported versioned software link destinations, and used PDF GoTo annotations to check all 21 named citation destinations. Live master availability is a distinct post-merge check.",
+    "independence_limits": "Cold-read the 13-page render first and reviewed the corrected page 5 on final bytes, compared every other page to the cold render, then checked the evidence packet, inventory, source, prior bibliography and link annotations. Reviewed attribution, report comparisons and revision scope without rerunning the full simulations or establishing original SAS replay."
+  },
+  "editorial": {
+    "verdict": "pass",
+    "context": "fresh",
+    "read_order": [
+      "rendered_manuscript",
+      "evidence_packet",
+      "citation_inventory",
+      "manuscript_source",
+      "prior_bibliography"
+    ],
+    "checks": {
+      "abstract_verdict_first": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Abstract, opening sentence",
+            "finding": "The opening says “We partly replicated the planning findings” and names Kupzyk (2011). The abstract gives published and reconstructed power contrasts, cluster counts and empirical/exemplary comparisons."
+          }
+        ]
+      },
+      "introduction_verdict_first": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Introduction, first paragraph",
+            "finding": "The opening gives the partly replicated verdict, reconstruction scope and power loss estimates before the planning setup. The same paragraph continues with the sample-size and empirical comparison on page 2."
+          }
+        ]
+      },
+      "standalone_prose": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 2,
+            "location": "Planning question and findings",
+            "finding": "The prose defines formulaic, exemplary and empirical power before comparing them. The worked examples and regeneration appendix identify the calculations and evidence in the paper itself."
+          }
+        ]
+      },
+      "headline_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1, all eight rows",
+            "finding": "The rendered original and reconstructed entries separately state 1.327/1.275, 4.391/4.472, 6.409/6.443, .454/.438, .851/.778, 3.037/3.062, 8/7 and 14/13. Page 1 is byte-equivalent in raster and text to the submitted earlier PR PDF."
+          }
+        ]
+      },
+      "claim_coverage": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 11,
+            "location": "Table 3 and sections 2–12",
+            "finding": "The evidence table spans the worked examples, pilot and crossed grids, planning contrasts, checks of the four main result sections and Appendices A–D. The body retains the residual questions on pages 7–9 and separately identifies the current analytical and published model."
+          }
+        ]
+      },
+      "limitations_preserved": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 8,
+            "location": "Sections 9–10",
+            "finding": "The manuscript distinguishes unavailable original fits, seeds and masks from fresh R reconstruction. Page 7 separates unobserved original Monte Carlo variance from the conditional checks. The D.2 discrepancy remains unresolved in the original engine."
+          }
+        ]
+      },
+      "scientific_process_distinction": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 5,
+            "location": "Sections 4–5",
+            "finding": "Precision and model-fit checks support the interpretation without being treated as the result. The final Appendix D text separates the custom Satterthwaite calculation from the lmerTest implementation used to check it."
+          }
+        ]
+      },
+      "abstract_source_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Abstract, original work and values",
+            "finding": "The title and first citation identify Kupzyk (2011), and the abstract states the published ranking, lowest ICC, up to eight clusters, and empirical/exemplary ordering. The institutional record links from References on page 12."
+          }
+        ]
+      },
+      "effect_magnitude_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1, signed effects and magnitude",
+            "finding": "The magnitude and direction columns are separate. The note states the rounding tolerances and separates descriptive values from Monte Carlo, mask and reading uncertainty."
+          }
+        ]
+      },
+      "finding_attribution": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1, Published and Ours columns",
+            "finding": "The two columns identify each side of the comparison with their own numerical findings. The caption attributes the source side to Kupzyk’s tables and pages, and the reconstruction side to the R analysis."
+          }
+        ]
+      }
+    },
+    "phrase_dispositions": []
+  },
+  "pdf_links": {
+    "verdict": "pass",
+    "pdf_sha256": "6972315d2095d3a0668377501ceefe8c6522a6c4fbfab2e5ec44a03628a2b82b",
+    "inventory_sha256": "90cce58130ba5fa3fe60602609fed296bd29811647a0498213096c10bdcf14ce",
+    "findings": [
+      {
+        "page": 5,
+        "finding": "The rendered Satterthwaite and Kuznetsova citations have active named GoTo destinations for their References entries on page 13."
+      },
+      {
+        "page": 10,
+        "finding": "The versioned R, CRAN package, Python, PyYAML, PyMuPDF and Poppler URI annotations point to the specified official project or registry. The adjacent citations have GoTo destinations in References."
+      },
+      {
+        "page": 11,
+        "finding": "Tectonic 0.17.0 links to its project repository and its author-date citation jumps to page 13. The evidence table links each visible file to the intended master path."
+      },
+      {
+        "page": 12,
+        "finding": "The compliance row links citation-inventory.json using the master navigation convention and names the visible filename."
+      },
+      {
+        "page": 13,
+        "finding": "The visible References continuation contains the R and CRAN, lmerTest DOI, original Satterthwaite DOI, PyYAML and Tectonic destinations."
+      }
+    ]
+  }
+}
