@@ -21,7 +21,11 @@ NAME = 'paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021'
 EVIDENCE = ['results/cells.csv', 'results/table48_ours.csv', 'results/table49_ours.csv', 'results/type1.csv',
             'results/power.csv', 'results/summary.json', 'results/statement_checks.csv',
             'secondary/zero_estimate_check.csv', 'secondary/table_arithmetic.csv', 'notes/availability.md',
-            'notes/run-record.md', 'simulation/chen_sim.py', 'REPLICATION-PLAN.yaml']
+            'notes/run-record.md', 'simulation/chen_sim.py', 'REPLICATION-PLAN.yaml', 'DISAGREEMENTS.yaml',
+            'r-reproduction/chen_exact.R', 'r-reproduction/out-full/condition_summary.csv',
+            'results/r_full_comparison.json', 'results/digitized_bias.csv', 'results/digitized_rates.csv',
+            'results/rates_agreement.csv', 'results/disagreement_tests.json', 'results/significance_conclusions.json',
+            'results/empirical_consistency.json', 'results/mc_se_headline.json']
 
 
 def sha(path):
