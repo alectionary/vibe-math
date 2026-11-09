@@ -144,8 +144,10 @@ def comparison(row):
     source, ours = dec(row['published_effect']), dec(row['ours_effect'])
     delta = abs(ours) - abs(source)
     magnitude = 'same' if abs(delta) <= tol else 'larger' if delta > 0 else 'smaller'
-    sign = lambda v: (v > 0) - (v < 0)
-    direction = 'same direction' if sign(source) == sign(ours) else 'reversed direction' if source*ours < 0 else 'zero vs nonzero'
+    # A value within the tolerance of zero is zero: its sign carries no information.
+    sign = lambda v: 0 if abs(v) <= tol else (v > 0) - (v < 0)
+    s, o = sign(source), sign(ours)
+    direction = 'same direction' if s == o else 'reversed direction' if s*o < 0 else 'zero vs nonzero'
     return magnitude if row['estimate_status'] == 'resolved' else 'not established', direction
 
 
