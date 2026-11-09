@@ -271,7 +271,7 @@ equations, and appendix tables, are hints only.
 - [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
 - [ ] Rendered pages for headline and Published entries were inspected when the PDF could be obtained. Text reading and visual inspection are recorded separately.
 - [ ] Page 1 was compared visually with a reference paper that uses the shared approved preamble (for example the Kupzyk replication). The geometry check only measures the text block, title, and abstract inset.
-- [ ] Before reporting the pull request, its description links the built primary PDF near the top: a reviewable `blob/<40-hex SHA or head branch>/<path>` link, and the intended `blob/master/<path>` link for that same path, labeled as live after merge. Run `scripts/pr_description.py` on the description and the delivery record. `preflight.py done` and `delivery_check.py` run that check when `--pr-body` is supplied.
+- [ ] Before reporting the pull request, its description links the built primary PDF near the top: a reviewable link pinned to a 40-hex SHA or the head branch, and the intended master link for that same path, labeled as live after merge. Run `scripts/pr_description.py` on the description and the delivery record, then again with `--pr NUMBER` after posting: the links must be clickable in the pull request as GitHub renders it, not only present in the text. Folder links (`tree/<ref>/<folder>`) count. `preflight.py done` and `delivery_check.py` run the text check when `--pr-body` is supplied.
 
 ## 1. Research and evidence handoff
 
@@ -323,8 +323,25 @@ python3 .agents/skills/replication-paper/scripts/pr_description.py \
 ```
 
 Omit `--body` to read the description on stdin. Exit 0 means the description
-has a reviewable blob link pinned to a 40-hex SHA or that head branch, and
-the master link for the same path, both matching the record's primary PDF.
+has a reviewable link pinned to a 40-hex SHA or that head branch, and the
+master link for the same path, both matching the record's primary PDF. A link
+may point at the PDF (blob or raw) or at its folder (`tree/<ref>/<folder>`),
+one click from the file.
+
+A link that reads correctly in the text can still be stored or shown as code:
+some posting routes wrap links to PDFs in backticks, and then nothing is
+clickable. So after posting or editing the description, check the pull request
+itself, as GitHub stores and renders it:
+
+```sh
+python3 .agents/skills/replication-paper/scripts/pr_description.py \
+  --record delivery.json --root STUDY_ROOT --pr NUMBER
+```
+
+Exit 0 means every counted link is a real anchor in GitHub's rendered HTML and
+no link to the PDF sits inside code. If the route you post through rewrites
+PDF links, link the folder at the commit and on master instead, and tell the
+person, who can add direct PDF links in the web editor.
 Pass `--pr-body pr-body.md --record delivery.json` to `preflight.py done`, or
 `--pr-body pr-body.md` to `delivery_check.py`, to run the same check. Leaving
 those arguments off does not change the older commands. Use delivery
