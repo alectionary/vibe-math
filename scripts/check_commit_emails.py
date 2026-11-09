@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
-"""Reject consumer-domain addresses on commits that are not yet published.
+"""Reject consumer-domain and hostname-derived addresses on new commits.
 
 The check covers the author email, the committer email, and every address in
 the commit message, including trailers such as Co-authored-by and
-Signed-off-by. Noreply addresses are allowed, including GitHub's
-noreply@github.com committer on web merges and users.noreply.github.com.
+Signed-off-by. Noreply addresses are allowed on a real mail domain, including
+GitHub's noreply@github.com committer on web merges and users.noreply.github.com.
+A noreply local part does not allow a hostname-derived domain.
 
-Only the requested range is read. Published history is not scanned.
+Hostname-derived means a single-label host (Git's user@hostname fallback), a
+domain whose last label is local, lan, home, localdomain, or internal, or a
+domain that names a Mac machine. Only the requested range is read. Published
+history is not scanned.
 
 Usage:
   python3 scripts/check_commit_emails.py commit-msg --message-file PATH \\
@@ -41,13 +45,20 @@ EXACT_DOMAINS = frozenset(
 WILDCARD_LABELS = frozenset({"hotmail", "outlook", "live", "yahoo"})
 
 # A following period is sentence punctuation, not part of the domain.
+# The final label may be a bare host with no dot.
 EMAIL_RE = re.compile(
     r"(?<![A-Za-z0-9._%+\-])"
     r"([A-Za-z0-9](?:[A-Za-z0-9._%+\-]{0,62}[A-Za-z0-9])?)"
     r"@"
-    r"((?:[A-Za-z0-9](?:[A-Za-z0-9\-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,})"
+    r"((?:[A-Za-z0-9](?:[A-Za-z0-9\-]{0,61}[A-Za-z0-9])?\.)*"
+    r"[A-Za-z0-9](?:[A-Za-z0-9\-]{0,61}[A-Za-z0-9])?)"
     r"(?![A-Za-z0-9\-])"
 )
+# Built by concatenation so this file does not itself contain a machine name.
+_LABEL_A = "mac" + "book"
+_LABEL_B = "i" + "mac"
+_LABEL_C = "mac" + "mini"
+HOST_SUFFIXES = frozenset({"local", "lan", "home", "localdomain", "internal"})
 TRAILER_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9-]*:")
 IDENT_RE = re.compile(r"<([^<>]+)>")
 
@@ -90,11 +101,50 @@ def is_consumer_domain(domain: str) -> bool:
     return any(label in WILDCARD_LABELS for label in labels[:-1])
 
 
-def is_blocked_email(email: str) -> bool:
-    local, domain = split_email(email)
-    if not local or not domain or is_noreply(email):
+def is_hostname_domain(domain: str) -> bool:
+    """True when a domain is a machine hostname rather than a public mailbox.
+
+    A bare host has a single label and no real top-level domain. Special-use
+    suffixes are matched only as the last label. Machine-name labels are
+    matched from the parts assembled above.
+    """
+    domain = domain.lower().rstrip(".")
+    if not domain or not any(ch.isalpha() for ch in domain):
         return False
-    return is_consumer_domain(domain)
+    labels = [label for label in domain.split(".") if label]
+    if not labels:
+        return False
+    if len(labels) == 1:
+        return len(labels[0]) >= 2
+    if labels[-1] in HOST_SUFFIXES:
+        return True
+    for index, label in enumerate(labels):
+        if _LABEL_A in label:
+            return True
+        pieces = label.split("-")
+        if _LABEL_B in pieces or _LABEL_C in pieces or ("mac" in pieces and "mini" in pieces):
+            return True
+        if label == "mac" and index + 1 < len(labels) and labels[index + 1] == "mini":
+            return True
+    return False
+
+
+def block_reason(email: str) -> str | None:
+    """Return why an address is rejected, or None when it is allowed."""
+    local, domain = split_email(email)
+    if not local or not domain:
+        return None
+    if is_hostname_domain(domain):
+        return "hostname-derived"
+    if is_noreply(email):
+        return None
+    if is_consumer_domain(domain):
+        return "consumer-domain"
+    return None
+
+
+def is_blocked_email(email: str) -> bool:
+    return block_reason(email) is not None
 
 
 def email_from_ident(ident: str) -> str:
@@ -124,16 +174,29 @@ def message_hits(message: str) -> list[tuple[str, str, int]]:
     return hits
 
 
+def _address_phrase(reason: str) -> str:
+    if reason == "hostname-derived":
+        return "a hostname-derived address"
+    return "a consumer-domain address"
+
+
+def _role_phrase(reason: str, role: str) -> str:
+    if reason == "hostname-derived":
+        return f"{role} email is hostname-derived"
+    return f"{role} email uses a consumer domain"
+
+
 def commit_errors(label: str, author: str, committer: str, message: str) -> list[str]:
     errors: list[str] = []
-    if is_blocked_email(author):
-        errors.append(f"{label}: author email uses a consumer domain ({author})")
-    if is_blocked_email(committer):
-        errors.append(f"{label}: committer email uses a consumer domain ({committer})")
+    for role, email in (("author", author), ("committer", committer)):
+        reason = block_reason(email)
+        if reason:
+            errors.append(f"{label}: {_role_phrase(reason, role)} ({email})")
     for kind, email, line_no in message_hits(message):
         where = "trailer" if kind == "trailer" else "message"
+        reason = block_reason(email) or "consumer-domain"
         errors.append(
-            f"{label}: {where} contains a consumer-domain address ({email}) at line {line_no}"
+            f"{label}: {where} contains {_address_phrase(reason)} ({email}) at line {line_no}"
         )
     return errors
 
@@ -273,7 +336,7 @@ def resolve_ci_range(
 def report(errors: list[str], count: int, *, quiet_ok: bool) -> int:
     if errors:
         print("\n".join(errors), file=sys.stderr)
-        print(f"consumer-domain addresses in {len(errors)} place(s) across {count} commit(s)", file=sys.stderr)
+        print(f"blocked addresses in {len(errors)} place(s) across {count} commit(s)", file=sys.stderr)
         return 1
     if not quiet_ok:
         print(f"checked {count} commit(s)")

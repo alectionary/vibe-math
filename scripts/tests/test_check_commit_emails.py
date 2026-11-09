@@ -52,7 +52,32 @@ ALLOWED = [
     "someone@protonmail.ch",
     "someone@pm.me",
     "someone@users.noreply.github.com",
+    "someone@imaculate.example.com",
+    "someone@macdonalds.example.com",
+    "someone@files.internal.example.com",
 ]
+
+
+def _host_blocked() -> list[str]:
+    """Hostname fixtures assembled so this file does not contain the needles."""
+    label_a = "mac" + "book"
+    label_b = "i" + "mac"
+    label_c = "mac" + "mini"
+    local = ".local"
+    return [
+        "someone@desk-" + label_a + local,
+        "someone@desk-" + label_a,
+        "someone@my-host.lan",
+        "someone@my-host.home",
+        "someone@my-host.localdomain",
+        "someone@my-host.internal",
+        "someone@plain" + local,
+        "Someone@Host" + local.upper(),
+        "someone@office-" + label_b + ".example.com",
+        "someone@studio-" + label_c + ".example.com",
+        "someone@" + "mac" + ".mini.example.com",
+        "noreply@desk-" + label_a + local,
+    ]
 
 
 def git(root, *args, env=None):
@@ -68,8 +93,25 @@ def git(root, *args, env=None):
 
 class Domains(unittest.TestCase):
     def test_blocked_examples(self):
-        for email in BLOCKED:
+        for email in BLOCKED + _host_blocked():
             self.assertTrue(checker.is_blocked_email(email), email)
+
+    def test_hostname_reasons(self):
+        label_a = "mac" + "book"
+        local = ".local"
+        self.assertEqual(
+            checker.block_reason("someone@desk-" + label_a + local),
+            "hostname-derived",
+        )
+        self.assertEqual(checker.block_reason("someone@gmail.com"), "consumer-domain")
+        self.assertIsNone(checker.block_reason("someone@example.com"))
+        self.assertIsNone(checker.block_reason("noreply@gmail.com"))
+        self.assertEqual(
+            checker.block_reason("noreply@desk-" + label_a + local),
+            "hostname-derived",
+        )
+        self.assertFalse(checker.is_hostname_domain("imaculate.example.com"))
+        self.assertTrue(checker.is_hostname_domain("office-" + ("i" + "mac") + ".example.com"))
 
     def test_allowed_examples(self):
         for email in ALLOWED:
@@ -135,6 +177,14 @@ class Messages(unittest.TestCase):
         message = "See someone@gmail.com and also someone@gmail.com."
         self.assertEqual(len(checker.message_hits(message)), 1)
 
+    def test_hostname_in_a_trailer(self):
+        label_a = "mac" + "book"
+        local = ".local"
+        address = "someone@desk-" + label_a + local
+        message = "Co-authored-by: Sam <" + address + ">\n"
+        hits = checker.message_hits(message)
+        self.assertEqual([(kind, email) for kind, email, _line in hits], [("trailer", address)])
+
     def test_ident_parsing(self):
         ident = "A U Thor <someone@gmail.com> 1112911993 -0700"
         self.assertEqual(checker.email_from_ident(ident), "someone@gmail.com")
@@ -192,11 +242,24 @@ class CommandLine(unittest.TestCase):
         self.assertIn("message contains", failed.stderr)
         self.assertIn("someone@proton.me", failed.stderr)
 
+    def test_commit_msg_rejects_a_hostname_identity(self):
+        label_a = "mac" + "book"
+        address = "codex@desk-" + label_a + ".local"
+        failed = self.run_commit_msg(
+            "A clean message\n",
+            f"Codex <{address}> 0 +0000",
+            "Codex <" + address + "> 0 +0000",
+        )
+        self.assertEqual(failed.returncode, 1, failed.stdout + failed.stderr)
+        self.assertIn("hostname-derived", failed.stderr)
+        self.assertIn(address, failed.stderr)
+
 
 def place_hooks(root: Path):
     scripts = root / "scripts"
     scripts.mkdir()
     shutil.copy(SCRIPT, scripts / "check_commit_emails.py")
+    shutil.copy(ROOT / "scripts" / "check_machine_names.py", scripts / "check_machine_names.py")
     hooks = root / ".githooks"
     shutil.copytree(ROOT / ".githooks", hooks)
     skill_scripts = ROOT / ".agents/skills/replication-paper/scripts"
@@ -254,7 +317,7 @@ class HooksAndRanges(unittest.TestCase):
         return subprocess.run(cmd, check=False, capture_output=True, text=True)
 
     def test_hooks_are_executable(self):
-        for name in ("commit-msg", "pre-push"):
+        for name in ("commit-msg", "pre-commit", "pre-push"):
             mode = os.stat(ROOT / ".githooks" / name).st_mode
             self.assertTrue(mode & stat.S_IXUSR, name)
 
@@ -386,6 +449,27 @@ class HooksAndRanges(unittest.TestCase):
         self.assertNotIn("someone@icloud.com", completed.stderr)
         self.assertIn("across 1 commit", completed.stderr)
 
+    def test_pre_push_ignores_a_published_hostname_identity(self):
+        label_a = "mac" + "book"
+        address = "codex@desk-" + label_a + ".local"
+        bare = Path(self.tmp.name) / "remote.git"
+        subprocess.run(
+            ["git", "init", "-q", "--bare", "-b", "master", str(bare)],
+            check=True,
+        )
+        seeded = self.commit("old published hostname commit", email=address, verify=False)
+        self.assertEqual(seeded.returncode, 0, seeded.stderr)
+        git(self.root, "remote", "add", "origin", str(bare))
+        pushed = git(self.root, "push", "--no-verify", "-u", "origin", "master")
+        self.assertEqual(pushed.returncode, 0, pushed.stderr)
+
+        good = self.commit("a new allowed commit")
+        self.assertEqual(good.returncode, 0, good.stderr)
+        update = git(self.root, "push", "origin", "master")
+        self.assertEqual(update.returncode, 0, update.stderr)
+        self.assertIn("checked 1 commit", update.stdout)
+        self.assertNotIn(address, update.stderr)
+
 
 class WorkflowFile(unittest.TestCase):
     def test_workflow_triggers_and_calls_the_checker(self):
@@ -393,6 +477,7 @@ class WorkflowFile(unittest.TestCase):
         self.assertIn("pull_request:", text)
         self.assertIn("push:", text)
         self.assertIn("scripts/check_commit_emails.py ci", text)
+        self.assertIn("scripts/check_machine_names.py ci", text)
         self.assertIn("PR_BASE:", text)
         self.assertIn("PUSH_BEFORE:", text)
 

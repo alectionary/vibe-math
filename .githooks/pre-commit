@@ -1,0 +1,13 @@
+#!/bin/sh
+# Reject a machine hostname in a staged tracked file.
+# Enable once per clone: git config core.hooksPath .githooks
+
+set -eu
+
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "pre-commit: python3 is required for the machine-name check" >&2
+    exit 1
+fi
+
+root=$(git rev-parse --show-toplevel)
+exec python3 "$root/scripts/check_machine_names.py" pre-commit
