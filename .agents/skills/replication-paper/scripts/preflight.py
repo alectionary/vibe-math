@@ -14,7 +14,9 @@ Exit 0 when lavaan and OpenMx can be loaded, or when a fallback record
 supplies a justification, a separate validation, and, for a blocked source
 path, the person's decision (see `fallback_errors`). Exit 2 when the
 preferred engine is missing and the fallback is absent or incomplete.
-`done` exits 0 when the replication plan passes, and 2 when it does not.
+`done` exits 0 when the study is complete, 3 when it is incomplete (no errors,
+but the source PDF is missing and recorded in `source_missing` with its fetch
+issue: it may be committed, but it is not done), and 2 when it fails.
 Every plan is checked the same way (there is one plan format): per-part
 limit kinds, part-specific reasons and evidence, a not_run estimate and
 decision, and the published-evidence inventory. A tractable not_run part is
@@ -40,6 +42,7 @@ import checks
 import layout
 import pdf_links
 import source_acquisition
+import source_items
 
 
 def probe(which=None, runner=None) -> dict:
@@ -334,6 +337,69 @@ def fallback_records(root: Path):
     return found
 
 
+def _sha256(path) -> str:
+    import hashlib
+
+    h = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def source_gate(root, plan_obj, paper_text):
+    """Check the source PDF itself. Returns (errors, incomplete).
+
+    Present: `source_sha256` must match the file, and every figure and table in
+    it must be read or excluded in `source_items` (source_items.inventory reads
+    the PDF, so an item nobody listed still fails).
+
+    Absent: the plan must say so in `source_missing: {fetch_issue, since,
+    reason}`. The study is then `incomplete`: it can be committed, but it never
+    passes as complete, because the figures and tables cannot be checked. A
+    stand-in file is never acceptable; only the recorded sha256 counts.
+    """
+    locator = plan_obj.get("source_locator")
+    if not isinstance(locator, str) or not locator.strip():
+        return [], []           # _structure already reports a missing source_locator
+    if not locator.lower().endswith(".pdf"):
+        return [f"source: {locator} is not a PDF; the source gate reads figures and tables from the PDF"], []
+    source = Path(locator) if Path(locator).is_absolute() else Path(root) / locator
+    missing = plan_obj.get("source_missing")
+    expected = plan_obj.get("source_sha256")
+    if not source.is_file():
+        if not isinstance(missing, dict):
+            return [f"source: {locator} is not here and the plan has no source_missing record "
+                    "{fetch_issue, since, reason}; open a fetch issue and record it"], []
+        problems = []
+        if type(missing.get("fetch_issue")) is not int or missing["fetch_issue"] < 1:
+            problems.append("source_missing.fetch_issue must be the number of the open fetch issue")
+        for key in ("since", "reason"):
+            if not isinstance(missing.get(key), str) or not missing[key].strip():
+                problems.append(f"source_missing.{key} is required")
+        if problems:
+            return [f"source: {p}" for p in problems], []
+        return [], [f"source: {locator} is missing (fetch issue #{missing['fetch_issue']}, since "
+                    f"{missing['since']}); its figures and tables cannot be checked"]
+    errors = []
+    if isinstance(missing, dict):
+        errors.append("source: the PDF is present; remove source_missing and close its fetch issue")
+    if not isinstance(expected, str) or not re.fullmatch(r"[0-9a-f]{64}", expected):
+        errors.append("source: source_sha256 (64 hex) is required so the PDF checked is the one used")
+    elif _sha256(source) != expected:
+        errors.append(f"source: {locator} does not match source_sha256; a different file is not the source")
+        return errors, []
+    try:
+        items = source_items.inventory(source)
+    except ImportError:
+        return errors + ["source: PyMuPDF (fitz) is required to inventory the source's figures and tables"], []
+    except Exception as exc:            # a damaged PDF must not pass silently
+        return errors + [f"source: could not read {locator}: {type(exc).__name__}"], []
+    errors.extend(source_items.source_items_errors(plan_obj, items, root))
+    errors.extend(source_items.cited_label_errors(paper_text, items))
+    return errors, []
+
+
 def done_check(root, plan, paper, analysis=None) -> dict:
     """Fail when the plan, its first commit, or the paper's coverage claims do not line up."""
     root = Path(root).resolve()
@@ -346,6 +412,8 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         "plan": _display(root, plan_path),
         "paper": _display(root, paper_path),
         "baseline_revision": None,
+        "incomplete": [],
+        "status": "failing",
     }
     if not plan_path.is_file():
         errors.append("plan: file is missing")
@@ -395,6 +463,11 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         errors.append(baseline_error)
     if paper_error and plan_obj is None:
         errors.append(paper_error)
+    incomplete = result["incomplete"]
+    if isinstance(plan_obj, dict):
+        gate_errors, gate_incomplete = source_gate(root, plan_obj, paper_text)
+        errors.extend(gate_errors)
+        incomplete.extend(gate_incomplete)
     if paper_text is not None:
         try:
             errors.extend(
@@ -429,7 +502,10 @@ def done_check(root, plan, paper, analysis=None) -> dict:
                 continue
             if not precedes:
                 errors.append(f"analysis {label}: plan was not committed before this analysis")
-    result["accepted"] = not errors
+    # complete: no errors and nothing missing. incomplete: no errors, but material
+    # evidence (the source PDF) is missing and recorded. failing: anything else.
+    result["status"] = "failing" if errors else ("incomplete" if result["incomplete"] else "complete")
+    result["accepted"] = result["status"] == "complete"
     return result
 
 
@@ -464,10 +540,14 @@ def done_main(argv) -> int:
             else:
                 decision["errors"].extend(_pr_description().description_errors(
                     body, record, args.root, head_branch=args.head_branch))
-        decision["accepted"] = not decision["errors"]
+        if decision["errors"]:
+            decision["status"] = "failing"
+        decision["accepted"] = decision["status"] == "complete"
     json.dump(decision, sys.stdout, indent=2)
     sys.stdout.write("\n")
-    return 0 if decision["accepted"] else 2
+    # 0 complete; 3 incomplete (no errors, but material evidence is missing and
+    # recorded, so the study may be committed but is not done); 2 failing.
+    return {"complete": 0, "incomplete": 3}.get(decision["status"], 2)
 
 
 def main(argv=None) -> int:
