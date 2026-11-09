@@ -42,15 +42,36 @@ else for that part: what is blocked, what the source path would give that an
 alternative cannot, and the ways to unblock it. Those ways include their own
 computer (its shell, or computer use for apps such as Terminal, run through a
 `.command` file when typing is not allowed), the session's network settings,
-another host, the author, and a data-use agreement. Keep working on parts that
+another host, and a data-use agreement. Replications never contact the
+original authors, so do not offer that. Keep working on parts that
 do not depend on the answer, but do not build the blocked part on a fallback
 until they choose.
 
 Exact reproduction raises the stakes. Run `scripts/checks.py seeds SOURCE` on
 the source text: seeded code means the source's own engine can regenerate its
 data exactly, so an engine fallback loses exactness and must be put to the
-person. A printed correlation or covariance matrix with means can stand in for
-unavailable data in linear models; check for one and say whether it suffices.
+person.
+
+Missing data is not yet missing evidence. Before an `input_unavailable` for
+data, search the source for sufficient statistics: means, SDs, correlation or
+covariance matrices and Ns reproduce regression, path, SEM and many mediation
+models exactly. Record the search as `sufficient_statistics: {found, what,
+sufficient, why}` (for an input that is not data, `{applies: false, why}`). If
+the printed statistics suffice, reproduce from them; the done check rejects
+`input_unavailable` with `sufficient: true`. If they fall short, say exactly
+which moments are missing.
+
+Figures are evidence too. List every published quantity the paper compares
+against under the plan's `published_evidence`: `id`, `location`, `quantity`,
+`value_source` (`table`, `text`, `figure_digitized`, `figure_not_digitized`)
+and `plotted_in` (the figures that plot it, `[]` if none). A quantity read
+from prose while a figure plots it is rejected: digitize the figure with
+`scripts/digitize.py` (vector markers straight from the PDF's drawing paths,
+or colour blobs in a raster image, calibrated with `Axis` from ticks,
+gridlines or reference lines) and record `digitized_file` and
+`reading_error` in data units, or record `figure_not_digitized` with a
+`reason` and `reported_to_person`. Every tolerance against a digitized value
+includes its reading error. Both lists are required when `limit_schema: 1`.
 
 Record each engine fallback as JSON: `name`, `kind` (`blocked` or `domain`),
 `justification`, `independent_validation`, `source_path`,
@@ -163,6 +184,7 @@ equations, and appendix tables, are hints only.
 
 - [ ] `REPLICATION-PLAN.yaml` lists every substantive part and was committed before analysis.
 - [ ] Every blocker on the source's own path (software, code and seeds, data, files) was reported to the person when it happened, with what it costs and how to unblock it, and they decided. `checks.py seeds` was run on the source; each fallback record and each `input_unavailable` or `not_run` part carries that decision.
+- [ ] Every published quantity compared is in `published_evidence` with its `value_source`; any quantity a figure plots was digitized (`scripts/digitize.py`, with its reading error) or the person was told why not. Every `input_unavailable` for data records the `sufficient_statistics` search, and none is marked unavailable when the printed moments suffice.
 - [ ] The full design was run, or the reduced run is a last resort with a cost estimate, what was tried, and exact `N of M` counts in the abstract and the body.
 - [ ] The headline verdict is no stronger than the headline parts that were run.
 - [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.

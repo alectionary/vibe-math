@@ -51,7 +51,13 @@ def plan(parts, removals=None):
         "source_locator": "sources/dissertation.pdf",
         "parts": parts,
         "removals": [] if removals is None else removals,
+        "published_evidence": [dict(PUBLISHED_TABLE)],
     }
+
+
+PUBLISHED_TABLE = {"id": "table-4", "location": "Table 4", "quantity": "headline estimates",
+                   "value_source": "table", "plotted_in": []}
+NOT_DATA = {"applies": False, "why": "the missing input is not data"}
 
 
 def headline(**updates):
@@ -631,7 +637,8 @@ class LimitKinds(unittest.TestCase):
                     reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told the person; they chose to stop here"},
                     limit_kind=["input_unavailable"],
                     missing_input="original (3,4) seed matrices",
-                    looked_in="sources/browser-extraction.txt and the code archive"),
+                    looked_in="sources/browser-extraction.txt and the code archive",
+                    sufficient_statistics=NOT_DATA),
         ])
         good["limit_schema"] = 1
         self.assertEqual(errors(good, PARTIAL_PAPER), [])
@@ -675,13 +682,61 @@ class LimitKinds(unittest.TestCase):
                     reason="The (3,4) seed matrices are not in the archived repository.",
                     limit_kind=["input_unavailable"],
                     missing_input="original (3,4) seed matrices",
-                    looked_in="the code archive"),
+                    looked_in="the code archive",
+                    sufficient_statistics=NOT_DATA),
         ])
         data["limit_schema"] = 1
         self.assertTrue(any("reported_to_person" in item for item in errors(data, PARTIAL_PAPER)))
         data["parts"][1]["reported_to_person"] = {"date": "2026-11-08", "channel": "chat",
-                                                  "summary": "asked whether to write to the author; declined"}
+                                                  "summary": "told the matrices are missing; chose to stop at the finite check"}
         self.assertFalse(any("reported_to_person" in item for item in errors(data, PARTIAL_PAPER)))
+
+    def test_missing_data_needs_a_sufficient_statistics_search(self):
+        def data_with(stats):
+            part = limited("rq2-headstart", "notes/availability.md", status="input_unavailable",
+                           reason="The restricted-use Head Start file could not be obtained.",
+                           reported_to_person={"date": "2026-11-08", "channel": "chat", "summary": "told; ICPSR route refused"},
+                           limit_kind=["input_unavailable"], missing_input="HSIS restricted-use file",
+                           looked_in="ICPSR 29462 and the dissertation tables")
+            if stats is not None:
+                part["sufficient_statistics"] = stats
+            data = plan([headline(), part])
+            data["limit_schema"] = 1
+            return errors(data, PARTIAL_PAPER)
+
+        self.assertTrue(any("sufficient_statistics" in item for item in data_with(None)))
+        self.assertTrue(any("sufficient_statistics.why" in item for item in data_with({"found": True, "sufficient": False})))
+        enough = data_with({"found": True, "what": "Table 2 correlation matrix, means, SDs, N",
+                            "sufficient": True, "why": "the model is linear in these moments"})
+        self.assertTrue(any("reproduce the analysis from them" in item for item in enough))
+        self.assertEqual(data_with({"found": True, "what": "within-group means and SDs (Table 4.2); residual correlations (Table 4.4)",
+                                    "sufficient": False,
+                                    "why": "no treatment-by-mediator covariances, so the a and b paths cannot be recovered"}), [])
+
+    def test_published_evidence_names_where_each_value_came_from(self):
+        data = plan([headline()])
+        data["limit_schema"] = 1
+        self.assertEqual(errors(data, PARTIAL_PAPER), [])
+        del data["published_evidence"]
+        self.assertTrue(any("requires published_evidence" in item for item in errors(data, PARTIAL_PAPER)))
+        data["published_evidence"] = [{"id": "mint-power", "location": "p. 121", "quantity": "MINT power",
+                                       "value_source": "text", "plotted_in": ["Figure 4.28"]}]
+        self.assertTrue(any("digitize the figure" in item for item in errors(data, PARTIAL_PAPER)))
+        data["published_evidence"][0].update(value_source="figure_digitized")
+        found = errors(data, PARTIAL_PAPER)
+        self.assertTrue(any("digitized_file" in item for item in found))
+        self.assertTrue(any("reading_error" in item for item in found))
+        data["published_evidence"][0].update(digitized_file="results/fig_4_28.csv", reading_error="0.004")
+        self.assertEqual(errors(data, PARTIAL_PAPER), [])
+        data["published_evidence"][0] = {"id": "mint-power", "location": "p. 121", "quantity": "MINT power",
+                                         "value_source": "figure_not_digitized", "plotted_in": ["Figure 4.28"],
+                                         "reason": "a raster scan with overlapping markers"}
+        self.assertTrue(any("reported_to_person" in item for item in errors(data, PARTIAL_PAPER)))
+        data["published_evidence"][0]["reported_to_person"] = {"date": "2026-11-08", "channel": "chat",
+                                                               "summary": "told the figure cannot be read; agreed to compare text only"}
+        self.assertEqual(errors(data, PARTIAL_PAPER), [])
+        data["published_evidence"][0].pop("plotted_in")
+        self.assertTrue(any("plotted_in" in item for item in errors(data, PARTIAL_PAPER)))
 
     def test_several_limit_kinds_can_apply_to_one_part(self):
         data = plan([
