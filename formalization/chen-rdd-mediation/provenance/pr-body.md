@@ -49,16 +49,15 @@ From `formalization/chen-rdd-mediation/`, the [README](https://github.com/alecti
 
 ## Review record
 
-The paper was written by an isolated writer from the evidence packet (`writer-manifest.json`, `context: fresh`) and checked by independent cold readers. Reviews 10-15 failed and are kept in `notes/` with the fixes each led to (among them: the R replay's scope, E4 defined against its null and measured only on readable points, hidden figure points recognised as filled in). Review 16 passed. At the owner's request the paper's one reference to a specific commit was then removed (recorded in the writer manifest as an edit after the writer), and review 17 passed on those final bytes, with the final-PDF link review (`notes/editorial-review.json`). The paper links only to master and names no commits. `delivery-record.json` binds the review to the PDF and its inputs; `delivery_check.py` and `preflight.py done` pass, and `paper_freshness.py` reports the paper current.
+The paper was written by an isolated writer from the evidence packet (`writer-manifest.json`, `context: fresh`) and checked by independent cold readers who read the rendered PDF first and then the evidence. Reviews 10-15, 18 and 19 failed and are kept in `notes/` with the fixes each led to (among them: the R replay's scope, E4 defined against its null and measured only on readable points, hidden figure points recognised as filled in, the TNDE gap arithmetic, and reading errors stated by figure type). Reviews 16 and 17 passed; the owner then asked for the paper to name no commits (done in place, recorded in the writer manifest) and for fourteen follow-up fixes. Review 20 passed on the final bytes, recomputing every page-1 value, stated uncertainty and disagreement from the result files, with the final-PDF link review (`notes/editorial-review.json`). The paper links only to master and names no commits. `delivery-record.json` binds the review to the PDF and its inputs; `delivery_check.py` and `preflight.py done` pass, and `paper_freshness.py` reports the paper current.
 
 ## Follow-ups
 
-Polish from reviews 16-17, not done to keep the reviewed PDF unchanged:
-- Section 3.3 and Table 2: the literal check rebuilt 635 of the first block's 1,270 datasets and skipped the rest; say so precisely (the full replay keeps all 1,280,000).
-- Abstract: "three of her four" simulation headlines; shorten sentence 1. Table 1: give E3 its own above/below shares (needs a separate packet finding) and note in the caption that the E4 cell was chosen after the results.
-- One scale for Bradley's range; the sign of the printed standardized bias in Section 6.4; the TNDE chance argument's point count (3,315 read of 4,685); hyphenation of long monospace paths.
-- `r-reproduction/out-full/RUN.md` (Grokbot's run log) names its branch and commit; the paper does not.
-- Skill changes made while doing this: #121, #122, #123, #124, #125 (reverted by #127), #126, #127.
+Polish from review 20, not done to keep the reviewed PDF unchanged: define Bradley's range, PNDE and TNDE before first use on page 1; "right for control cases and wrong for treated cases" in the abstract; split the first introduction paragraph; trim the engine-choice account in Section 3.3; link `chen_exact.R#L49`; name PNDE for "residuals at most .010" in Section 6.3; the E3 published finding's page locator in the packet.
+
+`r-reproduction/out-full/RUN.md` (Grokbot's run log) names its branch and commit; the paper does not.
+
+Skill changes made while doing this: #121, #122, #123, #124, #125 (reverted by #127), #126, #127, #128.
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
