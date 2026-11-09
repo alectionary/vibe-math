@@ -87,6 +87,12 @@ class BranchTargets(unittest.TestCase):
             '  plan: Run every cell the headline conclusion uses.\n'
             '  status: replicated\n  evidence: results.txt\n'
             'removals: []\n'
+            'published_evidence:\n'
+            '- id: table-1\n  location: Table 1\n  quantity: headline estimate\n'
+            '  value_source: table\n  plotted_in: []\n'
+            'source_items: []\n'
+            'source_missing:\n  fetch_issue: 1\n  since: "2026-11-08"\n'
+            '  reason: test study without a source PDF\n'
         )
         (self.root / 'REPLICATION-PLAN.yaml').write_text(plan, encoding='utf-8')
         self.git('add', 'REPLICATION-PLAN.yaml')
@@ -97,7 +103,8 @@ class BranchTargets(unittest.TestCase):
         )
         (self.root / 'paper.tex').write_text(paper, encoding='utf-8')
         decision = preflight.done_check(self.root, 'REPLICATION-PLAN.yaml', 'paper.tex')
-        self.assertTrue(decision['accepted'], decision)
+        self.assertEqual(decision['errors'], [], decision)
+        self.assertEqual(decision['status'], 'incomplete', decision)
         (self.root / 'paper.tex').write_text(paper + 'https://github.com/a/b/blob/master/results.txt#L40\n', encoding='utf-8')
         decision = preflight.done_check(self.root, 'REPLICATION-PLAN.yaml', 'paper.tex')
         self.assertFalse(decision['accepted'])
