@@ -32,6 +32,39 @@ runs that finished. Stopping at a headline-carrying subset is not a completed
 replication. That stop has come up before, including Koziol (8 of 208
 settings) and Chumney.
 
+## Blockers go to the person
+
+The source's own path is its software, its printed or archived code with its
+seeds, its data, and its files. When any part of it cannot be run or obtained
+here, that is a blocker, and blockers are the person's decision, not a choice
+to make quietly. Tell them as soon as it happens, before adopting anything
+else for that part: what is blocked, what the source path would give that an
+alternative cannot, and the ways to unblock it. Those ways include their own
+computer (its shell, or computer use for apps such as Terminal, run through a
+`.command` file when typing is not allowed), the session's network settings,
+another host, the author, and a data-use agreement. Keep working on parts that
+do not depend on the answer, but do not build the blocked part on a fallback
+until they choose.
+
+Exact reproduction raises the stakes. Run `scripts/checks.py seeds SOURCE` on
+the source text: seeded code means the source's own engine can regenerate its
+data exactly, so an engine fallback loses exactness and must be put to the
+person. A printed correlation or covariance matrix with means can stand in for
+unavailable data in linear models; check for one and say whether it suffices.
+
+Record each engine fallback as JSON: `name`, `kind` (`blocked` or `domain`),
+`justification`, `independent_validation`, `source_path`,
+`exact_reproduction` (`possible`, `not_possible`, `unknown`) with
+`exact_reproduction_evidence`, and for `blocked` also `lost`,
+`unblock_options: [{option, outcome}]` and `decision`. `decision.by: person`
+needs `date`, `channel` and `summary`; `by: unreachable` needs a `reason` and is
+accepted only when exact reproduction was not possible anyway. `preflight.py
+done` finds every such record in the study by its content and rejects an
+incomplete one. A plan part whose `limit_kind` is `input_unavailable` or
+`not_run` needs `reported_to_person: {date, channel, summary}`. These fields
+record that the question was asked; they do not replace asking it. Name every
+engine fallback and blocked part near the top of the pull request description.
+
 ## Replication plan
 
 The first research commit is `REPLICATION-PLAN.yaml` in the study directory.
@@ -129,6 +162,7 @@ equations, and appendix tables, are hints only.
 ## Pre-done checklist
 
 - [ ] `REPLICATION-PLAN.yaml` lists every substantive part and was committed before analysis.
+- [ ] Every blocker on the source's own path (software, code and seeds, data, files) was reported to the person when it happened, with what it costs and how to unblock it, and they decided. `checks.py seeds` was run on the source; each fallback record and each `input_unavailable` or `not_run` part carries that decision.
 - [ ] The full design was run, or the reduced run is a last resort with a cost estimate, what was tried, and exact `N of M` counts in the abstract and the body.
 - [ ] The headline verdict is no stronger than the headline parts that were run.
 - [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.
