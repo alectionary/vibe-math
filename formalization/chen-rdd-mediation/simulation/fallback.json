@@ -6,7 +6,7 @@
   "independent_validation": "simulation/validate_estimator.py: point estimates agree with scikit-learn LinearRegression fits (separate code path) to 1.1e-14 over 20 random datasets; bootstrap effects from resample counts agree with explicit row resampling refitted by numpy.linalg.lstsq over 100 resamples; at n = 200,000 the estimates are within sampling error of the population values. Prints PASS_ESTIMATOR_VALIDATION. In addition, Chen's own code was replayed exactly in R (r-reproduction/, issue #92: 64,000 of her seeded datasets, identical to her literal pipeline) and recovers the same estimates in distribution; the full 1,000-replication R replay is issue #118.",
   "exact_reproduction": "possible",
   "exact_reproduction_evidence": "Appendix A is seeded; r-reproduction/out/literal_check.txt shows the replay identical to her literal group_walk/pmap_dfr pipeline (largest difference 0). Point estimates are therefore reproduced exactly in R; bootstrap intervals are not reproducible exactly (no seed in Appendix B).",
-  "lost": "Bootstrap-based results (coverage, imbalance, Type I error, power) come from the Python engine on our own random draws, so they agree with hers in distribution only. Point estimates and bias are available on her exact datasets from the R replay.",
+  "lost": "Bootstrap-based results (coverage, imbalance, Type I error, power) come from the Python engine on our own random draws, so they agree with hers in distribution only. Point estimates and bias are available on the datasets her printed, seeded code generates, from the R replay.",
   "unblock_options": [
     {
       "option": "R on the person's Mac via computer use",
@@ -25,6 +25,6 @@
     "by": "person",
     "date": "2026-11-09",
     "channel": "chat",
-    "summary": "Agreed: run all 1,000 replications of her exact code in R for point estimates and bias (#118); keep the Python engine for bootstrap-based results, validated against the R replay."
+    "summary": "Agreed: run all 1,000 replications of her printed code in R for point estimates and bias (#118); keep the Python engine for bootstrap-based results, validated against the R replay."
   }
 }

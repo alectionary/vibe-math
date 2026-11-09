@@ -64,9 +64,12 @@ _e4 = [r for r in rows('results/digitized_rates.csv') if r['figure'] == '4.28' a
 assert len(_e4) == 3, _e4
 pub_mint_raw = round(sum(float(r['chen_value']) for r in _e4) / 3, 3)
 pub_mint_cuts = [round(float(r['chen_value']), 3) for r in sorted(_e4, key=lambda r: r['cut_index'])]
-e4_read_err = round(sum(float(r['reading_error']) for r in _e4) / 3 + 0.0005, 3)
+import math as _m
+# mean reading error of the three points, rounded DOWN to 4 decimals (never up)
+e4_read_err = _m.floor(sum(float(r['reading_error']) for r in _e4) / 3 * 1e4) / 1e4
+e4_status = {r['cut_index']: r['status'] for r in _e4}
 NOMINAL = 0.05
-pub_mint = round(pub_mint_raw - NOMINAL, 3)
+pub_mint = round(sum(float(r['chen_value']) for r in _e4) / 3 - NOMINAL, 4)
 fig_t1_pw = [f'4.{i}' for i in range(17, 29)]
 pct_h0 = [float(ragree[f]['pct_agree_if_h_were_0']) for f in fig_t1_pw]
 pct_h = [float(ragree[f]['pct_agree']) for f in fig_t1_pw]
@@ -345,7 +348,7 @@ claim(id='H3', level='headline',
                    'were available; results/summary.json gives MINT power for every n and ah.',
       status='not_replicated',
       status_reason=(f'In our run MINT power rises with n and ah: {our_mint_raw:.3f} at n = 500 for ah = .20, and at least '
-                     f'{min(mint["n=1000 ah=0.1326"], mint["n=1000 ah=0.2006"]):.3f} for ah >= .13 once n >= 1,000. Her '
+                     f'{min(mint["n=1000 ah=0.1326"], mint["n=1000 ah=0.2006"]):.4f} for ah >= .13 once n >= 1,000. Her '
                      f'Figure 4.28 gives {pub_mint_cuts[0]}, {pub_mint_cuts[1]} and {pub_mint_cuts[2]} in this cell at '
                      'cutoffs 1-3, and no point above about .07: a Type I error curve. Rejection rates do not use '
                      'population values. Her MINT power matches our rates with h set to 0 at '
@@ -617,7 +620,8 @@ claim(id='S8', level='supporting',
       ours=dict(value=None, units='power', unavailable_reason='Nothing to rerun without a stated method.'),
       conditions='Not stated.', contrasts=[], contrast_not_applicable='No result reported.',
       methods='Searched the dissertation.', uncertainty='Not applicable.', multiplicity='Not applicable.',
-      status='blocked', status_reason='The analysis is announced but not reported.',
+      status='not_established', status_reason='The analysis is announced in Chapter 3 but never reported, so there '
+                                              'is nothing to assess; nothing blocks access.',
       numerical='withheld', reconstruction_scope='none', limitations=['Unassessed.'],
       stopping=dict(reason='Not reported in the source.', attempted='Search of Chapters 3-5 and Appendices A-B for '
                     '"expected power", "standard deviation" and "power analysis".', untested='The analysis.',
@@ -664,13 +668,14 @@ EFFECTS = [
          estimand=claims[2]['contrasts'][0]['definition'], units='rejection rate',
          positive_means=claims[2]['contrasts'][0]['positive_means'], published_effect=pub_mint, ours_effect=our_mint,
          estimate_status='resolved', display_decimals=3,
-         tolerance=dict(kind='prespecified', value=e4_read_err,
-                        basis=f'Not set in the plan: fixed before this comparison from the reading error of the '
-                              f'digitized Figure 4.28 points, averaged over the three cutoffs '
-                              f'(results/digitized_rates.csv) and rounded up. Our Monte Carlo error of this 48-cell '
-                              f'average is about .002. Her value is within this tolerance of the nominal .05, i.e. '
-                              f'of no excess rejection.'),
-         magnitude='larger', direction='zero vs nonzero',
+         tolerance=dict(kind='measurement', value=e4_read_err, source_file='results/digitized_rates.csv',
+                        basis=f'Reading error of the digitized Figure 4.28 points, averaged over the three cutoffs '
+                              f'and rounded down; not set in the plan. The cutoff-1 point is partly hidden by '
+                              f'another series (status {e4_status["1"]}); the two directly read points have a mean '
+                              f'reading error of about .009. Her excess over .05 ({pub_mint}) is about one reading '
+                              f'error: small, positive, and far below ours. Our Monte Carlo error of this 48-cell '
+                              f'average is about .002.'),
+         magnitude='larger', direction='same direction',
          interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC),
     dict(id='E5', claim_id='H4', contrast_index=None, comparison_kind='nonscalar', estimand='qualitative sample-size '
          'recommendation over the grid', units='not applicable', positive_means='not applicable',
@@ -760,8 +765,8 @@ packet = dict(
                f'coverage; MINT power reaches {our_mint_raw:.2f} at n = 500 for the largest interaction, where Chen reports near zero. Of her '
                f'{len(verdicts)} testable Type I and power statements, {n_agree} agree ({n_slack} with .01 threshold '
                f'slack), and {n_h0} would hold in our run if h were 0. The n = 5,000 '
-               f'recommendation holds for most but not all cells. RQ2 is blocked by data access. Her own seeded R code, '
-               f'replayed exactly on all 1,280,000 of her datasets, behaves like our run, so the disagreements arise in '
+               f'recommendation holds for most but not all cells. RQ2 is blocked by data access. Her printed, seeded R '
+               f'code, replayed exactly on all 1,280,000 datasets it generates, behaves like our run, so the disagreements arise in '
                f'unprinted steps: her digitized figures show results computed from data without the interaction h and '
                f'population values wrong for one group of cases. Of {n_dis} disagreements (DISAGREEMENTS.yaml), {n_expl} '
                f'are explained, {n_part} partly explained and {n_unexpl} unexplained.'),
