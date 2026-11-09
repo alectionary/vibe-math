@@ -27,6 +27,10 @@ Gate (`source_items_errors`): the plan's `source_items` must name every label in
 the inventory, and only those, each with `use: read` and a `data_file` that
 exists and holds data, or `use: excluded` with a `reason` and
 `reported_to_person`. A `moments` table also needs `sufficient_statistics`.
+Every number is put to work: a read table records `identity_checks` (the
+relations among its printed numbers, checked), and an excluded item records
+`uses_considered` for consistency, reconstruction and evidence, each not
+useful with a reason; an item with a use is read instead.
 """
 
 from __future__ import annotations
@@ -132,6 +136,65 @@ def _has_data(path: Path) -> bool:
         return False
 
 
+USES = ("consistency", "reconstruction", "evidence")
+
+
+def _identity_errors(label, entry, root) -> list:
+    """A table of numbers is checked against the identities that relate them.
+
+    `identity_checks` lists each relation (an effect equals a product of paths, a
+    total equals its parts, a statistic equals estimate / SE, df match n) with
+    `holds` and the committed `file` that shows it. A failing identity names the
+    `disagreement` that analyses it. A table with no such relation (a design
+    table) says `identity_checks: none` with `identity_reason`.
+    """
+    checks = entry.get("identity_checks")
+    if checks == "none":
+        reason = entry.get("identity_reason")
+        if not isinstance(reason, str) or len(reason.strip()) < 12:
+            return [f"source_items {label}: identity_checks none requires identity_reason"]
+        return []
+    if not isinstance(checks, list) or not checks:
+        return [f"source_items {label}: record identity_checks (relations among its printed numbers, "
+                "checked) or identity_checks: none with identity_reason"]
+    errors = []
+    for c in checks:
+        if not isinstance(c, dict) or not isinstance(c.get("identity"), str) or type(c.get("holds")) is not bool:
+            errors.append(f"source_items {label}: each identity check needs identity and holds (true/false)")
+            continue
+        f = c.get("file")
+        if not isinstance(f, str) or not (Path(root) / f).exists():
+            errors.append(f"source_items {label}: identity check '{c['identity'][:40]}' needs a committed file")
+        if c["holds"] is False and not (isinstance(c.get("disagreement"), str) and c["disagreement"].strip()):
+            errors.append(f"source_items {label}: a failing identity names the disagreement that analyses it")
+    return errors
+
+
+def _uses_considered_errors(label, entry, root) -> list:
+    """Before a figure or table is set aside, each way it could still help is considered.
+
+    `uses_considered` answers, for consistency (identities with other printed
+    numbers), reconstruction (recovering data or moments to rerun the analysis)
+    and evidence (bearing on a disagreement, such as how the source coded a
+    variable in its other analyses): `{useful: false, why}`. If any use is
+    found, the item is read, not excluded.
+    """
+    uc = entry.get("uses_considered")
+    if not isinstance(uc, dict):
+        return [f"source_items {label}: excluded items record uses_considered "
+                "{consistency, reconstruction, evidence}: {useful, why}"]
+    errors = []
+    for key in USES:
+        v = uc.get(key)
+        if not isinstance(v, dict) or type(v.get("useful")) is not bool \
+                or not isinstance(v.get("why"), str) or len(v["why"].strip()) < 12:
+            errors.append(f"source_items {label}: uses_considered.{key} needs useful (true/false) and a specific why")
+        elif v["useful"]:
+            errors.append(f"source_items {label}: uses_considered.{key} is useful, so read it (use: read) "
+                          "instead of excluding it")
+    return errors
+
+
 def source_items_errors(plan, items, root) -> list:
     """Compare the plan's `source_items` with the inventory `items` read from the source."""
     root = Path(root)
@@ -165,7 +228,10 @@ def source_items_errors(plan, items, root) -> list:
                 errors.append(f"source_items {label}: use read requires data_file")
             elif not _has_data(root / data_file):
                 errors.append(f"source_items {label}: data_file {data_file} is missing or empty")
+            if item["kind"] == "table":
+                errors.extend(_identity_errors(label, entry, root))
         elif use == "excluded":
+            errors.extend(_uses_considered_errors(label, entry, root))
             if not isinstance(entry.get("reason"), str) or len(entry["reason"].strip()) < 12:
                 errors.append(f"source_items {label}: use excluded requires a specific reason")
             report = entry.get("reported_to_person")
