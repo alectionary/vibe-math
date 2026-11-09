@@ -60,3 +60,159 @@ disagreements:
     conclusion: unexplained
     whose: undetermined
     confidence: high
+  - id: threshold-mask
+    claim: Three published thresholds are one cluster higher than the first mean-power crossing.
+    ours: At those predecessor counts mean power is .80090, .80086 and .80190.
+    covers: [thresholds, table5-thresholds, ch4]
+    hypotheses:
+      - id: our-scan
+        side: ours
+        statement: The threshold scan skipped a cluster count or used the wrong variance.
+        prediction: Restoring the neighboring counts or checking covariance would eliminate the crossings.
+        test:
+          method: Inspect the complete scans and compare the covariance implementation with independent dense GLS.
+          files: [results/full/threshold-scan.csv, results/full/fresh-gls-validation.csv]
+        result: All available predecessor counts were checked and the variance implementations agree.
+        verdict: ruled_out
+      - id: dropout-realization
+        side: neither
+        statement: A realized mask and the expected power over masks can cross 80 percent at different counts.
+        prediction: Some masks would have power below .80 at the three mean-power crossings.
+        test:
+          method: Compare the predecessor power distributions with .80.
+          files: [results/full/threshold-comparison.csv]
+        result: The below-target fractions are .360, .166 and .188, so the source thresholds are compatible with mask variation.
+        verdict: supported
+    conclusion: partly_explained
+    whose: neither
+    confidence: high
+  - id: table3-mask-tail
+    claim: Table 3 gives power .88187 at ICC .05 with 45 percent total dropout and 19 clusters.
+    ours: The independent 10000-mask mean is .884912 and the central 95 percent of masks spans .883690 to .885691.
+    covers: [oversample, table3-oversample]
+    hypotheses:
+      - id: our-covariance
+        side: ours
+        statement: The block solver or transcription created the gap.
+        prediction: Dense GLS or a source cross-check would give a materially different value.
+        test:
+          method: Check the source cell and compare dense and block calculations at an extreme simulated mask.
+          files: [source-values/table-3.csv, outputs/table3-independent-check.csv, results/full/oversampling-v2.csv]
+        result: The value is printed as .88187 and the solvers agree even in the far lower tail.
+        verdict: ruled_out
+      - id: unusual-mask
+        side: neither
+        statement: The source used an unusually adverse dropout mask.
+        prediction: At least some admissible masks would yield power near .88187.
+        test:
+          method: Check the earlier mask-tail diagnostic against the independent rerun and allocation sensitivity.
+          files: [outputs/table3-gap-summary.csv, outputs/table3-allocation-summary.csv, results/full/oversampling-v2.csv]
+        result: One earlier mask yielded .881846. The observed source value is feasible, though unusually low.
+        verdict: supported
+    conclusion: partly_explained
+    whose: neither
+    confidence: medium
+  - id: skew-icc-monotonicity
+    claim: The discussion describes losses as decreasing as ICC increases.
+    ours: Skewed-size loss rises between .10 and .15 in the source and rerun.
+    covers: [rq4]
+    hypotheses:
+      - id: our-aggregation
+        side: ours
+        statement: Wrong aggregation or rounding created the rise.
+        prediction: Source arithmetic would be monotone after recomputing Table 1 differences.
+        test:
+          method: Recompute matched losses by ICC and compare Table 4.
+          files: [results/source-identities.json, results/full/comparison-summary.json]
+        result: The source rises from .6098 to .6673 pp and the rerun from .5614 to .6248 pp.
+        verdict: ruled_out
+      - id: source-generalization
+        side: source
+        statement: The prose extends the lowest-ICC ordering to strict monotonicity.
+        prediction: ICC .05 would still give the greatest loss despite a later increase.
+        test:
+          method: Compare all three source and rerun means for each violation.
+          files: [source-values/table-4.csv, results/full/comparison-summary.json]
+        result: ICC .05 gives the greatest loss for all five contrasts in both grids.
+        verdict: supported
+    conclusion: explained
+    whose: source
+    confidence: high
+  - id: predicted-order
+    claim: The hypothesis in Chapter II predicts the greatest bias for attrition.
+    ours: Allocation gives the greatest average loss in both final grids.
+    covers: [hypothesis-order]
+    hypotheses:
+      - id: our-pairing
+        side: ours
+        statement: The allocation contrast combines changes in multiple conditions.
+        prediction: Holding the other factors fixed would remove the ordering.
+        test:
+          method: Pair across allocation with the same ICC, cluster-size condition and attrition.
+          files: [results/full/paired-contrasts.csv]
+        result: Mean allocation loss is 6.44 pp versus 4.47 pp for high attrition.
+        verdict: ruled_out
+      - id: design-specific
+        side: neither
+        statement: The specified allocation change is larger in impact than the dropout contrasts for this design.
+        prediction: The original results would reject the same hypothesis.
+        test:
+          method: Compare Table 1-derived matched contrast averages.
+          files: [source-values/table-1.csv, results/full/comparison-summary.json]
+        result: Published allocation and high-attrition losses are 6.41 and 4.39 pp respectively.
+        verdict: supported
+    conclusion: explained
+    whose: neither
+    confidence: high
+  - id: od-screen-example
+    claim: Figure 3 gives .550898 and .422156 for the two Optimal Design examples.
+    ours: The reconstructed formula gives .553630 and .425064.
+    covers: [ch2, example-optimal-design]
+    hypotheses:
+      - id: our-f-tail
+        side: ours
+        statement: An incorrect tail or reference distribution shifts the examples.
+        prediction: Recomputing from the equivalent noncentral t distribution changes the answers.
+        test:
+          method: Evaluate the squared noncentral t as noncentral F and compare the independent source identity calculations.
+          files: [results/source-identities.json, source-values/figures-2-3.csv]
+        result: The two formulations agree for the stated inputs while the displayed software values differ.
+        verdict: ruled_out
+      - id: software-convention
+        side: source
+        statement: The display applies an additional software convention or different effective input.
+        prediction: The printed inputs are insufficient to recover all digits using the recovered formula.
+        test:
+          method: Compare both screen results at their reported precision.
+          files: [results/source-identities.json, source-values/figures-2-3.csv]
+        result: Both are lower by roughly .003. No unique software convention is identified by these two examples.
+        verdict: inconclusive
+    conclusion: unexplained
+    whose: undetermined
+    confidence: medium
+  - id: appendix-d2-od
+    claim: The extreme-cell Optimal Design row reports power .67128 and Type I error .04279 with J minus 2.
+    ours: At J=28 and df=26, power is .69594 and Type I error is .04969.
+    covers: [null-extreme, ch5, appendix-d2]
+    hypotheses:
+      - id: our-replay
+        side: ours
+        statement: The fitting or rejection calculation is inconsistent across rerun paths.
+        prediction: A replay at df=26 would fail to recover the recorded counts.
+        test:
+          method: Replay all 51200 matched alternative and null draws and check the df=26 results against both tabulations.
+          files: [results/full/appendix-d2-df-sweep.csv, results/full/appendix-d-comparison.csv, results/full/empirical.csv]
+        result: Replay gives 17816 alternative and 1272 null rejections, matching the original rerun counts.
+        verdict: ruled_out
+      - id: effective-denominator
+        side: source
+        statement: The reported row behaves as if an effective denominator smaller than 26 was used.
+        prediction: Reducing df on identical fitted draws would move both estimates toward the published pair.
+        test:
+          method: Hold the outcomes and fits fixed and sweep denominator df.
+          files: [results/full/appendix-d2-df-sweep.csv, source-values/table-D.2.csv]
+        result: At df=15 both rates approach the reported pair (.66953 and .04270). This is a sensitivity result and cannot establish what the original software used.
+        verdict: supported
+    conclusion: partly_explained
+    whose: undetermined
+    confidence: medium
