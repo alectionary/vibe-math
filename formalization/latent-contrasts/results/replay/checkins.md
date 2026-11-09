@@ -77,3 +77,17 @@ Wall clock: cell 1 2074 s, cell 2 2637 s, cell 3 past 3000 s and not finished. C
 **Surprising:** condition 3 fits are taking longer per batch than conditions 1 and 2. The workers are busy, not stalled.
 
 **Blocking:** none.
+
+## 2026-11-09T22:40Z (cell 3 still fitting)
+
+**Accomplished:** 2 of 36 cells. `7d15dd67` (2074 s) and `bc7a3802` (2637 s). No new cell commit since 20:46Z.
+
+**New:** `mgcfa_true_n240_c3` is still the running cell. Log start 2026-11-09T20:46:02Z, so wall time so far is 1 hour 54 minutes. The R process etime is 1:35:43. Four workers are at about 99% CPU and the current batch started about 2 minutes ago, so batches are still finishing. MemAvailable about 3.7 GiB. No OOM.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock: cells 1 and 2 were 35 and 44 minutes. Cell 3 (45/45/5/5) is past 114 minutes and not done. A full-design finish time is not stable until this cell ends. If the other 11 condition-3 cells were also about 2 hours and the other 22 cells about 40 minutes, the rest of the grid would be on the order of 36 hours. That is a sketch from this one unfinished cell, not a measurement of N=480 or N=960. Output size is still about 1.4 MB per finished cell, so 36 cells stay near 50 MB. The exactness gate on cell 1 remains FAIL.
+
+**Surprising:** the 45/5 cell is more than twice the balanced cell, and it is still in the fit loop at 114 minutes.
+
+**Blocking:** none. Replicates, allocation, and engine are unchanged.
