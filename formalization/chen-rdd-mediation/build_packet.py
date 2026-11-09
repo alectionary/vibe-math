@@ -687,7 +687,24 @@ EFFECTS = [
          published_effect=pub_imb, ours_effect=our_imb, estimate_status='resolved', display_decimals=2,
          tolerance=rounding_tol(30, 15),
          magnitude='smaller', direction='same direction',
-         interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC_HEAD('E3')),
+         interpretation='descriptive point estimates; not equivalence', uncertainty_statement=MC_HEAD('E3'),
+         findings=dict(
+             published=dict(text=f'True value above the CI in {min(v[2] for e in EFF for v in P49[e]):.2f}-'
+                                 f'{max(v[2] for e in EFF for v in P49[e]):.2f}% of replications and below it in '
+                                 f'{min(v[0] for e in EFF for v in P49[e]):.2f}-{max(v[0] for e in EFF for v in P49[e]):.2f}%, '
+                                 f'by effect and cutoff',
+                            state='reported', artifact_ids=['pdf', 'sv_49'], locator=f'Table 4.9, {loc(138)}',
+                            source_excerpt=excerpt('the imbalance measure showed that the true parameter value '
+                                                   'systematically fell above the CIs', 164),
+                            page_locator=loc(164), claim_type='numerical estimate',
+                            conditions='95% percentile bootstrap CIs from 500 resamples; collapsed over n and effect sizes',
+                            component_claim_ids=[], component_contrast_indices=[0, 1]),
+             ours=dict(text=f'True value above the CI in {min(float(r["truth_above_ci"]) for r in t49.values()):.1f}-'
+                            f'{max(float(r["truth_above_ci"]) for r in t49.values()):.1f}% of replications and below it in '
+                            f'{min(float(r["truth_below_ci"]) for r in t49.values()):.1f}-'
+                            f'{max(float(r["truth_below_ci"]) for r in t49.values()):.1f}%, by effect and cutoff',
+                       state='observed', artifact_ids=['t49', 'cells'], locator='results/table49_ours.csv',
+                       component_claim_ids=[], component_contrast_indices=[0, 1]))),
     dict(id='E4', claim_id='H3', contrast_index=0,
          estimand=claims[2]['contrasts'][0]['definition'], units='rejection rate',
          positive_means=claims[2]['contrasts'][0]['positive_means'], published_effect=pub_mint, ours_effect=our_mint,
@@ -792,7 +809,7 @@ packet = dict(
                f'slack), and {n_h0} would hold in our run if h were 0. The n = 5,000 '
                f'recommendation holds for most but not all cells. RQ2 is blocked by data access. Her printed, seeded R '
                f'code, replayed exactly on all 1,280,000 datasets it generates, behaves like our run, so the disagreements arise in '
-               f'unprinted steps: her digitized figures show results computed from data without the interaction h and '
+               f'steps or runs she did not print: her digitized figures show results computed from data without the interaction h and '
                f'population values wrong for one group of cases. Of {n_dis} disagreements (DISAGREEMENTS.yaml), {n_expl} '
                f'are explained, {n_part} partly explained and {n_unexpl} unexplained.'),
     limitations=limitations,
