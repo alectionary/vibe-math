@@ -1,0 +1,124 @@
+schema_version: 1
+dissertation: "Kevin A. Kupzyk (2011). The Effects of Simplifying Assumptions in Power Analysis. PhD dissertation, University of Nebraska–Lincoln."
+source_locator: https://digitalcommons.unl.edu/cehsdiss/106/
+parts:
+  - id: ch1
+    kind: chapter
+    label: "Introduction: planning longitudinal cluster trials (pp. 1–6)"
+    plan: "Separate the motivating trial-planning problem from original claims and tie the quantitative argument to the four research questions."
+  - id: ch2
+    kind: chapter
+    label: "Power methods and derivations (pp. 7–67)"
+    plan: "Distinguish prior methods from original comparisons; check the formulas and reported worked examples."
+  - id: precision
+    kind: analysis
+    label: "Empirical power precision and two-seed demonstration (Figure 4; pp. 59–64)"
+    plan: "Recover the toy experiment, compare the two 500-draw runs, and check the 25,600 and 102,400 draw prescriptions analytically."
+  - id: ch3
+    kind: chapter
+    label: "Population model and crossed design (pp. 68–83)"
+    plan: "Audit covariance, timing, variance components, treatment rounding, size generation, cumulative dropout, test statistic, and all factor crossings against Figure 5 and Appendices A/B."
+  - id: initial-empirical
+    kind: arm
+    label: "Initial-stage empirical power (Figures 6–8; 54 settings × 25,600 draws)"
+    headline: true
+    design_count: 1382400
+    plan: "Run all 25,600 intended draws independently in each initial-stage setting; compare digitized power, recording failures and random-stream limits."
+  - id: initial-exemplary
+    kind: arm
+    label: "Initial-stage exemplary power (Figures 6–8; 54 settings)"
+    headline: true
+    design_count: 54
+    plan: "Compute known-covariance power at J=16,22,28 under source cluster sizes and masks sampled from the reported mechanism; cross-check independently."
+  - id: final-exemplary
+    kind: arm
+    label: "Final-stage exemplary power (Figures 9–11 and Table 1; 54 settings)"
+    headline: true
+    design_count: 54
+    plan: "Compute all final-stage cells at J=13,19,25, subject to source check; independently verify covariance and propagate mask variability."
+  - id: formula-od
+    kind: arm
+    label: "Optimal Design formulaic power and sample-size choice with J−2"
+    headline: true
+    plan: "Verify both sides of each threshold at the three ICC values, using the documented formula and independent calculation."
+  - id: formula-bw
+    kind: arm
+    label: "Formulaic between–within degrees of freedom (Equation 4.1)"
+    headline: true
+    plan: "Verify Jnt−J−2 in balanced settings, compare formulaic and exemplary power, and treat missing-observation extensions as assumptions to test."
+  - id: ch4
+    kind: chapter
+    label: "Results and convergence (pp. 84–98)"
+    plan: "Reconcile figures and tables, assess convergence and boundary behavior, and compare all reported crossed effects."
+  - id: rq1
+    kind: research_question
+    label: "Attrition and loss of power (Tables 1–3, Figures 6–11)"
+    headline: true
+    plan: "Compare paired 0/5/15 percent interval-attrition contrasts, their heterogeneity and combined sample-size consequences."
+  - id: oversample
+    kind: analysis
+    label: "Attrition oversampling (Table 3)"
+    plan: "Recreate all published conditions and compare added-cluster and retained-power targets; investigate the .88187 value against independent GLS and dropout/allocation alternatives."
+  - id: rq2
+    kind: research_question
+    label: "Unequal treatment allocation (Tables 1 and 4, Figures 6–11)"
+    headline: true
+    plan: "Compare 27 matched allocation contrasts in each initial and final grid, preserving ranges and interactions."
+  - id: rq3
+    kind: research_question
+    label: "Unequal cluster sizes (Tables 1 and 4, Figures 6–11)"
+    headline: true
+    plan: "Check normal and skewed sizes separately against equal sizes at each matched condition, including near-zero losses."
+  - id: rq4
+    kind: research_question
+    label: "ICC moderation (Table 4, Figures 9–11)"
+    headline: true
+    plan: "Calculate each violation loss at each ICC; check lowest-ICC ordering and monotonicity separately for each violation."
+  - id: hypothesis-order
+    kind: hypothesis
+    label: "Predicted power-loss ordering (p. 67)"
+    plan: "Test the original expectation that attrition has the largest bias against published and rerun allocation, attrition and cluster-size contrasts."
+  - id: thresholds
+    kind: analysis
+    label: "Minimum cluster counts for 80 percent power (Table 5)"
+    headline: true
+    design_count: 54
+    plan: "Check every reported threshold, including already-sufficient settings and predecessor cluster counts; report mask-sensitive crossings and rounding."
+  - id: ch5
+    kind: chapter
+    label: "Discussion and practical conclusions (pp. 99–112)"
+    plan: "Check claimed consequences, reference-DF choice, and reasons for empirical versus exemplary differences against the component analyses."
+  - id: baseline-50000
+    kind: analysis
+    label: "Independent 50,000-draw baseline follow-up (pp. 89, 106–107)"
+    design_count: 50000
+    plan: "Run a distinct 50,000-draw stream at the initial baseline; compare the gap from exemplary power to the main-grid baseline and its Monte Carlo uncertainty."
+  - id: empirical-gap
+    kind: headline
+    label: "Empirical estimates usually below initial exemplary estimates (pp. 89–90, 106–110)"
+    plan: "Compare all 54 empirical–exemplary pairs to published signs and ranges, and isolate fixed versus refitted variance with a paired diagnostic."
+  - id: appendix-a
+    kind: analysis
+    label: "Appendix A: empirical SAS implementation"
+    plan: "Audit source code and seeds, distinguish SAS-specific replay from distributional reconstruction, and verify an independent generator and optimizer."
+  - id: appendix-b
+    kind: analysis
+    label: "Appendix B: exemplary SAS implementation"
+    plan: "Extract published frequency arrays, verify sums and placement, and independently reproduce fixed-variance inference and dropout rules."
+  - id: appendix-c
+    kind: analysis
+    label: "Appendix C: convergence, fitted variance and interaction diagnostics"
+    plan: "Save per-cell estimates and boundary counts for every published component; compare with population and published summaries and check ICC identities where applicable."
+  - id: null-baseline
+    kind: condition
+    label: "Appendix D.1: baseline Type I error across five denominator rules"
+    plan: "Simulate the first initial-stage cell under the null at the source count where verifiable and evaluate J−2, between–within, containment, Satterthwaite and Kenward–Roger."
+  - id: null-extreme
+    kind: condition
+    label: "Appendix D.2: extreme-cell Type I error across five denominator rules"
+    plan: "Simulate the last initial-stage cell under the null at the source count where verifiable, evaluate the same rules and audit criteria against source intervals."
+  - id: practical-verdict
+    kind: headline
+    label: "Planning with attrition and unequal assignment versus unequal sizes"
+    plan: "Synthesize the four research questions and threshold checks without conflating initial empirical and final exemplary evidence."
+removals: []
