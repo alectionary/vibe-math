@@ -7,7 +7,7 @@ def read(p):return json.loads(Path(p).read_text())
 def write(n,d):
  p=O/n;assert not p.exists();p.write_text(json.dumps(d,indent=2)+'\n')
 assert not subprocess.check_output(['git','status','--porcelain'],cwd=REPO)
-commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip();assert commit=='043a5bdca1b1691dee56e8ea164d959776729680'
+commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip();assert commit=='c3b3e1fbe8ef335db12e632059eedb504cffd726'
 core=read(OLD/'frozen.json');core_checks={p:sha(C/p)==h for p,h in core['input_and_source_hashes'].items()};assert len(core_checks)==689 and all(core_checks.values())
 old=read(OLD/'declared-source-bindings.json');aliases=read(OLD/'resolved-source-bindings.json');key=lambda r:(r['owner'],r['field'],r['input']);resolved={key(r['original']):r['resolved_path'] for r in aliases['alias_records']};old_checks=[]
 for r in old['records']:

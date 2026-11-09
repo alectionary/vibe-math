@@ -20,7 +20,7 @@ Tracking issue: <https://github.com/alectionary/vibe-math/issues/8>.
 Publication PR: <https://github.com/alectionary/vibe-math/pull/17>.
 Handoff branch: `research/c16-shared-master-20261030T2207`.
 PR head: `research/c16-structural-20261027T173245`.
-Scientific publication checkpoint: `e264f4775a73365ebdb5d73f502a518d02de3540`.
+Scientific publication checkpoint: `c261c304692f5a0491b6d83446ed0f5f24da9215`.
 
 The October 31 handoff adds documentation and an artifact-integrity receipt;
 it makes no new mathematical claim. Master integration still requires the

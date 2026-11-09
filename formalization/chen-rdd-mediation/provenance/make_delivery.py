@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REPO = 'alectionary/vibe-math'
 PREFIX = 'formalization/chen-rdd-mediation'
-BASELINE = '8bcfb1c3f9b9fd6da2e4fb2750aea7285979a14f'      # first commit: REPLICATION-PLAN.yaml
+BASELINE = '1b05899c32560fe4d2c339d50c5c3aea5433a39d'      # first commit: REPLICATION-PLAN.yaml
 NAME = 'paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021'
 EVIDENCE = ['results/cells.csv', 'results/table48_ours.csv', 'results/table49_ours.csv', 'results/type1.csv',
             'results/power.csv', 'results/summary.json', 'results/statement_checks.csv',

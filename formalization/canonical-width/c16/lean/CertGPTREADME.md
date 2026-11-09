@@ -7,7 +7,7 @@ The theorem compiles with no `sorry`. Final `lake build` succeeded (3,833 jobs,
 exit 0), and all 13 final executable tests passed.
 
 Branch: `independent/c16-lean-cert-chatgpt-20261107`, based on research commit
-`7cdf520a98801f24bd5c9cbd33f0373be33549ff`.
+`76a53895f85c060f8f20e270ff0cb7e1f270b499`.
 
 Author: OpenAI ChatGPT. The exact model/version identifier is not exposed to this
 execution; no more specific identifier is asserted. Toolchain:

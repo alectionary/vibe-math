@@ -62,9 +62,9 @@ still does not settle the original source question.
 4. [Reproduction and machine recovery](COUNCIL-REPRODUCIBILITY.md).
 5. The lane-specific notes below, followed by their linked consumers and receipts.
 
-Scientific publication checkpoint: `e264f4775a73365ebdb5d73f502a518d02de3540`.
+Scientific publication checkpoint: `c261c304692f5a0491b6d83446ed0f5f24da9215`.
 The five-stage isolated replay used the earlier scientific checkpoint
-`3129963fcac399fe3422429aeed7247dbc2c9dd1`. These are distinct checkpoints;
+`c9091b03ddc5f3bcfeaf6de03d591ea6c3a313ad`. These are distinct checkpoints;
 the final publication additionally preserves the replay outputs and reports.
 
 ## Established work and limits
@@ -165,7 +165,7 @@ Do not reuse the prior ownership lease.
 
 Use `research/c16-shared-master-20261030T2207`; the same handoff is published to
 PR17's head `research/c16-structural-20261027T173245`. The issue gives the exact
-handoff commit. Master remains `e89a439b057e9d5e76abc6af66f7b978471af3c6` at this
+handoff commit. Master remains `934389ccd041fa5848a352f65ee81dddda3ae6e9` at this
 check, with one approving review required and no recorded approval. The handoff
 is branch delivery, as requested; it does not bypass review or imply a merge.
 

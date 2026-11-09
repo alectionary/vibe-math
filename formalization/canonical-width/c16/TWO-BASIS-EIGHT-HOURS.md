@@ -8,7 +8,7 @@
 - Start: 2026-10-30 14:38:33Z; deadline: 2026-10-30 22:38:33Z.
 - Verification/preservation reserve begins 22:08:33Z. No automatic extension.
 - Work branch: `research/c16-two-basis-20261030T1438`.
-- Baseline: `415591d389683e145ced12c2a399c3911ec834a7`.
+- Baseline: `101f4a984e499f06696fc821230859029f325122`.
 - Claim: create-only `refs/heads/claims/L-F91-c16-unrestricted-width`, fixed at this ownership commit after server confirmation.
 
 **Source question → intended answer → decisive evidence.** Lee, arXiv:2610.06820v1,
@@ -47,7 +47,7 @@ create-only remote claim and exact-owner readback succeed.
 ### First-hour checkpoint, 15:33Z
 
 The fixed claim was created and independently read back at
-`c594b522c1e8dfb6f235388d0ef8047c2c95a077`; issue8 records the active block.
+`3d78a788695e8cdee962fe23b7d4b45af6db1a3c`; issue8 records the active block.
 The original width16/18 question, cover405 and physical partial88/128 remain
 unchanged. Zero complete source anchors have been excluded.
 

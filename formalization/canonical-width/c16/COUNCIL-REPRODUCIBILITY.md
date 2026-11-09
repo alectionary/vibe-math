@@ -3,7 +3,7 @@
 The GitHub branch is the durable source. The former `/private/tmp` worktrees
 and runtime directories are disposable. On October 31, the former shared-master
 worktree was absent, so a fresh durable checkout was restored from published
-commit `e264f4775a73365ebdb5d73f502a518d02de3540`. No scientific files were
+commit `c261c304692f5a0491b6d83446ed0f5f24da9215`. No scientific files were
 modified and no new mathematical replay or optimizer run was needed for the
 documentation handoff.
 
@@ -60,7 +60,7 @@ substitute when `Path.resolve()` resolves it to a different root.
 
 Prepare a clean source checkout at
 `/private/tmp/c16-shared-master-20261030T2207`, with HEAD exactly
-`3129963fcac399fe3422429aeed7247dbc2c9dd1`. It must contain the whole C16 directory.
+`c9091b03ddc5f3bcfeaf6de03d591ea6c3a313ad`. It must contain the whole C16 directory.
 On this Mac an old worktree registration may remain even though its directory
 is gone. Inspect `git worktree list --porcelain` before choosing recovery;
 do not force past an occupied path or overwrite another investigator's work.
@@ -83,7 +83,7 @@ env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
   PYTHONDONTWRITEBYTECODE=1 \
   nice -n 19 /path/to/replay-venv/bin/python -B \
   replay_shared_master_checkpoint.py \
-  --checkpoint 3129963fcac399fe3422429aeed7247dbc2c9dd1 \
+  --checkpoint c9091b03ddc5f3bcfeaf6de03d591ea6c3a313ad \
   --plan shared-master-results/clean-replay-plan-v1.json \
   --copy-root /private/tmp/c16-takeover-replay-20261031 \
   --output shared-master-results/takeover-replay-20261031.json

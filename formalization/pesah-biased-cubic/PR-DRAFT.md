@@ -1,4 +1,4 @@
-[pure_x_thresholds_of_deformed_cubic_codes__replication_of_pesah_2021.pdf](https://github.com/alectionary/vibe-math/blob/abfdecb145fc1ef6f35a71c38d751dd721adec08/formalization/pesah-biased-cubic/paper/pure_x_thresholds_of_deformed_cubic_codes__replication_of_pesah_2021.pdf)
+[pure_x_thresholds_of_deformed_cubic_codes__replication_of_pesah_2021.pdf](https://github.com/alectionary/vibe-math/blob/611c447a87abe3d245c829f472772309649dc65f/formalization/pesah-biased-cubic/paper/pure_x_thresholds_of_deformed_cubic_codes__replication_of_pesah_2021.pdf)
 
 ## What this is
 
@@ -35,4 +35,4 @@ The resource pilot preceded production; the main run used 773 wall seconds and 5
 The original trial-level production archive, job inputs, environment and fit window would settle the largest remaining uncertainty. Current sensitivity checks explain much of the undeformed gap but do not identify its original cause.
 
 
-Remote PDF, manuscript, bibliography, two evidence crops, evidence manifest, analysis and primary results were downloaded and SHA256 verified (8/8). [Editable manuscript](https://github.com/alectionary/vibe-math/blob/abfdecb145fc1ef6f35a71c38d751dd721adec08/formalization/pesah-biased-cubic/paper/manuscript.tex), [bibliography](https://github.com/alectionary/vibe-math/blob/abfdecb145fc1ef6f35a71c38d751dd721adec08/formalization/pesah-biased-cubic/paper/references.bib). Runnable reproduction: `47f111b60fbf668edc8fa6dfb4fb6a398d6da933`.
+Remote PDF, manuscript, bibliography, two evidence crops, evidence manifest, analysis and primary results were downloaded and SHA256 verified (8/8). [Editable manuscript](https://github.com/alectionary/vibe-math/blob/611c447a87abe3d245c829f472772309649dc65f/formalization/pesah-biased-cubic/paper/manuscript.tex), [bibliography](https://github.com/alectionary/vibe-math/blob/611c447a87abe3d245c829f472772309649dc65f/formalization/pesah-biased-cubic/paper/references.bib). Runnable reproduction: `5cab5888292da160f3adc48566ff7f69f2804e3d`.

@@ -1,6 +1,6 @@
 # Writer-stage snapshots
 
-Copied at repository revision c3e6211ef81e13d61d524ac5f29a06f8151d286a (branch replication/chen-2021); writer-stage.md refreshed there, the other snapshots unchanged since 454cc891af7ab702701413aa66b95d151cee355c.
+Copied at repository revision 33d39ef8e04b7a51c2c7d32c556a8e3d1c893679 (branch replication/chen-2021); writer-stage.md refreshed there, the other snapshots unchanged since b7a83d14599c8c35b8447299c9758a2478b14d6b.
 
 | Snapshot | Original |
 |---|---|

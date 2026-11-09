@@ -1,6 +1,6 @@
 # Final committed endpoint replay
 
-This archive replays immutable checkpoint `043a5bdca1b1691dee56e8ea164d959776729680` from a detached clean checkout. All outputs were written outside that checkout. `summary.json` is the acceptance receipt; `frozen.json` lists commands and source hashes.
+This archive replays immutable checkpoint `c3b3e1fbe8ef335db12e632059eedb504cffd726` from a detached clean checkout. All outputs were written outside that checkout. `summary.json` is the acceptance receipt; `frozen.json` lists commands and source hashes.
 
 The prior36-stage scientific core remains supported by identical bytes for all689 frozen inputs, all1,422 resolved source declarations and four additional joint-proof bindings. The new replay checks seven exchange consumer stages, including the point15 partial-state endpoint, and reruns the portable seven-stage point15 acceptance wrapper. The transfer40 algorithm class is independently checked for exact AST equality with the reviewed lazy class. New inventories and source bindings are checked recursively.
 

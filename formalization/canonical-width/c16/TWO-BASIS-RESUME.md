@@ -7,7 +7,7 @@ anchors have been excluded. No new Lean completion is claimed. Read the
 
 The eight-hour block was authorized for 2026-10-30 14:38:33Z–22:38:33Z, on
 `research/c16-two-basis-20261030T1438`. Its scientific checkpoint is
-`45873144ca36684562c235fc68db41c0b06a95c3`; later commits preserve the clean
+`7f66f435fd21beb8eb2b3dd73c0a657bd4b735a8`; later commits preserve the clean
 replay outputs, projection lemma and handoff. Existing PR17 uses branch
 `research/c16-structural-20261027T173245`. Consult
 [issue8](https://github.com/alectionary/vibe-math/issues/8) for the final remote
@@ -66,14 +66,14 @@ env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
   VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 BLIS_NUM_THREADS=1 \
   PYTHONDONTWRITEBYTECODE=1 nice -n 19 /private/tmp/c16-venv/bin/python \
   replay_final_supplement_checkpoint.py \
-  --checkpoint 45873144ca36684562c235fc68db41c0b06a95c3 \
+  --checkpoint 7f66f435fd21beb8eb2b3dd73c0a657bd4b735a8 \
   --copy-root /private/tmp/c16-new-supplement-copy \
   --output-dir /private/tmp/c16-new-supplement-output --total-seconds 900
 ```
 
 Replace both destinations with nonexistent paths. The earlier driver is
 `replay_final_owner_checkpoint.py` at checkpoint
-`b6ed9a0db40ec431d706fcd9f68ffa5e93e44e89`, with the same path arguments and
+`5bd0dffea7f1bf0a631aefd4383baa3c4a7d8537`, with the same path arguments and
 a maximum total of1200seconds. Frozen absolute paths and native runtime
 bindings require the documented relocation/runtime checks on another machine;
 do not silently rewrite certificates. Solver execution is not part of either

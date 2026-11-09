@@ -9,7 +9,7 @@ UTC start: `2026-10-27T18:20:15Z`.
 Project board: not requested.
 Draft PR: https://github.com/alectionary/vibe-math/pull/14.
 
-The simulation claim at `05d69ea141adf3d5ee936d3b48061bde241250dc` was released at the previous closeout. This commit is the reservation for the gap investigation. It is preparation until the create-only ref update succeeds.
+The simulation claim at `1ba6b8c891e61e725fb03fdbf779769bbc9c24b2` was released at the previous closeout. This commit is the reservation for the gap investigation. It is preparation until the create-only ref update succeeds.
 
 ## Bounded question
 
