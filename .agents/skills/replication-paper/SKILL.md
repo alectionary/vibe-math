@@ -219,6 +219,11 @@ not `replicated`. `limit_kind` is one of, or a list of:
   checks. A universal proof is not established.
 - `out_of_scope`: `scope_reason` says why.
 
+A part that was run in full but disagrees with the source is a result, not a
+limit. Mark it `status: mismatch` (or `partly` when only some of its claims
+agree) with `run_complete: true`; it then needs its own reason and evidence but
+no `limit_kind`. A reduced run is still a limit and keeps the requirement.
+
 A part may list several kinds. Each non-replicated `reason` must be specific
 to that part: the done check rejects a reason copied verbatim onto another
 part, and generic templates such as "See named artifacts and limitations".
