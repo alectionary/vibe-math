@@ -26,6 +26,12 @@ every verdict with each threshold moved .01 in Chen's favour (a sensitivity chec
 A further column repeats every verdict (strict thresholds) on our cells with h replaced by 0, keeping the
 other factors: it asks whether Chen's statement would hold in our run if the mediator-by-treatment
 interaction were absent. It is a counterfactual reading of our own results, not a test of her runs.
+A last column reads every statement (strict thresholds) against Chen's OWN plotted values instead of our
+cells: results/digitized_rates.csv, read from her Figures 4.17-4.28. It asks whether her text agrees with
+her own figures, using only directly read points (an occluded or merged marker can carry a neighbouring
+series' value). A cell set with no such points is 'not plotted'; a statement is judged on the cell
+sets that are plotted, and says how many those are. Digitized values carry a reading error of about .003
+(Type I) and .01-.02 (power); a verdict that turns on a smaller margin is noted in the disagreement record.
 """
 import csv, sys
 from collections import defaultdict
@@ -41,9 +47,30 @@ for r in R:
 
 
 H0 = False   # counterfactual pass: read every cell with h replaced by 0 (same other factors)
+FIG = False  # source-consistency pass: read Chen's own digitized figure values instead of our cells
+
+import os
+FIGROWS = defaultdict(list)
+_fig = os.path.join(os.path.dirname(os.path.abspath(sys.argv[1])), 'digitized_rates.csv')
+if os.path.exists(_fig):
+    for r in csv.DictReader(open(_fig)):
+        if r['quantity'] != 'reject' or r['chen_value'] == '' or r['status'] != 'read':
+            continue          # occluded and merged points can carry another series' value
+        spec = tuple(sorted((k, float(r[k])) for k in 'abch' if r[k] != ''))
+        FIGROWS[(r['effect'], spec)].append((r['n'], r['cut_index'], float(r['chen_value'])))
+
+
+def fig_rates(eff, **kw):
+    spec = tuple(sorted((k, float(v)) for k, v in kw.items()))
+    d = defaultdict(list)
+    for n, cut, v in FIGROWS.get((eff, spec), []):
+        d[(n, cut)].append(v)
+    return {k: sum(v) / len(v) for k, v in d.items()}
 
 
 def rates(eff, **kw):
+    if FIG:
+        return fig_rates(eff, **kw)
     if H0 and eff in ('PNDE', 'TNDE', 'TNIE', 'MINT'):
         kw = dict(kw, h=0)
     d = defaultdict(list)
@@ -54,7 +81,7 @@ def rates(eff, **kw):
 
 
 def fmt(rt):
-    return '; '.join(f'n={n}: ' + '/'.join(f'{rt[(n, c)]:.3f}' for c in CUTS) for n in NS)
+    return '; '.join(f'n={n}: ' + '/'.join(f'{rt[(n, c)]:.3f}' if (n, c) in rt else '-' for c in CUTS) for n in NS)
 
 
 SLACK = 0.0   # set to .01 for the sensitivity pass: every threshold moves .01 in Chen's favour
@@ -79,12 +106,23 @@ def stmt(page, text, eff, variants, ok):
     verdicts = []
     for kw in variants:
         rt = rates(eff, **kw)
-        v = ok(rt, kw)
+        try:
+            v = ok(rt, kw)
+        except KeyError:          # only in the FIG pass: the cell set is not plotted
+            v = None
         verdicts.append(v)
-        rows.append([page, text, eff, ' '.join(f'{k}={v}' for k, v in kw.items()), fmt(rt),
-                     'cell agrees' if v else 'cell disagrees'])
-    rows.append([page, text, eff, f'all {len(variants)} cell sets', f'{sum(verdicts)} of {len(verdicts)} agree',
-                 'agree' if all(verdicts) else 'disagree'])
+        rows.append([page, text, eff, ' '.join(f'{k}={v}' for k, v in kw.items()),
+                     fmt(rt) if v is not None else 'not plotted',
+                     'not plotted' if v is None else ('cell agrees' if v else 'cell disagrees')])
+    shown = [v for v in verdicts if v is not None]
+    if not shown:
+        verdict = 'not plotted'
+    else:
+        verdict = 'agree' if all(shown) else 'disagree'
+        if len(shown) < len(verdicts):
+            verdict += f' ({len(shown)} of {len(verdicts)} cell sets plotted)'
+    rows.append([page, text, eff, f'all {len(variants)} cell sets', f'{sum(bool(v) for v in shown)} of {len(shown)} agree',
+                 verdict])
 
 
 def at(pred, ns, cuts=CUTS):
@@ -264,8 +302,13 @@ H0 = True
 run_all()
 h0 = rows
 H0 = False
-rows = [r[0].split('|', 1)[::-1][:1] + r[0].split('|', 1)[:1] + r[1:] + [s_[-1], z[-1]]
-        for r, s_, z in zip(strict, slack, h0)]
+rows = []
+FIG = True
+run_all()
+fig = rows
+FIG = False
+rows = [r[0].split('|', 1)[::-1][:1] + r[0].split('|', 1)[:1] + r[1:] + [s_[-1], z[-1], f_[-1], f_[4]]
+        for r, s_, z, f_ in zip(strict, slack, h0, fig)]
 SLACK = 0.0   # the summary rows below use the strict thresholds
 
 EXCLUDED = [
@@ -285,11 +328,11 @@ EXCLUDED = [
      'explanation, not a result'),
 ]
 w = csv.writer(sys.stdout)
-w.writerow(['page', 'number', 'statement', 'effect', 'cells', 'our_rejection_rate_cut1/cut2/cut3', 'verdict', 'verdict_with_.01_slack', 'verdict_if_h_were_0'])
+w.writerow(['page', 'number', 'statement', 'effect', 'cells', 'our_rejection_rate_cut1/cut2/cut3', 'verdict', 'verdict_with_.01_slack', 'verdict_if_h_were_0', 'verdict_on_chen_figures', 'chen_figure_rate_cut1/cut2/cut3'])
 w.writerows(rows)
 
 for page, text, reason in EXCLUDED:
-    w.writerow([page, '', text, '', 'not tested', reason, 'excluded', 'excluded', 'excluded'])
+    w.writerow([page, '', text, '', 'not tested', reason, 'excluded', 'excluded', 'excluded', 'excluded', ''])
 
 # Chapter 5 sample-size recommendation (printed p. 150): shares by n, then by n and cutoff
 for n in NS:
@@ -301,4 +344,4 @@ for n in NS:
         w.writerow(['150 (PDF 164)', '', f'{label}: share of zero-effect cells with Type I in Bradley; share of nonzero '
                     'cells with power >= .80', 'all', f'{len(z)} zero cells, {len(nz)} nonzero cells',
                     f'{100 * sum(within(v) for v in z) / len(z):.1f}%; {100 * sum(v >= .8 for v in nz) / len(nz):.1f}%',
-                    'summary', 'summary', 'summary'])
+                    'summary', 'summary', 'summary', 'summary', ''])
