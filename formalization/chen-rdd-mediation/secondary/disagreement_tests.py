@@ -179,7 +179,9 @@ OUT["tnde.power_gap"] = {
     "power_ours": round(float(cells[(cells.effect == "TNDE") & (cells.cut_index == 1) & (cells.n == 500)
                                     & np.isclose(cells.c, .39) & np.isclose(cells.a, .59)
                                     & np.isclose(cells.h, 0)].reject.mean()), 4),
-    "power_chen_figure": knife[1]["chen_figure"]}
+    "power_chen_figure": knife[1]["chen_figure"],
+    "note": "her_code_* use the 50-replication replay (#92); the full_replay block uses all 1,000 (#118)",
+    "full_replay": json.loads((ROOT / "results" / "r_full_comparison.json").read_text())["tnde_gap"]}
 
 # statements 30 and 44 read loosely: "similar patterns" = power rises with n at every cutoff
 def rises(vals, dip=.02):
