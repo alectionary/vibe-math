@@ -1,0 +1,12 @@
+R 4.2.2 source tarball sha256 0ff62b42ec51afa5713caee7c4fde7a0c45940ba39bef8c5c9487fef0c953df5
+from https://cran.r-project.org/src/base/R-4/R-4.2.2.tar.gz
+configured --prefix=$HOME/R-4.2.2 --enable-R-shlib --without-x --disable-java --with-recommended-packages
+BLAS and LAPACK are the reference libraries built with that R (libRblas.so, libRlapack.so). No external OpenBLAS or MKL.
+
+The stock R 4.2.2 configure test rejects libcurl with LIBCURL_VERSION_MAJOR > 7.
+This machine has libcurl 8.5.0, so that one test was changed to accept major version 8
+(exit 0 instead of exit 1). No other R source file was edited. Numerical code is the 4.2.2 release.
+
+Packages installed from https://packagemanager.posit.co/cran/2024-01-15
+with dependencies = NA (Depends, Imports, LinkingTo only; Suggests such as OpenMx were not installed).
+Installed versions checked after the install: lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0.
