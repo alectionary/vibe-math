@@ -1,0 +1,154 @@
+{
+  "manifest_version": "0.3",
+  "manifest_id": "vibe-math-95-worker-20261109",
+  "supersedes": null,
+  "recorded_at": "2026-11-09T15:40:00Z",
+  "producer": {
+    "role": "retrieval_worker",
+    "name": "grokbot-retrieval-20261109T1525"
+  },
+  "campaign_id": "chumney-sem-small-samples",
+  "priority": "normal",
+  "retryable": false,
+  "requested_source_id": "https://digitalcommons.unl.edu/cehsdiss/189",
+  "outcome": "verified",
+  "issue": {
+    "repository": "alectionary/vibe-math",
+    "number": 95,
+    "url": "https://github.com/alectionary/vibe-math/issues/95"
+  },
+  "document": {
+    "title": "Structural equation models with small samples: A comparative study of four approaches",
+    "author": "Frances L. Chumney",
+    "year": 2013,
+    "document_type": "doctoral_dissertation",
+    "stable_ids": [
+      {
+        "scheme": "url",
+        "value": "https://digitalcommons.unl.edu/cehsdiss/189"
+      }
+    ]
+  },
+  "discovered_identifiers": [],
+  "routes_tried": [
+    {
+      "id": "openalex-95",
+      "route": "openalex-oa@1",
+      "url": "https://api.openalex.org/works?search=Structural+equation+models+with+small+samples+Chumney",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": "not_found",
+      "obtained_bytes": false,
+      "notes": "OpenAlex title search found no matching Chumney 2013 UNL dissertation OA PDF location.",
+      "attempted_by": null
+    },
+    {
+      "id": "publisher-landing-95",
+      "route": "publisher-landing@1",
+      "url": "https://digitalcommons.unl.edu/cehsdiss/189",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "Record HTML 200. Download control points at viewcontent.cgi. No PDF bytes from this route.",
+      "attempted_by": null
+    },
+    {
+      "id": "ir-record-95",
+      "route": "institutional-repository@1",
+      "url": "https://digitalcommons.unl.edu/cehsdiss/189",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:28:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "Institutional repository record HTML 200. Public Download is viewcontent.cgi. No PDF bytes.",
+      "attempted_by": null
+    },
+    {
+      "id": "ir-viewcontent-95",
+      "route": "institutional-repository@1",
+      "url": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1185&context=cehsdiss",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:30:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "Cloudflare challenge page (Just a moment...). Bot mitigation, not an access restriction. No PDF bytes.",
+      "attempted_by": null
+    },
+    {
+      "id": "author-page-95",
+      "route": "author-page@1",
+      "url": "https://digitalcommons.unl.edu/cehsdiss/189",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:30:00Z",
+      "http_status": 200,
+      "error_category": "not_found",
+      "obtained_bytes": false,
+      "notes": "Author search returns the same UNL dissertation record; no separate author-page manuscript.",
+      "attempted_by": null
+    },
+    {
+      "id": "wayback-95",
+      "route": "wayback-available@1",
+      "url": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1185&context=cehsdiss",
+      "resolved_url": "https://web.archive.org/web/20240415105755id_/https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1185&context=cehsdiss",
+      "method": "headless",
+      "attempted_at": "2026-11-09T15:32:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": true,
+      "notes": "Availability API closest timestamp 20240415105755. Fetched id_ URL; complete PDF.",
+      "attempted_by": null
+    }
+  ],
+  "artifact": {
+    "media_type": "application/pdf",
+    "sha256": "1b067efef410ac3ae412e3a26a7b29bf1f8e50e935d219353fbe16ce8a853007",
+    "byte_length": 2603516,
+    "page_count": 146,
+    "committed_to_git": false,
+    "storage": {
+      "kind": "worker_local",
+      "locator": "worker/95/paper.pdf",
+      "cross_machine": false
+    }
+  },
+  "completeness": {
+    "classification": "complete_body",
+    "identity_matched": true,
+    "front_matter_only": false,
+    "preview": false,
+    "evidence": [
+      "DigitalCommons cover and title match: Frances L. Chumney, Structural equation models with small samples, 2013.",
+      "sha256 1b067efef410ac3ae412e3a26a7b29bf1f8e50e935d219353fbe16ce8a853007 matches the issue's previously verified copy; 146 pages.",
+      "Page count is 146. Body and references through the final page are present in the extracted text.",
+      "Extracted text is 322033 Unicode characters (text_characters), distinct from the PDF byte_length 2603516 bytes."
+    ]
+  },
+  "extraction": {
+    "status": "extracted",
+    "method": "born_digital",
+    "ocr_applied": false,
+    "ocr_engine": null,
+    "readable": true,
+    "text_sha256": "28d102d96e3f24297debb8790e3270cfe3da46ceadcffddf3fb031f477633c9d",
+    "text_characters": 322033,
+    "unreadable_reason": null
+  },
+  "question_screen": {
+    "status": "not_screened",
+    "question_count": null,
+    "candidates": [],
+    "screen_owner": "research_agent"
+  },
+  "notes": "Complete PDF via wayback-available@1; sha256 matches the issue's previously verified copy. Question count null."
+}

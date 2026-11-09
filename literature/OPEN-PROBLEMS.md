@@ -1,10 +1,10 @@
 # Expanded open-problem inventory
 
-Inventory updated November 2, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
+Inventory updated November 9, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **436 canonical entries**: the original 40 dissertation targets and **396 additional article entries**. Of the additions, **124 are specific mathematical questions or tasks suitable for coverage tracking**; the other 272 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **457 canonical entries**: the original 40 dissertation targets and **417 additional article entries**. Of the additions, **124 are specific mathematical questions or tasks suitable for coverage tracking**; the other 293 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [148 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/163 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [159 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/163 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
@@ -12,7 +12,7 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
 | Additional article targets in the coverage denominator | 124 |
-| Additional directions/formulation/method entries outside the denominator | 272 |
+| Additional directions/formulation/method entries outside the denominator | 293 |
 | Combined eligible targets | 163 = 39 + 124 |
 | Eligible targets with an identified, verified proof-assistant statement | 6/163 (3.68%) |
 | Eligible targets with an identified, verified Lean statement | 6/163 (3.68%) |
@@ -21,11 +21,11 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | Eligible targets with only finite-case proofs (no general supporting proof) | 0/163 |
 | Additional identified Lean statements without a build audit | 1/163 |
 | Eligible targets with Lean discovery still unassessed in this extension | 55/163 |
-| Articles/preprints in scope | 220 |
-| Full-text sources screened, including withdrawn history | 179/220 |
-| Current-publication full texts screened | 178 |
+| Articles/preprints in scope | 231 |
+| Full-text sources screened, including withdrawn history | 190/231 |
+| Current-publication full texts screened | 189 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 41/220 |
+| Not fully assessed | 41/231 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -271,6 +271,17 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F186](https://doi.org/10.1186/s12864-020-06833-2) | full text screened | 0 | Genomic-selection applicability is an application request without a fixed estimand. No inventory target recorded. |
 | [F187](https://digitalcommons.unl.edu/dissunl/339/) | full text screened | 3 | Same PDF as MorrisDissertation2025. Three Chapter 6 directions recorded beside the linked P34 targets. |
 | [F188](https://arxiv.org/abs/2502.15166) | full text screened | 1 | Conjecture 7.4 recorded. Conjecture 7.2 is refuted in the paper and is not an inventory target. |
+| [F189](https://digitalcommons.unl.edu/cehsdiss/403/) | full text screened | 1 | One method request recorded. Other future-work sentences are simulation extensions. |
+| [F190](https://digitalcommons.unl.edu/cehsdiss/68/) | full text screened | 0 | Linked to UNL-SEM-D067. No additional explicit mathematical target recorded. |
+| [F191](https://digitalcommons.unl.edu/cehsdiss/189/) | full text screened | 0 | Linked to UNL-SEM-D022. No additional explicit mathematical target recorded. |
+| [F192](https://digitalcommons.unl.edu/cehsdiss/106/) | full text screened | 0 | Linked to formalization/kupzyk-power-assumptions. No additional explicit mathematical target recorded. Fetched hash differs from the hash stored with that replication. |
+| [F193](https://digitalcommons.unl.edu/dissunl/216/) | full text screened | 0 | Same PDF as UNL-SEM-D055. No additional explicit mathematical target recorded. |
+| [F194](https://digitalcommons.unl.edu/cehsdiss/425/) | full text screened | 1 | One proof direction recorded. The other future-research items are simulation studies. |
+| [F195](https://discovery.ucl.ac.uk/id/eprint/10186408/) | full text screened | 6 | Six directions recorded from the conclusions. |
+| [F196](https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf) | full text screened | 7 | Seven directions recorded. The solved asymptotic-rate question is not a target. |
+| [F197](https://github.com/JonasMoss/phd-thesis/blob/c539b0bc4ab1424352ab93f5aaae5150f02fa9e3/papers/paperI.pdf) | full text screened | 0 | Linked to formalization/moss-score-reliability. No additional explicit mathematical target recorded. |
+| [F198](https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf) | full text screened | 6 | Six directions recorded. The pre-publication simulation list is not a target. |
+| [F199](https://digitalcommons.unl.edu/cehsdiss/229/) | full text screened | 0 | Linked to formalization/koziol-weighted-multilevel. No additional explicit mathematical target recorded. |
 
 ## Reproducible evidence and limits
 
@@ -5156,3 +5167,213 @@ If S is a Macaulay ring, x is a new variable, and n exceeds every degree in S, t
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F188: Conjecture 7.4, PDF page 30, printed page 30, extracted lines 1797–1798. The formula was read from the rendered page; the text layer drops the superscript on n](https://arxiv.org/abs/2502.15166); extraction lines 1797–1798; author stated question or direction.
+
+### L-F189-rdd-mediation-ci-correction
+
+Derive bias-correction methods for confidence intervals of mediation effects inside a regression-discontinuity design.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Chapter 5 says the bootstrap confidence intervals in the study do not support valid inferences, and that published RDD and mediation bias corrections do not extend to the integrated estimator. The correction is not written down, so this stays a method request.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F189: Chapter 5, Limitations and Future Directions, extracted lines 5571–5592](https://digitalcommons.unl.edu/cehsdiss/403/); extraction lines 5571–5592; author stated question or direction.
+
+### L-F194-polytomous-generalizations
+
+Generalize further nonparametric person-fit statistics to polytomous models and prove those generalizations.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The future-research list asks for generalizations of nonparametric person-fit statistics to polytomous models, including the proofs. It does not name the statistics or the statements to prove.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F194: Chapter V, Future Research, second item, extracted lines 6309–6319](https://digitalcommons.unl.edu/cehsdiss/425/); extraction lines 6309–6319; author stated question or direction.
+
+### L-F195-realtime-decoder
+
+Decode a stream of surface-code measurements in real time without giving up minimum-weight perfect matching or belief-matching accuracy.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The conclusion asks for a streaming decoder, and for FPGA or ASIC implementations that do not sacrifice matching accuracy. No runtime theorem is stated.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F195: General conclusions, extracted lines 6868–6874. The sparse-blossom parallelisation sentence is at lines 2113–2115.](https://discovery.ucl.ac.uk/id/eprint/10186408/); extraction lines 6868–6874; author stated question or direction.
+
+### L-F195-belief-matching-speed
+
+Improve the practical speed of belief-matching relative to sparse blossom without giving up its accuracy.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The conclusion says belief-matching is asymptotically efficient and slower than sparse blossom in practice. It does not state a complexity bound to prove.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F195: General conclusions, extracted lines 6874–6877](https://discovery.ucl.ac.uk/id/eprint/10186408/); extraction lines 6874–6877; author stated question or direction.
+
+### L-F195-qldpc-decoder-runtime
+
+Develop decoders for colour codes and general quantum LDPC codes whose expected running time improves on cubic BP-OSD.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The conclusion contrasts cubic expected BP-OSD time with linear expected matching and union-find time, and asks for more efficient general LDPC decoders. No algorithm is specified.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F195: General conclusions, extracted lines 6877–6884](https://discovery.ucl.ac.uk/id/eprint/10186408/); extraction lines 6877–6884; author stated question or direction.
+
+### L-F195-memory-in-computation
+
+Use the subsystem-hyperbolic and hyperbolic Floquet constructions to reduce the space-time cost of a quantum algorithm.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The conclusion asks for a detailed study of Dehn twists, lattice surgery, and automorphism or ZX-duality gates on these codes, aimed at space-time cost. No cost theorem is stated.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F195: General conclusions, extracted lines 6886–6902](https://discovery.ucl.ac.uk/id/eprint/10186408/); extraction lines 6886–6902; author stated question or direction.
+
+### L-F195-sigf-other-codes
+
+Measure schedule-induced gauge fixing on Bacon-Shor, heavy-hexagon, compass, and subsystem codes whose detection events do not come in pairs.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Chapter 4 names those codes as further schedule-induced gauge-fixing cases. It does not state a threshold or a decoder theorem.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F195: Chapter 4 conclusion, extracted lines 4708–4714](https://discovery.ucl.ac.uk/id/eprint/10186408/); extraction lines 4708–4714; author stated question or direction.
+
+### L-F195-floquet-variants
+
+Compare other Floquet-code variants, including CSS Floquet codes on the hyperbolic and semi-hyperbolic tilings, with CSS honeycomb codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Section 7.4 expects similar advantages and asks for the performance study. It does not state a threshold theorem.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F195: Section 7.4, extracted lines 6793–6800](https://discovery.ucl.ac.uk/id/eprint/10186408/); extraction lines 6793–6800; author stated question or direction.
+
+### L-F196-qpsk-analytical-bound
+
+Derive an analytical secret-key-rate bound for QPSK modulation that is tighter than the bound in this thesis.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The chapter solves the general asymptotic-rate question and leaves the QPSK gap: the bound matches an earlier numerical bound and is more pessimistic than another reference. No tighter formula is conjectured.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F196: Chapter 1, Results and open questions, extracted lines 4776–4779](https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf); extraction lines 4776–4779; author stated question or direction.
+
+### L-F196-composable-general-attacks
+
+Give a composable finite-size security proof of discretely modulated continuous-variable QKD against general attacks.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The conclusion says a composable finite-size proof against general attacks is what is needed, and Chapter 1 leaves the optimality of collective attacks unresolved. The proof is not outlined.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F196: Chapter 4 conclusion, extracted lines 9217–9219. The collective-versus-general attack sentence is at lines 6288–6289.](https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf); extraction lines 9217–9219; author stated question or direction.
+
+### L-F196-2t-universal-gates
+
+Determine whether the 2T-qutrit, or the 2T-qubit, has a universal gate set.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The chapter calls this the most intriguing open question and does not conjecture an answer. The two-mode Clifford code later in the thesis is a different code and is not this question.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F196: Chapter 2, extracted lines 8095–8096](https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf); extraction lines 8095–8096; author stated question or direction.
+
+### L-F196-exact-correction-criterion
+
+Give a criterion for when the general bosonic constructions exactly correct a stated class of physically relevant errors.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The conclusion points at a spin-code criterion in another paper and asks for the same kind of criterion here. The criterion is not stated.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F196: Chapter 4 conclusion, extracted lines 9287–9292](https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf); extraction lines 9287–9292; author stated question or direction.
+
+### L-F196-explicit-recovery
+
+Give explicit error-correction procedures for the bosonic codes constructed in the thesis.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The conclusion calls explicit recovery an important open problem. No decoder is specified.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F196: Chapter 4 conclusion, extracted lines 9292–9293](https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf); extraction lines 9292–9293; author stated question or direction.
+
+### L-F196-stabilizer-gate-tradeoff
+
+Decide whether the constructions trade the number of stabilisers against the number of easily implemented gates, and quantify that trade-off if it exists.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The conclusion says such a trade-off seems to exist, with the Clifford code as an example that is not a stabiliser code, and asks whether it exists and how to quantify it. No inequality is stated.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F196: Chapter 4 conclusion, extracted lines 9294–9296](https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf); extraction lines 9294–9296; author stated question or direction.
+
+### L-F196-construction-relations
+
+Relate the coset, representation, and quantum-spherical-code constructions when one code arises from more than one of them.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The conclusion asks how the three constructions connect and whether their groups can be related. No isomorphism is conjectured.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F196: Chapter 4 conclusion, extracted lines 9278–9281](https://github.com/aurelie-denys/aurelie-denys.github.io/blob/5aefd7b6caca97df7bf49ece36c6c91ba955d0fc/PhDThesisAurelieDenys.pdf); extraction lines 9278–9281; author stated question or direction.
+
+### L-F198-bposd-improvements
+
+Improve BP-OSD for the deformed 3D codes by addressing degeneracy and by trying higher-order ordered statistics decoding.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The conclusion lists message noise, memory effects, and higher-order OSD as ways to speed or improve the decoder. No new threshold is claimed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F198: Chapter 4, future-work item 1, extracted lines 2015–2022](https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf); extraction lines 2015–2022; author stated question or direction.
+
+### L-F198-coprime-dimensions
+
+Evaluate the threshold of the 3D code when the three dimensions are coprime.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The item generalizes a 2D observation and does not state a 3D threshold.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F198: Chapter 4, future-work item 2, extracted lines 2024–2026](https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf); extraction lines 2024–2026; author stated question or direction.
+
+### L-F198-open-boundaries
+
+Extend the 3D threshold estimates from periodic boundaries to the open boundaries cited in the thesis.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The item names open boundaries as more experimentally relevant. No threshold value is conjectured.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F198: Chapter 4, future-work item 3, extracted lines 2028–2030](https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf); extraction lines 2028–2030; author stated question or direction.
+
+### L-F198-measurement-errors
+
+Include measurement errors in the threshold estimates for the deformed 3D codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The item asks for a more realistic noise model. The measurement-error model is not fixed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F198: Chapter 4, future-work item 4, extracted lines 2032–2033](https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf); extraction lines 2032–2033; author stated question or direction.
+
+### L-F198-statphys-threshold
+
+Evaluate the deformed-code threshold with a statistical-physics model.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The introduction and the conclusion leave the statistical-physics threshold as future work. The conclusion says that work had been started by collaborators. No formula is stated here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F198: Chapter 4, future-work item 5, extracted lines 2035–2037. The same deferral is at lines 236–237.](https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf); extraction lines 2035–2037; author stated question or direction.
+
+### L-F198-biased-2d-3d
+
+Compare 2D and 3D codes again with stabilizer deformations and biased noise included.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The item asks whether the deformed 3D code can be a relevant alternative to the surface code under biased noise. No overhead theorem is stated.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F198: Chapter 4, future-work item 6, extracted lines 2039–2042](https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf); extraction lines 2039–2042; author stated question or direction.
