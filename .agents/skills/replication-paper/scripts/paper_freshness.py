@@ -138,11 +138,43 @@ def freshness(root) -> dict:
         if any(name == ev or name.startswith(ev.rstrip("/") + "/") for ev in EVIDENCE) and name not in read:
             stale.append(f"paper stale: {name} is committed evidence the writer did not read")
 
+    # The code revision the paper names must contain the evidence it was written from.
+    rev = manifest.get("code_revision")
+    if rev and isinstance(packet, dict):
+        stale.extend(code_revision_errors(root, rev, packet.get("artifacts") or []))
+    elif isinstance(packet, dict) and manifest.get("context") == "fresh":
+        stale.append("paper stale: writer manifest has no code_revision (the commit holding the code and "
+                     "evidence the paper names for reproduction)")
+
     if manifest.get("context") != "fresh":
         result["draft"].append(
             f"paper: written with context {manifest.get('context')!r}; a draft pending an isolated writing pass")
     result["state"] = "stale" if stale else ("draft" if result["draft"] else "current")
     return result
+
+
+def code_revision_errors(root: Path, rev: str, artifacts) -> list[str]:
+    """Each packet artifact tracked in git must have the same bytes at `rev` as in the working tree."""
+    try:
+        top = subprocess.run(["git", "-C", str(root), "rev-parse", "--show-toplevel"],
+                             capture_output=True, text=True, check=True).stdout.strip()
+        subprocess.run(["git", "-C", top, "cat-file", "-e", f"{rev}^{{commit}}"], capture_output=True, check=True)
+    except (OSError, subprocess.CalledProcessError):
+        return [f"paper stale: code_revision {rev} is not a commit in this repository"]
+    rel = Path(root).resolve().relative_to(Path(top).resolve())
+    tracked = set(_tracked(root))
+    out = []
+    for entry in artifacts:
+        path = entry.get("path") if isinstance(entry, dict) else None
+        if not path or path not in tracked:
+            continue  # untracked inputs (a local source PDF) cannot be pinned to a revision
+        spec = f"{rev}:{(rel / path).as_posix()}" if str(rel) != "." else f"{rev}:{path}"
+        got = subprocess.run(["git", "-C", top, "show", spec], capture_output=True)
+        if got.returncode != 0:
+            out.append(f"paper stale: {path} is not in code_revision {rev[:12]}")
+        elif hashlib.sha256(got.stdout).hexdigest() != _sha(root / path):
+            out.append(f"paper stale: {path} changed after code_revision {rev[:12]}")
+    return out
 
 
 def commit_errors(root, since: str) -> list[str]:

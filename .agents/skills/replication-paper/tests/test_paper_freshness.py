@@ -39,7 +39,11 @@ class Study:
             {"id": "pdf", "path": "source/source.pdf", "sha256": "0" * 64},  # not in git: skipped
         ]}
         (self.root / "evidence-packet.json").write_text(json.dumps(packet))
+        self.commit("evidence\n\nPaper: pending")
+        rev = subprocess.run(["git", "-C", str(self.root), "rev-parse", "HEAD"], capture_output=True,
+                             text=True).stdout.strip()
         manifest = {
+            "code_revision": rev,
             "context": context,
             "packet_sha256": sha(self.root / "evidence-packet.json"),
             "inputs": [{"path": "results/cells.csv", "sha256": sha(self.root / "results" / "cells.csv")}],
@@ -95,6 +99,20 @@ class FreshnessTests(unittest.TestCase):
         s = Study()
         (s.root / "paper" / "p.tex").write_text("paper, edited\n")
         self.assertTrue(any("paper output paper/p.tex changed" in e for e in s.state()["stale"]))
+
+    def test_code_revision_must_hold_current_evidence(self):
+        s = Study()
+        self.assertEqual(s.state()["state"], "current")
+        (s.root / "REPLICATION-PLAN.yaml").write_text("parts: [y]\n")
+        s.commit("plan change\n\nPaper: pending")
+        self.assertTrue(any("changed after code_revision" in e for e in s.state()["stale"]))
+
+    def test_missing_code_revision_is_stale(self):
+        s = Study()
+        m = json.loads((s.root / "writer-manifest.json").read_text())
+        del m["code_revision"]
+        (s.root / "writer-manifest.json").write_text(json.dumps(m))
+        self.assertTrue(any("no code_revision" in e for e in s.state()["stale"]))
 
     def test_no_manifest_is_absent(self):
         s = Study()
