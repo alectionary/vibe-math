@@ -80,6 +80,16 @@ class FirstPage(unittest.TestCase):
         effect['estimate_status']='unstable'
         self.assertEqual(m.comparison(effect),('not established','zero vs nonzero'))
 
+    def test_value_within_tolerance_of_zero_is_zero(self):
+        effect=self.packet['headline_effects'][0]
+        tol=effect['tolerance']['value']
+        effect.update(published_effect=tol, ours_effect=10*tol+1)
+        self.assertEqual(m.comparison(effect)[1],'zero vs nonzero')
+        effect.update(published_effect=-tol, ours_effect=-(10*tol+1))
+        self.assertEqual(m.comparison(effect)[1],'zero vs nonzero')
+        effect.update(published_effect=tol*1.5+0.001, ours_effect=10*tol+1)
+        self.assertEqual(m.comparison(effect)[1],'same direction')
+
     def test_bad_tolerance_metadata_and_nonsignificance_not_equivalence(self):
         for change in (dict(kind='posthoc'),dict(value=-1),dict(value=0.01),dict(basis='')):
             p=copy.deepcopy(self.packet);p['headline_effects'][0]['tolerance'].update(change)

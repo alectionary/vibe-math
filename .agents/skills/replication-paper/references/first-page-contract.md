@@ -31,7 +31,11 @@ Unresolved or unstable estimates require `not established` magnitude, even if
 available point estimates happen to agree. Preserve a diagnostic direction or
 reversal when finite signed estimates exist; do not claim inferential support
 for it. Use `not established` direction only when the signed comparison cannot
-be computed. Do not round away a nonzero effect's sign.
+be computed. Do not round away a nonzero effect's sign. An effect within its
+row's tolerance of zero counts as zero for direction (its sign carries no
+information), so such a row is `zero vs nonzero` against a clearly nonzero one.
+Define each contrast against its null (for a rejection rate, minus the nominal
+level), so that zero means "no effect".
 
 Define a nonnegative tolerance using source rounding precision (half a unit in
 its last printed decimal, summing the input bounds for a derived contrast) or
