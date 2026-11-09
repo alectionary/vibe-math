@@ -118,7 +118,7 @@
   {
    "id": "builder",
    "path": "build_packet.py",
-   "sha256": "7d6a6165d6b89e3210d738b08d5f9dea3360c7548174be8679b068d5c271e26e"
+   "sha256": "06eb161f4ae88e8508d5af18a6e97525fc389c9b7151222fbafd41caf4427513"
   },
   {
    "id": "r_code",
@@ -208,7 +208,7 @@
   {
    "id": "dis",
    "path": "DISAGREEMENTS.yaml",
-   "sha256": "3ba75309f0bd9e4efc9d41f2cab2ad972b9b27a6df02357b8e162bf96f7b0ef3"
+   "sha256": "ff578779c70519b4fb8098625bdc3e95881ac96329cbd470882068e8612b5cd3"
   },
   {
    "id": "dis_code",
@@ -1198,7 +1198,41 @@
    "magnitude": "smaller",
    "direction": "same direction",
    "interpretation": "descriptive point estimates; not equivalence",
-   "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error. Our E3 mean over 19,200 cells has a Monte Carlo standard error of about 0.005 percentage points if cells are independent and 0.019 if cells within a condition are fully correlated (results/mc_se_headline.json)."
+   "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error. Our E3 mean over 19,200 cells has a Monte Carlo standard error of about 0.005 percentage points if cells are independent and 0.019 if cells within a condition are fully correlated (results/mc_se_headline.json).",
+   "findings": {
+    "published": {
+     "text": "True value above the CI in 14.08-75.55% of replications and below it in 0.34-1.93%, by effect and cutoff",
+     "state": "reported",
+     "artifact_ids": [
+      "pdf",
+      "sv_49"
+     ],
+     "locator": "Table 4.9, printed p. 124 (PDF page 138)",
+     "source_excerpt": "the imbalance measure showed that the true parameter value systematically fell above the CIs",
+     "page_locator": "printed p. 150 (PDF page 164)",
+     "claim_type": "numerical estimate",
+     "conditions": "95% percentile bootstrap CIs from 500 resamples; collapsed over n and effect sizes",
+     "component_claim_ids": [],
+     "component_contrast_indices": [
+      0,
+      1
+     ]
+    },
+    "ours": {
+     "text": "True value above the CI in 2.5-2.9% of replications and below it in 1.8-2.7%, by effect and cutoff",
+     "state": "observed",
+     "artifact_ids": [
+      "t49",
+      "cells"
+     ],
+     "locator": "results/table49_ours.csv",
+     "component_claim_ids": [],
+     "component_contrast_indices": [
+      0,
+      1
+     ]
+    }
+   }
   },
   {
    "id": "E4",
@@ -1249,7 +1283,7 @@
    "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
   }
  ],
- "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 46 testable Type I and power statements, 29 agree (31 with .01 threshold slack), and 39 would hold in our run if h were 0. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access. Her printed, seeded R code, replayed exactly on all 1,280,000 datasets it generates, behaves like our run, so the disagreements arise in unprinted steps: her digitized figures show results computed from data without the interaction h and population values wrong for one group of cases. Of 10 disagreements (DISAGREEMENTS.yaml), 8 are explained, 2 partly explained and 0 unexplained.",
+ "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 46 testable Type I and power statements, 29 agree (31 with .01 threshold slack), and 39 would hold in our run if h were 0. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access. Her printed, seeded R code, replayed exactly on all 1,280,000 datasets it generates, behaves like our run, so the disagreements arise in steps or runs she did not print: her digitized figures show results computed from data without the interaction h and population values wrong for one group of cases. Of 10 disagreements (DISAGREEMENTS.yaml), 8 are explained, 2 partly explained and 0 unexplained.",
  "limitations": [
   "The bootstrap-based results (coverage, Type I error, power) come from the Python run with our own seeds; Chen's bootstrap is unseeded, so they agree with hers on summaries only. The R replay reproduces exactly the datasets and point estimates her printed, seeded code generates (all 1,000 replications per condition); her published results came from data without the interaction wherever h > 0, which the printed code does not produce, so the replay is not her published runs (H1-H4, S1-S3).",
   "Chen's aggregation code, population values and result files are not printed. The mechanisms behind her bias, coverage and MINT results are inferred from her digitized figures and printed tables; they reproduce her patterns but are not read from her code (H1, H2, H3, S1).",
