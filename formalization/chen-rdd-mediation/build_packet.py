@@ -390,8 +390,9 @@ claim(id='H3', level='headline',
                          digitized_file='results/digitized_rates.csv', reading_error=e4_read_err,
                          conditions='Nonzero MINT cells (a and h nonzero), all n and cutoffs',
                          component_claim_ids=[], component_contrast_indices=[0]),
-          ours=dict(text=f'MINT power {our_mint_all_cuts:.3f} at n = 500 for ah = .20 (all cutoffs); at least .97 for ah >= .13 from n = 1,000',
-                    state='observed', artifact_ids=['summary', 'power'],
+          ours=dict(text=f'MINT power {our_mint_raw:.3f} at n = 500 for ah = .20 at cutoffs 2-3 ({our_mint_all_cuts:.3f} over all '
+                         f'cutoffs); at least .97 for ah >= .13 from n = 1,000',
+                    state='observed', artifact_ids=['summary', 'power', 'cells'],
                     locator='results/summary.json mint_power_by_n_and_ah', component_claim_ids=[],
                     component_contrast_indices=[0])))
 
