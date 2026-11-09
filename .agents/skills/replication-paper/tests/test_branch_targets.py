@@ -89,7 +89,7 @@ class BranchTargets(unittest.TestCase):
             'removals: []\n'
             'published_evidence:\n'
             '- id: table-1\n  location: Table 1\n  quantity: headline estimate\n'
-            '  value_source: table\n  plotted_in: []\n'
+            '  value_source: table\n  plotted_in: []\n  agreement: agree\n'
             'source_items: []\n'
             'source_missing:\n  fetch_issue: 1\n  since: "2026-11-08"\n'
             '  reason: test study without a source PDF\n'
