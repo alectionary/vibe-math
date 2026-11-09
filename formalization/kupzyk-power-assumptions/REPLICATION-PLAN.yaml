@@ -1,6 +1,9 @@
 schema_version: 1
 dissertation: "Kevin A. Kupzyk (2011). The Effects of Simplifying Assumptions in Power Analysis. PhD dissertation, University of Nebraska–Lincoln."
-source_locator: https://digitalcommons.unl.edu/cehsdiss/106/
+source_locator: sources/kupzyk-2011.pdf
+source_record_url: https://digitalcommons.unl.edu/cehsdiss/106/
+source_sha256: 368dc575d9f744bf5ca5516873a633691d999fbdd5d19516994c64e10674896a
+source_inventory: source-inventory.json
 parts:
   - id: ch1
     kind: chapter
@@ -122,3 +125,1930 @@ parts:
     label: "Planning with attrition and unequal assignment versus unequal sizes"
     plan: "Synthesize the four research questions and threshold checks without conflating initial empirical and final exemplary evidence."
 removals: []
+source_items:
+- label: Figure 1
+  use: read
+  data_file: source-values/figure-1.csv
+- label: Figure 2
+  use: read
+  data_file: source-values/figures-2-3.csv
+- label: Figure 3
+  use: read
+  data_file: source-values/figures-2-3.csv
+- label: Figure 4
+  use: read
+  data_file: source-values/figure-4.csv
+- label: Figure 5
+  use: read
+  data_file: source-values/figure-5.csv
+- label: Figure 6
+  use: read
+  data_file: source-values/figures-6-11.csv
+- label: Figure 7
+  use: read
+  data_file: source-values/figures-6-11.csv
+- label: Figure 8
+  use: read
+  data_file: source-values/figures-6-11.csv
+- label: Figure 10
+  use: read
+  data_file: source-values/figures-6-11.csv
+- label: Figure 9
+  use: read
+  data_file: source-values/figures-6-11.csv
+- label: Figure 11
+  use: read
+  data_file: source-values/figures-6-11.csv
+- label: Table 1
+  use: read
+  data_file: source-values/table-1.csv
+  identity_checks:
+  - identity: All reported entries are probabilities in [0,1]
+    holds: true
+    file: results/source-identities.json
+- label: Table 2
+  use: read
+  data_file: source-values/table-2.csv
+  identity_checks:
+  - identity: Pooled powers are ICC means and reported losses are differences from the zero-attrition means
+    holds: true
+    file: results/source-identities.json
+- label: Table 3
+  use: read
+  data_file: source-values/table-3.csv
+  identity_checks:
+  - identity: Reported cluster counts round the final baseline count times one plus cumulative attrition
+    holds: true
+    file: results/source-identities.json
+- label: Table 4
+  use: read
+  data_file: source-values/table-4.csv
+  identity_checks:
+  - identity: All five columns agree with the matched Table 1 contrasts at printed precision when the high-attrition
+      column is read as 15 percent
+    holds: true
+    file: results/source-identities.json
+  - identity: The 10 percent interval-attrition column heading matches the condition used
+    holds: false
+    file: results/source-identities.json
+    disagreement: table4-high-attrition-label
+- label: Table 5
+  use: read
+  data_file: source-values/table-5.csv
+  identity_checks:
+  - identity: All tabulated differences from the between-within reference are nonnegative and range from zero to
+      eight
+    holds: true
+    file: results/source-identities.json
+- label: Table C.1
+  use: read
+  data_file: source-values/table-C.1.csv
+  identity_checks: none
+  identity_reason: Each table shows separately fitted means and population inputs; the mean estimates are not algebraically
+    constrained to equal their population values.
+- label: Table C.2
+  use: read
+  data_file: source-values/table-C.2.csv
+  identity_checks: none
+  identity_reason: Each table shows separately fitted means and population inputs; the mean estimates are not algebraically
+    constrained to equal their population values.
+- label: Table C.3
+  use: read
+  data_file: source-values/table-C.3.csv
+  identity_checks: none
+  identity_reason: Each table shows separately fitted means and population inputs; the mean estimates are not algebraically
+    constrained to equal their population values.
+- label: Table C.4
+  use: read
+  data_file: source-values/table-C.4.csv
+  identity_checks: none
+  identity_reason: Each table shows separately fitted means and population inputs; the mean estimates are not algebraically
+    constrained to equal their population values.
+- label: Table C.5
+  use: read
+  data_file: source-values/table-C.5.csv
+  identity_checks: none
+  identity_reason: These are across-draw means of separate fitted quantities. In particular the mean of fitted ICC
+    ratios is not the ratio of the reported variance means.
+  sufficient_statistics:
+    found: true
+    what: Across-draw parameter means and population inputs
+    sufficient: false
+    why: They do not specify a per-draw design, response covariance or residual sufficient statistics. The population
+      model suffices for new simulations.
+- label: Table C.6
+  use: read
+  data_file: source-values/table-C.6.csv
+  identity_checks: none
+  identity_reason: Each table shows separately fitted means and population inputs; the mean estimates are not algebraically
+    constrained to equal their population values.
+  sufficient_statistics:
+    found: true
+    what: Across-draw parameter means and population inputs
+    sufficient: false
+    why: They do not specify a per-draw design, response covariance or residual sufficient statistics. The population
+      model suffices for new simulations.
+- label: Table D.1
+  use: read
+  data_file: source-values/table-D.1.csv
+  identity_checks:
+  - identity: The difference column equals .05 minus the reported error at printed precision
+    holds: true
+    file: results/appendix-d-source-identity.csv
+  - identity: Two-standard-error intervals center on the reported point rates
+    holds: false
+    file: results/appendix-d-source-identity.csv
+    disagreement: appendix-d1-interval
+- label: Table D.2
+  use: read
+  data_file: source-values/table-D.2.csv
+  identity_checks:
+  - identity: Intervals center on the reported error at printed precision and the error differences are consistent
+    holds: true
+    file: results/appendix-d-source-identity.csv
+published_evidence:
+- id: fig6-empirical-p50-equal-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.5, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-empirical-p50-equal-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.5, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-empirical-p50-equal-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.5, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p50-equal-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p50-equal-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-exemplary-p50-equal-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-empirical-p50-normal-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.5, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-empirical-p50-normal-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.5, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-empirical-p50-normal-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.5, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p50-normal-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p50-normal-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-exemplary-p50-normal-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-empirical-p50-skewed-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.5, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-empirical-p50-skewed-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.5, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-empirical-p50-skewed-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.5, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p50-skewed-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p50-skewed-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-exemplary-p50-skewed-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-empirical-p70-equal-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.7, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-empirical-p70-equal-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.7, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-empirical-p70-equal-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.7, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p70-equal-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p70-equal-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-exemplary-p70-equal-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-empirical-p70-normal-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.7, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-empirical-p70-normal-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.7, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-empirical-p70-normal-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.7, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p70-normal-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p70-normal-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-exemplary-p70-normal-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-empirical-p70-skewed-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.7, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-empirical-p70-skewed-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.7, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-empirical-p70-skewed-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: empirical power at ICC 0.05, allocation 0.7, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p70-skewed-a0
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig6-exemplary-p70-skewed-a5
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002201 power units
+- id: fig6-exemplary-p70-skewed-a15
+  location: Figure 6 (PDF p. 97)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 6
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001529 power units
+- id: fig7-empirical-p50-equal-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.5, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-empirical-p50-equal-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.5, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-empirical-p50-equal-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.5, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p50-equal-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p50-equal-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-exemplary-p50-equal-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-empirical-p50-normal-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.5, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-empirical-p50-normal-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.5, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-empirical-p50-normal-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.5, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p50-normal-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p50-normal-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-exemplary-p50-normal-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-empirical-p50-skewed-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.5, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-empirical-p50-skewed-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.5, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-empirical-p50-skewed-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.5, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p50-skewed-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p50-skewed-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-exemplary-p50-skewed-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-empirical-p70-equal-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.7, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-empirical-p70-equal-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.7, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-empirical-p70-equal-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.7, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p70-equal-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p70-equal-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-exemplary-p70-equal-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, equal sizes and 15% interval attrition
+  value_source: figure_not_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  reason: An overlapping filled marker prevents isolating the open exemplary marker.
+  reported_to_person:
+    date: '2026-11-09'
+    channel: Codex chat
+    summary: Three overlapping source markers were identified and left unreadable individually.
+- id: fig7-empirical-p70-normal-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.7, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-empirical-p70-normal-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.7, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-empirical-p70-normal-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.7, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p70-normal-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p70-normal-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-exemplary-p70-normal-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, normal sizes and 15% interval attrition
+  value_source: figure_not_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  reason: An overlapping filled marker prevents isolating the open exemplary marker.
+  reported_to_person:
+    date: '2026-11-09'
+    channel: Codex chat
+    summary: Three overlapping source markers were identified and left unreadable individually.
+- id: fig7-empirical-p70-skewed-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.7, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-empirical-p70-skewed-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.7, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-empirical-p70-skewed-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: empirical power at ICC 0.1, allocation 0.7, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p70-skewed-a0
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig7-exemplary-p70-skewed-a5
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002302 power units
+- id: fig7-exemplary-p70-skewed-a15
+  location: Figure 7 (PDF p. 98)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 7
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001599 power units
+- id: fig8-empirical-p50-equal-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.5, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-empirical-p50-equal-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.5, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-empirical-p50-equal-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.5, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p50-equal-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p50-equal-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-exemplary-p50-equal-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, equal sizes and 15% interval attrition
+  value_source: figure_not_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  reason: An overlapping filled marker prevents isolating the open exemplary marker.
+  reported_to_person:
+    date: '2026-11-09'
+    channel: Codex chat
+    summary: Three overlapping source markers were identified and left unreadable individually.
+- id: fig8-empirical-p50-normal-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.5, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-empirical-p50-normal-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.5, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-empirical-p50-normal-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.5, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p50-normal-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p50-normal-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-exemplary-p50-normal-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-empirical-p50-skewed-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.5, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-empirical-p50-skewed-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.5, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-empirical-p50-skewed-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.5, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p50-skewed-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p50-skewed-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-exemplary-p50-skewed-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-empirical-p70-equal-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.7, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-empirical-p70-equal-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.7, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-empirical-p70-equal-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.7, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p70-equal-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p70-equal-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-exemplary-p70-equal-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-empirical-p70-normal-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.7, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-empirical-p70-normal-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.7, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-empirical-p70-normal-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.7, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p70-normal-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p70-normal-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-exemplary-p70-normal-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-empirical-p70-skewed-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.7, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-empirical-p70-skewed-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.7, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-empirical-p70-skewed-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: empirical power at ICC 0.15, allocation 0.7, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p70-skewed-a0
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig8-exemplary-p70-skewed-a5
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.002346 power units
+- id: fig8-exemplary-p70-skewed-a15
+  location: Figure 8 (PDF p. 98)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 8
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001629 power units
+- id: fig9-exemplary-p50-equal-a0
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig9-exemplary-p50-equal-a5
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001583 power units
+- id: fig9-exemplary-p50-equal-a15
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig9-exemplary-p50-normal-a0
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig9-exemplary-p50-normal-a5
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001583 power units
+- id: fig9-exemplary-p50-normal-a15
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig9-exemplary-p50-skewed-a0
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig9-exemplary-p50-skewed-a5
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001583 power units
+- id: fig9-exemplary-p50-skewed-a15
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.5, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig9-exemplary-p70-equal-a0
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig9-exemplary-p70-equal-a5
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001583 power units
+- id: fig9-exemplary-p70-equal-a15
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig9-exemplary-p70-normal-a0
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig9-exemplary-p70-normal-a5
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001583 power units
+- id: fig9-exemplary-p70-normal-a15
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig9-exemplary-p70-skewed-a0
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig9-exemplary-p70-skewed-a5
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001583 power units
+- id: fig9-exemplary-p70-skewed-a15
+  location: Figure 9 (PDF p. 100)
+  quantity: exemplary power at ICC 0.05, allocation 0.7, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 9
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001099 power units
+- id: fig10-exemplary-p50-equal-a0
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig10-exemplary-p50-equal-a5
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001641 power units
+- id: fig10-exemplary-p50-equal-a15
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig10-exemplary-p50-normal-a0
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig10-exemplary-p50-normal-a5
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001641 power units
+- id: fig10-exemplary-p50-normal-a15
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig10-exemplary-p50-skewed-a0
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig10-exemplary-p50-skewed-a5
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001641 power units
+- id: fig10-exemplary-p50-skewed-a15
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.5, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig10-exemplary-p70-equal-a0
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig10-exemplary-p70-equal-a5
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001641 power units
+- id: fig10-exemplary-p70-equal-a15
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig10-exemplary-p70-normal-a0
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig10-exemplary-p70-normal-a5
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001641 power units
+- id: fig10-exemplary-p70-normal-a15
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig10-exemplary-p70-skewed-a0
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig10-exemplary-p70-skewed-a5
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001641 power units
+- id: fig10-exemplary-p70-skewed-a15
+  location: Figure 10 (PDF p. 101)
+  quantity: exemplary power at ICC 0.1, allocation 0.7, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 10
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001139 power units
+- id: fig11-exemplary-p50-equal-a0
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: fig11-exemplary-p50-equal-a5
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001604 power units
+- id: fig11-exemplary-p50-equal-a15
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: fig11-exemplary-p50-normal-a0
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: fig11-exemplary-p50-normal-a5
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001604 power units
+- id: fig11-exemplary-p50-normal-a15
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: fig11-exemplary-p50-skewed-a0
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: fig11-exemplary-p50-skewed-a5
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001604 power units
+- id: fig11-exemplary-p50-skewed-a15
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.5, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: fig11-exemplary-p70-equal-a0
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, equal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: fig11-exemplary-p70-equal-a5
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, equal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001604 power units
+- id: fig11-exemplary-p70-equal-a15
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, equal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: fig11-exemplary-p70-normal-a0
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, normal sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: fig11-exemplary-p70-normal-a5
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, normal sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001604 power units
+- id: fig11-exemplary-p70-normal-a15
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, normal sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: fig11-exemplary-p70-skewed-a0
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, skewed sizes and 0% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: fig11-exemplary-p70-skewed-a5
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, skewed sizes and 5% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001604 power units
+- id: fig11-exemplary-p70-skewed-a15
+  location: Figure 11 (PDF p. 102)
+  quantity: exemplary power at ICC 0.15, allocation 0.7, skewed sizes and 15% interval attrition
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 11
+  agreement: not_compared
+  digitized_file: source-values/figures-6-11.csv
+  reading_error: 0.001114 power units
+- id: figure4-point-1
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=71 in seed panel 1
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-2
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=72 in seed panel 1
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-3
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=73 in seed panel 1
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-4
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=74 in seed panel 1
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-5
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=75 in seed panel 1
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-6
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=76 in seed panel 1
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-7
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=77 in seed panel 1
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-8
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=78 in seed panel 1
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-9
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=79 in seed panel 1
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-10
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=80 in seed panel 1
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-11
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=81 in seed panel 1
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-12
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=71 in seed panel 2
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-13
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=72 in seed panel 2
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-14
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=73 in seed panel 2
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-15
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=74 in seed panel 2
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-16
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=75 in seed panel 2
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-17
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=76 in seed panel 2
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-18
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=77 in seed panel 2
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-19
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=78 in seed panel 2
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-20
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=79 in seed panel 2
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-21
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=80 in seed panel 2
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: figure4-point-22
+  location: Figure 4 (PDF p. 72)
+  quantity: Illustrative power at n=81 in seed panel 2
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4
+  agreement: not_compared
+  digitized_file: source-values/figure-4.csv
+  reading_error: 0.000914 power units
+- id: example-gpower
+  location: Figure 2 (PDF p. 56)
+  quantity: Power 0.584382 in the G*Power output box
+  value_source: table
+  plotted_in:
+  - Figure 2
+  agreement: agree
+- id: example-optimal-design
+  location: Figure 3 (PDF p. 57)
+  quantity: Power 0.550898 and 0.422156 at effect .4 for ICC 0 and .10
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 3
+  agreement: not_compared
+  digitized_file: source-values/figures-2-3.csv
+  reading_error: Zero for the printed point labels; the curve itself is partly covered by the labels.
+- id: table1-final
+  location: Table 1 (PDF p. 102)
+  quantity: All 54 printed final exemplary powers
+  value_source: table
+  plotted_in:
+  - Figures 9–11
+  agreement: not_compared
+- id: table2-attrition
+  location: Table 2 (PDF p. 103)
+  quantity: 18 pooled powers and 12 attrition losses
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: table3-oversample
+  location: Table 3 (PDF p. 104)
+  quantity: Six oversampling power estimates
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: table4-moderation
+  location: Table 4 (PDF p. 106)
+  quantity: Fifteen ICC-stratified power-loss contrasts
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: table4-label
+  location: Table 4 (PDF p. 106)
+  quantity: Column headed 10% attrition
+  value_source: table
+  plotted_in: []
+  agreement: disagree
+- id: table5-thresholds
+  location: Table 5 (PDF p. 107)
+  quantity: 54 printed minimum cluster counts
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: appendix-c1
+  location: Table C.1 (PDF p. 140)
+  quantity: 54 estimated parameter means and generating values
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: appendix-c2
+  location: Table C.2 (PDF p. 140)
+  quantity: 54 estimated parameter means and generating values
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: appendix-c3
+  location: Table C.3 (PDF p. 141)
+  quantity: 54 estimated parameter means and generating values
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: appendix-c4
+  location: Table C.4 (PDF p. 141)
+  quantity: 54 estimated parameter means and generating values
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: appendix-c5
+  location: Table C.5 (PDF p. 142)
+  quantity: 54 estimated parameter means and generating values
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: appendix-c6
+  location: Table C.6 (PDF p. 142)
+  quantity: 54 estimated parameter means and generating values
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: appendix-d1
+  location: Table D.1 (PDF p. 143)
+  quantity: Five methods' point estimates for Type I error and power
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: appendix-d2
+  location: Table D.2 (PDF p. 143)
+  quantity: Five methods' point estimates for Type I error and power
+  value_source: table
+  plotted_in: []
+  agreement: not_compared
+- id: appendix-d1-interval
+  location: Table D.1 (PDF p. 143)
+  quantity: Printed Satterthwaite and Kenward–Roger two-standard-error interval
+  value_source: table
+  plotted_in: []
+  agreement: disagree
+- id: baseline-long
+  location: Printed pp. 89 and 106–107
+  quantity: 50,000-draw baseline about 0.9 percentage points below exemplary power
+  value_source: text
+  plotted_in: []
+  agreement: not_compared
+- id: gap-frequency
+  location: Printed pp. 106–107
+  quantity: 41 of 54 empirical points below exemplary points (source summary of plotted pairs)
+  value_source: table
+  plotted_in:
+  - Figures 6–8
+  agreement: not_compared
