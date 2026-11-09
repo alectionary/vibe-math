@@ -86,6 +86,26 @@ incomplete one. A plan part whose `limit_kind` is `input_unavailable` or
 record that the question was asked; they do not replace asking it. Name every
 engine fallback and blocked part near the top of the pull request description.
 
+## The source and every figure and table in it
+
+The done check reads the source PDF itself. `source_locator` names it and
+`source_sha256` records the copy used; a different file fails. Run
+`scripts/source_items.py stub SOURCE.pdf` and keep the result under
+`source_items`: one entry per figure and table caption found in the source,
+each `use: read` with a `data_file` that exists and holds the values (a table
+transcribed, a figure digitized with `scripts/digitize.py`), or `use: excluded`
+with a specific `reason` and `reported_to_person`. A figure or table missing from
+the plan, or listed but not in the source, fails. A table whose page mentions
+means, SDs or correlations also records `sufficient_statistics`. Every source
+figure or table the paper cites must exist in the source.
+
+When the source PDF is not here, never substitute another file. Record
+`source_missing: {fetch_issue, since, reason}` with the number of an open
+`fetch:` issue (the retrieval queue, #9). The done check then reports the study
+as `incomplete` (exit 3): it can be committed and published, but it is not done,
+because its figures and tables cannot be checked. When the PDF is back, record
+its sha256, remove `source_missing`, and close the fetch issue.
+
 ## Replication plan
 
 The first research commit is `REPLICATION-PLAN.yaml` in the study directory.
@@ -186,13 +206,14 @@ equations, and appendix tables, are hints only.
 
 - [ ] `REPLICATION-PLAN.yaml` lists every substantive part and was committed before analysis.
 - [ ] Every blocker on the source's own path (software, code and seeds, data, files) was reported to the person when it happened, with what it costs and how to unblock it, and they decided. `checks.py seeds` was run on the source; each fallback record and each `input_unavailable` or `not_run` part carries that decision.
+- [ ] The source PDF is present and matches `source_sha256`, and `source_items` covers every figure and table caption that `scripts/source_items.py` finds in it, or the plan records `source_missing` with an open fetch issue and the study is reported as incomplete, not done.
 - [ ] Every published quantity compared is in `published_evidence` with its `value_source`; any quantity a figure plots was digitized (`scripts/digitize.py`, with its reading error) or the person was told why not. Every `input_unavailable` for data records the `sufficient_statistics` search, and none is marked unavailable when the printed moments suffice.
 - [ ] The full design was run, or the reduced run is a last resort with a cost estimate, what was tried, and exact `N of M` counts in the abstract and the body.
 - [ ] The headline verdict is no stronger than the headline parts that were run.
 - [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.
 - [ ] Every part of `REPLICATION-PLAN.yaml` that is not `replicated` has its own `limit_kind` (`input_unavailable`, `not_run`, `theorem_finite_only`, or `out_of_scope`), a part-specific reason, and part-specific evidence. `preflight.py done` rejects copied reasons, generic templates such as "See named artifacts and limitations", a repeated evidence path, and a `not_run` part that lacks an estimate and a decision. A tractable `not_run` part needs a non-cost justification, or an explicit `decision_by: project` with a `decision_reason`, before a resource decline is accepted.
 - [ ] No part was removed or narrowed against the first commit without a recorded reason.
-- [ ] `preflight.py done` exits 0. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
+- [ ] `preflight.py done` exits 0 (complete). Exit 3 means incomplete: no errors, but the source PDF is missing and recorded; the study is not done. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
 - [ ] Optional caption hints were reviewed.
 - [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
 - [ ] Rendered pages for headline and Published entries were inspected when the PDF could be obtained. Text reading and visual inspection are recorded separately.

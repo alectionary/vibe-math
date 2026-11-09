@@ -52,6 +52,10 @@ def plan(parts, removals=None):
         "parts": parts,
         "removals": [] if removals is None else removals,
         "published_evidence": [dict(PUBLISHED_TABLE)],
+        "source_items": [],
+        # These test studies have no source PDF, and say so: the done check then
+        # reports them as incomplete, never complete.
+        "source_missing": {"fetch_issue": 1, "since": "2026-11-08", "reason": "test study without a source PDF"},
     }
 
 
@@ -526,7 +530,9 @@ class PlanGit(unittest.TestCase):
             ["sim/run.py"],
         )
         self.assertEqual(decision["errors"], [], decision)
-        self.assertTrue(decision["accepted"])
+        # no errors, but the source PDF is missing: incomplete, not accepted as done
+        self.assertEqual(decision["status"], "incomplete", decision)
+        self.assertFalse(decision["accepted"])
 
     def test_analysis_in_the_plan_commit_fails(self):
         self._write("REPLICATION-PLAN.yaml", _dump(plan([headline(), chapter()])))
