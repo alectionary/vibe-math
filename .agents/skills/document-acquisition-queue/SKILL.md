@@ -13,6 +13,14 @@ ledgers. The worker posts an immutable result and does not edit those ledgers,
 open claim refs, or close the issue. Any agent may be the worker. Its procedure
 is [document retrieval](../document-retrieval-worker/SKILL.md).
 
+## Commit identity
+
+Make every commit as `alectionary <alectionary@users.noreply.github.com>`.
+Once per clone, run `git config core.hooksPath .githooks` so `commit-msg` and
+`pre-push` reject consumer-domain author, committer, and message addresses
+(noreply addresses stay allowed). Details are in
+[CONTRIBUTING.md](../../../CONTRIBUTING.md).
+
 Identify a source by DOI, arXiv id, canonical URL, archive record id, and
 title, author, and year. A campaign id is optional. Site procedures, including
 UNL bepress and ProQuest, stay in the worker's

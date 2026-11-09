@@ -1,0 +1,25 @@
+#!/bin/sh
+# Check the commits being pushed, then run the replication paper hook.
+# Enable once per clone: git config core.hooksPath .githooks
+#
+# stdin is the usual pre-push list and is consumed once, then replayed.
+
+set -eu
+
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "pre-push: python3 is required for the email-domain check" >&2
+    exit 1
+fi
+
+root=$(git rev-parse --show-toplevel)
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+cat > "$tmp"
+
+python3 "$root/scripts/check_commit_emails.py" pre-push \
+    --remote-name "${1:-origin}" < "$tmp"
+
+paper="$root/.agents/skills/replication-paper/scripts/hooks/pre-push"
+if [ -x "$paper" ]; then
+    "$paper" "$@" < "$tmp"
+fi

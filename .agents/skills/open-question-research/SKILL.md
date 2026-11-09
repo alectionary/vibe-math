@@ -11,6 +11,14 @@ Locate the repository from this skill directory; command examples and research
 paths below are relative to its root. Read the target's existing notes and
 verification records before assuming a source question remains unanswered.
 
+## Commit identity
+
+Make every commit as `alectionary <alectionary@users.noreply.github.com>`.
+Once per clone, run `git config core.hooksPath .githooks` so `commit-msg` and
+`pre-push` reject consumer-domain author, committer, and message addresses
+(noreply addresses stay allowed). Details are in
+[CONTRIBUTING.md](../../../CONTRIBUTING.md).
+
 ## Establish the target and stopping point
 
 Start with a short statement of the exact source question, what this repository
