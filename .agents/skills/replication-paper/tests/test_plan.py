@@ -60,7 +60,7 @@ def plan(parts, removals=None):
 
 
 PUBLISHED_TABLE = {"id": "table-4", "location": "Table 4", "quantity": "headline estimates",
-                   "value_source": "table", "plotted_in": []}
+                   "value_source": "table", "plotted_in": [], "agreement": "agree"}
 NOT_DATA = {"applies": False, "why": "the missing input is not data"}
 
 
@@ -762,7 +762,7 @@ class LimitKinds(unittest.TestCase):
         del data["published_evidence"]
         self.assertTrue(any("requires published_evidence" in item for item in errors(data, PARTIAL_PAPER)))
         data["published_evidence"] = [{"id": "mint-power", "location": "p. 121", "quantity": "MINT power",
-                                       "value_source": "text", "plotted_in": ["Figure 4.28"]}]
+                                       "value_source": "text", "plotted_in": ["Figure 4.28"], "agreement": "agree"}]
         self.assertTrue(any("digitize the figure" in item for item in errors(data, PARTIAL_PAPER)))
         data["published_evidence"][0].update(value_source="figure_digitized")
         found = errors(data, PARTIAL_PAPER)
@@ -772,7 +772,7 @@ class LimitKinds(unittest.TestCase):
         self.assertEqual(errors(data, PARTIAL_PAPER), [])
         data["published_evidence"][0] = {"id": "mint-power", "location": "p. 121", "quantity": "MINT power",
                                          "value_source": "figure_not_digitized", "plotted_in": ["Figure 4.28"],
-                                         "reason": "a raster scan with overlapping markers"}
+                                         "reason": "a raster scan with overlapping markers", "agreement": "agree"}
         self.assertTrue(any("reported_to_person" in item for item in errors(data, PARTIAL_PAPER)))
         data["published_evidence"][0]["reported_to_person"] = {"date": "2026-11-08", "channel": "chat",
                                                                "summary": "told the figure cannot be read; agreed to compare text only"}
