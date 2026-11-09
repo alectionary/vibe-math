@@ -24,12 +24,18 @@ disagreements:
         test:
           method: >-
             Grokbot ran her printed Appendix A gendata() and Appendix B lm() calls unchanged on her
-            seeded data (identical to her literal pipeline, largest difference 0), 64,000 datasets.
-          files: [r-reproduction/out/estimates.csv, r-reproduction/out/literal_check.txt, results/disagreement_tests.json]
+            seeded data (identical to her literal pipeline, largest difference 0): 64,000 datasets
+            (#92), then all 1,280,000 (1,000 per condition, #118).
+          files: [r-reproduction/out/estimates.csv, r-reproduction/out/literal_check.txt,
+                  r-reproduction/out-full/condition_summary.csv, r-reproduction/out-full/literal_check.txt,
+                  results/r_full_comparison.json, results/disagreement_tests.json]
         result: >-
-          Her code recovers h: the slope of estimated on true h is 0.997, 1.000 and 0.999 at the three
-          cutoffs, and no condition-mean bias exceeds .075 for any effect with 50 replications. It
-          behaves like our run, not like her published results.
+          Her code recovers h: with all 1,000 replications the slope of estimated on true h is 0.9998,
+          1.0005 and 0.9999 at the three cutoffs. No condition-mean bias exceeds .018 for any effect
+          (0% beyond .10); 5.3% of the 19,200 cell biases are beyond 1.96 Monte Carlo SEs and 0.14%
+          beyond 3.29, as expected with no bias. Her estimates and ours differ beyond 1.96 combined SEs
+          in 5.3% of cells, and the SDs agree (median ratio 1.000). It behaves like our run, not like
+          her published results.
         verdict: ruled_out
       - id: our-digitizing
         side: ours
@@ -51,7 +57,7 @@ disagreements:
         test:
           method: Same exact replay as above.
           files: [r-reproduction/out/estimates.csv, results/disagreement_tests.json]
-        result: The printed code recovers h (slopes 0.997-1.000).
+        result: The printed code recovers h (slopes 0.9998-1.0005 with 1,000 replications).
         verdict: ruled_out
       - id: interaction-dropped-from-fitted-model
         side: source
@@ -117,9 +123,10 @@ disagreements:
         prediction: Her printed code would be biased like her results, or her rejection decisions (which share our intervals' logic) would differ from ours.
         test:
           method: Exact replay of her code (bias); her digitized PNIE Type I and power compared with ours.
-          files: [r-reproduction/out/estimates.csv, results/rates_agreement.csv, results/disagreement_tests.json]
+          files: [r-reproduction/out-full/condition_summary.csv, results/r_full_comparison.json,
+                  results/rates_agreement.csv, results/disagreement_tests.json]
         result: >-
-          Her code is unbiased (no condition mean beyond .075 with 50 replications, h recovered), and her
+          Her code is unbiased (no condition-mean bias beyond .018 with 1,000 replications, h recovered), and her
           PNIE Type I and power agree with ours at 100% and 98% of points, so her intervals' locations
           and widths match ours. Only the comparison with population values differs.
         verdict: ruled_out
@@ -203,8 +210,8 @@ disagreements:
         prediction: The intercept of her m model, fitted on her own data, would be away from 0.
         test:
           method: Mean i0M in the exact replay of her code.
-          files: [r-reproduction/out/estimates.csv, results/disagreement_tests.json]
-        result: Mean i0M is 0.0000, 0.0000 and 0.0002 at the three cutoffs.
+          files: [r-reproduction/out-full/condition_summary.csv, results/r_full_comparison.json]
+        result: With 1,000 replications, mean i0M is 0.0001, 0.0000 and 0.0000 at the three cutoffs.
         verdict: ruled_out
       - id: her-definition-used
         side: source
@@ -350,9 +357,11 @@ disagreements:
         statement: Our TNDE estimates are more variable than her code's, lowering our power.
         prediction: Our standard deviation of the estimates would exceed hers.
         test:
-          method: SD of TNDE1 estimates in the same cells, ours versus the exact replay of her code (200 datasets).
-          files: [r-reproduction/out/estimates.csv, results/disagreement_tests.json]
-        result: Ours/hers = 0.94 (95% range 0.86-1.04); if anything ours is less variable, which would raise our power.
+          method: SD of TNDE1 estimates in the same cells, ours versus the exact replay of her code (4,000 datasets).
+          files: [r-reproduction/out-full/condition_summary.csv, results/r_full_comparison.json]
+        result: >-
+          Ours/hers = 1.014. Ours is 1.4% more variable, which lowers normal-approximation power by
+          about .01, a quarter of the .038 gap.
         verdict: ruled_out
       - id: our-digitizing
         side: ours
@@ -372,6 +381,27 @@ disagreements:
           files: [results/disagreement_tests.json]
         result: 3.7 standard errors.
         verdict: ruled_out
+      - id: her-specific-draws
+        side: neither
+        statement: >-
+          Her particular seeded datasets give higher power in this cell set than ours do; the gap is
+          between two sets of random draws, not between procedures.
+        prediction: >-
+          On her own replayed datasets, power computed the same way would exceed ours by most of the
+          gap, and the gap would be no larger than expected for the most extreme of the thousands of
+          figure points compared.
+        test:
+          method: >-
+            Normal-approximation power (from the mean and SD of the estimates) on her 4,000 replayed
+            datasets and on our 4,000, in the same four cells; the bootstrap is not replayed, so only the
+            difference between the two is read.
+          files: [r-reproduction/out-full/condition_summary.csv, results/r_full_comparison.json, results/digitized_rates.csv]
+        result: >-
+          .715 on her datasets against .687 on ours, a difference of .029 of the .038 gap; mean TNDE bias
+          is -.0004 in hers and -.0087 in ours. The remaining .009 is within her reading error. A 3.7 SE
+          gap is about what the most extreme of the 4,685 digitized rate points compared would show by
+          chance.
+        verdict: supported
       - id: bootstrap-details
         side: source
         statement: Her percentile intervals differ in a detail (resample count, quantile type) from the printed Appendix B.
@@ -384,9 +414,9 @@ disagreements:
           date: "2026-11-09"
           channel: chat
           summary: Told that the TNDE1 power gap at c' = .39, a = .59, n = 500 is unexplained and why this theory cannot be tested.
-    conclusion: unexplained
-    whose: undetermined
-    confidence: low
+    conclusion: explained
+    whose: neither
+    confidence: medium
 
   - id: n5000-overgeneralized
     claim: n = 5,000 is the tentative minimum for accurate Type I error and power (Chapter 5).
