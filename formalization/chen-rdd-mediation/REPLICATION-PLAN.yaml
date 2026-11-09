@@ -451,6 +451,12 @@ published_evidence:
   value_source: table
   plotted_in: []
   agreement: disagree
+- id: pe-table-4-3
+  location: Table 4.3, PDF p. 85
+  quantity: covariate balance coefficients, SEs and t statistics (Head Start)
+  value_source: table
+  plotted_in: []
+  agreement: disagree
 source_items:
 - label: Figure 1.1
   use: excluded
@@ -458,50 +464,154 @@ source_items:
   reported_to_person: &id003
     date: '2026-11-09'
     channel: chat
-    summary: Told which of Chen's figures and tables are excluded and why (conceptual diagrams; Head Start plots
-      and tables of restricted-use data; the qualitative assumptions table) and invited objection.
+    summary: Told which of Chen's figures and tables are excluded and why, and that each was first considered for
+      consistency, reconstruction and evidence.
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
 - label: Table 1.1
   use: read
   data_file: source-values/table_3_1.csv
+  identity_checks: none
+  identity_reason: a design table of factor levels; no relation among printed numbers
 - label: Figure 2.1
   use: excluded
   reason: conceptual path diagram or illustrative example; it plots no results of the study
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
 - label: Figure 2.2
   use: excluded
   reason: conceptual path diagram or illustrative example; it plots no results of the study
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
 - label: Figure 2.3
   use: excluded
   reason: conceptual path diagram or illustrative example; it plots no results of the study
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
 - label: Figure 2.4
   use: excluded
   reason: conceptual path diagram or illustrative example; it plots no results of the study
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
 - label: Figure 2.5
   use: excluded
   reason: conceptual path diagram or illustrative example; it plots no results of the study
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
 - label: Figure 2.6
   use: excluded
   reason: conceptual path diagram or illustrative example; it plots no results of the study
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
 - label: Figure 2.7
   use: excluded
   reason: conceptual path diagram or illustrative example; it plots no results of the study
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
 - label: Figure 2.8
   use: excluded
   reason: conceptual path diagram or illustrative example; it plots no results of the study
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
 - label: Table 3.1
   use: read
   data_file: source-values/table_3_1.csv
+  identity_checks: none
+  identity_reason: a design table of factor levels; no relation among printed numbers
 - label: Table 4.1
   use: excluded
   reason: qualitative integrated table of assumptions for RQ1, which this replication did not attempt
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a qualitative table of assumptions; no numbers
+    reconstruction:
+      useful: false
+      why: a qualitative table of assumptions; no numbers
+    evidence:
+      useful: false
+      why: a qualitative table of assumptions; no numbers
 - label: Table 4.2
   use: read
   sufficient_statistics:
@@ -511,31 +621,79 @@ source_items:
     why: no treatment-by-mediator or treatment-by-outcome covariances are printed, so the a, b, c' and h paths cannot
       be rebuilt (notes/availability.md)
   data_file: source-values/table_4_2.csv
+  identity_checks:
+  - identity: treated and control ranges of the assignment variable do not overlap (a sharp cutoff), treatment below
+      it
+    holds: true
+    file: results/empirical_consistency.json
 - label: Figure 4.1
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
     with
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: histograms of the outcome by group; their means and SDs are printed in Table 4.2, which is read
+    reconstruction:
+      useful: false
+      why: marginal distributions only; the joint moments needed to refit the paths are not shown
+    evidence:
+      useful: false
+      why: treatment direction and shares are already established from Table 4.2
 - label: Figure 4.2
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
     with
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: histograms of the outcome by group; their means and SDs are printed in Table 4.2, which is read
+    reconstruction:
+      useful: false
+      why: marginal distributions only; the joint moments needed to refit the paths are not shown
+    evidence:
+      useful: false
+      why: treatment direction and shares are already established from Table 4.2
 - label: Figure 4.3
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
     with
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: histograms of the outcome by group; their means and SDs are printed in Table 4.2, which is read
+    reconstruction:
+      useful: false
+      why: marginal distributions only; the joint moments needed to refit the paths are not shown
+    evidence:
+      useful: false
+      why: treatment direction and shares are already established from Table 4.2
 - label: Figure 4.4
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
     with
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: histograms of the outcome by group; their means and SDs are printed in Table 4.2, which is read
+    reconstruction:
+      useful: false
+      why: marginal distributions only; the joint moments needed to refit the paths are not shown
+    evidence:
+      useful: false
+      why: treatment direction and shares are already established from Table 4.2
 - label: Table 4.3
-  use: excluded
-  reason: assumption tests on the restricted-use Head Start data (RQ2); cannot be rerun or compared without the
-    data
-  reported_to_person: *id003
+  use: read
+  data_file: source-values/table_4_3.csv
+  identity_checks:
+  - identity: t = coefficient / SE for nine covariate rows
+    holds: false
+    file: results/table_identities.json
+    disagreement: table-4-3-t-value
 - label: Table 4.4
   use: excluded
   reason: statistics of the restricted-use Head Start data (RQ2); checked only for whether they could stand in for
@@ -547,46 +705,146 @@ source_items:
     sufficient: false
     why: no treatment-by-mediator or treatment-by-outcome covariances are printed, so the a, b, c' and h paths cannot
       be rebuilt (notes/availability.md)
+  uses_considered:
+    consistency:
+      useful: false
+      why: one correlation and df per design; the df reflect listwise samples not printed elsewhere, so no identity
+        binds them to Table 4.2
+    reconstruction:
+      useful: true
+      why: one residual correlation per design is one equation toward the within-group covariances
+      declined_by_person: &id004
+        date: '2026-11-09'
+        channel: chat
+        summary: The person chose the identity checks and the treatment-direction evidence, and not the reconstruction
+          of Head Start moments.
+    evidence:
+      useful: false
+      why: bears on sequential ignorability, which no disagreement turns on
 - label: Figure 4.5
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
     with
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: residual scatterplots of integer scores, heavily overplotted; the correlation is printed in Table 4.4
+    reconstruction:
+      useful: false
+      why: individual points cannot be recovered from overplotted integer scores
+    evidence:
+      useful: false
+      why: bears on sequential ignorability, which no disagreement turns on
 - label: Figure 4.6
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
     with
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: residual scatterplots of integer scores, heavily overplotted; the correlation is printed in Table 4.4
+    reconstruction:
+      useful: false
+      why: individual points cannot be recovered from overplotted integer scores
+    evidence:
+      useful: false
+      why: bears on sequential ignorability, which no disagreement turns on
 - label: Figure 4.7
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
     with
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: residual scatterplots of integer scores, heavily overplotted; the correlation is printed in Table 4.4
+    reconstruction:
+      useful: false
+      why: individual points cannot be recovered from overplotted integer scores
+    evidence:
+      useful: false
+      why: bears on sequential ignorability, which no disagreement turns on
 - label: Figure 4.8
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
     with
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: residual scatterplots of integer scores, heavily overplotted; the correlation is printed in Table 4.4
+    reconstruction:
+      useful: false
+      why: individual points cannot be recovered from overplotted integer scores
+    evidence:
+      useful: false
+      why: bears on sequential ignorability, which no disagreement turns on
 - label: Table 4.5
   use: excluded
   reason: assumption tests on the restricted-use Head Start data (RQ2); cannot be rerun or compared without the
     data
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: relating the F tests to the AIC differences needs residual df and n, which are not printed for these
+        fits
+    reconstruction:
+      useful: false
+      why: model-fit statistics carry no moments
+    evidence:
+      useful: false
+      why: functional form bears on no disagreement
 - label: Figure 4.9
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
     with
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: fitted lines by side of the cutoff; their slopes relate to no printed number without the covariances
+    reconstruction:
+      useful: true
+      why: the fitted slopes could help solve for the within-group covariances of the running variable and outcome
+      declined_by_person: *id004
+    evidence:
+      useful: false
+      why: functional form bears on no disagreement
 - label: Figure 4.10
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
     with
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: fitted lines by side of the cutoff; their slopes relate to no printed number without the covariances
+    reconstruction:
+      useful: true
+      why: the fitted slopes could help solve for the within-group covariances of the running variable and outcome
+      declined_by_person: *id004
+    evidence:
+      useful: false
+      why: functional form bears on no disagreement
 - label: Figure 4.11
   use: excluded
   reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
     with
   reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: fitted lines by side of the cutoff; their slopes relate to no printed number without the covariances
+    reconstruction:
+      useful: true
+      why: the fitted slopes could help solve for the within-group covariances of the running variable and outcome
+      declined_by_person: *id004
+    evidence:
+      useful: false
+      why: functional form bears on no disagreement
 - label: Table 4.6
   use: read
   data_file: secondary/table_arithmetic.csv
@@ -622,6 +880,10 @@ source_items:
 - label: Table 4.8
   use: read
   data_file: source-values/table_4_8.csv
+  identity_checks:
+  - identity: within [-.05, .05] does not exceed within [-.10, .10] in every row
+    holds: true
+    file: results/table_identities.json
 - label: Figure 4.12
   use: read
   data_file: results/digitized_bias.csv
@@ -676,6 +938,10 @@ source_items:
 - label: Table 4.9
   use: read
   data_file: source-values/table_4_9.csv
+  identity_checks:
+  - identity: below + coverage + above = 100% in every row
+    holds: true
+    file: results/table_identities.json
 - label: Figure 4.29
   use: read
   data_file: results/digitized_rates.csv

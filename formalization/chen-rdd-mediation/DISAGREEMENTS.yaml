@@ -414,3 +414,39 @@ disagreements:
     conclusion: explained
     whose: source
     confidence: high
+
+  - id: table-4-3-t-value
+    claim: "Table 4.3, cutoff 3, child baseline age: coefficient -0.127, SE 0.061, t = -2.252."
+    ours: "-0.127 / 0.061 = -2.082 (between -2.057 and -2.107 within the printed rounding); the other eight rows agree."
+    covers: [pe-table-4-3]
+    hypotheses:
+      - id: our-transcription
+        side: ours
+        statement: We transcribed the row wrongly.
+        prediction: The PDF's text layer would show different numbers.
+        test:
+          method: Re-read the row from the PDF text layer.
+          files: [source-values/table_4_3.csv, results/table_identities.json]
+        result: The text layer reads -0.127, 0.061, -2.252.
+        verdict: ruled_out
+      - id: rounding
+        side: neither
+        statement: The difference is rounding of the printed coefficient and SE.
+        prediction: The printed t would fall inside the range the rounding allows.
+        test:
+          method: Bounds of |coefficient| / SE over the rounding intervals.
+          files: [results/table_identities.json]
+        result: The range is 2.057-2.107; 2.252 is outside it.
+        verdict: ruled_out
+      - id: printed-typo
+        side: source
+        statement: One of the three printed numbers is a typo (a coefficient of -0.137 gives t = -2.25; an SE of 0.0564 gives -2.25).
+        prediction: Changing one digit would make the row consistent.
+        test:
+          method: Solve for the coefficient or SE that the printed t implies.
+          files: [results/table_identities.json]
+        result: A coefficient of -0.137 (one digit) reproduces t = -2.25; which number is wrong cannot be told from the table. The row is significant at .05 either way, so no conclusion changes.
+        verdict: supported
+    conclusion: explained
+    whose: source
+    confidence: high
