@@ -1,6 +1,6 @@
 # RQ-F102-residual-identification
 
-Canonical target: `L-F102-correlated-residuals`. This note is a **new problem** and a labeled **restriction** of that method request. The parent request stays open. Claim ref `refs/heads/claims/L-F102-correlated-residuals` points at `64f01d6b3b5b6da4a42c8edb183b3f802e717826` and is not moved by later commits.
+Canonical target: `L-F102-correlated-residuals`. This note is a **new problem** and a labeled **restriction** of that method request. The parent request stays open. Claim ref `refs/heads/claims/L-F102-correlated-residuals` points at `970bfd234a13b7f53110cdd02a13487a422331a5` and is not moved by later commits.
 
 ## Target and scope
 
@@ -18,8 +18,8 @@ Canonical target: `L-F102-correlated-residuals`. This note is a **new problem** 
 
 - Issue: https://github.com/alectionary/vibe-math/issues/13. Follow-up id: `RQ-F102-residual-identification`.
 - Project board: not requested.
-- Session `c8f1c203-0ab7-4fd5-baca-667178087308`. UTC start `2026-10-27T07:30:56Z`. Work branch `cursor/l-f102-correlated-residuals-4c01`. Worktree `/tmp/vibe-math-l-f102` from `96ac6c493a4326d0575b7f1cd65e91f02d14de5c`.
-- Claim ref `refs/heads/claims/L-F102-correlated-residuals`, object `64f01d6b3b5b6da4a42c8edb183b3f802e717826`, created with GitHub's create-reference API and read back. `git push` of the work branch returned 403 for `cursor[bot]`; the same commit contents were published through the Git Data API, which is why the unsigned server SHA differs from the abandoned local signed commit of the same tree.
+- Session `c8f1c203-0ab7-4fd5-baca-667178087308`. UTC start `2026-10-27T07:30:56Z`. Work branch `cursor/l-f102-correlated-residuals-4c01`. Worktree `/tmp/vibe-math-l-f102` from `581a900e430af6540a66a53b417e3484912344ef`.
+- Claim ref `refs/heads/claims/L-F102-correlated-residuals`, object `970bfd234a13b7f53110cdd02a13487a422331a5`, created with GitHub's create-reference API and read back. `git push` of the work branch returned 403 for `cursor[bot]`; the same commit contents were published through the Git Data API, which is why the unsigned server SHA differs from the abandoned local signed commit of the same tree.
 - Study authorized. This session holds the claim. Next action after this block: a Lean proof of the diagonal inverse, still inside this claim, or release the claim if that block is handed off.
 - No pending reservation. Inventory insertion of the harvested Drton–Foygel–Sullivant generic-identifiability question is recorded below and is not yet a canonical id.
 
@@ -421,11 +421,11 @@ This block ran from 08:44Z to about 08:52Z. The three consistency theorems were 
 
 ## Handoff
 
-Claim `refs/heads/claims/L-F102-correlated-residuals` was this session's reservation at `64f01d6b3b5b6da4a42c8edb183b3f802e717826` (session `c8f1c203-0ab7-4fd5-baca-667178087308`, start `2026-10-27T07:30:56Z`, issue #13, branch `cursor/l-f102-correlated-residuals-4c01`). It is released at this closeout by an expected-SHA delete. The work branch and draft PR #14 stay. No next block is reserved. The next action is the wheat-data fit described above, and it has no owner until someone holds those columns. Issue #13 was not closed and was not edited: earlier issue writes returned 403, and this environment's `gh` client is read-only. The handoff text for that issue is this section.
+Claim `refs/heads/claims/L-F102-correlated-residuals` was this session's reservation at `970bfd234a13b7f53110cdd02a13487a422331a5` (session `c8f1c203-0ab7-4fd5-baca-667178087308`, start `2026-10-27T07:30:56Z`, issue #13, branch `cursor/l-f102-correlated-residuals-4c01`). It is released at this closeout by an expected-SHA delete. The work branch and draft PR #14 stay. No next block is reserved. The next action is the wheat-data fit described above, and it has no owner until someone holds those columns. Issue #13 was not closed and was not edited: earlier issue writes returned 403, and this environment's `gh` client is read-only. The handoff text for that issue is this section.
 
 ## Block 2026-10-27T17:39Z: three simulation studies and the paper
 
-Follow-up `RQ-F102-simulation-studies`. Session `febd2771-c168-4e67-8ed4-277662d6eb85`. Claim commit `05d69ea141adf3d5ee936d3b48061bde241250dc` on `refs/heads/claims/L-F102-correlated-residuals`. The earlier claim `64f01d6` was already gone. This block did not change the Lean proofs.
+Follow-up `RQ-F102-simulation-studies`. Session `febd2771-c168-4e67-8ed4-277662d6eb85`. Claim commit `1ba6b8c891e61e725fb03fdbf779769bbc9c24b2` on `refs/heads/claims/L-F102-correlated-residuals`. The earlier claim `64f01d6` was already gone. This block did not change the Lean proofs.
 
 Answer contract: the printed simulation and Tables 1–2, plus one bow-free residual correlation, plus a calibration that uses Campbell et al. (2003) Table 2 as path values. Decisive evidence is `simulation/out/study1.json`, `study2.json`, `study3.json`, the CSV tables next to them, and `paper/paper.pdf`.
 
@@ -470,7 +470,7 @@ UTC start 17:39:24. The shared script and the three studies finished as one proc
 
 ## Block 2026-10-27T18:20Z: replication gaps
 
-Follow-up `RQ-F102-replication-gaps`. Session `1a831aa5-e49c-4b88-8374-2f117a9c2519`. Claim commit `d164f8295bb58b3f1ff6ad4c5536572a12834f04`. The simulation claim had already been released.
+Follow-up `RQ-F102-replication-gaps`. Session `1a831aa5-e49c-4b88-8374-2f117a9c2519`. Claim commit `0f09a2bd34c783d014526c32ae577f9320baa7a1`. The simulation claim had already been released.
 
 The first reading put a minus in front of `M`. On PDF page 10 the equals sign ends at x=145.9 and M's parenthesis starts at x=148.1, so that minus does not fit. The minus at x=189.1 is M_{23} = −1/2. Three other minuses sit on G. Path arithmetic of that glyph reading matches Table 2, including the total 0.75, except QTL2 on Y2, where the exact values are −0.4375 and 0.0625 and the table prints −0.435 and 0.065. That rounding is a source discrepancy (our reading). `B = +M` gives 0.875, not 0.75.
 
@@ -502,7 +502,7 @@ UTC start 18:20:15. The gap grid, including two 1000-replicate scans, finished a
 
 ## Block 2026-10-27T18:49Z: assumption grid
 
-Follow-up `RQ-F102-assumption-grid`. Session `a42142f3-1c1c-4f9f-afc5-8c4316e76486`. Claim commit `76a03bee0b2a15c6f612afaef61a2fcd5ebc69c5`.
+Follow-up `RQ-F102-assumption-grid`. Session `a42142f3-1c1c-4f9f-afc5-8c4316e76486`. Claim commit `d4fb5a364436bcf103b0d49d38a5f946879fe469`.
 
 Family A is one change at a time from the glyph reading, 1000 replicates, seeds `20101101` onward. The baseline SEM powers are 50.8, 53.5, 86.1. Infinite RIL and Kosambi move QTL2 by about one point. The flanking formula, standardization, scan step, and a second seed stay inside a few points. A 95% permutation quantile is 16.1, above 14.86. `Ψ = I`, an oracle genotype, QTLs moved onto markers, and dropping cofactors move the powers and each one contradicts a printed sentence or moves the single-trait QTL2 rate from about 1% to 66%.
 
@@ -531,7 +531,7 @@ UTC start 18:49:33. The 1000-replicate grid finished at about 19:01. The paper u
 
 ## Block 2026-10-27T19:08Z: QTL1 joint power
 
-Follow-up `RQ-F102-qtl1-power`. Session `a1525409-6da7-4f1d-bc45-91b23f068223`. Claim commit `02283df7ef0a9a3a656e4a89bcb84b122dbc0af5`.
+Follow-up `RQ-F102-qtl1-power`. Session `a1525409-6da7-4f1d-bc45-91b23f068223`. Claim commit `7edba5181b847f82c1965f906377cc2c684a877a`.
 
 Equation (7) was measured again. The four minuses are G11, M23, G22, and G32. Table 1's SEM digits are 6, 4, then 77, then 96. Seeded scans are in `simulation/out/qtl1/`.
 

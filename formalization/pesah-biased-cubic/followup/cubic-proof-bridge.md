@@ -1,6 +1,6 @@
 # Cubic incidence proof bridge and remaining obligations
 
-Coordination prerequisite resolved: explicitly authorized public claim branch created once and read back at edb0cb62e0f09d8287a07f017613a06461070644. No retry of denied dependencies and no merge. Proposed skill pain point is recorded separately; reusable skills unchanged.
+Coordination prerequisite resolved: explicitly authorized public claim branch created once and read back at deac12e912a2564ec906e7b6f1896edab9b19c27. No retry of denied dependencies and no merge. Proposed skill pain point is recorded separately; reusable skills unchanged.
 
 ## Exact new theorems
 

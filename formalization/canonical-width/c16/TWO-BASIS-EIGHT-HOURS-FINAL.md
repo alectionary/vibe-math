@@ -7,7 +7,7 @@ No new Lean completion is claimed.
 
 This is the continuation authorized for 30 October 2026, 14:38:33Z–22:38:33Z.
 The work branch is `research/c16-two-basis-20261030T1438`; its starting scientific
-checkpoint is `415591d389683e145ced12c2a399c3911ec834a7`. The first report
+checkpoint is `101f4a984e499f06696fc821230859029f325122`. The first report
 [records the earlier gates](TWO-BASIS-EIGHT-HOURS.md), and the
 [owner-flow supplement](TWO-BASIS-OWNER-FLOW-RESULT.md) records the exact shared
 capacity model. This document distinguishes source progress from auxiliary
@@ -105,7 +105,7 @@ rank family or existence of a source frame.
 
 ## Verification and preservation
 
-Checkpoint `b6ed9a0db40ec431d706fcd9f68ffa5e93e44e89` passed 34 independent
+Checkpoint `5bd0dffea7f1bf0a631aefd4383baa3c4a7d8537` passed 34 independent
 owner-flow, capacity, face-reduction, conditional-rank, fixed-owner and orbit 40
 terminal stages from an isolated declared copy. All 1,449 copied files matched
 both their frozen hashes and Git blobs. The path adapter preserved every
@@ -118,7 +118,7 @@ checkpoint. The historical `validate_difficulty.py` related-ID equality failure
 was reproduced and preserved; it is not counted as a pass. The exact replay
 scope and logs are in the
 [clean-checkpoint inventory](two-basis-results/final-clean-checkpoint-b6ed9a0-inventory.json).
-Checkpoint `45873144ca36684562c235fc68db41c0b06a95c3` then passed a separate
+Checkpoint `7f66f435fd21beb8eb2b3dd73c0a657bd4b735a8` then passed a separate
 14-stage supplemental replay in 39.11 seconds. Its 2,060 declared files
 (836,860,691 bytes) matched their hashes and Git blobs. The isolated replay
 checked both orbit 15 phase-I endpoints and their exchange batch, the orbit 32

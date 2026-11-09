@@ -204,8 +204,8 @@ The [PySAT API](https://pysathq.github.io/docs/html/api/solvers.html) was consul
 as software documentation. No new research paper or canonical source target
 is added by this block. The earlier literature collection is unchanged.
 Historical manifests remain pinned to their original scientific revisions:
-overnight175 files at398596d82f5b8eda184103f1510eca82daef6a99, and joint-cover42
-files at62ff155fcd39364bb3b251a0da38c8821cddc711. Later central progress records
+overnight175 files at8502792390cebc18deed037d763e7e0b9bd2e7bc, and joint-cover42
+files at3a602f0c424559373941b98078220ff6a9805550. Later central progress records
 do not rewrite those manifests.
 
 | Deliverable | Status | Evidence |

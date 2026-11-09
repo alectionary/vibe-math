@@ -1,6 +1,6 @@
 # Numerical stopping assessment while proof coordination is pending
 
-Local assessment after PR64 milestone edb0cb62e0f09d8287a07f017613a06461070644. No ownership retry or proof development. The published paper is unchanged by this assessment; the following new diagnostic has not yet been incorporated into a reviewed PDF.
+Local assessment after PR64 milestone deac12e912a2564ec906e7b6f1896edab9b19c27. No ownership retry or proof development. The published paper is unchanged by this assessment; the following new diagnostic has not yet been incorporated into a reviewed PDF.
 
 ## New justified test, now complete
 

@@ -1,6 +1,6 @@
 # PDF repository-link audit and correction
 
-Audit baseline: 6a0d42dbbd6d115d734c01c246b7e0616e668133.
+Audit baseline: a8dc713103cf1525de08433a18dd1a4ce404b591.
 
 The replication skill explicitly says "Code and data links in papers point at
 `master`" (line246) and requires `blob/master` file navigation in the artifacts
@@ -33,7 +33,7 @@ PDF link is supplied outside the manuscript in the PR and response.
 check_repository_links.py checks every PDF URI, rejects unapproved internal
 roles, and verifies each master destination path against the branch tree. It
 reports master availability separately. At the audited remote master revision
-e2b553c06c872d8008061a26d05831e572e54789, all32paths are absent: they await merge.
+8e348375aaa5fa7175dd5ada1a54aad6274d8904, all32paths are absent: they await merge.
 No live-master availability is asserted. This status belongs in this repository
 record and delivery response, not operational chatter in the scientific paper.
 

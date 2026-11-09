@@ -3,7 +3,7 @@
 Session: codex-c16-until-6am-20261028T053020Z.
 Canonical target: L-F91-c16-unrestricted-width; follow-up, not a new problem.
 Issue: https://github.com/alectionary/vibe-math/issues/8 .
-Base:2081199c5413904b4e1038e90eacb81b46555996.
+Base:f837d82533f4dc717760df63c4dd521f3d1b2b04.
 Work branch: research/c16-until-6am-20261028T053020.
 
 The user authorized continuing research until **2026-10-28 06:00 America/Los_Angeles

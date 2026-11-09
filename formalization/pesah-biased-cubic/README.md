@@ -8,7 +8,7 @@ Main paper: [pure_x_thresholds_of_deformed_cubic_codes__replication_of_pesah_202
 
 ## Reproduce
 
-Work from this study directory at the immutable reproduction revision. Baseline master was `e2b553c06c872d8008061a26d05831e572e54789`; the baseline does not contain this implementation. Python 3.12.14 was used. Create an environment and install `requirements.txt`. The old reference validator additionally uses qecsim 1.0b9 and NetworkX 2.6.2, already included in that file. Primary code does not execute either package. Poppler (`pdftoppm`), pdfLaTeX and BibTeX are system prerequisites for evidence and manuscript regeneration.
+Work from this study directory at the immutable reproduction revision. Baseline master was `8e348375aaa5fa7175dd5ada1a54aad6274d8904`; the baseline does not contain this implementation. Python 3.12.14 was used. Create an environment and install `requirements.txt`. The old reference validator additionally uses qecsim 1.0b9 and NetworkX 2.6.2, already included in that file. Primary code does not execute either package. Poppler (`pdftoppm`), pdfLaTeX and BibTeX are system prerequisites for evidence and manuscript regeneration.
 
 ```sh
 python -m venv .venv

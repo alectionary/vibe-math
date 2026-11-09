@@ -5,7 +5,7 @@
 - Start: 2026-10-27T01:26:36Z. Deadline: 2026-10-27T05:26:36Z (2026-10-26 22:26:36 America/Los_Angeles).
 - User instruction: continue this research objective for the next four hours.
 - Work branch: `research/c16-four-hours-20261027T012636`.
-- Prior checkpoint: `497cdca46340d1e98034daa6d21866526983ffb8`.
+- Prior checkpoint: `a267b97274f40c9ee1d6424f8695f6ec0bfb1d56`.
 - Answer contract: determine unrestricted f(C^LP_16,9), including mixed Paulis, by a physically checked 128-pair weight-16 frame plus the distance lower bound, or a complete justified obstruction. Any use of the published 720-class pools retains the source-completeness premise until independently reimplemented.
 - Prior results: physical pool mapping and width-18 upper frame checked; corrected complete partner domains exclude listed-pool frames containing at least 13 seed-4 X monomials. Best weight-16 partial frame is 88 pairs. Exact f, twelve-and-fewer monomial cases, independent pool completeness and Lean remain open.
 - Scope: complete corrected twelve-monomial searches while pursuing a global compatibility/SAT route and structural obstructions. No other codes. Reserve closing time for verification and an honest handoff.

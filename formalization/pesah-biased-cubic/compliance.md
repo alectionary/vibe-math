@@ -1,6 +1,6 @@
 # Compliance and comparability ledger
 
-Baseline master: e2b553c06c872d8008061a26d05831e572e54789. Skill: `.agents/skills/replication-paper/SKILL.md`, revision 1e69e2c0e6fa2f42d0879d48936561df02659add. Template: `.agents/skills/replication-paper/assets/approved-preamble.tex`, same skill revision, derived from approved Kupzyk ca1d062 layout. No reusable skill edits.
+Baseline master: 8e348375aaa5fa7175dd5ada1a54aad6274d8904. Skill: `.agents/skills/replication-paper/SKILL.md`, revision 657e62d5e7314f20a6977b4a3f31d7145361d106. Template: `.agents/skills/replication-paper/assets/approved-preamble.tex`, same skill revision, derived from approved Kupzyk ca1d062 layout. No reusable skill edits.
 
 | Requirement | Execution and limit |
 |---|---|

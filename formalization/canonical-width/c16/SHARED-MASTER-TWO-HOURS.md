@@ -7,7 +7,7 @@
   exact projection acceptance.
 - Start: 2026-10-30 22:07:54Z; deadline: 2026-10-31 00:07:54Z.
 - Reserve final 20 minutes for independent replay, preservation and handoff.
-- Baseline: `64fac577bb46907a20a857fc1aa1187824ede8e4`.
+- Baseline: `ba73e6c3bd722a52c780583c9835698792724d07`.
 - Work branch: `research/c16-shared-master-20261030T2207`.
 - Claim: create-only `refs/heads/claims/L-F91-c16-unrestricted-width`, fixed
   at this ownership commit after server confirmation.

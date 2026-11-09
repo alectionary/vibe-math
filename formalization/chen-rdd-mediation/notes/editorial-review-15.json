@@ -138,7 +138,7 @@
         {
           "page": 21,
           "location": "Appendix A, paragraph 1",
-          "finding": "FAIL: 'The code revision is d37e39ce66c2ee9cc92560fae72b84715e6dc601 on branch replication/chen-2021: it contains this code and its committed outputs and evidence, while the paper files themselves are committed in a later revision.' This is false. At d37e39ce, results/mc_se_headline.json and secondary/mc_se_headline.py (cited on p. 2 for the E2/E3 Monte Carlo errors) do not exist (git show fails), results/rates_agreement.csv lacks the *_read columns cited on pp. 6-8 and 11 (79.1-100.0%, 4.3%, 96.8%, 85.9%, 97.2%), and secondary/disagreement_tests.py, results/disagreement_tests.json, secondary/rates_agreement.py, DISAGREEMENTS.yaml, build_packet.py and evidence-packet.json all changed later (last at fbb4898c). A reader reproducing from the named revision cannot regenerate several printed numbers."
+          "finding": "FAIL: 'The code revision is 3e3968b30fb0e997843ef3a311a2b7b5b5f5548d on branch replication/chen-2021: it contains this code and its committed outputs and evidence, while the paper files themselves are committed in a later revision.' This is false. At d37e39ce, results/mc_se_headline.json and secondary/mc_se_headline.py (cited on p. 2 for the E2/E3 Monte Carlo errors) do not exist (git show fails), results/rates_agreement.csv lacks the *_read columns cited on pp. 6-8 and 11 (79.1-100.0%, 4.3%, 96.8%, 85.9%, 97.2%), and secondary/disagreement_tests.py, results/disagreement_tests.json, secondary/rates_agreement.py, DISAGREEMENTS.yaml, build_packet.py and evidence-packet.json all changed later (last at fbb4898c). A reader reproducing from the named revision cannot regenerate several printed numbers."
         },
         {
           "page": 3,
@@ -447,7 +447,7 @@
       "page": 21,
       "location": "Appendix A, paragraph 1",
       "severity": "blocking (makes a reproduction claim false)",
-      "fix": "Replace the code revision d37e39ce66c2ee9cc92560fae72b84715e6dc601 with a revision that actually contains the final code, outputs and evidence the paper cites (the last such change is fbb4898c1319327ae26f03410574bc5c4d2c9857; or name the revision at which the delivered paper is committed), or drop the claim that the named revision contains them. Then rebuild, update writer-manifest.json hashes and obtain a fresh review."
+      "fix": "Replace the code revision 3e3968b30fb0e997843ef3a311a2b7b5b5f5548d with a revision that actually contains the final code, outputs and evidence the paper cites (the last such change is de8f6a0ad37f28a1851d8964d0a35761a1a0ad6b; or name the revision at which the delivered paper is committed), or drop the claim that the named revision contains them. Then rebuild, update writer-manifest.json hashes and obtain a fresh review."
     }
   ],
   "should_fix_nonblocking": [

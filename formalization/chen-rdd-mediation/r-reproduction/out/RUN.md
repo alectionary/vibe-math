@@ -1,6 +1,6 @@
 # Chen exact R replay
 
-Successful run of `chen_exact.R` at commit `4e739dc0b14a6d175cfc5e6e2da148c0f7aebdd8` on branch `grok/chen-r-run`.
+Successful run of `chen_exact.R` at commit `895ab38633d77d3a68897f6dd8ac946f69862566` on branch `grok/chen-r-run`.
 
 ## Commands
 

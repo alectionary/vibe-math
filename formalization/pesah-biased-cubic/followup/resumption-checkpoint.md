@@ -3,7 +3,7 @@
 2026-10-30. These files preserve completed bounded checks from the interrupted
 session. They have not yet received the full independent scientific review or
 been incorporated into the reviewed main manuscript. The 17-page PDF and its
-review at dc7e94fabbed9ba11abc0b0c6f096fea85d5ab25 are unchanged.
+review at 1fa522ff2d5255bc2b3a54257420f28de8a07703 are unchanged.
 
 Saved results: OSD exhaustive comparison (682 matrices, 20,748 consistent
 order/syndrome cases, three implementations); rhombic cellulation comparison

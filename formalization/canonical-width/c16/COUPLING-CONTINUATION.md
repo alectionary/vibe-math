@@ -4,7 +4,7 @@ Canonical source target: `L-F91-c16-unrestricted-width`.
 Session: `c16-coupling-20261030T0514`.
 Work branch: `research/c16-coupling-20261030T0514`.
 Source issue: <https://github.com/alectionary/vibe-math/issues/8>.
-Prior research checkpoint: `794ebbb9b37f677f51482155ae441470b273d74e`.
+Prior research checkpoint: `d7b4a3220d0cb91ee4a5dbe4f7a559e0d0e8fdf5`.
 
 **Current checkpoint, 10:42 UTC:** the source width remains unresolved between
 16 and 18. The latest exactly accepted global relaxation point is
@@ -632,7 +632,7 @@ augmentation but cannot justify a no-path obstruction. The review and
 negative controls include both errors. No finite or polynomial termination
 claim is made for the implemented repair.
 
-A clean checkout of commit `1e852eea43956cbc38759e5182e6f3df9bb782d7`
+A clean checkout of commit `d1c0d2a3a4ea9caff57194977d25b3c11db83e4d`
 passes all 36 declared acceptance stages and 1,422 source bindings. It
 recovers witness15 byte-for-byte, replays all 54 partner and 234 new
 integer-form rows, the latest rank cuts, the exact unconditional mixture,
@@ -738,7 +738,7 @@ derivation and implementation plan, not a completed oracle or new experiment.
 See `two_sided_full_basis_next_gate.md` for the proof, mapping and required
 independent controls.
 
-The clean checkout of `043a5bdca1b1691dee56e8ea164d959776729680` passes
+The clean checkout of `c3b3e1fbe8ef335db12e632059eedb504cffd726` passes
 fourteen fresh stages: seven exchange checks and seven point15 acceptance
 checks. It reproduces point15 byte-for-byte; all689 original scientific
 inputs,1,422 resolved earlier declarations, four additional source bindings
@@ -749,7 +749,7 @@ before and after. The later affine diagnostic is separately certified and
 is not silently included in that checkpoint's coverage.
 
 The final affine consumers also pass from clean commit
-`c1d2396154b77b9531cc1cb9a8f6abe703f441c1` in25.24 seconds, with all772 seed
+`1318fd30748b2d0a6e3d5cbb5968bde77f838cfb` in25.24 seconds, with all772 seed
 columns physically checked and prior inputs unchanged. The archive is
 `coupling-results/final-clean-checkpointc1d239/`. The two-sided next-gate
 derivation has a separate peer review in
@@ -792,15 +792,15 @@ for the original question is justified.
 ## Publication and coordination closeout
 
 All scientific results and the reviewed handoff are preserved at
-`2c4c8b7d5eb88bc2f722b13dd0ed8ca24d289c55` on both
+`b28b4b69b64f84d70b2fb2f4ce89b7e1713c99bb` on both
 `research/c16-coupling-20261030T0514` and the existing PR17 branch. This
-includes concurrent master `e2b553c06c872d8008061a26d05831e572e54789`;
+includes concurrent master `8e348375aaa5fa7175dd5ada1a54aad6274d8904`;
 the unrelated Moss replication was preserved without changing any C16
 scientific or canonical-record input. The issue and PR descriptions have
 exact readback checks. A later documentation-only commit records these
 publication facts without changing the scientific endpoints.
 
-The fixed claim owner `323b30e3b51546cf752603e61c63da2f6e3b7434` was released
+The fixed claim owner `0d56c73c05a39b335fdc61bdbb3d549213902398` was released
 using its exact expected-SHA lease; absence was verified at10:59:03Z.
 This is coordination housekeeping, not a pause or source completion.
 No research search process remains running. The six-hour authorized
