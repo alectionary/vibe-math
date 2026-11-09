@@ -190,7 +190,7 @@ def rises(vals, dip=.02):
 
 loose = {}
 for num, fig, eff, fac in ((30, "4.24", "TNIE", ("a", "b")), (44, "4.27", "TNDE", ("a", "c"))):
-    pts = rates[(rates.figure == fig) & (rates.status != "missing")]
+    pts = rates[(rates.figure == fig) & (rates.status == "read")]
     ok_fig, ok_ours, n_sets = True, True, 0
     for key, g in pts.groupby(["cut_index"] + list(fac)):
         g = g.sort_values("n")
