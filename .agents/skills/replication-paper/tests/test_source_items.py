@@ -134,9 +134,12 @@ class SourceGate(unittest.TestCase):
         errors, incomplete = self.gate()
         self.assertEqual(incomplete, [])
         self.assertTrue(any("Figure 1.1" in e and "not in the plan" in e for e in errors))
-        self.plan["source_missing"] = {"fetch_issue": 93, "since": "2026-11-08", "reason": "old record"}
-        errors, _ = self.gate()
-        self.assertTrue(any("remove source_missing" in e for e in errors))
+        # a present, matching copy is checked even while the fetch issue stays open
+        self.plan["source_missing"] = {"fetch_issue": 93, "since": "2026-11-08", "reason": "not stored durably"}
+        errors2, incomplete = self.gate()
+        self.assertEqual(errors2, errors)
+        self.assertEqual(len(incomplete), 1)
+        self.assertIn("not stored durably", incomplete[0])
 
 
 if __name__ == "__main__":

@@ -104,7 +104,9 @@ When the source PDF is not here, never substitute another file. Record
 `fetch:` issue (the retrieval queue, #9). The done check then reports the study
 as `incomplete` (exit 3): it can be committed and published, but it is not done,
 because its figures and tables cannot be checked. When the PDF is back, record
-its sha256, remove `source_missing`, and close the fetch issue.
+its sha256 and keep `source_missing`: the copy is checked, but the study stays
+incomplete until the PDF is stored where any later session can read it. Then
+remove `source_missing` and close the fetch issue.
 
 ## Replication plan
 
