@@ -46,7 +46,7 @@ from pathlib import Path
 # the study root; a directory covers every tracked file below it.
 EVIDENCE = ("REPLICATION-PLAN.yaml", "DISAGREEMENTS.yaml", "results", "source-values")
 DRAFT_NOTE = "> **Draft: the paper is ahead of its review.**"
-TRAILER = re.compile(r"^Paper:\s*(updated|pending|not-needed\s+\S.*)$", re.M | re.I)
+TRAILER = re.compile(r"^Paper:\s*(updated(\s.*)?|pending(\s.*)?|not-needed\s+\S.*)$", re.M | re.I)
 
 
 def _sha(path: Path) -> str:
