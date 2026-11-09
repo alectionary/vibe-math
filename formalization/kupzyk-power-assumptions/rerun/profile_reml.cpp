@@ -110,3 +110,27 @@ double known_variance(IntegerVector sizes, IntegerVector cluster, int J,
     return .5*(arm[0].a/(arm[0].a*arm[0].c-arm[0].b*arm[0].b)+
                arm[1].a/(arm[1].a*arm[1].c-arm[1].b*arm[1].b));
 }
+
+// V is linear in absolute variance parameters. These are the entries of
+// X' V^-1 X in the two-arm parameterization and log|V|, used to obtain
+// small-matrix derivatives for expected-information inference.
+// [[Rcpp::export]]
+NumericVector covariance_moments(NumericVector par, IntegerMatrix counts, int control) {
+    const double s=par[4];
+    Update k[]={{1,0,0,par[0]/s,par[1]/s},{2,1,1,par[0]/s,par[1]/s},
+                {3,3,5,par[0]/s,par[1]/s},{4,6,14,par[0]/s,par[1]/s}};
+    Information arm[2];
+    double ld=0;
+    for(int j=0;j<counts.nrow();++j) {
+        Information g;
+        for(int q=0;q<4;++q) {
+            const double n=counts(j,q);
+            g.a+=n*k[q].a;g.b+=n*k[q].b;g.c+=n*k[q].c;
+            ld+=n*(k[q].ld+(q+1)*std::log(s));
+        }
+        const Update v(g.a,g.b,g.c,par[2]/s,par[3]/s);
+        auto &t=arm[j>=control]; t.a+=v.a;t.b+=v.b;t.c+=v.c;ld+=v.ld;
+    }
+    return NumericVector::create(arm[0].a/s,arm[0].b/s,arm[0].c/s,
+                                arm[1].a/s,arm[1].b/s,arm[1].c/s,ld);
+}
