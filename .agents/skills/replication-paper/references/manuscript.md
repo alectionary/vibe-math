@@ -157,6 +157,12 @@ simulation, an assumption we supplied, or a figure taken from a cited source.
 
 ## Links and citations
 
+Follow the shared [citation coverage gate](../../verified-release/references/citations.md).
+Freeze the inventory before the writing handoff, give it to the writer and
+reviewer, and include `citation-inventory.json` in the delivery evidence.
+The done check for staged studies and current LaTeX delivery acceptance
+enforce it.
+
 Every replication note must have in-text scholarly citations and a References
 section, not just software hyperlinks or an uncited reading list. Cite the
 replicated work at the first substantive attribution and give page, table,
