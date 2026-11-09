@@ -83,3 +83,29 @@ NumericVector reml_eval(NumericVector theta, NumericMatrix s, int control, bool 
         _["person_slope"]=theta[1]*scale,_["cluster_intercept"]=theta[2]*scale,
         _["cluster_slope"]=theta[3]*scale,_["residual"]=scale);
 }
+
+// Conditional fixed-covariance variance of the slope difference. This reuses
+// the same two-level covariance updates as the empirical fit, but there is no
+// outcome vector, optimizer or residual profiling here.
+// [[Rcpp::export]]
+double known_variance(IntegerVector sizes, IntegerVector cluster, int J,
+                      int control, double icc) {
+    int counts[50][4]={};
+    if(J<2 || J>50) stop("cluster count outside supported range");
+    for(int i=0;i<sizes.size();++i) ++counts[cluster[i]-1][sizes[i]-1];
+    Update k[]={{1,0,0,.4,2*(1-icc)},{2,1,1,.4,2*(1-icc)},
+                {3,3,5,.4,2*(1-icc)},{4,6,14,.4,2*(1-icc)}};
+    Information arm[2];
+    for(int j=0;j<J;++j) {
+        Information g;
+        for(int q=0;q<4;++q) {
+            g.a+=counts[j][q]*k[q].a;
+            g.b+=counts[j][q]*k[q].b;
+            g.c+=counts[j][q]*k[q].c;
+        }
+        const Update v(g.a,g.b,g.c,.2,2*icc);
+        auto &t=arm[j>=control]; t.a+=v.a;t.b+=v.b;t.c+=v.c;
+    }
+    return .5*(arm[0].a/(arm[0].a*arm[0].c-arm[0].b*arm[0].b)+
+               arm[1].a/(arm[1].a*arm[1].c-arm[1].b*arm[1].b));
+}
