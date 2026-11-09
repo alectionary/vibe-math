@@ -77,7 +77,7 @@ def format_issue(item):
 
 
 def policy_findings(inventory, repository, provenance, revisions):
-    """Only commit landing pages with exact labels qualify as provenance."""
+    """Same-repository links are master navigation or issue/PR discussion; commit links are refused."""
     errors = []
     if not isinstance(repository, str) or not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repository):
         return [issue('repository_required', 'explicit owner/repository required')]
@@ -130,27 +130,17 @@ def policy_findings(inventory, repository, provenance, revisions):
                 fail('provenance_target', 'artifact navigation cannot be declared provenance')
             navigation += 1
             continue
-        if len(tail) == 2 and tail[0] == 'commit' and re.fullmatch('[0-9a-f]{40}', tail[1]):
-            if declaration:
-                used.add(link['id'])
-                expected_label = {'reproduction_revision': 'Reproduction revision', 'baseline_revision': 'Historical baseline'}[declaration]
-                # A full SHA may be clickable while the role label immediately
-                # precedes it on the same rendered line (common academic style).
-                prefix_pattern = r'(?:immutable )?reproduction revision$' if declaration == 'reproduction_revision' else r'historical baseline$'
-                sha_label = link['label'] in (tail[1], tail[1]+':') and bool(re.search(r'\b'+prefix_pattern, link['prefix'], re.I))
-                role_label = link['label'].casefold() == expected_label.casefold()
-                if tail[1] != revisions.get(declaration) or not (role_label or sha_label) or url.fragment:
-                    fail('provenance_identity', 'provenance target or visible label does not match its declared role')
-            else:
-                fail('provenance_required', 'commit link needs explicit provenance declaration')
+        if tail[:1] == ['commit']:
+            # The paper presents the final product on master; it never names or links our commits.
+            fail('commit_reference', 'the paper links to master, never to a commit of this repository')
             continue
         if not tail or (len(tail) == 2 and tail[0] in ('issues', 'pull') and tail[1].isdigit()):
             if declaration:
                 fail('provenance_target', 'discussion/home link cannot be declared provenance')
             continue
         fail('master_navigation', 'artifact navigation must use blob/master or tree/master')
-    if set(declarations) != used:
-        errors.append(issue('unused_provenance', 'unused or mislabeled provenance declarations'))
+    if declarations:
+        errors.append(issue('provenance_declared', 'link_provenance must be empty: the paper has no commit links'))
     if not navigation:
         errors.append(issue('navigation_required', 'main paper must contain master artifact navigation'))
     return errors
