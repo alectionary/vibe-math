@@ -35,3 +35,17 @@ Wall clock for mgcfa true N=240 condition 1: 2074 s. File 1416218 bytes. If ever
 **Surprising:** much closer than the ARM pilot, still outside 1e-8 and one significant count.
 
 **Blocking:** issue comments are 403. The 36-cell run is not blocked.
+
+## 2026-11-09T20:29Z (cell 2 still fitting)
+
+**Accomplished:** 1 of 36 cells committed (`7d15dd67`, `mgcfa_true_n240_c1`). No new cell commit since 20:02Z.
+
+**New:** `mgcfa_true_n240_c2` started 2026-11-09T20:02:03Z with 4 cores. `exportData` has finished (15000 / 15000). The lavaan fits are still running. Parent process elapsed about 22 minutes. Load average 3.5. No new csv.gz yet.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB, MemAvailable about 4.4 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock so far for this cell: about 27 minutes, not finished. The finished N=240 condition-1 cell took 2074 s. If that holds, cell 2 finishes around 20:37Z and the remaining 34 cells after it take about 19.6 hours, projected finish around 2026-11-10 16:15 UTC. N=960 generation may be slower. Output so far is 1.4 MB for one cell.
+
+**Surprising:** none since the exactness gate.
+
+**Blocking:** none. Check-ins are in this file for the coordinator to relay. The 36-cell run is not stopped.
