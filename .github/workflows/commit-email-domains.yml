@@ -1,5 +1,6 @@
 # Fail when a commit in this push or pull request uses a consumer-domain
-# address. Published history is outside the range and is not read.
+# or hostname-derived address, or when a changed file contains a machine
+# hostname. Published history is outside the range and is not read.
 
 name: Commit email domains
 
@@ -42,3 +43,13 @@ jobs:
           PUSH_AFTER: ${{ github.sha }}
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         run: python3 scripts/check_commit_emails.py ci
+
+      - name: Check changed files for machine hostnames
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+          PUSH_AFTER: ${{ github.sha }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: python3 scripts/check_machine_names.py ci
