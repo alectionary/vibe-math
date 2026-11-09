@@ -5,8 +5,14 @@ file and against page 1 of its PDF. Papers that keep a copied preamble are
 left alone. Comparing an opted-in page with a reference paper in the series
 is still required; these numbers do not judge whether the page looks finished.
 """
+import importlib.util
 import re
 from pathlib import Path
+
+_spec = importlib.util.spec_from_file_location(
+    "research_title_page", Path(__file__).resolve().parents[4] / "scripts/release/title_page.py")
+title_page = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(title_page)
 
 MARGIN_IN = 0.82
 TITLE_PT = 17.28  # \LARGE in the 11pt article class used by the preamble.
@@ -16,7 +22,7 @@ def preamble_file():
     return Path(__file__).resolve().parents[1] / 'assets' / 'approved-preamble.tex'
 
 
-def _opts_in(tex):
+def uses_series_preamble(tex):
     """Only manuscripts that input the shared preamble are measured.
 
     Older papers keep their own copied preamble and ``\\maketitle``. They are
@@ -26,14 +32,14 @@ def _opts_in(tex):
 
 
 def source_layout_errors(tex, tex_path=None):
-    if not _opts_in(tex):
+    if not uses_series_preamble(tex):
         return []
     errors = []
     if '\\newgeometry' in tex:
         errors.append('layout: newgeometry overrides the shared preamble')
     if re.search(r'\\usepackage\s*\[[^\]]*margin\s*=\s*(?!0\.82\s*in)', tex):
         errors.append('layout: page margin must stay 0.82in from the shared preamble')
-    if '\\maketitle' not in tex:
+    if '\\maketitle' not in tex and not title_page.uses_template(tex):
         errors.append('layout: the series title block uses maketitle')
     matched = False
     expected = preamble_file().read_bytes()
@@ -140,14 +146,16 @@ def page1_geometry_errors(pdf_path):
 
 def layout_errors(tex, tex_path=None, pdf_path=None):
     errors = source_layout_errors(tex, tex_path)
-    if pdf_path is not None and _opts_in(tex):
+    if pdf_path is not None and uses_series_preamble(tex):
         errors.extend(page1_geometry_errors(pdf_path))
     return errors
 
 
 def paper_pdf(paper_path):
-    folder = Path(paper_path).resolve().parent
-    pdfs = [path for path in folder.glob('*.pdf') if path.is_file() and path.stat().st_size > 20000]
-    if not pdfs:
-        return None
-    return max(pdfs, key=lambda path: path.stat().st_size)
+    return title_page.exact_pdf(paper_path)
+
+
+def title_errors(tex, source, pdf, required=False):
+    if required or title_page.uses_template(tex):
+        return title_page.check(source, pdf)
+    return []

@@ -23,12 +23,12 @@ Input that file; do not paste a divergent preamble or override it with
 changes. Record and justify necessary deviations; do not silently invent a new
 layout.
 
-Before accepting the rendered paper, compare page 1 by eye with a reference
-paper in the series that uses the same preamble, such as the Kupzyk replication.
-Check the title block, the abstract inset, the margins, and the type. `preflight.py
-done` also measures page 1 against the preamble (letter size, the 0.82-inch text
-block, a centered `\LARGE` roman title, and an inset abstract). That measurement
-does not replace the visual comparison.
+Use the shared [academic title page](../../verified-release/references/title-page.md).
+Declare an explicit date, input the approved title asset, and compare the
+rendered first page with the earlier Kupzyk paper. The source and PDF checks
+cover the title and date as well as the existing text block and abstract inset.
+Preflight uses the exact same-stem PDF. Delivery checks the exact PDF in the
+record. Keep the first-page findings and comparison table legible.
 
 Before declaring delivery complete, run the replication-plan done check from
 the [pre-done checklist](../SKILL.md#pre-done-checklist). That command includes

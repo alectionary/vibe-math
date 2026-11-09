@@ -14,6 +14,9 @@ the shared release practice. Repository specifics, scripts and the worked
 example are in [vibe-math notes](references/vibe-math.md); file templates are in
 [release records](references/release-records.md).
 
+Use the shared [academic title page](references/title-page.md) for manuscript
+releases and check the exact rendered PDF.
+
 ## Commit identity
 
 Make every commit as `alectionary <alectionary@users.noreply.github.com>`.
