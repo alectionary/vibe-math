@@ -124,7 +124,8 @@ Put every number in the source to work before setting anything aside:
 - **Before excluding** a figure or table, record `uses_considered` for
   `consistency`, `reconstruction` (recovering data or moments to rerun the
   analysis) and `evidence` (bearing on a disagreement), each
-  `{useful: false, why}`. If any use exists, read the item instead.
+  `{useful: false, why}`. If any use exists, read the item instead, unless the
+  person declines that use (`declined_by_person: {date, channel, summary}`).
 
 `preflight.py done` checks this with or without the PDF. When the PDF is here,
 it must match `source_sha256` and a fresh inventory must equal the committed
