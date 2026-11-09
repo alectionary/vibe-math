@@ -1,5 +1,30 @@
 {
-  "name": "Python 3 + NumPy (OpenBLAS) re-implementation of Appendices A-B",
-  "justification": "R (Rscript) is unavailable on this host and on the linked Mac VM: neither CRAN, conda-forge nor the Ubuntu archives are reachable through the network allowlist, and apt cannot run as root on the VM. Chen (2021) fits ordinary least-squares regressions with R's lm() and percentile bootstrap CIs (Appendix B); no lavaan or OpenMx model is involved, so the preferred SEM engines are not needed for this design. R's random-number streams cannot be reproduced without R, so the replication is distributional.",
-  "independent_validation": "simulation/validate_estimator.py: point estimates agree with scikit-learn LinearRegression fits (separate code path) to 1.1e-14 over 20 random datasets; bootstrap effects from resample counts agree with explicit row resampling refitted by numpy.linalg.lstsq over 100 resamples; at n = 200,000 the estimates are within sampling error of the population values. Prints PASS_ESTIMATOR_VALIDATION."
+  "name": "Python 3 + NumPy (OpenBLAS) re-implementation of Appendices A-B, for the bootstrap-based results",
+  "kind": "blocked",
+  "source_path": "Chen's printed, seeded R code (Appendix A data generation with set.seed(18374788) and set.seed(95409); Appendix B lm() estimates and unseeded percentile bootstrap)",
+  "justification": "The first pass used Python because R could not be installed in the research workspace; that choice was made without asking the person, which the skill now forbids. The person was then told, an R-capable host (Grokbot) was found, and her code was replayed exactly. Her bootstrap cannot be reproduced exactly in any language (it sets no seed), and refitting her lm() calls 500 times for each of 1.28 million datasets is about 4 billion fits, beyond the available R host; the Python engine computes the same estimators from Gram matrices in about 14 core-hours.",
+  "independent_validation": "simulation/validate_estimator.py: point estimates agree with scikit-learn LinearRegression fits (separate code path) to 1.1e-14 over 20 random datasets; bootstrap effects from resample counts agree with explicit row resampling refitted by numpy.linalg.lstsq over 100 resamples; at n = 200,000 the estimates are within sampling error of the population values. Prints PASS_ESTIMATOR_VALIDATION. In addition, Chen's own code was replayed exactly in R (r-reproduction/, issue #92: 64,000 of her seeded datasets, identical to her literal pipeline) and recovers the same estimates in distribution; the full 1,000-replication R replay is issue #118.",
+  "exact_reproduction": "possible",
+  "exact_reproduction_evidence": "Appendix A is seeded; r-reproduction/out/literal_check.txt shows the replay identical to her literal group_walk/pmap_dfr pipeline (largest difference 0). Point estimates are therefore reproduced exactly in R; bootstrap intervals are not reproducible exactly (no seed in Appendix B).",
+  "lost": "Bootstrap-based results (coverage, imbalance, Type I error, power) come from the Python engine on our own random draws, so they agree with hers in distribution only. Point estimates and bias are available on her exact datasets from the R replay.",
+  "unblock_options": [
+    {
+      "option": "R on the person's Mac via computer use",
+      "outcome": "not used: computer use was off on the Mac when tried"
+    },
+    {
+      "option": "Grokbot (R-capable VM) runs her code",
+      "outcome": "done for point estimates: 50 replications (#92), all 1,000 requested (#118)"
+    },
+    {
+      "option": "Full R rerun including the 500-resample bootstrap",
+      "outcome": "declined: about 4 billion lm() fits, and an unseeded bootstrap cannot match hers exactly anyway"
+    }
+  ],
+  "decision": {
+    "by": "person",
+    "date": "2026-11-09",
+    "channel": "chat",
+    "summary": "Agreed: run all 1,000 replications of her exact code in R for point estimates and bias (#118); keep the Python engine for bootstrap-based results, validated against the R replay."
+  }
 }

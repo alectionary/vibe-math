@@ -154,6 +154,23 @@ disagreements:
           "below" .008-.017. The bias multipliers give lambda = 1.96, 1.92 and 1.76: close for cutoffs 1-2
           but not constant, so this rule does not reproduce cutoff 3 exactly.
         verdict: supported
+      - id: treatment-labels-reversed
+        side: source
+        statement: >-
+          Her text says cut score index 1 is 25% treatment and 75% control (Chapter 3, Table 3.1 and the
+          note to Table 4.8), but her code assigns treatment above the 25th percentile, so index 1 has 75%
+          treated. A population-value or coverage step written for the text's labels would treat the
+          code's treated cases as control and the reverse.
+        prediction: >-
+          The plateau would equal the treated share as her text labels it, which is the control share
+          under her code.
+        test:
+          method: Compare the coverage plateau with both shares.
+          files: [source-values/table_3_1.csv, source-values/table_4_8.csv, results/disagreement_tests.json]
+        result: >-
+          The plateau (.25, .49, .74) equals both, so it cannot separate this theory from
+          per-case-value-by-treatment; the labels conflict is itself confirmed in her text and code.
+        verdict: inconclusive
       - id: monte-carlo-noise
         side: neither
         statement: The pattern is sampling noise.
