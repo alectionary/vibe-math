@@ -223,9 +223,11 @@ GRID = ('Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b,
         'h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff '
         'cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples.')
 METHODS = ('Two engines. Chen\'s own seeded R code (Appendices A-B) was replayed exactly with R 4.1.3 and the '
-           '2021-08-02 package snapshot on an R-capable host (issues #92 and #118): the datasets her printed, '
-           'seeded code generates are identical to her literal printed pipeline (largest difference 0), first 64,000 '
-           'of them (50 replications per condition), then all 1,280,000 (1,000 per condition). This reproduces what '
+           '2021-08-02 package snapshot on an R-capable host (issues #92 and #118): it regenerated the datasets her '
+           'printed, seeded code generates, first 64,000 of them (50 replications per condition), then all 1,280,000 '
+           '(1,000 per condition). A literal check on her first simulation block rebuilt 635 of its 1,270 datasets '
+           'with her literal printed pipeline (largest difference 0) and found the random-number state identical '
+           'after all 1,270. This reproduces what '
            'her printed code produces; it is not necessarily the data behind her published results, which the '
            'h-absent analysis shows lacked the interaction wherever h > 0 (DISAGREEMENTS.yaml). '
            'Her bootstrap sets no seed, so the full simulation with 500 bootstrap resamples per analysis ran in an '
@@ -768,7 +770,7 @@ limitations = [
     'Chen\'s aggregation code, population values and result files are not printed. The mechanisms behind her bias, '
     'coverage and MINT results are inferred from her digitized figures and printed tables; they reproduce her patterns '
     'but are not read from her code (H1, H2, H3, S1).',
-    'Figures 4.17-4.38 were read from images (reading errors up to about .02 on rates); points hidden behind another '
+    'Figures 4.17-4.38 were read from images (reading errors up to about .02 on Type I error and power, median .03 and up to about .05 on coverage, Figures 4.31 and 4.35); points hidden behind another '
     'series are not readings: digitized_rates.csv fills them in from the visible series (status occluded) and they '
     'are not used for statement verdicts, figure-agreement rates or E4 (H3, S2, S3).',
     'RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the '
