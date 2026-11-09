@@ -81,7 +81,8 @@ NumericVector reml_eval(NumericVector theta, NumericMatrix s, int control, bool 
     return NumericVector::create(_["objective"]=objective, _["beta"]=slope[1]-slope[0],
         _["se"]=std::sqrt(ivar*scale), _["person_intercept"]=theta[0]*scale,
         _["person_slope"]=theta[1]*scale,_["cluster_intercept"]=theta[2]*scale,
-        _["cluster_slope"]=theta[3]*scale,_["residual"]=scale);
+        _["cluster_slope"]=theta[3]*scale,_["residual"]=scale,
+        _["logdet"]=logdet, _["rss"]=rss, _["df_reml"]=n-4, _["variance_ratio"]=ivar);
 }
 
 // Conditional fixed-covariance variance of the slope difference. This reuses
