@@ -24,7 +24,9 @@ cell and exact evidence-linked text, as required by the first-page contract.
 Render known theorems, qualitative findings, component estimates and finite
 results directly; never substitute "not established" because a scalar is null.
 These maps are audit aids, not proof of completeness. Same-context work sets
-`context: "shared"` and is a draft pending an isolated writing pass.
+`context: "shared"` and is a draft pending an isolated writing pass;
+`paper_freshness.py` reports it as `draft`, and as `stale` once any input it
+records, or any committed evidence it did not read, changes.
 
 Write the scientific conclusion from the final evidence, not from a sequence of
 updates. The first sentence of both abstract and introduction states whether
