@@ -119,6 +119,8 @@ class TrailerTests(unittest.TestCase):
         s.commit("rerun\n\nPaper: not-needed the rerun changes no printed number")
         (s.root / "results" / "cells.csv").write_text("a,b\n8,8\n")
         s.commit("rerun 2\n\nPaper: pending")
+        (s.root / "results" / "cells.csv").write_text("a,b\n7,7\n")
+        s.commit("rerun 3\n\nPaper: pending isolated writer pass")
         (s.root / "paper" / "p.tex").write_text("revised\n")
         s.commit("revise paper")
         self.assertEqual(paper_freshness.commit_errors(s.root, base), [])
