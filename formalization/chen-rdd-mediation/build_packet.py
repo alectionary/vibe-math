@@ -622,7 +622,7 @@ claim(id='S8', level='supporting',
       methods='Searched the dissertation.', uncertainty='Not applicable.', multiplicity='Not applicable.',
       status='not_established', status_reason='The analysis is announced in Chapter 3 but never reported, so there '
                                               'is nothing to assess; nothing blocks access.',
-      numerical='withheld', reconstruction_scope='none', limitations=['Unassessed.'],
+      numerical='not applicable', reconstruction_scope='none', limitations=['Unassessed.'],
       stopping=dict(reason='Not reported in the source.', attempted='Search of Chapters 3-5 and Appendices A-B for '
                     '"expected power", "standard deviation" and "power analysis".', untested='The analysis.',
                     resource_basis='Not a resource limit.', next_evidence='Chen\'s analysis notes.'))
