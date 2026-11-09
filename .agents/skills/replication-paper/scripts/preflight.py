@@ -11,7 +11,8 @@ From the repository root:
         --plan REPLICATION-PLAN.yaml --paper paper/paper.tex --root STUDY_ROOT
 
 Exit 0 when lavaan and OpenMx can be loaded, or when a fallback record
-supplies a justification and a separate validation. Exit 2 when the
+supplies a justification, a separate validation, and, for a blocked source
+path, the person's decision (see `fallback_errors`). Exit 2 when the
 preferred engine is missing and the fallback is absent or incomplete.
 `done` exits 0 when the replication plan passes, and 2 when it does not.
 A plan with `limit_schema: 1` is also checked for per-part limit kinds,
@@ -135,17 +136,15 @@ def assess(record: dict, fallback: dict | None = None) -> dict:
     justification = str(fallback.get("justification", "")).strip()
     validation = str(fallback.get("independent_validation", "")).strip()
     name = str(fallback.get("name", "")).strip()
-    if not name or not justification or not validation:
+    problems = fallback_errors(fallback)
+    if problems:
         return {
             "accepted": False,
             "engine": name or None,
             "fallback": True,
             "os": record.get("os"),
             "missing": missing,
-            "reason": (
-                "a fallback needs a name, a justification, and an "
-                "independent validation"
-            ),
+            "reason": "; ".join(problems),
         }
     return {
         "accepted": True,
@@ -154,9 +153,75 @@ def assess(record: dict, fallback: dict | None = None) -> dict:
         "os": record.get("os"),
         "missing": missing,
         "reason": None,
+        "kind": fallback.get("kind"),
+        "exact_reproduction": fallback.get("exact_reproduction"),
+        "decision": fallback.get("decision"),
         "justification": justification,
         "independent_validation": validation,
     }
+
+
+FALLBACK_KINDS = ("blocked", "domain")
+EXACT = ("possible", "not_possible", "unknown")
+
+
+def _filled(value) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def fallback_errors(fallback: dict) -> list:
+    """A fallback is a decision the person makes when the source's own path is blocked.
+
+    Every record names what the source used and whether running that path could
+    reproduce the source exactly (for example, seeded code in the source's
+    software). A `blocked` fallback also says what is lost, which ways to unblock
+    were considered, and who decided: `by: person` with the date, channel and a
+    summary of what the person was told and chose. `by: unreachable` is accepted
+    only when exact reproduction was not possible anyway. A `domain` fallback is a
+    scientific choice (the preferred engine does not implement the model), not a
+    workaround for something that failed to install.
+    """
+    if not isinstance(fallback, dict):
+        return ["fallback record must be an object"]
+    errors = []
+    for key in ("name", "justification", "independent_validation", "source_path"):
+        if not _filled(fallback.get(key)):
+            errors.append(f"fallback needs {key}")
+    kind = fallback.get("kind")
+    if kind not in FALLBACK_KINDS:
+        errors.append("fallback kind must be blocked (the source path could not be run here) "
+                      "or domain (the preferred engine does not implement the model)")
+    exact = fallback.get("exact_reproduction")
+    if exact not in EXACT:
+        errors.append("fallback needs exact_reproduction: possible, not_possible or unknown "
+                      "(run checks.py seeds on the source text)")
+    if not _filled(fallback.get("exact_reproduction_evidence")):
+        errors.append("fallback needs exact_reproduction_evidence (e.g. the seeds found in the source code)")
+    if kind != "blocked":
+        return errors
+    if not _filled(fallback.get("lost")):
+        errors.append("blocked fallback needs lost: what the source path would give that the fallback cannot")
+    options = fallback.get("unblock_options")
+    if not isinstance(options, list) or not options or not all(
+            isinstance(o, dict) and _filled(o.get("option")) and _filled(o.get("outcome")) for o in options):
+        errors.append("blocked fallback needs unblock_options: [{option, outcome}] for each way of running the "
+                      "source path that was considered (the person's own computer, network settings, another "
+                      "host, the author, a data agreement)")
+    decision = fallback.get("decision")
+    by = decision.get("by") if isinstance(decision, dict) else None
+    if by == "person":
+        for key in ("date", "channel", "summary"):
+            if not _filled(decision.get(key)):
+                errors.append(f"blocked fallback decision by the person needs {key}")
+    elif by == "unreachable":
+        if not _filled(decision.get("reason")):
+            errors.append("blocked fallback decided without the person needs a reason they could not be reached")
+        if exact != "not_possible":
+            errors.append("a blocked path that could reproduce the source exactly (or might) cannot be given up "
+                          "without the person's decision; ask them and record decision.by = person")
+    else:
+        errors.append("blocked fallback needs decision.by: person (the person was told and chose) or unreachable")
+    return errors
 
 
 def _git(root: Path, *args):
@@ -250,6 +315,25 @@ def _display(root: Path, path: Path) -> str:
         return full.as_posix()
 
 
+def fallback_records(root: Path):
+    """Every JSON file in the study shaped like an engine fallback record.
+
+    Found by content, not by name, so a record cannot skip the decision check by
+    being left off a command line. Downloaded copies are ignored.
+    """
+    found = []
+    for path in sorted(Path(root).rglob("*.json")):
+        if "downloaded" in path.parts or ".git" in path.parts:
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeError, ValueError):
+            continue
+        if isinstance(data, dict) and "independent_validation" in data and "justification" in data:
+            found.append((path, data))
+    return found
+
+
 def done_check(root, plan, paper, analysis=None) -> dict:
     """Fail when the plan, its first commit, or the paper's coverage claims do not line up."""
     root = Path(root).resolve()
@@ -267,6 +351,8 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         errors.append("plan: file is missing")
         result["accepted"] = False
         return result
+    for path, fallback in fallback_records(root):
+        errors.extend(f"fallback {_display(root, path)}: {e}" for e in fallback_errors(fallback))
     try:
         plan_obj = checks.load_plan(plan_path.read_text(encoding="utf-8"))
     except (OSError, UnicodeError, ValueError):
@@ -391,7 +477,7 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--fallback",
-        help="JSON file with name, justification, and independent_validation",
+        help="JSON fallback record (see fallback_errors for the required fields)",
     )
     args = parser.parse_args(argv)
     fallback = None

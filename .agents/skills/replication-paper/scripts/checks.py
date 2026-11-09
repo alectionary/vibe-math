@@ -10,6 +10,7 @@ Run from the repository root:
 
     python3 .agents/skills/replication-paper/scripts/checks.py
     python3 .agents/skills/replication-paper/scripts/checks.py captions FILE
+    python3 .agents/skills/replication-paper/scripts/checks.py seeds FILE
 """
 
 from __future__ import annotations
@@ -473,6 +474,12 @@ def _limit_kind_errors(parts) -> list:
                 errors.append(f"{label}: limit_kind {kind} is repeated")
                 continue
             seen_kinds.append(kind)
+            if kind in ("input_unavailable", "not_run"):
+                report = _detail(entry, part, "reported_to_person")
+                if not isinstance(report, dict) or not all(
+                        _nonempty(report.get(key)) for key in ("date", "channel", "summary")):
+                    errors.append(f"{label}: {kind} requires reported_to_person "
+                                  "{date, channel, summary}: a blocked part is the person's decision")
             if kind == "input_unavailable":
                 if not _nonempty(_detail(entry, part, "missing_input")):
                     errors.append(f"{label}: input_unavailable requires missing_input")
@@ -870,6 +877,46 @@ def caption_hints(text: str) -> list:
     return found
 
 
+SEED_PATTERNS = (
+    ("R", re.compile(r"\bset\.seed\s*\(\s*([^)]*)\)")),
+    ("R", re.compile(r"\bRNGkind\s*\(")),
+    ("Python", re.compile(r"\b(?:np\.)?random\.(?:seed|default_rng|SeedSequence)\s*\(\s*([^)]*)\)")),
+    ("SAS", re.compile(r"\bcall\s+streaminit\s*\(\s*([^)]*)\)", re.I)),
+    ("SAS", re.compile(r"\bseed\s*=\s*(\d+)", re.I)),
+    ("Mplus", re.compile(r"\bSEED\s*=\s*(\d+)\s*;")),
+    ("Stata", re.compile(r"\bset\s+seed\s+(\d+)")),
+    ("Julia/MATLAB", re.compile(r"\b(?:Random\.seed!|rng)\s*\(\s*([^)]*)\)")),
+)
+
+
+def seed_hints(text: str) -> list:
+    """Seeds and RNG settings in a source's printed code.
+
+    Seeded code means the source's own software can reproduce its data exactly.
+    A fallback to another engine then loses exact reproduction, which makes it a
+    blocker to put to the person, not a choice to make silently.
+    """
+    found = []
+    for number, line in enumerate(text.splitlines(), start=1):
+        for language, pattern in SEED_PATTERNS:
+            match = pattern.search(line)
+            if match:
+                found.append({"line": number, "language": language, "text": line.strip()[:160]})
+                break
+    return found
+
+
+def _seeds_main(argv: list) -> None:
+    if len(argv) != 1:
+        raise SystemExit("usage: checks.py seeds FILE")
+    try:
+        hints = seed_hints(read_source_text(Path(argv[0])))
+    except (OSError, UnicodeError, RuntimeError) as exc:
+        raise SystemExit(f"seeds: {exc}") from exc
+    json.dump({"seeded": bool(hints), "hints": hints}, sys.stdout, indent=2)
+    sys.stdout.write("\n")
+
+
 def _captions_main(argv: list) -> None:
     if len(argv) != 1:
         raise SystemExit("usage: checks.py captions FILE")
@@ -887,8 +934,11 @@ def main(argv=None) -> None:
     if args[:1] == ["captions"]:
         _captions_main(args[1:])
         return
+    if args[:1] == ["seeds"]:
+        _seeds_main(args[1:])
+        return
     if args:
-        raise SystemExit("usage: checks.py [captions FILE]")
+        raise SystemExit("usage: checks.py [captions FILE | seeds FILE]")
     fixture = Path(__file__).resolve().parents[1] / "fixtures" / "abbott_regression.json"
     data = json.loads(fixture.read_text())
     pair = data["scaled_difference"]["initial_versus_refined"]
