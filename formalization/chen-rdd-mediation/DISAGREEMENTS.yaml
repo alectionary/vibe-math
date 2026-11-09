@@ -60,9 +60,14 @@ disagreements:
           b-hat would absorb the interaction, so her PNIE bias would carry a positive a*h term growing
           with the treated share, and PNIE power would rise with h.
         test:
-          method: Least-squares fit of her digitized PNIE bias on design terms, by cutoff.
-          files: [results/bias_structure.csv, results/disagreement_tests.json]
-        result: The a*h and h coefficients of her PNIE bias are 0.000 at every cutoff (residual at most .005).
+          method: >-
+            Least-squares fit of her digitized PNIE bias on design terms, by cutoff; and her own real-data
+            fits (Tables 4.6-4.7), whose printed effects obey TNIE = ab + ah.
+          files: [results/bias_structure.csv, results/disagreement_tests.json, results/empirical_consistency.json]
+        result: >-
+          The a*h and h coefficients of her PNIE bias are 0.000 at every cutoff (residual at most .005), and
+          on the Head Start data her code estimated h (.003, .001, .001, -.028) and used it: TNIE = ab + ah
+          holds for all four designs.
         verdict: ruled_out
       - id: no-interaction-in-her-data
         side: source
@@ -166,10 +171,13 @@ disagreements:
           under her code.
         test:
           method: Compare the coverage plateau with both shares.
-          files: [source-values/table_3_1.csv, source-values/table_4_8.csv, results/disagreement_tests.json]
+          files: [source-values/table_3_1.csv, source-values/table_4_8.csv, source-values/table_4_2.csv,
+                  results/empirical_consistency.json, results/disagreement_tests.json]
         result: >-
           The plateau (.25, .49, .74) equals both, so it cannot separate this theory from
-          per-case-value-by-treatment; the labels conflict is itself confirmed in her text and code.
+          per-case-value-by-treatment. The conflict itself is confirmed: in her Head Start analysis
+          (Table 4.2) treatment is below the cutoff, with treated shares .36, .72 and .86 at cutoffs
+          1-3 as her text labels them, the reverse of her simulation code.
         verdict: inconclusive
       - id: monte-carlo-noise
         side: neither
@@ -207,6 +215,18 @@ disagreements:
           files: [results/bias_structure.csv, results/disagreement_tests.json]
         result: The h coefficient is about -0.93 (PNDE) and -1.0 (TNDE) at every cutoff.
         verdict: supported
+      - id: her-estimation-code
+        side: source
+        statement: Her estimation code computes PNDE as c' + h (i0M fixed at 1) in general, not only in the population values.
+        prediction: On her real data, PNDE - c' would equal h.
+        test:
+          method: The PNDE identity on her printed Head Start estimates (Tables 4.6-4.7) gives the i0M her code used.
+          files: [results/empirical_consistency.json, source-values/table_4_2.csv, secondary/table_arithmetic.csv]
+        result: >-
+          The implied i0M is 19.7 (RCT) and 22.1 (cutoff 3), the scale of the mediator mean (about 21 minutes,
+          Table 4.2); at cutoffs 1-2 h rounds to .001, too small to identify it. Her estimation code used the
+          fitted intercept, so the c' + h form belongs to her simulation's population values only.
+        verdict: ruled_out
       - id: noise
         side: neither
         statement: The h term in her PNDE bias is noise.
