@@ -164,6 +164,14 @@ class Findings(unittest.TestCase):
         self.qualitative();del self.record['review']['editorial']['checks']['finding_attribution']
         self.assertTrue(any('finding_attribution' in e for e in m.check(self.record,self.root)))
 
+    def test_supporting_findings_may_cite_other_pages_but_one_must_be_page_1(self):
+        self.qualitative()
+        checks=self.record['review']['editorial']['checks']['finding_attribution']
+        checks['findings'].append({'page': 7, 'location': 'Section 4.4', 'finding': 'Component evidence kept in prose.'})
+        self.assertFalse(any('page-specific finding_attribution' in e for e in m.check(self.record,self.root)))
+        checks['findings']=[{'page': 7, 'location': 'Section 4.4', 'finding': 'Only a later page.'}]
+        self.assertTrue(any('page-specific finding_attribution' in e for e in m.check(self.record,self.root)))
+
     def test_scalar_arithmetic_still_checked_independently(self):
         self.assertEqual(m.check(self.record,self.root),[])
         self.packet['headline_effects'][0]['ours_effect']=99;self.save()
