@@ -1,6 +1,6 @@
-> **Draft: the paper is ahead of its review.** The paper was revised on 2026-11-08 in the research context to carry the R replay (#92, #118), the digitized Figures 4.12-4.38 and the nine disagreements. That revision is a shared-context draft (`writer-manifest.json`: `context: shared`); it still needs an isolated writing pass and fresh cold reviews, and the full 1,000-replication R run (#118) is in progress. The PR stays draft until those are done.
+> **Draft: the paper is ahead of its review.** The paper was revised on 2026-11-08 and 2026-11-09 in the research context to carry the R replay (#92 and the full 1,000-replication run #118), the digitized Figures 4.12-4.38 and the nine disagreements. That revision is a shared-context draft (`writer-manifest.json`: `context: shared`); it still needs a rebuilt evidence packet, an isolated writing pass and fresh cold reviews. The PR stays draft until those are done.
 
-**Paper (current draft):** [paper folder at commit 00107ee6](https://github.com/alectionary/vibe-math/tree/00107ee6373715ee0a8edea216ce31e3e55a1a61/formalization/chen-rdd-mediation/paper), file `mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf`
+**Paper (current draft):** [paper folder at commit 767d9f5f](https://github.com/alectionary/vibe-math/tree/767d9f5fc8fc3a8aff989c9d25e2f45ed83bae20/formalization/chen-rdd-mediation/paper), file `mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf`
 **Last reviewed version:** [paper folder at commit 2aa873df](https://github.com/alectionary/vibe-math/tree/2aa873df4b6b43b6d80a1a7ef887f9c5da90d715/formalization/chen-rdd-mediation/paper)
 **After merge (live on master):** [paper folder on master](https://github.com/alectionary/vibe-math/tree/master/formalization/chen-rdd-mediation/paper), same file
 
@@ -24,7 +24,7 @@ The design, the data-generating model and the estimation code are Chen's (her Ta
 - **Not replicated: low coverage.** Mean coverage falls 0.04 percentage points short of 95%, against 43.62 in her Table 4.9; the truth lies above the interval 0.33 rather than 47.07 points more often than below it.
 - **Not replicated: near-zero MINT power.** MINT power is 0.836 at n = 500 for the largest interaction (a = .59, h = .34) and at least .97 for ah >= .13 from n = 1,000.
 - **Partly replicated: the n = 5,000 recommendation.** At n = 5,000, 86.3% of zero-effect results have Type I error in Bradley's range and 89.2% of nonzero results reach .80 power, similar at each cutoff; effects whose two paths are both zero stay conservative at every n.
-- **Explained: why her results differ.** Her own seeded R code, replayed exactly (identical to her literal pipeline), recovers h and is unbiased, like our run. The difference is in unprinted steps: her Type I and power figures match our rates with h set to 0 in 85-100% of points (MINT power 6.7% -> 97.8%) and her MINT bias is exactly -ah, so her simulated data had no interaction; her coverage falls to a plateau at the control share (.25/.49/.74), consistent with population values computed per case and wrong for treated cases (partly explained); her population PNDE uses c' + h. All nine disagreements, with competing explanations and tests, are in `DISAGREEMENTS.yaml` and Section 10; one (a TNDE power gap in one cell set) is unexplained.
+- **Explained: why her results differ.** Her own seeded R code, replayed exactly on all 1,280,000 of her datasets (identical to her literal pipeline), recovers h and is unbiased (no condition-mean bias beyond .018; SDs equal to ours), like our run. The difference is in unprinted steps: her Type I and power figures match our rates with h set to 0 in 85-100% of points (MINT power 6.7% -> 97.8%) and her MINT bias is exactly -ah, so her simulated data had no interaction; her coverage falls to a plateau at the control share (.25/.49/.74), consistent with population values computed per case and wrong for treated cases (partly explained); her population PNDE uses c' + h. All nine disagreements, with competing explanations and tests, are in `DISAGREEMENTS.yaml` and Section 10; the last, a TNDE power gap in one cell set, comes from her particular random draws (replayed in full in #118: .715 vs .687 power on the two sets of datasets).
 - **Not established: the Head Start comparison.** The restricted-use data were not available; all 24 printed differences and standardized biases in her Tables 4.6-4.7 were recomputed (the standardized biases match only with the RCT estimate's standard error as divisor, not the outcome SD of her equation 3.12).
 
 Uncertainty: each cell has 1,000 replications, so a coverage or rejection rate near .95 or .05 has a Monte Carlo standard error of about .007; Chen reports no Monte Carlo error. Magnitude labels on page 1 compare point estimates at the printed rounding tolerance and are not equivalence tests.
@@ -51,7 +51,8 @@ From `formalization/chen-rdd-mediation/`, the [README](https://github.com/alecti
 
 ## Open issues and next steps
 
-- #118: full 1,000-replication R replay (running); its condition summaries will be compared with ours.
+- #118 (done): full 1,000-replication R replay, compared with ours in `results/r_full_comparison.json`.
+- Rebuild the evidence packet (`paper_freshness.py check` reports it stale).
 - Isolated writer pass and fresh cold reviews of the revised paper.
 - The exact rule behind her coverage plateau, and the TNDE power gap, would need her result files. The Head Start comparison needs the restricted-use ICPSR file.
 
