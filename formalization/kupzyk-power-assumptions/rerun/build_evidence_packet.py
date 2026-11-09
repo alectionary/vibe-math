@@ -132,7 +132,7 @@ headline("rq3","Unequal sizes produce smaller power losses than other violations
 p=matches["attrition-15",.05]["published_pp"]-matches["attrition-15",.15]["published_pp"]
 o=matches["attrition-15",.05]["ours_pp"]-matches["attrition-15",.15]["ours_pp"]
 headline("rq4","The tested losses are greatest at ICC .05, with a nonmonotonic skewed-size exception.",
-         "All peak at .05. Prose reports decline.","All peak at .05. Skew loss rises .56 to .62 pp.","p. 96, Tables 1 and 4",
+         "All peak at .05. Skew rises .61 to .67 pp despite reported decline.","All peak at .05. Skew loss rises .56 to .62 pp.","p. 96, Tables 1 and 4",
          "the bias in power is greatest at the lowest level of ICC and decreases as the ICC increases",T,"results/full/comparison-summary.json",[
           ("ICC","ICC .05 vs .15 at 15% dropout","pp","dropout loss is greater at ICC .05",p,o,
            (.002,3,"Difference of two mean power losses, each with a .001 pp bound from Table 1 rounding."),"","")])
