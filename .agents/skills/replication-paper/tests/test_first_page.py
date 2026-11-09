@@ -80,6 +80,14 @@ class FirstPage(unittest.TestCase):
         effect['estimate_status']='unstable'
         self.assertEqual(m.comparison(effect),('not established','zero vs nonzero'))
 
+    def test_measurement_tolerance_needs_source_file(self):
+        effect=self.packet['headline_effects'][0]
+        effect['tolerance']=dict(kind='measurement',value=0.0123,basis='mean reading error of the digitized points')
+        with self.assertRaises(ValueError):
+            m.tolerance(effect)
+        effect['tolerance']['source_file']='results/digitized_rates.csv'
+        self.assertEqual(str(m.tolerance(effect)),'0.0123')
+
     def test_value_within_tolerance_of_zero_is_zero(self):
         effect=self.packet['headline_effects'][0]
         tol=effect['tolerance']['value']

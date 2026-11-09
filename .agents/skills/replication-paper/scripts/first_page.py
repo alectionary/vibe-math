@@ -61,8 +61,13 @@ def tolerance(row):
             bound += dec(weight)*Decimal(5).scaleb(-places-1)
         if dec(t['value']) != bound:
             raise ValueError('rounding tolerance must equal sum of input rounding bounds')
+    elif t.get('kind') == 'measurement':
+        # A published value read from a figure carries the reading error of that figure. The value must be the
+        # unrounded error itself, named with the file that records it, never a margin rounded up after the fact.
+        if not text(t.get('source_file')):
+            raise ValueError('measurement tolerance needs the source_file that records the error')
     elif t.get('kind') != 'prespecified':
-        raise ValueError('tolerance must be rounding-aware or prespecified')
+        raise ValueError('tolerance must be rounding-aware, measurement or prespecified')
     return dec(t['value'])
 
 
