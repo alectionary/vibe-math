@@ -94,3 +94,22 @@ if totals:
             for method in ("od","bw"):
                 assert int(grid[arm,cell]["valid"])==r[f"{method}_valid"]
                 assert abs(float(grid[arm,cell][f"{method}_mean"])-r[f"{method}_reject"]/r[f"{method}_valid"])<1e-10
+
+kr_fields = ("attempted", "kr_valid", "kr_reject", "drop_valid", "drop_reject")
+kr_totals = defaultdict(lambda: defaultdict(int))
+for path in sorted((a.raw / "kr-grid").glob("*.csv")):
+    row, = read(path)
+    for field in kr_fields:
+        kr_totals[row["arm"], int(row["cell"])][field] += int(row[field])
+if not a.provisional:
+    expected_corners = {(arm, cell) for arm in ("main", "null") for cell in (1, 54)}
+    assert set(kr_totals) == set(totals) == expected_corners
+    assert all(row["attempted"] == 25600 for row in kr_totals.values())
+if kr_totals:
+    kr_rows = [
+        dict(arm=arm, cell=cell, **dict(row),
+             kr_rate=row["kr_reject"] / row["kr_valid"] if row["kr_valid"] else "",
+             drop_rate=row["drop_reject"] / row["drop_valid"] if row["drop_valid"] else "")
+        for (arm, cell), row in sorted(kr_totals.items())
+    ]
+    save("kenward-roger-summary.csv", kr_rows)
