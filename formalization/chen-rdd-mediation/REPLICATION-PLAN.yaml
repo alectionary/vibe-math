@@ -303,3 +303,136 @@ parts:
     at every n and small effects such as ah = .007 remain under .80.'
   evidence: results/statement_checks.csv; results/power.csv; results/type1.csv
 removals: []
+published_evidence:
+- id: pe-table-4-8
+  location: Table 4.8, p. 88
+  quantity: percentage of non-biased results per effect and cutoff (|bias| <= .05 and .10)
+  value_source: table
+  plotted_in:
+  - Figure 4.12
+  - Figure 4.13
+  - Figure 4.14
+  - Figure 4.15
+  - Figure 4.16
+  agreement: disagree
+- id: pe-table-4-9
+  location: Table 4.9, p. 124
+  quantity: coverage and imbalance (truth below / above the interval) per effect and cutoff
+  value_source: table
+  plotted_in:
+  - Figure 4.29
+  - Figure 4.30
+  - Figure 4.31
+  - Figure 4.32
+  - Figure 4.33
+  - Figure 4.34
+  - Figure 4.35
+  - Figure 4.36
+  - Figure 4.37
+  - Figure 4.38
+  agreement: disagree
+- id: pe-fig-bias
+  location: Figures 4.12-4.16, pp. 90-98
+  quantity: mean bias by n, cutoff and effect sizes
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.12
+  - Figure 4.13
+  - Figure 4.14
+  - Figure 4.15
+  - Figure 4.16
+  digitized_file: results/digitized_bias.csv
+  reading_error: 0.002 (vector paths, calibrated on the +-.05/.10 reference lines)
+  agreement: disagree
+- id: pe-fig-type1
+  location: Figures 4.17-4.21, pp. 101-109
+  quantity: Type I error rates by n, cutoff and effect sizes
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.17
+  - Figure 4.18
+  - Figure 4.19
+  - Figure 4.20
+  - Figure 4.21
+  digitized_file: results/digitized_rates.csv
+  reading_error: about .003 (raster)
+  agreement: disagree
+- id: pe-fig-power
+  location: Figures 4.22-4.28, pp. 111-122
+  quantity: power by n, cutoff and effect sizes
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.22
+  - Figure 4.23
+  - Figure 4.24
+  - Figure 4.25
+  - Figure 4.26
+  - Figure 4.27
+  - Figure 4.28
+  digitized_file: results/digitized_rates.csv
+  reading_error: about .01-.02 (raster)
+  agreement: disagree
+- id: pe-fig-coverage
+  location: Figures 4.29, 4.31, 4.33, 4.35, 4.37, pp. 126-140
+  quantity: coverage by n, cutoff and effect sizes
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.29
+  - Figure 4.31
+  - Figure 4.33
+  - Figure 4.35
+  - Figure 4.37
+  digitized_file: results/digitized_rates.csv
+  reading_error: about .01-.04 (raster)
+  agreement: disagree
+- id: pe-fig-imbalance
+  location: Figures 4.30, 4.32, 4.34, 4.36, 4.38, pp. 128-142
+  quantity: shares below / within / above by n, cutoff and effect sizes
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.30
+  - Figure 4.32
+  - Figure 4.34
+  - Figure 4.36
+  - Figure 4.38
+  digitized_file: results/digitized_imbalance.csv
+  reading_error: about .015 (bar height in pixels)
+  agreement: disagree
+- id: pe-text-statements
+  location: Chapter 4 text, pp. 99-121
+  quantity: 46 testable Type I error and power statements
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.17
+  - Figure 4.18
+  - Figure 4.19
+  - Figure 4.20
+  - Figure 4.21
+  - Figure 4.22
+  - Figure 4.23
+  - Figure 4.24
+  - Figure 4.25
+  - Figure 4.26
+  - Figure 4.27
+  - Figure 4.28
+  digitized_file: results/statement_checks.csv
+  reading_error: as the figures; verdicts within the reading error are noted in DISAGREEMENTS.yaml
+  agreement: disagree
+- id: pe-pnde-definition
+  location: p. 104 (printed)
+  quantity: 'population value used for PNDE: c'' + h'
+  value_source: text
+  plotted_in: []
+  agreement: disagree
+- id: pe-ch5-n5000
+  location: Chapter 5, p. 150
+  quantity: n = 5,000 as the tentative minimum for accurate Type I error and power
+  value_source: text
+  plotted_in: []
+  agreement: disagree
+- id: pe-tables-4-6-4-7
+  location: Tables 4.6-4.7 and equation 3.12
+  quantity: RCT-RDD differences and standardized biases (Head Start)
+  value_source: table
+  plotted_in: []
+  agreement: disagree
