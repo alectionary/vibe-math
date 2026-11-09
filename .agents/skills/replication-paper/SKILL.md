@@ -134,7 +134,11 @@ complete run, or a `published_evidence` entry marked `agreement: disagree`):
 3. For each hypothesis, say what we would observe if it were true, then test
    it: rerun the source's own code, refit, simulate the hypothesized mistake
    and compare it with the source's digitized values, or compute how far a
-   value sits from a threshold in Monte Carlo standard errors. Commit the
+   value sits from a threshold in Monte Carlo standard errors. Read every
+   disputed statement against the source's own digitized figures as well as
+   against our run: if its figures contradict its text, the disagreement is
+   with its prose, not its results. Use only directly read points for this;
+   an occluded marker can carry a neighbouring series' value. Commit the
    outputs.
 4. Conclude: explained, partly explained or unexplained; whose error (source,
    ours, both, neither, undetermined); and how sure we are. An error of ours
