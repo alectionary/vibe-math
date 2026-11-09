@@ -88,25 +88,33 @@ engine fallback and blocked part near the top of the pull request description.
 
 ## The source and every figure and table in it
 
-The done check reads the source PDF itself. `source_locator` names it and
-`source_sha256` records the copy used; a different file fails. Run
-`scripts/source_items.py stub SOURCE.pdf` and keep the result under
-`source_items`: one entry per figure and table caption found in the source,
-each `use: read` with a `data_file` that exists and holds the values (a table
-transcribed, a figure digitized with `scripts/digitize.py`), or `use: excluded`
-with a specific `reason` and `reported_to_person`. A figure or table missing from
-the plan, or listed but not in the source, fails. A table whose page mentions
-means, SDs or correlations also records `sufficient_statistics`. Every source
-figure or table the paper cites must exist in the source.
+The source PDF is often not ours to redistribute, so it is never committed
+unless its licence allows. What is committed is the evidence read from it:
+those values are scientific statements. With the verified PDF in hand:
 
-When the source PDF is not here, never substitute another file. Record
-`source_missing: {fetch_issue, since, reason}` with the number of an open
-`fetch:` issue (the retrieval queue, #9). The done check then reports the study
-as `incomplete` (exit 3): it can be committed and published, but it is not done,
-because its figures and tables cannot be checked. When the PDF is back, record
-its sha256 and keep `source_missing`: the copy is checked, but the study stays
-incomplete until the PDF is stored where any later session can read it. Then
-remove `source_missing` and close the fetch issue.
+1. Record `source_locator` and `source_sha256`.
+2. Run `scripts/source_items.py inventory SOURCE.pdf --out source-inventory.json`
+   and commit the record; name it in `source_inventory`. It lists every figure
+   and table caption with its page, classifies figures as vector, raster or
+   none, and flags tables that mention means, SDs or correlations.
+3. Under `source_items` (start from `source_items.py stub SOURCE.pdf`), give
+   every item `use: read` with a `data_file` that holds the values (a table
+   transcribed, a figure digitized with `scripts/digitize.py`), or
+   `use: excluded` with a specific `reason` and `reported_to_person`. A table
+   flagged for moments also records `sufficient_statistics`.
+
+`preflight.py done` checks this with or without the PDF. When the PDF is here,
+it must match `source_sha256` and a fresh inventory must equal the committed
+one. When it is not, the committed record stands in for it, and the study can
+be complete. Every source figure or table the paper cites must exist in the
+inventory.
+
+Only when there is neither the PDF nor a committed inventory is evidence
+missing. Never substitute another file. Record `source_missing: {fetch_issue,
+since, reason}` with the number of an open `fetch:` issue (the retrieval queue,
+#9). The done check then reports the study as `incomplete` (exit 3): it can be
+committed, but it is not done. Once the PDF is fetched, make and commit the
+inventory and extracted values, remove `source_missing`, and close the issue.
 
 ## Replication plan
 
@@ -208,14 +216,14 @@ equations, and appendix tables, are hints only.
 
 - [ ] `REPLICATION-PLAN.yaml` lists every substantive part and was committed before analysis.
 - [ ] Every blocker on the source's own path (software, code and seeds, data, files) was reported to the person when it happened, with what it costs and how to unblock it, and they decided. `checks.py seeds` was run on the source; each fallback record and each `input_unavailable` or `not_run` part carries that decision.
-- [ ] The source PDF is present and matches `source_sha256`, and `source_items` covers every figure and table caption that `scripts/source_items.py` finds in it, or the plan records `source_missing` with an open fetch issue and the study is reported as incomplete, not done.
+- [ ] `source_sha256` and the committed `source_inventory` identify the source, and `source_items` covers every figure and table in it with committed values or a reported exclusion; or, with neither the PDF nor an inventory, the plan records `source_missing` with an open fetch issue and the study is reported as incomplete, not done. The PDF itself is not committed unless its licence allows.
 - [ ] Every published quantity compared is in `published_evidence` with its `value_source`; any quantity a figure plots was digitized (`scripts/digitize.py`, with its reading error) or the person was told why not. Every `input_unavailable` for data records the `sufficient_statistics` search, and none is marked unavailable when the printed moments suffice.
 - [ ] The full design was run, or the reduced run is a last resort with a cost estimate, what was tried, and exact `N of M` counts in the abstract and the body.
 - [ ] The headline verdict is no stronger than the headline parts that were run.
 - [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.
 - [ ] Every part of `REPLICATION-PLAN.yaml` that is not `replicated` has its own `limit_kind` (`input_unavailable`, `not_run`, `theorem_finite_only`, or `out_of_scope`), a part-specific reason, and part-specific evidence. `preflight.py done` rejects copied reasons, generic templates such as "See named artifacts and limitations", a repeated evidence path, and a `not_run` part that lacks an estimate and a decision. A tractable `not_run` part needs a non-cost justification, or an explicit `decision_by: project` with a `decision_reason`, before a resource decline is accepted.
 - [ ] No part was removed or narrowed against the first commit without a recorded reason.
-- [ ] `preflight.py done` exits 0 (complete). Exit 3 means incomplete: no errors, but the source PDF is missing and recorded; the study is not done. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
+- [ ] `preflight.py done` exits 0 (complete). Exit 3 means incomplete: no errors, but neither the source PDF nor a committed inventory of it is available, and that is recorded; the study is not done. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
 - [ ] Optional caption hints were reviewed.
 - [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
 - [ ] Rendered pages for headline and Published entries were inspected when the PDF could be obtained. Text reading and visual inspection are recorded separately.

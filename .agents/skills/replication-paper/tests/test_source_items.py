@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import importlib.util
+import json
 import sys
 import tempfile
 import unittest
@@ -100,19 +101,56 @@ class Inventory(unittest.TestCase):
 
 @unittest.skipUnless(HAVE_FITZ, "needs PyMuPDF")
 class SourceGate(unittest.TestCase):
+    """The PDF may not be stored; the committed inventory and extracted values are."""
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)
-        self.plan = {"source_locator": "sources/dissertation.pdf", "source_items": []}
+        self.pdf = self.root / "sources" / "dissertation.pdf"
+        self.pdf.parent.mkdir()
+        synthetic_source(self.pdf)
+        self.sha = hashlib.sha256(self.pdf.read_bytes()).hexdigest()
+        (self.root / "results").mkdir()
+        (self.root / "results" / "fig11.csv").write_text("n,bias\n500,0.01\n", encoding="utf-8")
+        self.plan = {"source_locator": "sources/dissertation.pdf", "source_sha256": self.sha,
+                     "source_items": [
+                         {"label": "Figure 1.1", "use": "read", "data_file": "results/fig11.csv"},
+                         {"label": "Figure 2.2", "use": "excluded", "reason": "a path diagram; it plots no values",
+                          "reported_to_person": REPORT},
+                         {"label": "Table 2.1", "use": "read", "data_file": "results/fig11.csv",
+                          "sufficient_statistics": {"found": True, "what": "means and SDs", "sufficient": False,
+                                                    "why": "no correlations are printed"}}]}
 
     def gate(self):
         return preflight.source_gate(self.root, self.plan, "")
 
-    def test_missing_source_must_be_recorded_and_makes_the_study_incomplete(self):
+    def commit_inventory(self):
+        assert source_items.main(["inventory", str(self.pdf), "--out", str(self.root / "source-inventory.json")]) == 0
+        self.plan["source_inventory"] = "source-inventory.json"
+
+    def test_present_pdf_needs_a_committed_inventory_and_its_hash(self):
+        errors, _ = self.gate()
+        self.assertTrue(any("commit the inventory" in e for e in errors))
+        self.commit_inventory()
+        self.assertEqual(self.gate(), ([], []))
+        self.plan["source_sha256"] = "0" * 64
+        errors, _ = self.gate()
+        self.assertTrue(any("different PDF" in e or "does not match" in e for e in errors))
+
+    def test_without_the_pdf_the_committed_record_can_make_the_study_complete(self):
+        self.commit_inventory()
+        self.pdf.unlink()                       # the original is not stored; the evidence is
+        self.assertEqual(self.gate(), ([], []))
+        self.plan["source_items"].pop()         # an item read from the record must still be covered
+        errors, _ = self.gate()
+        self.assertTrue(any("Table 2.1" in e and "not in the plan" in e for e in errors))
+
+    def test_without_pdf_or_record_the_study_is_incomplete_only_if_recorded(self):
+        self.pdf.unlink()
         errors, incomplete = self.gate()
-        self.assertTrue(any("no source_missing record" in e for e in errors))
-        self.plan["source_missing"] = {"fetch_issue": 93, "since": "2026-11-08", "reason": "not stored after review"}
+        self.assertTrue(any("neither a source_inventory record nor a source_missing record" in e for e in errors))
+        self.plan["source_missing"] = {"fetch_issue": 93, "since": "2026-11-08", "reason": "verified copy not kept"}
         errors, incomplete = self.gate()
         self.assertEqual(errors, [])
         self.assertEqual(len(incomplete), 1)
@@ -121,25 +159,13 @@ class SourceGate(unittest.TestCase):
         errors, _ = self.gate()
         self.assertTrue(any("fetch_issue" in e for e in errors))
 
-    def test_present_source_must_match_its_recorded_hash(self):
-        pdf = self.root / "sources" / "dissertation.pdf"
-        pdf.parent.mkdir()
-        synthetic_source(pdf)
+    def test_a_stale_inventory_is_rejected(self):
+        self.commit_inventory()
+        rec = json.loads((self.root / "source-inventory.json").read_text())
+        rec["items"] = rec["items"][:-1]
+        (self.root / "source-inventory.json").write_text(json.dumps(rec))
         errors, _ = self.gate()
-        self.assertTrue(any("source_sha256" in e for e in errors))
-        self.plan["source_sha256"] = "0" * 64
-        errors, _ = self.gate()
-        self.assertTrue(any("does not match source_sha256" in e for e in errors))
-        self.plan["source_sha256"] = hashlib.sha256(pdf.read_bytes()).hexdigest()
-        errors, incomplete = self.gate()
-        self.assertEqual(incomplete, [])
-        self.assertTrue(any("Figure 1.1" in e and "not in the plan" in e for e in errors))
-        # a present, matching copy is checked even while the fetch issue stays open
-        self.plan["source_missing"] = {"fetch_issue": 93, "since": "2026-11-08", "reason": "not stored durably"}
-        errors2, incomplete = self.gate()
-        self.assertEqual(errors2, errors)
-        self.assertEqual(len(incomplete), 1)
-        self.assertIn("not stored durably", incomplete[0])
+        self.assertTrue(any("differs from a fresh inventory" in e for e in errors))
 
 
 if __name__ == "__main__":
