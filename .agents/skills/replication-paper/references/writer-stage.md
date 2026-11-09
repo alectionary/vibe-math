@@ -23,7 +23,7 @@ Map each Published and Ours finding to its own row-contained, nonoverlapping
 cell and exact evidence-linked text, as required by the first-page contract.
 Render known theorems, qualitative findings, component estimates and finite
 results directly; never substitute "not established" because a scalar is null.
-Record `code_revision`: the commit that holds the code and evidence the paper names for reproduction (normally the last commit before the paper's own files); name the same revision in the paper. `paper_freshness.py` fails when any tracked packet artifact differs at that revision.
+The paper names no commit or working branch of this repository: it links to `master` and tells the reader to reproduce from `master` (`scripts/commit_refs.py`, run by `preflight.py done`). Commit pins belong in the delivery record and the pull request.
 These maps are audit aids, not proof of completeness. Same-context work sets
 `context: "shared"` and is a draft pending an isolated writing pass;
 `paper_freshness.py` reports it as `draft`, and as `stale` once any input it
