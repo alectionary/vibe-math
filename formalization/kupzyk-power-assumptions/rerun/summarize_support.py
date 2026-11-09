@@ -20,7 +20,7 @@ def read(path):
 
 def save(name,rows):
     with (a.out/name).open("w",newline="") as f:
-        w=csv.DictWriter(f,list(rows[0]));w.writeheader();w.writerows(rows)
+        w=csv.DictWriter(f,list(rows[0]),lineterminator="\n");w.writeheader();w.writerows(rows)
 
 a.out.mkdir(parents=True,exist_ok=True)
 source=a.study/"source-values"

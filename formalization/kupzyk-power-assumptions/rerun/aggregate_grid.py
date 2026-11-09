@@ -21,7 +21,7 @@ for path in sorted(args.checkpoints.glob("*-*.csv")):
     for k in ("attempted", "valid", *keys, *(k + "_sq" for k in keys)):
         groups[key[:2]][k] += float(row[k])
 with args.output.open("w", newline="") as f:
-    writer = csv.writer(f)
+    writer = csv.writer(f,lineterminator="\n")
     writer.writerow(["arm", "cell", "attempted", "valid",
                      *(column for k in keys for column in (k + "_mean", k + "_mcse"))])
     for (arm, cell), group in sorted(groups.items()):

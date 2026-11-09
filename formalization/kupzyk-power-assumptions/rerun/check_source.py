@@ -52,7 +52,7 @@ for arm in (1,2):
             implied_n=4*e*(1-e)/(((hi-lo)/2)**2),
             bradley_ok=.025<=e<=.075, serlin_ok=.035<=e<=.065))
 with (root/"results"/"appendix-d-source-identity.csv").open("w",newline="") as f:
-    w=csv.DictWriter(f,list(d_checks[0]));w.writeheader();w.writerows(d_checks)
+    w=csv.DictWriter(f,list(d_checks[0]),lineterminator="\n");w.writeheader();w.writerows(d_checks)
 
 fplots=read("figures-6-11")
 mapped=[]
@@ -65,7 +65,7 @@ for row in fplots:
     mapped.append(dict(row,printed=published,delta=float(row["power"])-published,
                        within_reading_error=abs(float(row["power"])-published)<=float(row["reading_error"])))
 with (root/"results"/"figure-table1-check.csv").open("w",newline="") as f:
-    w=csv.DictWriter(f,list(mapped[0]));w.writeheader();w.writerows(mapped)
+    w=csv.DictWriter(f,list(mapped[0]),lineterminator="\n");w.writeheader();w.writerows(mapped)
 
 f23=[]
 for r in read("figures-2-3"):
