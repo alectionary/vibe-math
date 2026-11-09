@@ -1,0 +1,990 @@
+schema_version: 1
+limit_schema: 1
+dissertation: 'Chen, D. (2021). Statistical mediation analysis in regression discontinuity design for causal inference
+  (Doctoral dissertation). University of Nebraska-Lincoln. First adviser: James A. Bovaird; second adviser: Lorey
+  A. Wheeler.'
+source_locator: source/chen2021.pdf
+source_inventory: source-inventory.json
+source_sha256: 9206b3d824077d36c86b4935ff7f19f64b3fdebde7746943b8a94500fe11e557
+source_url: https://digitalcommons.unl.edu/cehsdiss/403/
+parts:
+- id: study-dissertation
+  kind: study
+  label: Chen 2021 dissertation
+  plan: Account for every chapter, research question, analysis, simulation factor, outcome and headline conclusion.
+    Run the full simulation design printed in Table 3.1 and Appendices A-B, independently re-implemented, at 1,000
+    replications and 500 percentile-bootstrap resamples per replication.
+  headline: true
+  status: partly
+  run_complete: true
+  limit_kind:
+  - input_unavailable
+  missing_input: HSIS restricted-use analysis file (ICPSR 29462) used in Chapter 3; only documentation and codebooks
+    are publicly downloadable
+  looked_in: ICPSR 29462 study page and public download V7 (no data files); ICPSR 36968 page; Chen 2021 appendices
+    (no RQ2 data or input); see notes/availability.md
+  reason: 'Every chapter, question and headline is accounted for. The RQ3 simulation was run in full (3,840 of 3,840
+    cells): 29 of Chen''s 46 testable Type I error and power statements agree with ours, while the bias, coverage
+    and MINT conclusions do not. RQ2 cannot be rerun without the restricted HSIS data.'
+  evidence: notes/run-record.md; REPLICATION-PLAN.yaml
+  reported_to_person: &id001
+    date: '2026-11-08'
+    channel: chat
+    summary: The person confirmed they had applied for the Head Start restricted-use data and were prevented from
+      obtaining it, and that replications do not contact the original authors; work proceeds without the data.
+  sufficient_statistics: &id002
+    found: true
+    what: Table 4.2 within-group means and SDs by cutoff; Table 4.4 residual correlations; Tables 4.6-4.7 path and
+      effect estimates with SEs
+    sufficient: false
+    why: no covariances of treatment with mediator or outcome are printed, so the a, b, c' and h paths cannot be
+      refitted; the estimates and SEs support only the arithmetic check (an-hsis-arithmetic)
+- id: ch-1
+  kind: chapter
+  label: Chapter 1. Introduction
+  plan: Take the three research questions, the hypotheses and Table 1.1 as the design to replicate.
+  status: replicated
+  evidence: simulation/chen_sim.py
+  note: The three research questions and Table 1.1 factors are the design run here.
+- id: ch-2
+  kind: chapter
+  label: Chapter 2. Literature review
+  plan: Use it to fix the potential-outcomes definitions of PNIE, TNIE, PNDE, TNDE and MINT and the RDD assumptions;
+    it has no analysis of its own to rerun.
+  status: not_attempted
+  limit_kind:
+  - out_of_scope
+  scope_reason: A literature review with no analysis of its own; its PNIE, TNIE, PNDE, TNDE and MINT definitions
+    are used in the population values of chen_sim.population().
+  reason: Chapter 2 reviews prior work and reports no analysis; only its effect definitions enter the replication.
+  evidence: simulation/chen_sim.py; notes/run-record.md
+- id: ch-3
+  kind: chapter
+  label: Chapter 3. Methods and procedures
+  plan: Re-implement the data generation (Appendix A) and estimation with percentile bootstrap CIs (Appendix B)
+    from the printed code and equations 3.5-3.13, and record every place where the code and the prose differ.
+  status: replicated
+  evidence: simulation/chen_sim.py; simulation/validate_estimator.py
+  note: 'Appendices A-B re-implemented line by line. Two code-prose differences recorded: the code''s cutoff index
+    1 is the 25th percentile (75% treated) while the Table 4.8 note labels it 25% treatment; the standardized-bias
+    divisor that reproduces Tables 4.6-4.7 is the RCT estimate''s SE, not the outcome SD of equation 3.12.'
+- id: ch-4
+  kind: chapter
+  label: Chapter 4. Results
+  plan: Compare every printed simulation summary (Tables 4.8 and 4.9, Figures 4.12-4.38 as described in the text)
+    with our full-design results; account for the secondary-data tables 4.2-4.7.
+  status: partly
+  run_complete: true
+  limit_kind:
+  - input_unavailable
+  missing_input: HSIS restricted-use data for Tables 4.2-4.7 and Figures 4.1-4.11
+  looked_in: notes/availability.md (ICPSR 29462 public and restricted routes, ICPSR 36968, the dissertation's appendices)
+  reason: Of the simulation results, 29 of 46 testable Type I error and power statements agree with Chapter 4, including
+    all PNIE and PNDE power statements; read on our cells with h set to 0, 39 of the 46 would hold. Tables 4.8 and
+    4.9 (bias, coverage, imbalance) disagree. The HSIS tables can only be checked arithmetically.
+  evidence: results/table48_ours.csv; results/table49_ours.csv; results/statement_checks.csv
+  reported_to_person: *id001
+  sufficient_statistics: *id002
+- id: ch-5
+  kind: chapter
+  label: Chapter 5. Discussion
+  plan: 'Test the discussion''s conclusions against our results: biased direct effects, low coverage with true values
+    above the CIs, near-zero MINT power, and the tentative minimum sample size of 5,000.'
+  status: mismatch
+  run_complete: true
+  reason: The discussion's central conclusions (biased direct effects, invalid percentile-bootstrap CIs with the
+    truth above the interval, near-zero MINT power) do not hold in the full-design run; its Type I error summary
+    agrees for most statements.
+  evidence: results/summary.json; results/statement_checks.csv
+- id: rq-1
+  kind: research_question
+  label: 'RQ1: statistical assumptions for mediation in RDD (Table 4.1)'
+  plan: Check the integrated assumption table against the cited definitions and against the simulation's data-generating
+    model; this is a conceptual synthesis, not a computation.
+  status: not_attempted
+  limit_kind:
+  - out_of_scope
+  scope_reason: Table 4.1 is a conceptual synthesis of assumptions stated in prior literature; there is no computation
+    or data to rerun.
+  reason: RQ1 is answered by a literature synthesis (Table 4.1) rather than an analysis; we note only that the simulation's
+    data-generating model meets the no-confounding and functional-form assumptions by construction.
+  evidence: simulation/chen_sim.py; notes/availability.md
+- id: rq-2
+  kind: research_question
+  label: 'RQ2: mediation in RDD versus RCT, Head Start Impact Study'
+  plan: Request or locate the HSIS restricted-use data (ICPSR). If unavailable, record where we looked and replicate
+    only the arithmetic that can be checked from printed numbers (standardized bias and differences in Tables 4.6-4.7).
+  status: input_unavailable
+  limit_kind:
+  - input_unavailable
+  missing_input: HSIS restricted-use analysis file (ICPSR 29462) used in Chapter 3; only documentation and codebooks
+    are publicly downloadable
+  looked_in: ICPSR 29462 study page and public download V7 (no data files); ICPSR 36968 page; Chen 2021 appendices
+    (no RQ2 data or input); see notes/availability.md
+  reason: RQ2 compares RCT and synthetic-RDD mediation estimates in the HSIS restricted-use data, which this project
+    cannot obtain; only the printed Tables 4.6-4.7 arithmetic was checked.
+  evidence: notes/availability.md; secondary/table_arithmetic.csv
+  reported_to_person: *id001
+  sufficient_statistics: *id002
+- id: rq-3
+  kind: research_question
+  label: 'RQ3: behavior of mediation in RDD across sample size, effect sizes and cutoff'
+  plan: Run the full factorial simulation and compute bias, Type I error, power, coverage and imbalance for all
+    five effects at all three cutoffs.
+  headline: true
+  status: mismatch
+  run_complete: true
+  reason: 'All 3,840 cells were run at 1,000 replications: every effect is unbiased (largest |bias| .016) and mean
+    coverage is .95 in every effect-cutoff row, against Chen''s Tables 4.8-4.9; MINT power rises with n and ah instead
+    of staying near zero.'
+  evidence: results/cells.csv; results/summary.json
+- id: an-hsis-assumptions
+  kind: analysis
+  label: 'HSIS assumption tests: treatment distribution plots, covariate balance (Table 4.3), McCrary density test,
+    residual correlations (Table 4.4), functional form (Table 4.5)'
+  plan: Rerun on HSIS data if obtainable; otherwise record as input unavailable.
+  status: input_unavailable
+  limit_kind:
+  - input_unavailable
+  missing_input: HSIS child-level data for the density test, covariate balance, residual correlations and functional-form
+    checks (Tables 4.3-4.5)
+  looked_in: ICPSR 29462 public download V7 manifest (documentation only); notes/availability.md
+  reason: The assumption tests need child-level HSIS records; none of Tables 4.3-4.5 can be recomputed from printed
+    numbers.
+  evidence: notes/availability.md
+  reported_to_person: *id001
+  sufficient_statistics: *id002
+- id: an-hsis-effects
+  kind: analysis
+  label: HSIS path and mediation effect estimates, RCT versus synthetic RDD at three cutoffs (Tables 4.6-4.7)
+  plan: Rerun with the printed model if HSIS data are obtainable; recompute the printed differences and standardized
+    biases from the printed estimates in any case.
+  status: input_unavailable
+  limit_kind:
+  - input_unavailable
+  missing_input: HSIS restricted-use outcomes and mediator for the RCT and synthetic-RDD fits of Tables 4.6-4.7
+  looked_in: ICPSR 29462 restricted-use route (signed RDUA required); Chen 2021 appendices
+  reason: The RCT and RDD path estimates cannot be refitted without the restricted file; their printed differences
+    are checked under an-hsis-arithmetic.
+  evidence: notes/availability.md; secondary/table_arithmetic.py
+  reported_to_person: *id001
+  sufficient_statistics: *id002
+- id: an-hsis-arithmetic
+  kind: analysis
+  label: Internal arithmetic of Tables 4.6-4.7 (differences and standardized bias)
+  plan: Recompute each printed difference and SB from the printed RCT and RDD estimates and the formula in equation
+    3.12.
+  status: replicated
+  evidence: secondary/table_arithmetic.py; secondary/table_arithmetic.csv
+  note: 24 of 24 differences match (RCT minus RDD); 24 of 24 standardized biases match only with the RCT estimate's
+    SE as divisor, not the outcome SD stated in equation 3.12.
+- id: an-hsis-significance
+  kind: analysis
+  label: RDD versus RCT significance conclusions from the printed Table 4.7 intervals
+  plan: Read the significance of every printed RCT and RDD 95% CI in Table 4.7 and compare the conclusions, testing
+    the abstract's statement that RDD intervals reach opposite significance conclusions.
+  status: partly
+  run_complete: true
+  evidence: secondary/significance_conclusions.py; results/significance_conclusions.json
+  reason: 10 of 15 comparisons are opposite; where the RCT is significant (6 cells) the RDD is not, but in 4 cells
+    the RDD is significant where the RCT is not, and 5 agree (DISAGREEMENTS.yaml significance-conclusions).
+- id: cond-grid
+  kind: condition
+  label: 'Full factorial: n (5 levels) x a (4) x b (4) x c'' (4) x h (4) x cutoff (3)'
+  plan: 'Run every cell: 1,280 generated data conditions, each analysed at three cutoffs, giving 3,840 condition-cutoff
+    cells, 1,000 replications each, 500 bootstrap resamples per replication.'
+  design_count: 3840
+  headline: true
+  status: replicated
+  run_count: 3840
+  evidence: results/cells.csv; notes/run-record.md
+- id: arm-cut1
+  kind: arm
+  label: 'Cutoff 1: 25th percentile of the assignment variable'
+  plan: Treatment for x at or above the 25th sample percentile, as in Appendix A; record that this gives 75% treated,
+    and compare with the prose labels.
+  status: replicated
+  evidence: results/cells.csv; simulation/chen_sim.py; results/table48_ours.csv
+  note: 'Run as coded: treatment at or above the 25th percentile, 75% treated. The Table 4.8 note labels this index
+    25% treatment.'
+- id: arm-cut2
+  kind: arm
+  label: 'Cutoff 2: median'
+  plan: Treatment for x at or above the sample median, as in Appendix A.
+  status: replicated
+  evidence: results/cells.csv; results/table49_ours.csv
+- id: arm-cut3
+  kind: arm
+  label: 'Cutoff 3: 75th percentile'
+  plan: Treatment for x at or above the 75th sample percentile, as in Appendix A; record that this gives 25% treated.
+  status: replicated
+  evidence: results/cells.csv; results/type1.csv
+  note: 'Run as coded: 75th percentile, 25% treated.'
+- id: out-bias
+  kind: analysis
+  label: Bias of PNIE, TNIE, PNDE, TNDE and MINT (Table 4.8, Figures 4.12-4.16)
+  plan: Average estimate minus population value per cell; percentage of cells within [-.10,.10] and [-.05,.05] by
+    effect and cutoff, collapsed as in Table 4.8.
+  status: mismatch
+  run_complete: true
+  reason: Our bias is within [-.05, .05] in 100% of conditions for every effect and cutoff (largest |bias| .016);
+    Table 4.8 prints 6-87%. Its PNIE, TNIE and MINT rows match what |bias| = population value would give (secondary/zero_estimate_check.csv),
+    a consistency observation only.
+  evidence: results/table48_ours.csv; secondary/zero_estimate_check.csv
+- id: out-type1
+  kind: analysis
+  label: Type I error of the five effects (Figures 4.17-4.21)
+  plan: Rejection rate of the 95% percentile bootstrap CI in cells whose population effect is zero, judged against
+    Bradley's [.025,.075].
+  status: partly
+  run_complete: true
+  reason: 13 of the 18 testable Type I statements agree over every cell set they name (14 with .01 threshold slack).
+    For MINT with a = 0, ours is below Bradley's range at h = .05 but about .05 at h = .34, whereas Chen reports
+    near zero with no variation across h; three TNIE statements with a = 0 at small n disagree, with our rates and
+    her description on different sides of the robustness bounds.
+  evidence: results/type1.csv; results/statement_checks.csv
+- id: out-power
+  kind: analysis
+  label: Power of the five effects (Figures 4.22-4.28)
+  plan: Rejection rate in cells whose population effect is nonzero.
+  status: partly
+  run_complete: true
+  reason: '16 of the 28 testable power statements agree (17 with slack), including all PNIE and PNDE statements;
+    the disagreements concern TNIE, TNDE and MINT: most involve cells in which h is part of the effect, where Chen
+    reports lower power than ours or no variation, and two concern differences between cutoffs that she describes
+    as similar (for example MINT power .84 at n = 500 for ah = .20 in our run).'
+  evidence: results/power.csv; results/statement_checks.csv
+- id: out-power-analytic
+  kind: analysis
+  label: Additional power analysis by the standard deviation of Y (Chapter 3, Outcome Measures)
+  plan: Locate the reported comparison of expected and simulated power; replicate it if its method is stated.
+  status: input_unavailable
+  limit_kind:
+  - input_unavailable
+  missing_input: method and results of the additional power analysis by the SD of Y announced in Chapter 3
+  looked_in: Chapter 3 Outcome Measures (printed p. 58), the Chapter 4 power section (printed pp. 109-121), Chapter
+    5, Appendices A-B
+  reason: Chapter 3 announces a comparison of expected and simulated power by the SD of Y, but no method or result
+    for it appears anywhere in the dissertation, so there is nothing to rerun.
+  evidence: source/chen2021.pdf; notes/run-record.md
+  reported_to_person:
+    date: '2026-11-09'
+    channel: chat
+    summary: Told that the additional power analysis by the SD of Y announced in Chapter 3 has no printed method
+      or results, so there is nothing to rerun.
+  sufficient_statistics:
+    applies: false
+    why: the missing input is an unprinted method and result, not data
+- id: out-coverage
+  kind: analysis
+  label: Coverage and imbalance of the five effects (Table 4.9, Figures 4.29-4.38)
+  plan: Share of CIs containing, falling below and falling above the population value; collapsed as in Table 4.9
+    and by cell.
+  status: mismatch
+  run_complete: true
+  reason: Our mean coverage is 94.6-95.6% in every effect-cutoff row with misses on both sides (truth below the
+    CI 1.8-2.7%, above it 2.5-2.9%); Table 4.9 prints 24-84% coverage with the truth mostly above the interval.
+  evidence: results/table49_ours.csv; results/cells.csv; results/summary.json
+- id: hl-bias-direct
+  kind: headline
+  label: Direct-effect estimates are biased (negative bias), indirect and MINT less so; bias decreases as the control
+    share increases
+  plan: Compare with the bias in our full-design run.
+  headline: true
+  status: mismatch
+  run_complete: true
+  reason: PNDE and TNDE are unbiased in every cell of our run (largest |bias| .016), with no trend across cutoffs.
+  evidence: results/table48_ours.csv; results/summary.json
+- id: hl-coverage
+  kind: headline
+  label: Percentile bootstrap CIs give low coverage, with true values systematically above the CIs; the chief conclusion
+    that the CI method does not give valid inference
+  plan: Compare with coverage and imbalance in our full-design run.
+  headline: true
+  status: mismatch
+  run_complete: true
+  reason: Percentile bootstrap CIs are close to nominal in our run (93% of cells inside Bradley's [.925, .975],
+    lowest .916), so the conclusion that they do not give valid inference is not supported.
+  evidence: results/table49_ours.csv; results/summary.json; simulation/aggregate.py
+- id: hl-mint-power
+  kind: headline
+  label: MINT power is near zero at every sample size
+  plan: Compare with MINT rejection rates in our run.
+  headline: true
+  status: mismatch
+  run_complete: true
+  reason: 'MINT power grows with n and ah: averaged over cutoffs it is .84 at n = 500 for ah = .20 and at least
+    .97 for ah >= .13 once n >= 1,000.'
+  evidence: results/summary.json; results/power.csv
+- id: hl-n5000
+  kind: headline
+  label: Tentative minimum sample size of 5,000 for accurate Type I error and power above .80 regardless of cutoff
+  plan: Check against our Type I error and power across cells.
+  headline: true
+  status: partly
+  run_complete: true
+  reason: 'n = 5,000 is where most cells pass in our run (86% of zero-effect cells with Type I in Bradley, 89% of
+    nonzero cells with power >= .80), but not all: both-zero product effects stay conservative at every n and small
+    effects such as ah = .007 remain under .80.'
+  evidence: results/statement_checks.csv; results/power.csv; results/type1.csv
+removals: []
+published_evidence:
+- id: pe-table-4-8
+  location: Table 4.8, p. 88
+  quantity: percentage of non-biased results per effect and cutoff (|bias| <= .05 and .10)
+  value_source: table
+  plotted_in:
+  - Figure 4.12
+  - Figure 4.13
+  - Figure 4.14
+  - Figure 4.15
+  - Figure 4.16
+  agreement: disagree
+- id: pe-table-4-9
+  location: Table 4.9, p. 124
+  quantity: coverage and imbalance (truth below / above the interval) per effect and cutoff
+  value_source: table
+  plotted_in:
+  - Figure 4.29
+  - Figure 4.30
+  - Figure 4.31
+  - Figure 4.32
+  - Figure 4.33
+  - Figure 4.34
+  - Figure 4.35
+  - Figure 4.36
+  - Figure 4.37
+  - Figure 4.38
+  agreement: disagree
+- id: pe-fig-bias
+  location: Figures 4.12-4.16, pp. 90-98
+  quantity: mean bias by n, cutoff and effect sizes
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.12
+  - Figure 4.13
+  - Figure 4.14
+  - Figure 4.15
+  - Figure 4.16
+  digitized_file: results/digitized_bias.csv
+  reading_error: 0.002 (vector paths, calibrated on the +-.05/.10 reference lines)
+  agreement: disagree
+- id: pe-fig-type1
+  location: Figures 4.17-4.21, pp. 101-109
+  quantity: Type I error rates by n, cutoff and effect sizes
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.17
+  - Figure 4.18
+  - Figure 4.19
+  - Figure 4.20
+  - Figure 4.21
+  digitized_file: results/digitized_rates.csv
+  reading_error: about .003 (raster)
+  agreement: disagree
+- id: pe-fig-power
+  location: Figures 4.22-4.28, pp. 111-122
+  quantity: power by n, cutoff and effect sizes
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.22
+  - Figure 4.23
+  - Figure 4.24
+  - Figure 4.25
+  - Figure 4.26
+  - Figure 4.27
+  - Figure 4.28
+  digitized_file: results/digitized_rates.csv
+  reading_error: about .01-.02 (raster)
+  agreement: disagree
+- id: pe-fig-coverage
+  location: Figures 4.29, 4.31, 4.33, 4.35, 4.37, pp. 126-140
+  quantity: coverage by n, cutoff and effect sizes
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.29
+  - Figure 4.31
+  - Figure 4.33
+  - Figure 4.35
+  - Figure 4.37
+  digitized_file: results/digitized_rates.csv
+  reading_error: about .01-.04 (raster)
+  agreement: disagree
+- id: pe-fig-imbalance
+  location: Figures 4.30, 4.32, 4.34, 4.36, 4.38, pp. 128-142
+  quantity: shares below / within / above by n, cutoff and effect sizes
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.30
+  - Figure 4.32
+  - Figure 4.34
+  - Figure 4.36
+  - Figure 4.38
+  digitized_file: results/digitized_imbalance.csv
+  reading_error: about .015 (bar height in pixels)
+  agreement: disagree
+- id: pe-text-statements
+  location: Chapter 4 text, pp. 99-121
+  quantity: 46 testable Type I error and power statements
+  value_source: figure_digitized
+  plotted_in:
+  - Figure 4.17
+  - Figure 4.18
+  - Figure 4.19
+  - Figure 4.20
+  - Figure 4.21
+  - Figure 4.22
+  - Figure 4.23
+  - Figure 4.24
+  - Figure 4.25
+  - Figure 4.26
+  - Figure 4.27
+  - Figure 4.28
+  digitized_file: results/statement_checks.csv
+  reading_error: as the figures; verdicts within the reading error are noted in DISAGREEMENTS.yaml
+  agreement: disagree
+- id: pe-pnde-definition
+  location: p. 104 (printed)
+  quantity: 'population value used for PNDE: c'' + h'
+  value_source: text
+  plotted_in: []
+  agreement: disagree
+- id: pe-ch5-n5000
+  location: Chapter 5, p. 150
+  quantity: n = 5,000 as the tentative minimum for accurate Type I error and power
+  value_source: text
+  plotted_in: []
+  agreement: disagree
+- id: pe-tables-4-6-4-7
+  location: Tables 4.6-4.7 and equation 3.12
+  quantity: RCT-RDD differences and standardized biases (Head Start)
+  value_source: table
+  plotted_in: []
+  agreement: disagree
+- id: pe-table-4-7-significance
+  location: Abstract (PDF p. 3), printed p. 143 and Table 4.7 (PDF pp. 97-98)
+  quantity: RDD versus RCT significance conclusions of the 95% CIs (Head Start)
+  value_source: table
+  plotted_in: []
+  agreement: disagree
+- id: pe-table-4-3
+  location: Table 4.3, PDF p. 85
+  quantity: covariate balance coefficients, SEs and t statistics (Head Start)
+  value_source: table
+  plotted_in: []
+  agreement: disagree
+source_items:
+- label: Figure 1.1
+  use: excluded
+  reason: conceptual path diagram or illustrative example; it plots no results of the study
+  reported_to_person: &id003
+    date: '2026-11-09'
+    channel: chat
+    summary: Told which of Chen's figures and tables are excluded and why, and that each was first considered for
+      consistency, reconstruction and evidence.
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+- label: Table 1.1
+  use: read
+  data_file: source-values/table_3_1.csv
+  identity_checks: none
+  identity_reason: a design table of factor levels; no relation among printed numbers
+- label: Figure 2.1
+  use: excluded
+  reason: conceptual path diagram or illustrative example; it plots no results of the study
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+- label: Figure 2.2
+  use: excluded
+  reason: conceptual path diagram or illustrative example; it plots no results of the study
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+- label: Figure 2.3
+  use: excluded
+  reason: conceptual path diagram or illustrative example; it plots no results of the study
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+- label: Figure 2.4
+  use: excluded
+  reason: conceptual path diagram or illustrative example; it plots no results of the study
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+- label: Figure 2.5
+  use: excluded
+  reason: conceptual path diagram or illustrative example; it plots no results of the study
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+- label: Figure 2.6
+  use: excluded
+  reason: conceptual path diagram or illustrative example; it plots no results of the study
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+- label: Figure 2.7
+  use: excluded
+  reason: conceptual path diagram or illustrative example; it plots no results of the study
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+- label: Figure 2.8
+  use: excluded
+  reason: conceptual path diagram or illustrative example; it plots no results of the study
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    reconstruction:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+    evidence:
+      useful: false
+      why: a conceptual diagram or illustrative example with no study numbers
+- label: Table 3.1
+  use: read
+  data_file: source-values/table_3_1.csv
+  identity_checks: none
+  identity_reason: a design table of factor levels; no relation among printed numbers
+- label: Table 4.1
+  use: excluded
+  reason: qualitative integrated table of assumptions for RQ1, which this replication did not attempt
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: a qualitative table of assumptions; no numbers
+    reconstruction:
+      useful: false
+      why: a qualitative table of assumptions; no numbers
+    evidence:
+      useful: false
+      why: a qualitative table of assumptions; no numbers
+- label: Table 4.2
+  use: read
+  sufficient_statistics:
+    found: true
+    what: within-group means and SDs by cutoff (Table 4.2)
+    sufficient: false
+    why: no treatment-by-mediator or treatment-by-outcome covariances are printed, so the a, b, c' and h paths cannot
+      be rebuilt (notes/availability.md)
+  data_file: source-values/table_4_2.csv
+  identity_checks:
+  - identity: treated and control ranges of the assignment variable do not overlap (a sharp cutoff), treatment below
+      it
+    holds: true
+    file: results/empirical_consistency.json
+- label: Figure 4.1
+  use: excluded
+  reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
+    with
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: histograms of the outcome by group; their means and SDs are printed in Table 4.2, which is read
+    reconstruction:
+      useful: false
+      why: marginal distributions only; the joint moments needed to refit the paths are not shown
+    evidence:
+      useful: false
+      why: treatment direction and shares are already established from Table 4.2
+- label: Figure 4.2
+  use: excluded
+  reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
+    with
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: histograms of the outcome by group; their means and SDs are printed in Table 4.2, which is read
+    reconstruction:
+      useful: false
+      why: marginal distributions only; the joint moments needed to refit the paths are not shown
+    evidence:
+      useful: false
+      why: treatment direction and shares are already established from Table 4.2
+- label: Figure 4.3
+  use: excluded
+  reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
+    with
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: histograms of the outcome by group; their means and SDs are printed in Table 4.2, which is read
+    reconstruction:
+      useful: false
+      why: marginal distributions only; the joint moments needed to refit the paths are not shown
+    evidence:
+      useful: false
+      why: treatment direction and shares are already established from Table 4.2
+- label: Figure 4.4
+  use: excluded
+  reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
+    with
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: histograms of the outcome by group; their means and SDs are printed in Table 4.2, which is read
+    reconstruction:
+      useful: false
+      why: marginal distributions only; the joint moments needed to refit the paths are not shown
+    evidence:
+      useful: false
+      why: treatment direction and shares are already established from Table 4.2
+- label: Table 4.3
+  use: read
+  data_file: source-values/table_4_3.csv
+  identity_checks:
+  - identity: t = coefficient / SE for nine covariate rows
+    holds: false
+    file: results/table_identities.json
+    disagreement: table-4-3-t-value
+- label: Table 4.4
+  use: excluded
+  reason: statistics of the restricted-use Head Start data (RQ2); checked only for whether they could stand in for
+    the data
+  reported_to_person: *id003
+  sufficient_statistics:
+    found: true
+    what: residual correlations (Table 4.4)
+    sufficient: false
+    why: no treatment-by-mediator or treatment-by-outcome covariances are printed, so the a, b, c' and h paths cannot
+      be rebuilt (notes/availability.md)
+  uses_considered:
+    consistency:
+      useful: false
+      why: one correlation and df per design; the df reflect listwise samples not printed elsewhere, so no identity
+        binds them to Table 4.2
+    reconstruction:
+      useful: true
+      why: one residual correlation per design is one equation toward the within-group covariances
+      declined_by_person: &id004
+        date: '2026-11-09'
+        channel: chat
+        summary: The person chose the identity checks and the treatment-direction evidence, and not the reconstruction
+          of Head Start moments.
+    evidence:
+      useful: false
+      why: bears on sequential ignorability, which no disagreement turns on
+- label: Figure 4.5
+  use: excluded
+  reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
+    with
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: residual scatterplots of integer scores, heavily overplotted; the correlation is printed in Table 4.4
+    reconstruction:
+      useful: false
+      why: individual points cannot be recovered from overplotted integer scores
+    evidence:
+      useful: false
+      why: bears on sequential ignorability, which no disagreement turns on
+- label: Figure 4.6
+  use: excluded
+  reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
+    with
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: residual scatterplots of integer scores, heavily overplotted; the correlation is printed in Table 4.4
+    reconstruction:
+      useful: false
+      why: individual points cannot be recovered from overplotted integer scores
+    evidence:
+      useful: false
+      why: bears on sequential ignorability, which no disagreement turns on
+- label: Figure 4.7
+  use: excluded
+  reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
+    with
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: residual scatterplots of integer scores, heavily overplotted; the correlation is printed in Table 4.4
+    reconstruction:
+      useful: false
+      why: individual points cannot be recovered from overplotted integer scores
+    evidence:
+      useful: false
+      why: bears on sequential ignorability, which no disagreement turns on
+- label: Figure 4.8
+  use: excluded
+  reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
+    with
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: residual scatterplots of integer scores, heavily overplotted; the correlation is printed in Table 4.4
+    reconstruction:
+      useful: false
+      why: individual points cannot be recovered from overplotted integer scores
+    evidence:
+      useful: false
+      why: bears on sequential ignorability, which no disagreement turns on
+- label: Table 4.5
+  use: excluded
+  reason: assumption tests on the restricted-use Head Start data (RQ2); cannot be rerun or compared without the
+    data
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: relating the F tests to the AIC differences needs residual df and n, which are not printed for these
+        fits
+    reconstruction:
+      useful: false
+      why: model-fit statistics carry no moments
+    evidence:
+      useful: false
+      why: functional form bears on no disagreement
+- label: Figure 4.9
+  use: excluded
+  reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
+    with
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: fitted lines by side of the cutoff; their slopes relate to no printed number without the covariances
+    reconstruction:
+      useful: true
+      why: the fitted slopes could help solve for the within-group covariances of the running variable and outcome
+      declined_by_person: *id004
+    evidence:
+      useful: false
+      why: functional form bears on no disagreement
+- label: Figure 4.10
+  use: excluded
+  reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
+    with
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: fitted lines by side of the cutoff; their slopes relate to no printed number without the covariances
+    reconstruction:
+      useful: true
+      why: the fitted slopes could help solve for the within-group covariances of the running variable and outcome
+      declined_by_person: *id004
+    evidence:
+      useful: false
+      why: functional form bears on no disagreement
+- label: Figure 4.11
+  use: excluded
+  reason: plots the restricted-use Head Start data (RQ2); without the data there is nothing to compare a reading
+    with
+  reported_to_person: *id003
+  uses_considered:
+    consistency:
+      useful: false
+      why: fitted lines by side of the cutoff; their slopes relate to no printed number without the covariances
+    reconstruction:
+      useful: true
+      why: the fitted slopes could help solve for the within-group covariances of the running variable and outcome
+      declined_by_person: *id004
+    evidence:
+      useful: false
+      why: functional form bears on no disagreement
+- label: Table 4.6
+  use: read
+  data_file: secondary/table_arithmetic.csv
+  sufficient_statistics:
+    found: true
+    what: RCT and RDD path and effect estimates with standard errors
+    sufficient: false
+    why: estimates and SEs allow the printed differences and standardized biases to be recomputed, not the models
+      to be refitted
+  identity_checks:
+  - identity: PNIE = a b, TNIE = a b + a h, TNDE - PNDE = a h (RCT and three cutoffs)
+    holds: true
+    file: results/empirical_consistency.json
+  - identity: implied i0M = (PNDE - c') / h against the mediator means of Table 4.2
+    holds: true
+    file: results/empirical_consistency.json
+- label: Table 4.7
+  use: read
+  data_file: source-values/table_4_7.csv
+  sufficient_statistics:
+    found: true
+    what: RCT and RDD path and effect estimates with standard errors
+    sufficient: false
+    why: estimates and SEs allow the printed differences and standardized biases to be recomputed, not the models
+      to be refitted
+  identity_checks:
+  - identity: PNIE = a b, TNIE = a b + a h, TNDE - PNDE = a h (RCT and three cutoffs)
+    holds: true
+    file: results/empirical_consistency.json
+  - identity: implied i0M = (PNDE - c') / h against the mediator means of Table 4.2
+    holds: true
+    file: results/empirical_consistency.json
+- label: Table 4.8
+  use: read
+  data_file: source-values/table_4_8.csv
+  identity_checks:
+  - identity: within [-.05, .05] does not exceed within [-.10, .10] in every row
+    holds: true
+    file: results/table_identities.json
+- label: Figure 4.12
+  use: read
+  data_file: results/digitized_bias.csv
+- label: Figure 4.13
+  use: read
+  data_file: results/digitized_bias.csv
+- label: Figure 4.14
+  use: read
+  data_file: results/digitized_bias.csv
+- label: Figure 4.15
+  use: read
+  data_file: results/digitized_bias.csv
+- label: Figure 4.16
+  use: read
+  data_file: results/digitized_bias.csv
+- label: Figure 4.17
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.18
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.19
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.20
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.21
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.22
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.23
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.24
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.25
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.26
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.27
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.28
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Table 4.9
+  use: read
+  data_file: source-values/table_4_9.csv
+  identity_checks:
+  - identity: below + coverage + above = 100% in every row
+    holds: true
+    file: results/table_identities.json
+- label: Figure 4.29
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.30
+  use: read
+  data_file: results/digitized_imbalance.csv
+- label: Figure 4.31
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.32
+  use: read
+  data_file: results/digitized_imbalance.csv
+- label: Figure 4.33
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.34
+  use: read
+  data_file: results/digitized_imbalance.csv
+- label: Figure 4.35
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.36
+  use: read
+  data_file: results/digitized_imbalance.csv
+- label: Figure 4.37
+  use: read
+  data_file: results/digitized_rates.csv
+- label: Figure 4.38
+  use: read
+  data_file: results/digitized_imbalance.csv

@@ -548,7 +548,15 @@ def _limit_kind_errors(parts) -> list:
             continue
         entries = _limit_entries(part)
         if entries is None:
-            errors.append(f"{label}: limit_kind required when status is not replicated")
+            # Disagreement from a complete run is a result, not a limit. A `mismatch` or
+            # `partly` part that declares `run_complete: true` still needs its own reason
+            # and evidence (checked below) but no limit kind. A reduced run (run_count
+            # below design_count) is a limit and keeps the requirement.
+            run, denom = part.get("run_count"), part.get("design_count")
+            reduced = isinstance(run, int) and isinstance(denom, int) and run < denom
+            complete = part.get("run_complete") is True and status in ("mismatch", "partly")
+            if not complete or reduced:
+                errors.append(f"{label}: limit_kind required when status is not replicated")
             entries = []
         seen_kinds = []
         for entry in entries:

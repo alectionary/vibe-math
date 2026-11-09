@@ -1,0 +1,552 @@
+# Every disagreement between this replication and Chen (2021), with competing
+# explanations, how each was tested, and what the tests showed. Checked by the
+# replication-paper skill (scripts/disagreements.py). Test outputs are in
+# results/disagreement_tests.json unless another file is named.
+disagreements:
+
+  - id: h-absent
+    claim: >-
+      Effects that involve the treatment-by-mediator interaction h behave as if h were absent: MINT
+      bias is -a*h at every cutoff (Figure 4.16), MINT power stays near .05 (Figure 4.28), and Type I
+      error with a = b = 0 and h > 0 is near .001 (Figures 4.18, 4.21). TNIE and TNDE results carry
+      the same pattern.
+    ours: >-
+      In our run h is recovered: MINT bias is within .001, MINT power reaches .84 at n = 500 and at
+      least .97 from n = 1,000 for a*h >= .13, and those Type I rates are near .05.
+    covers: [study-dissertation, ch-4, ch-5, rq-3, out-bias, out-type1, out-power, out-coverage,
+             hl-bias-direct, hl-mint-power, pe-table-4-8, pe-fig-bias, pe-fig-type1, pe-fig-power,
+             pe-text-statements]
+    hypotheses:
+      - id: our-implementation
+        side: ours
+        statement: Our Python estimator loses or mis-estimates h.
+        prediction: Chen's own printed R code, run on her own seeded datasets, would behave like her results, not ours.
+        test:
+          method: >-
+            Grokbot ran her printed Appendix A gendata() and Appendix B lm() calls unchanged on her
+            seeded data (identical to her literal pipeline, largest difference 0): 64,000 datasets
+            (#92), then all 1,280,000 (1,000 per condition, #118).
+          files: [r-reproduction/out/estimates.csv, r-reproduction/out/literal_check.txt,
+                  r-reproduction/out-full/condition_summary.csv, r-reproduction/out-full/literal_check.txt,
+                  results/r_full_comparison.json, results/disagreement_tests.json]
+        result: >-
+          Her code recovers h: with all 1,000 replications the slope of estimated on true h is 0.9998,
+          1.0005 and 0.9999 at the three cutoffs. No condition-mean bias exceeds .017 for any effect
+          (0% beyond .10); 5.3% of the 19,200 cell biases are beyond 1.96 Monte Carlo SEs and 0.14%
+          beyond 3.29, as expected with no bias. Her estimates and ours differ beyond 1.96 combined SEs
+          in 5.3% of cells, and the SDs agree (median ratio 1.000). It behaves like our run, not like
+          her published results.
+        verdict: ruled_out
+      - id: our-digitizing
+        side: ours
+        statement: We misread her figures, so the h pattern is an artifact of our reading.
+        prediction: The pattern would not survive an exact reading, and her two plots of coverage would not agree.
+        test:
+          method: >-
+            Figures 4.12-4.16 are vector: every marker was read from the PDF's drawing paths, calibrated
+            on her +-.05/.10 reference lines. Coverage, plotted twice (lines and bars), was read twice.
+          files: [results/digitized_bias.csv, results/bias_structure.csv, results/digitize_crosscheck.csv]
+        result: >-
+          The MINT bias fit is -1.00*a*h with residual at most .001 against a reading error of at most
+          .002; the two coverage readings agree for 898 of 902 directly read points (978 of 982 with merged
+          panels; 1,282 of 1,357 including points hidden behind another series).
+        verdict: ruled_out
+      - id: printed-code-drops-h
+        side: source
+        statement: Her printed code itself loses h (data generation or estimation as printed).
+        prediction: The exact replay of the printed code would show h near 0.
+        test:
+          method: Same exact replay as above.
+          files: [r-reproduction/out/estimates.csv, results/disagreement_tests.json]
+        result: The printed code recovers h (slopes 0.9998-1.0005 with 1,000 replications).
+        verdict: ruled_out
+      - id: interaction-dropped-from-fitted-model
+        side: source
+        statement: Her y model was fitted without the t*m term, so h was never estimated.
+        prediction: >-
+          b-hat would absorb the interaction, so her PNIE bias would carry a positive a*h term growing
+          with the treated share, and PNIE power would rise with h.
+        test:
+          method: >-
+            Least-squares fit of her digitized PNIE bias on design terms, by cutoff; and her own real-data
+            fits (Tables 4.6-4.7), whose printed effects obey TNIE = ab + ah.
+          files: [results/bias_structure.csv, results/disagreement_tests.json, results/empirical_consistency.json]
+        result: >-
+          The a*h and h coefficients of her PNIE bias are 0.000 at every cutoff (residual at most .005), and
+          on the Head Start data her code estimated h (.003, .001, .001, -.028) and used it: TNIE = ab + ah
+          holds for all four designs.
+        verdict: ruled_out
+      - id: no-interaction-in-her-data
+        side: source
+        statement: The datasets behind her results contained no treatment-by-mediator interaction.
+        prediction: >-
+          Her rejection rates would match ours read with h set to 0, and her MINT estimates would
+          average 0 (bias exactly -a*h).
+        test:
+          method: >-
+            Every digitized Type I and power point and every text statement compared with our cells
+            with h replaced by 0 (other factors unchanged).
+          files: [results/rates_agreement.csv, results/statement_checks.csv, results/bias_structure.csv]
+        result: >-
+          79-100% of directly read points agree in every Type I and power figure (MINT power 4.3% ->
+          96.8%); points hidden under other series are filled in by the digitizer and not counted; 10 of
+          the 15 disagreeing statements agree; MINT bias is -1.00*a*h at all three cutoffs.
+        verdict: supported
+      - id: mechanism-ordering-vs-missing-h
+        side: source
+        statement: >-
+          Which mechanism removed the interaction: y generated before tm was filled in (gendata
+          pre-fills the matrix with 1s, so h would multiply 1), or effh not reaching gendata.
+        prediction: The two would differ only in the y intercept.
+        test:
+          method: Algebra checked numerically on one simulated dataset (same draws, both mechanisms).
+          files: [results/disagreement_tests.json]
+        result: >-
+          Only the intercept differs; t, r, m and tm coefficients are identical. Her y intercepts are
+          not reported, so her published results cannot tell the two apart.
+        verdict: inconclusive
+    conclusion: explained
+    whose: source
+    confidence: high
+
+  - id: population-values
+    claim: >-
+      Coverage of nonzero effects falls with n to a plateau at the control share (.25, .49, .74 at
+      cutoffs 1-3 from n = 2,500; Figures 4.29-4.38, Table 4.9), with the truth mostly above the
+      interval; bias of the path products is -k times the product, k = 1.47, .96, .44 by cutoff and
+      not dependent on n (Figures 4.12-4.15, Table 4.8).
+    ours: >-
+      Mean coverage 0.04 points short of 95% (rows 94.59-95.63% by effect and cutoff; lowest single cell
+      91.6%, and 92.9% of cells inside Bradley's [92.5, 97.5]); every bias within .016 of zero.
+    covers: [out-bias, out-coverage, hl-bias-direct, hl-coverage, pe-table-4-8, pe-table-4-9, pe-fig-bias,
+             pe-fig-coverage, pe-fig-imbalance]
+    hypotheses:
+      - id: our-bias-and-coverage
+        side: ours
+        statement: Our bias or coverage computation is wrong.
+        prediction: Her printed code would be biased like her results, or her rejection decisions (which share our intervals' logic) would differ from ours.
+        test:
+          method: Exact replay of her code (bias); her digitized PNIE Type I and power compared with ours.
+          files: [r-reproduction/out-full/condition_summary.csv, results/r_full_comparison.json,
+                  results/rates_agreement.csv, results/disagreement_tests.json]
+        result: >-
+          Her code is unbiased (no condition-mean bias beyond .017 with 1,000 replications, h recovered), and her
+          PNIE Type I and power agree with ours at 100% and 97% of directly read points, so her intervals' locations
+          and widths match ours. Only the comparison with population values differs.
+        verdict: ruled_out
+      - id: our-digitizing
+        side: ours
+        statement: The coverage plateau is a misreading.
+        prediction: The line and bar plots of coverage would disagree.
+        test:
+          method: Cross-check of the two independent readings of her coverage.
+          files: [results/digitize_crosscheck.csv]
+        result: >-
+          898 of 902 directly read points agree within their combined reading error (978 of 982 with merged
+          panels; 1,282 of 1,357 including points hidden behind another series).
+        verdict: ruled_out
+      - id: wrong-value-per-condition
+        side: source
+        statement: She compared each condition's estimates with one wrong population value (for example ab(1 + k)).
+        prediction: Intervals shrink around the estimate as n grows, so coverage of nonzero effects would fall toward 0.
+        test:
+          method: Coverage of nonzero PNIE cells by cutoff and n from her Figure 4.29.
+          files: [results/digitized_rates.csv, results/disagreement_tests.json]
+        result: Coverage stops at the control share (.25, .49, .74), not 0.
+        verdict: ruled_out
+      - id: per-case-value-by-treatment
+        side: source
+        statement: >-
+          Population values were computed per case and were right for control cases but not for
+          treated cases, and coverage was averaged over cases.
+        prediction: >-
+          Coverage would fall with n to a plateau near the control share; imbalance "above" would
+          approach the treated share and "below" a small fraction of the control share.
+        test:
+          method: Her digitized coverage and imbalance by cutoff and n.
+          files: [results/digitized_rates.csv, results/digitized_imbalance.csv, results/disagreement_tests.json]
+        result: >-
+          Coverage plateaus at the control share and "above" at the treated share at every cutoff, with
+          "below" .008-.017.
+        verdict: supported
+      - id: per-case-single-scale
+        side: source
+        statement: >-
+          The same per-case rule, with one scale of error for every cutoff, also produced her bias:
+          bias = -lambda x treated share x the path product with one lambda.
+        prediction: The bias multipliers divided by the treated share would give the same lambda at every cutoff.
+        test:
+          method: Bias multipliers from the fit of her digitized bias figures.
+          files: [results/bias_structure.csv, results/disagreement_tests.json]
+        result: >-
+          lambda = 1.96, 1.92 and 1.76 at cutoffs 1-3: close for cutoffs 1-2 but not constant, so one
+          scale does not reproduce cutoff 3. The rule that produced her bias is not determined.
+        verdict: ruled_out
+      - id: treatment-labels-reversed
+        side: source
+        statement: >-
+          Her text says cut score index 1 is 25% treatment and 75% control (Chapter 3, Table 3.1 and the
+          note to Table 4.8), but her code assigns treatment above the 25th percentile, so index 1 has 75%
+          treated. A population-value or coverage step written for the text's labels would treat the
+          code's treated cases as control and the reverse.
+        prediction: >-
+          The plateau would equal the treated share as her text labels it, which is the control share
+          under her code.
+        test:
+          method: Compare the coverage plateau with both shares.
+          files: [source-values/table_3_1.csv, source-values/table_4_8.csv, source-values/table_4_2.csv,
+                  results/empirical_consistency.json, results/disagreement_tests.json]
+        result: >-
+          The plateau (.25, .49, .74) equals both, so it cannot separate this theory from
+          per-case-value-by-treatment. The conflict itself is confirmed: in her Head Start analysis
+          (Table 4.2) treatment is below the cutoff, with treated shares .36, .72 and .86 at cutoffs
+          1-3 as her text labels them, the reverse of her simulation code.
+        verdict: inconclusive
+      - id: monte-carlo-noise
+        side: neither
+        statement: The pattern is sampling noise.
+        prediction: It would vary with n, a and b and would not track the treated share.
+        test:
+          method: Plateaus and bias fits across all cells.
+          files: [results/bias_structure.csv, results/disagreement_tests.json]
+        result: The bias fit has residuals at most .024 over 240-960 points per figure, and the plateaus are identical across a and b.
+        verdict: ruled_out
+    conclusion: partly_explained
+    whose: source
+    confidence: medium
+
+  - id: pnde-definition
+    claim: "Her text defines the population PNDE as c' + h (printed p. 104)."
+    ours: "Under her data-generating model the population PNDE is c' + h*i0M with i0M = 0, so it is c'."
+    covers: [pe-pnde-definition, out-bias, hl-bias-direct]
+    hypotheses:
+      - id: our-derivation
+        side: ours
+        statement: "i0M (the m-model intercept) is not 0 in her design, so c' + h*i0M is not c'."
+        prediction: The intercept of her m model, fitted on her own data, would be away from 0.
+        test:
+          method: Mean i0M in the exact replay of her code.
+          files: [r-reproduction/out-full/condition_summary.csv, results/r_full_comparison.json]
+        result: With 1,000 replications, mean i0M is 0.0001, 0.0000 and 0.0000 at the three cutoffs.
+        verdict: ruled_out
+      - id: her-definition-used
+        side: source
+        statement: She used c' + h (in effect i0M = 1) as the population value.
+        prediction: With h-hat near 0, her PNDE bias would carry a coefficient of -1 on h.
+        test:
+          method: Fit of her digitized PNDE and TNDE bias.
+          files: [results/bias_structure.csv, results/disagreement_tests.json]
+        result: >-
+          The h coefficient is about -0.93 (PNDE) and -1.0 (TNDE) at every cutoff. The PNDE fit also has an
+          a*h coefficient of about -0.26 at every cutoff, which this hypothesis does not predict and which is
+          not explained; the -0.93 against -1 may share that cause.
+        verdict: supported
+      - id: her-estimation-code
+        side: source
+        statement: Her estimation code computes PNDE as c' + h (i0M fixed at 1) in general, not only in the population values.
+        prediction: On her real data, PNDE - c' would equal h.
+        test:
+          method: The PNDE identity on her printed Head Start estimates (Tables 4.6-4.7) gives the i0M her code used.
+          files: [results/empirical_consistency.json, source-values/table_4_2.csv, secondary/table_arithmetic.csv]
+        result: >-
+          The implied i0M is 19.7 (RCT) and 22.1 (cutoff 3), the scale of the mediator mean (about 21 minutes,
+          Table 4.2); at cutoffs 1-2 h rounds to .001, too small to identify it. Her estimation code used the
+          fitted intercept, so the c' + h form belongs to her simulation's population values only.
+        verdict: ruled_out
+      - id: noise
+        side: neither
+        statement: The h term in her PNDE bias is noise.
+        prediction: The coefficient would vary across cutoffs and the fit would leave large residuals.
+        test:
+          method: Same fit.
+          files: [results/bias_structure.csv]
+        result: The coefficient is stable across cutoffs and residuals are at most .010.
+        verdict: ruled_out
+    conclusion: partly_explained
+    whose: source
+    confidence: medium
+
+  - id: headstart-sb-divisor
+    claim: Equation 3.12 divides the RCT-RDD difference by the standard deviation of the RCT outcome.
+    ours: All 24 printed standardized biases equal the difference divided by the RCT estimate's standard error.
+    covers: [pe-tables-4-6-4-7]
+    hypotheses:
+      - id: our-recomputation
+        side: ours
+        statement: We transcribed or recomputed her tables wrongly.
+        prediction: The printed differences would not recompute either.
+        test:
+          method: Recompute all 24 differences and standardized biases from her printed estimates.
+          files: [secondary/table_arithmetic.csv]
+        result: All 24 differences match.
+        verdict: ruled_out
+      - id: estimate-se-divisor
+        side: source
+        statement: Her computation used the RCT estimate's SE, not the outcome SD her equation states.
+        prediction: Every printed SB would match with the SE as divisor.
+        test:
+          method: Implied divisor of each printed SB.
+          files: [secondary/table_arithmetic.csv]
+        result: All 24 match; the implied divisors (for example 0.7327-0.7331 for the a path) equal the printed SEs at the printed precision.
+        verdict: supported
+      - id: rounding
+        side: neither
+        statement: The mismatch with the outcome SD is rounding.
+        prediction: Implied divisors would scatter around the outcome SD.
+        test:
+          method: Same.
+          files: [secondary/table_arithmetic.csv]
+        result: They equal the estimate SEs exactly.
+        verdict: ruled_out
+    conclusion: explained
+    whose: source
+    confidence: high
+
+  - id: threshold-noise
+    claim: Statements 2, 10 and 43 (and some cells of 11 and 41) place a rate on one side of a threshold (.025 or .70, or a .05 spread).
+    ours: Our rate falls just on the other side.
+    covers: [out-type1, out-power, pe-text-statements]
+    hypotheses:
+      - id: our-rates-off
+        side: ours
+        statement: Our rates differ from hers in these cells.
+        prediction: Our values would sit several standard errors from her digitized values.
+        test:
+          method: Distance of our rate from her figure value and from the threshold, in Monte Carlo standard errors.
+          files: [results/disagreement_tests.json, results/statement_checks.csv]
+        result: >-
+          Statement 10 (TNIE3, a = 0, b = .14, h = 0, n = 1,000): ours .0275, hers .0241, 0.7 SE apart and
+          1.0 SE from .025. Statement 2: her own figure reads .026/.024/.024 at n = 2,500, on both sides of .025.
+        verdict: ruled_out
+      - id: knife-edge
+        side: neither
+        statement: Both values sit within Monte Carlo error of the threshold, so which side they land on is chance.
+        prediction: Moving each threshold .01 in her favour would turn these statements into agreements.
+        test:
+          method: The .01 slack pass of the statement checks.
+          files: [results/statement_checks.csv]
+        result: Statements 2 and 43 agree with .01 slack; statement 10's h = 0 cell is 1 SE from .025, and its h = .05 cell is part of h-absent.
+        verdict: supported
+    conclusion: explained
+    whose: neither
+    confidence: medium
+
+  - id: prose-versus-own-figure
+    claim: >-
+      Statement 30 (TNIE2 and TNIE3 "similar to" TNIE1) and statement 44 (the same for TNDE); statement
+      11 (TNIE Type I "within" in all other a = 0 cases).
+    ours: Read strictly (no cutoff spread above .05; within .025-.075), our run disagrees.
+    covers: [out-type1, out-power, pe-text-statements]
+    hypotheses:
+      - id: our-reading-too-strict
+        side: ours
+        statement: '"Similar patterns" means the same shape over n, not equal values across cutoffs.'
+        prediction: Under the looser reading, her figures and our run would both agree.
+        test:
+          method: Check that power rises with n at every cutoff and cell set, in her Figures 4.24 and 4.27 and in our cells.
+          files: [results/disagreement_tests.json]
+        result: True for all 36 (statement 30) and 48 (statement 44) cell sets, in her figures and in ours.
+        verdict: supported
+      - id: text-contradicts-own-figure
+        side: source
+        statement: Under the strict reading her text contradicts her own figures.
+        prediction: Her digitized figures would fail the strict reading too.
+        test:
+          method: Every statement read against her own directly read figure points (verdict_on_chen_figures).
+          files: [results/statement_checks.csv, results/disagreement_tests.json]
+        result: >-
+          Statement 30: her Figure 4.24 spreads by up to .33 across cutoffs at n = 500 (ours .34 with h = 0).
+          Statement 44: her Figure 4.27 spreads by .051. Statement 11: her own Figure 4.18 shows a = b = 0,
+          h > 0 at about .001, below the range, where her text says within.
+        verdict: supported
+    conclusion: explained
+    whose: both
+    confidence: high
+    fixed_in: >-
+      statement_checks.py reports each statement against her own figures (verdict_on_chen_figures), and
+      statements 30 and 44 are reported under both readings.
+
+  - id: tnde-power-gap
+    claim: "TNDE1 power at c' = .39, a = .59, h = 0, n = 500 is .736 in her Figure 4.26."
+    ours: Our power in the same cells is .698 (3.7 combined standard errors lower).
+    covers: [out-power, pe-fig-power]
+    hypotheses:
+      - id: our-estimator-spread
+        side: ours
+        statement: Our TNDE estimates are more variable than her code's, lowering our power.
+        prediction: Our standard deviation of the estimates would exceed hers.
+        test:
+          method: SD of TNDE1 estimates in the same cells, ours versus the exact replay of her code (4,000 datasets).
+          files: [r-reproduction/out-full/condition_summary.csv, results/r_full_comparison.json]
+        result: >-
+          Ours/hers = 1.014. Ours is 1.4% more variable, which lowers normal-approximation power by
+          about .01, a quarter of the .039 gap.
+        verdict: ruled_out
+      - id: our-digitizing
+        side: ours
+        statement: Her point was misread.
+        prediction: The neighbouring h series in the same panel would read close to ours.
+        test:
+          method: Directly read points of the same panel.
+          files: [results/digitized_rates.csv]
+        result: Her three directly read h series at n = 500 read .736-.762 (the fourth is hidden), all above ours.
+        verdict: ruled_out
+      - id: monte-carlo-noise
+        side: neither
+        statement: The gap is sampling noise in this one cell set, judged as a single prespecified comparison.
+        prediction: It would be within about 2 combined standard errors.
+        test:
+          method: Combined Monte Carlo and reading error.
+          files: [results/disagreement_tests.json]
+        result: >-
+          3.7 standard errors, too large for one prespecified comparison. But the cell set was singled out
+          after the fact as the largest gap among thousands of points, so the single-comparison criterion does
+          not apply; her-specific-draws tests the chance explanation properly.
+        verdict: inconclusive
+      - id: her-specific-draws
+        side: neither
+        statement: >-
+          Her particular seeded datasets give higher power in this cell set than ours do; the gap is
+          between two sets of random draws, not between procedures.
+        prediction: >-
+          On her own replayed datasets, power computed the same way would exceed ours by most of the
+          gap, and the gap would be no larger than expected for the most extreme of the thousands of
+          figure points compared.
+        test:
+          method: >-
+            Normal-approximation power (from the mean and SD of the estimates) on her 4,000 replayed
+            datasets and on our 4,000, in the same four cells; the bootstrap is not replayed, so only the
+            difference between the two is read.
+          files: [r-reproduction/out-full/condition_summary.csv, results/r_full_comparison.json, results/digitized_rates.csv]
+        result: >-
+          .715 on her datasets against .687 on ours, a difference of .029 of the .039 gap (her .7362 against
+          our .6975); mean TNDE bias is -.0004 in hers and -.0087 in ours. The remaining .010 is about 1.4
+          times her reading error of this point (.0071) and below one combined Monte Carlo and reading
+          error (about .012). A 3.7 SE
+          gap is about what the most extreme of the 3,315 directly read rate points compared would show by
+          chance.
+        verdict: supported
+      - id: bootstrap-details
+        side: source
+        statement: Her percentile intervals differ in a detail (resample count, quantile type) from the printed Appendix B.
+        prediction: Her intervals would be narrower than ours in these cells.
+        verdict: untested
+        untested_reason: >-
+          Her bootstrap is unseeded and her intervals are not reported, so the prediction cannot be
+          checked against her output; the gap is one cell set and does not change any conclusion.
+        reported_to_person:
+          date: "2026-11-09"
+          channel: chat
+          summary: >-
+            Told that the TNDE1 power gap at c' = .39, a = .59, n = 500 was then unexplained and why this theory
+            cannot be tested; the full R replay (#118) later explained the gap (her-specific-draws).
+    conclusion: explained
+    whose: neither
+    confidence: medium
+
+  - id: n5000-overgeneralized
+    claim: n = 5,000 is the tentative minimum for accurate Type I error and power (Chapter 5).
+    ours: At n = 5,000, 86.3% of zero-effect cells have Type I error in Bradley's range; effects whose two paths are both zero stay conservative at every n.
+    covers: [hl-n5000, pe-ch5-n5000]
+    hypotheses:
+      - id: our-type1-wrong
+        side: ours
+        statement: Our Type I error for cells with both paths zero is wrong.
+        prediction: Her own figure would show these cells within range at n = 5,000.
+        test:
+          method: PNIE Type I with a = b = 0 by n, ours and her Figure 4.17.
+          files: [results/disagreement_tests.json, results/digitized_rates.csv]
+        result: Hers .0014-.0020 and ours .0015-.0020 at every n.
+        verdict: ruled_out
+      - id: recommendation-overgeneralizes
+        side: source
+        statement: The recommendation does not account for cells with both paths zero, which are conservative at every n in her own results.
+        prediction: Her own figures would show these cells below .025 at n = 5,000 and 10,000.
+        test:
+          method: Same comparison.
+          files: [results/disagreement_tests.json]
+        result: Her Figure 4.17 shows .0015 at n = 5,000 and .0014 at n = 10,000.
+        verdict: supported
+    conclusion: explained
+    whose: source
+    confidence: high
+
+  - id: table-4-3-t-value
+    claim: "Table 4.3, cutoff 3, child baseline age: coefficient -0.127, SE 0.061, t = -2.252."
+    ours: "-0.127 / 0.061 = -2.082 (between -2.057 and -2.107 within the printed rounding); the other eight rows agree."
+    covers: [pe-table-4-3]
+    hypotheses:
+      - id: our-transcription
+        side: ours
+        statement: We transcribed the row wrongly.
+        prediction: The PDF's text layer would show different numbers.
+        test:
+          method: Re-read the row from the PDF text layer.
+          files: [source-values/table_4_3.csv, results/table_identities.json]
+        result: The text layer reads -0.127, 0.061, -2.252.
+        verdict: ruled_out
+      - id: rounding
+        side: neither
+        statement: The difference is rounding of the printed coefficient and SE.
+        prediction: The printed t would fall inside the range the rounding allows.
+        test:
+          method: Bounds of |coefficient| / SE over the rounding intervals.
+          files: [results/table_identities.json]
+        result: The range is 2.057-2.107; 2.252 is outside it.
+        verdict: ruled_out
+      - id: printed-typo
+        side: source
+        statement: One of the three printed numbers is a typo (a coefficient of -0.137 gives t = -2.25; an SE of 0.0564 gives -2.25).
+        prediction: Changing one digit would make the row consistent.
+        test:
+          method: Solve for the coefficient or SE that the printed t implies.
+          files: [results/table_identities.json]
+        result: A coefficient of -0.137 (one digit) reproduces t = -2.25; which number is wrong cannot be told from the table. The row is significant at .05 either way, so no conclusion changes.
+        verdict: supported
+    conclusion: explained
+    whose: source
+    confidence: high
+
+  - id: significance-conclusions
+    claim: >-
+      On the Head Start data, 95% CIs for the RDD estimates "made opposite significance conclusions than the
+      RCT estimates" (abstract); "if the RCT was significant, the RDD estimate would not be significant"
+      (printed p. 143). Her text on p. 81 also says the PNDE and TNDE "were not significant".
+    ours: >-
+      Read from her own printed Table 4.7 intervals: 10 of the 15 RCT-RDD comparisons reach opposite
+      conclusions and 5 the same (PNDE and TNDE at cutoff 3, MINT at all three). Where the RCT is significant
+      (PNIE, TNIE) the RDD is not, in all 6 cells; but in 4 cells (PNDE and TNDE at cutoffs 1-2) the RDD
+      interval excludes zero where the RCT interval does not.
+    covers: [pe-table-4-7-significance, an-hsis-significance]
+    hypotheses:
+      - id: our-transcription
+        side: ours
+        statement: We transcribed the intervals wrongly.
+        prediction: The PDF text layer and the rendered page would show different bounds.
+        test:
+          method: Re-read Table 4.7 from the text layer (PDF pp. 97-98) and the rendered page.
+          files: [source-values/table_4_7.csv, results/significance_conclusions.json]
+        result: The bounds match both; the four RDD direct-effect intervals that exclude zero read [-1.592, -0.413], [-1.696, -0.375], [-1.606, -0.389] and [-1.689, -0.396].
+        verdict: ruled_out
+      - id: summary-overgeneralizes
+        side: source
+        statement: >-
+          Her summary generalizes from the indirect effects, where the pattern holds, to all effects; and her
+          p. 81 sentence refers to the RCT direct effects only.
+        prediction: >-
+          The pattern would hold for every cell where the RCT is significant and fail elsewhere; the RCT PNDE
+          and TNDE intervals would include zero.
+        test:
+          method: Significance of every printed interval.
+          files: [results/significance_conclusions.json]
+        result: >-
+          It holds in all 6 cells where the RCT is significant and fails in the 9 where it is not (4 opposite in
+          the other direction, 5 the same). The RCT PNDE and TNDE intervals include zero; the RDD ones at
+          cutoffs 1-2 do not, so the p. 81 sentence is true only of the RCT. Her own Chapter 4 reading of
+          the table (printed p. 85) agrees with ours cell by cell, calling the PNIE and TNIE RDD intervals Type II
+          errors and the PNDE and TNDE ones at cutoffs 1-2 Type I errors; only her abstract and p. 143 summary
+          overgeneralize.
+        verdict: supported
+    conclusion: explained
+    whose: source
+    confidence: high
