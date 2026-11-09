@@ -44,3 +44,13 @@ Abstract. It allows a small range for standard article title blocks with
 different author fields. Record any project-approved layout departure in
 the release notes and review the exact rendered first page against the
 reference, including the table or introductory text.
+
+## Opening tables
+
+When page one includes an opening findings or question-and-answer table, center
+its body with a full-width top and bottom rule. The caption and notes may align
+with the text block. Replication Paper checks the declared table region
+automatically. In Open Question Research, give the shared checker
+`--opening-table-box LEFT TOP RIGHT BOTTOM` in page-one PDF points so it can
+measure both rules. Each midpoint must be within 1 point of the page center,
+and the left and right endpoints of the two rules must align within 1 point.

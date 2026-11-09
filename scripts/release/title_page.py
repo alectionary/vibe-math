@@ -60,7 +60,50 @@ def page_lines(page):
                 yield line["bbox"], spans, " ".join("".join(s["text"] for s in spans).split())
 
 
-def rendered_errors(pdf, date, has_author=False):
+def opening_table_errors(page, box):
+    """Check the outer full-width vector rules of the page-one table."""
+    import fitz
+
+    table = fitz.Rect(box)
+    if table.is_empty or table.is_infinite or not page.rect.contains(table):
+        return ["opening table: invalid page-one table region"]
+
+    rules = []
+    for drawing in page.get_drawings():
+        for kind, *points in drawing["items"]:
+            if kind == "l":
+                start, end = points
+                if abs(start.y - end.y) > 0.1:
+                    continue
+                left, right = sorted((start.x, end.x))
+                y = (start.y + end.y) / 2
+            elif kind == "re" and drawing["type"] in {"f", "fs"} and points[0].height <= 3:
+                rect = points[0]
+                left, right, y = rect.x0, rect.x1, (rect.y0 + rect.y1) / 2
+            else:
+                continue
+            if table.y0 <= y <= table.y1 and right - left >= 48:
+                rules.append((y, left, right))
+
+    rules.sort()
+    if len(rules) < 2 or rules[-1][0] - rules[0][0] <= 3:
+        return ["opening table: top and bottom horizontal rules are required"]
+
+    top, bottom = rules[0], rules[-1]
+    page_center = (page.rect.x0 + page.rect.x1) / 2
+    errors = []
+    for name, (_, left, right) in (("top", top), ("bottom", bottom)):
+        if left < table.x0 or right > table.x1:
+            errors.append(f"opening table: {name} rule leaves the declared table region")
+        offset = (left + right) / 2 - page_center
+        if abs(offset) > 1:
+            errors.append(f"opening table: {name} rule is off center by {abs(offset):.2f} pt")
+    if abs(top[1] - bottom[1]) > 1 or abs(top[2] - bottom[2]) > 1:
+        errors.append("opening table: top and bottom rule endpoints must align")
+    return errors
+
+
+def rendered_errors(pdf, date, has_author=False, table_box=None):
     try:
         import fitz
         with fitz.open(pdf) as doc:
@@ -69,10 +112,10 @@ def rendered_errors(pdf, date, has_author=False):
             page = doc[0]
             width, height = page.rect.width, page.rect.height
             lines = sorted(page_lines(page), key=lambda line: line[1][0]["origin"][1])
+            errors = opening_table_errors(page, table_box) if table_box is not None else []
     except (ImportError, OSError, RuntimeError, ValueError) as exc:
         return [f"title page: cannot inspect PDF ({type(exc).__name__})"]
 
-    errors = []
     if abs(width - 612) > 2 or abs(height - 792) > 2:
         errors.append("title page: expected a US Letter page")
 
@@ -118,7 +161,7 @@ def rendered_errors(pdf, date, has_author=False):
     return errors
 
 
-def check(source, pdf=None):
+def check(source, pdf=None, table_box=None):
     source = Path(source).resolve()
     try:
         tex = source.read_text(encoding="utf-8")
@@ -133,15 +176,18 @@ def check(source, pdf=None):
     tex = uncomment(tex)
     date = " ".join(DATE.findall(tex)[0].split())
     has_author = re.search(r"\\author\s*\{\s*[^\s}]", tex) is not None
-    return rendered_errors(pdf, date, has_author=has_author)
+    return rendered_errors(pdf, date, has_author=has_author, table_box=table_box)
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--paper", required=True, type=Path, help="Editable LaTeX manuscript")
     parser.add_argument("--pdf", type=Path, help="Exact rendered PDF from the delivery record")
+    parser.add_argument("--opening-table-box", type=float, nargs=4,
+                        metavar=("LEFT", "TOP", "RIGHT", "BOTTOM"),
+                        help="Page-one table region in PDF points, including its outer rules")
     args = parser.parse_args(argv)
-    errors = check(args.paper, args.pdf)
+    errors = check(args.paper, args.pdf, table_box=args.opening_table_box)
     print(json.dumps({"accepted": not errors, "errors": errors}, indent=2))
     return 2 if errors else 0
 
