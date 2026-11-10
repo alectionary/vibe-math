@@ -231,3 +231,17 @@ Wall clock and projection: N=240 is done. MIMIC N=240 was 1211–1461 s. MGCFA N
 **Surprising:** none.
 
 **Blocking:** none.
+
+## 2026-11-10T05:00Z (first N=480 cell, 13 of 36)
+
+**Accomplished:** 13 of 36 cells. `mgcfa_true_n480_c1` is `70b5293f`, pushed. 11000 rows, 10986 converged, 1441634 bytes, wall 2306 s (2026-11-10T04:12:05Z to 2026-11-10T04:50:31Z).
+
+**New:** `mgcfa_true_n480_c2` started 2026-11-10T04:50:34Z and is in `exportData`. Doubling N from 240 to 480 did not double the balanced MGCFA cell: 2306 s against 2074 s at N=240.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: 23 cells remain. If MGCFA N=480 and N=960 stay near the N=240 times, and MIMIC stays near 25–40 minutes, the rest is about 15–18 hours, finishing around 2026-11-10 20:00–23:00 UTC. MGCFA 45/5 at N=480 is still untimed. Thirteen cells are 18.6 MB, so 36 cells stay near 52 MB, under 100 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** N=480 balanced MGCFA was 2306 s, only about 4 minutes longer than N=240.
+
+**Blocking:** none.
