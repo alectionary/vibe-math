@@ -175,3 +175,17 @@ Wall clock and projection: the two 45/5 cells are 94 and 144 minutes. The four o
 **Surprising:** the null 45/5 cell was 5651 s, about 50 minutes shorter than the true 45/5 cell, because one fewer batch was required.
 
 **Blocking:** none.
+
+## 2026-11-10T02:36Z (cell 7 committed, MIMIC is faster)
+
+**Accomplished:** 7 of 36 cells. `mimic_true_n240_c1` is commit `aaf06f19`, pushed. 10000 rows, 10000 converged, 1459081 bytes, wall 1249 s (2026-11-10T02:01:32Z to 2026-11-10T02:22:21Z).
+
+**New:** `mimic_true_n240_c2` started 2026-11-10T02:22:23Z and is still in `exportData`. The first MIMIC cell converged on every one of the first 10000 replicates and took 1249 s, about half a balanced MGCFA cell.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: N=240 MGCFA was 35–44 minutes except the 45/5 cells at 94 and 144 minutes. The first MIMIC cell was 21 minutes. If the other 17 MIMIC cells stay near 21 minutes (about 6 hours) and the 12 remaining MGCFA cells (N=480 and N=960) average about 70 minutes (about 14 hours), the rest is about 20 hours, finishing around 2026-11-10 22:30 UTC. That sketch does not yet include a MIMIC 45/5 cell or an N=960 cell. Seven cells are about 10 MB, so 36 cells stay near 50 MB, under 100 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** MIMIC condition 1 converged on all 10000 fitted replicates. The MGCFA cells have been leaving a few hundred unconverged inside the fitted prefix.
+
+**Blocking:** none.
