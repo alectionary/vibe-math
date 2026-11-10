@@ -133,3 +133,17 @@ Wall clock and projection: balanced cells are 35–38 minutes, the one 35/15 cel
 **Surprising:** none. The null balanced cell is close to the true balanced cell (2301 s vs 2074 s).
 
 **Blocking:** none.
+
+## 2026-11-10T00:35Z (cell 5 committed)
+
+**Accomplished:** 5 of 36 cells. `mgcfa_null_n240_c2` is commit `411e6f77`, pushed. 11000 rows, 10901 converged, 1421973 bytes, wall 2356 s (2026-11-09T23:48:01Z to 2026-11-10T00:27:17Z).
+
+**New:** `mgcfa_null_n240_c3` started 2026-11-10T00:27:19Z with 4 cores. Generation is done and the fits have started (four workers near 99% CPU). Finished walls: 2074, 2637, 8613, 2301, 2356 s.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: the 35/15 null cell was 2356 s, close to the balanced cells, so the long run is still the 45/5 cell (8613 s). One 45/5 cell is running now. If the other ten 45/5 cells also take about 144 minutes and the other twenty cells about 40 minutes, the rest of the grid is about 40 hours, finishing around 2026-11-11 16:30 UTC. N=960 generation may be slower. Five cells are 7.1 MB, so 36 cells stay near 50 MB, under 100 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** none. The null 35/15 cell was not slow.
+
+**Blocking:** none.
