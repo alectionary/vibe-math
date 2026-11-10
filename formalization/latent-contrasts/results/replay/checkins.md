@@ -451,3 +451,27 @@ Wall clock: true respecification 3141 s. If the null run is similar, it finishes
 **Surprising:** contrast 2 under the equality constraints is about 0.006 away from Table 5.1 while contrast 1 matches to about 0.0003.
 
 **Blocking:** none.
+
+## 2026-11-10T17:14Z (null respecification finished)
+
+**Accomplished:** Both respecification populations are done. The null run wall was 3687 s (2026-11-10T16:02:47Z to 2026-11-10T17:04:14Z), 10000 rows, `results/replay/respec/mgcfa_null_n240_c3_respec.csv.gz`.
+
+**New:** Null means, SE of the mean, and percent significant, converged fits only. Table 5.1 is in parentheses.
+
+Equal factor variances (9920 converged): c1 -0.0018, 0.00224, 8.78% (table -0.0016, 0.0023, 9.20%); c2 -0.0067, 0.00232, 10.15% (table -0.0119, 0.0023, 10.39%); c3 -0.0007, 0.00223, 8.45% (table -0.0005, 0.0023, 8.87%).
+
+Equal variances and loadings (9975 converged): c1 -0.0017, 0.00188, 6.95% (table -0.0007, 0.0019, 7.16%); c2 0.0045, 0.00191, 7.22% (table -0.0004, 0.0019, 7.40%); c3 -0.0001, 0.00185, 6.76% (table 0.0003, 0.0019, 7.07%).
+
+Equal variances, loadings, and residuals (9986 converged): c1 -0.0021, 0.00181, 6.05% (table -0.0013, 0.0018, 6.20%); c2 0.0039, 0.00184, 6.73% (table -0.0009, 0.0019, 6.90%); c3 -0.0005, 0.00179, 6.06% (table -0.0003, 0.0018, 6.26%).
+
+Percent significant is within about one point of Table 5.1. Contrast 2's mean is the one that does not sit on the printed value: about 0.005 less negative, and positive where the fully constrained table row is -0.0009.
+
+The extra allocation test is starting: MGCFA null, N=480, group sizes 168, 168, 72, 72, the uncommented `exportData` in `osf/generation/n480_cond3_sims.R`. This is not one of the 36 design cells. Those used 216, 216, 24, 24 for that cell.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock: null respecification 3687 s. The allocation test should be on the order of the other N=480 MGCFA cells, about 30–40 minutes, finishing around 17:50Z if it starts now.
+
+**Surprising:** under the two stricter constraints, null contrast 2's mean is positive here and slightly negative in Table 5.1.
+
+**Blocking:** none.
