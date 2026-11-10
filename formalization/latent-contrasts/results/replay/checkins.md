@@ -429,3 +429,25 @@ Wall clock: dynamic calls were under a minute. The true N=240 condition-3 MGCFA 
 **Surprising:** `cfaOne` returns `NONE` rather than the cutoffs pasted into the OSF summary script.
 
 **Blocking:** none.
+
+## 2026-11-10T16:12Z (true respecification finished)
+
+**Accomplished:** 36 of 36 cells remain committed. The true condition-3 N=240 respecification finished. Wall 3141 s (2026-11-10T15:10:26Z to 2026-11-10T16:02:47Z), 10000 rows, file `results/replay/respec/mgcfa_true_n240_c3_respec.csv.gz` (3063460 bytes).
+
+**New:** Means, SE of the mean, and percent significant, using converged fits only. Table 5.1 is in parentheses.
+
+Equal factor variances (9908 converged): c1 -0.4104, 0.00219, 53.23% (table -0.4114, 0.0022, 53.61%); c2 -0.2093, 0.00221, 22.29% (table -0.2164, 0.0022, 23.22%); c3 -0.0030, 0.00218, 8.79% (table -0.0034, 0.0022, 9.20%).
+
+Equal variances and loadings (9985 converged): c1 -0.4018, 0.00190, 60.16% (table -0.4016, 0.0019, 60.46%); c2 -0.1950, 0.00192, 22.11% (table -0.2011, 0.0019, 23.17%); c3 -0.0000, 0.00186, 6.84% (table <0.0001, 0.0019, 7.07%).
+
+Equal variances, loadings, and residuals (9988 converged): c1 -0.4018, 0.00184, 61.44% (table -0.4021, 0.0018, 61.90%); c2 -0.1954, 0.00185, 21.56% (table -0.2013, 0.0019, 22.59%); c3 0.0001, 0.00180, 6.23% (table -0.0002, 0.0018, 6.40%).
+
+Contrast 1 and contrast 3 sit close to Table 5.1. Contrast 2 is about 0.006 less negative than the table at every constraint step. The unrevised replay of this same cell matches the OSF summary to about 1e-4 (c2 -0.217999 vs -0.218097), so the c2 gap appears in the constrained models. The null respecification started 2026-11-10T16:02:47Z and is still in `exportData` or early fitting.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock: true respecification 3141 s. If the null run is similar, it finishes around 16:55Z.
+
+**Surprising:** contrast 2 under the equality constraints is about 0.006 away from Table 5.1 while contrast 1 matches to about 0.0003.
+
+**Blocking:** none.
