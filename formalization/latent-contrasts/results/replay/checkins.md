@@ -315,3 +315,17 @@ Wall clock and projection: 15 cells remain (3 MIMIC N=480, 6 MIMIC N=960, 6 MGCF
 **Surprising:** MIMIC condition 3 at N=480 was 1154 s with 10000 converged of 10000. The 45/5 slowdown has not appeared in MIMIC.
 
 **Blocking:** none.
+
+## 2026-11-10T10:05Z (24 of 36, N=480 complete)
+
+**Accomplished:** 24 of 36 cells. Since 09:09Z, three MIMIC null N=480 cells, each 10000/10000 converged: `88eeac0a` c1 862 s, `09e56196` c2 1138 s, `0e021394` c3 1171 s. All pushed. All 12 N=480 cells are done.
+
+**New:** `mgcfa_true_n960_c1` started 2026-11-10T09:54:11Z. Generation has finished and four fit workers are running. MemAvailable is about 2.5 GiB, lower than during N=240 because the datasets are larger. No OOM.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB, MemAvailable about 2.5 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: 12 N=960 cells remain. N=480 MIMIC was 14–20 minutes and N=480 MGCFA was 30–51 minutes. If N=960 is similar, the rest is about 6–8 hours, finishing around 2026-11-10 16:00–18:00 UTC. The first N=960 wall clock will replace that. Twenty-four cells are 34.5 MB, so 36 cells stay near 52 MB, under 100 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** none. N=480 MIMIC condition 3 was 1171 s with full convergence.
+
+**Blocking:** none. Memory is tighter at N=960 and is being watched. Replicates and the engine are unchanged.
