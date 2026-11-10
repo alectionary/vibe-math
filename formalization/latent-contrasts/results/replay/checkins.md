@@ -287,3 +287,17 @@ Wall clock and projection: N=480 MGCFA so far is 1805–3060 s. 19 cells remain.
 **Surprising:** none. The null balanced N=480 cell was the fastest MGCFA cell so far, 1805 s.
 
 **Blocking:** none.
+
+## 2026-11-10T08:13Z (18 of 36, N=480 MGCFA done)
+
+**Accomplished:** 18 of 36 cells. `mgcfa_null_n480_c3` is `7738f062`, pushed. 11000 rows, 10988 converged, 1445321 bytes, wall 2222 s (2026-11-10T07:25:50Z to 2026-11-10T08:02:52Z). All six N=480 MGCFA cells are committed. Their walls were 2306, 2242, 3060, 1805, 2199, and 2222 s.
+
+**New:** `mimic_true_n480_c1` started about 08:08Z and is in `exportData`. The null N=480 45/5 cell was 2222 s, close to the balanced cells, unlike the true N=480 45/5 cell at 3060 s.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: 18 cells remain (6 MIMIC at N=480, 6 MIMIC at N=960, 6 MGCFA at N=960). If those average 40 minutes, the rest is about 12 hours, finishing around 2026-11-10 20:00 UTC. N=960 is still untimed. Eighteen cells are about 26 MB, so 36 cells stay near 52 MB, under 100 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** the null 45/5 cell at N=480 was 2222 s, about 14 minutes faster than the true 45/5 cell at the same N.
+
+**Blocking:** none.
