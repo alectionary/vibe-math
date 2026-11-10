@@ -413,3 +413,19 @@ Wall clock: the grid ran from 2026-11-09T19:21:38Z to 2026-11-10T14:59:28Z. Per-
 **Surprising:** N=960 was not slower than N=240. The slow cells were the MGCFA fits with a group of 12.
 
 **Blocking:** none.
+
+## 2026-11-10T15:12Z (dynamic cutoffs)
+
+**Accomplished:** 36 of 36 cells remain committed. `cfaOne` finished.
+
+**New:** The commented call in `osf/analysis/mgcfa_model.R` was run on the first lexical replicate of `mgcfa true 240 1` (240 rows, the single-group syntax, MLR, `cfaOne(plot=FALSE)`, default `reps=500`). The fit converged. `cfaOne` returned cutoff table Level 1 only, and every entry is `NONE` (SRMR, RMSEA, and CFI, at both 95/5 and 90/10). A second call with `manual=TRUE`, standardized loadings 0.57, and `n=240` also returned `NONE` for every entry. Wall clock was 28 s and 26 s. The OSF summary columns use pasted thresholds 0.985, 0.069, and 0.020. Those numbers are not the return value of this `cfaOne` call. On cell 1, applying those pasted thresholds to the replayed fits gave `n_accept_dyn_cfi` 6768 = 6768, `n_accept_dyn_rmsea` 8095 vs 8096, and `n_accept_dyn_srmr` 0 = 0. Outputs: `results/replay/dynamic_cfaOne_first_lexical.txt` and `results/replay/dynamic_cfaOne_manual_std.txt`.
+
+The Chapter IV respecification is starting now: condition 3, N=240, true then null, three equality steps (factor variances; variances and loadings; variances, loadings, and residual variances) on the same replicate indices as the replayed cells.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0.
+
+Wall clock: dynamic calls were under a minute. The true N=240 condition-3 MGCFA cell took 8613 s for one model, so the three-model respecification may take a few hours. Projected respecification finish is not firm until the first population is timed.
+
+**Surprising:** `cfaOne` returns `NONE` rather than the cutoffs pasted into the OSF summary script.
+
+**Blocking:** none.
