@@ -273,3 +273,17 @@ Wall clock and projection: 21 cells remain. N=480 MGCFA so far is 2242–3060 s.
 **Surprising:** N=480 condition 3 was 3060 s, not another two-hour cell.
 
 **Blocking:** none.
+
+## 2026-11-10T07:33Z (17 of 36)
+
+**Accomplished:** 17 of 36 cells. Since 06:37Z: `mgcfa_null_n480_c1` is `98ca32ce`, 1805 s, 11000 rows, 10998 converged, 1431611 bytes. `mgcfa_null_n480_c2` is `d44c57df`, 2199 s, 11000 rows, 10999 converged, 1429235 bytes. Both pushed.
+
+**New:** `mgcfa_null_n480_c3` started 2026-11-10T07:25:48Z and the fits have started. That is the second N=480 45/5 cell. The true one was 3060 s.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB, MemAvailable about 3.0 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: N=480 MGCFA so far is 1805–3060 s. 19 cells remain. If they average 40 minutes, the rest is about 13 hours, finishing around 2026-11-10 20:30 UTC. N=960 is still untimed. Seventeen cells are 24.3 MB, so 36 cells stay near 52 MB, under 100 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** none. The null balanced N=480 cell was the fastest MGCFA cell so far, 1805 s.
+
+**Blocking:** none.
