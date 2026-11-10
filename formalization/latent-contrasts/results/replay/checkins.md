@@ -329,3 +329,17 @@ Wall clock and projection: 12 N=960 cells remain. N=480 MIMIC was 14–20 minute
 **Surprising:** none. N=480 MIMIC condition 3 was 1171 s with full convergence.
 
 **Blocking:** none. Memory is tighter at N=960 and is being watched. Replicates and the engine are unchanged.
+
+## 2026-11-10T10:56Z (26 of 36, N=960 is fast)
+
+**Accomplished:** 26 of 36 cells. `mgcfa_true_n960_c1` is `47a3fc19`, 1507 s, 10000/10000 converged, 1314391 bytes. `mgcfa_true_n960_c2` is `2746f3a7`, 1745 s, 10000/10000 converged, 1313057 bytes. Both pushed.
+
+**New:** `mgcfa_true_n960_c3` started 2026-11-10T10:48:27Z and the fits are running. MemAvailable is about 2.5 GiB during the fit. No OOM. N=960 balanced and 35/15 MGCFA cells were 25 and 29 minutes, with every fitted replicate converged, so the run stopped at 10000 rather than 11000.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB, MemAvailable about 2.5 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: 10 cells remain. If they average 30 minutes, the grid finishes around 2026-11-10 16:00 UTC. The running cell is the N=960 45/5 MGCFA cell and is the one most likely to be longer. Twenty-six cells are 37.1 MB, so 36 cells stay near 51 MB, under 100 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** N=960 MGCFA is faster than N=240 MGCFA, and convergence on the first 10000 replicates is complete for the two cells so far.
+
+**Blocking:** none.
