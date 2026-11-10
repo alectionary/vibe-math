@@ -147,3 +147,17 @@ Wall clock and projection: the 35/15 null cell was 2356 s, close to the balanced
 **Surprising:** none. The null 35/15 cell was not slow.
 
 **Blocking:** none.
+
+## 2026-11-10T01:35Z (null condition 3 still fitting)
+
+**Accomplished:** 5 of 36 cells. Latest cell commit `411e6f77` (`mgcfa_null_n240_c2`, 2356 s). No new cell since 00:35Z.
+
+**New:** `mgcfa_null_n240_c3` is still running. It started 2026-11-10T00:27:19Z, so wall time so far is 68 minutes. The R process etime is 53 minutes. Four workers are near 97–99% CPU and the current batch has been alive about 5.5 minutes. MemAvailable about 3.7 GiB. No OOM.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: the matching true 45/5 cell took 8613 s, so this cell may finish around 02:50Z if it matches. The rest-of-grid sketch is unchanged: about 40 hours from 00:35Z, around 2026-11-11 16:30 UTC, with N=960 generation possibly slower. Five finished cells are 7.1 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** none. This 45/5 cell is slow in the same way as the true 45/5 cell.
+
+**Blocking:** none.
