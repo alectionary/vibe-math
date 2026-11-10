@@ -475,3 +475,17 @@ Wall clock: null respecification 3687 s. The allocation test should be on the or
 **Surprising:** under the two stricter constraints, null contrast 2's mean is positive here and slightly negative in Table 5.1.
 
 **Blocking:** none.
+
+## 2026-11-10T17:50Z (compute stage complete)
+
+**Accomplished:** The compute stage is complete. 36 of 36 design cells are committed. Dynamic cutoffs are committed. Both respecification populations are committed. The extra allocation test is committed.
+
+**New:** The uncommented null `exportData` in `osf/generation/n480_cond3_sims.R` uses group sizes 168, 168, 72, 72. That run (`mgcfa_null_n480_alloc168`) took 1892 s, fitted 11000, and converged 10999. Its first 10000 converged replicates match the design cell `mgcfa_null_n480_c2` (the 35/15 cell) on the three means, the three SEs of those means, and the three significant counts: c1 -0.000160 (482), c2 -0.000792 (491), c3 0.001014 (463). They do not match the condition-3 design cell, whose c2 mean is -0.007084 with 607 significant. 168/480 = 0.35 and 72/480 = 0.15, so the script's numbers are the condition-2 allocation under a condition-3 file name. The commented `n960_cond2` call uses 432, 432, 48, 48, which is 45/45/5/5 of 960. That call is commented out and was not run again.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2 (2022-10-31). lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0, from the Posit snapshot 2024-01-15. `La_library()` is `libRlapack.so` (LAPACK 3.10.1). BLAS is `libRblas.so`. `sessionInfo()` is in `results/replay/session_info.txt`.
+
+Wall clock: the 36 cells sum to 70243 s, from 2026-11-09T19:21:38Z to 2026-11-10T14:59:28Z. The gzip files are 51162783 bytes. With the respecification files and this allocation file the replay directory is still under 100 MB. Exactness gate on `mgcfa true 240 1` remains FAIL (means off by 1.77e-6, 9.28e-6, 1.16e-5; significant counts 8723, 3557, 528 against 8723, 3557, 529). Same code and seeds, not digit-exact.
+
+**Surprising:** none beyond what the earlier check-ins recorded. The 168-allocation run is the condition-2 cell again.
+
+**Blocking:** none. GitHub issue comments from this agent still cannot be posted; this file is the record for the coordinator to relay.

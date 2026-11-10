@@ -1,0 +1,27 @@
+MGCFA null, N=480, group sizes 168, 168, 72, 72.
+This is the uncommented exportData call in osf/generation/n480_cond3_sims.R.
+It is not one of the 36 design cells. The design cell for condition 3 uses
+216, 216, 24, 24. 168/480 = 0.35 and 72/480 = 0.15, which is condition 2.
+
+First 10000 converged replicates. avg is the mean estimate, se is sd/sqrt(n),
+nsig is the count with p < 0.05.
+
+alloc168 (this run, wall 1892 s, 11000 fitted, 10999 converged):
+  c1 avg=-0.000160 se=0.000968 nsig=482
+  c2 avg=-0.000792 se=0.000980 nsig=491
+  c3 avg=0.001014 se=0.000971 nsig=463
+
+design cell mgcfa_null_n480_c2 (35/35/15/15):
+  c1 avg=-0.000160 se=0.000968 nsig=482
+  c2 avg=-0.000792 se=0.000980 nsig=491
+  c3 avg=0.001014 se=0.000971 nsig=463
+
+design cell mgcfa_null_n480_c3 (45/45/5/5):
+  c1 avg=-0.000268 se=0.001519 nsig=562
+  c2 avg=-0.007084 se=0.001539 nsig=607
+  c3 avg=0.001051 se=0.001528 nsig=595
+
+The 168, 168, 72, 72 run matches the condition-2 design cell on these
+figures and does not match the condition-3 design cell.
+The n960_cond2 script's commented call uses 432, 432, 48, 48, which is
+45/45/5/5 of 960. That call is commented out and was not run again.
