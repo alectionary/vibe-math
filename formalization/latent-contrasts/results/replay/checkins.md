@@ -399,3 +399,17 @@ Wall clock and projection: 3 cells remain. At about 20 minutes each, the 36-cell
 **Surprising:** none. N=960 MIMIC condition 3 was 1184 s with full convergence.
 
 **Blocking:** none.
+
+## 2026-11-10T15:08Z (36 of 36 cells complete)
+
+**Accomplished:** 36 of 36 cells, all status ok. The last cell, `mimic_null_n960_c3`, is commit `4e5033d8`, 10000/10000 converged, 1465102 bytes, wall 1486 s (2026-11-10T14:34:42Z to 2026-11-10T14:59:28Z). The driver logged `ALL_CELLS_DONE 2026-11-10T14:59:31Z`. Sum of cell wall times is 70243 s (19.5 hours). The 36 gzip files are 51162783 bytes, about 51 MB, under 100 MB.
+
+**New:** `dynamic::cfaOne` is starting on the first lexical replicate of `mgcfa true 240 1` (`sim_data_n2401.dat`), using the commented single-group call in `osf/analysis/mgcfa_model.R`. The Chapter IV respecification (equal factor variance, then loadings, then residual variances, on condition 3 at N=240, true and null) is next. The exactness gate on cell 1 remains FAIL: means differ by 1.77e-6, 9.28e-6, and 1.16e-5; significant counts 8723, 3557, 528 against 8723, 3557, 529. Results are same code and seeds, not digit-exact.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock: the grid ran from 2026-11-09T19:21:38Z to 2026-11-10T14:59:28Z. Per-cell walls are in `results/replay/timings.csv`. The two long cells were MGCFA N=240 condition 3: true 8613 s, null 5651 s. Every other cell was between 862 and 3060 s.
+
+**Surprising:** N=960 was not slower than N=240. The slow cells were the MGCFA fits with a group of 12.
+
+**Blocking:** none.
