@@ -343,3 +343,17 @@ Wall clock and projection: 10 cells remain. If they average 30 minutes, the grid
 **Surprising:** N=960 MGCFA is faster than N=240 MGCFA, and convergence on the first 10000 replicates is complete for the two cells so far.
 
 **Blocking:** none.
+
+## 2026-11-10T11:37Z (27 of 36)
+
+**Accomplished:** 27 of 36 cells. `mgcfa_true_n960_c3` is `052b0ae2`, pushed. 11000 rows, 10982 converged, 1441079 bytes, wall 2007 s (2026-11-10T10:48:30Z to 2026-11-10T11:21:57Z).
+
+**New:** `mgcfa_null_n960_c1` is running and the fits have started. The N=960 45/5 cell was 33 minutes, not a long cell. Groups of 48 converge. N=960 MGCFA walls so far: 1507, 1745, and 2007 s.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: 9 cells remain. If they average 30 minutes, the grid finishes around 2026-11-10 16:00 UTC. After that, the dynamic cutoffs and the Chapter IV respecification are still to run. Twenty-seven cells are about 38.5 MB, so 36 cells stay near 51 MB, under 100 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** N=960 condition 3 was 2007 s. The two-hour cells were only the N=240 45/5 MGCFA cells, where the smallest group has 12 observations.
+
+**Blocking:** none.
