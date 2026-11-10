@@ -301,3 +301,17 @@ Wall clock and projection: 18 cells remain (6 MIMIC at N=480, 6 MIMIC at N=960, 
 **Surprising:** the null 45/5 cell at N=480 was 2222 s, about 14 minutes faster than the true 45/5 cell at the same N.
 
 **Blocking:** none.
+
+## 2026-11-10T09:09Z (21 of 36)
+
+**Accomplished:** 21 of 36 cells. Since 08:13Z, three MIMIC true N=480 cells, each 10000/10000 converged: `bfc5220c` c1 1176 s, `929b3ac8` c2 1164 s, `a374dd1d` c3 1154 s. All pushed.
+
+**New:** `mimic_null_n480_c1` is running and the fits have started. The MIMIC 45/5 cell at N=480 was 1154 s, the shortest of the three, with full convergence.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB, MemAvailable about 3.0 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: 15 cells remain (3 MIMIC N=480, 6 MIMIC N=960, 6 MGCFA N=960). MIMIC N=480 is about 19 minutes. If the N=960 cells average 40 minutes, the rest is about 8–9 hours, finishing around 2026-11-10 17:30–18:30 UTC. N=960 is still untimed. Twenty-one cells are 30.1 MB, so 36 cells stay near 52 MB, under 100 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** MIMIC condition 3 at N=480 was 1154 s with 10000 converged of 10000. The 45/5 slowdown has not appeared in MIMIC.
+
+**Blocking:** none.
