@@ -161,3 +161,17 @@ Wall clock and projection: the matching true 45/5 cell took 8613 s, so this cell
 **Surprising:** none. This 45/5 cell is slow in the same way as the true 45/5 cell.
 
 **Blocking:** none.
+
+## 2026-11-10T02:16Z (cell 6 committed)
+
+**Accomplished:** 6 of 36 cells. `mgcfa_null_n240_c3` is commit `9418f3fe`, pushed. 11000 rows fitted, 10531 converged, 1422061 bytes, wall 5651 s (2026-11-10T00:27:19Z to 2026-11-10T02:01:30Z).
+
+**New:** `mimic_true_n240_c1` is running (about 10 minutes in, fits started, four workers). The null 45/5 cell was 5651 s, against 8613 s for the true 45/5 cell. It reached 10000 converged fits in 11 batches rather than 12.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: the two 45/5 cells are 94 and 144 minutes. The four other N=240 MGCFA cells are 35–44 minutes. MIMIC timing is not in yet. If the remaining ten 45/5 cells average about 2 hours and the other twenty cells average 40 minutes, the rest is about 33 hours, finishing around 2026-11-11 11:00 UTC. N=960 generation may be slower. Six cells are about 8.5 MB, so 36 cells stay near 50 MB, under 100 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** the null 45/5 cell was 5651 s, about 50 minutes shorter than the true 45/5 cell, because one fewer batch was required.
+
+**Blocking:** none.
