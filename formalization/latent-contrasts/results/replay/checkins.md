@@ -357,3 +357,17 @@ Wall clock and projection: 9 cells remain. If they average 30 minutes, the grid 
 **Surprising:** N=960 condition 3 was 2007 s. The two-hour cells were only the N=240 45/5 MGCFA cells, where the smallest group has 12 observations.
 
 **Blocking:** none.
+
+## 2026-11-10T12:33Z (29 of 36)
+
+**Accomplished:** 29 of 36 cells. Since 11:37Z: `mgcfa_null_n960_c1` is `dc7ab7c3`, 2201 s, 10000/10000 converged, 1296268 bytes. `mgcfa_null_n960_c2` is `da735297`, 1499 s, 10000/10000 converged, 1296376 bytes. Both pushed.
+
+**New:** `mgcfa_null_n960_c3` started 2026-11-10T12:23:41Z and is in `exportData`. That is the last MGCFA cell. Six MIMIC N=960 cells follow it.
+
+Machine: `uname -m` = x86_64, 4 cores, MemTotal 16 GiB, MemAvailable about 4.6 GiB while generating. R 4.2.2. lavaan 0.6-17, simsem 0.5-16, dynamic 1.1.0. Reference BLAS `libRblas.so`, LAPACK `libRlapack.so` 3.10.1.
+
+Wall clock and projection: 7 cells remain. N=960 MGCFA so far is 1499–2201 s. If the last MGCFA cell is about 35 minutes and the six MIMIC cells about 20 minutes each, the grid finishes around 2026-11-10 15:30 UTC. Dynamic cutoffs and the Chapter IV respecification come after the grid. Twenty-nine cells are 41.1 MB, so 36 cells stay near 51 MB, under 100 MB. Exactness gate on cell 1 remains FAIL.
+
+**Surprising:** none.
+
+**Blocking:** none.
