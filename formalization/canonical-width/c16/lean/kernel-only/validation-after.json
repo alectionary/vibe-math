@@ -1,0 +1,66 @@
+[
+  {
+    "name": "statements-after",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "kernel-only/StatementCheck.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 52.69069124999999
+  },
+  {
+    "name": "timings-after",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "kernel-only/KernelTimings.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 80.47738541700001
+  },
+  {
+    "name": "axiom-gate-after",
+    "command": [
+      "python3",
+      "axiom_gate.py",
+      "--json",
+      "kernel-only/axioms-after.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 117.63468395799998
+  },
+  {
+    "name": "axiom-gate-strict",
+    "command": [
+      "python3",
+      "axiom_gate.py",
+      "--strict"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 42.91100633299999
+  },
+  {
+    "name": "statement-sources",
+    "command": [
+      "python3",
+      "kernel-only/check_statement_sources.py"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.47772541699998783
+  },
+  {
+    "name": "input-hashes",
+    "command": [
+      "shasum",
+      "-a",
+      "256",
+      "-c",
+      "lean/kernel-only/input-sha256.txt"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.0454828750000047
+  }
+]

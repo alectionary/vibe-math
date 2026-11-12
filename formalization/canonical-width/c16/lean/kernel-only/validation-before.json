@@ -1,0 +1,55 @@
+[
+  {
+    "name": "statements-before",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "kernel-only/StatementCheck.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 54.739330833
+  },
+  {
+    "name": "timings-before",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "kernel-only/KernelTimings.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 78.919018083
+  },
+  {
+    "name": "axiom-gate-before-initial",
+    "command": [
+      "python3",
+      "axiom_gate.py",
+      "--json",
+      "kernel-only/axioms-before.json"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 70.82779733299999
+  },
+  {
+    "name": "axiom-gate-before-corrected",
+    "command": [
+      "python3",
+      "axiom_gate.py",
+      "--json",
+      "kernel-only/axioms-before.json"
+    ],
+    "exit_code": 0,
+    "summary": "declarations=799 KERNEL=718 NATIVE=81 FORBIDDEN=0"
+  },
+  {
+    "name": "expanded-self-test",
+    "command": [
+      "python3",
+      "axiom_gate.py",
+      "--self-test"
+    ],
+    "exit_code": 0
+  }
+]

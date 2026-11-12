@@ -1,0 +1,296 @@
+{
+  "before": [
+    {
+      "file": "Aut.lean",
+      "line": 50,
+      "text": "native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 75,
+      "text": "theorem gmap_ginv : \u2200 b k u, gmap b k (ginv b k u) = u := by native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 76,
+      "text": "theorem ginv_gmap : \u2200 b k u, ginv b k (gmap b k u) = u := by native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 82,
+      "text": "theorem rot1_aut : \u2200 u w, adj (rot1 u) (rot1 w) = adj u w := by native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 83,
+      "text": "theorem swp_aut : \u2200 u w, adj (swp u) (swp w) = adj u w := by native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 87,
+      "text": "gmap b k u = rot1^[k.1] (if b then swp u else u) := by native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 104,
+      "text": "native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 234,
+      "text": "native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 238,
+      "text": "theorem dM_id : \u2200 v : V, col dM v = v.1 := by native_decide"
+    },
+    {
+      "file": "CertGPTPool.lean",
+      "line": 11,
+      "text": "theorem swap_pools_ok : swapPoolsOK = true := by native_decide"
+    },
+    {
+      "file": "CertGPTRun.lean",
+      "line": 11,
+      "text": "theorem swap_check_ok : swapCertificateOK = true := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 106,
+      "text": "theorem hx_length : hx.length = 480 := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 107,
+      "text": "theorem hz_length : hz.length = 480 := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 109,
+      "text": "native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 111,
+      "text": "theorem checks_commute : hx.all (fun x => hz.all fun z => !par x z) := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 115,
+      "text": "theorem canon_length : canX.length = 128 \u2227 canZ.length = 128 := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 117,
+      "text": "canZ.all (fun v => hx.all fun x => !par x v) := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 119,
+      "text": "native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 121,
+      "text": "(canX ++ canZ).any (fun v => popc v == 18) := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 125,
+      "text": "theorem pools_length : xPhys.length = 720 \u2227 zPhys.length = 720 := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 127,
+      "text": "native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 129,
+      "text": "zPhys.all (fun v => hx.all fun x => !par x v) := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 130,
+      "text": "theorem pools_distinct : xPhys.Nodup \u2227 zPhys.Nodup := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 132,
+      "text": "native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 134,
+      "text": "theorem coords_nonzero : xArr.all (\u00b7 != 0) && zArr.all (\u00b7 != 0) := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 140,
+      "text": "native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 31,
+      "text": "theorem xArr_size : xArr.size = 720 := by native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 32,
+      "text": "theorem zArr_size : zArr.size = 720 := by native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 44,
+      "text": "native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 46,
+      "text": "native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 49,
+      "text": "theorem G_symm : \u2200 i j : Fin 720, G i j = G j i := by native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 52,
+      "text": "theorem G_rot : \u2200 i j : Fin 720, G (rotIdx 1 i) (rotIdx 1 j) = G i j := by native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 58,
+      "text": "left_inv := by intro i; revert i; native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 59,
+      "text": "right_inv := by intro i; revert i; native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 65,
+      "text": "left_inv := by intro i; revert i; native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 66,
+      "text": "right_inv := by intro i; revert i; native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 68,
+      "text": "theorem tau8_invol : \u2200 i : Fin 720, tau8 (tau8 i) = i := by intro i; revert i; native_decide"
+    }
+  ],
+  "after": [
+    {
+      "file": "Aut.lean",
+      "line": 50,
+      "text": "native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 90,
+      "text": "theorem rot1_aut : \u2200 u w, adj (rot1 u) (rot1 w) = adj u w := by native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 91,
+      "text": "theorem swp_aut : \u2200 u w, adj (swp u) (swp w) = adj u w := by native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 263,
+      "text": "native_decide"
+    },
+    {
+      "file": "Aut.lean",
+      "line": 267,
+      "text": "theorem dM_id : \u2200 v : V, col dM v = v.1 := by native_decide"
+    },
+    {
+      "file": "CertGPTPool.lean",
+      "line": 11,
+      "text": "theorem swap_pools_ok : swapPoolsOK = true := by native_decide"
+    },
+    {
+      "file": "CertGPTRun.lean",
+      "line": 11,
+      "text": "theorem swap_check_ok : swapCertificateOK = true := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 123,
+      "text": "native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 125,
+      "text": "theorem checks_commute : hx.all (fun x => hz.all fun z => !par x z) := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 134,
+      "text": "canZ.all (fun v => hx.all fun x => !par x v) := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 136,
+      "text": "native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 138,
+      "text": "(canX ++ canZ).any (fun v => popc v == 18) := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 147,
+      "text": "native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 149,
+      "text": "zPhys.all (fun v => hx.all fun x => !par x v) := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 150,
+      "text": "theorem pools_distinct : xPhys.Nodup \u2227 zPhys.Nodup := by native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 152,
+      "text": "native_decide"
+    },
+    {
+      "file": "Code.lean",
+      "line": 163,
+      "text": "native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 46,
+      "text": "native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 48,
+      "text": "native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 51,
+      "text": "theorem G_symm : \u2200 i j : Fin 720, G i j = G j i := by native_decide"
+    },
+    {
+      "file": "Pools.lean",
+      "line": 54,
+      "text": "theorem G_rot : \u2200 i j : Fin 720, G (rotIdx 1 i) (rotIdx 1 j) = G i j := by native_decide"
+    }
+  ]
+}
